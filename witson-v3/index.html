@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Auto Witson — shumka, yulduzli osmon, stroboskop · Toshkent</title>
+<title>Auto Witson — salonda sokinlik, faralarda yorqinlik · Toshkent</title>
 <meta name="description" content="Auto Witson — Iftixor 44a. Shumoizolyatsiya, yulduzli osmon, stroboskop, multimedia va himoya qoplamalari. Narxni 20 soniyada biling va yoziling.">
-<meta property="og:title" content="Auto Witson — jimlik, yorug'lik, xarakter">
+<meta property="og:title" content="Auto Witson — salonda sokinlik, faralarda yorqinlik">
 <meta property="og:description" content="Narxni 20 soniyada biling va qulay vaqtga yoziling. Iftixor ko'chasi, 44a.">
 <meta property="og:image" content="img/prado.jpg">
 <meta name="theme-color" content="#0c2226">
@@ -28,7 +28,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
 .wrap{width:min(1120px,100% - 40px);margin:0 auto;position:relative}
 h1,h2,h3,.ex{font-family:"Exo 2",Manrope,sans-serif;letter-spacing:-.01em}
-h2{font-size:clamp(30px,4.4vw,52px);line-height:1.04;font-weight:800}
+h2{font-size:clamp(28px,4vw,48px);line-height:1.08;font-weight:800;max-width:900px}
 h2 em{font-style:italic;color:var(--gold)}
 .lead{color:var(--mu);font-size:clamp(16px,1.6vw,18px);max-width:600px;margin-top:14px}
 section{padding:clamp(80px,11vw,130px) 0}
@@ -50,7 +50,7 @@ header{position:fixed;top:var(--bar,0px);left:0;right:0;z-index:50;transition:ba
 header.sc{background:rgba(11,31,34,.82);backdrop-filter:blur(16px) saturate(1.3);border-color:rgba(245,240,232,.07)}
 .hd{display:flex;align-items:center;gap:20px;height:72px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px rgba(244,163,64,.35),0 0 24px rgba(244,163,64,.35)}
+.brand img{width:46px;height:46px;filter:drop-shadow(0 0 10px rgba(244,163,64,.55))}
 .brand b{font:800 18px/1 "Exo 2";letter-spacing:.02em;white-space:nowrap}.brand span{white-space:nowrap}
 @media (max-width:460px){.brand small{display:none}.brand img{width:38px;height:38px}}
 .brand small{display:block;font:600 11px/1.3 Manrope;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
@@ -77,12 +77,19 @@ nav.top+.hr{margin-left:18px}
   linear-gradient(90deg,rgba(11,31,34,.92) 0%,rgba(11,31,34,.55) 50%,rgba(16,42,46,.1) 100%)}
 .hero:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 50% at 80% 30%,rgba(244,163,64,.18),transparent 70%);mix-blend-mode:screen}
 .hero .wrap{z-index:2;padding:150px 0 70px}
+.emb{position:absolute;right:0;top:96px;width:300px;text-align:center;pointer-events:none;z-index:2}
+.emb img{width:230px;margin:0 auto;filter:drop-shadow(0 0 30px rgba(244,163,64,.5)) drop-shadow(0 0 80px rgba(255,107,74,.25));animation:gl 5s ease-in-out infinite}
+.emb span{display:block;margin-top:14px;font:italic 800 17px/1.3 "Exo 2";color:var(--gold);letter-spacing:.01em}
+@keyframes gl{50%{filter:drop-shadow(0 0 46px rgba(244,163,64,.75)) drop-shadow(0 0 100px rgba(255,107,74,.35));transform:translateY(-6px)}}
+@media (max-width:1280px){.emb{width:220px;top:110px}.emb img{width:170px}.emb span{font-size:14px}}
+@media (max-width:1280px){.hero h1{max-width:calc(100% - 240px)!important}}
+@media (max-width:900px){.hero h1{max-width:100%!important}.emb{top:84px;right:-40px;width:200px;opacity:.22}.emb span{display:none}}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(245,240,232,.08);border:1px solid rgba(245,240,232,.14);backdrop-filter:blur(10px);font-size:13.5px;font-weight:700;margin-bottom:26px}
 .tag i{width:8px;height:8px;border-radius:50%;background:#5EE2A0;box-shadow:0 0 0 4px rgba(94,226,160,.18)}
 .kind{font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.hero h1{font-size:clamp(44px,8vw,104px);line-height:.93;font-weight:900;letter-spacing:-.025em;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5.4vw,74px);max-width:calc(100% - 330px);line-height:.93;font-weight:900;letter-spacing:-.025em;text-transform:uppercase}
 .hero h1 span{display:block}
-.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;padding-right:.08em}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;padding-right:.08em;padding-bottom:.12em;margin-bottom:-.12em}
 .hero p{max-width:520px;color:#D9E2DE;font-size:clamp(16px,1.7vw,19px);margin:24px 0 32px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
 .facts{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:54px;padding-top:26px;border-top:1px solid rgba(245,240,232,.12)}
@@ -318,7 +325,7 @@ footer a:hover{color:var(--gold)}
 
 <header id="hdr">
   <div class="wrap hd">
-    <a class="brand" href="#top"><img src="img/logo.png" alt="Auto Witson logotipi"><span><b>AUTO WITSON</b><small data-ru="Тюнинг и детейлинг">Tyuning va deteyling</small></span></a>
+    <a class="brand" href="#top"><img src="img/panda_s.png" alt="Auto Witson logotipi"><span><b>AUTO WITSON</b><small data-ru="Тюнинг и детейлинг">Tyuning va deteyling</small></span></a>
     <nav class="top" aria-label="Menyu">
       <a href="#xizmatlar" data-ru="Услуги">Xizmatlar</a>
       <a href="#narx" data-ru="Цены">Narxlar</a>
@@ -337,9 +344,10 @@ footer a:hover{color:var(--gold)}
 <section class="hero">
   <div class="bg" role="img" aria-label="Toyota Prado — Auto Witson ustaxonasida"></div>
   <div class="wrap">
+    <div class="emb" aria-hidden="true"><img src="img/panda.png" alt=""><span data-ru="Злая панда в деле — мощь на пределе">Pandaning qahri — yo'llarning faxri</span></div>
     <div class="tag"><i></i><span id="fb">Iftixor, 44a</span></div>
     <div class="kind" data-ru="Тюнинг-студия · Шумка · Звёздное небо · Стробоскопы">Avto tyuning studiyasi · Shumka · Yulduzli osmon · Stroboskop</div>
-    <h1><span data-ru="Тишина.">Jimlik.</span><span data-ru="Свет.">Yorug'lik.</span><span class="g" data-ru="Характер.">Xarakter.</span></h1>
+    <h1><span data-ru="В салоне — тишина,">Salonda sokinlik,</span><span class="g" data-ru="в фарах — глубина.">faralarda yorqinlik.</span></h1>
     <p data-ru="Шумоизоляция, звёздное небо, стробоскопы и мультимедиа — делаем машину тише, ярче и заметнее. Узнайте примерную цену за 20 секунд.">Shumoizolyatsiya, yulduzli osmon, stroboskop va multimedia — mashinangizni jimroq, yorqinroq va ko'zga tashlanadigan qilamiz. Taxminiy narxni 20 soniyada biling.</p>
     <div class="cta">
       <a class="btn btn-p shine" href="#narx"><span data-ru="Узнать цену">Narxni bilish</span><span class="ic" data-i="arrow"></span></a>
@@ -358,7 +366,7 @@ footer a:hover{color:var(--gold)}
 <section id="xizmatlar">
   <div class="wrap">
     <div class="rv"><div class="eyebrow"><i></i><span data-ru="Услуги">Xizmatlar</span></div>
-    <h2 data-ru="Что сделаем с <em>вашей</em> машиной">Mashinangiz bilan <em>nima</em> qilamiz</h2>
+    <h2 data-ru="Шум уйдёт — <em>настроение останется</em>">Shovqin ketar — <em>kayfiyat qolar</em></h2>
     <p class="lead" data-ru="Нажмите «+» — услуга сразу попадёт в расчёт.">«+» ni bosing — xizmat darhol hisobga tushadi.</p></div>
     <div class="sv-g" id="svg"></div>
   </div>
@@ -367,7 +375,7 @@ footer a:hover{color:var(--gold)}
 <section id="narx">
   <div class="wrap">
     <div class="rv"><div class="eyebrow"><i></i><span data-ru="Калькулятор">Kalkulyator</span></div>
-    <h2 data-ru="Сколько стоит — <em>за 20 секунд</em>">Qancha turadi — <em>20 soniyada</em></h2>
+    <h2 data-ru="Сколько стоит? <em>Ответ за 20 секунд</em>">Qancha bo'lar xarajat? <em>20 soniyada — marhamat!</em></h2>
     <p class="lead" data-ru="Выберите размер машины и услуги. Итоговую цену мастер подтвердит после осмотра.">Mashina o'lchami va xizmatlarni tanlang. Yakuniy narxni usta ko'rikdan keyin tasdiqlaydi.</p></div>
     <div class="calc">
       <div class="card rv">
@@ -398,7 +406,7 @@ footer a:hover{color:var(--gold)}
 <section id="ishlar">
   <div class="wrap">
     <div class="rv"><div class="eyebrow"><i></i><span data-ru="Наши работы">Ishlarimiz</span></div>
-    <h2 data-ru="Не слова — <em>видео</em>">So'z emas — <em>video</em></h2>
+    <h2 data-ru="Меньше слов — <em>больше дел</em>">Gapdan ko'ra ishimiz — <em>videoda kuchimiz</em></h2>
     <p class="lead" data-ru="Реальные работы с нашего YouTube-канала.">YouTube kanalimizdagi haqiqiy ishlar.</p></div>
     <div class="vs" id="vs"></div>
     <a class="yt" href="https://www.youtube.com/channel/UC4g1ljATz8gJe5Nmmq462uQ" target="_blank" rel="noopener"><span class="ic" data-i="yt"></span><span data-ru="Все видео на YouTube →">Barcha videolar YouTube'da →</span></a>
@@ -409,7 +417,7 @@ footer a:hover{color:var(--gold)}
   <div class="wrap bk">
     <div class="rv">
       <div class="eyebrow"><i></i><span data-ru="Запись">Yozilish</span></div>
-      <h2 data-ru="Выберите <em>удобный</em> день">Qulay kunni <em>tanlang</em></h2>
+      <h2 data-ru="Не ждите долго — <em>запишитесь сразу!</em>">Kutmang bekorga uzoq — <em>joyni band qiling tezroq!</em></h2>
       <ul class="steps">
         <li><b>1</b><span><strong data-ru="Оставляете заявку">Ariza qoldirasiz</strong><span data-ru="Меньше минуты.">Bir daqiqadan kam.</span></span></li>
         <li><b>2</b><span><strong data-ru="Мастер перезванивает">Usta qo'ng'iroq qiladi</strong><span data-ru="Уточняет машину и время.">Mashina va vaqtni aniqlaydi.</span></span></li>
@@ -435,12 +443,12 @@ footer a:hover{color:var(--gold)}
   <div class="wrap two">
     <div class="rv">
       <div class="eyebrow"><i></i><span data-ru="Вопросы">Savollar</span></div>
-      <h2 data-ru="Коротко о <em>главном</em>">Qisqa <em>javoblar</em></h2>
+      <h2 data-ru="Есть вопросы у вас? <em>Ответ готов у нас</em>">Savollar bormi sizda? <em>Javobi tayyor bizda</em></h2>
       <div class="fq" id="fq"></div>
     </div>
     <div class="rv">
       <div class="eyebrow"><i></i><span data-ru="Контакты">Aloqa</span></div>
-      <h2 data-ru="Ждём в <em>гости</em>">Mehmonga <em>keling</em></h2>
+      <h2 data-ru="Позвоните нам — <em>мы совсем рядом</em>">Bizga qiling qo'ng'iroq — <em>manzilimiz emas yiroq</em></h2>
       <div class="ct">
         <a class="big" href="tel:+998944242222"><i class="ic" data-i="phone"></i><span><b>+998 94 424 22 22</b><small data-ru="Позвонить">Qo'ng'iroq qilish</small></span></a>
         <a href="https://t.me/auto_witsonuz" target="_blank" rel="noopener"><i class="ic" data-i="tg"></i><span><b>@auto_witsonuz</b><small data-ru="Telegram-канал">Telegram kanal</small></span></a>
@@ -468,7 +476,7 @@ footer a:hover{color:var(--gold)}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© <span id="yr">2026</span> Auto Witson · Iftixor, 44a</span><a href="#admin" id="ownr" data-ru="Вход для владельца">Egasi uchun kirish</a></div></footer>
+<footer><div class="wrap"><span>© <span id="yr">2026</span> Auto Witson · Iftixor, 44a · <i data-ru="Злая панда в деле — мощь на пределе">Pandaning qahri — yo'llarning faxri</i></span><a href="#admin" id="ownr" data-ru="Вход для владельца">Egasi uchun kirish</a></div></footer>
 
 <nav class="mnav" id="mnav" aria-label="Mobil menyu"><button class="mx" id="mclose" aria-label="Yopish"><span class="ic" data-i="x"></span></button><a class="l" href="#xizmatlar" data-ru="Услуги">Xizmatlar</a><a class="l" href="#narx" data-ru="Цены">Narxlar</a><a class="l" href="#ishlar" data-ru="Работы">Ishlar</a><a class="l" href="#aloqa" data-ru="Контакты">Aloqa</a><a class="btn btn-p" href="#yozilish" data-ru="Записаться">Yozilish</a><a class="btn btn-o" href="tel:+998944242222">+998 94 424 22 22</a></nav>
 <div class="dock" id="dock">
@@ -643,7 +651,7 @@ var IO='IntersectionObserver' in window?new IntersectionObserver(function(es){es
 function observe(){[].forEach.call(document.querySelectorAll('.rv:not(.in)'),function(e){if(IO)IO.observe(e);else e.classList.add('in')})}
 
 /* ===== til ===== */
-var TTL={uz:[document.title,(document.querySelector('meta[name=description]')||{}).content],ru:['Auto Witson — шумоизоляция, звёздное небо, стробоскопы · Ташкент','Auto Witson — Ифтихор, 44а. Шумоизоляция, звёздное небо, стробоскопы, мультимедиа и защитные покрытия. Узнайте цену за 20 секунд и запишитесь.']};
+var TTL={uz:[document.title,(document.querySelector('meta[name=description]')||{}).content],ru:['Auto Witson — в салоне тишина, в фарах глубина · Ташкент','Auto Witson — Ифтихор, 44а. Шумоизоляция, звёздное небо, стробоскопы, мультимедиа и защитные покрытия. Узнайте цену за 20 секунд и запишитесь.']};
 function setLang(l){LANG=l;document.documentElement.lang=l;document.title=TTL[l][0];var md=document.querySelector('meta[name=description]');if(md&&TTL[l][1])md.content=TTL[l][1];var ot=document.querySelector('meta[property="og:title"]'),od=document.querySelector('meta[property="og:description"]');if(ot)ot.content=TTL[l][0];if(od)od.content=TTL[l][1];
   [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.classList.toggle('on',b.dataset.l===l)});
   [].forEach.call(document.querySelectorAll('[data-ru]'),function(e){if(e.dataset.uz==null)e.dataset.uz=e.innerHTML;e.innerHTML=l==='ru'?e.dataset.ru:e.dataset.uz});
