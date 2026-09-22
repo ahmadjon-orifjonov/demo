@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auto Witson — shumka, yulduzli osmon, stroboskop · Toshkent</title>
+<meta name="description" content="Auto Witson — Iftixor 44a. Shumoizolyatsiya, yulduzli osmon, stroboskop, multimedia va himoya qoplamalari. Narxni 20 soniyada biling va yoziling.">
+<meta property="og:title" content="Auto Witson — jimlik, yorug'lik, xarakter">
+<meta property="og:description" content="Narxni 20 soniyada biling va qulay vaqtga yoziling. Iftixor ko'chasi, 44a.">
+<meta property="og:image" content="img/prado.jpg">
+<meta name="theme-color" content="#0c2226">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,700;0,800;0,900;1,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#102A2E;--bg-d:#0B1F22;--sf:#183B3D;--sf2:#1D4447;--ln:#2B5050;
+  --tx:#F5F0E8;--mu:#A7B8B2;--mu2:#7F958F;
+  --gold:#F4A340;--coral:#FF6B4A;--grad:linear-gradient(115deg,#F7B551 0%,#F4A340 40%,#FF6B4A 100%);
+  --r:22px;--ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:500 16px/1.65 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1120px,100% - 40px);margin:0 auto;position:relative}
+h1,h2,h3,.ex{font-family:"Exo 2",Manrope,sans-serif;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.4vw,52px);line-height:1.04;font-weight:800}
+h2 em{font-style:italic;color:var(--gold)}
+.lead{color:var(--mu);font-size:clamp(16px,1.6vw,18px);max-width:600px;margin-top:14px}
+section{padding:clamp(80px,11vw,130px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 Manrope;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.eyebrow i{width:26px;height:1.5px;background:var(--gold)}
+.hide{display:none!important}
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:16px;padding:16px 26px;font-weight:800;font-size:15.5px;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,background .25s;white-space:nowrap}
+.btn-p{background:var(--grad);color:#1a120a;box-shadow:0 14px 34px -10px rgba(255,120,60,.55)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 20px 40px -10px rgba(255,120,60,.7)}
+.btn-p.shine:after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sh 4.5s ease-in-out infinite}
+@keyframes sh{0%,70%{left:-60%}100%{left:140%}}
+.btn-o{background:rgba(245,240,232,.06);border:1px solid rgba(245,240,232,.16);color:var(--tx);backdrop-filter:blur(8px)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
+.btn-s{padding:10px 16px;font-size:14px;border-radius:12px}
+.ico{display:block;flex:none}
+/* header */
+header{position:fixed;top:var(--bar,0px);left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.sc{background:rgba(11,31,34,.82);backdrop-filter:blur(16px) saturate(1.3);border-color:rgba(245,240,232,.07)}
+.hd{display:flex;align-items:center;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px rgba(244,163,64,.35),0 0 24px rgba(244,163,64,.35)}
+.brand b{font:800 18px/1 "Exo 2";letter-spacing:.02em;white-space:nowrap}.brand span{white-space:nowrap}
+@media (max-width:460px){.brand small{display:none}.brand img{width:38px;height:38px}}
+.brand small{display:block;font:600 11px/1.3 Manrope;color:var(--mu);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+nav.top{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:15px;color:var(--mu)}
+nav.top a:hover{color:var(--tx)}
+.hr{display:flex;align-items:center;gap:10px;margin-left:auto}
+nav.top+.hr{margin-left:18px}
+.lang{display:flex;background:rgba(245,240,232,.06);border-radius:12px;padding:3px}
+.lang button{border:0;background:none;padding:6px 10px;border-radius:9px;font-weight:800;font-size:12.5px;color:var(--mu);cursor:pointer}
+.lang button.on{background:var(--tx);color:var(--bg)}
+@media (max-width:900px){nav.top{display:none}.hr .btn{display:none}.burger{display:grid!important}}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:0;background:rgba(245,240,232,.08);place-items:center;cursor:pointer}
+.mnav{position:fixed;inset:0;z-index:90;background:rgba(11,31,34,.97);backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:90px 28px 40px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mnav.on{opacity:1;pointer-events:auto}
+.mnav a.l{font:800 34px/1.25 "Exo 2";padding:6px 0;border-bottom:1px solid rgba(245,240,232,.08)}
+.mnav .btn{margin-top:14px}
+.mnav .mx{top:18px;right:18px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0;overflow:hidden;background:var(--bg-d)}
+.hero .bg{position:absolute;inset:0;background:url(img/prado.jpg) 62% center/cover no-repeat;transform:scale(1.08);animation:zm 20s var(--ease) forwards}
+@keyframes zm{to{transform:scale(1)}}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg,rgba(11,31,34,.55) 0%,rgba(11,31,34,.15) 35%,rgba(11,31,34,.8) 75%,var(--bg) 100%),
+  linear-gradient(90deg,rgba(11,31,34,.92) 0%,rgba(11,31,34,.55) 50%,rgba(16,42,46,.1) 100%)}
+.hero:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 50% at 80% 30%,rgba(244,163,64,.18),transparent 70%);mix-blend-mode:screen}
+.hero .wrap{z-index:2;padding:150px 0 70px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(245,240,232,.08);border:1px solid rgba(245,240,232,.14);backdrop-filter:blur(10px);font-size:13.5px;font-weight:700;margin-bottom:26px}
+.tag i{width:8px;height:8px;border-radius:50%;background:#5EE2A0;box-shadow:0 0 0 4px rgba(94,226,160,.18)}
+.kind{font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.hero h1{font-size:clamp(44px,8vw,104px);line-height:.93;font-weight:900;letter-spacing:-.025em;text-transform:uppercase}
+.hero h1 span{display:block}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;padding-right:.08em}
+.hero p{max-width:520px;color:#D9E2DE;font-size:clamp(16px,1.7vw,19px);margin:24px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:54px;padding-top:26px;border-top:1px solid rgba(245,240,232,.12)}
+.facts div{font-size:14px;color:var(--mu)}
+.facts b{display:block;font:800 22px/1.2 "Exo 2";color:var(--tx)}
+.proof{position:absolute;right:0;bottom:78px;z-index:3;width:280px;padding:14px;border-radius:24px;background:rgba(16,42,46,.55);backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(245,240,232,.14);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);cursor:pointer;transition:transform .3s var(--ease)}
+.proof:hover{transform:translateY(-4px)}
+.proof .th{position:relative;aspect-ratio:16/10;border-radius:16px;background:url(img/tahoe.jpg) center/cover}
+.proof .th span{position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:var(--grad);color:#1a120a;display:grid;place-items:center;box-shadow:0 0 0 8px rgba(244,163,64,.2)}
+.proof b{display:block;font:800 16px/1.3 "Exo 2";margin:12px 4px 2px}
+.proof small{display:block;color:var(--mu);font-size:13px;margin:0 4px 2px}
+@media (max-width:1280px){.proof{position:static;display:flex;align-items:center;gap:14px;width:100%;max-width:440px;margin-top:22px;padding:10px}.proof .th{flex:0 0 112px;aspect-ratio:16/11;border-radius:12px}.proof .th span{width:38px;height:38px;box-shadow:0 0 0 5px rgba(244,163,64,.2)}.proof b{margin:0 0 2px;font-size:15px}.proof small{margin:0}}
+@media (max-width:600px){.hero .wrap{padding:130px 0 44px}.cta .btn{flex:1 1 40%;padding:15px 14px}.cta .btn-p{flex-basis:100%}.facts{gap:14px 22px;margin-top:38px}.facts b{font-size:19px}}
+/* services */
+.sv-g{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:52px}
+.sv{grid-column:span 4;position:relative;border-radius:var(--r);overflow:hidden;min-height:340px;background:var(--sf) center/cover;display:flex;align-items:flex-end;cursor:pointer;isolation:isolate;transition:transform .4s var(--ease)}
+.sv.w{grid-column:span 6;min-height:400px}
+.sv:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(16,42,46,0) 30%,rgba(11,31,34,.92) 85%)}
+.sv:hover{transform:translateY(-4px)}
+.sv .in{padding:24px;width:100%}
+.sv h3{font-size:24px;font-weight:800;line-height:1.1}
+.sv p{color:#CFDAD6;font-size:14.5px;margin:8px 0 16px;max-width:360px}
+.sv .ft{display:flex;justify-content:space-between;align-items:center}
+.sv .pr{font-weight:800;color:var(--gold)}
+.sv .add{width:44px;height:44px;border-radius:14px;background:rgba(245,240,232,.12);backdrop-filter:blur(8px);display:grid;place-items:center;transition:.25s}
+.sv.on .add{background:var(--grad);color:#1a120a}
+.sv:hover .add{background:rgba(245,240,232,.22)}
+.sv.on:hover .add{background:var(--grad)}
+.badge{position:absolute;top:18px;left:18px;padding:7px 12px;border-radius:999px;background:var(--grad);color:#1a120a;font-weight:800;font-size:12px;letter-spacing:.04em}
+.sv.sky{background:radial-gradient(120% 80% at 50% 0%,#23565a 0%,#0c2124 70%)}
+.stars{position:absolute;inset:0;z-index:-2}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 8px 1px rgba(255,255,255,.8);animation:tw 3s ease-in-out infinite}
+.stars i:nth-child(3n){background:#FFD89A;box-shadow:0 0 8px 1px rgba(255,200,120,.8)}
+@keyframes tw{50%{opacity:.2;transform:scale(.6)}}
+.stars .met{width:120px;height:2px;background:linear-gradient(90deg,transparent,#fff);box-shadow:none;border-radius:2px;transform:rotate(22deg);animation:mt 6s linear infinite;opacity:0}
+@keyframes mt{0%{opacity:0;translate:-60px -40px}8%{opacity:1}22%{opacity:0;translate:260px 110px}100%{opacity:0}}
+@media (max-width:900px){.sv,.sv.w{grid-column:span 12;min-height:300px}}
+@media (min-width:601px) and (max-width:900px){.sv{grid-column:span 6}}
+/* calculator */
+#narx{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-d) 100%)}
+.calc{display:grid;grid-template-columns:1.25fr .9fr;gap:22px;margin-top:48px;align-items:start}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.calc>*{min-width:0}
+.card{background:var(--sf);border-radius:var(--r);padding:clamp(20px,3vw,30px);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+.lbl{display:block;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
+.size{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--bg-d);padding:6px;border-radius:18px;margin-bottom:28px}
+.size button{border:0;background:none;border-radius:13px;padding:12px 6px;cursor:pointer;color:var(--mu);transition:.25s}
+.size button b{display:block;font:800 16px/1.2 "Exo 2";color:var(--tx)}
+.size button span{font-size:12px}
+.size button:hover:not(.on){background:rgba(245,240,232,.06)}
+.size button.on{background:var(--sf2);box-shadow:0 0 0 1px rgba(244,163,64,.6) inset}
+.size button.on b{color:var(--gold)}
+.packs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -4px 22px;padding:2px 4px}
+.packs::-webkit-scrollbar{display:none}
+.pack{flex:none;border:1px dashed rgba(244,163,64,.5);background:rgba(244,163,64,.06);color:var(--tx);border-radius:14px;padding:10px 14px;cursor:pointer;font-weight:700;font-size:14px;text-align:left}
+.pack small{display:block;color:var(--gold);font-weight:700;font-size:12px}
+.pack:hover{background:rgba(244,163,64,.14)}
+.list{display:grid;gap:8px}
+.more{display:none;width:100%;margin-top:8px;border:1px dashed var(--ln);background:none;border-radius:14px;padding:12px;font-weight:800;color:var(--gold);cursor:pointer}
+@media (max-width:900px){.list:not(.all) .it.x{display:none}.more{display:block}.list.all+.more{display:none}}
+.it{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--bg-d);cursor:pointer;transition:background .2s,box-shadow .2s;user-select:none}
+.it:hover{background:#0e2629}
+.it.on{background:rgba(244,163,64,.1);box-shadow:0 0 0 1px rgba(244,163,64,.55) inset}
+.bx{width:24px;height:24px;border-radius:8px;border:2px solid var(--ln);display:grid;place-items:center;flex:none;transition:.2s;color:transparent}
+.it.on .bx{background:var(--grad);border-color:transparent;color:#1a120a}
+.it .nm{flex:1;font-weight:700;line-height:1.3}
+.it .nm small{display:block;color:var(--mu2);font-weight:600;font-size:12.5px}
+.it .p{font-weight:800;color:var(--gold);white-space:nowrap;font-size:14.5px}
+.sum{position:sticky;top:96px;background:linear-gradient(160deg,#1f4a4c 0%,#16383a 100%);overflow:hidden}
+.sum:before{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(244,163,64,.28),transparent 70%)}
+.sum h3{font-size:22px;font-weight:800}
+.sum .car{color:var(--mu);font-size:14px;margin:4px 0 20px}
+.sum ul{list-style:none;display:grid;gap:10px;margin-bottom:18px}
+.sum li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding-bottom:10px;border-bottom:1px solid rgba(245,240,232,.08)}
+.sum li span:last-child{color:var(--mu);white-space:nowrap}
+.sum .em{color:var(--mu);font-size:14.5px;padding:6px 0 18px}
+.tot{font:900 clamp(30px,4vw,40px)/1.05 "Exo 2";letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tot small{font-size:.5em;color:var(--mu);font-weight:700;margin-left:4px}
+.tn{font-size:13px;color:var(--mu);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.dc{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:999px;background:rgba(94,226,160,.12);color:#8EEBC0;font-size:13px;font-weight:800}
+.meta{display:flex;gap:22px;margin:18px 0 22px;font-size:14px;color:var(--mu)}
+.meta b{display:block;color:var(--tx);font-size:16px}
+.note{font-size:12.5px;color:var(--mu2);margin-top:14px}
+/* works */
+.vs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media (max-width:900px){.vs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:48px -20px 0;padding:0 20px 10px;scrollbar-width:none}.vs::-webkit-scrollbar{display:none}.vc{flex:0 0 78%;scroll-snap-align:start}}
+.vc{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:#0b1f22 center/cover;cursor:pointer;isolation:isolate}
+.vc:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 40%,rgba(11,31,34,.95))}
+.vc .pl{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;background:rgba(245,240,232,.16);backdrop-filter:blur(10px);display:grid;place-items:center;transition:.3s}
+.vc:hover .pl{background:var(--grad);color:#1a120a;transform:scale(1.08)}
+.vc .t{position:absolute;left:20px;right:20px;bottom:20px}
+.vc .t small{display:block;color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.vc .t b{font:800 21px/1.15 "Exo 2"}
+.yt{display:inline-flex;align-items:center;gap:10px;margin-top:26px;color:var(--mu);font-weight:700}
+.yt:hover{color:var(--gold)}
+/* booking */
+#yozilish{background:var(--bg-d)}
+.bk{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,70px);align-items:start}
+@media (max-width:900px){.bk{grid-template-columns:1fr}}
+.bk>*{min-width:0}
+.steps{list-style:none;display:grid;gap:18px;margin-top:34px}
+.steps li{display:flex;gap:16px;align-items:flex-start;color:var(--mu)}
+.steps b{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--sf);color:var(--gold);font:800 16px "Exo 2";flex:none}
+.steps strong{display:block;color:var(--tx)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.fg{grid-template-columns:1fr}}
+.fl{display:block}
+.tel{position:relative;display:block}.tel em{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:800;color:var(--gold);pointer-events:none}.tel .inp{padding-left:66px}
+.fl>span:first-child{display:block;display:block;font-size:13px;font-weight:700;color:var(--mu);margin-bottom:8px}
+.inp{width:100%;background:var(--bg-d);border:1px solid var(--ln);border-radius:14px;padding:14px 16px;outline:0;transition:border-color .2s,box-shadow .2s;font-weight:600}
+.inp::placeholder{color:#5f7772}
+.inp:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(244,163,64,.14)}
+.chips{scroll-snap-type:x mandatory;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.chips::-webkit-scrollbar{display:none}
+.ch{scroll-snap-align:start;flex:none;border:1px solid var(--ln);background:var(--bg-d);border-radius:14px;padding:10px 14px;cursor:pointer;text-align:center;font-weight:700;transition:.2s;min-width:64px}
+.ch small{display:block;color:var(--mu2);font-size:11.5px;font-weight:700}
+.ch.on{border-color:var(--gold);background:rgba(244,163,64,.12);color:var(--gold)}
+.ch.on small{color:var(--gold)}
+.ch:disabled{opacity:.35;cursor:not-allowed}
+.row{margin-top:20px}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:var(--bg-d);font-size:13.5px;font-weight:700}
+.pill.g{color:var(--gold);box-shadow:0 0 0 1px rgba(244,163,64,.4) inset}
+/* faq + contact */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px)}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.two>*{min-width:0}
+.fq{display:grid;gap:10px;margin-top:34px}
+.fq details{background:var(--sf);border-radius:18px;padding:0 22px;transition:background .2s}
+.fq details[open]{background:var(--sf2)}
+.fq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:800;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary:after{content:"+";font:600 24px/1 "Exo 2";color:var(--gold);transition:transform .3s}
+.fq details[open] summary:after{transform:rotate(45deg)}
+.fq p{color:var(--mu);padding-bottom:20px;font-size:15px}
+.ct{display:grid;gap:10px;margin-top:34px}
+.ct a,.ct div{display:flex;align-items:center;gap:16px;background:var(--sf);border-radius:18px;padding:16px 18px;transition:background .2s}
+.ct a:hover{background:var(--sf2)}
+.ct i{width:44px;height:44px;border-radius:14px;background:rgba(244,163,64,.12);color:var(--gold);display:grid;place-items:center;flex:none}
+.ct b{display:block;font-size:16px}
+.ct small{color:var(--mu);font-size:13px}
+.ct .big b{font:800 22px/1.2 "Exo 2"}
+.map{margin-top:10px;border-radius:18px;overflow:hidden;height:230px;background:var(--sf)}
+.map iframe{width:100%;height:100%;border:0;filter:saturate(.7) contrast(1.05)}
+footer{padding:36px 0 120px;color:var(--mu2);font-size:13.5px;border-top:1px solid rgba(245,240,232,.07)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a:hover{color:var(--gold)}
+/* mobile dock */
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:45;display:none;align-items:center;gap:10px;padding:10px 10px 10px 18px;border-radius:20px;background:rgba(24,59,61,.78);backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(245,240,232,.1);box-shadow:0 20px 40px -10px rgba(0,0,0,.6);transform:translateY(140%);transition:transform .45s var(--ease)}
+.dock.on{transform:none}
+.dock .dt{flex:1;min-width:0}
+.dock small{display:block;color:var(--mu);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dock b{font:800 18px/1.2 "Exo 2";white-space:nowrap}
+.dock .call{width:48px;height:48px;border-radius:14px;background:rgba(245,240,232,.1);display:grid;place-items:center;flex:none}
+.dock .btn{padding:14px 18px}
+@media (max-width:900px){.dock{display:flex}body{padding-bottom:84px}section{scroll-margin-bottom:96px}footer{padding-bottom:40px}}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);filter:blur(8px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.rv.in{opacity:1;transform:none;filter:none}
+/* modal, toast */
+.md{position:fixed;inset:0;z-index:100;background:rgba(5,15,17,.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
+.md.on{display:flex}
+.mb{background:var(--sf);border-radius:26px;width:min(480px,100%);padding:30px;position:relative;text-align:center;max-height:92vh;overflow:auto}
+.mb.vid{width:min(960px,100%);padding:0;background:#000;overflow:hidden}
+.mb.vid iframe{width:100%;aspect-ratio:16/9;display:block;border:0}
+.mx{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(245,240,232,.1);cursor:pointer;z-index:2;display:grid;place-items:center}
+.ok{width:72px;height:72px;border-radius:50%;margin:6px auto 16px;background:var(--grad);display:grid;place-items:center;color:#1a120a;box-shadow:0 0 0 10px rgba(244,163,64,.14)}
+.mb h3{font-size:26px;font-weight:800}
+.mb p{color:var(--mu);margin:8px 0 18px}
+.mrow{display:flex;justify-content:space-between;gap:12px;text-align:left;padding:12px 0;border-bottom:1px solid rgba(245,240,232,.08);font-size:14.5px}
+.mrow span{color:var(--mu)}
+#toast{position:fixed;left:50%;top:84px;transform:translate(-50%,-20px);opacity:0;z-index:120;background:var(--tx);color:var(--bg);padding:12px 18px;border-radius:14px;font-weight:800;font-size:14px;transition:.35s var(--ease);pointer-events:none;max-width:calc(100vw - 32px);text-align:center;box-shadow:0 20px 40px -10px rgba(0,0,0,.5)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+/* admin */
+#admin{background:#0a1b1e;border-top:1px solid rgba(245,240,232,.08)}
+.at{display:flex;gap:6px;background:var(--bg-d);padding:5px;border-radius:16px;width:max-content;max-width:100%;overflow-x:auto;margin:28px 0 22px}
+.at button{border:0;background:none;padding:10px 18px;border-radius:12px;font-weight:800;color:var(--mu);cursor:pointer;white-space:nowrap}
+.at button.on{background:var(--sf2);color:var(--gold)}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:800px){.kp{grid-template-columns:repeat(2,1fr)}}
+.kp div{background:var(--sf);border-radius:18px;padding:16px 18px}
+.kp small{color:var(--mu);font-size:12.5px;font-weight:700}
+.kp b{display:block;font:800 26px/1.2 "Exo 2";margin-top:4px}
+.ld{display:grid;gap:10px}
+.lc{display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;background:var(--sf);border-radius:18px;padding:16px 18px}
+.lc.nw{box-shadow:0 0 0 1px rgba(244,163,64,.55) inset}
+.lc b{font-size:16px}
+.lc .m{color:var(--mu);font-size:13.5px;grid-column:1}
+.lc .r{grid-row:1/3;grid-column:2;display:flex;gap:8px;align-items:center}
+.lc select{background:var(--bg-d);border:1px solid var(--ln);border-radius:10px;padding:8px 10px;font-weight:700;font-size:13.5px}
+.lc a{width:40px;height:40px;border-radius:12px;background:rgba(244,163,64,.14);color:var(--gold);display:grid;place-items:center}
+@media (max-width:560px){.lc{grid-template-columns:1fr}.lc .r{grid-row:auto;grid-column:1}}
+.pt{width:100%;border-collapse:collapse}
+.pt th,.pt td{text-align:left;padding:12px 10px;border-bottom:1px solid rgba(245,240,232,.08);font-size:14.5px}
+.pt th{color:var(--mu);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.pt input{width:78px;background:var(--bg-d);border:1px solid var(--ln);border-radius:10px;padding:7px 9px;font-weight:700}
+.tw{overflow-x:auto}
+.bars{display:grid;gap:12px;margin-top:6px}
+.bar{display:grid;grid-template-columns:150px 1fr 34px;gap:12px;align-items:center;font-size:14px}
+.bar s{display:block;height:10px;border-radius:99px;background:var(--bg-d);text-decoration:none;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--grad)}
+.an{color:var(--mu2);font-size:13px;margin-top:14px}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}html{scroll-behavior:auto}}
+</style>
+
+<meta name="robots" content="noindex, nofollow">
+<style id="demo-qatlam">
+.dq-bar{position:relative;z-index:60;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;
+  padding:7px 14px;background:#111827;color:#f3f4f6;font:500 12.5px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center}
+.dq-bar b{color:#fde68a;letter-spacing:.06em}
+.dq-bar .dq-m{opacity:.8}
+.dq-bar a,.dq-bar button{font:inherit;color:#111827;background:#fde68a;border:0;border-radius:999px;padding:3px 11px;cursor:pointer;
+  text-decoration:none;font-weight:600;white-space:nowrap}
+.dq-rev{display:inline-block;margin-top:8px;padding:5px 11px;border-radius:999px;background:#fef3c7;color:#78350f;
+  font:600 12.5px/1.3 system-ui,sans-serif}
+.dq-tg{position:fixed;top:14px;right:14px;z-index:9999;width:min(330px,calc(100vw - 28px));background:#fff;color:#111;
+  border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:11px 13px 12px;font:14px/1.4 system-ui,sans-serif;
+  transform:translateY(-140%);transition:transform .45s cubic-bezier(.2,.9,.3,1.2)}
+.dq-tg.on{transform:none}
+.dq-tg .dq-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px}
+.dq-tg .dq-i{width:26px;height:26px;border-radius:50%;background:#2aabee;display:grid;place-items:center;flex:none}
+.dq-tg .dq-t{color:#6b7280;font-weight:500;margin-left:auto;font-size:12px}
+.dq-tg .dq-b{margin-top:6px;white-space:pre-line}
+.dq-tg .dq-s{margin-top:6px;color:#6b7280;font-size:11.5px}
+.dq-kpi{font-family:inherit!important;margin-top:16px;padding:14px 16px;border-radius:14px;border:1px dashed #9ca3af;background:rgba(253,230,138,.18);
+  font-size:15px;line-height:1.45}
+.dq-kpi b{font-size:22px}
+@media (max-width:560px){.dq-bar{font-size:11.5px;padding:5px 8px;gap:4px 8px;flex-wrap:nowrap}.dq-bar .dq-m{display:none}.dq-bar button{padding:3px 9px}}
+</style>
+</head>
+<body>
+<div class="dq-bar" id="dqBar"><span><b>NAMUNA</b> · «Auto Witson» uchun taklif-demo<span class="dq-m">, rasmiy sayt emas</span>.</span><span class="dq-m">Narx va ma’lumotlar namunaviy · Muallif: Ahmadjon</span><button type="button" onclick="dqAdmin()">Egasi paneli →</button></div>
+
+<header id="hdr">
+  <div class="wrap hd">
+    <a class="brand" href="#top"><img src="img/logo.png" alt="Auto Witson logotipi"><span><b>AUTO WITSON</b><small data-ru="Тюнинг и детейлинг">Tyuning va deteyling</small></span></a>
+    <nav class="top" aria-label="Menyu">
+      <a href="#xizmatlar" data-ru="Услуги">Xizmatlar</a>
+      <a href="#narx" data-ru="Цены">Narxlar</a>
+      <a href="#ishlar" data-ru="Работы">Ishlar</a>
+      <a href="#aloqa" data-ru="Контакты">Aloqa</a>
+    </nav>
+    <div class="hr">
+      <div class="lang" role="group" aria-label="Til"><button class="on" data-l="uz">UZ</button><button data-l="ru">RU</button></div>
+      <a class="btn btn-p btn-s" href="#yozilish" data-ru="Записаться">Yozilish</a>
+      <button class="burger" id="burger" aria-label="Menyu" aria-expanded="false"><span class="ic" data-i="menu"></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="bg" role="img" aria-label="Toyota Prado — Auto Witson ustaxonasida"></div>
+  <div class="wrap">
+    <div class="tag"><i></i><span id="fb">Iftixor, 44a</span></div>
+    <div class="kind" data-ru="Тюнинг-студия · Шумка · Звёздное небо · Стробоскопы">Avto tyuning studiyasi · Shumka · Yulduzli osmon · Stroboskop</div>
+    <h1><span data-ru="Тишина.">Jimlik.</span><span data-ru="Свет.">Yorug'lik.</span><span class="g" data-ru="Характер.">Xarakter.</span></h1>
+    <p data-ru="Шумоизоляция, звёздное небо, стробоскопы и мультимедиа — делаем машину тише, ярче и заметнее. Узнайте примерную цену за 20 секунд.">Shumoizolyatsiya, yulduzli osmon, stroboskop va multimedia — mashinangizni jimroq, yorqinroq va ko'zga tashlanadigan qilamiz. Taxminiy narxni 20 soniyada biling.</p>
+    <div class="cta">
+      <a class="btn btn-p shine" href="#narx"><span data-ru="Узнать цену">Narxni bilish</span><span class="ic" data-i="arrow"></span></a>
+      <a class="btn btn-o" href="tel:+998944242222"><span class="ic" data-i="phone"></span>+998 94 424 22 22</a>
+      <a class="btn btn-o" href="https://t.me/auto_witsonuz" target="_blank" rel="noopener"><span class="ic" data-i="tg"></span>Telegram</a>
+    </div>
+    <div class="proof" role="button" tabindex="0" data-v="0" aria-label="Tahoe — ish jarayoni videosi"><div class="th"><span></span></div><span class="ptx"><b data-ru="Tahoe: процесс работы и видеообзор">Tahoe: ish jarayoni va video sharhi</b><small data-ru="Смотреть процесс работы · YouTube">Ish jarayonini ko'ring · YouTube</small></span></div>
+    <div class="facts">
+      <div><b data-ru="Ифтихор, 44а">Iftixor, 44a</b><span data-ru="Ташкент">Toshkent</span></div>
+      <div><b>2,6K</b><span data-ru="подписчиков в Telegram">Telegram obunachisi</span></div>
+      <div><b>9+</b><span data-ru="видео работ на YouTube">YouTube'da ish videosi</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="xizmatlar">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow"><i></i><span data-ru="Услуги">Xizmatlar</span></div>
+    <h2 data-ru="Что сделаем с <em>вашей</em> машиной">Mashinangiz bilan <em>nima</em> qilamiz</h2>
+    <p class="lead" data-ru="Нажмите «+» — услуга сразу попадёт в расчёт.">«+» ni bosing — xizmat darhol hisobga tushadi.</p></div>
+    <div class="sv-g" id="svg"></div>
+  </div>
+</section>
+
+<section id="narx">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow"><i></i><span data-ru="Калькулятор">Kalkulyator</span></div>
+    <h2 data-ru="Сколько стоит — <em>за 20 секунд</em>">Qancha turadi — <em>20 soniyada</em></h2>
+    <p class="lead" data-ru="Выберите размер машины и услуги. Итоговую цену мастер подтвердит после осмотра.">Mashina o'lchami va xizmatlarni tanlang. Yakuniy narxni usta ko'rikdan keyin tasdiqlaydi.</p></div>
+    <div class="calc">
+      <div class="card rv">
+        <span class="lbl" data-ru="Размер машины">Mashina o'lchami</span>
+        <div class="size" id="size"></div>
+        <span class="lbl" data-ru="Готовые наборы">Tayyor to'plamlar</span>
+        <div class="packs" id="packs"></div>
+        <span class="lbl" data-ru="Услуги">Xizmatlar</span>
+        <div class="list" id="list"></div>
+        <button class="more" id="more" data-ru="Ещё 4 услуги ↓">Yana 4 ta xizmat ↓</button>
+      </div>
+      <div class="card sum rv" id="sum">
+        <h3 data-ru="Ваш расчёт">Sizning hisobingiz</h3>
+        <div class="car" id="sCar"></div>
+        <ul id="sList"></ul>
+        <div class="em" id="sEm" data-ru="Отметьте услугу в списке — цена появится здесь.">Ro'yxatdan xizmatni belgilang — narx shu yerda chiqadi.</div>
+        <div class="tn" data-ru="Ориентировочно">Taxminan</div>
+        <div class="tot" id="sTot">0</div>
+        <div id="sDc"></div>
+        <div class="meta"><div><span data-ru="Срок">Muddat</span><b id="sTime">—</b></div><div><span data-ru="Гарантия">Kafolat</span><b id="sWar">—</b></div></div>
+        <a class="btn btn-p shine" style="width:100%" href="#yozilish" data-ru="Записаться с этим расчётом">Shu hisob bilan yozilish</a>
+        <p class="note" data-ru="Цены — ориентир по рынку Ташкента; зависят от материала и состояния машины.">Narxlar — Toshkent bozori bo'yicha mo'ljal; material va mashina holatiga qarab o'zgaradi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ishlar">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow"><i></i><span data-ru="Наши работы">Ishlarimiz</span></div>
+    <h2 data-ru="Не слова — <em>видео</em>">So'z emas — <em>video</em></h2>
+    <p class="lead" data-ru="Реальные работы с нашего YouTube-канала.">YouTube kanalimizdagi haqiqiy ishlar.</p></div>
+    <div class="vs" id="vs"></div>
+    <a class="yt" href="https://www.youtube.com/channel/UC4g1ljATz8gJe5Nmmq462uQ" target="_blank" rel="noopener"><span class="ic" data-i="yt"></span><span data-ru="Все видео на YouTube →">Barcha videolar YouTube'da →</span></a>
+  </div>
+</section>
+
+<section id="yozilish">
+  <div class="wrap bk">
+    <div class="rv">
+      <div class="eyebrow"><i></i><span data-ru="Запись">Yozilish</span></div>
+      <h2 data-ru="Выберите <em>удобный</em> день">Qulay kunni <em>tanlang</em></h2>
+      <ul class="steps">
+        <li><b>1</b><span><strong data-ru="Оставляете заявку">Ariza qoldirasiz</strong><span data-ru="Меньше минуты.">Bir daqiqadan kam.</span></span></li>
+        <li><b>2</b><span><strong data-ru="Мастер перезванивает">Usta qo'ng'iroq qiladi</strong><span data-ru="Уточняет машину и время.">Mashina va vaqtni aniqlaydi.</span></span></li>
+        <li><b>3</b><span><strong data-ru="Приезжаете на Ифтихор, 44а">Iftixor 44a'ga kelasiz</strong><span data-ru="Цену называем до начала работ.">Narxni ish boshlanishidan oldin aytamiz.</span></span></li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <div class="fg">
+        <label class="fl"><span data-ru="Имя">Ismingiz</span><input class="inp" id="fN" autocomplete="name" required aria-required="true" placeholder="Aziz"></label>
+        <label class="fl"><span data-ru="Телефон">Telefon</span><span class="tel"><em>+998</em><input class="inp" id="fT" required aria-required="true" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="12" placeholder="90 123 45 67"></span></label>
+      </div>
+      <label class="fl row"><span data-ru="Машина">Mashina</span><input class="inp" id="fC" required aria-required="true" placeholder="Malibu 2, Tahoe..."></label>
+      <div class="row"><span class="lbl" data-ru="День">Kun</span><div class="chips" id="days"></div></div>
+      <div class="row"><span class="lbl" data-ru="Время">Vaqt</span><div class="chips" id="times"></div></div>
+      <div class="row"><span class="lbl" data-ru="Услуги">Xizmatlar</span><div class="pick" id="fS"></div></div>
+      <button class="btn btn-p shine" style="width:100%;margin-top:26px" id="send" data-ru="Отправить заявку">Arizani yuborish</button>
+      <p class="note" data-ru="Заявка сразу приходит мастеру в Telegram.">Ariza darhol ustaga Telegramda keladi.</p>
+    </div>
+  </div>
+</section>
+
+<section id="aloqa">
+  <div class="wrap two">
+    <div class="rv">
+      <div class="eyebrow"><i></i><span data-ru="Вопросы">Savollar</span></div>
+      <h2 data-ru="Коротко о <em>главном</em>">Qisqa <em>javoblar</em></h2>
+      <div class="fq" id="fq"></div>
+    </div>
+    <div class="rv">
+      <div class="eyebrow"><i></i><span data-ru="Контакты">Aloqa</span></div>
+      <h2 data-ru="Ждём в <em>гости</em>">Mehmonga <em>keling</em></h2>
+      <div class="ct">
+        <a class="big" href="tel:+998944242222"><i class="ic" data-i="phone"></i><span><b>+998 94 424 22 22</b><small data-ru="Позвонить">Qo'ng'iroq qilish</small></span></a>
+        <a href="https://t.me/auto_witsonuz" target="_blank" rel="noopener"><i class="ic" data-i="tg"></i><span><b>@auto_witsonuz</b><small data-ru="Telegram-канал">Telegram kanal</small></span></a>
+        <a href="https://instagram.com/auto_witson.uz" target="_blank" rel="noopener"><i class="ic" data-i="ig"></i><span><b>@auto_witson.uz</b><small data-ru="Instagram">Instagram</small></span></a>
+        <div><i class="ic" data-i="pin"></i><span><b data-ru="Ташкент, Ифтихор, 44а">Toshkent, Iftixor ko'chasi, 44a</b><small data-ru="Адрес">Manzil</small></span></div>
+      </div>
+      <div class="map"><iframe title="Xarita" loading="lazy" src="https://yandex.uz/map-widget/v1/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D0%98%D1%84%D1%82%D0%B8%D1%85%D0%BE%D1%80%2C%2044%D0%B0&z=16"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section id="admin" class="hide">
+  <div class="wrap">
+    <div class="eyebrow"><i></i><span data-ru="Только для владельца">Faqat egasi uchun</span></div>
+    <h2 data-ru="Панель <em>Auto Witson</em>">Auto Witson <em>paneli</em></h2>
+    <p class="lead" data-ru="Заявки с сайта, цены и отчёт — без программиста.">Saytdan kelgan arizalar, narxlar va hisobot — dasturchisiz.</p>
+    <div class="at" id="at">
+      <button data-t="a" class="on" data-ru="Заявки">Arizalar</button>
+      <button data-t="p" data-ru="Цены">Narxlar</button>
+      <button data-t="h" data-ru="Отчёт">Hisobot</button>
+      <button data-t="r" data-ru="Сбросить демо">Demoni tozalash</button>
+    </div>
+    <div id="ta"></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr">2026</span> Auto Witson · Iftixor, 44a</span><a href="#admin" id="ownr" data-ru="Вход для владельца">Egasi uchun kirish</a></div></footer>
+
+<nav class="mnav" id="mnav" aria-label="Mobil menyu"><button class="mx" id="mclose" aria-label="Yopish"><span class="ic" data-i="x"></span></button><a class="l" href="#xizmatlar" data-ru="Услуги">Xizmatlar</a><a class="l" href="#narx" data-ru="Цены">Narxlar</a><a class="l" href="#ishlar" data-ru="Работы">Ishlar</a><a class="l" href="#aloqa" data-ru="Контакты">Aloqa</a><a class="btn btn-p" href="#yozilish" data-ru="Записаться">Yozilish</a><a class="btn btn-o" href="tel:+998944242222">+998 94 424 22 22</a></nav>
+<div class="dock" id="dock">
+  <a class="call" href="tel:+998944242222" aria-label="Qo'ng'iroq"><span class="ic" data-i="phone"></span></a>
+  <div class="dt"><small data-ru="Ваш расчёт">Hisobingiz</small><b id="dTot">—</b></div>
+  <a class="btn btn-p" href="#yozilish" id="dBtn" data-ru="Записаться">Yozilish</a>
+</div>
+<div class="md" id="md" role="dialog" aria-modal="true"><div class="mb" id="mb"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== ikonkalar ===== */
+var ICO={arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',tg:'<path d="m22 3-9.5 18-2.5-7.5L2.5 11z"/><path d="M22 3 10 13.5"/>',ig:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/>',pin:'<path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/>',yt:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>',play:'<path d="M8 5v14l11-7z" fill="currentColor"/>',plus:'<path d="M12 5v14M5 12h14"/>',check:'<path d="m5 12 5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6 6 18"/>',menu:'<path d="M4 7h16M4 12h16M4 17h10"/>'};
+function ic(n,s){return '<svg class="ico" width="'+(s||20)+'" height="'+(s||20)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICO[n]||'')+'</svg>'}
+
+/* ===== ma'lumot ===== */
+var LANG='uz';function L(u,r){return LANG==='ru'&&r?r:u}
+var SZ=1; // 0 kichik, 1 o'rta, 2 katta
+var SIZES=[['Kichik','Маленькая','Spark · Cobalt · Nexia'],["O'rta",'Средняя','Malibu · Tracker · BYD'],['Katta','Большая','Tahoe · Prado · Lexus']];
+// narx: mln so'm [min,max] kichik/o'rta/katta (Toshkent 2025–26 mo'ljali)
+var SV=[
+ {id:'shf',uz:"Shumka — to'liq salon",ru:'Шумка — весь салон',s:"Eshik, pol, ship, bagaj",sr:'Двери, пол, потолок, багажник',p:[[4.5,7.5],[6.5,10],[9,15]],h:22,w:12,ex:'she'},
+ {id:'she',uz:'Shumka — eshiklar',ru:'Шумка — двери',s:"Musiqa toza, g'ichirlash yo'q",sr:'Чистый звук, без скрипов',p:[[1.8,3],[2.5,4.5],[3.5,6]],h:8,w:12,ex:'shf'},
+ {id:'sky',uz:'Yulduzli osmon',ru:'Звёздное небо',s:'Meteor va rang pultdan',sr:'Метеоры и цвет с пульта',p:[[4,8],[5,10],[7,14]],h:16,w:12},
+ {id:'str',uz:'Stroboskop va faralar',ru:'Стробоскопы и фары',s:"Kechasi yo'l aniq ko'rinadi",sr:'Ночью дорога видна чётко',p:[[1.2,3],[1.8,4],[2.5,6]],h:5,w:12},
+ {id:'mul',uz:'Multimedia ekran',ru:'Мультимедиа-экран',s:'CarPlay / Android Auto, kamera',sr:'CarPlay / Android Auto, камера',p:[[2.5,6],[4,10],[6,16]],h:7,w:12},
+ {id:'amb',uz:'Ambient yoritish',ru:'Амбиентная подсветка',s:"64 rang, telefondan boshqarish",sr:'64 цвета, управление с телефона',p:[[2,5],[3.5,8],[5,12]],h:10,w:12},
+ {id:'ton',uz:'Tonirovka (orqa oynalar)',ru:'Тонировка (задние стёкла)',s:'Atermal plyonka ixtiyoriy',sr:'Атермальная плёнка — по желанию',p:[[.8,1.5],[1.2,2],[1.8,3]],h:3,w:24},
+ {id:'ker',uz:'Keramika qoplama',ru:'Керамика',s:'Kuzov 1–3 yil himoyada',sr:'Защита кузова на 1–3 года',p:[[2.5,5],[4,8],[6,12]],h:14,w:24},
+ {id:'ppf',uz:'Bron plyonka — old qism',ru:'Бронеплёнка — перед',s:'Tosh va chiziqlardan himoya',sr:'Защита от камней и царапин',p:[[7.5,14],[9,17],[10.5,20]],h:18,w:24},
+ {id:'kim',uz:'Salon kimyoviy tozalash',ru:'Химчистка салона',s:"Dog' va hidsiz",sr:'Без пятен и запахов',p:[[.8,1.8],[1.2,2.5],[1.8,3.5]],h:7,w:1}
+];
+var CARDS=[
+ {id:'shf',img:'shumka',w:1,top:1,uz:'Shumoizolyatsiya',ru:'Шумоизоляция',d:"Yo'l shovqini va g'ichirlash yo'qoladi — salon jim, musiqa toza.",dr:'Уходит шум дороги и скрипы — в салоне тихо, музыка чище.'},
+ {id:'sky',sky:1,w:1,uz:'Yulduzli osmon',ru:'Звёздное небо',d:"Shipda yuzlab yulduz va meteorlar — pultdan boshqariladi.",dr:'Сотни звёзд и метеоры на потолке — с пульта.'},
+ {id:'str',img:'stroboskop',uz:'Stroboskop va faralar',ru:'Стробоскопы и фары',d:"Kechasi yo'l yorug' va aniq.",dr:'Ночью дорога светлая и чёткая.'},
+ {id:'mul',img:'multimedia',uz:'Multimedia',ru:'Мультимедиа',d:'Katta ekran, CarPlay va kamera.',dr:'Большой экран, CarPlay и камера.'},
+ {id:'amb',img:'ambient',uz:'Ambient yoritish',ru:'Амбиент',d:"Salon kayfiyatga qarab rang oladi.",dr:'Салон меняет цвет под настроение.'}
+];
+var PACKS=[
+ {uz:'Jim salon',ru:'Тихий салон',it:['shf','amb','kim']},
+ {uz:'Tungi uslub',ru:'Ночной стиль',it:['sky','amb','str']},
+ {uz:"To'liq o'zgarish",ru:'Полное преображение',it:['shf','sky','mul','ker']}
+];
+var VIDS=[['NYF-CuQqeQ4','tahoe','Shumka','Tahoe — ish jarayoni','Tahoe — процесс работы'],['UCmMY8hdDdc','prado','Tyuning','Prado — tyuning va deteyling','Prado — тюнинг и детейлинг'],['qr8oBSI92Ig','stroboskop','Faralar','Spark — stroboskop','Spark — стробоскоп'],['sV9ab6fjBmg','shumka','Shumka','Shumka qatlamma-qatlam','Шумка слой за слоем'],['HBLB0CgwATo','yulduzli-osmon','Osmon','Yulduzli osmon','Звёздное небо'],['7StiNb2yTxg','multimedia','Multimedia','Salon va multimedia','Салон и мультимедиа']];
+var FAQ=[["Narxga material kiradimi?","Цена включает материал?","Ha, narx material va ish haqini o'z ichiga oladi. Premium material tanlansa, narx oshadi — buni oldindan aytamiz.","Да, в цене материал и работа. Премиум-материалы дороже — скажем заранее."],["Mashina necha kun qoladi?","Сколько дней стоит машина?","Eshik shumkasi — bir kun ichida, to'liq salon 1,5–3 kun. Aniq muddatni ko'rikda aytamiz.","Шумка дверей — за день, весь салон 1,5–3 дня. Точный срок скажем на осмотре."],["Narx saytdagidan farq qiladimi?","Цена может отличаться?","Saytda — mo'ljal. Usta mashinani ko'rgach, yakuniy narxni ish boshlanishidan oldin aytadi va u o'zgarmaydi.","На сайте — ориентир. Итоговую цену мастер называет до начала работ, и она не меняется."],["Old oynalarni tonirovka qilasizlarmi?","Тонируете передние стёкла?","Orqa oynalarni ruxsatnomasiz tonirovka qilish mumkin. Old oynalar uchun ruxsatnoma kerak — hujjat bo'yicha maslahat beramiz.","Задние стёкла — без разрешения. Для передних стёкол нужно разрешение — подскажем по документам."]];
+
+/* ===== saqlash ===== */
+function ld(k,d){try{var v=localStorage.getItem('w3_'+k);return v?JSON.parse(v):d}catch(e){return d}}
+function st(k,v){try{localStorage.setItem('w3_'+k,JSON.stringify(v))}catch(e){}}
+var SEL=ld('sel',null);if(!Array.isArray(SEL))SEL=['shf','amb','kim'];
+var PR=ld('prices',{});SV.forEach(function(s){var p=PR[s.id];if(Array.isArray(p)&&p.length===3&&p.every(function(r){return Array.isArray(r)&&r[0]>0&&r[1]>=r[0]}))s.p=p});
+
+/* ===== yordamchi ===== */
+function $(q){return document.querySelector(q)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function fm(x){if(x>=1){var v=Math.round(x*10)/10;return (''+v).replace('.',',')}return ''+Math.round(x*1000)}
+function un(x){return x>=1?L(' mln',' млн'):L(' ming',' тыс')}
+function rng(a,b){return fm(a)+(a>=1&&b>=1?'':un(a))+' – '+fm(b)+un(b)}
+function sv(id){for(var i=0;i<SV.length;i++)if(SV[i].id===id)return SV[i]}
+function msg(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on')},2400)}
+function toast(m){msg(m)} /* NAMUNA qatlami faqat shuni Telegram ko'rinishiga ulaydi — faqat ariza uchun chaqiriladi */
+function totals(sel){var a=0,b=0,h=0,w=0;sel.forEach(function(id){var s=sv(id);if(!s)return;a+=s.p[SZ][0];b+=s.p[SZ][1];h+=s.h;w=Math.max(w,s.w)});var dc=sel.length>=3?7:0;return {a:a*(1-dc/100),b:b*(1-dc/100),a0:a,b0:b,h:h,w:w,dc:dc}}
+function dur(h){if(!h)return '—';if(h<=9)return L('1 kun ichida','в течение дня');var d=Math.ceil(h/9);return d+' '+L('kun','дн.')}
+function war(m){if(!m)return '—';if(m>=12){var y=Math.round(m/12*10)/10;return (''+y).replace('.',',')+' '+L('yilgacha','г.')}return m+' '+L('oy','мес.')}
+
+/* ===== xizmat kartalari ===== */
+var STARS='';
+function renderCards(){
+  var g=$('#svg');g.innerHTML='';
+  CARDS.forEach(function(c){
+    var s=sv(c.id),on=SEL.indexOf(c.id)>=0,el=document.createElement('article');
+    el.className='sv rv'+(c.w?' w':'')+(c.sky?' sky':'')+(on?' on':'');
+    if(c.img)el.style.backgroundImage='url(img/'+c.img+'.jpg)';
+    var stars='';if(c.sky&&STARS){stars=STARS}else if(c.sky){for(var i=0;i<46;i++)stars+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*62).toFixed(1)+'%;animation-delay:'+(Math.random()*3).toFixed(2)+'s;width:'+(1+Math.random()*2.4).toFixed(1)+'px;height:'+(1+Math.random()*2.4).toFixed(1)+'px"></i>';stars='<div class="stars">'+stars+'<i class="met" style="left:18%;top:14%"></i><i class="met" style="left:50%;top:8%;animation-delay:3s"></i></div>';STARS=stars}
+    el.innerHTML=stars+(c.top?'<span class="badge">'+L('Eng ko\'p tanlanadi','Выбирают чаще')+'</span>':'')+'<div class="in"><h3>'+esc(L(c.uz,c.ru))+'</h3><p>'+esc(L(c.d,c.dr))+'</p><div class="ft"><span class="pr">'+fm(s.p[SZ][0])+un(s.p[SZ][0])+L(' dan',' +')+'</span><span class="add" aria-hidden="true">'+ic(on?'check':'plus',20)+'</span></div></div>';
+    el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-pressed',on);el.setAttribute('aria-label',L(c.uz,c.ru)+' — '+L("hisobga qo'shish",'добавить в расчёт'));
+    el.onclick=function(){toggle(c.id);msg(L(c.uz,c.ru)+(SEL.indexOf(c.id)>=0?L(' — hisobga qo\'shildi',' — в расчёте'):L(' — olib tashlandi',' — убрано')))};
+    el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}};
+    g.appendChild(el)});
+  observe();
+}
+function toggle(id){var i=SEL.indexOf(id);if(i>=0)SEL.splice(i,1);else{var s=sv(id);if(s.ex){var j=SEL.indexOf(s.ex);if(j>=0)SEL.splice(j,1)}SEL.push(id)}st('sel',SEL);renderAll()}
+
+/* ===== kalkulyator ===== */
+function renderCalc(){
+  $('#size').innerHTML=SIZES.map(function(s,i){return '<button data-z="'+i+'" class="'+(i===SZ?'on':'')+'" aria-pressed="'+(i===SZ)+'"><b>'+esc(L(s[0],s[1]))+'</b><span>'+s[2]+'</span></button>'}).join('');
+  $('#packs').innerHTML=PACKS.map(function(p,i){var t=totals(p.it);return '<button class="pack" data-k="'+i+'">'+esc(L(p.uz,p.ru))+'<small>'+fm(t.a)+un(t.a)+L(' dan',' +')+(p.it.length>=3?' · −7%':'')+'</small></button>'}).join('');
+  $('#list').innerHTML=SV.map(function(s,ix){var on=SEL.indexOf(s.id)>=0;return '<div class="it'+(on?' on':'')+(ix>=6&&!on?' x':'')+'" data-id="'+s.id+'" role="checkbox" aria-checked="'+on+'" tabindex="0"><span class="bx">'+ic('check',14)+'</span><span class="nm">'+esc(L(s.uz,s.ru))+'<small>'+esc(L(s.s,s.sr))+'</small></span><span class="p">'+fm(s.p[SZ][0])+un(s.p[SZ][0])+L(' dan','+')+'</span></div>'}).join('');
+  var t=totals(SEL);
+  $('#sCar').textContent=L('Mashina: ','Машина: ')+L(SIZES[SZ][0],SIZES[SZ][1]).toLowerCase()+' · '+SIZES[SZ][2];
+  $('#sList').innerHTML=SEL.map(function(id){var s=sv(id);return '<li><span>'+esc(L(s.uz,s.ru))+'</span><span>'+rng(s.p[SZ][0],s.p[SZ][1])+'</span></li>'}).join('');
+  $('#sEm').style.display=SEL.length?'none':'block';
+  odo($('#sTot'),t.a,t.b);
+  $('#sDc').innerHTML=t.dc?'<span class="dc">'+L('Kompleks uchun −7% · ','Скидка за комплекс −7% · ')+L('tejaysiz ~','экономия ~')+fm((t.a0-t.a+t.b0-t.b)/2)+un((t.a0-t.a+t.b0-t.b)/2)+'</span>':(SEL.length===2?'<span class="dc" style="background:rgba(244,163,64,.12);color:var(--gold)">'+L("Yana 1 ta xizmat — 7% chegirma","Ещё 1 услуга — скидка 7%")+'</span>':'');
+  $('#sTime').textContent=dur(t.h);$('#sWar').textContent=war(t.w);
+  dockUpd();
+  $('#dTot').textContent=SEL.length?rng(t.a,t.b):L('Bepul ko\'rik','Бесплатный осмотр');
+}
+var ODO={a:0,b:0};
+function odo(el,a,b){var a0=ODO.a,b0=ODO.b,t0=performance.now(),D=650;ODO={a:a,b:b};if(!a&&!b){el.innerHTML='0';return}
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function f(n){var k=rm?1:Math.min(1,(n-t0)/D),e=1-Math.pow(1-k,3),x=a0+(a-a0)*e,y=b0+(b-b0)*e;var su=L(' so\'m',' сум');el.innerHTML=(x>=1&&y>=1)?fm(x)+'<small> – </small>'+fm(y)+'<small>'+L('mln','млн')+su+'</small>':fm(x)+'<small>'+un(x)+'</small><small> – </small>'+fm(y)+'<small>'+un(y)+su+'</small>';if(k<1)requestAnimationFrame(f)})(t0)}
+function inView(q){var r=$(q).getBoundingClientRect();return r.top<innerHeight*.7&&r.bottom>innerHeight*.3}
+
+/* ===== videolar ===== */
+function renderVids(){$('#vs').innerHTML=VIDS.map(function(v,i){return '<div class="vc rv" data-v="'+i+'" style="background-image:url(img/'+v[1]+'.jpg)" role="button" tabindex="0" aria-label="'+esc(L(v[3],v[4]))+'"><span class="pl">'+ic('play',18)+'</span><div class="t"><small>'+esc(v[2])+'</small><b>'+esc(L(v[3],v[4]))+'</b></div></div>'}).join('');observe()}
+function openVid(i){var v=VIDS[i];openMd('<button class="mx" aria-label="Yopish">'+ic('x',18)+'</button><iframe src="https://www.youtube-nocookie.com/embed/'+v[0]+'?autoplay=1&rel=0" title="'+esc(L(v[3],v[4]))+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>','vid')}
+
+/* ===== bron ===== */
+var BD=null,BT=null,TIMES=[['Ertalab','Утро','9:00–12:00',9],['Kunduzi','День','12:00–16:00',12],['Kechqurun','Вечер','16:00–20:00',16]];
+function day(i){var d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+i);return d}
+function renderBook(){
+  var wd=L('Ya,Du,Se,Ch,Pa,Ju,Sh','Вс,Пн,Вт,Ср,Чт,Пт,Сб').split(','),nowH=new Date().getHours(),h='';
+  var first=nowH>=18?1:0;if(BD===null)BD=first;
+  for(var i=first;i<first+5;i++){var d=day(i);h+='<button class="ch'+(i===BD?' on':'')+'" data-d="'+i+'"><small>'+(i===0?L('Bugun','Сег.'):i===1?L('Ertaga','Завтра'):wd[d.getDay()])+'</small>'+d.getDate()+'.'+('0'+(d.getMonth()+1)).slice(-2)+'</button>'}
+  $('#days').innerHTML=h;
+  $('#times').innerHTML=TIMES.map(function(t,i){var dis=BD===0&&nowH>=t[3]+3;if(dis&&BT===i)BT=null;return '<button class="ch'+(i===BT?' on':'')+'" data-t="'+i+'"'+(dis?' disabled':'')+'>'+esc(L(t[0],t[1]))+'<small>'+t[2]+'</small></button>'}).join('');
+  var t=totals(SEL);
+  $('#fS').innerHTML=SEL.length?SEL.map(function(id){return '<span class="pill">'+esc(L(sv(id).uz,sv(id).ru))+'</span>'}).join('')+'<span class="pill g">'+rng(t.a,t.b)+'</span>':'<span class="pill">'+L("Ko'rik va maslahat — bepul","Осмотр и консультация — бесплатно")+'</span><a class="pill g" href="#narx">+ '+L('xizmat tanlash','выбрать услугу')+'</a>';
+  var fb=$('#fb');if(fb)fb.textContent=nowH<17?L('Bugun bo\'sh vaqt bor · Iftixor, 44a','Сегодня есть свободное время · Ифтихор, 44а'):L('Ertaga bo\'sh vaqt bor · Iftixor, 44a','Завтра есть свободное время · Ифтихор, 44а');
+}
+function send(){
+  var n=$('#fN').value.trim(),tel=$('#fT').value.trim(),car=$('#fC').value.trim();
+  if(!n){msg(L('Ismingizni kiriting','Введите имя'));$('#fN').focus();return}
+  var dg=tel.replace(/\D/g,'');if(dg.length===9)dg='998'+dg;tel='+'+dg.replace(/^(998)(\d{2})(\d{3})(\d{2})(\d{2})$/,'$1 $2 $3 $4 $5');if(!/^998\d{9}$/.test(dg)){msg(L('Telefon raqamini to\'liq kiriting: +998 90 123 45 67','Введите номер полностью: +998 90 123 45 67'));$('#fT').focus();return}
+  if(!car){msg(L('Mashina rusumini kiriting','Введите марку машины'));$('#fC').focus();return}
+  if(BT===null){msg(L('Qulay vaqtni tanlang','Выберите удобное время'));return}
+  var t=totals(SEL),d=day(BD),id='W-'+(100+Math.floor(Math.random()*900));
+  var L3=ld('leads',seed());L3.unshift({id:id,n:n,tel:tel,car:car||'—',sv:SEL.slice(),sz:SZ,d:+d,t:BT,a:+t.a.toFixed(1),b:+t.b.toFixed(1),st:0,at:Date.now()});st('leads',L3);
+  openMd('<button class="mx" aria-label="Yopish">'+ic('x',18)+'</button><div class="ok">'+ic('check',34)+'</div><h3>'+esc(n)+', '+L('rahmat!','спасибо!')+'</h3><p>'+L('Usta 15 daqiqa ichida qo\'ng\'iroq qiladi.','Мастер перезвонит в течение 15 минут.')+'</p>'+
+   '<div class="mrow"><span>'+L('Ariza','Заявка')+'</span><b>'+id+'</b></div><div class="mrow"><span>'+L('Kun','День')+'</span><b>'+d.getDate()+'.'+('0'+(d.getMonth()+1)).slice(-2)+' · '+esc(L(TIMES[BT][0],TIMES[BT][1]))+'</b></div><div class="mrow"><span>'+L('Mashina','Машина')+'</span><b>'+esc(car||'—')+'</b></div><div class="mrow" style="border:0"><span>'+L('Taxminan','Ориентир')+'</span><b>'+(SEL.length?rng(t.a,t.b):L("ko'rikdan keyin",'после осмотра'))+'</b></div>'+
+   '<button class="btn btn-p" style="width:100%;margin-top:18px" data-close>'+L('Yaxshi','Хорошо')+'</button>');
+  toast(L('Yangi ariza: ','Новая заявка: ')+n+' · '+(car||'')+' · '+L(TIMES[BT][0],TIMES[BT][1]));
+  $('#fN').value=$('#fC').value=$('#fT').value='';BT=null;renderBook();renderAdmin();
+}
+
+/* ===== modal ===== */
+var lastF=null;
+function openMd(h,c){lastF=document.activeElement;var b=$('#mb');b.className='mb'+(c?' '+c:'');b.innerHTML=h;$('#md').classList.add('on');setTimeout(function(){var x=b.querySelector('.mx');if(x)x.focus()},30)}
+function closeMd(){$('#md').classList.remove('on');$('#mb').innerHTML='';if(lastF&&lastF.focus)lastF.focus()}
+
+/* ===== egasi paneli ===== */
+var TAB='a',STS=[['Yangi','Новая'],["Qo'ng'iroq qilindi",'Перезвонили'],['Keldi','Приехал'],['Bajarildi','Готово']];
+function seed(){var n=Date.now(),H=3600000;return [
+ {id:'W-418',n:'Sardor',tel:'+998 90 111 22 33',car:'Chevrolet Tahoe',sv:['shf','sky'],sz:2,d:+day(0),t:0,a:14.9,b:26.9,st:2,at:n-H*20},
+ {id:'W-407',n:'Jasur',tel:'+998 93 555 44 11',car:'Toyota Prado',sv:['ker','ppf'],sz:2,d:+day(1),t:1,a:16.5,b:32,st:1,at:n-H*6},
+ {id:'W-399',n:'Dilshod',tel:'+998 97 700 12 12',car:'Spark',sv:['str','mul'],sz:0,d:+day(1),t:2,a:3.7,b:9,st:0,at:n-H*2},
+ {id:'W-385',n:'Aziza',tel:'+998 99 808 08 08',car:'Malibu 2',sv:['kim','ton'],sz:1,d:+day(2),t:0,a:2.4,b:4.5,st:0,at:n-H*1},
+ {id:'W-362',n:'Bekzod',tel:'+998 90 222 33 44',car:'Tracker 2',sv:['she','amb'],sz:1,d:+day(-3),t:1,a:6,b:12.5,st:3,at:n-H*80}]}
+function openAdmin(){$('#admin').classList.remove('hide');renderAdmin();setTimeout(function(){$('#admin').scrollIntoView({behavior:'smooth'})},40)}
+function renderAdmin(){
+  if($('#admin').classList.contains('hide'))return;
+  [].forEach.call(document.querySelectorAll('#at button'),function(b){b.classList.toggle('on',b.dataset.t===TAB)});
+  var LD=ld('leads',null);if(!Array.isArray(LD)){LD=seed();st('leads',LD)}
+  var o=$('#ta');
+  if(TAB==='a'){
+    o.innerHTML='<div class="ld">'+LD.map(function(x,i){var d=new Date(x.d);return '<div class="lc'+(x.st===0?' nw':'')+'"><b>'+esc(x.n)+' · '+esc(x.car)+'</b><div class="m">'+esc(x.id)+' · '+d.getDate()+'.'+('0'+(d.getMonth()+1)).slice(-2)+' '+esc(L(TIMES[x.t][0],TIMES[x.t][1]))+' · '+(x.sv.length?x.sv.map(function(k){var s=sv(k);return s?esc(L(s.uz,s.ru)):''}).join(', '):L("Ko'rik",'Осмотр'))+(x.b?' · '+rng(x.a,x.b):'')+'</div><div class="r"><select data-i="'+i+'" aria-label="Holat">'+STS.map(function(s,k){return '<option value="'+k+'"'+(k===x.st?' selected':'')+'>'+esc(L(s[0],s[1]))+'</option>'}).join('')+'</select><a href="tel:'+esc(x.tel.replace(/[^\d+]/g,''))+'" aria-label="Qo\'ng\'iroq">'+ic('phone',18)+'</a></div></div>'}).join('')+'</div><p class="an">'+L("Har bir yangi ariza shu yerga va Telegramingizga tushadi. Holatni o'zgartirasiz — hisobot o'zi yangilanadi.","Каждая заявка попадает сюда и в ваш Telegram. Меняете статус — отчёт обновляется сам.")+'</p>';
+  }else if(TAB==='p'){
+    o.innerHTML='<div class="card tw"><table class="pt"><tr><th>'+L('Xizmat','Услуга')+'</th>'+SIZES.map(function(s){return '<th>'+esc(L(s[0],s[1]))+'</th>'}).join('')+'</tr>'+SV.map(function(s){return '<tr><td>'+esc(L(s.uz,s.ru))+'</td>'+[0,1,2].map(function(z){return '<td><input type="number" min="0.1" step="0.1" value="'+s.p[z][0]+'" data-s="'+s.id+'" data-z="'+z+'" aria-label="'+esc(L(s.uz,s.ru))+'"></td>'}).join('')+'</tr>'}).join('')+'</table><button class="btn btn-p btn-s" style="margin-top:16px" id="saveP">'+L('Saqlash — saytda darhol yangilanadi','Сохранить — на сайте обновится сразу')+'</button></div><p class="an">'+L("Narxlar million so'mda, «...dan» qiymati. Yuqori chegara avtomatik hisoblanadi.","Цены в млн сум, значение «от». Верхняя граница считается автоматически.")+'</p>';
+  }else{
+    var now=Date.now(),D=86400000,act=LD.filter(function(x){return x.st<3}),exp=act.reduce(function(s,x){return s+(x.a+x.b)/2},0);
+    var c={};LD.forEach(function(x){x.sv.forEach(function(k){c[k]=(c[k]||0)+1})});var mx=Math.max.apply(null,Object.keys(c).map(function(k){return c[k]}).concat(1));
+    o.innerHTML='<div class="kp"><div><small>'+L('Bugun kelgan','Сегодня')+'</small><b>'+LD.filter(function(x){return now-x.at<D}).length+'</b></div><div><small>'+L('Shu hafta','За неделю')+'</small><b>'+LD.filter(function(x){return now-x.at<7*D}).length+'</b></div><div><small>'+L('Ishdagi arizalar','В работе')+'</small><b>'+act.length+'</b></div><div><small>'+L('Kutilayotgan tushum','Ожидаемая выручка')+'</small><b>'+fm(exp)+un(exp)+'</b></div></div>'+
+     '<div class="card" style="margin-top:12px"><span class="lbl">'+L("Eng ko'p so'ralgan xizmatlar","Самые популярные услуги")+'</span><div class="bars">'+Object.keys(c).sort(function(a,b){return c[b]-c[a]}).map(function(k){var s=sv(k);return '<div class="bar"><span>'+esc(L(s.uz,s.ru))+'</span><s><i style="width:'+(c[k]/mx*100)+'%"></i></s><b>'+c[k]+'</b></div>'}).join('')+'</div></div>';
+  }
+}
+function saveP(){var P=ld('prices',{});[].forEach.call(document.querySelectorAll('#ta input[data-s]'),function(i){var s=sv(i.dataset.s),z=+i.dataset.z,v=parseFloat(i.value);if(!(v>0))return;var r=s.p[z][1]/s.p[z][0];s.p[z]=[v,+(v*r).toFixed(1)];P[s.id]=s.p});st('prices',P);renderAll();msg(L('Narxlar saqlandi','Цены сохранены'))}
+
+/* ===== reveal ===== */
+var IO='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');IO.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;
+function observe(){[].forEach.call(document.querySelectorAll('.rv:not(.in)'),function(e){if(IO)IO.observe(e);else e.classList.add('in')})}
+
+/* ===== til ===== */
+var TTL={uz:[document.title,(document.querySelector('meta[name=description]')||{}).content],ru:['Auto Witson — шумоизоляция, звёздное небо, стробоскопы · Ташкент','Auto Witson — Ифтихор, 44а. Шумоизоляция, звёздное небо, стробоскопы, мультимедиа и защитные покрытия. Узнайте цену за 20 секунд и запишитесь.']};
+function setLang(l){LANG=l;document.documentElement.lang=l;document.title=TTL[l][0];var md=document.querySelector('meta[name=description]');if(md&&TTL[l][1])md.content=TTL[l][1];var ot=document.querySelector('meta[property="og:title"]'),od=document.querySelector('meta[property="og:description"]');if(ot)ot.content=TTL[l][0];if(od)od.content=TTL[l][1];
+  [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.classList.toggle('on',b.dataset.l===l)});
+  [].forEach.call(document.querySelectorAll('[data-ru]'),function(e){if(e.dataset.uz==null)e.dataset.uz=e.innerHTML;e.innerHTML=l==='ru'?e.dataset.ru:e.dataset.uz});
+  renderAll();renderVids();renderFaq();try{localStorage.setItem('w3_lang',l)}catch(e){}}
+function renderFaq(){$('#fq').innerHTML=FAQ.map(function(f){return '<details><summary>'+esc(L(f[0],f[1]))+'</summary><p>'+esc(L(f[2],f[3]))+'</p></details>'}).join('')}
+function renderAll(){renderCards();renderCalc();renderBook();renderAdmin()}
+
+/* ===== hodisalar ===== */
+document.addEventListener('click',function(e){
+  var t=e.target.closest?e.target:null;if(!t)return;
+  var q;
+  if(q=t.closest('.size button')){SZ=+q.dataset.z;renderAll()}
+  else if(q=t.closest('.pack')){SEL=PACKS[+q.dataset.k].it.slice();st('sel',SEL);renderAll();msg(L('«'+PACKS[q.dataset.k].uz+'» tanlandi','Выбран набор «'+PACKS[q.dataset.k].ru+'»'))}
+  else if(q=t.closest('.it')){toggle(q.dataset.id)}
+  else if(q=t.closest('.vc')||t.closest('.proof')){openVid(+q.dataset.v)}
+  else if(q=t.closest('#days .ch')){BD=+q.dataset.d;renderBook()}
+  else if(q=t.closest('#times .ch')){if(!q.disabled){BT=+q.dataset.t;renderBook()}}
+  else if(t.closest('#send')){send()}
+  else if(t.closest('#more')){$('#list').classList.add('all')}
+  else if(t.closest('.mx')||t.closest('[data-close]')||t.id==='md'){closeMd()}
+  else if(q=t.closest('.lang button')){setLang(q.dataset.l)}
+  else if(q=t.closest('#at button')){if(q.dataset.t==='r'){['sel','leads','prices'].forEach(function(k){try{localStorage.removeItem('w3_'+k)}catch(e){}});location.hash='admin';location.reload();return}TAB=q.dataset.t;renderAdmin()}
+  else if(t.closest('#saveP')){saveP()}
+  else if(t.closest('#ownr')){e.preventDefault();openAdmin()}
+  else if(t.closest('#burger')){$('#mnav').classList.add('on');$('#burger').setAttribute('aria-expanded','true')}
+  else if(t.closest('#mclose')||t.closest('#mnav a')){$('#mnav').classList.remove('on');$('#burger').setAttribute('aria-expanded','false')}
+});
+document.addEventListener('input',function(e){if(e.target.id!=='fT')return;var d=e.target.value.replace(/\D/g,'');if(d.indexOf('998')===0&&d.length>9)d=d.slice(3);d=d.slice(0,9);var f=[d.slice(0,2),d.slice(2,5),d.slice(5,7),d.slice(7,9)].filter(Boolean).join(' ');if(e.target.value!==f)e.target.value=f});
+document.addEventListener('change',function(e){var s=e.target.closest&&e.target.closest('#ta select');if(s){var LD=ld('leads',seed()),x=LD[+s.dataset.i];if(x){x.st=+s.value;st('leads',LD);renderAdmin();msg(x.n+' · '+L(STS[x.st][0],STS[x.st][1]))}}});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeMd();
+  var q=e.target.closest&&e.target.closest('.it,.vc,.proof');if(q&&(e.key==='Enter'||e.key===' ')){e.preventDefault();q.click()}
+});
+var BARH=0;window.addEventListener('scroll',function(){document.documentElement.style.setProperty('--bar',Math.max(0,BARH-scrollY)+'px');$('#hdr').classList.toggle('sc',scrollY>30);dockUpd()},{passive:true});
+function dockUpd(){$('#dock').classList.toggle('on',scrollY>innerHeight*.6&&!inView('#yozilish')&&!inView('#aloqa'))}
+window.addEventListener('resize',function(){var b=document.getElementById('dqBar');if(b){BARH=b.offsetHeight;document.documentElement.style.setProperty('--bar',Math.max(0,BARH-scrollY)+'px')}});
+window.addEventListener('hashchange',function(){if(location.hash==='#admin')openAdmin()});
+
+/* ===== boshlash ===== */
+(function(){
+  var yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
+  var pt=document.querySelector('.proof .th span');if(pt)pt.innerHTML=ic('play',20);
+  [].forEach.call(document.querySelectorAll('.ic[data-i]'),function(e){e.innerHTML=ic(e.dataset.i,e.tagName==='I'?22:20)});
+  var bar=document.getElementById('dqBar');if(bar){BARH=bar.offsetHeight;document.documentElement.style.setProperty('--bar',BARH+'px')}
+  renderFaq();renderVids();renderAll();observe();
+  var l=null;try{l=localStorage.getItem('w3_lang')}catch(e){}if(l==='ru')setLang('ru');
+  if(location.hash==='#admin')openAdmin();
+})();
+</script>
+
+<script id="demo-qatlam-js">
+(function(){
+  var NOM="Auto Witson", YANGI="Yangi ariza", SAVOL="«mashinamga qancha turadi, qachon bo'sh?» savoli", SAVOL_RU="«сколько стоит для моей машины и когда свободно?»";
+  var L=function(){try{return (typeof lang!=="undefined"&&lang==="ru")?"ru":"uz"}catch(e){return "uz"}};
+  window.dqAdmin=function(){
+    if(location.hash!=="#admin"){location.hash="#admin"}
+    try{ if(typeof showAdmin==="function") showAdmin(); }catch(e){}
+    var a=document.getElementById("admin"); if(a){a.classList.remove("hide"); a.scrollIntoView({behavior:"smooth"})}
+  };
+  // Xato yoki eslatma xabarlari Telegramga «ariza» bo'lib chiqmasin
+  var XATO=/(yozing|tanlang|kiriting|tozalandi|bo'lmadi|kerak|yo'q|укажите|выберите|очищено|нельзя|нет|введите|eslatma yoqildi)/i;
+  var box=null, tmr=null;
+  function tg(msg){
+    if(!box){box=document.createElement("div");box.className="dq-tg";document.body.appendChild(box)}
+    var d=new Date(), vaqt=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);
+    var ru=L()==="ru";
+    box.innerHTML='<div class="dq-h"><span class="dq-i"><svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5Z"/></svg></span>'
+      +NOM+' bot<span class="dq-t">'+vaqt+'</span></div>'
+      +'<div class="dq-b">🔔 <b>'+(ru?"Новая заявка":YANGI)+'</b>\n'+String(msg).replace(/</g,"&lt;")+'</div>'
+      +'<div class="dq-s">'+(ru?"Так заявка приходит владельцу в Telegram (пример)":"Ariza egasining Telegramiga shunday tushadi (namuna)")+'</div>';
+    requestAnimationFrame(function(){box.classList.add("on")});
+    clearTimeout(tmr); tmr=setTimeout(function(){box.classList.remove("on")},5200);
+  }
+  window.dqTg=tg;
+  // toast() ni o'rash — shablon skripti bizdan keyin yuklanishi mumkin, shuning uchun DOM tayyor bo'lganda
+  function orash(){
+    if(typeof window.toast!=="function"||window.toast.dq) return;
+    var asl=window.toast;
+    window.toast=function(m){ var r=asl.apply(this,arguments); try{ if(m&&!XATO.test(String(m))) setTimeout(function(){tg(m)},650) }catch(e){} return r; };
+    window.toast.dq=1;
+  }
+  // Admin panelda «sayt o'rniga javob berildi» kartochkasi (namuna raqam)
+  function kpi(){
+    var a=document.getElementById("admin"); if(!a||document.getElementById("dqKpi")) return;
+    var w=a.querySelector(".wrap")||a, k=document.createElement("div"); k.id="dqKpi"; k.className="dq-kpi";
+    var ru=L()==="ru";
+    k.innerHTML=ru
+      ? 'За этот месяц сайт сам ответил на <b>1 240</b> вопросов вида '+SAVOL_RU+' — это примерно <b>41 час</b> работы сотрудника у телефона. <span style="opacity:.7">(пример — на реальном сайте считается автоматически)</span>'
+      : 'Bu oy sayt '+SAVOL+'ga <b>1 240</b> marta o\'zi javob berdi — bu xodimning telefonda o\'tkazadigan taxminan <b>41 soati</b>. <span style="opacity:.7">(namuna — haqiqiy saytda o\'zi hisoblanadi)</span>';
+    var h=w.querySelector("h2"), p=h&&h.nextElementSibling;
+    if(p) p.insertAdjacentElement("afterend",k); else if(h) h.insertAdjacentElement("afterend",k); else w.prepend(k);
+  }
+  function init(){ orash(); kpi(); }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+  window.addEventListener("load",orash);
+})();
+</script>
+</body>
+</html>
