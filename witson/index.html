@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Witson — shumka, tyuning va deteyling · Toshkent</title>
+<meta name="description" content="Auto Witson: shumoizolyatsiya, yulduzli osmon, stroboskop, multimedia, keramika va bron plyonka. Narxni onlayn hisoblang va bo'sh vaqtga yoziling.">
+<meta property="og:title" content="Auto Witson — shumka, tyuning va deteyling">
+<meta property="og:description" content="Narxni 30 soniyada hisoblang va bo'sh vaqtga onlayn yoziling. Iftixor ko'chasi, 44a.">
+<meta property="og:image" content="img/tahoe.jpg">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0d0f;--bg2:#141417;--card:#1a1a1f;--card2:#212127;--line:#2c2c34;--tx:#f4f4f5;--mut:#a1a1aa;--mut2:#71717a;
+  --y:#ffc21a;--o:#ff6b2c;--grad:linear-gradient(120deg,#ffd21a 0%,#ff9a1f 50%,#ff5a2c 100%);
+  --ok:#22c55e;--r:18px;--sh:0 20px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{width:min(1180px,100% - 32px);margin:0 auto}
+h1,h2,h3,.mont{font-family:Montserrat,Inter,sans-serif;letter-spacing:-.02em}
+h2{font-size:clamp(28px,4.2vw,44px);line-height:1.1;font-weight:800}
+.sub{color:var(--mut);max-width:640px;margin-top:12px}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:88px 0}
+.kick{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--y);margin-bottom:14px}
+.kick:before{content:"";width:22px;height:2px;background:var(--grad)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap}
+.btn-y{background:var(--grad);color:#111;box-shadow:0 8px 30px rgba(255,140,30,.28)}
+.btn-y:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,140,30,.45)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.btn-g:hover{border-color:var(--y);color:var(--y)}
+.btn-s{padding:9px 16px;font-size:14px}
+.hide{display:none!important}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(13,13,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.hd{display:flex;align-items:center;gap:18px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:800 18px/1 Montserrat}
+.logo img{width:40px;height:40px;filter:drop-shadow(0 0 12px rgba(255,170,30,.45))}
+.logo small{display:block;font:500 11px/1.2 Inter;color:var(--mut);letter-spacing:.04em}
+nav{display:flex;gap:22px;margin-left:auto;font-size:14.5px;color:var(--mut)}
+nav a:hover{color:var(--y)}
+.hd-r{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:13px}
+.lang button{background:none;border:0;padding:6px 10px;cursor:pointer;color:var(--mut)}
+.lang button.on{background:var(--grad);color:#111;font-weight:700}
+.tel{font-weight:700;font-size:14.5px}
+@media (max-width:1000px){nav{display:none}.tel{display:none}.hd-r{margin-left:auto}}
+@media (max-width:560px){.hd-r .btn{display:none}}
+/* hero */
+.hero{position:relative;padding:0;min-height:calc(100vh - 68px);display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url(img/tahoe.jpg) center/cover no-repeat;transform:scale(1.06);animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.16) translateX(-2%)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,15,.96) 0%,rgba(13,13,15,.82) 42%,rgba(13,13,15,.35) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 30%)}
+.hero .wrap{position:relative;z-index:2;padding:70px 0 90px}
+.hero h1{font-size:clamp(36px,6.4vw,72px);line-height:1.02;font-weight:900;max-width:760px}
+.hero p.lead{font-size:clamp(16px,1.9vw,19px);color:#d4d4d8;max-width:560px;margin:22px 0 32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-f{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:46px}
+.hero-f div{display:flex;align-items:center;gap:10px;color:#d4d4d8;font-size:14.5px}
+.hero-f b{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:rgba(255,194,26,.12);color:var(--y);font-size:18px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,194,26,.1);border:1px solid rgba(255,194,26,.3);color:var(--y);font-size:13px;font-weight:600;margin-bottom:22px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+/* services */
+.grid-s{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:44px}
+.sv{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--line);transition:.25s;cursor:pointer;display:flex;flex-direction:column}
+.sv:hover{transform:translateY(-4px);border-color:rgba(255,194,26,.5);box-shadow:0 18px 50px rgba(255,140,30,.12)}
+.sv .ph{aspect-ratio:16/10;background:#222 center/cover;position:relative}
+.sv .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,26,31,1) 0%,transparent 55%)}
+.ico{display:block}.nmi{display:inline-grid;vertical-align:-3px;color:var(--y)}.it .e{color:var(--y)}.mb a b{color:inherit}.cl i{color:var(--y)}
+.sv .ic{color:var(--y);aspect-ratio:16/10;display:grid;place-items:center;font-size:54px;background:radial-gradient(circle at 50% 60%,rgba(255,170,30,.18),transparent 60%),var(--card2)}
+.sv .bd{padding:4px 20px 20px;margin-top:-26px;position:relative;z-index:1;flex:1;display:flex;flex-direction:column}
+.sv h3{font-size:19px;font-weight:800}
+.sv p{color:var(--mut);font-size:14.5px;margin:6px 0 14px;flex:1}
+.sv .pr{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.sv .pr b{font-weight:700;color:var(--y)}
+.sv .pr span{color:var(--mut2)}
+.skyph{background:radial-gradient(1.5px 1.5px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 30% 60%,#fde68a,transparent),radial-gradient(2px 2px at 48% 30%,#fff,transparent),radial-gradient(1px 1px at 66% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 80% 18%,#bfdbfe,transparent),radial-gradient(1px 1px at 90% 52%,#fff,transparent),radial-gradient(1px 1px at 22% 82%,#fff,transparent),radial-gradient(1.5px 1.5px at 58% 88%,#fde68a,transparent),radial-gradient(1px 1px at 38% 12%,#fff,transparent),radial-gradient(1px 1px at 74% 40%,#fff,transparent),linear-gradient(160deg,#1b2033,#05060a)!important;background-size:120px 90px,150px 110px,170px 120px,110px 80px,190px 130px,130px 100px,160px 120px,140px 105px,100px 75px,180px 115px,100% 100%!important}
+.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--grad);color:#111;font:800 11px/1 Inter;padding:6px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+/* calc */
+#hisob{background:var(--bg2)}
+.calc{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:40px;align-items:start}
+@media (max-width:960px){.calc{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.lbl{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:8px;display:block;letter-spacing:.02em}
+.inp{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline:0;transition:.2s}
+.inp:focus{border-color:var(--y);box-shadow:0 0 0 3px rgba(255,194,26,.15)}
+.cls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cls button{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 8px;cursor:pointer;text-align:center;transition:.2s}
+.cls button b{display:block;font:800 15px/1.2 Montserrat}
+.cls button span{font-size:12px;color:var(--mut)}
+.cls button.on{border-color:var(--y);background:rgba(255,194,26,.08);box-shadow:0 0 0 1px var(--y) inset}
+.svl{display:grid;gap:10px;margin-top:6px}
+.si{border:1px solid var(--line);border-radius:14px;background:var(--bg);transition:.2s}
+.si.on{border-color:rgba(255,194,26,.6);background:rgba(255,194,26,.05)}
+.si-h{display:flex;align-items:center;gap:12px;padding:13px 14px;cursor:pointer;user-select:none}
+.ck{width:22px;height:22px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;flex:none;transition:.2s}
+.si.on .ck{background:var(--grad);border-color:transparent}
+.si.on .ck:after{content:"✓";color:#111;font-weight:900;font-size:13px}
+.si-h .nm{font-weight:600;flex:1}
+.si-h .nm small{display:block;color:var(--mut2);font-weight:400;font-size:12.5px}
+.si-h .p{font-size:13.5px;color:var(--y);font-weight:700;text-align:right;white-space:nowrap}
+.si-o{display:none;padding:0 14px 14px 48px;gap:8px;flex-wrap:wrap}
+.si.on .si-o{display:flex}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+.opt.on{border-color:var(--y);color:var(--y)}
+.grh{font:700 12px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:14px 0 2px}.grh:first-child{margin-top:0}
+.sum{position:sticky;top:88px}
+.sum h3{font-size:20px;margin-bottom:6px}
+.sum .car{color:var(--mut);font-size:14px;margin-bottom:16px}
+.sum ul{list-style:none;display:grid;gap:8px;margin-bottom:16px;max-height:260px;overflow:auto}
+.sum li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#d4d4d8;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.sum li span:last-child{white-space:nowrap;color:var(--mut)}
+.tot{font:900 clamp(24px,3vw,30px)/1.1 Montserrat;margin:6px 0 4px}
+.tot-n{color:var(--mut);font-size:13px}
+.disc{display:none;margin:12px 0 0;padding:10px 12px;border-radius:12px;background:rgba(34,197,94,.1);color:#86efac;font-size:13.5px;font-weight:600}
+.promo{display:flex;gap:8px;margin-top:14px;min-width:0}.promo .inp{flex:1;min-width:0;width:auto}.promo .btn{flex:none}
+.promo .inp{padding:9px 12px;font-size:14px;text-transform:uppercase}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.meta div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12.5px;color:var(--mut)}
+.meta b{display:block;color:var(--tx);font-size:15px}
+.empty{color:var(--mut2);font-size:14px;padding:10px 0 16px}
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+@media (max-width:900px){.pk{grid-template-columns:1fr}}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;position:relative;transition:.25s}
+.pc:hover{transform:translateY(-4px)}
+.pc.top{border:0;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 20px 60px rgba(255,140,30,.15)}
+.pc .rib{position:absolute;top:-12px;right:22px;background:var(--grad);color:#111;font:800 11px/1 Inter;padding:7px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.pc h3{font-size:22px;font-weight:800}
+.pc .for{color:var(--mut);font-size:14px;margin:4px 0 18px}
+.pc ul{list-style:none;display:grid;gap:10px;margin-bottom:22px;flex:1}
+.pc li{display:flex;gap:10px;font-size:14.5px}
+.pc li:before{content:"✓";color:var(--y);font-weight:900}
+.pc .pp{font:900 26px/1 Montserrat}
+.pc .old{color:var(--mut2);text-decoration:line-through;font-size:14px;margin:6px 0 18px}
+/* sky */
+#osmon{position:relative;overflow:hidden}
+.sky{display:grid;grid-template-columns:1.3fr 1fr;gap:26px;margin-top:40px;align-items:center}
+@media (max-width:900px){.sky{grid-template-columns:1fr}}
+.sky-c{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:#05060a;box-shadow:var(--sh)}
+.sky-c canvas{width:100%;height:100%;display:block}
+.sky-c .roof{position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(0deg,#0b0b0e 10%,transparent);pointer-events:none}
+.sky-c .lb{position:absolute;left:16px;top:14px;font-size:12px;color:#d4d4d8;background:rgba(0,0,0,.45);padding:5px 10px;border-radius:999px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer}
+.seg button.on{border-color:var(--y);color:var(--y);background:rgba(255,194,26,.07)}
+.sw{display:flex;gap:10px}
+.sw button{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.sw button.on{outline:2px solid var(--y);outline-offset:2px}
+.row{margin-bottom:18px}
+.tg{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14.5px}
+.tg input{display:none}
+.tg i{width:44px;height:24px;border-radius:999px;background:var(--line);position:relative;transition:.2s;flex:none}
+.tg i:after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.tg input:checked+i{background:var(--grad)}
+.tg input:checked+i:after{left:23px}
+/* works */
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:40px}
+.vc{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;background:#111 center/cover;border:1px solid var(--line)}
+.vc:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 60%);transition:.25s}
+.vc:hover:after{background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(255,140,30,.12))}
+.vc .pl{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:var(--grad);display:grid;place-items:center;z-index:2;box-shadow:0 0 0 8px rgba(255,170,30,.18);transition:.25s}
+.vc:hover .pl{transform:translate(-50%,-50%) scale(1.1)}
+.vc .pl:after{content:"";border-left:17px solid #111;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.vc .vt{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;font-weight:700;font-size:15px;line-height:1.3}
+.vc .vt small{display:block;color:var(--y);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.ba{margin-top:26px}
+.ba-w{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/9;max-width:900px;user-select:none;border:1px solid var(--line)}
+.ba-w img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-w .af{clip-path:inset(0 0 0 50%)}
+.ba-w .hd2{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--grad);transform:translateX(-50%)}
+.ba-w .hd2:after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--grad);color:#111;display:grid;place-items:center;font-weight:900}
+.ba-w input{position:absolute;inset:0;opacity:0;cursor:ew-resize;width:100%;height:100%}
+.ba-w .t1,.ba-w .t2{position:absolute;top:12px;background:rgba(0,0,0,.6);padding:4px 10px;border-radius:999px;font-size:12px}
+.ba-w .t1{left:12px}.ba-w .t2{right:12px}
+/* booking */
+#bron{background:var(--bg2)}
+.bk>*,.calc>*,.sky>*,.ct>*{min-width:0}
+.bk{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:40px}
+@media (max-width:900px){.bk{grid-template-columns:1fr}}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.f2{grid-template-columns:1fr}}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.day{flex:none;width:72px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer}
+.day b{display:block;font:800 20px/1.1 Montserrat}
+.day span{font-size:12px;color:var(--mut)}
+.day.on{border-color:var(--y);background:rgba(255,194,26,.08)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
+.slot{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;font-weight:600;font-size:14px;cursor:pointer}
+.slot.on{background:var(--grad);color:#111;border-color:transparent}
+.slot:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px}
+.side{display:grid;gap:18px;align-content:start}
+.tl{list-style:none;margin-top:16px;display:grid;gap:0}
+.tl li{position:relative;padding:0 0 18px 34px;color:var(--mut2);font-size:14.5px}
+.tl li:before{content:"";position:absolute;left:8px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--line);z-index:1}
+.tl li:after{content:"";position:absolute;left:13px;top:12px;bottom:-6px;width:2px;background:var(--line)}
+.tl li:last-child:after{display:none}
+.tl li.dn{color:var(--tx)}
+.tl li.dn:before{background:var(--y);box-shadow:0 0 0 4px rgba(255,194,26,.18)}
+.tl li.dn:after{background:var(--y)}
+.tl li.cur:before{background:var(--o);box-shadow:0 0 0 6px rgba(255,107,44,.22);animation:pu 1.4s infinite}
+@keyframes pu{50%{box-shadow:0 0 0 10px rgba(255,107,44,.05)}}
+.tl small{display:block;color:var(--mut2);font-size:12.5px}
+.phs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.phs img{border-radius:10px;aspect-ratio:4/3;object-fit:cover}
+.wc{margin-top:14px;padding:16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,194,26,.12),rgba(255,107,44,.06));border:1px solid rgba(255,194,26,.3)}
+.wc .w-r>*{min-width:0;overflow-wrap:anywhere}.wc .w-r{gap:12px;display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.1)}
+.wc .w-r:last-child{border:0}
+.ok{color:#86efac}.warn{color:#fcd34d}
+/* shop */
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:36px}
+.it{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.it .e{font-size:34px}
+.it h4{font:700 16px/1.3 Montserrat}
+.it p{color:var(--mut);font-size:13.5px;flex:1}
+/* reviews */
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media (max-width:900px){.rv{grid-template-columns:1fr}}
+.rc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.rc .st{color:var(--y);letter-spacing:3px}
+.rc p{margin:10px 0 14px;color:#d4d4d8;font-size:15px}
+.rc .who{display:flex;align-items:center;gap:10px;font-size:14px}
+.rc .av{width:38px;height:38px;border-radius:50%;background:var(--grad);color:#111;display:grid;place-items:center;font-weight:800}
+.rc .who small{display:block;color:var(--mut2)}
+/* faq */
+.fq{max-width:820px;margin-top:36px;display:grid;gap:10px}
+.fq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 20px}
+.fq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+.fq summary:after{content:"+";color:var(--y);font-size:22px;line-height:1}
+.fq details[open] summary:after{content:"−"}
+.fq details p{color:var(--mut);padding-bottom:18px;font-size:15px}
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin-top:40px}
+@media (max-width:900px){.ct{grid-template-columns:1fr}}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:340px;background:var(--card)}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.3) contrast(1.05)}
+.cl{display:grid;gap:12px}
+.cl a,.cl div{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;transition:.2s}
+.cl a:hover{border-color:var(--y)}
+.cl i{width:42px;height:42px;border-radius:12px;background:rgba(255,194,26,.1);display:grid;place-items:center;font-style:normal;font-size:20px;flex:none}
+.cl small{display:block;color:var(--mut2);font-size:12.5px}
+footer{border-top:1px solid var(--line);padding:30px 0 110px;color:var(--mut2);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+/* mobile bar */
+.mb{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;grid-template-columns:repeat(4,1fr);background:rgba(20,20,23,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.mb a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--mut);padding:4px}
+.mb a b{font-size:19px}
+.mb a.pr{color:var(--y)}
+@media (max-width:760px){.mb{display:grid}}
+@media (max-width:560px){.nmi{display:none!important}.cls button span{font-size:11px;line-height:1.35}.cls button{padding:10px 4px}}
+/* modal / toast */
+.md{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:16px}
+.md.on{display:flex}
+.md-b{background:var(--card);border:1px solid var(--line);border-radius:22px;width:min(560px,100%);max-height:90vh;overflow:auto;padding:26px;position:relative}
+.md-b.vid{width:min(960px,100%);padding:0;background:#000;overflow:hidden}
+.md-b.vid iframe{width:100%;aspect-ratio:16/9;display:block;border:0}
+.md-x{position:absolute;top:10px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.1);cursor:pointer;font-size:18px;z-index:3}
+.code{font:900 34px/1 Montserrat;letter-spacing:.06em;margin:10px 0}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:120;background:#fafafa;color:#111;padding:12px 18px;border-radius:14px;font-weight:600;font-size:14.5px;box-shadow:var(--sh);transition:.3s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+#toast.on{opacity:1;transform:translateX(-50%)}
+/* admin */
+#admin{background:#0a0a0c;border-top:1px solid var(--line)}
+.ad-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+@media (max-width:900px){.kpi{grid-template-columns:repeat(2,1fr)}}
+.kp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.kp small{color:var(--mut);font-size:12.5px}
+.kp b{display:block;font:800 24px/1.2 Montserrat;margin-top:4px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 16px;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;padding:10px 14px;cursor:pointer;color:var(--mut);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--y);border-color:var(--y)}
+.kb{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:1000px){.kb{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.kb{grid-template-columns:1fr}}
+.kcol{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px;min-height:160px}
+.kcol h4{font-size:13px;color:var(--mut);display:flex;justify-content:space-between;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.kcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;font-size:13.5px}
+.kcard b{display:block;font-size:14.5px}
+.kcard .mt{color:var(--mut);font-size:12.5px;margin:4px 0 8px}
+.kcard .bt{display:flex;gap:6px;flex-wrap:wrap}
+.kcard .bt button{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer}
+.kcard .bt button:hover{border-color:var(--y);color:var(--y)}
+.kcard.nw{border-color:rgba(255,194,26,.5)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+.tbl th{color:var(--mut);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+.tbl input{width:84px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.tw{overflow-x:auto}
+.cal{display:grid;grid-template-columns:70px repeat(7,minmax(90px,1fr));gap:4px;font-size:12.5px;min-width:760px}
+.cal div{background:var(--bg2);border-radius:8px;padding:8px 6px;min-height:40px}
+.cal .h{background:none;color:var(--mut);font-weight:600;text-align:center}
+.cal .bz{background:linear-gradient(135deg,rgba(255,194,26,.25),rgba(255,107,44,.15));border:1px solid rgba(255,194,26,.4)}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:170px 1fr 40px;gap:10px;align-items:center;font-size:13.5px}
+.bar i{display:block;height:12px;border-radius:999px;background:var(--grad)}
+.bar s{display:block;background:var(--bg2);border-radius:999px;text-decoration:none}
+.up{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.up label{border:1.5px dashed var(--line);border-radius:14px;padding:18px;text-align:center;cursor:pointer;color:var(--mut);font-size:14px}
+.up label:hover{border-color:var(--y)}
+.up input{display:none}
+.nt{color:var(--mut2);font-size:13px;margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<meta name="robots" content="noindex, nofollow">
+<style id="demo-qatlam">
+.dq-bar{position:relative;z-index:60;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 12px;
+  padding:7px 14px;background:#111827;color:#f3f4f6;font:500 12.5px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center}
+.dq-bar b{color:#fde68a;letter-spacing:.06em}
+.dq-bar .dq-m{opacity:.8}
+.dq-bar a,.dq-bar button{font:inherit;color:#111827;background:#fde68a;border:0;border-radius:999px;padding:3px 11px;cursor:pointer;
+  text-decoration:none;font-weight:600;white-space:nowrap}
+.dq-rev{display:inline-block;margin-top:8px;padding:5px 11px;border-radius:999px;background:#fef3c7;color:#78350f;
+  font:600 12.5px/1.3 system-ui,sans-serif}
+.dq-tg{position:fixed;top:14px;right:14px;z-index:9999;width:min(330px,calc(100vw - 28px));background:#fff;color:#111;
+  border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);padding:11px 13px 12px;font:14px/1.4 system-ui,sans-serif;
+  transform:translateY(-140%);transition:transform .45s cubic-bezier(.2,.9,.3,1.2)}
+.dq-tg.on{transform:none}
+.dq-tg .dq-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px}
+.dq-tg .dq-i{width:26px;height:26px;border-radius:50%;background:#2aabee;display:grid;place-items:center;flex:none}
+.dq-tg .dq-t{color:#6b7280;font-weight:500;margin-left:auto;font-size:12px}
+.dq-tg .dq-b{margin-top:6px;white-space:pre-line}
+.dq-tg .dq-s{margin-top:6px;color:#6b7280;font-size:11.5px}
+.dq-kpi{font-family:inherit!important;margin-top:16px;padding:14px 16px;border-radius:14px;border:1px dashed #9ca3af;background:rgba(253,230,138,.18);
+  font-size:15px;line-height:1.45}
+.dq-kpi b{font-size:22px}
+@media (max-width:560px){.dq-bar{font-size:11.5px;padding:5px 8px;gap:4px 8px;flex-wrap:nowrap}.dq-bar .dq-m{display:none}.dq-bar button{padding:3px 9px}}
+</style>
+</head>
+<body>
+<div class="dq-bar" id="dqBar"><span><b>NAMUNA</b> · «Auto Witson» uchun taklif-demo<span class="dq-m">, rasmiy sayt emas</span>.</span><span class="dq-m">Narx va ma’lumotlar namunaviy · Muallif: Ahmadjon</span><button type="button" onclick="dqAdmin()">Egasi paneli →</button></div>
+
+<header>
+  <div class="wrap hd">
+    <a href="#" class="logo"><img src="img/logo.png" alt="Auto Witson logo"><span>AUTO WITSON<small data-ru="Тюнинг · Детейлинг · Шумоизоляция">Tyuning · Deteyling · Shumka</small></span></a>
+    <nav>
+      <a href="#xizmatlar" data-ru="Услуги">Xizmatlar</a>
+      <a href="#hisob" data-ru="Калькулятор">Kalkulyator</a>
+      <a href="#paketlar" data-ru="Пакеты">Paketlar</a>
+      <a href="#ishlar" data-ru="Работы">Ishlarimiz</a>
+      <a href="#holat" data-ru="Статус авто">Mashina holati</a>
+      <a href="#aloqa" data-ru="Контакты">Aloqa</a>
+    </nav>
+    <div class="hd-r">
+      <a class="tel" href="tel:+998944242222">+998 94 424 22 22</a>
+      <div class="lang"><button class="on" onclick="setLang('uz')">UZ</button><button onclick="setLang('ru')">RU</button></div>
+      <a href="#bron" class="btn btn-y btn-s" data-ru="Записаться">Yozilish</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Chevrolet Tahoe — Auto Witson ustaxonasida"></div>
+  <div class="wrap">
+    <div class="badge"><i></i><span id="freeBadge">Bugun bo'sh vaqt bor — Iftixor, 44a</span></div>
+    <h1><span data-ru="Ваша машина —">Mashinangiz —</span><br><span class="gt" data-ru="тише, ярче, дороже">jimroq, yorqinroq, qimmatroq</span></h1>
+    <p class="lead" data-ru="Шумоизоляция, звёздное небо, стробоскопы, мультимедиа, керамика и бронеплёнка. Узнайте цену для своей машины за 30 секунд и запишитесь онлайн.">Shumoizolyatsiya, yulduzli osmon, stroboskop, multimedia, keramika va bron plyonka. Mashinangiz uchun narxni 30 soniyada bilib oling va onlayn yoziling.</p>
+    <div class="hero-cta">
+      <a href="#hisob" class="btn btn-y" data-ru="Рассчитать для моей машины →">Mashinam uchun hisoblash →</a>
+      <a href="#ishlar" class="btn btn-g" data-ru="▶ Смотреть работы">▶ Ishlarimizni ko'rish</a>
+    </div>
+    <div class="hero-f">
+      <div><b class="hi" data-i="mute"></b><span data-ru="Шумоизоляция под ключ">Shumka — kalit topshirish</span></div>
+      <div><b class="hi" data-i="star"></b><span data-ru="Звёздное небо и подсветка">Yulduzli osmon va yoritish</span></div>
+      <div><b class="hi" data-i="shield"></b><span data-ru="Гарантия на каждую работу">Har bir ishga kafolat</span></div>
+      <div><b class="hi" data-i="cam"></b><span data-ru="Фото-отчёт о ходе работ">Ish jarayonidan foto-hisobot</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="xizmatlar">
+  <div class="wrap">
+    <div class="kick" data-ru="Услуги">Xizmatlar</div>
+    <h2 data-ru="Всё для вашей машины — в одном месте">Mashinangiz uchun hammasi — bir joyda</h2>
+    <p class="sub" data-ru="Нажмите на услугу — она сразу добавится в калькулятор.">Xizmatni bosing — u darhol kalkulyatorga qo'shiladi.</p>
+    <div class="grid-s" id="svGrid"></div>
+  </div>
+</section>
+
+<section id="hisob">
+  <div class="wrap">
+    <div class="kick" data-ru="Калькулятор">Kalkulyator</div>
+    <h2 data-ru="Сколько стоит для моей машины?">Mening mashinamga qancha turadi?</h2>
+    <p class="sub" data-ru="Выберите машину и услуги — цена и срок считаются сразу. Итоговую цену мастер подтвердит после осмотра.">Mashina va xizmatlarni tanlang — narx va muddat darhol hisoblanadi. Yakuniy narxni usta ko'rikdan keyin tasdiqlaydi.</p>
+    <div class="calc">
+      <div class="box">
+        <div class="row">
+          <label class="lbl" for="model" data-ru="Модель машины">Mashina modeli</label>
+          <input id="model" class="inp" list="models" placeholder="Masalan: Malibu, Tahoe, Cobalt..." autocomplete="off">
+          <datalist id="models"></datalist>
+        </div>
+        <div class="row">
+          <span class="lbl" data-ru="Класс">Klassi</span>
+          <div class="cls" id="clsBox">
+            <button data-c="0"><b>A</b><span>Spark · Cobalt · Nexia</span></button>
+            <button data-c="1" class="on"><b>B</b><span>Malibu · Tracker · BYD</span></button>
+            <button data-c="2"><b>C</b><span>Tahoe · Prado · Lexus</span></button>
+          </div>
+        </div>
+        <span class="lbl" data-ru="Услуги">Xizmatlar</span>
+        <div class="svl" id="svList"></div>
+      </div>
+      <div class="box sum">
+        <h3 data-ru="Ваш расчёт">Sizning hisobingiz</h3>
+        <div class="car" id="sCar">—</div>
+        <ul id="sList"></ul>
+        <div class="empty" id="sEmpty" data-ru="Пока ничего не выбрано. Отметьте услугу слева.">Hali hech narsa tanlanmadi. Chapdan xizmatni belgilang.</div>
+        <div class="tot-n" data-ru="Ориентировочная цена">Taxminiy narx</div>
+        <div class="tot" id="sTot">0 so'm</div>
+        <div class="disc" id="sDisc"></div>
+        <div class="meta">
+          <div><span data-ru="Срок">Muddat</span><b id="sTime">—</b></div>
+          <div><span data-ru="Гарантия">Kafolat</span><b id="sWar">—</b></div>
+        </div>
+        <div class="promo"><input id="promo" class="inp" placeholder="PROMOKOD"><button class="btn btn-g btn-s" onclick="applyPromo()" data-ru="Применить">Qo'llash</button></div>
+        <button class="btn btn-y" style="width:100%;margin-top:16px" onclick="toBooking()" data-ru="Записаться с этим расчётом →">Shu hisob bilan yozilish →</button>
+        <p class="nt" data-ru="Цены — ориентир по рынку Ташкента, зависят от материала и состояния машины.">Narxlar — Toshkent bozori bo'yicha mo'ljal; material va mashina holatiga qarab o'zgaradi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paketlar">
+  <div class="wrap">
+    <div class="kick" data-ru="Пакеты">Paketlar</div>
+    <h2 data-ru="Готовые пакеты — выгоднее по отдельности">Tayyor paketlar — alohidadan arzonroq</h2>
+    <p class="sub" data-ru="Цена показана для выбранного в калькуляторе класса машины.">Narx kalkulyatorda tanlangan mashina klassi uchun ko'rsatilgan.</p>
+    <div class="pk" id="pkBox"></div>
+  </div>
+</section>
+
+<section id="osmon">
+  <div class="wrap">
+    <div class="kick" data-ru="Звёздное небо">Yulduzli osmon</div>
+    <h2 data-ru="Соберите своё звёздное небо">O'z yulduzli osmoningizni yig'ing</h2>
+    <p class="sub" data-ru="Выберите количество звёзд, цвет и эффекты — так будет выглядеть потолок вашей машины ночью.">Yulduzlar soni, rangi va effektlarni tanlang — mashinangiz shipi kechasi shunday ko'rinadi.</p>
+    <div class="sky">
+      <div class="sky-c"><canvas id="sky"></canvas><div class="roof"></div><div class="lb" data-ru="Потолок салона · ночной режим">Salon shipi · tungi rejim</div></div>
+      <div class="box">
+        <div class="row"><span class="lbl" data-ru="Количество звёзд">Yulduzlar soni</span>
+          <div class="seg" id="skyN"><button data-n="300">300</button><button data-n="500" class="on">500</button><button data-n="800">800</button><button data-n="1200">1200</button></div></div>
+        <div class="row"><span class="lbl" data-ru="Цвет">Rangi</span>
+          <div class="sw" id="skyC">
+            <button data-c="w" class="on" style="background:#f8fafc" title="Oq"></button>
+            <button data-c="k" style="background:#fde68a" title="Iliq"></button>
+            <button data-c="b" style="background:#60a5fa" title="Ko'k"></button>
+            <button data-c="r" style="background:conic-gradient(#f43f5e,#f59e0b,#22c55e,#3b82f6,#a855f7,#f43f5e)" title="Rangli"></button>
+          </div></div>
+        <div class="row" style="display:grid;gap:12px">
+          <label class="tg"><input type="checkbox" id="skyM" checked><i></i><span data-ru="Падающие звёзды (метеоры)">Uchayotgan yulduzlar (meteor)</span></label>
+          <label class="tg"><input type="checkbox" id="skyT" checked><i></i><span data-ru="Мерцание">Miltillash</span></label>
+        </div>
+        <div class="tot-n" data-ru="Ориентировочно для вашего класса">Sizning klassingiz uchun taxminan</div>
+        <div class="tot" id="skyP">—</div>
+        <button class="btn btn-y" style="width:100%;margin-top:14px" onclick="skyToCalc()" data-ru="Добавить в расчёт →">Hisobga qo'shish →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ishlar">
+  <div class="wrap">
+    <div class="kick" data-ru="Наши работы">Ishlarimiz</div>
+    <h2 data-ru="Смотрите, как мы работаем">Qanday ishlashimizni ko'ring</h2>
+    <p class="sub" data-ru="Реальные видео с нашего YouTube-канала: процесс и результат.">YouTube kanalimizdagi haqiqiy videolar: jarayon va natija.</p>
+    <div class="vg" id="vGrid"></div>
+    <div class="ba hide" id="baBox">
+      <h3 style="margin:34px 0 14px;font-size:22px" data-ru="До / После">Oldin / Keyin</h3>
+      <div class="ba-w" id="baW"><img id="baB" alt="Oldin"><img id="baA" class="af" alt="Keyin"><div class="hd2"></div><span class="t1" data-ru="До">Oldin</span><span class="t2" data-ru="После">Keyin</span><input type="range" min="0" max="100" value="50" id="baR" aria-label="Oldin/keyin"></div>
+    </div>
+  </div>
+</section>
+
+<section id="bron">
+  <div class="wrap">
+    <div class="kick" data-ru="Онлайн-запись">Onlayn yozilish</div>
+    <h2 data-ru="Выберите удобное время">Qulay vaqtni tanlang</h2>
+    <p class="sub" data-ru="Занятые часы уже закрыты — вы видите только свободное время. Заявка сразу приходит мастеру в Telegram.">Band soatlar yopilgan — faqat bo'sh vaqtni ko'rasiz. Ariza darhol ustaga Telegramda boradi.</p>
+    <div class="bk">
+      <div class="box">
+        <div class="f2 row">
+          <div><label class="lbl" for="bName" data-ru="Имя">Ismingiz</label><input id="bName" class="inp" placeholder="Aziz"></div>
+          <div><label class="lbl" for="bTel" data-ru="Телефон">Telefon</label><input id="bTel" class="inp" placeholder="+998 90 123 45 67" inputmode="tel"></div>
+          <div><label class="lbl" for="bCar" data-ru="Машина">Mashina</label><input id="bCar" class="inp" list="models" placeholder="Malibu 2"></div>
+          <div><label class="lbl" for="bPlate" data-ru="Госномер">Davlat raqami</label><input id="bPlate" class="inp" placeholder="01 A 123 BC"></div>
+        </div>
+        <div class="row"><span class="lbl" data-ru="Услуги (из калькулятора)">Xizmatlar (kalkulyatordan)</span><div class="chips" id="bSv"></div></div>
+        <div class="row"><span class="lbl" data-ru="День">Kun</span><div class="days" id="bDays"></div></div>
+        <div class="row"><span class="lbl" data-ru="Время">Vaqt</span><div class="slots" id="bSlots"></div></div>
+        <div class="row"><label class="lbl" for="bNote" data-ru="Комментарий (необязательно)">Izoh (ixtiyoriy)</label><textarea id="bNote" class="inp" rows="2" placeholder="Masalan: eshiklarda g'ichirlash bor"></textarea></div>
+        <button class="btn btn-y" style="width:100%" onclick="book()" data-ru="Забронировать время">Vaqtni band qilish</button>
+      </div>
+      <div class="side">
+        <div class="box" id="holat">
+          <h3 style="font-size:20px" data-ru="Где моя машина?">Mashinam qay holatda?</h3>
+          <p class="sub" style="font-size:14.5px;margin-top:6px" data-ru="Введите код заявки — увидите этап работ и фото. Пример: WT-2026">Ariza kodini kiriting — ish bosqichi va suratlarni ko'rasiz. Namuna: WT-2026</p>
+          <div class="promo"><input id="stCode" class="inp" placeholder="WT-2026"><button class="btn btn-y btn-s" onclick="track()" data-ru="Проверить">Tekshirish</button></div>
+          <div id="stOut"></div>
+        </div>
+        <div class="box" id="kafolat">
+          <h3 style="font-size:20px" data-ru="Проверка гарантии">Kafolatni tekshirish</h3>
+          <p class="sub" style="font-size:14.5px;margin-top:6px" data-ru="По госномеру. Пример: 01 A 777 AA">Davlat raqami bo'yicha. Namuna: 01 A 777 AA</p>
+          <div class="promo"><input id="wPlate" class="inp" placeholder="01 A 777 AA"><button class="btn btn-y btn-s" onclick="warranty()" data-ru="Проверить">Tekshirish</button></div>
+          <div id="wOut"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="fikrlar">
+  <div class="wrap">
+    <div class="kick" data-ru="Отзывы">Fikrlar</div>
+    <h2 data-ru="Что говорят клиенты">Mijozlar nima deydi</h2>
+    <div class="dq-rev" data-uz="Namuna fikrlar" data-ru="Примеры отзывов">Namuna fikrlar</div>
+    <div class="rv">
+      <div class="rc"><div class="st">★★★★★</div><p data-ru="Сделали полную шумку на Tahoe за 2 дня. На трассе разговариваем не повышая голос. Каждый этап присылали фото в Telegram.">Tahoe'ga to'liq shumkani 2 kunda qilishdi. Trassada ovozni ko'tarmasdan gaplashamiz. Har bosqichda Telegramga surat yuborib turishdi.</p><div class="who"><span class="av">S</span><span>Sardor<small>Chevrolet Tahoe</small></span></div></div>
+      <div class="rc"><div class="st">★★★★★</div><p data-ru="Звёздное небо с метеорами — дети в восторге. Посчитал цену на сайте, на месте сумма совпала.">Meteorli yulduzli osmon — bolalar xursand. Narxni saytda hisoblagandim, joyida summa to'g'ri keldi.</p><div class="who"><span class="av">J</span><span>Jasur<small>Toyota Prado</small></span></div></div>
+      <div class="rc"><div class="st">★★★★★</div><p data-ru="Поставили стробоскопы и Android-экран на Spark. Записался онлайн на вечер, ждать не пришлось.">Spark'ka stroboskop va Android ekran qo'yishdi. Kechqurunga onlayn yozildim, kutib o'tirmadim.</p><div class="who"><span class="av">D</span><span>Dilshod<small>Chevrolet Spark</small></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="savollar" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="kick" data-ru="Вопросы">Savollar</div>
+    <h2 data-ru="Частые вопросы">Ko'p beriladigan savollar</h2>
+    <div class="fq" id="faq"></div>
+  </div>
+</section>
+
+<section id="aloqa">
+  <div class="wrap">
+    <div class="kick" data-ru="Контакты">Aloqa</div>
+    <h2 data-ru="Приезжайте в гости">Mehmonga keling</h2>
+    <div class="ct">
+      <div class="cl">
+        <div><i class="hi" data-i="pin"></i><span><span data-ru="Ташкент, ул. Ифтихор, 44а">Toshkent, Iftixor ko'chasi, 44a</span><small data-ru="Адрес">Manzil</small></span></div>
+        <a href="tel:+998944242222"><i class="hi" data-i="phone"></i><span>+998 94 424 22 22<small data-ru="Позвонить">Qo'ng'iroq qilish</small></span></a>
+        <a href="https://t.me/auto_witsonuz" target="_blank" rel="noopener"><i class="hi" data-i="tg"></i><span>@auto_witsonuz<small data-ru="Telegram-канал">Telegram kanal</small></span></a>
+        <a href="https://instagram.com/auto_witson.uz" target="_blank" rel="noopener"><i class="hi" data-i="insta"></i><span>@auto_witson.uz<small>Instagram</small></span></a>
+        <a href="https://www.youtube.com/channel/UC4g1ljATz8gJe5Nmmq462uQ" target="_blank" rel="noopener"><i class="hi" data-i="play"></i><span>auto_witson uz<small data-ru="YouTube — видео работ">YouTube — ish videolari</small></span></a>
+      </div>
+      <div class="map"><iframe title="Xarita" loading="lazy" src="https://yandex.uz/map-widget/v1/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D0%98%D1%84%D1%82%D0%B8%D1%85%D0%BE%D1%80%2C%2044%D0%B0&z=16"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section id="admin" class="hide">
+  <div class="wrap">
+    <div class="ad-top">
+      <div><div class="kick" data-ru="Только для владельца">Faqat egasi uchun</div><h2 data-ru="Панель Auto Witson">Auto Witson paneli</h2>
+      <p class="sub" data-ru="Все заявки с сайта, календарь боксов, цены и клиенты — в одном месте. Без программиста.">Saytdan tushgan arizalar, bokslar kalendari, narxlar va mijozlar — bir joyda. Dasturchisiz.</p></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-s" onclick="csv()">⬇ CSV</button><button class="btn btn-g btn-s" onclick="resetDemo()" data-ru="Сбросить демо">Demoni tiklash</button></div>
+    </div>
+    <div class="kpi" id="kpi"></div>
+    <div class="tabs" id="tabs">
+      <button data-t="kanban" class="on" data-ru="Заявки">Arizalar</button>
+      <button data-t="cal" data-ru="Календарь">Kalendar</button>
+      <button data-t="price" data-ru="Цены">Narxlar</button>
+      <button data-t="crm" data-ru="Клиенты">Mijozlar</button>
+      <button data-t="promo" data-ru="Промокоды">Promokodlar</button>
+      <button data-t="port" data-ru="Портфолио">Portfolio</button>
+      <button data-t="stat" data-ru="Статистика">Statistika</button>
+    </div>
+    <div id="tab-kanban" class="kb"></div>
+    <div id="tab-cal" class="tw hide"></div>
+    <div id="tab-price" class="tw hide"></div>
+    <div id="tab-crm" class="tw hide"></div>
+    <div id="tab-promo" class="hide"></div>
+    <div id="tab-port" class="hide"></div>
+    <div id="tab-stat" class="hide"></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Auto Witson · Iftixor, 44a</span><span><a href="#admin" onclick="openAdmin()" data-ru="Вход для владельца">Egasi uchun kirish</a></span></div></footer>
+
+<div class="mb">
+  <a href="tel:+998944242222"><b class="hi" data-i="phone"></b><span data-ru="Звонок">Qo'ng'iroq</span></a>
+  <a href="https://t.me/auto_witsonuz" target="_blank" rel="noopener"><b class="hi" data-i="tg"></b>Telegram</a>
+  <a href="#hisob"><b class="hi" data-i="calc"></b><span data-ru="Цена">Narx</span></a>
+  <a href="#bron" class="pr"><b class="hi" data-i="cal"></b><span data-ru="Запись">Yozilish</span></a>
+</div>
+
+<div class="md" id="md" role="dialog" aria-modal="true" onclick="if(event.target===this)closeMd()"><div class="md-b" id="mdB"></div></div>
+<div id="toast"></div>
+
+<script>
+/* ---------- ma'lumotlar ---------- */
+var ICO={
+ mute:'<path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>',
+ star:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="2.5"/>',
+ bulb:'<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/>',
+ screen:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+ wave:'<path d="M2 12c2.5-4 5-4 7.5 0s5 4 7.5 0 3.5-3 5-2"/><path d="M2 17c2.5-3 5-3 7.5 0s5 3 7.5 0"/>',
+ glass:'<path d="M4 4h16l-2 16H6L4 4z"/><path d="M4 9h16"/>',
+ shine:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>',
+ gem:'<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M12 21 8 9l4-6 4 6z"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+ spray:'<path d="M9 8h6v13H9zM10 8V5h4v3M14 3h3M17 6h2M17 9h3"/>',
+ flag:'<path d="M4 22V4M4 4h13l-2 4 2 4H4"/>',
+ cam:'<path d="M4 7h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13" r="3.5"/>',
+ pin:'<path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/>',
+ phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+ tg:'<path d="m22 3-9.5 18-2.5-7.5L2.5 11z"/><path d="M22 3 10 13.5"/>',
+ insta:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/>',
+ play:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>',
+ calc:'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 19h2M12 19h2M16 15v4"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ box:'<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>'
+};
+function ic(n,s){return '<svg class="ico" width="'+(s||22)+'" height="'+(s||22)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICO[n]||'')+'</svg>'}
+
+var LANG='uz';
+function L(uz,ru){return LANG==='ru'&&ru?ru:uz}
+var CLS=1; // 0=A 1=B 2=C
+// narx — mln so'm [min,max] A/B/C (Toshkent bozori 2025–26 mo'ljali, Codex manbalari bilan)
+var SV=[
+ {id:'shumka',e:'mute',img:'shumka',uz:'Shumoizolyatsiya (shumka)',ru:'Шумоизоляция',d:"Yo'l shovqini, g'ichirlash va titrash yo'qoladi — salon jim va qimmat ovoz beradi.",dr:'Уходит шум дороги, скрипы и вибрации — салон тихий и звучит дорого.',
+  o:[{k:'eshik',uz:'Faqat eshiklar',ru:'Только двери',p:[[1.8,3],[2.5,4.5],[3.5,6]],h:8},{k:'full',uz:"To'liq salon",ru:'Весь салон',p:[[4.5,7.5],[6.5,10],[9,15]],h:22}],t:'1–3 kun',tr:'1–3 дня',w:12},
+ {id:'osmon',e:'star',sky:1,uz:'Yulduzli osmon',ru:'Звёздное небо',d:"Shipga optik tola yulduzlar: rang, miltillash va meteorlar pultdan boshqariladi.",dr:'Звёзды из оптоволокна на потолке: цвет, мерцание и метеоры с пульта.',
+  o:[{k:'std',uz:'Standart',ru:'Стандарт',p:[[4,8],[5,10],[7,14]],h:16}],t:'1–3 kun',tr:'1–3 дня',w:12,tag:'Hit'},
+ {id:'strob',e:'bulb',img:'stroboskop',uz:'Stroboskop va faralar',ru:'Стробоскопы и фары',d:"Stroboskop, fara linzasi, yorug'likni kuchaytirish — kechasi yo'l yaxshi ko'rinadi.",dr:'Стробоскопы, линзы, усиление света — ночью дорога видна лучше.',
+  o:[{k:'strob',uz:'Stroboskop',ru:'Стробоскоп',p:[[1.2,3],[1.8,4],[2.5,6]],h:5},{k:'linza',uz:'Fara linzasi',ru:'Линзы фар',p:[[3,7],[4,9],[5,12]],h:10}],t:'4 soat–2 kun',tr:'4 часа–2 дня',w:12},
+ {id:'multi',e:'screen',img:'multimedia',uz:'Multimedia / Android ekran',ru:'Мультимедиа / Android',d:"Katta ekran, CarPlay/Android Auto, kamera — o'rnatish va sozlash bilan.",dr:'Большой экран, CarPlay/Android Auto, камера — с установкой и настройкой.',
+  o:[{k:'std',uz:"O'rnatish bilan",ru:'С установкой',p:[[2.5,6],[4,10],[6,16]],h:7}],t:'4–10 soat',tr:'4–10 часов',w:12},
+ {id:'ambient',e:'wave',img:'ambient',uz:'Ambient yoritish',ru:'Амбиентная подсветка',d:"Salon bo'ylab 64 rangli yoritish — kayfiyatga qarab rang tanlanadi.",dr:'Подсветка салона на 64 цвета — под настроение.',
+  o:[{k:'std',uz:'64 rang',ru:'64 цвета',p:[[2,5],[3.5,8],[5,12]],h:10}],t:'6–14 soat',tr:'6–14 часов',w:12},
+ {id:'ton',e:'glass',uz:'Tonirovka',ru:'Тонировка',d:"Orqa yarim yoki to'liq, atermal plyonka — issiqdan va ko'zdan himoya.",dr:'Задняя полусфера или полная, атермальная плёнка — защита от жары и глаз.',
+  o:[{k:'orqa',uz:'Orqa yarim',ru:'Задняя полусфера',p:[[.8,1.5],[1.2,2],[1.8,3]],h:3},{k:'full',uz:"To'liq (ruxsatnoma bilan)",ru:'Полная (с разрешением)',p:[[1.5,3],[2.2,4.2],[3.5,6.5]],h:4},{k:'ater',uz:'+ Atermal',ru:'+ Атермальная',p:[[1,2.2],[1.5,2.8],[2,4]],h:1,add:1}],t:'2–5 soat',tr:'2–5 часов',w:24},
+ {id:'pol',e:'shine',uz:'Polirovka',ru:'Полировка',d:"Chiziq va dog'larni ketkazib, kuzovga zavod yaltirog'ini qaytaramiz.",dr:'Убираем царапины и разводы, возвращаем заводской блеск.',
+  o:[{k:'him',uz:'Himoya polirovka',ru:'Защитная',p:[[.6,1.2],[.9,1.8],[1.2,2.5]],h:6},{k:'abr',uz:'Abraziv (chuqur)',ru:'Абразивная',p:[[1.2,2.2],[1.8,3.2],[2.5,5]],h:12}],t:'6–12 soat',tr:'6–12 часов',w:3},
+ {id:'ker',e:'gem',uz:'Keramika qoplama',ru:'Керамика',d:"Kuzovni 1–3 yil himoya qiladi: kir yopishmaydi, yuvish oson, rang chuqur.",dr:'Защита кузова на 1–3 года: грязь не липнет, цвет глубже.',
+  o:[{k:'std',uz:'Tayyorlov bilan',ru:'С подготовкой',p:[[2.5,5],[4,8],[6,12]],h:14}],t:'1–2 kun',tr:'1–2 дня',w:24},
+ {id:'ppf',e:'shield',uz:'Bron plyonka (PPF)',ru:'Бронеплёнка (PPF)',d:"Tosh, chiziq va qumdan poliuretan himoya — bo'yoq yangi holicha qoladi.",dr:'Полиуретан от камней, царапин и песка — краска остаётся как новая.',
+  o:[{k:'old',uz:'Old qism',ru:'Передняя часть',p:[[7.5,14],[9,17],[10.5,20]],h:18},{k:'full',uz:"To'liq kuzov",ru:'Весь кузов',p:[[22.5,32],[24,40],[27,50]],h:36}],t:'1–4 kun',tr:'1–4 дня',w:24},
+ {id:'kimyo',e:'spray',uz:'Salon kimyoviy tozalash',ru:'Химчистка салона',d:"O'rindiq, ship, pol va bagaj — dog' va hidsiz, xuddi yangidek.",dr:'Сиденья, потолок, пол и багажник — без пятен и запахов.',
+  o:[{k:'std',uz:"To'liq",ru:'Полная',p:[[.8,1.8],[1.2,2.5],[1.8,3.5]],h:7}],t:'6–12 soat',tr:'6–12 часов',w:1},
+ {id:'tuning',e:'flag',img:'prado',uz:'Tyuning va salon',ru:'Тюнинг и салон',d:"Prado, Tahoe va boshqalar: salon perejivkasi, detallar, individual loyiha.",dr:'Prado, Tahoe и другие: перетяжка салона, детали, индивидуальный проект.',
+  o:[{k:'per',uz:'Salon perejivkasi',ru:'Перетяжка салона',p:[[10,20],[15,30],[25,55]],h:70}],t:'5–12 kun',tr:'5–12 дней',w:12}
+];
+var PK=[
+ {id:'shahar',uz:'Shahar',ru:'Город',for:"Har kuni shaharda yuradiganlar uchun",forr:'Для ежедневной езды по городу',it:[['shumka','eshik'],['ton','orqa'],['kimyo','std']],dc:7},
+ {id:'komfort',uz:'Komfort',ru:'Комфорт',for:"Jimlik va zamonaviy salon",forr:'Тишина и современный салон',it:[['shumka','full'],['ambient','std'],['multi','std']],dc:10,top:1},
+ {id:'vip',uz:'VIP',ru:'VIP',for:"Premium mashinalar uchun maksimal paket",forr:'Максимум для премиум-машин',it:[['shumka','full'],['osmon','std'],['ker','std'],['ppf','old']],dc:12}
+];
+var MODELS={0:['Spark','Cobalt','Nexia 3','Nexia 2','Matiz','Damas','Lacetti','Gentra','Onix'],1:['Malibu','Malibu 2','Tracker','Tracker 2','Equinox','BYD Song Plus','BYD Han','Chery Tiggo 7','Hyundai Sonata','Kia K5','Toyota Camry','Haval Jolion','Li Auto L7'],2:['Tahoe','Traverse','Toyota Prado','Land Cruiser 300','Lexus LX 600','Lexus GX','Mercedes GLE','BMW X7','Zeekr 001','Li Auto L9','Range Rover']};
+var VIDS=[['NYF-CuQqeQ4','tahoe','Tahoe — ish jarayoni va obzor','Tahoe — процесс и обзор','Shumka'],['sV9ab6fjBmg','shumka','Shumka: qatlamma-qatlam','Шумка слой за слоем','Shumka'],['HBLB0CgwATo','yulduzli-osmon','Yulduzli osmon','Звёздное небо','Osmon'],['qr8oBSI92Ig','stroboskop','Spark — stroboskop','Spark — стробоскоп','Faralar'],['UCmMY8hdDdc','prado','Prado — tyuning va deteyling','Prado — тюнинг и детейлинг','Tyuning'],['7StiNb2yTxg','multimedia','Salon va multimedia','Салон и мультимедиа','Multimedia'],['xAfM4HBOB-M','shumka-eshik','Eshiklar shumkasi','Шумка дверей','Shumka'],['M_NPKJ8o4bM','ambient','Ambient va salon detallari','Амбиент и детали салона','Yoritish'],['KBGQyQippaE','jamoa','Auto Witson jamoasi','Команда Auto Witson','Jamoa']];
+var SHOP=[['mute','Shumka materiallari','Материалы для шумки','Vibro, shovqin va issiqlik izolyatsiyasi — to\'plam holida.','Вибро-, шумо- и теплоизоляция — комплектом.'],['wave','Ambient to\'plam','Комплект амбиента','64 rang, telefondan boshqarish.','64 цвета, управление со смартфона.'],['bulb','Stroboskop to\'plami','Комплект стробоскопов','Bi-LED linza va stroboskop moduli.','Bi-LED линзы и модуль стробоскопа.'],['screen','Android ekranlar','Android-экраны','9–13 dyuym, CarPlay/Android Auto.','9–13 дюймов, CarPlay/Android Auto.']];
+var FAQ=[["Old oynalarni tonirovka qilsa bo'ladimi?","Можно тонировать передние стёкла?","Orqa yarimni ruxsatsiz qilish mumkin. Old oynalar uchun ruxsatnoma kerak — hujjat masalasida maslahat beramiz.","Заднюю полусферу — можно без разрешения. Для передних стёкол нужно разрешение — подскажем по документам."],["Narxga material ham kiradimi?","Цена включает материал?","Ha, narx material va ish haqini o'z ichiga oladi. Premium plyonka, tabiiy teri yoki import keramika tanlansa, narx oshadi.","Да, цена включает материал и работу. Премиум-плёнка, натуральная кожа или импортная керамика — дороже."],["Shumka qilish uchun mashina necha kun qoladi?","Сколько дней машина стоит на шумке?","Kichik mashina odatda 1,5–2 kun, o'rta klass 2 kun, katta krossoverlar 2–3 kun turadi. Har bosqichda Telegramga surat yuboramiz.","Малый класс 1,5–2 дня, средний 2 дня, большие кроссоверы 2–3 дня. На каждом этапе присылаем фото в Telegram."],["Keramikani polirovkasiz qilsa bo'ladimi?","Можно керамику без полировки?","Mumkin, lekin yaxshi natija uchun kamida yengil tayyorlov polirovkasi tavsiya qilinadi.","Можно, но для хорошего результата советуем хотя бы лёгкую подготовительную полировку."],["Bron plyonka faqat old qismga yetarlimi?","Бронеплёнки на перед достаточно?","Shaharda yuradigan mashinaga kapot, bamper, faralar, old qanotlar va ko'zgular ko'pincha yetarli. Ko'p trassa yoki premium mashinaga to'liq kuzov ma'qul.","Для города обычно хватает капота, бампера, фар, передних крыльев и зеркал. Для трассы и премиум-машин — весь кузов."],["Yulduzli osmon keyin buzilsa-chi?","А если звёздное небо сломается?","Optik tolalar va boshqaruv bloki almashtiriladi. Kafolat yozma ravishda beriladi va saytda davlat raqami bo'yicha tekshiriladi.","Меняем оптоволокно и блок управления. Гарантия выдаётся письменно и проверяется на сайте по госномеру."],["Narx saytdagidan farq qiladimi?","Цена может отличаться от сайта?","Saytdagi — taxminiy narx. Usta mashinani ko'rgach, yakuniy narxni ish boshlanishidan oldin aytadi, keyin o'zgarmaydi.","На сайте — ориентир. Мастер после осмотра называет итоговую цену до начала работ, и она не меняется."]];
+
+/* ---------- saqlash ---------- */
+function ld(k,d){try{var v=localStorage.getItem('wt_'+k);return v?JSON.parse(v):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem('wt_'+k,JSON.stringify(v))}catch(e){}}
+var SEL=ld('sel',{}); // id -> [optKeys]
+var PRICES=ld('prices',null);
+if(PRICES){SV.forEach(function(s){s.o.forEach(function(o){var p=PRICES[s.id+'.'+o.k];if(Array.isArray(p)&&p.length===3&&p.every(function(r){return Array.isArray(r)&&r.length===2&&isFinite(r[0])&&isFinite(r[1])&&r[0]>0&&r[1]>=r[0]}))o.p=p})})}
+var PROMOS=ld('promos',{'WITSON10':10});
+var PROMO=null;
+
+/* ---------- formatlash ---------- */
+function mln(x){var s=Math.round(x*1e6);return s.toLocaleString('ru-RU').replace(/,/g,' ')}
+function rng(a,b){return fm(a)+' – '+fm(b)}
+function fm(x){if(x>=1){var v=Math.round(x*10)/10;return (v+'').replace('.',',')+' '+L('mln','млн')}return Math.round(x*1000)+' '+L('ming','тыс')}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function toast(m){msg(m)}
+function msg(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on')},2600)}
+function svById(id){for(var i=0;i<SV.length;i++)if(SV[i].id===id)return SV[i]}
+function optBy(s,k){for(var i=0;i<s.o.length;i++)if(s.o[i].k===k)return s.o[i]}
+
+/* ---------- xizmatlar kartalari ---------- */
+function renderSv(){
+  var g=document.getElementById('svGrid');g.innerHTML='';
+  SV.forEach(function(s){
+    var mn=Math.min.apply(null,s.o.filter(function(o){return !o.add}).map(function(o){return o.p[CLS][0]}));
+    var el=document.createElement('div');el.className='sv';el.tabIndex=0;el.setAttribute('role','button');el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}};
+    el.innerHTML=(s.tag?'<span class="tag">'+s.tag+'</span>':'')+(s.img?'<div class="ph" style="background-image:url(img/'+s.img+'.jpg)"></div>':s.sky?'<div class="ph skyph"></div>':'<div class="ic">'+ic(s.e,54)+'</div>')+
+      '<div class="bd"><h3>'+esc(L(s.uz,s.ru))+'</h3><p>'+esc(L(s.d,s.dr))+'</p><div class="pr"><b>'+fm(mn)+L(' dan','+')+'</b><span>⏱ '+esc(L(s.t,s.tr))+'</span></div></div>';
+    el.onclick=function(){if(!SEL[s.id])SEL[s.id]=[s.o[0].k];sv('sel',SEL);renderCalc();document.getElementById('hisob').scrollIntoView({behavior:'smooth'});msg(L(s.uz,s.ru)+' — '+L("hisobga qo'shildi",'добавлено в расчёт'))};
+    g.appendChild(el);
+  });
+}
+
+/* ---------- kalkulyator ---------- */
+function renderCalc(){
+  var box=document.getElementById('svList');box.innerHTML='';
+  var GR={shumka:L('Salon','Салон'),ton:L('Tashqi va himoya','Кузов и защита')};
+  SV.slice().sort(function(a,b){return grp(a)-grp(b)}).forEach(function(s){
+    if(GR[s.id]){var g=document.createElement('div');g.className='grh';g.textContent=GR[s.id];box.appendChild(g)}
+    var on=!!SEL[s.id],el=document.createElement('div');el.className='si'+(on?' on':'');
+    var mn=Math.min.apply(null,s.o.filter(function(o){return !o.add}).map(function(o){return o.p[CLS][0]}));
+    el.innerHTML='<div class="si-h"><span class="ck"></span><span class="nm"><span class="nmi">'+ic(s.e,18)+'</span> '+esc(L(s.uz,s.ru))+'<small>⏱ '+esc(L(s.t,s.tr))+' · '+L('kafolat ','гарантия ')+warTxt(s.w)+'</small></span><span class="p">'+fm(mn)+L(' dan','+')+'</span></div>'+
+      (s.o.length>1?'<div class="si-o">'+s.o.map(function(o){return '<button class="opt'+(on&&SEL[s.id].indexOf(o.k)>=0?' on':'')+'" data-k="'+o.k+'">'+esc(L(o.uz,o.ru))+' · '+fm(o.p[CLS][0])+'</button>'}).join('')+'</div>':'');
+    var hh=el.querySelector('.si-h');hh.tabIndex=0;hh.setAttribute('role','checkbox');hh.setAttribute('aria-checked',on);hh.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();hh.click()}};hh.onclick=function(){if(SEL[s.id])delete SEL[s.id];else SEL[s.id]=[s.o[0].k];sv('sel',SEL);renderCalc()};
+    [].forEach.call(el.querySelectorAll('.opt'),function(b){b.onclick=function(){
+      var k=b.dataset.k,o=optBy(s,k),cur=SEL[s.id]||[];
+      if(o.add){var i=cur.indexOf(k);if(i>=0)cur.splice(i,1);else cur.push(k)}
+      else{cur=cur.filter(function(x){return optBy(s,x).add});cur.unshift(k)}
+      if(!cur.some(function(x){return !optBy(s,x).add}))cur.unshift(s.o[0].k);
+      SEL[s.id]=cur;sv('sel',SEL);renderCalc()}});
+    box.appendChild(el);
+  });
+  renderSum();renderPk();renderBookingSv();skyPrice();
+}
+function grp(s){return ['ton','pol','ker','ppf','strob'].indexOf(s.id)>=0?1:0}
+function warTxt(m){return m>=12?(m/12)+' '+L('yil','г.'):m+' '+L('oy','мес.')}
+function calcItems(sel){
+  var it=[];Object.keys(sel).forEach(function(id){var s=svById(id);if(!s)return;sel[id].forEach(function(k){var o=optBy(s,k);if(o)it.push({s:s,o:o,a:o.p[CLS][0],b:o.p[CLS][1]})})});return it;
+}
+function totals(sel,extraDc){
+  var it=calcItems(sel),a=0,b=0,h=0,w=0;it.forEach(function(x){a+=x.a;b+=x.b;h+=x.o.h;w=Math.max(w,x.s.w)});
+  var nS=Object.keys(sel).length,dc=extraDc!=null?extraDc:(nS>=3?7:0);if(PROMO)dc+=Number(PROMO.v)||0;dc=Math.min(60,Math.max(0,dc));
+  return {it:it,a:a*(1-dc/100),b:b*(1-dc/100),a0:a,b0:b,h:h,w:w,dc:dc,n:nS};
+}
+function daysTxt(h){if(!h)return '—';if(h<=9)return h+' '+L('soat','ч');var d=Math.ceil(h/9);return d+' '+L('kun','дн.')}
+function renderSum(){
+  var t=totals(SEL);
+  var md=document.getElementById('model').value.trim();
+  document.getElementById('sCar').textContent=(md||L('Mashina tanlanmagan','Машина не выбрана'))+' · '+L('klass ','класс ')+'ABC'[CLS];
+  document.getElementById('sList').innerHTML=t.it.map(function(x){return '<li><span>'+esc(L(x.s.uz,x.s.ru))+(x.s.o.length>1?' — '+esc(L(x.o.uz,x.o.ru)):'')+'</span><span>'+rng(x.a,x.b)+'</span></li>'}).join('');
+  document.getElementById('sEmpty').style.display=t.it.length?'none':'block';
+  document.getElementById('sTot').textContent=t.it.length?rng(t.a,t.b):'0 '+L("so'm",'сум');
+  var d=document.getElementById('sDisc');
+  if(t.dc){d.style.display='block';d.textContent=(t.n>=3?L('Kompleks chegirma 7%','Скидка за комплекс 7%'):'')+(PROMO?(t.n>=3?' + ':'')+L('promokod ','промокод ')+PROMO.c+' −'+PROMO.v+'%':'')+' · '+L('tejaysiz ~','экономия ~')+fm((t.a0-t.a+t.b0-t.b)/2)}
+  else{d.style.display=t.n===2?'block':'none';d.textContent=L("Yana 1 ta xizmat qo'shsangiz — 7% chegirma","Добавьте ещё 1 услугу — скидка 7%")}
+  document.getElementById('sTime').textContent=daysTxt(t.h);
+  document.getElementById('sWar').textContent=t.w?L('')+warTxt(t.w)+L(' gacha',''):'—';
+}
+function applyPromo(){
+  var c=document.getElementById('promo').value.trim().toUpperCase();PROMOS=ld('promos',PROMOS);
+  var pv=Number(PROMOS[c]);if(c&&isFinite(pv)&&pv>0&&pv<=50){PROMO={c:c,v:pv};renderSum();msg(L('Promokod qabul qilindi: −','Промокод принят: −')+PROMOS[c]+'%')}
+  else{PROMO=null;renderSum();msg(L("Bunday promokod yo'q",'Такого промокода нет'))}
+}
+function setCls(c){CLS=c;[].forEach.call(document.querySelectorAll('#clsBox button'),function(b){b.classList.toggle('on',+b.dataset.c===c)});renderSv();renderCalc()}
+function guessCls(v){v=v.toLowerCase();for(var c=2;c>=0;c--){for(var i=0;i<MODELS[c].length;i++){var m=MODELS[c][i].toLowerCase();if(v&&(m.indexOf(v)===0||v.indexOf(m)>=0))return c}}return -1}
+
+/* ---------- paketlar ---------- */
+function renderPk(){
+  var b=document.getElementById('pkBox');b.innerHTML='';
+  PK.forEach(function(p){
+    var sel={};p.it.forEach(function(x){sel[x[0]]=[x[1]]});var t=totals(sel,p.dc);
+    var el=document.createElement('div');el.className='pc'+(p.top?' top':'');
+    el.innerHTML=(p.top?'<span class="rib">'+L('Eng ko\'p tanlanadi','Выбирают чаще')+'</span>':'')+'<h3>'+esc(L(p.uz,p.ru))+'</h3><div class="for">'+esc(L(p.for,p.forr))+'</div><ul>'+
+      p.it.map(function(x){var s=svById(x[0]),o=optBy(s,x[1]);return '<li>'+esc(L(s.uz,s.ru))+(s.o.length>1?' — '+esc(L(o.uz,o.ru)):'')+'</li>'}).join('')+
+      '</ul><div class="pp">'+fm(t.a)+L(' dan','+')+'</div><div class="old">'+fm(t.a0)+' · −'+p.dc+'%</div><button class="btn '+(p.top?'btn-y':'btn-g')+'">'+L('Paketni tanlash','Выбрать пакет')+'</button>';
+    el.querySelector('button').onclick=function(){SEL=sel;sv('sel',SEL);renderCalc();document.getElementById('hisob').scrollIntoView({behavior:'smooth'});msg(L('«'+p.uz+'» paketi hisobga qo\'shildi','Пакет «'+p.ru+'» добавлен'))};
+    b.appendChild(el);
+  });
+}
+
+/* ---------- yulduzli osmon ---------- */
+var SKY={n:500,c:'w',m:true,t:true},stars=[],mets=[],cv,cx;
+var SKYADD={300:0,500:.8,800:1.8,1200:3.2};
+function skyInit(){
+  cv=document.getElementById('sky');cx=cv.getContext('2d');
+  function rs(){var r=cv.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1);cv.width=r.width*d;cv.height=r.height*d;genStars()}
+  window.addEventListener('resize',rs);rs();
+  [].forEach.call(document.querySelectorAll('#skyN button'),function(b){b.onclick=function(){SKY.n=+b.dataset.n;[].forEach.call(b.parentNode.children,function(x){x.classList.toggle('on',x===b)});genStars();skyPrice()}});
+  [].forEach.call(document.querySelectorAll('#skyC button'),function(b){b.onclick=function(){SKY.c=b.dataset.c;[].forEach.call(b.parentNode.children,function(x){x.classList.toggle('on',x===b)});genStars()}});
+  document.getElementById('skyM').onchange=function(){SKY.m=this.checked;skyPrice()};
+  document.getElementById('skyT').onchange=function(){SKY.t=this.checked};
+  var vis=true;if('IntersectionObserver' in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(cv)}
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function loop(ts){if(vis)drawSky(ts||0,rm);requestAnimationFrame(loop)})();
+}
+function starCol(){var c=SKY.c;if(c==='w')return [248,250,252];if(c==='k')return [253,224,140];if(c==='b')return [120,180,255];var p=[[244,63,94],[245,158,11],[34,197,94],[59,130,246],[168,85,247],[255,255,255]];return p[Math.random()*p.length|0]}
+function genStars(){stars=[];var W=cv.width,H=cv.height,n=Math.round(SKY.n*(W*H)/(1600*1000))+SKY.n/3;for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H*.85,r:(Math.random()*1.3+.3)*(W/900),c:starCol(),ph:Math.random()*6.28,sp:.5+Math.random()*2})}
+function drawSky(ts,rm){
+  var W=cv.width,H=cv.height,g=cx.createRadialGradient(W*.5,H*.1,10,W*.5,H*.4,W*.8);g.addColorStop(0,'#141824');g.addColorStop(1,'#040509');cx.fillStyle=g;cx.fillRect(0,0,W,H);
+  for(var i=0;i<stars.length;i++){var s=stars[i],a=SKY.t&&!rm?.35+.65*Math.abs(Math.sin(ts/1000*s.sp+s.ph)):.9;cx.beginPath();cx.fillStyle='rgba('+s.c[0]+','+s.c[1]+','+s.c[2]+','+a+')';cx.shadowColor='rgba('+s.c[0]+','+s.c[1]+','+s.c[2]+',.9)';cx.shadowBlur=s.r*4;cx.arc(s.x,s.y,s.r,0,6.28);cx.fill()}
+  cx.shadowBlur=0;
+  if(SKY.m&&!rm){if(Math.random()<.012)mets.push({x:Math.random()*W*.8,y:Math.random()*H*.3,l:0,v:W/90});
+    mets=mets.filter(function(m){m.l+=m.v;var x=m.x+m.l,y=m.y+m.l*.45,gr=cx.createLinearGradient(x-W*.08,y-W*.036,x,y);var c=SKY.c==='r'?'255,200,120':SKY.c==='b'?'150,200,255':SKY.c==='k'?'255,230,160':'255,255,255';gr.addColorStop(0,'rgba('+c+',0)');gr.addColorStop(1,'rgba('+c+',.95)');cx.strokeStyle=gr;cx.lineWidth=W/700;cx.beginPath();cx.moveTo(x-W*.08,y-W*.036);cx.lineTo(x,y);cx.stroke();return m.l<W*.35})}
+}
+function skyPrice(){var o=svById('osmon').o[0].p[CLS],add=SKYADD[SKY.n]+(SKY.m?.8:0);document.getElementById('skyP').textContent=rng(o[0]+add,o[1]+add)}
+function skyToCalc(){SEL.osmon=['std'];sv('sel',SEL);renderCalc();document.getElementById('hisob').scrollIntoView({behavior:'smooth'});msg(L('Yulduzli osmon ('+SKY.n+' yulduz'+(SKY.m?', meteor':'')+') qo\'shildi','Звёздное небо ('+SKY.n+' звёзд'+(SKY.m?', метеоры':'')+') добавлено'));BK_NOTE=L('Yulduzli osmon: ','Звёздное небо: ')+SKY.n+(SKY.m?' + meteor':'')}
+var BK_NOTE='';
+
+/* ---------- videolar ---------- */
+function renderVids(){
+  var g=document.getElementById('vGrid');g.innerHTML='';
+  VIDS.forEach(function(v){var el=document.createElement('div');el.className='vc';el.style.backgroundImage='url(img/'+v[1]+'.jpg)';el.setAttribute('role','button');el.tabIndex=0;el.setAttribute('aria-label',L(v[2],v[3]));el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}};
+    el.innerHTML='<span class="pl"></span><div class="vt"><small>'+esc(v[4])+'</small>'+esc(L(v[2],v[3]))+'</div>';
+    el.onclick=function(){openMd('<button class="md-x" onclick="closeMd()">✕</button><iframe src="https://www.youtube-nocookie.com/embed/'+v[0]+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="'+esc(v[2])+'"></iframe>','vid')};
+    g.appendChild(el)});
+}
+function renderBA(){
+  var p=ld('ba',null),box=document.getElementById('baBox');if(!p||!p.b||!p.a){box.classList.add('hide');return}
+  box.classList.remove('hide');document.getElementById('baB').src=p.b;document.getElementById('baA').src=p.a;
+}
+document.addEventListener('input',function(e){if(e.target.id==='baR'){var v=e.target.value;document.getElementById('baA').style.clipPath='inset(0 0 0 '+v+'%)';document.querySelector('#baW .hd2').style.left=v+'%'}});
+
+/* ---------- bron ---------- */
+var BKS=ld('bookings',null),BDAY=0,BSLOT=null;
+var ST=['Yangi','Qabul qilindi','Jarayonda','Tayyor'],STR=['Новая','Принята','В работе','Готово'];
+var SLOTS=['09:00','10:30','12:00','13:30','15:00','16:30','18:00','19:30'];
+function dayDate(i){var d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+i);return d}
+function dkey(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function seedBookings(){
+  var now=Date.now(),D=function(i){return dkey(dayDate(i))};
+  return [
+   {code:'WT-2026',name:'Sardor',tel:'+998 90 111 22 33',car:'Chevrolet Tahoe',plate:'01 A 777 AA',sv:[['shumka','full'],['osmon','std']],cls:2,day:D(0),slot:'09:00',st:2,sum:[15.2,27.1],t:now-86400000*1.2},
+   {code:'WT-1904',name:'Jasur',tel:'+998 93 555 44 11',car:'Toyota Prado',plate:'10 B 505 BA',sv:[['ker','std'],['ppf','old']],cls:2,day:D(1),slot:'10:30',st:1,sum:[14.5,28.2],t:now-3600000*20},
+   {code:'WT-1877',name:'Dilshod',tel:'+998 97 700 12 12',car:'Spark',plate:'01 C 321 CA',sv:[['strob','strob'],['multi','std']],cls:0,day:D(0),slot:'15:00',st:0,sum:[3.5,8.4],t:now-3600000*2},
+   {code:'WT-1850',name:'Aziza',tel:'+998 99 808 08 08',car:'Malibu 2',plate:'01 D 808 DA',sv:[['kimyo','std'],['pol','him']],cls:1,day:D(2),slot:'12:00',st:0,sum:[2.0,3.9],t:now-3600000*5},
+   {code:'WT-1712',name:'Bekzod',tel:'+998 90 222 33 44',car:'Tracker 2',plate:'01 E 111 EB',sv:[['shumka','eshik'],['ton','orqa']],cls:1,day:D(-3),slot:'13:30',st:3,sum:[3.4,6.1],t:now-86400000*4},
+   {code:'WT-1650',name:'Sardor',tel:'+998 90 111 22 33',car:'Chevrolet Tahoe',plate:'01 A 777 AA',sv:[['ker','std'],['ton','full']],cls:2,day:D(-240),slot:'10:30',st:3,sum:[9.5,18.5],t:now-86400000*240},
+   {code:'WT-1601',name:'Otabek',tel:'+998 95 400 40 40',car:'BYD Song Plus',plate:'01 F 404 FA',sv:[['ambient','std'],['multi','std']],cls:1,day:D(3),slot:'16:30',st:1,sum:[7.5,18],t:now-3600000*9}
+  ];
+}
+if(!BKS){BKS=seedBookings();sv('bookings',BKS)}
+function busy(dk,slot){
+  if(BKS.some(function(b){return b.day===dk&&b.slot===slot&&b.st<3}))return true;
+  var h=0,s=dk+slot;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h%10<3;
+}
+function freeBadge(){var dk=dkey(dayDate(0)),nowH=new Date().getHours()+new Date().getMinutes()/60,n=SLOTS.filter(function(s){return !busy(dk,s)&&(+s.slice(0,2)+(+s.slice(3))/60)>nowH+.5}).length;document.getElementById('freeBadge').textContent=n?L('Bugun '+n+' ta bo‘sh vaqt bor — Iftixor, 44a','Сегодня свободно окон: '+n+' — Ифтихор, 44а'):L('Ertaga bo‘sh vaqt bor — Iftixor, 44a','Завтра есть свободное время — Ифтихор, 44а')}
+function renderDays(){freeBadge();
+  var box=document.getElementById('bDays'),wd=L('Ya,Du,Se,Ch,Pa,Ju,Sh','Вс,Пн,Вт,Ср,Чт,Пт,Сб').split(',');box.innerHTML='';
+  for(var i=0;i<10;i++){(function(i){var d=dayDate(i),b=document.createElement('button');b.className='day'+(i===BDAY?' on':'');b.innerHTML='<span>'+(i===0?L('Bugun','Сег.'):i===1?L('Ertaga','Завт.'):wd[d.getDay()])+'</span><b>'+d.getDate()+'</b><span>'+L('Yan,Fev,Mar,Apr,May,Iyn,Iyl,Avg,Sen,Okt,Noy,Dek','янв,фев,мар,апр,мая,июн,июл,авг,сен,окт,ноя,дек').split(',')[d.getMonth()]+'</span>';b.onclick=function(){BDAY=i;BSLOT=null;renderDays()};box.appendChild(b)})(i)}
+  var sl=document.getElementById('bSlots'),dk=dkey(dayDate(BDAY)),nowH=new Date().getHours()+new Date().getMinutes()/60;sl.innerHTML='';
+  SLOTS.forEach(function(s){var b=document.createElement('button');b.className='slot'+(s===BSLOT?' on':'');b.textContent=s;var hh=+s.slice(0,2)+(+s.slice(3))/60;
+    b.disabled=busy(dk,s)||(BDAY===0&&hh<nowH+.5);b.onclick=function(){BSLOT=s;renderDays()};sl.appendChild(b)});
+}
+function renderBookingSv(){
+  var t=totals(SEL),b=document.getElementById('bSv');
+  b.innerHTML=t.it.length?t.it.map(function(x){return '<span class="chip">'+esc(L(x.s.uz,x.s.ru))+(x.s.o.length>1?' · '+esc(L(x.o.uz,x.o.ru)):'')+'</span>'}).join('')+'<span class="chip" style="border-color:var(--y);color:var(--y)">'+rng(t.a,t.b)+'</span>':'<span class="chip">'+L('Ko\'rik va maslahat (bepul)','Осмотр и консультация (бесплатно)')+'</span> <a href="#hisob" class="chip" style="color:var(--y)">+ '+L('xizmat tanlash','выбрать услугу')+'</a>';
+}
+function toBooking(){renderBookingSv();var m=document.getElementById('model').value;if(m)document.getElementById('bCar').value=m;document.getElementById('bron').scrollIntoView({behavior:'smooth'})}
+function book(){
+  var n=document.getElementById('bName').value.trim(),tel=document.getElementById('bTel').value.trim(),car=document.getElementById('bCar').value.trim(),pl=document.getElementById('bPlate').value.trim().toUpperCase();
+  if(!n||tel.replace(/\D/g,'').length<9){msg(L('Ism va telefon raqamini kiriting','Введите имя и телефон'));return}
+  if(!BSLOT){msg(L('Vaqtni tanlang','Выберите время'));return}
+  if(busy(dkey(dayDate(BDAY)),BSLOT)){msg(L('Bu vaqt hozirgina band qilindi — boshqasini tanlang','Это время только что заняли — выберите другое'));BSLOT=null;renderDays();return}
+  var t=totals(SEL),code='WT-'+(1000+Math.floor(Math.random()*8999)),svl=[];Object.keys(SEL).forEach(function(id){SEL[id].forEach(function(k){svl.push([id,k])})});
+  var bk={code:code,name:n,tel:tel,car:car||'—',plate:pl||'—',sv:svl,cls:CLS,day:dkey(dayDate(BDAY)),slot:BSLOT,st:0,sum:[+t.a.toFixed(1),+t.b.toFixed(1)],t:Date.now(),note:(document.getElementById('bNote').value.trim()+(BK_NOTE?' · '+BK_NOTE:'')).trim()};
+  BKS.unshift(bk);sv('bookings',BKS);
+  var d=dayDate(BDAY);
+  openMd('<button class="md-x" onclick="closeMd()">✕</button><div class="kick">'+L('Joy band qilindi','Время забронировано')+'</div><h3 style="font-size:24px">'+esc(n)+', '+L('kutamiz!','ждём вас!')+'</h3><div class="code gt">'+code+'</div><p style="color:var(--mut)">'+L('Shu kod bilan «Mashinam qay holatda?» bo\'limida ish jarayonini kuzatasiz.','С этим кодом вы будете следить за работой в разделе «Где моя машина?».')+'</p>'+
+   '<div class="wc"><div class="w-r"><span>'+L('Sana','Дата')+'</span><b>'+d.getDate()+'.'+('0'+(d.getMonth()+1)).slice(-2)+' · '+BSLOT+'</b></div><div class="w-r"><span>'+L('Mashina','Машина')+'</span><b>'+esc(car||'—')+'</b></div><div class="w-r"><span>'+L('Taxminiy narx','Ориентир')+'</span><b>'+(t.it.length?rng(t.a,t.b):L('ko\'rikdan keyin','после осмотра'))+'</b></div><div class="w-r"><span>'+L('Manzil','Адрес')+'</span><b>Iftixor, 44a</b></div></div>'+
+   '<button class="btn btn-y" style="width:100%;margin-top:18px" onclick="closeMd()">'+L('Yaxshi','Хорошо')+'</button>');
+  toast(L('Yangi bron: ','Новая запись: ')+n+' · '+(car||'')+' · '+BSLOT);
+  BSLOT=null;renderDays();renderAdmin();
+}
+
+/* ---------- holat va kafolat ---------- */
+var STAGES=[['Qabul qilindi','Принята','Mashina ko\'rikdan o\'tdi, yakuniy narx kelishildi','Осмотр, итоговая цена согласована'],['Demontaj','Демонтаж','Salon ehtiyotkorlik bilan yechildi','Салон аккуратно разобран'],['Ish jarayoni','В работе','Material qatlamma-qatlam yotqizilmoqda','Материал укладывается слой за слоем'],['Sifat nazorati','Контроль качества','Yig\'ish, g\'ichirlash va elektrika tekshiruvi','Сборка, проверка скрипов и электрики'],['Tayyor','Готово','Mashinani olib ketishingiz mumkin','Машину можно забирать']];
+function stageOf(b){return [0,0,2,4][b.st]||0}
+function track(){
+  var c=document.getElementById('stCode').value.trim().toUpperCase(),o=document.getElementById('stOut');if(c&&c.indexOf('WT-')!==0)c='WT-'+c.replace(/\D/g,'');
+  var b=BKS.filter(function(x){return x.code===c})[0];
+  if(!b){o.innerHTML='<p class="nt warn">'+L('Bunday kod topilmadi. Namuna: WT-2026','Код не найден. Пример: WT-2026')+'</p>';return}
+  var s=stageOf(b);
+  o.innerHTML='<div class="wc" style="margin-top:14px"><div class="w-r"><span>'+esc(b.car==='—'?L('Mashina ko\'rsatilmagan','Машина не указана'):b.car)+'</span><b>'+esc(b.plate)+'</b></div><div class="w-r"><span>'+L('Xizmatlar','Услуги')+'</span><b>'+b.sv.map(function(x){var q=svById(x[0]);return q?esc(L(q.uz,q.ru)):''}).join(', ')+'</b></div></div><ul class="tl">'+
+   STAGES.map(function(g,i){return '<li class="'+(i<s?'dn':i===s?'dn cur':'')+'">'+esc(L(g[0],g[1]))+'<small>'+esc(L(g[2],g[3]))+'</small>'+(i===2&&s>=2&&b.code==='WT-2026'?'<div class="phs"><img src="img/shumka.jpg" alt=""><img src="img/shumka-eshik.jpg" alt=""><img src="img/tahoe.jpg" alt=""></div>':'')+'</li>'}).join('')+'</ul>';
+}
+function warranty(){
+  var p=document.getElementById('wPlate').value.trim().toUpperCase().replace(/\s+/g,''),o=document.getElementById('wOut');
+  var list=BKS.filter(function(b){return b.st===3&&b.plate.replace(/\s+/g,'')===p});
+  if(!p||!list.length){o.innerHTML='<p class="nt warn">'+L('Bu raqam bo\'yicha tugallangan ish topilmadi. Namuna: 01 A 777 AA','По этому номеру работ не найдено. Пример: 01 A 777 AA')+'</p>';return}
+  var rows=[];list.forEach(function(b){b.sv.forEach(function(x){var s=svById(x[0]);if(!s)return;var d=new Date(b.day),e=new Date(d);e.setMonth(e.getMonth()+s.w);var ok=e>new Date();rows.push('<div class="w-r"><span>'+esc(L(s.uz,s.ru))+'<br><small style="color:var(--mut2)">'+d.toLocaleDateString('ru-RU')+'</small></span><b class="'+(ok?'ok':'warn')+'">'+(ok?L('amal qiladi · ','действует · ')+e.toLocaleDateString('ru-RU'):L('muddati tugagan','истекла'))+'</b></div>')})});
+  o.innerHTML='<div class="wc">'+rows.join('')+'</div>';
+}
+
+/* ---------- do'kon, FAQ ---------- */
+function renderShop(){if(!document.getElementById('shop'))return;document.getElementById('shop').innerHTML=SHOP.map(function(s,i){return '<div class="it"><div class="e">'+ic(s[0],30)+'</div><h4>'+esc(L(s[1],s[2]))+'</h4><p>'+esc(L(s[3],s[4]))+'</p><button class="btn btn-g btn-s" onclick="askShop('+i+')">'+L('Narxini so\'rash','Узнать цену')+'</button></div>'}).join('')}
+function askShop(i){var s=SHOP[i];openMd('<button class="md-x" onclick="closeMd()">✕</button><h3 style="font-size:22px;margin-bottom:6px">'+esc(L(s[1],s[2]))+'</h3><p style="color:var(--mut);margin-bottom:16px">'+L('Raqamingizni qoldiring — usta mavjud variantlar va narxni yuboradi.','Оставьте номер — мастер пришлёт варианты и цены.')+'</p><input id="shTel" class="inp" placeholder="+998 90 123 45 67" inputmode="tel"><button class="btn btn-y" style="width:100%;margin-top:14px" onclick="shopSend('+i+')">'+L('Yuborish','Отправить')+'</button>')}
+function shopSend(i){var t=document.getElementById('shTel').value;if(t.replace(/\D/g,'').length<9){msg(L('Telefon raqamini kiriting','Введите телефон'));return}var s=SHOP[i];BKS.unshift({code:'PR-'+(1000+Math.floor(Math.random()*8999)),name:L('Mahsulot so\'rovi','Запрос товара'),tel:t,car:s[1],plate:'—',sv:[],cls:CLS,day:dkey(dayDate(0)),slot:'—',st:0,sum:[0,0],t:Date.now(),shop:1});sv('bookings',BKS);closeMd();toast(L('Yangi so\'rov: ','Новый запрос: ')+s[1]+' · '+t);renderAdmin()}
+function renderFaq(){document.getElementById('faq').innerHTML=FAQ.map(function(f){return '<details><summary>'+esc(L(f[0],f[1]))+'</summary><p>'+esc(L(f[2],f[3]))+'</p></details>'}).join('')}
+
+/* ---------- modal ---------- */
+function openMd(h,cls){var b=document.getElementById('mdB');b.className='md-b'+(cls?' '+cls:'');b.innerHTML=h;document.getElementById('md').classList.add('on');var x=b.querySelector('.md-x,input,button');if(x)setTimeout(function(){x.focus()},30)}
+function closeMd(){document.getElementById('md').classList.remove('on');document.getElementById('mdB').innerHTML=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMd()});
+
+/* ---------- admin ---------- */
+var TAB='kanban';
+function openAdmin(){document.getElementById('admin').classList.remove('hide');renderAdmin();setTimeout(function(){document.getElementById('admin').scrollIntoView({behavior:'smooth'})},50)}
+function svNames(b){return b.shop?L('Mahsulot: ','Товар: ')+b.car:b.sv.length?b.sv.map(function(x){var s=svById(x[0]);return s?L(s.uz,s.ru):''}).join(', '):L("Ko'rik",'Осмотр')}
+function renderAdmin(){
+  if(document.getElementById('admin').classList.contains('hide'))return;
+  var today=dkey(dayDate(0)),wk=dkey(dayDate(7)),act=BKS.filter(function(b){return b.st<3&&!b.shop});
+  var todayN=BKS.filter(function(b){return new Date(b.t).toDateString()===new Date().toDateString()}).length;
+  var exp=act.reduce(function(a,b){return a+(b.sum[0]+b.sum[1])/2},0);
+  var done=BKS.filter(function(b){return b.st===3&&!b.shop}),avg=done.length?done.reduce(function(a,b){return a+(b.sum[0]+b.sum[1])/2},0)/done.length:0;
+  var wkN=BKS.filter(function(b){return b.day>=today&&b.day<=wk&&!b.shop}).length;
+  document.getElementById('kpi').innerHTML=[[L('Bugun tushgan arizalar','Заявок сегодня'),todayN],[L('Kutilayotgan tushum','Ожидаемая выручка'),fm(exp)],[L('7 kunlik bronlar','Записей на 7 дней'),wkN],[L("O'rtacha chek",'Средний чек'),fm(avg)]].map(function(k){return '<div class="kp"><small>'+k[0]+'</small><b>'+k[1]+'</b></div>'}).join('');
+  [].forEach.call(document.querySelectorAll('#tabs button'),function(b){b.classList.toggle('on',b.dataset.t===TAB)});
+  ['kanban','cal','price','crm','promo','port','stat'].forEach(function(t){document.getElementById('tab-'+t).classList.toggle('hide',t!==TAB)});
+  ({kanban:admKanban,cal:admCal,price:admPrice,crm:admCrm,promo:admPromo,port:admPort,stat:admStat})[TAB]();
+}
+function admKanban(){
+  var h='';ST.forEach(function(s,i){var list=BKS.filter(function(b){return b.st===i});
+    h+='<div class="kcol"><h4><span>'+L(s,STR[i])+'</span><span>'+list.length+'</span></h4>'+list.slice(0,12).map(function(b){var ix=BKS.indexOf(b);
+      return '<div class="kcard'+(i===0?' nw':'')+'"><b>'+esc(b.name)+' · '+esc(b.car)+'</b><div class="mt">'+esc(b.code)+' · '+esc(b.day.slice(5).replace('-','.'))+' '+esc(b.slot)+'<br>'+esc(svNames(b))+'<br>📞 '+esc(b.tel)+(b.sum[1]?' · '+rng(b.sum[0],b.sum[1]):'')+(b.note?'<br>💬 '+esc(b.note):'')+'</div><div class="bt">'+
+      (i>0?'<button onclick="mv('+ix+',-1)">←</button>':'')+(i<3?'<button onclick="mv('+ix+',1)">'+L(ST[i+1],STR[i+1])+' →</button>':'')+'<a href="tel:'+esc(b.tel.replace(/\s/g,''))+'"><button>📞</button></a></div></div>'}).join('')+'</div>'});
+  document.getElementById('tab-kanban').innerHTML=h;
+}
+function mv(i,d){var b=BKS[i];b.st=Math.max(0,Math.min(3,b.st+d));sv('bookings',BKS);renderAdmin();msg(b.name+' · '+L(ST[b.st],STR[b.st]))}
+function admCal(){
+  var h='<div class="cal"><div class="h"></div>';for(var i=0;i<7;i++){var d=dayDate(i);h+='<div class="h">'+(i===0?L('Bugun','Сегодня'):d.getDate()+'.'+('0'+(d.getMonth()+1)).slice(-2))+'</div>'}
+  SLOTS.forEach(function(s){h+='<div class="h">'+s+'</div>';for(var i=0;i<7;i++){var dk=dkey(dayDate(i)),b=BKS.filter(function(x){return x.day===dk&&x.slot===s&&x.st<3})[0];h+=b?'<div class="bz"><b>'+esc(b.car)+'</b><br>'+esc(b.name)+'</div>':(busy(dk,s)?'<div style="opacity:.55">'+L('Telefon orqali','По телефону')+'</div>':'<div></div>')}});
+  document.getElementById('tab-cal').innerHTML=h+'</div><p class="nt">'+L("Saytdan yozilganlar avtomatik tushadi. Telefon orqali kelganlarni ham shu yerga qo'shasiz — ikki mijoz bir vaqtga tushmaydi.","Онлайн-записи попадают сюда автоматически. Записи по телефону добавляются сюда же — двойных записей не будет.")+'</p>';
+}
+function admPrice(){
+  var h='<table class="tbl"><tr><th>'+L('Xizmat','Услуга')+'</th><th>A '+L('dan','от')+'</th><th>B '+L('dan','от')+'</th><th>C '+L('dan','от')+'</th></tr>';
+  SV.forEach(function(s){s.o.forEach(function(o){h+='<tr><td>'+esc(L(s.uz,s.ru))+(s.o.length>1?' — '+esc(L(o.uz,o.ru)):'')+'</td>'+[0,1,2].map(function(c){return '<td><input type="number" step="0.1" min="0" value="'+o.p[c][0]+'" data-s="'+s.id+'" data-o="'+o.k+'" data-c="'+c+'"> '+L('mln','млн')+'</td>'}).join('')+'</tr>'})});
+  document.getElementById('tab-price').innerHTML=h+'</table><button class="btn btn-y btn-s" style="margin-top:14px" onclick="savePrices()">'+L('Saqlash — saytda darhol yangilanadi','Сохранить — на сайте обновится сразу')+'</button>';
+}
+function savePrices(){
+  var P=ld('prices',{});[].forEach.call(document.querySelectorAll('#tab-price input'),function(i){var s=svById(i.dataset.s),o=optBy(s,i.dataset.o),c=+i.dataset.c,v=parseFloat(i.value);if(!(v>0))return;var r=o.p[c][1]/o.p[c][0];o.p[c]=[v,+(v*r).toFixed(1)];P[s.id+'.'+o.k]=o.p});
+  sv('prices',P);renderSv();renderCalc();msg(L('Narxlar saqlandi','Цены сохранены'));
+}
+function admCrm(){
+  var m={};BKS.forEach(function(b){if(b.shop)return;var k=b.tel.replace(/\D/g,'');(m[k]=m[k]||{n:b.name,tel:b.tel,car:b.car,v:0,sum:0,last:'',ker:null}).v++;m[k].sum+=(b.sum[0]+b.sum[1])/2;if(b.day>m[k].last)m[k].last=b.day;b.sv.forEach(function(x){if(x[0]==='ker'&&b.st===3)m[k].ker=b.day})});
+  var rows=Object.keys(m).map(function(k){return m[k]}).sort(function(a,b){return b.sum-a.sum});
+  var h='<table class="tbl"><tr><th>'+L('Mijoz','Клиент')+'</th><th>'+L('Mashina','Машина')+'</th><th>'+L('Tashrif','Визиты')+'</th><th>'+L('Jami','Итого')+'</th><th>'+L('Eslatma','Напоминание')+'</th></tr>'+
+   rows.map(function(r){var rem='';if(r.ker){var d=new Date(r.ker);d.setMonth(d.getMonth()+12);rem=L('Keramika yangilash: ','Обновить керамику: ')+d.toLocaleDateString('ru-RU')}return '<tr><td><b>'+esc(r.n)+'</b><br><small style="color:var(--mut2)">'+esc(r.tel)+'</small></td><td>'+esc(r.car)+'</td><td>'+r.v+(r.v>1?' ⭐':'')+'</td><td>'+fm(r.sum)+'</td><td class="warn">'+rem+'</td></tr>'}).join('')+'</table>';
+  document.getElementById('tab-crm').innerHTML=h+'<p class="nt">'+L('Qayta kelgan mijozlar ⭐ bilan belgilanadi. Keramika, polirovka muddati kelganda eslatma chiqadi — bir tugma bilan Telegram/SMS yuborasiz.','Постоянные клиенты отмечены ⭐. Когда подходит срок обновления керамики — напоминание, отправка в Telegram/SMS одной кнопкой.')+'</p>';
+}
+function admPromo(){
+  PROMOS=ld('promos',PROMOS);
+  document.getElementById('tab-promo').innerHTML='<div class="box" style="max-width:560px"><div class="f2"><div><label class="lbl">'+L('Kod','Код')+'</label><input id="pcC" class="inp" placeholder="NAVRUZ15" style="text-transform:uppercase"></div><div><label class="lbl">'+L('Chegirma, %','Скидка, %')+'</label><input id="pcV" class="inp" type="number" min="1" max="50" value="15"></div></div><button class="btn btn-y btn-s" style="margin-top:14px" onclick="addPromo()">'+L('Yaratish','Создать')+'</button><div style="margin-top:16px;display:grid;gap:8px">'+
+   Object.keys(PROMOS).map(function(k){return '<div class="chip" style="display:flex;justify-content:space-between"><b>'+esc(k)+'</b><span>−'+esc(PROMOS[k])+'% <button class="opt" data-del="'+esc(k)+'" aria-label="O\'chirish" style="margin-left:8px;color:var(--o)">✕</button></span></div>'}).join('')+'</div><p class="nt">'+L('Mijoz kodni kalkulyatorda kiritadi. Namuna: WITSON10','Клиент вводит код в калькуляторе. Пример: WITSON10')+'</p></div>';
+}
+document.addEventListener('click',function(e){var d=e.target.closest&&e.target.closest('[data-del]');if(d)delPromo(d.dataset.del)});
+function addPromo(){var c=document.getElementById('pcC').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,''),v=+document.getElementById('pcV').value;if(!c||!(v>0&&v<=50)){msg(L('Kod va foizni kiriting','Введите код и процент'));return}PROMOS[c]=v;sv('promos',PROMOS);admPromo();msg(L('Promokod yaratildi: ','Промокод создан: ')+c)}
+function delPromo(c){delete PROMOS[c];sv('promos',PROMOS);admPromo()}
+function admPort(){
+  document.getElementById('tab-port').innerHTML='<div class="box" style="max-width:640px"><h3 style="font-size:18px">'+L('Oldin / keyin suratini joylash','Загрузить фото до / после')+'</h3><p class="nt">'+L('Ikkita surat tanlang — saytdagi «Ishlarimiz» bo\'limida slayder paydo bo\'ladi.','Выберите два фото — в разделе «Работы» появится слайдер.')+'</p><div class="up"><label>📷 '+L('Oldin','До')+'<input type="file" accept="image/*" data-k="b"></label><label>✨ '+L('Keyin','После')+'<input type="file" accept="image/*" data-k="a"></label></div><button class="btn btn-g btn-s" onclick="sv(\'ba\',null);renderBA();msg(\''+L('Olib tashlandi','Удалено')+'\')">'+L('Olib tashlash','Удалить')+'</button></div>';
+  [].forEach.call(document.querySelectorAll('#tab-port input'),function(inp){inp.onchange=function(){var f=inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var img=new Image();img.onload=function(){var c=document.createElement('canvas'),s=Math.min(1,1200/img.width);c.width=img.width*s;c.height=img.height*s;c.getContext('2d').drawImage(img,0,0,c.width,c.height);var p=ld('ba',{})||{};p[inp.dataset.k]=c.toDataURL('image/jpeg',.8);sv('ba',p);renderBA();msg(L('Surat joylandi','Фото загружено'));if(p.a&&p.b)document.getElementById('ishlar').scrollIntoView({behavior:'smooth'})};img.src=r.result};r.readAsDataURL(f)}});
+}
+function admStat(){
+  var c={};BKS.forEach(function(b){b.sv.forEach(function(x){c[x[0]]=(c[x[0]]||0)+1})});var mx=Math.max.apply(null,Object.keys(c).map(function(k){return c[k]}).concat(1));
+  var src=[[L('Sayt kalkulyatori','Калькулятор сайта'),46],['Instagram',27],['Telegram',18],[L('2GIS / tanish','2GIS / знакомые'),9]];
+  document.getElementById('tab-stat').innerHTML='<div class="calc" style="margin-top:0;grid-template-columns:1fr 1fr"><div class="box"><h3 style="font-size:17px;margin-bottom:14px">'+L("Eng ko'p so'ralgan xizmatlar",'Самые востребованные услуги')+'</h3><div class="bars">'+
+   Object.keys(c).sort(function(a,b){return c[b]-c[a]}).map(function(k){var s=svById(k);return '<div class="bar"><span>'+esc(L(s.uz,s.ru))+'</span><s><i style="width:'+(c[k]/mx*100)+'%"></i></s><b>'+c[k]+'</b></div>'}).join('')+'</div></div><div class="box"><h3 style="font-size:17px;margin-bottom:14px">'+L('Arizalar qayerdan (namuna)','Откуда заявки (пример)')+'</h3><div class="bars">'+
+   src.map(function(s){return '<div class="bar"><span>'+s[0]+'</span><s><i style="width:'+s[1]+'%"></i></s><b>'+s[1]+'%</b></div>'}).join('')+'</div><p class="nt">'+L('Haqiqiy saytda har bir ariza manbasi avtomatik yoziladi — reklama qaysi kanalda ishlayotgani ko\'rinadi.','На реальном сайте источник каждой заявки пишется автоматически — видно, какая реклама работает.')+'</p></div></div>';
+}
+function csv(){var r=[['Kod','Ism','Telefon','Mashina','Raqam','Xizmatlar','Sana','Vaqt','Holat','Narx min','Narx max']];BKS.forEach(function(b){r.push([b.code,b.name,b.tel,b.car,b.plate,svNames(b),b.day,b.slot,ST[b.st],b.sum[0],b.sum[1]])});
+  var s='﻿'+r.map(function(x){return x.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"'}).join(';')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:'text/csv'}));a.download='witson-arizalar.csv';a.click()}
+function resetDemo(){['bookings','sel','prices','promos','ba'].forEach(function(k){try{localStorage.removeItem('wt_'+k)}catch(e){}});location.hash='#admin';location.reload()}
+
+/* ---------- til ---------- */
+function setLang(l){LANG=l;document.documentElement.lang=l;
+  [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.classList.toggle('on',b.textContent.toLowerCase()===l)});
+  [].forEach.call(document.querySelectorAll('[data-ru]'),function(e){if(e.dataset.uz==null)e.dataset.uz=e.textContent;e.textContent=l==='ru'?e.dataset.ru:e.dataset.uz});
+  document.getElementById('model').placeholder=L('Masalan: Malibu, Tahoe, Cobalt...','Например: Malibu, Tahoe, Cobalt...');
+  renderSv();renderCalc();renderVids();renderFaq();renderDays();renderAdmin();
+  try{localStorage.setItem('wt_lang',l)}catch(e){}
+}
+
+/* ---------- ishga tushirish ---------- */
+(function(){
+  [].forEach.call(document.querySelectorAll('.hi[data-i]'),function(e){e.innerHTML=ic(e.dataset.i,e.tagName==='I'?22:20)});
+  var dl=document.getElementById('models');[0,1,2].forEach(function(c){MODELS[c].forEach(function(m){var o=document.createElement('option');o.value=m;dl.appendChild(o)})});
+  [].forEach.call(document.querySelectorAll('#clsBox button'),function(b){b.onclick=function(){setCls(+b.dataset.c)}});
+  document.getElementById('model').addEventListener('input',function(){var c=guessCls(this.value);if(c>=0&&c!==CLS)setCls(c);else renderSum()});
+  [].forEach.call(document.querySelectorAll('#tabs button'),function(b){b.onclick=function(){TAB=b.dataset.t;renderAdmin()}});
+  renderSv();renderCalc();renderVids();renderFaq();renderDays();renderBA();skyInit();
+  var l=null;try{l=localStorage.getItem('wt_lang')}catch(e){}if(l==='ru')setLang('ru');
+  if(location.hash==='#admin')openAdmin();
+  window.addEventListener('hashchange',function(){if(location.hash==='#admin')openAdmin()});
+})();
+</script>
+
+<script id="demo-qatlam-js">
+(function(){
+  var NOM="Auto Witson", YANGI="Yangi ariza", SAVOL="«mashinamga qancha turadi, qachon bo'sh?» savoli", SAVOL_RU="«сколько стоит для моей машины и когда свободно?»";
+  var L=function(){try{return (typeof lang!=="undefined"&&lang==="ru")?"ru":"uz"}catch(e){return "uz"}};
+  window.dqAdmin=function(){
+    if(location.hash!=="#admin"){location.hash="#admin"}
+    try{ if(typeof showAdmin==="function") showAdmin(); }catch(e){}
+    var a=document.getElementById("admin"); if(a){a.classList.remove("hide"); a.scrollIntoView({behavior:"smooth"})}
+  };
+  // Xato yoki eslatma xabarlari Telegramga «ariza» bo'lib chiqmasin
+  var XATO=/(yozing|tanlang|kiriting|tozalandi|bo'lmadi|kerak|yo'q|укажите|выберите|очищено|нельзя|нет|введите|eslatma yoqildi)/i;
+  var box=null, tmr=null;
+  function tg(msg){
+    if(!box){box=document.createElement("div");box.className="dq-tg";document.body.appendChild(box)}
+    var d=new Date(), vaqt=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);
+    var ru=L()==="ru";
+    box.innerHTML='<div class="dq-h"><span class="dq-i"><svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5Z"/></svg></span>'
+      +NOM+' bot<span class="dq-t">'+vaqt+'</span></div>'
+      +'<div class="dq-b">🔔 <b>'+(ru?"Новая заявка":YANGI)+'</b>\n'+String(msg).replace(/</g,"&lt;")+'</div>'
+      +'<div class="dq-s">'+(ru?"Так заявка приходит владельцу в Telegram (пример)":"Ariza egasining Telegramiga shunday tushadi (namuna)")+'</div>';
+    requestAnimationFrame(function(){box.classList.add("on")});
+    clearTimeout(tmr); tmr=setTimeout(function(){box.classList.remove("on")},5200);
+  }
+  window.dqTg=tg;
+  // toast() ni o'rash — shablon skripti bizdan keyin yuklanishi mumkin, shuning uchun DOM tayyor bo'lganda
+  function orash(){
+    if(typeof window.toast!=="function"||window.toast.dq) return;
+    var asl=window.toast;
+    window.toast=function(m){ var r=asl.apply(this,arguments); try{ if(m&&!XATO.test(String(m))) setTimeout(function(){tg(m)},650) }catch(e){} return r; };
+    window.toast.dq=1;
+  }
+  // Admin panelda «sayt o'rniga javob berildi» kartochkasi (namuna raqam)
+  function kpi(){
+    var a=document.getElementById("admin"); if(!a||document.getElementById("dqKpi")) return;
+    var w=a.querySelector(".wrap")||a, k=document.createElement("div"); k.id="dqKpi"; k.className="dq-kpi";
+    var ru=L()==="ru";
+    k.innerHTML=ru
+      ? 'За этот месяц сайт сам ответил на <b>1 240</b> вопросов вида '+SAVOL_RU+' — это примерно <b>41 час</b> работы сотрудника у телефона. <span style="opacity:.7">(пример — на реальном сайте считается автоматически)</span>'
+      : 'Bu oy sayt '+SAVOL+'ga <b>1 240</b> marta o\'zi javob berdi — bu xodimning telefonda o\'tkazadigan taxminan <b>41 soati</b>. <span style="opacity:.7">(namuna — haqiqiy saytda o\'zi hisoblanadi)</span>';
+    var h=w.querySelector("h2"), p=h&&h.nextElementSibling;
+    if(p) p.insertAdjacentElement("afterend",k); else if(h) h.insertAdjacentElement("afterend",k); else w.prepend(k);
+  }
+  function init(){ orash(); kpi(); }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
+  window.addEventListener("load",orash);
+})();
+</script>
+</body>
+</html>
