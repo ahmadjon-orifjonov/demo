@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0d0d0f">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0d0d0f;--bg2:#141417;--card:#1a1a1f;--card2:#212127;--line:#2c2c34;--tx:#f4f4f5;--mut:#a1a1aa;--mut2:#71717a;
@@ -21,17 +21,18 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :focus-visible{outline:2px solid var(--y);outline-offset:3px}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--tx);font:500 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
 .wrap{width:min(1180px,100% - 32px);margin:0 auto}
-h1,h2,h3,.mont{font-family:Montserrat,Inter,sans-serif;letter-spacing:-.02em}
+h1,h2,h3,.mont{font-family:Unbounded,Manrope,sans-serif;letter-spacing:-.03em}
+h2{text-transform:uppercase;font-weight:900!important;letter-spacing:-.02em}
 h2{font-size:clamp(28px,4.2vw,44px);line-height:1.1;font-weight:800}
 .sub{color:var(--mut);max-width:640px;margin-top:12px}
 .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 section{padding:88px 0}
-.kick{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--y);margin-bottom:14px}
+.kick{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 Manrope;letter-spacing:.16em;text-transform:uppercase;color:var(--y);margin-bottom:14px}
 .kick:before{content:"";width:22px;height:2px;background:var(--grad)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap}
 .btn-y{background:var(--grad);color:#111;box-shadow:0 8px 30px rgba(255,140,30,.28)}
@@ -43,9 +44,9 @@ section{padding:88px 0}
 /* header */
 header{position:sticky;top:0;z-index:50;background:rgba(13,13,15,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
 .hd{display:flex;align-items:center;gap:18px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;font:800 18px/1 Montserrat}
+.logo{display:flex;align-items:center;gap:10px;font:800 17px/1 Unbounded}
 .logo img{width:40px;height:40px;filter:drop-shadow(0 0 12px rgba(255,170,30,.45))}
-.logo small{display:block;font:500 11px/1.2 Inter;color:var(--mut);letter-spacing:.04em}
+.logo small{display:block;font:600 11px/1.2 Manrope;color:var(--mut);letter-spacing:.04em}
 nav{display:flex;gap:22px;margin-left:auto;font-size:14.5px;color:var(--mut)}
 nav a:hover{color:var(--y)}
 .hd-r{display:flex;align-items:center;gap:10px}
@@ -84,7 +85,7 @@ nav a:hover{color:var(--y)}
 .sv .pr b{font-weight:700;color:var(--y)}
 .sv .pr span{color:var(--mut2)}
 .skyph{background:radial-gradient(1.5px 1.5px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 30% 60%,#fde68a,transparent),radial-gradient(2px 2px at 48% 30%,#fff,transparent),radial-gradient(1px 1px at 66% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 80% 18%,#bfdbfe,transparent),radial-gradient(1px 1px at 90% 52%,#fff,transparent),radial-gradient(1px 1px at 22% 82%,#fff,transparent),radial-gradient(1.5px 1.5px at 58% 88%,#fde68a,transparent),radial-gradient(1px 1px at 38% 12%,#fff,transparent),radial-gradient(1px 1px at 74% 40%,#fff,transparent),linear-gradient(160deg,#1b2033,#05060a)!important;background-size:120px 90px,150px 110px,170px 120px,110px 80px,190px 130px,130px 100px,160px 120px,140px 105px,100px 75px,180px 115px,100% 100%!important}
-.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--grad);color:#111;font:800 11px/1 Inter;padding:6px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+.tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--grad);color:#111;font:800 11px/1 Manrope;padding:6px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
 /* calc */
 #hisob{background:var(--bg2)}
 .calc{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:40px;align-items:start}
@@ -95,7 +96,7 @@ nav a:hover{color:var(--y)}
 .inp:focus{border-color:var(--y);box-shadow:0 0 0 3px rgba(255,194,26,.15)}
 .cls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .cls button{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 8px;cursor:pointer;text-align:center;transition:.2s}
-.cls button b{display:block;font:800 15px/1.2 Montserrat}
+.cls button b{display:block;font:800 15px/1.2 Unbounded}
 .cls button span{font-size:12px;color:var(--mut)}
 .cls button.on{border-color:var(--y);background:rgba(255,194,26,.08);box-shadow:0 0 0 1px var(--y) inset}
 .svl{display:grid;gap:10px;margin-top:6px}
@@ -112,14 +113,14 @@ nav a:hover{color:var(--y)}
 .si.on .si-o{display:flex}
 .opt{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
 .opt.on{border-color:var(--y);color:var(--y)}
-.grh{font:700 12px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:14px 0 2px}.grh:first-child{margin-top:0}
+.grh{font:700 12px/1 Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:14px 0 2px}.grh:first-child{margin-top:0}
 .sum{position:sticky;top:88px}
 .sum h3{font-size:20px;margin-bottom:6px}
 .sum .car{color:var(--mut);font-size:14px;margin-bottom:16px}
 .sum ul{list-style:none;display:grid;gap:8px;margin-bottom:16px;max-height:260px;overflow:auto}
 .sum li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#d4d4d8;border-bottom:1px dashed var(--line);padding-bottom:8px}
 .sum li span:last-child{white-space:nowrap;color:var(--mut)}
-.tot{font:900 clamp(24px,3vw,30px)/1.1 Montserrat;margin:6px 0 4px}
+.tot{font:900 clamp(22px,2.8vw,28px)/1.1 Unbounded;font-variant-numeric:tabular-nums;text-shadow:0 0 24px rgba(255,160,30,.35);margin:6px 0 4px}
 .tot-n{color:var(--mut);font-size:13px}
 .disc{display:none;margin:12px 0 0;padding:10px 12px;border-radius:12px;background:rgba(34,197,94,.1);color:#86efac;font-size:13.5px;font-weight:600}
 .promo{display:flex;gap:8px;margin-top:14px;min-width:0}.promo .inp{flex:1;min-width:0;width:auto}.promo .btn{flex:none}
@@ -134,13 +135,13 @@ nav a:hover{color:var(--y)}
 .pc{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;position:relative;transition:.25s}
 .pc:hover{transform:translateY(-4px)}
 .pc.top{border:0;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 20px 60px rgba(255,140,30,.15)}
-.pc .rib{position:absolute;top:-12px;right:22px;background:var(--grad);color:#111;font:800 11px/1 Inter;padding:7px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.pc .rib{position:absolute;top:-12px;right:22px;background:var(--grad);color:#111;font:800 11px/1 Manrope;padding:7px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
 .pc h3{font-size:22px;font-weight:800}
 .pc .for{color:var(--mut);font-size:14px;margin:4px 0 18px}
 .pc ul{list-style:none;display:grid;gap:10px;margin-bottom:22px;flex:1}
 .pc li{display:flex;gap:10px;font-size:14.5px}
 .pc li:before{content:"✓";color:var(--y);font-weight:900}
-.pc .pp{font:900 26px/1 Montserrat}
+.pc .pp{font:900 24px/1 Unbounded;text-shadow:0 0 22px rgba(255,160,30,.3)}
 .pc .old{color:var(--mut2);text-decoration:line-through;font-size:14px;margin:6px 0 18px}
 /* sky */
 #osmon{position:relative;overflow:hidden}
@@ -191,7 +192,7 @@ nav a:hover{color:var(--y)}
 @media (max-width:560px){.f2{grid-template-columns:1fr}}
 .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
 .day{flex:none;width:72px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer}
-.day b{display:block;font:800 20px/1.1 Montserrat}
+.day b{display:block;font:800 20px/1.1 Unbounded}
 .day span{font-size:12px;color:var(--mut)}
 .day.on{border-color:var(--y);background:rgba(255,194,26,.08)}
 .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
@@ -222,7 +223,7 @@ nav a:hover{color:var(--y)}
 .shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:36px}
 .it{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
 .it .e{font-size:34px}
-.it h4{font:700 16px/1.3 Montserrat}
+.it h4{font:700 16px/1.3 Unbounded}
 .it p{color:var(--mut);font-size:13.5px;flex:1}
 /* reviews */
 .rv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
@@ -266,7 +267,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 .md-b.vid{width:min(960px,100%);padding:0;background:#000;overflow:hidden}
 .md-b.vid iframe{width:100%;aspect-ratio:16/9;display:block;border:0}
 .md-x{position:absolute;top:10px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.1);cursor:pointer;font-size:18px;z-index:3}
-.code{font:900 34px/1 Montserrat;letter-spacing:.06em;margin:10px 0}
+.code{font:900 32px/1 Unbounded;letter-spacing:.06em;margin:10px 0}
 #toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:120;background:#fafafa;color:#111;padding:12px 18px;border-radius:14px;font-weight:600;font-size:14.5px;box-shadow:var(--sh);transition:.3s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
 #toast.on{opacity:1;transform:translateX(-50%)}
 /* admin */
@@ -276,7 +277,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 @media (max-width:900px){.kpi{grid-template-columns:repeat(2,1fr)}}
 .kp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
 .kp small{color:var(--mut);font-size:12.5px}
-.kp b{display:block;font:800 24px/1.2 Montserrat;margin-top:4px}
+.kp b{display:block;font:800 24px/1.2 Unbounded;margin-top:4px}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 16px;border-bottom:1px solid var(--line)}
 .tabs button{background:none;border:0;padding:10px 14px;cursor:pointer;color:var(--mut);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tabs button.on{color:var(--y);border-color:var(--y)}
@@ -310,6 +311,55 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 .up label:hover{border-color:var(--y)}
 .up input{display:none}
 .nt{color:var(--mut2);font-size:13px;margin-top:10px}
+
+/* ===== v2: tyuning uslubi ===== */
+body{background:
+  radial-gradient(1200px 600px at 85% -10%,rgba(255,140,30,.10),transparent 60%),
+  repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px),
+  repeating-linear-gradient(-45deg,rgba(0,0,0,.35) 0 2px,transparent 2px 6px),
+  var(--bg)}
+h2{font-size:clamp(26px,3.8vw,44px)!important;line-height:1.08}
+.kick{font-family:Unbounded;font-weight:700;font-size:11.5px;letter-spacing:.2em}
+section{position:relative}
+main{counter-reset:sec}
+.kick[data-n]:after{content:attr(data-n);position:absolute;right:0;top:-6px;font:900 clamp(70px,11vw,150px)/1 Unbounded;color:transparent;-webkit-text-stroke:1.5px rgba(255,194,26,.13);pointer-events:none;letter-spacing:-.04em}
+.wrap{position:relative}
+#hisob,#bron,#savollar{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01))!important}
+#hisob:before,#bron:before,#savollar:before,#paketlar:before,#ishlar:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,194,26,.55),transparent)}
+.btn-y{background:var(--grad);color:#111;box-shadow:0 0 0 1px rgba(255,210,80,.4) inset,0 10px 34px rgba(255,130,30,.35);text-transform:uppercase;letter-spacing:.04em;font-size:14px;font-weight:800}
+.btn-y:hover{box-shadow:0 0 0 1px rgba(255,230,120,.7) inset,0 0 42px rgba(255,150,30,.6)}
+.btn{border-radius:14px}
+.btn-g{text-transform:uppercase;letter-spacing:.04em;font-size:14px;font-weight:800}
+.sv,.box,.pc,.rc,.kp,.fq details,.cl a,.cl div,.vc{border-radius:20px}
+.sv{background:linear-gradient(160deg,#1e1e24,#131317)}
+.sv h3{font-size:16px;text-transform:uppercase;letter-spacing:-.01em;line-height:1.25}
+.sv .pr b{font-family:Unbounded;font-size:14px}
+.pc h3{text-transform:uppercase}
+@media (min-width:1000px){.grid-s{grid-template-columns:repeat(4,1fr)}.grid-s .sv:nth-child(1),.grid-s .sv:nth-child(2){grid-column:span 2}.grid-s .sv:nth-child(1) .ph,.grid-s .sv:nth-child(2) .ph{aspect-ratio:16/8}}
+/* hero */
+.hero{background:#07070a}
+.hero:after{background:linear-gradient(90deg,rgba(7,7,10,.97) 0%,rgba(7,7,10,.86) 45%,rgba(7,7,10,.45) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 35%)!important}
+.hero h1{font-weight:900;text-transform:uppercase;font-size:clamp(34px,5.6vw,76px)!important;line-height:.98;letter-spacing:-.035em}
+.hero h1 .gt{filter:drop-shadow(0 0 28px rgba(255,140,30,.35))}
+.emb{position:absolute;right:max(3vw,calc((100vw - 1180px)/2 - 40px));top:50%;transform:translateY(-50%);width:min(34vw,470px);aspect-ratio:1;z-index:1;pointer-events:none}
+.emb img{position:absolute;inset:14%;width:72%;height:72%;border-radius:50%;filter:drop-shadow(0 0 40px rgba(255,150,30,.55)) drop-shadow(0 0 90px rgba(255,90,30,.25));animation:fl 6s ease-in-out infinite}
+.emb:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 55%,rgba(255,200,40,.9) 70%,rgba(255,90,40,.9) 80%,transparent 92%);-webkit-mask:radial-gradient(circle,transparent 66%,#000 67% 68.5%,transparent 69.5%);mask:radial-gradient(circle,transparent 66%,#000 67% 68.5%,transparent 69.5%);animation:rot 7s linear infinite}
+.emb:after{content:"";position:absolute;inset:6%;border-radius:50%;border:1px dashed rgba(255,194,26,.22);animation:rot 40s linear infinite reverse}
+@keyframes rot{to{transform:rotate(360deg)}}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.beam{position:absolute;z-index:1;height:2px;width:40vw;left:-40vw;background:linear-gradient(90deg,transparent,rgba(255,200,60,.85),transparent);filter:blur(.4px);box-shadow:0 0 12px rgba(255,170,40,.7);animation:bm 5.5s linear infinite;opacity:.8}
+.beam.b2{top:72%!important;animation-delay:2.1s;width:28vw;opacity:.55}
+.beam.b3{top:38%!important;animation-delay:3.6s;width:22vw;opacity:.4}
+@keyframes bm{to{transform:translateX(150vw)}}
+@media (max-width:900px){.emb{width:62vw;right:-14vw;top:18%;opacity:.28}.hero h1{max-width:100%}}
+/* marquee */
+.mq{position:relative;z-index:3;overflow:hidden;background:var(--grad);transform:rotate(-1.6deg);margin:-26px -10px 0;padding:14px 0;box-shadow:0 10px 40px rgba(255,120,30,.25)}
+.mq div{display:flex;gap:34px;width:max-content;animation:mq 32s linear infinite;font:900 clamp(15px,1.8vw,21px)/1 Unbounded;color:#111;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
+.mq span:after{content:"✦";margin-left:34px;font-size:.8em}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hero-f b{border-radius:12px;background:rgba(255,194,26,.1);border:1px solid rgba(255,194,26,.25)}
+header{background:rgba(9,9,12,.78)}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 
@@ -361,10 +411,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 </header>
 
 <section class="hero">
+  <span class="beam" style="top:24%"></span><span class="beam b2"></span><span class="beam b3"></span>
+  <div class="emb"><img src="img/logo.png" alt=""></div>
   <div class="hero-bg" role="img" aria-label="Chevrolet Tahoe — Auto Witson ustaxonasida"></div>
   <div class="wrap">
     <div class="badge"><i></i><span id="freeBadge">Bugun bo'sh vaqt bor — Iftixor, 44a</span></div>
-    <h1><span data-ru="Ваша машина —">Mashinangiz —</span><br><span class="gt" data-ru="тише, ярче, дороже">jimroq, yorqinroq, qimmatroq</span></h1>
+    <h1><span data-ru="Ваша машина">Mashinangiz</span><br><span class="gt" data-ru="тише, ярче, дороже">jimroq, yorqinroq, qimmatroq</span></h1>
     <p class="lead" data-ru="Шумоизоляция, звёздное небо, стробоскопы, мультимедиа, керамика и бронеплёнка. Узнайте цену для своей машины за 30 секунд и запишитесь онлайн.">Shumoizolyatsiya, yulduzli osmon, stroboskop, multimedia, keramika va bron plyonka. Mashinangiz uchun narxni 30 soniyada bilib oling va onlayn yoziling.</p>
     <div class="hero-cta">
       <a href="#hisob" class="btn btn-y" data-ru="Рассчитать для моей машины →">Mashinam uchun hisoblash →</a>
@@ -379,9 +431,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   </div>
 </section>
 
+<div class="mq" aria-hidden="true"><div><span>Shumoizolyatsiya</span><span>Yulduzli osmon</span><span>Stroboskop</span><span>Multimedia</span><span>Ambient</span><span>Tonirovka</span><span>Keramika</span><span>Bron plyonka</span><span>Tyuning</span><span>Shumoizolyatsiya</span><span>Yulduzli osmon</span><span>Stroboskop</span><span>Multimedia</span><span>Ambient</span><span>Tonirovka</span><span>Keramika</span><span>Bron plyonka</span><span>Tyuning</span></div></div>
 <section id="xizmatlar">
   <div class="wrap">
-    <div class="kick" data-ru="Услуги">Xizmatlar</div>
+    <div class="kick" data-n="01" data-ru="Услуги">Xizmatlar</div>
     <h2 data-ru="Всё для вашей машины — в одном месте">Mashinangiz uchun hammasi — bir joyda</h2>
     <p class="sub" data-ru="Нажмите на услугу — она сразу добавится в калькулятор.">Xizmatni bosing — u darhol kalkulyatorga qo'shiladi.</p>
     <div class="grid-s" id="svGrid"></div>
@@ -390,7 +443,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="hisob">
   <div class="wrap">
-    <div class="kick" data-ru="Калькулятор">Kalkulyator</div>
+    <div class="kick" data-n="02" data-ru="Калькулятор">Kalkulyator</div>
     <h2 data-ru="Сколько стоит для моей машины?">Mening mashinamga qancha turadi?</h2>
     <p class="sub" data-ru="Выберите машину и услуги — цена и срок считаются сразу. Итоговую цену мастер подтвердит после осмотра.">Mashina va xizmatlarni tanlang — narx va muddat darhol hisoblanadi. Yakuniy narxni usta ko'rikdan keyin tasdiqlaydi.</p>
     <div class="calc">
@@ -433,7 +486,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="paketlar">
   <div class="wrap">
-    <div class="kick" data-ru="Пакеты">Paketlar</div>
+    <div class="kick" data-n="03" data-ru="Пакеты">Paketlar</div>
     <h2 data-ru="Готовые пакеты — выгоднее по отдельности">Tayyor paketlar — alohidadan arzonroq</h2>
     <p class="sub" data-ru="Цена показана для выбранного в калькуляторе класса машины.">Narx kalkulyatorda tanlangan mashina klassi uchun ko'rsatilgan.</p>
     <div class="pk" id="pkBox"></div>
@@ -442,7 +495,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="osmon">
   <div class="wrap">
-    <div class="kick" data-ru="Звёздное небо">Yulduzli osmon</div>
+    <div class="kick" data-n="04" data-ru="Звёздное небо">Yulduzli osmon</div>
     <h2 data-ru="Соберите своё звёздное небо">O'z yulduzli osmoningizni yig'ing</h2>
     <p class="sub" data-ru="Выберите количество звёзд, цвет и эффекты — так будет выглядеть потолок вашей машины ночью.">Yulduzlar soni, rangi va effektlarni tanlang — mashinangiz shipi kechasi shunday ko'rinadi.</p>
     <div class="sky">
@@ -471,7 +524,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="ishlar">
   <div class="wrap">
-    <div class="kick" data-ru="Наши работы">Ishlarimiz</div>
+    <div class="kick" data-n="05" data-ru="Наши работы">Ishlarimiz</div>
     <h2 data-ru="Смотрите, как мы работаем">Qanday ishlashimizni ko'ring</h2>
     <p class="sub" data-ru="Реальные видео с нашего YouTube-канала: процесс и результат.">YouTube kanalimizdagi haqiqiy videolar: jarayon va natija.</p>
     <div class="vg" id="vGrid"></div>
@@ -484,7 +537,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="bron">
   <div class="wrap">
-    <div class="kick" data-ru="Онлайн-запись">Onlayn yozilish</div>
+    <div class="kick" data-n="06" data-ru="Онлайн-запись">Onlayn yozilish</div>
     <h2 data-ru="Выберите удобное время">Qulay vaqtni tanlang</h2>
     <p class="sub" data-ru="Занятые часы уже закрыты — вы видите только свободное время. Заявка сразу приходит мастеру в Telegram.">Band soatlar yopilgan — faqat bo'sh vaqtni ko'rasiz. Ariza darhol ustaga Telegramda boradi.</p>
     <div class="bk">
@@ -522,7 +575,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="fikrlar">
   <div class="wrap">
-    <div class="kick" data-ru="Отзывы">Fikrlar</div>
+    <div class="kick" data-n="07" data-ru="Отзывы">Fikrlar</div>
     <h2 data-ru="Что говорят клиенты">Mijozlar nima deydi</h2>
     <div class="dq-rev" data-uz="Namuna fikrlar" data-ru="Примеры отзывов">Namuna fikrlar</div>
     <div class="rv">
@@ -535,7 +588,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="savollar" style="background:var(--bg2)">
   <div class="wrap">
-    <div class="kick" data-ru="Вопросы">Savollar</div>
+    <div class="kick" data-n="08" data-ru="Вопросы">Savollar</div>
     <h2 data-ru="Частые вопросы">Ko'p beriladigan savollar</h2>
     <div class="fq" id="faq"></div>
   </div>
@@ -543,7 +596,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
 <section id="aloqa">
   <div class="wrap">
-    <div class="kick" data-ru="Контакты">Aloqa</div>
+    <div class="kick" data-n="09" data-ru="Контакты">Aloqa</div>
     <h2 data-ru="Приезжайте в гости">Mehmonga keling</h2>
     <div class="ct">
       <div class="cl">
@@ -561,7 +614,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 <section id="admin" class="hide">
   <div class="wrap">
     <div class="ad-top">
-      <div><div class="kick" data-ru="Только для владельца">Faqat egasi uchun</div><h2 data-ru="Панель Auto Witson">Auto Witson paneli</h2>
+      <div><div class="kick" data-n="10" data-ru="Только для владельца">Faqat egasi uchun</div><h2 data-ru="Панель Auto Witson">Auto Witson paneli</h2>
       <p class="sub" data-ru="Все заявки с сайта, календарь боксов, цены и клиенты — в одном месте. Без программиста.">Saytdan tushgan arizalar, bokslar kalendari, narxlar va mijozlar — bir joyda. Dasturchisiz.</p></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-s" onclick="csv()">⬇ CSV</button><button class="btn btn-g btn-s" onclick="resetDemo()" data-ru="Сбросить демо">Demoni tiklash</button></div>
     </div>
