@@ -385,6 +385,86 @@ footer a{color:#C9CFE3}
 .cmpt .best{background:var(--bob)}
 .mob{display:none}
 
+
+/* ===== v9: Lidlar (kanban/ro'yxat) va Ko'rishlar ===== */
+.av{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 12.5px/1 var(--sans);letter-spacing:.02em}
+.ib{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;border:1px solid #CFD6E2;background:#fff;color:#182044;text-decoration:none;font-size:14px;flex:none}
+.ib:hover{border-color:#182044}
+.lbar{background:#fff;border:1px solid #E2E7EF;border-radius:14px;padding:10px;margin:16px 0}
+.lbar input[type=search]{flex:1 1 220px}
+.lvs button{padding:8px 12px}
+details.sovuq{margin-bottom:16px;border-color:#F1DFB0;background:#FFFCF2}
+details.sovuq summary{cursor:pointer;display:flex;gap:10px;align-items:center;list-style:none;font-size:14px}
+details.sovuq summary::-webkit-details-marker{display:none}
+details.sovuq summary span{color:#6B7488;font-size:13px}
+details.sovuq summary:after{content:"▾";margin-left:auto;color:#99650F;transition:transform .2s}
+details.sovuq[open] summary:after{transform:rotate(180deg)}
+.kb2{display:grid;grid-template-columns:repeat(7,minmax(258px,1fr));gap:12px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x proximity;align-items:start}
+.kc{padding:0;background:#EEF1F6;border-radius:16px;display:flex;flex-direction:column;max-height:calc(100vh - 150px);min-height:220px;scroll-snap-align:start;border-top:4px solid var(--r);overflow:hidden}
+.kc header{display:flex;align-items:center;gap:8px;padding:12px 12px 10px;background:#EEF1F6;flex:none;border-bottom:1px solid #DDE3EC;box-shadow:0 4px 8px -6px rgba(15,21,48,.25);position:relative;z-index:1}
+.kc header i{width:9px;height:9px;border-radius:50%;background:var(--r)}
+.kc header b{font:700 13.5px/1.2 var(--sans);color:#172033}
+.kc header em{font-style:normal;font-size:10.5px;font-weight:800;color:#fff;background:#C0392B;border-radius:999px;padding:3px 7px}
+.kc header span{margin-left:auto;font:800 12px/1 var(--sans);color:#56607A;background:#fff;border-radius:999px;padding:5px 9px}
+.kcb{overflow-y:auto;padding:10px;flex:1;scrollbar-width:thin}
+.kc.drop{background:#DCE4F2;box-shadow:inset 0 0 0 2px var(--r)}
+.kc.drop header{background:#DCE4F2}
+.kbo{border:1.5px dashed #C3CBD8;border-radius:12px;padding:18px 10px;text-align:center;font-size:12.5px;color:#8A94A3}
+.lk{background:#fff;border-radius:13px;padding:12px;margin-bottom:9px;box-shadow:0 1px 2px rgba(15,21,48,.06);cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .15s,border-color .15s;position:relative}
+.lk:hover{border-color:#B9C4DA;transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,21,48,.1)}
+.lk.sla{box-shadow:inset 3px 0 0 #C0392B,0 1px 2px rgba(15,21,48,.06)}
+.lk.sur{opacity:.45}
+.lk1{display:flex;gap:10px;align-items:center}
+.lk2{flex:1;min-width:0}.lk2 b{display:block;font-size:14px;color:#172033;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lk2 span{display:block;font-size:12px;color:#6B7488;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lk1 .st{font-size:10.5px;flex:none}
+.lks{margin-top:9px;font:700 11.5px/1.2 var(--sans);color:#B3261E;background:#FDECEA;border-radius:8px;padding:6px 8px}
+.lk3{font-size:12px;color:#56607A;background:#F6F8FB;border-radius:8px;padding:6px 8px;margin-top:9px}
+.lk4{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:9px;font-size:11.5px;color:#6B7488}
+.lk5{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;padding-top:9px;border-top:1px solid #EEF1F6}
+.lk5 .mini{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lk5 .nx{border:0;background:#EEF1F6;color:#182044;border-radius:8px;padding:7px 9px;font:700 11.5px/1 var(--sans);white-space:nowrap}
+.lk5 .nx:hover{background:#182044;color:#fff}
+.lr1{display:flex;gap:10px;align-items:center}
+.kchip{display:none;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+.kchip button{flex:none;display:flex;align-items:center;gap:6px;border:1.5px solid #E2E7EF;background:#fff;border-radius:999px;padding:8px 12px;font:700 12.5px/1 var(--sans);color:#172033}
+.kchip button i{width:8px;height:8px;border-radius:50%;background:var(--r)}
+.kchip button b{color:#6B7488}
+.kchip button.on{border-color:var(--r);box-shadow:inset 0 0 0 1px var(--r)}
+.kstf .sp1{flex:1}
+.bar span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lnk{cursor:pointer;color:#172033}.lnk:hover{text-decoration:underline}
+.isel{height:34px;border:1.5px solid #CFD6E2;border-radius:9px;padding:0 8px;font-size:13px;background:#fff}
+.kst{margin-top:16px}
+.kstb{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.kstb button{flex:none;width:62px;border:1.5px solid #E2E7EF;background:#fff;border-radius:12px;padding:8px 0;text-align:center}
+.kstb button small{display:block;font-size:10.5px;font-weight:700;color:#6B7488;text-transform:uppercase}
+.kstb button b{display:block;font:800 18px/1.2 var(--sans);color:#172033}
+.kstb button em{display:block;font-style:normal;font-size:9px;color:#7A4FD0;letter-spacing:1px;min-height:12px}
+.kstb button.ot{opacity:.7}.kstb button.bug{border-color:#7A4FD0}
+.kstb button.on{background:#182044;border-color:#182044}.kstb button.on small,.kstb button.on b,.kstb button.on em{color:#fff}
+.kstf{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.kor2{grid-template-columns:1.6fr 1fr}
+.kdh{margin:14px 0 10px!important}
+.tl{position:relative;padding-left:4px}
+.tli{display:grid;grid-template-columns:58px 1fr;gap:12px;position:relative;padding-bottom:12px}
+.tli:before{content:"";position:absolute;left:28px;top:30px;bottom:0;width:2px;background:#E2E7EF}
+.tli:last-child:before{display:none}
+.tlt{font:800 15px/1 var(--sans);color:#172033;background:#fff;border:1.5px solid #E2E7EF;border-radius:10px;height:32px;display:grid;place-items:center;position:relative;z-index:1}
+.tli.keldi .tlt{border-color:#1E7A4F;color:#1E7A4F}.tli.kelmadi .tlt{border-color:#C0392B;color:#C0392B}.tli.bekor{opacity:.55}
+.tlc{background:#F8FAFC;border:1px solid #E2E7EF;border-radius:14px;padding:12px}
+.tlr{display:flex;gap:10px;align-items:center}.tlr b{font-size:14.5px;color:#172033}
+.tlm{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:12.5px;color:#56607A}
+.tla{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.tla .ab1,.tla .ab2{padding:8px 11px}
+@media (max-width:1100px){.kor2{grid-template-columns:1fr}}
+@media (max-width:720px){
+  .kchip{display:flex}.kb2{display:block;overflow:visible}.kc{display:none;max-height:none}.kc.kon{display:flex}.kc .kcb{overflow:visible}
+  .lbar input[type=search]{flex:1 1 100%}
+  .kstf .sp1{display:none}.kstf #kNew{flex:1 1 100%;padding:12px}
+  .asd{max-width:100vw}.asd nav{flex:1 1 100%;min-width:0;width:100%;flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .asd nav button{flex:none}
+.kb2{grid-template-columns:repeat(7,86%)}.tli{grid-template-columns:50px 1fr;gap:8px}.tli:before{left:24px}.lbar select{flex:1 1 45%}}
+
 /* ===== v3 ===== */
 :root{--e1:cubic-bezier(.2,.8,.2,1);--t1:.2s;--t2:.45s}
 .puls{animation:puls .45s var(--e1)}
@@ -1674,6 +1754,7 @@ function adminNav() {
   s += '</nav><div class="af"><button id="aSite">← ' + L("Saytga qaytish", "Вернуться на сайт") + '</button><button id="aReset">↺ ' + L("Demoni tiklash", "Сбросить демо") + "</button></div></aside>";
   var old = $("#admin .asd"); if (old) old.outerHTML = s; else $("#admin").innerHTML = s + '<div class="amain"><div class="atop" id="atop"></div><div class="abody" id="abody"></div></div>';
   $$("#admin [data-av]").forEach(function (b) { b.onclick = function () { AV = b.dataset.av; adminNav(); adminView(); window.scrollTo(0, 0); }; });
+  var fa = $("#admin .asd nav .on"); if (fa && innerWidth <= 720) fa.parentNode.scrollLeft = fa.offsetLeft - 12;
   $("#aSite").onclick = hideAdmin;
   $("#aReset").onclick = function () { S = seed(); saqla(); adminNav(); adminView(); tosh(L("Demo boshlang‘ich holatga qaytdi", "Демо сброшено")); };
 }
@@ -1801,40 +1882,6 @@ function tahrir(id) {
   };
 }
 /* -- Lidlar -- */
-function aLid() {
-  var s = '<div class="aflt"><select id="fS"><option value="all">' + L("Barcha manbalar", "Все источники") + "</option>" + MANBA.map(function (m) { return "<option" + (AF.src === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + '</select><select id="fM"><option value="all">' + L("Barcha menejerlar", "Все менеджеры") + '</option><option value=""' + (AF.mgr === "" ? " selected" : "") + ">" + L("Biriktirilmagan", "Не назначен") + "</option>" + MEN.map(function (m) { return "<option" + (AF.mgr === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + '</select><input id="fQ" type="search" placeholder="' + L("Ism yoki telefon…", "Имя или телефон…") + '" value="' + esc(AF.q || "") + '" style="min-width:180px"><span style="flex:1"></span><button class="ab1" id="lNew" style="padding:10px 14px">+ ' + L("Lid qo‘shish", "Добавить лид") + "</button></div>";
-  var qq = (AF.q || "").toLowerCase().replace(/\s/g, "");
-  var list = S.leads.filter(function (l) { return (AF.src === "all" || l.src === AF.src) && (AF.mgr === "all" || l.mgr === AF.mgr) && (!qq || (l.name + l.phone + l.unit).toLowerCase().replace(/\s/g, "").indexOf(qq) >= 0); });
-  var sv0 = sovuqLidlar();
-  if (sv0.length) s += '<div class="pn" style="margin-bottom:14px;border-color:#F1DFB0;background:#FFFCF2"><h3>' + L("Sovib qolgan lidlar — 14 kundan beri harakatsiz", "«Остывшие» лиды — без движения 14+ дней") + "<small>" + sv0.length + '</small></h3><div class="vz">' + sv0.map(function (l) { return '<div class="v s"><div><b>' + esc(l.name) + " · " + qNom(l.q) + "</b><span>" + stgN(l.stage) + " · " + (l.mgr || "—") + " · " + oldin(l.ts) + '</span></div><button class="ab1" data-qa="' + l.id + '">' + L("Qayta aloqa", "Вернуть в работу") + "</button></div>"; }).join("") + "</div></div>";
-  s += '<div class="kb" style="grid-template-columns:repeat(7,minmax(200px,1fr))">' + STG.map(function (g) {
-    var ls = list.filter(function (l) { return l.stage === g[0]; }).sort(function (a, b) { return (b.act || b.ts) - (a.act || a.ts); });
-    return '<div class="kbc" data-stg="' + g[0] + '"><h4>' + L(g[1][0], g[1][1]) + "<span>" + ls.length + "</span></h4>" + ls.map(function (l) {
-      var sla = l.stage === "yangi" && slaDaq(l) > 15;
-      return '<div class="ld ' + (l.stage === "yangi" ? "yangi" : "") + '" draggable="true" data-l="' + l.id + '"><b>' + esc(l.name) + (sla ? ' <span class="st q" style="font-size:10.5px">SLA ' + (slaDaq(l) >= 60 ? Math.round(slaDaq(l) / 60) + L(" soat", " ч") : slaDaq(l) + L(" daq", " мин")) + "</span>" : "") + '</b><div class="lm">' + qNom(l.q) + (l.unit ? " · " + l.unit : "") + (l.sabab ? " · " + esc(l.sabab) : "") + '</div><div class="lf"><span class="src ' + l.src + '">' + l.src + "</span><span>" + (l.mgr || '<span class="qz">' + L("menejer yo‘q", "без менеджера") + "</span>") + " · " + oldin(l.act || l.ts) + "</span></div></div>";
-    }).join("") + "</div>";
-  }).join("") + "</div>";
-  return s;
-}
-function bLid() {
-  $("#fS").onchange = function (e) { AF.src = e.target.value; adminView(); };
-  $("#fM").onchange = function (e) { AF.mgr = e.target.value; adminView(); };
-  $("#fQ").oninput = function (e) { AF.q = e.target.value; clearTimeout(bLid.t); bLid.t = setTimeout(function () { adminView(); var f = $("#fQ"); f.focus(); f.setSelectionRange(f.value.length, f.value.length); }, 250); };
-  $$("#abody [data-qa]").forEach(function (b) { b.onclick = function () { var l = S.leads.filter(function (x) { return x.id === b.dataset.qa; })[0]; l.act = Date.now(); l.stage = "aloqa"; l.note = (l.note ? l.note + " · " : "") + L("qayta aloqa ", "повторный контакт ") + sana(Date.now()); jurnal(l.name + L(": qayta aloqaga olindi", ": возвращён в работу")); saqla(); adminNav(); adminView(); }; });
-  var sur = null;
-  $$("#abody .ld[draggable]").forEach(function (d) { d.addEventListener("dragstart", function (e) { sur = d.dataset.l; e.dataTransfer.effectAllowed = "move"; try { e.dataTransfer.setData("text/plain", sur); } catch (x) {} d.style.opacity = ".5"; }); d.addEventListener("dragend", function () { d.style.opacity = ""; }); });
-  $$("#abody .kbc").forEach(function (c) {
-    c.addEventListener("dragover", function (e) { e.preventDefault(); c.classList.add("drop"); });
-    c.addEventListener("dragleave", function () { c.classList.remove("drop"); });
-    c.addEventListener("drop", function (e) { e.preventDefault(); c.classList.remove("drop"); var l = S.leads.filter(function (x) { return x.id === sur; })[0]; if (!l || l.stage === c.dataset.stg) return; jurnal(l.name + ": " + stgN(l.stage) + " → " + stgN(c.dataset.stg)); if (l.stage === "yangi" && !l.resp) l.resp = Math.max(1, Math.round((Date.now() - l.ts) / 6e4)); l.stage = c.dataset.stg; l.act = Date.now(); if (!l.mgr) l.mgr = MEN[0]; saqla(); adminNav(); adminView(); });
-  });
-  $$("#abody [data-l]").forEach(function (b) { b.onclick = function () { lidOch(b.dataset.l); }; });
-  $("#lNew").onclick = function () {
-    modal('<div class="amb"><h3>' + L("Yangi lid", "Новый лид") + '</h3><div class="afm"><div class="r2"><label>' + L("Ism", "Имя") + '<input id="nI"></label><label>' + L("Telefon", "Телефон") + '<input id="nT" value="+998 "></label></div><div class="r2"><label>' + L("Manba", "Источник") + '<select id="nS">' + MANBA.map(function (m) { return "<option>" + m + "</option>"; }).join("") + "</select></label><label>" + L("Qiziqish", "Интерес") + '<select id="nQ"><option value="kv">' + qNom("kv") + '</option><option value="kot">' + qNom("kot") + '</option><option value="tij">' + qNom("tij") + '</option></select></label></div><button class="ab1" id="nSv" style="justify-self:start;padding:11px 16px">' + L("Qo‘shish", "Добавить") + "</button></div></div>");
-    $("#nT").addEventListener("input", telMask);
-    $("#nSv").onclick = function () { var n = $("#nI").value.trim(); if (n.length < 2) { tosh(L("Ismni yozing", "Укажите имя")); return; } if ($("#nT").value.replace(/\D/g, "").length !== 12) { tosh(L("Telefon raqamini to‘liq yozing", "Укажите номер полностью")); return; } var l = lidQosh({ name: n, phone: $("#nT").value, q: $("#nQ").value }); l.src = $("#nS").value; saqla(); yop(); adminNav(); adminView(); };
-  };
-}
 function lidOch(id) {
   var l = S.leads.filter(function (x) { return x.id === id; })[0];
   var s = '<div class="amb"><h3>' + esc(l.name) + ' <span class="src ' + l.src + '">' + l.src + '</span></h3><p class="mini" style="margin:-6px 0 14px">' + l.phone + " · " + qNom(l.q) + (l.unit ? " · " + l.unit : "") + " · " + sana(l.ts, true) + '</p><div class="afm"><div class="r2"><label>' + L("Bosqich", "Этап") + '<select id="lS">' + STG.map(function (g) { return '<option value="' + g[0] + '"' + (g[0] === l.stage ? " selected" : "") + ">" + L(g[1][0], g[1][1]) + "</option>"; }).join("") + "</select></label><label>" + L("Menejer", "Менеджер") + '<select id="lM"><option value="">—</option>' + MEN.map(function (m) { return "<option" + (m === l.mgr ? " selected" : "") + ">" + m + "</option>"; }).join("") + '</select></label></div><label id="lSbW" style="' + (l.stage === "yoqotildi" ? "" : "display:none") + '">' + L("Yo‘qotish sababi", "Причина потери") + '<select id="lSb">' + [L("Narx qimmat", "Дорого"), L("Boshqa majmuani tanladi", "Выбрал другой ЖК"), L("Javob bermadi", "Не отвечает"), L("Joylashuv mos emas", "Не подошла локация")].map(function (x) { return "<option" + (x === l.sabab ? " selected" : "") + ">" + x + "</option>"; }).join("") + "</select></label><label>" + L("Izoh", "Комментарий") + '<textarea id="lN">' + esc(l.note) + '</textarea></label><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ab1" id="lSv" style="padding:11px 16px">' + L("Saqlash", "Сохранить") + '</button><a class="ab2" style="padding:11px 16px;text-decoration:none" href="tel:' + l.phone.replace(/\s/g, "") + '">' + L("Qo‘ng‘iroq", "Позвонить") + '</a><button class="ab2" id="lV" style="padding:11px 16px">' + L("Ko‘rishga yozish", "Записать на просмотр") + "</button>" + (l.unit && UI[l.unit] ? '<button class="ab2" id="lSayt" style="padding:11px 16px">↗ ' + L("Obyekt saytda", "Объект на сайте") + " (" + l.unit + ")</button>" : "") + "</div></div></div>";
@@ -1848,28 +1895,6 @@ function lidOch(id) {
     saqla(); yop(); adminNav(); adminView();
   };
   $("#lV").onclick = function () { var d = new Date(); d.setDate(d.getDate() + 1); d.setHours(15, 0, 0, 0); S.views.push({ id: "V-" + (++S.seq), ts: d.getTime(), name: l.name, phone: l.phone, q: l.q, unit: l.unit, mgr: l.mgr || MEN[0], st: "kutilmoqda", src: l.src }); l.stage = "korish"; l.act = Date.now(); jurnal(l.name + L(": ko‘rishga yozildi", ": записан на просмотр")); saqla(); yop(); adminNav(); adminView(); tosh(L("Ertaga 15:00 ga yozildi", "Записан на завтра 15:00")); };
-}
-/* -- Ko‘rishlar -- */
-function aKor() {
-  var d0 = new Date(); d0.setHours(0, 0, 0, 0);
-  var list = S.views.slice().sort(function (a, b) { return a.ts - b.ts; }), guruh = {};
-  list.forEach(function (v) { var k = Math.floor((v.ts - d0.getTime()) / DAY); (guruh[k] = guruh[k] || []).push(v); });
-  var kel = S.views.filter(function (v) { return v.st === "keldi"; }).length, kelm = S.views.filter(function (v) { return v.st === "kelmadi"; }).length;
-  aKor.ot = 0;
-  var s = '<div class="kp4">' + kpc(L("Bugun", "Сегодня"), (guruh[0] || []).length) + kpc(L("Kelgusi 7 kun", "Следующие 7 дней"), list.filter(function (v) { return v.ts > NOW && v.ts - NOW < 7 * DAY; }).length) + kpc(L("Keldi", "Пришли"), kel, "", "y") + kpc(L("Kelmadi", "Не пришли"), kelm, kel + kelm ? Math.round(kelm / (kel + kelm) * 100) + "%" : "", kelm ? "q" : "") + "</div>";
-  s += '<div class="pn" style="margin-top:16px">';
-  Object.keys(guruh).map(Number).sort(function (a, b) { return b < 0 && a >= 0 ? -1 : a < 0 && b >= 0 ? 1 : a >= 0 ? a - b : b - a; }).forEach(function (k) {
-    if (k < 0 && !aKor.ot) { aKor.ot = 1; s += '<h3 style="margin-top:22px;color:#6B7488">' + L("O‘tgan ko‘rishlar", "Прошедшие просмотры") + "</h3>"; }
-    var nomi = k === 0 ? L("Bugun", "Сегодня") : k === 1 ? L("Ertaga", "Завтра") : k === -1 ? L("Kecha", "Вчера") : sana(d0.getTime() + k * DAY);
-    s += '<h3 style="margin-top:14px">' + nomi + '</h3><div class="tw"><table class="at">' + guruh[k].map(function (v) {
-      return "<tr><td style=\"width:70px\"><b>" + ("0" + new Date(v.ts).getHours()).slice(-2) + ":00</b></td><td>" + esc(v.name) + '<div class="mini">' + v.phone + "</div></td><td>" + qNom(v.q) + (v.unit ? " · " + v.unit : "") + '</td><td><span class="src ' + v.src + '">' + v.src + "</span></td><td>" + v.mgr + "</td><td>" +
-        (v.st === "kutilmoqda" ? '<button class="ab2" data-vk="' + v.id + '">✓ ' + L("Keldi", "Пришёл") + '</button> <button class="ab2" data-vn="' + v.id + '">' + L("Kelmadi", "Не пришёл") + "</button>" : '<span class="st ' + (v.st === "keldi" ? "y" : "q") + '">' + (v.st === "keldi" ? L("Keldi", "Пришёл") : L("Kelmadi", "Не пришёл")) + "</span>") + "</td></tr>";
-    }).join("") + "</table></div>";
-  });
-  return s + "</div>";
-}
-function bKor() {
-  $$("#abody [data-vk],#abody [data-vn]").forEach(function (b) { b.onclick = function () { var id = b.dataset.vk || b.dataset.vn, v = S.views.filter(function (x) { return x.id === id; })[0]; v.st = b.dataset.vk ? "keldi" : "kelmadi"; jurnal(v.name + L(": ko‘rish — ", ": просмотр — ") + (v.st === "keldi" ? L("keldi", "пришёл") : L("kelmadi", "не пришёл"))); saqla(); adminNav(); adminView(); }; });
 }
 /* -- Bronlar -- */
 function aBron() {
@@ -2513,6 +2538,176 @@ function avtoBekor() {
   });
   if (n) saqla();
   return n;
+}
+
+/* ================= v9: Lidlar va Ko'rishlar bo'limlari (qayta yozildi) ================= */
+var STR = { yangi: "#2F5FD0", aloqa: "#0E8FB5", korish: "#7A4FD0", taklif: "#C98A1B", bron: "#D8662B", shartnoma: "#1E7A4F", yoqotildi: "#8A94A3" };
+var LV = null; // "kanban" | "royxat"
+var LSTG = "yangi"; // telefonda ko‘rinadigan ustun
+function bosH(ism) { var p = String(ism).split(" "); return (p[0] ? p[0][0] : "") + (p[1] ? p[1][0] : ""); }
+function rangIsm(ism) { var h = 0; for (var i = 0; i < ism.length; i++) h = (h * 31 + ism.charCodeAt(i)) % 360; return "hsl(" + h + ",45%,42%)"; }
+function kStg(k) { var i = STG.map(function (g) { return g[0]; }).indexOf(k); return i >= 0 && i < STG.length - 2 ? STG[i + 1][0] : null; }
+function lidTop(id) { return S.leads.filter(function (x) { return x.id === id; })[0]; }
+function bosqichga(l, ns) {
+  if (!l || l.stage === ns) return;
+  jurnal(l.name + ": " + stgN(l.stage) + " → " + stgN(ns));
+  if (l.stage === "yangi" && !l.resp) l.resp = Math.max(1, Math.round((Date.now() - l.ts) / 6e4));
+  l.stage = ns; l.act = Date.now(); if (!l.mgr) l.mgr = MEN[0];
+  saqla(); adminNav(); adminView();
+}
+function yoqotish(l) {
+  modal('<div class="amb"><h3>' + esc(l.name) + " — " + L("yo‘qotildi", "потерян") + '</h3><div class="afm"><label>' + L("Sabab", "Причина") + '<select id="yqS">' + [L("Narx qimmat", "Дорого"), L("Boshqa majmuani tanladi", "Выбрал другой ЖК"), L("Javob bermadi", "Не отвечает"), L("Joylashuv mos emas", "Не подошла локация"), L("Boshqa", "Другое")].map(function (x) { return "<option>" + x + "</option>"; }).join("") + '</select></label><button class="ab1" id="yqY" style="justify-self:start;padding:11px 16px">' + L("Saqlash", "Сохранить") + "</button></div></div>");
+  $("#yqY").onclick = function () { l.sabab = $("#yqS").value; yop(); bosqichga(l, "yoqotildi"); };
+}
+function slaMatn(l) { var d = slaDaq(l); return d >= 60 ? Math.round(d / 60) + L(" soat", " ч") : d + L(" daq", " мин"); }
+
+function aLid() {
+  if (!LV) LV = innerWidth < 720 ? "royxat" : "kanban";
+  var qq = (AF.q || "").toLowerCase().replace(/\s/g, "");
+  var list = S.leads.filter(function (l) { return (AF.src === "all" || l.src === AF.src) && (AF.mgr === "all" || l.mgr === AF.mgr) && (!qq || (l.name + l.phone + l.unit).toLowerCase().replace(/\s/g, "").indexOf(qq) >= 0); });
+  var yangi = list.filter(function (l) { return l.stage === "yangi"; }), kech = yangi.filter(function (l) { return slaDaq(l) > 15; });
+  var sh = list.filter(function (l) { return l.stage === "shartnoma"; }).length, faol = list.filter(function (l) { return l.stage !== "yoqotildi"; }).length;
+  var s = '<div class="kp4">' + kpc(L("Lidlar (filtrda)", "Лиды (в фильтре)"), list.length, faol + L(" tasi faol", " активных"));
+  s += kpc(L("Javob kutmoqda", "Ждут ответа"), yangi.length, kech.length ? L(kech.length + " tasida 15 daqiqa o‘tgan", "у " + kech.length + " прошло 15 мин") : L("hammasi vaqtida", "все вовремя"), kech.length ? "q" : "y");
+  s += kpc(L("Shartnoma", "Договоры"), sh, L("lid → shartnoma", "лид → договор"), "y");
+  s += kpc(L("Konversiya", "Конверсия"), (list.length ? Math.round(sh / list.length * 100) : 0) + "%", L("yo‘qotilgan: ", "потеряно: ") + list.filter(function (l) { return l.stage === "yoqotildi"; }).length) + "</div>";
+  s += '<div class="aflt lbar"><div class="seg lvs"><button data-lv="kanban" class="' + (LV === "kanban" ? "on" : "") + '">▦ Kanban</button><button data-lv="royxat" class="' + (LV === "royxat" ? "on" : "") + '">☰ ' + L("Ro‘yxat", "Список") + "</button></div>";
+  s += '<input id="fQ" type="search" placeholder="' + L("Ism, telefon yoki obyekt…", "Имя, телефон или объект…") + '" value="' + esc(AF.q || "") + '">';
+  s += '<select id="fS"><option value="all">' + L("Barcha manbalar", "Все источники") + "</option>" + MANBA.map(function (m) { return "<option" + (AF.src === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + "</select>";
+  s += '<select id="fM"><option value="all">' + L("Barcha menejerlar", "Все менеджеры") + '</option><option value=""' + (AF.mgr === "" ? " selected" : "") + ">" + L("Biriktirilmagan", "Не назначен") + "</option>" + MEN.map(function (m) { return "<option" + (AF.mgr === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + "</select>";
+  s += '<span style="flex:1"></span><button class="ab1" id="lNew">+ ' + L("Lid qo‘shish", "Добавить лид") + "</button></div>";
+  var sv0 = sovuqLidlar();
+  if (sv0.length) s += '<details class="pn sovuq"' + (AF.sovOch ? " open" : "") + '><summary><b>❄ ' + L("Sovib qolgan lidlar", "«Остывшие» лиды") + "</b><span>" + sv0.length + L(" ta — 14 kundan beri harakatsiz", " — без движения 14+ дней") + '</span></summary><div class="vz" style="margin-top:12px">' + sv0.map(function (l) { return '<div class="v s"><div><b>' + esc(l.name) + " · " + qNom(l.q) + "</b><span>" + stgN(l.stage) + " · " + (l.mgr || "—") + " · " + oldin(l.act || l.ts) + '</span></div><button class="ab1" data-qa="' + l.id + '">' + L("Qayta aloqa", "Вернуть в работу") + "</button></div>"; }).join("") + "</div></details>";
+  if (LV === "kanban") {
+    s += '<div class="kchip">' + STG.map(function (g) { var n = list.filter(function (l) { return l.stage === g[0]; }).length; return '<button data-kch="' + g[0] + '" class="' + (LSTG === g[0] ? "on" : "") + '" style="--r:' + STR[g[0]] + '"><i></i>' + L(g[1][0], g[1][1]) + " <b>" + n + "</b></button>"; }).join("") + "</div>";
+    s += '<div class="kb2">' + STG.map(function (g) {
+      var ls = list.filter(function (l) { return l.stage === g[0]; }).sort(function (a, b) { return a.stage === "yangi" ? a.ts - b.ts : (b.act || b.ts) - (a.act || a.ts); });
+      var sl = g[0] === "yangi" ? ls.filter(function (l) { return slaDaq(l) > 15; }).length : 0;
+      return '<div class="kc' + (LSTG === g[0] ? " kon" : "") + '" data-stg="' + g[0] + '" style="--r:' + STR[g[0]] + '"><header><i></i><b>' + L(g[1][0], g[1][1]) + "</b>" + (sl ? '<em class="q">SLA ' + sl + "</em>" : "") + "<span>" + ls.length + '</span></header><div class="kcb">' +
+        (ls.length ? ls.map(lidKarta).join("") : '<div class="kbo">' + L("Bo‘sh — lidni shu yerga sudrang", "Пусто — перетащите лид сюда") + "</div>") + "</div></div>";
+    }).join("") + "</div>";
+  } else {
+    var tr = list.slice().sort(function (a, b) { return (b.act || b.ts) - (a.act || a.ts); });
+    s += '<div class="pn tw lr"><table class="at"><tr><th>' + L("Mijoz", "Клиент") + "</th><th>" + L("Qiziqish", "Интерес") + "</th><th>" + L("Manba", "Источник") + "</th><th>" + L("Bosqich", "Этап") + "</th><th>" + L("Menejer", "Менеджер") + "</th><th>" + L("Faollik", "Активность") + "</th><th></th></tr>" +
+      tr.map(function (l) {
+        return '<tr><td><div class="lr1"><span class="av" style="background:' + rangIsm(l.name) + '">' + esc(bosH(l.name)) + '</span><div><b data-l="' + l.id + '" class="lnk">' + esc(l.name) + '</b><div class="mini">' + l.phone + "</div></div></div></td><td>" + qNom(l.q) + (l.unit ? '<div class="mini">' + esc(l.unit) + "</div>" : "") + '</td><td><span class="src ' + l.src + '">' + l.src + '</span></td><td><select class="isel" data-ls="' + l.id + '" style="border-color:' + STR[l.stage] + '">' + STG.map(function (g) { return '<option value="' + g[0] + '"' + (g[0] === l.stage ? " selected" : "") + ">" + L(g[1][0], g[1][1]) + "</option>"; }).join("") + '</select></td><td><select class="isel" data-lm="' + l.id + '"><option value="">—</option>' + MEN.map(function (m) { return "<option" + (m === l.mgr ? " selected" : "") + ">" + m + "</option>"; }).join("") + "</select></td><td>" + oldin(l.act || l.ts) + (l.stage === "yangi" && slaDaq(l) > 15 ? ' <span class="st q">SLA ' + slaMatn(l) + "</span>" : "") + '</td><td><a class="ib" href="tel:' + l.phone.replace(/\s/g, "") + '" title="' + L("Qo‘ng‘iroq", "Позвонить") + '">☎</a></td></tr>';
+      }).join("") + "</table></div>";
+  }
+  return s;
+}
+function lidKarta(l) {
+  var sla = l.stage === "yangi" && slaDaq(l) > 15, nx = kStg(l.stage);
+  return '<article class="lk' + (sla ? " sla" : "") + '" draggable="true" data-l="' + l.id + '"><div class="lk1"><span class="av" style="background:' + rangIsm(l.name) + '">' + esc(bosH(l.name)) + '</span><div class="lk2"><b>' + esc(l.name) + "</b><span>" + qNom(l.q) + (l.unit ? " · " + esc(l.unit) : "") + "</span></div></div>" + (sla ? '<div class="lks">⏱ ' + L("Javobsiz: ", "Без ответа: ") + slaMatn(l) + "</div>" : "") +
+    (l.sabab ? '<div class="lk3">✕ ' + esc(l.sabab) + "</div>" : l.note ? '<div class="lk3">' + esc(l.note).slice(0, 70) + "</div>" : "") +
+    '<div class="lk4"><span class="src ' + l.src + '">' + l.src + "</span><span>" + (l.mgr || '<b class="qz">' + L("menejer yo‘q", "без менеджера") + "</b>") + " · " + oldin(l.act || l.ts) + "</span></div>" +
+    '<div class="lk5"><a class="ib" href="tel:' + l.phone.replace(/\s/g, "") + '" title="' + L("Qo‘ng‘iroq", "Позвонить") + '" data-stop="1">☎</a><span class="mini">' + l.phone + "</span>" + (nx ? '<button class="nx" data-nx="' + l.id + '" title="' + L("Keyingi bosqich: ", "Следующий этап: ") + stgN(nx) + '">' + stgN(nx) + " →</button>" : "") + "</div></article>";
+}
+function bLid() {
+  $$("#abody [data-lv]").forEach(function (b) { b.onclick = function () { LV = b.dataset.lv; adminView(); }; });
+  $$("#abody [data-kch]").forEach(function (b) { b.onclick = function () { LSTG = b.dataset.kch; $$("#abody [data-kch]").forEach(function (x) { x.classList.toggle("on", x === b); }); $$("#abody .kc").forEach(function (c) { c.classList.toggle("kon", c.dataset.stg === LSTG); }); var c0 = $('#abody .kc[data-stg="' + LSTG + '"]'); if (c0 && innerWidth > 720) c0.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" }); }; });
+  var ch0 = $("#abody .kchip .on"); if (ch0) ch0.scrollIntoView({ inline: "center", block: "nearest" });
+  $("#fS").onchange = function (e) { AF.src = e.target.value; adminView(); };
+  $("#fM").onchange = function (e) { AF.mgr = e.target.value; adminView(); };
+  $("#fQ").oninput = function (e) { AF.q = e.target.value; clearTimeout(bLid.t); bLid.t = setTimeout(function () { adminView(); var f = $("#fQ"); f.focus(); f.setSelectionRange(f.value.length, f.value.length); }, 250); };
+  var sv = $("#abody details.sovuq"); if (sv) sv.ontoggle = function () { AF.sovOch = sv.open; };
+  $$("#abody [data-qa]").forEach(function (b) { b.onclick = function () { var l = lidTop(b.dataset.qa); l.act = Date.now(); l.stage = "aloqa"; l.note = (l.note ? l.note + " · " : "") + L("qayta aloqa ", "повторный контакт ") + sana(Date.now()); jurnal(l.name + L(": qayta aloqaga olindi", ": возвращён в работу")); saqla(); adminNav(); adminView(); }; });
+  $$("#abody [data-nx]").forEach(function (b) { b.onclick = function (e) { e.stopPropagation(); var l = lidTop(b.dataset.nx); bosqichga(l, kStg(l.stage)); tosh(esc(l.name) + " → " + stgN(l.stage)); }; });
+  $$("#abody [data-stop]").forEach(function (a) { a.onclick = function (e) { e.stopPropagation(); }; });
+  $$("#abody [data-ls]").forEach(function (sel) { sel.onchange = function () { var l = lidTop(sel.dataset.ls); if (sel.value === "yoqotildi") { yoqotish(l); return; } bosqichga(l, sel.value); }; });
+  $$("#abody [data-lm]").forEach(function (sel) { sel.onchange = function () { var l = lidTop(sel.dataset.lm); l.mgr = sel.value; l.act = Date.now(); jurnal(l.name + L(": menejer — ", ": менеджер — ") + (sel.value || "—")); saqla(); adminView(); }; });
+  var sur = null;
+  $$("#abody .lk[draggable]").forEach(function (d) { d.addEventListener("dragstart", function (e) { sur = d.dataset.l; e.dataTransfer.effectAllowed = "move"; try { e.dataTransfer.setData("text/plain", sur); } catch (x) {} d.classList.add("sur"); }); d.addEventListener("dragend", function () { d.classList.remove("sur"); }); });
+  $$("#abody .kc").forEach(function (c) {
+    c.addEventListener("dragover", function (e) { e.preventDefault(); c.classList.add("drop"); });
+    c.addEventListener("dragleave", function (e) { if (!c.contains(e.relatedTarget)) c.classList.remove("drop"); });
+    c.addEventListener("drop", function (e) { e.preventDefault(); c.classList.remove("drop"); var l = lidTop(sur); if (!l) return; if (c.dataset.stg === "yoqotildi") { yoqotish(l); return; } bosqichga(l, c.dataset.stg); });
+  });
+  $$("#abody .lk, #abody .lnk").forEach(function (b) { b.onclick = function () { lidOch(b.dataset.l); }; });
+  $("#lNew").onclick = function () {
+    modal('<div class="amb"><h3>' + L("Yangi lid", "Новый лид") + '</h3><div class="afm"><div class="r2"><label>' + L("Ism", "Имя") + '<input id="nI"></label><label>' + L("Telefon", "Телефон") + '<input id="nT" value="+998 "></label></div><div class="r2"><label>' + L("Manba", "Источник") + '<select id="nS">' + MANBA.map(function (m) { return "<option>" + m + "</option>"; }).join("") + "</select></label><label>" + L("Qiziqish", "Интерес") + '<select id="nQ"><option value="kv">' + qNom("kv") + '</option><option value="kot">' + qNom("kot") + '</option><option value="tij">' + qNom("tij") + '</option></select></label></div><button class="ab1" id="nSv" style="justify-self:start;padding:11px 16px">' + L("Qo‘shish", "Добавить") + "</button></div></div>");
+    $("#nT").addEventListener("input", telMask);
+    $("#nSv").onclick = function () { var n = $("#nI").value.trim(); if (n.length < 2) { tosh(L("Ismni yozing", "Укажите имя")); return; } if ($("#nT").value.replace(/\D/g, "").length !== 12) { tosh(L("Telefon raqamini to‘liq yozing", "Укажите номер полностью")); return; } var l = lidQosh({ name: n, phone: $("#nT").value, q: $("#nQ").value }); l.src = $("#nS").value; jurnal(n + L(": yangi lid qo‘shildi", ": добавлен новый лид")); saqla(); yop(); adminNav(); adminView(); };
+  };
+}
+
+/* ---------- Ko'rishlar ---------- */
+var KOR = { kun: null, rej: "kelgusi" };
+function kunBosh(ts) { var d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function korLid(v) { return S.leads.filter(function (l) { return l.phone === v.phone; })[0]; }
+function aKor() {
+  var d0 = kunBosh(Date.now()), fa = S.views.filter(function (v) { return v.st !== "bekor"; });
+  var kel = fa.filter(function (v) { return v.st === "keldi"; }).length, kelm = fa.filter(function (v) { return v.st === "kelmadi"; }).length;
+  var bugun = fa.filter(function (v) { return kunBosh(v.ts) === d0; }), hafta = fa.filter(function (v) { return v.ts >= d0 && v.ts < d0 + 7 * DAY; });
+  var s = '<div class="kp4">' + kpc(L("Bugun", "Сегодня"), bugun.length, bugun.filter(function (v) { return v.st === "kutilmoqda"; }).length + L(" tasi kutilmoqda", " ожидается"));
+  s += kpc(L("Kelgusi 7 kun", "Ближайшие 7 дней"), hafta.length, L("jadvalda", "в расписании"));
+  s += kpc(L("Kelish foizi", "Явка"), (kel + kelm ? Math.round(kel / (kel + kelm) * 100) : 0) + "%", kel + L(" keldi / ", " пришли / ") + kelm + L(" kelmadi", " не пришли"), "y");
+  s += kpc(L("Kelmaganlar", "Не пришли"), kelm, L("qayta chaqirish kerak", "нужно перезвонить"), kelm ? "q" : "") + "</div>";
+  s += '<div class="pn kst"><div class="kstb">';
+  for (var i = -3; i <= 10; i++) {
+    var t0 = d0 + i * DAY, n = fa.filter(function (v) { return kunBosh(v.ts) === t0; }).length, d = new Date(t0);
+    s += '<button data-kd="' + t0 + '" title="' + sana(t0) + " · " + n + L(" ta ko‘rish", " просмотров") + '" class="' + (KOR.kun === t0 ? "on " : "") + (i === 0 ? "bug " : "") + (i < 0 ? "ot" : "") + '"><small>' + (i === 0 ? L("Bugun", "Сег.") : (lang === "ru" ? RUD : UZD)[d.getDay()]) + "</small><b>" + d.getDate() + "</b><em>" + (n ? "●".repeat(Math.min(n, 4)) : "·") + "</em></button>";
+  }
+  s += '</div><div class="kstf"><div class="seg"><button data-kr="kelgusi" class="' + (!KOR.kun && KOR.rej === "kelgusi" ? "on" : "") + '">' + L("Kelgusi", "Предстоящие") + '</button><button data-kr="otgan" class="' + (!KOR.kun && KOR.rej === "otgan" ? "on" : "") + '">' + L("O‘tgan", "Прошедшие") + '</button></div><span class="sp1"></span><button class="ab1" id="kNew">+ ' + L("Ko‘rish qo‘shish", "Добавить просмотр") + "</button></div></div>";
+  var list = S.views.filter(function (v) { return KOR.kun ? kunBosh(v.ts) === KOR.kun : KOR.rej === "kelgusi" ? v.ts >= d0 : v.ts < d0; }).sort(function (a, b) { return KOR.rej === "otgan" && !KOR.kun ? b.ts - a.ts : a.ts - b.ts; });
+  var gr = {}, tart = [];
+  list.forEach(function (v) { var k = kunBosh(v.ts); if (!gr[k]) { gr[k] = []; tart.push(k); } gr[k].push(v); });
+  s += '<div class="a2 kor2"><div class="pn">';
+  if (!tart.length) s += '<p class="mini" style="padding:20px 0;text-align:center">' + L("Bu kunga ko‘rish yo‘q. «+ Ko‘rish qo‘shish» bilan qo‘shing.", "На этот день просмотров нет. Добавьте через «+ Добавить просмотр».") + "</p>";
+  tart.forEach(function (k) {
+    var nomi = k === d0 ? L("Bugun", "Сегодня") : k === d0 + DAY ? L("Ertaga", "Завтра") : k === d0 - DAY ? L("Kecha", "Вчера") : sana(k);
+    s += '<h3 class="kdh">' + nomi + "<small>" + gr[k].length + L(" ta ko‘rish", " просмотров") + '</small></h3><div class="tl">' + gr[k].map(function (v) {
+      var hh = ("0" + new Date(v.ts).getHours()).slice(-2) + ":00", u = v.unit && UI[v.unit], stc = { kutilmoqda: "b", keldi: "y", kelmadi: "q", bekor: "k" }[v.st];
+      var stn = { kutilmoqda: L("Kutilmoqda", "Ожидается"), keldi: L("Keldi", "Пришёл"), kelmadi: L("Kelmadi", "Не пришёл"), bekor: L("Bekor", "Отменён") }[v.st];
+      var o = '<div class="tli ' + v.st + '"><div class="tlt">' + hh + '</div><div class="tlc"><div class="tlr"><span class="av" style="background:' + rangIsm(v.name) + '">' + esc(bosH(v.name)) + '</span><div style="flex:1;min-width:0"><b>' + esc(v.name) + '</b><div class="mini">' + qNom(v.q) + (u ? " · " + esc(nom(u)) + " (" + v.unit + ")" : "") + '</div></div><span class="st ' + stc + '">' + stn + "</span></div>";
+      o += '<div class="tlm"><a class="ib" href="tel:' + v.phone.replace(/\s/g, "") + '">☎</a><span>' + v.phone + '</span><span class="src ' + v.src + '">' + v.src + "</span><span>👤 " + v.mgr + "</span></div>";
+      if (v.st === "kutilmoqda") o += '<div class="tla"><button class="ab1" data-vk="' + v.id + '">✓ ' + L("Keldi", "Пришёл") + '</button><button class="ab2" data-vn="' + v.id + '">' + L("Kelmadi", "Не пришёл") + '</button><button class="ab2" data-vr="' + v.id + '">↻ ' + L("Ko‘chirish", "Перенести") + '</button><button class="ab2" data-vb="' + v.id + '">' + L("Bekor", "Отменить") + "</button></div>";
+      else if (v.st === "keldi") { var l = korLid(v); o += '<div class="tla"><span class="mini">' + L("Keyingi qadam:", "Следующий шаг:") + "</span>" + (l && ["taklif", "bron", "shartnoma"].indexOf(l.stage) < 0 ? '<button class="ab1" data-vt="' + v.id + '">' + L("Taklif berildi →", "Предложение сделано →") + "</button>" : '<span class="st y">' + (l ? stgN(l.stage) : "—") + "</span>") + "</div>"; }
+      else if (v.st === "kelmadi") o += '<div class="tla"><button class="ab2" data-vr="' + v.id + '">↻ ' + L("Qayta yozish", "Перезаписать") + "</button></div>";
+      return o + "</div></div>";
+    }).join("") + "</div>";
+  });
+  s += "</div>";
+  var yuk = MEN.map(function (m) { return [m, fa.filter(function (v) { return v.mgr === m && v.ts >= d0 && v.ts < d0 + 7 * DAY; }).length, fa.filter(function (v) { return v.mgr === m && v.st === "keldi"; }).length, fa.filter(function (v) { return v.mgr === m && (v.st === "keldi" || v.st === "kelmadi"); }).length]; });
+  var mx = Math.max.apply(null, yuk.map(function (x) { return x[1]; })) || 1;
+  s += '<div class="pn"><h3>' + L("Menejerlar yuklamasi", "Загрузка менеджеров") + "<small>" + L("7 kun", "7 дней") + "</small></h3>" + yuk.map(function (x) { return '<div class="bar"><span>' + x[0] + '</span><span class="tr"><i style="width:' + (x[1] / mx * 100) + '%;background:#7A4FD0"></i></span><em>' + x[1] + "</em></div>"; }).join("");
+  s += '<h3 style="margin-top:18px">' + L("Kelish foizi (menejer bo‘yicha)", "Явка по менеджерам") + "</h3>" + yuk.map(function (x) { var p = x[3] ? Math.round(x[2] / x[3] * 100) : 0; return '<div class="bar"><span>' + x[0] + '</span><span class="tr"><i style="width:' + p + '%;background:#2F9E68"></i></span><em>' + p + "%</em></div>"; }).join("");
+  s += '<p class="mini" style="margin-top:12px">' + L("Kelmagan mijozga shu kuni qayta qo‘ng‘iroq qilish — bronni saqlab qolishning eng oson yo‘li.", "Перезвонить не пришедшему в тот же день — самый простой способ сохранить сделку.") + "</p></div></div>";
+  return s;
+}
+function bKor() {
+  var f = function (id) { return S.views.filter(function (x) { return x.id === id; })[0]; };
+  $$("#abody [data-kd]").forEach(function (b) { b.onclick = function () { var t0 = +b.dataset.kd; KOR.kun = KOR.kun === t0 ? null : t0; adminView(); }; });
+  $$("#abody [data-kr]").forEach(function (b) { b.onclick = function () { KOR.kun = null; KOR.rej = b.dataset.kr; adminView(); }; });
+  $$("#abody [data-vk],#abody [data-vn]").forEach(function (b) { b.onclick = function () { var v = f(b.dataset.vk || b.dataset.vn); v.st = b.dataset.vk ? "keldi" : "kelmadi"; var l = korLid(v); if (l) l.act = Date.now(); jurnal(v.name + L(": ko‘rish — ", ": просмотр — ") + (v.st === "keldi" ? L("keldi", "пришёл") : L("kelmadi", "не пришёл"))); saqla(); adminNav(); adminView(); }; });
+  $$("#abody [data-vb]").forEach(function (b) { b.onclick = function () { var v = f(b.dataset.vb); v.st = "bekor"; jurnal(v.name + L(": ko‘rish bekor qilindi", ": просмотр отменён")); saqla(); adminNav(); adminView(); }; });
+  $$("#abody [data-vt]").forEach(function (b) { b.onclick = function () { var v = f(b.dataset.vt), l = korLid(v); if (l) { bosqichga(l, "taklif"); tosh(esc(l.name) + " → " + stgN("taklif")); } }; });
+  $$("#abody [data-vr]").forEach(function (b) { b.onclick = function () { korForma(f(b.dataset.vr)); }; });
+  $("#kNew").onclick = function () { korForma(null); };
+  var kb = $("#abody .kstb"), kf = $("#abody .kstb .on") || $("#abody .kstb .bug");
+  if (kb && kf) kb.scrollLeft = kf.offsetLeft - kb.clientWidth / 2 + kf.clientWidth / 2;
+}
+function korForma(v) {
+  var d0 = kunBosh(Date.now()), kunlar = "";
+  for (var i = 0; i < 14; i++) { var t0 = d0 + i * DAY; kunlar += '<option value="' + t0 + '">' + (i === 0 ? L("Bugun", "Сегодня") : i === 1 ? L("Ertaga", "Завтра") : sana(t0)) + "</option>"; }
+  var soat = ""; for (var h = 9; h <= 19; h++) soat += '<option value="' + h + '"' + (h === 15 ? " selected" : "") + ">" + h + ":00</option>";
+  var s = '<div class="amb"><h3>' + (v ? L("Ko‘rishni ko‘chirish — ", "Перенос просмотра — ") + esc(v.name) : L("Yangi ko‘rish", "Новый просмотр")) + '</h3><div class="afm">';
+  if (!v) s += '<div class="r2"><label>' + L("Ism", "Имя") + '<input id="kI"></label><label>' + L("Telefon", "Телефон") + '<input id="kT" value="+998 "></label></div><label>' + L("Qiziqish", "Интерес") + '<select id="kQ"><option value="kv">' + qNom("kv") + '</option><option value="kot">' + qNom("kot") + '</option><option value="tij">' + qNom("tij") + "</option></select></label>";
+  s += '<div class="r2"><label>' + L("Kun", "День") + '<select id="kK">' + kunlar + "</select></label><label>" + L("Soat", "Время") + '<select id="kH">' + soat + "</select></label></div>";
+  s += "<label>" + L("Menejer", "Менеджер") + '<select id="kM">' + MEN.map(function (m) { return "<option" + (v && v.mgr === m ? " selected" : "") + ">" + m + "</option>"; }).join("") + '</select></label><button class="ab1" id="kSv" style="justify-self:start;padding:11px 16px">' + L("Saqlash", "Сохранить") + "</button></div></div>";
+  modal(s);
+  if ($("#kT")) $("#kT").addEventListener("input", telMask);
+  $("#kSv").onclick = function () {
+    var ts = +$("#kK").value + (+$("#kH").value) * 36e5, mg = $("#kM").value;
+    if (v) { v.ts = ts; v.st = "kutilmoqda"; v.mgr = mg; jurnal(v.name + L(": ko‘rish ko‘chirildi — ", ": просмотр перенесён — ") + sana(ts, true)); }
+    else {
+      var n = $("#kI").value.trim(), ph = $("#kT").value; if (n.length < 2 || ph.replace(/\D/g, "").length !== 12) { tosh(L("Ism va telefonni to‘liq yozing", "Укажите имя и телефон полностью")); return; }
+      var l = S.leads.filter(function (x) { return x.phone === ph; })[0] || lidQosh({ name: n, phone: ph, q: $("#kQ").value, stage: "korish" });
+      l.stage = "korish"; l.act = Date.now(); l.src = l.src || "Qo‘ng‘iroq";
+      S.views.push({ id: "V-" + (++S.seq), ts: ts, name: n, phone: ph, q: $("#kQ").value, unit: "", mgr: mg, st: "kutilmoqda", src: l.src });
+      jurnal(n + L(": ko‘rishga yozildi — ", ": записан на просмотр — ") + sana(ts, true));
+    }
+    KOR.kun = kunBosh(ts); saqla(); yop(); adminNav(); adminView(); tosh(L("Saqlandi", "Сохранено"));
+  };
 }
 
 </script>
