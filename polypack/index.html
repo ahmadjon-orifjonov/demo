@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>POLYPACK — buyurtma va ishlab chiqarish tizimi (namuna)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="POLYPACK uchun namuna: buyurtma, ishlab chiqarish navbati, ombor, sifat, jo‘natish va to‘lov bitta tizimda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#0f6fd6;--acc2:#0a4f9c;--accbg:#e8f1fc;--bg:#f4f6f9;--card:#fff;--tx:#14202e;--mut:#64748b;--ln:#e3e8ef;--ok:#16a34a;--okbg:#e7f7ed;--wr:#d97706;--wrbg:#fdf3e1;--er:#dc2626;--erbg:#fdecec;--sh:0 1px 2px rgba(15,30,50,.06),0 4px 14px rgba(15,30,50,.06);--r:14px}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:14.5px;line-height:1.45;font-weight:500;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+.namuna{background:#1e293b;color:#e2e8f0;font-size:12.5px;text-align:center;padding:6px 12px}
+.namuna b{color:#fbbf24}
+.lay{display:flex;min-height:calc(100vh - 31px)}
+.side{width:236px;flex:none;background:#0f1b2b;color:#cbd5e1;display:flex;flex-direction:column;position:sticky;top:0;height:calc(100vh - 31px)}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 14px}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;flex:none}
+.brand b{display:block;color:#fff;font-size:15px;letter-spacing:.2px}.brand small{color:#94a3b8;font-size:11.5px}
+.nav{padding:6px 10px;display:flex;flex-direction:column;gap:2px;flex:1}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:#cbd5e1;padding:10px 12px;border-radius:10px;text-align:left;font-weight:600}
+.nav button:hover{background:#18273b}.nav button.on{background:var(--acc);color:#fff}
+.nav .ic{width:20px;text-align:center;font-size:16px}
+.nav .bdg{margin-left:auto;background:var(--er);color:#fff;border-radius:20px;font-size:11px;padding:1px 7px}
+.sidefoot{padding:12px 16px;font-size:11.5px;color:#64748b;border-top:1px solid #1d2b3f}
+.sidefoot button{background:none;border:1px solid #334155;color:#94a3b8;border-radius:8px;padding:5px 9px;font-size:11.5px;margin-top:6px}
+.main{flex:1;min-width:0;padding:22px 26px 90px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.top h1{font-size:22px;margin:0;font-weight:800;letter-spacing:-.2px}.top .sub{color:var(--mut);font-size:13px}
+.top .sp{flex:1}
+.btn{border:1px solid var(--ln);background:#fff;border-radius:10px;padding:8px 13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{border-color:#c5cfdc}.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}.btn.p:hover{background:var(--acc2)}
+.btn.s{padding:5px 10px;font-size:13px;border-radius:8px}.btn.g{background:var(--okbg);border-color:#bfe8cd;color:#11692f}
+.btn:disabled{opacity:.45;cursor:default}
+.grid{display:grid;gap:14px}.k4{grid-template-columns:repeat(4,1fr)}.k2{grid-template-columns:1.4fr 1fr}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:16px}
+.card h3{margin:0 0 12px;font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px}
+.card h3 .sp{flex:1}.card h3 small{font-weight:600;color:var(--mut);font-size:12px}
+.kpi{cursor:pointer;transition:transform .15s}.kpi:hover{transform:translateY(-2px)}
+.kpi .l{color:var(--mut);font-size:12.5px;font-weight:600}.kpi .v{font-size:25px;font-weight:800;margin-top:4px;letter-spacing:-.4px}.kpi .d{font-size:12px;color:var(--mut);margin-top:2px}
+.kpi.er .v{color:var(--er)}.kpi.wr .v{color:var(--wr)}.kpi.ok .v{color:var(--ok)}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:2px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.pill.ok{background:var(--okbg);color:#11692f}.pill.wr{background:var(--wrbg);color:#9a5b00}.pill.er{background:var(--erbg);color:#b42020}.pill.mu{background:#eef2f6;color:#475569}.pill.ac{background:var(--accbg);color:var(--acc2)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.stagebar{display:flex;height:12px;border-radius:8px;overflow:hidden;background:#eef2f6}
+.stagebar div{height:100%;transition:width .5s}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12.5px}
+.leg span{display:flex;align-items:center;gap:6px;cursor:pointer;color:#334155}
+.list .it{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--ln);cursor:pointer}
+.list .it:last-child{border:0}.list .it:hover{background:#f8fafc}
+.list .it .m{flex:1;min-width:0}.list .it .m b{display:block;font-size:14px}.list .it .m small{color:var(--mut);font-size:12.5px}
+.empty{color:var(--mut);text-align:center;padding:22px 8px;font-size:13.5px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:8px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bars .b i{display:block;width:100%;max-width:46px;background:linear-gradient(180deg,var(--acc),var(--acc2));border-radius:7px 7px 3px 3px;transition:height .6s}
+.bars .b small{font-size:11.5px;color:var(--mut)}.bars .b em{font-style:normal;font-size:11px;font-weight:700;color:#334155}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.inp{border:1px solid var(--ln);background:#fff;border-radius:10px;padding:8px 11px;min-width:0}
+.inp:focus{outline:2px solid var(--accbg);border-color:var(--acc)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chip{border:1px solid var(--ln);background:#fff;border-radius:20px;padding:5px 11px;font-size:13px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.chip.on{background:var(--tx);border-color:var(--tx);color:#fff}
+.chip em{font-style:normal;opacity:.65;font-size:12px}
+.seg{display:inline-flex;border:1px solid var(--ln);border-radius:10px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:7px 12px;font-weight:700;font-size:13px}.seg button.on{background:var(--accbg);color:var(--acc2)}
+.kan{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:12px;overflow-x:auto;padding-bottom:10px;align-items:start}
+.col{background:#e9edf3;border-radius:var(--r);padding:10px;min-height:120px}
+.col>h4{margin:2px 4px 10px;font-size:13px;display:flex;align-items:center;gap:7px;position:sticky;top:0}
+.col>h4 em{margin-left:auto;font-style:normal;background:#fff;border-radius:20px;padding:0 8px;font-size:12px;color:var(--mut)}
+.oc{background:#fff;border-radius:11px;padding:11px 12px;margin-bottom:8px;box-shadow:0 1px 2px rgba(15,30,50,.07);cursor:pointer;border-left:4px solid transparent;transition:box-shadow .15s,transform .15s}
+.oc:hover{box-shadow:0 4px 14px rgba(15,30,50,.12)}.oc.late{border-left-color:var(--er)}.oc.soon{border-left-color:var(--wr)}
+.oc .r1{display:flex;justify-content:space-between;gap:6px;font-size:12px;color:var(--mut);font-weight:700}
+.oc b{display:block;margin:3px 0 2px;font-size:14.5px}.oc .pr{font-size:12.5px;color:#334155}
+.oc .r3{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.oc .nx{margin-left:auto;border:0;background:var(--accbg);color:var(--acc2);border-radius:8px;padding:3px 9px;font-weight:800;font-size:12.5px}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px}
+.t th{text-align:left;font-size:12px;color:var(--mut);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--ln);white-space:nowrap;background:#fafbfd}
+.t td{padding:10px;border-bottom:1px solid var(--ln);vertical-align:middle}
+.t tr.cl{cursor:pointer}.t tr.cl:hover td{background:#f8fafc}
+.t .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border-radius:var(--r);background:#fff;box-shadow:var(--sh)}
+.mod{position:fixed;inset:0;background:rgba(15,23,42,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px;animation:fi .15s}
+@keyframes fi{from{opacity:0}}
+.box{background:#fff;border-radius:18px;width:min(760px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:up .2s}
+@keyframes up{from{transform:translateY(14px);opacity:.6}}
+.box .hd{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--ln);position:sticky;top:0;background:#fff;z-index:2}
+.box .hd h2{margin:0;font-size:18px;font-weight:800}.box .hd .x{margin-left:auto;border:0;background:#f1f5f9;border-radius:9px;width:34px;height:34px;font-size:18px}
+.box .bd{padding:16px 18px}
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
+.dl div small{display:block;color:var(--mut);font-size:12px;font-weight:600}.dl div b{font-size:14.5px}
+.step{display:flex;gap:4px;margin:16px 0 6px;overflow-x:auto}
+.step button{flex:1;min-width:92px;border:0;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:700;background:#eef2f6;color:#64748b;line-height:1.25}
+.step button.dn{background:var(--accbg);color:var(--acc2)}.step button.cu{background:var(--acc);color:#fff}
+.sec{margin-top:18px}.sec h4{margin:0 0 8px;font-size:14px;font-weight:800;display:flex;gap:8px;align-items:center}
+.pay{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.prog{height:9px;background:#eef2f6;border-radius:9px;overflow:hidden;margin:6px 0 4px}.prog i{display:block;height:100%;background:var(--ok);border-radius:9px;transition:width .5s}
+.hist{font-size:13px;border-left:2px solid var(--ln);margin-left:4px;padding-left:12px}
+.hist div{margin-bottom:7px;position:relative}.hist div:before{content:"";position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hist small{color:var(--mut)}
+.frm{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.frm label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:700;color:#475569}
+.frm .w2{grid-column:span 2}
+.frm .inp{width:100%}
+.ft{display:flex;gap:8px;justify-content:flex-end;padding:14px 18px;border-top:1px solid var(--ln);position:sticky;bottom:0;background:#fff}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f1b2b;color:#fff;padding:11px 16px;border-radius:12px;font-weight:600;font-size:13.5px;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;gap:9px;align-items:center;max-width:92vw;animation:up .2s}
+.toast .tg{background:#229ED9;border-radius:6px;padding:1px 6px;font-size:11.5px;font-weight:800}
+.q{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--ln);border-radius:12px;margin-bottom:8px;background:#fff}
+.q .no{width:28px;height:28px;border-radius:8px;background:#eef2f6;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.q .m{flex:1;min-width:0}.q .m b{display:block}.q .m small{color:var(--mut)}
+.q .ud{display:flex;flex-direction:column;gap:2px}.q .ud button{border:0;background:#f1f5f9;border-radius:6px;width:26px;height:20px;font-size:11px}
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.phone{width:330px;max-width:100%;margin:0 auto;border-radius:34px;background:#0f1b2b;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.scr{background:#dfe8f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23d3dde8' stroke-width='1'/%3E%3C/svg%3E");border-radius:24px;overflow:hidden;display:flex;flex-direction:column;height:560px}
+.tgh{background:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #e2e8f0}
+.tgh .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+.tgh b{display:block;font-size:14px}.tgh small{color:#229ED9;font-size:12px}
+.msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:7px}
+.mg{max-width:82%;padding:8px 11px;border-radius:14px;font-size:13.5px;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.mg.bt{background:#fff;align-self:flex-start;border-bottom-left-radius:4px}.mg.us{background:#e1f5c4;align-self:flex-end;border-bottom-right-radius:4px}
+.kbd{display:flex;flex-wrap:wrap;gap:5px;padding:8px;background:#f1f5f9}
+.kbd button{flex:1 1 45%;border:0;background:#fff;border-radius:9px;padding:9px 6px;font-size:13px;font-weight:700;color:#229ED9}
+.tgin{display:flex;gap:6px;padding:8px;background:#fff}.tgin input{flex:1;border:1px solid #e2e8f0;border-radius:18px;padding:8px 12px}.tgin button{border:0;background:#229ED9;color:#fff;border-radius:50%;width:36px;height:36px;font-weight:800}
+.drop{border:2px dashed #c5cfdc;border-radius:var(--r);padding:26px;text-align:center;background:#fafbfd;cursor:pointer}
+.drop:hover{border-color:var(--acc);background:var(--accbg)}
+.note{font-size:12.5px;color:var(--mut)}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:11px;background:var(--wrbg);color:#7a4a00;font-size:13px;margin-bottom:12px}
+.mnav{display:none}
+.fade{animation:fd .25s}@keyframes fd{from{opacity:0;transform:translateY(6px)}}
+@media (max-width:1100px){.k4{grid-template-columns:repeat(2,1fr)}.k2{grid-template-columns:1fr}}
+@media (max-width:860px){
+ .side{display:none}.main{padding:14px 14px 92px}.top h1{font-size:19px}
+ .mnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--ln);z-index:40;padding:4px 2px calc(4px + env(safe-area-inset-bottom));overflow-x:auto}
+ .mnav button{flex:1 0 64px;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:10.5px;font-weight:700;color:var(--mut);padding:5px 2px;position:relative}
+ .mnav button .ic{font-size:18px}.mnav button.on{color:var(--acc)}
+ .mnav .bdg{position:absolute;top:1px;right:calc(50% - 20px);background:var(--er);color:#fff;border-radius:10px;font-size:10px;padding:0 5px}
+ .mhead{display:flex!important}
+ .dl{grid-template-columns:repeat(2,1fr)}.frm{grid-template-columns:1fr}.frm .w2{grid-column:auto}
+ .box{border-radius:18px 18px 0 0;max-height:94vh;align-self:flex-end}.mod{padding:0;align-items:flex-end}
+ .kan{grid-auto-columns:minmax(78vw,1fr)}
+ .hide-m{display:none}
+}
+.mhead{display:none;align-items:center;gap:10px;margin:-2px 0 14px}.mhead b{font-size:15px}.mhead small{color:var(--mut);font-size:12px;display:block}
+/* v2 qo'shimchalar */
+.k5{grid-template-columns:repeat(5,1fr)}
+.hero{background:linear-gradient(180deg,#fff, #f7faff);border:1px solid var(--accbg)}
+.frm.f5{grid-template-columns:repeat(3,1fr)}
+.zanjir{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+.zn{flex:1 1 140px;display:flex;flex-direction:column;gap:1px;padding:9px 10px 9px 34px;border-radius:11px;background:#f1f5f9;position:relative;min-width:0}
+.zn i{position:absolute;left:9px;top:10px;width:18px;height:18px;border-radius:50%;background:#cbd5e1;color:#fff;font-style:normal;font-size:11px;font-weight:800;display:grid;place-items:center}
+.zn b{font-size:12.5px}.zn small{font-size:12px;color:var(--mut);line-height:1.3}
+.zn.ok{background:var(--okbg)}.zn.ok i{background:var(--ok)}.zn.er{background:var(--erbg)}.zn.er i{background:var(--er)}.zn.er small{color:#9b1c1c}.zn.wr{background:var(--wrbg)}.zn.wr i{background:var(--wr)}
+.verdict{margin-top:10px;padding:11px 13px;border-radius:12px;display:flex;flex-direction:column;gap:3px;font-size:13.5px}
+.verdict b{font-size:15px}.verdict.ok{background:var(--okbg);color:#0f5a29}.verdict.wr{background:var(--wrbg);color:#7a4a00}.verdict.er{background:var(--erbg);color:#8f1c1c}
+.lnb{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--ln)}.lnb:last-of-type{border:0}
+.lnb b{display:block;font-size:13.5px}.lnb small{color:var(--mut);font-size:11.5px}
+.lnbar{height:10px;background:#eef2f6;border-radius:6px;overflow:hidden}.lnbar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:6px}
+.gantt{display:flex;flex-direction:column;gap:6px}
+.gr{display:grid;grid-template-columns:130px 1fr;gap:8px;align-items:center}
+.gl{font-size:12.5px;font-weight:700;color:#334155}
+.gt{position:relative;height:30px;background:repeating-linear-gradient(90deg,#f1f5f9 0,#f1f5f9 calc(100%/7 - 1px),#e2e8f0 calc(100%/7 - 1px),#e2e8f0 calc(100%/7));border-radius:7px}
+.gt.ax{height:16px;background:none}.gt.ax span{position:absolute;font-size:11px;color:var(--mut)}
+.gb{position:absolute;top:3px;bottom:3px;border-radius:6px;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;overflow:hidden;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.gb span{padding:0 5px;white-space:nowrap}.gb.late{box-shadow:inset 0 0 0 2px var(--er)}
+.gb s{position:absolute;left:0;top:0;bottom:0;width:6px;background:repeating-linear-gradient(45deg,#fbbf24 0,#fbbf24 3px,#f59e0b 3px,#f59e0b 6px)}
+.q.qlate{border-color:#f5b5b5;background:#fff8f8}
+.q .m small{display:block}
+.rolsel{width:100%;background:#18273b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:6px 8px;font-size:12.5px;margin-bottom:6px}
+.rolsel.m{width:auto;background:#fff;color:var(--tx);border-color:var(--ln);margin:0;font-size:12px}
+.sidefoot label{font-size:11.5px}
+@media (max-width:1100px){.k5{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){.k5{grid-template-columns:repeat(2,1fr)}.frm.f5{grid-template-columns:1fr 1fr}.lnb{grid-template-columns:1fr;gap:4px}.gr{grid-template-columns:70px 1fr}.gl{font-size:10.5px}}
+@media print{body *{visibility:hidden}.box,.box *{visibility:visible}.box{position:absolute;left:0;top:0;box-shadow:none;max-height:none;width:100%}.mod{background:none}.ft,.x{display:none!important}}
+.wf{display:flex;flex-direction:column;gap:6px}
+.wfr{display:grid;grid-template-columns:130px 1fr 64px 80px;gap:8px;align-items:center;font-size:13px}
+.wfr.off{opacity:.45}.wfn{color:#334155;font-weight:600}.wfr b{text-align:right;font-variant-numeric:tabular-nums}.wfr small{font-size:11.5px}
+.wfb{height:14px;background:#eef2f6;border-radius:7px;overflow:hidden}.wfb i{display:block;height:100%;border-radius:7px;transition:width .6s}
+.wfc{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
+.wfc>div{background:#f1f5f9;border-radius:11px;padding:8px 11px;flex:1 1 120px}.wfc>div small{display:block;color:var(--mut);font-size:11.5px}.wfc>div b{font-size:14.5px}
+.wfc>div.last{background:var(--wrbg)}.wfc>span{color:var(--mut)}
+.chk{display:flex;align-items:center;gap:7px;font-size:13px;padding:5px 0;color:#475569}.chk.ok{color:#11692f}.chk input{width:16px;height:16px;accent-color:var(--acc)}
+label.chk{cursor:pointer}
+.route{display:flex;gap:0;overflow-x:auto}
+.rs{flex:1;min-width:74px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:11px;color:var(--mut);position:relative}
+.rs i{width:14px;height:14px;border-radius:50%;background:#cbd5e1;z-index:1}
+.rs:before{content:"";position:absolute;top:6px;left:-50%;width:100%;height:2px;background:#cbd5e1}.rs:first-child:before{display:none}
+.rs.on i{background:var(--acc)}.rs.on:before{background:var(--acc)}.rs.on span{color:var(--tx);font-weight:700}
+.inp.big{font-size:20px;font-weight:800}
+@media (max-width:860px){.wfr{grid-template-columns:96px 1fr 52px;font-size:12px}.wfr small{display:none}}
+.cc{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.3px;background:#e2e8f0;color:#334155;border-radius:4px;padding:0 4px;vertical-align:2px}
+/* r4: mobil jadval va yo'l chizig'i */
+@media (max-width:860px){.gantt{min-width:640px}.gr{grid-template-columns:96px 1fr}}
+.route{overflow:visible}.rs{min-width:0}.rs span{line-height:1.2;word-break:break-word}
+.card h3{flex-wrap:wrap;row-gap:4px}
+</style>
+</head>
+<body>
+<div class="namuna"><b>NAMUNA</b> · ma’lumotlar o‘ylab topilgan (mijozlar, narxlar, quvvat) · haqiqiy tizim Excel, 1C va Didox bilan birga ishlaydi</div>
+<div class="lay">
+ <aside class="side">
+  <div class="brand"><div class="logo" id="lg1"></div><div><b id="bn1"></b><small id="bs1"></small></div></div>
+  <nav class="nav" id="nav"></nav>
+  <div class="sidefoot">
+   <label style="display:block;margin-bottom:4px">Kim sifatida ko'rish:</label>
+   <select id="rolsel" class="rolsel"></select>
+   <button id="rst">↺ Namuna ma'lumotini tiklash</button>
+  </div>
+ </aside>
+ <main class="main">
+  <div class="mhead"><div class="logo" id="lg2"></div><div style="flex:1"><b id="bn2"></b><small id="bs2"></small></div><select id="rolsel2" class="rolsel m"></select></div>
+  <div id="app"></div>
+ </main>
+</div>
+<nav class="mnav" id="mnav"></nav>
+<input type="file" id="fin" accept=".xlsx,.xls,.csv" hidden>
+<script>/* Umumiy yordamchilar: ikkala namuna (POLYPACK, UZ AVIA) uchun. window.U */
+(function(){
+const U={};
+U.$=s=>document.querySelector(s);
+U.$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+U.esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T=new Date();T.setHours(0,0,0,0);U.TODAY=T;
+U.iso=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+U.addD=(n,b)=>{const d=new Date(b||T);d.setDate(d.getDate()+n);return U.iso(d)};
+U.addH=(h,b)=>new Date((b?new Date(b):new Date()).getTime()+h*36e5);
+U.dd=s=>Math.round((new Date(String(s).slice(0,10))-T)/864e5);
+U.OY=['yan','fev','mar','apr','may','iyn','iyl','avg','sen','okt','noy','dek'];
+U.fd=s=>{if(!s)return'—';const d=new Date(s);return d.getDate()+'-'+U.OY[d.getMonth()]};
+U.fdt=s=>{if(!s)return'—';const d=new Date(s);return U.fd(d)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+U.num=(n,k)=>{if(n==null||isNaN(n))return'—';const f=k?Number(n).toFixed(k):Math.round(n);return Number(f).toLocaleString('ru-RU',{minimumFractionDigits:k||0,maximumFractionDigits:k||0}).replace(/ /g,' ').replace(',',k?',':'')};
+U.som=n=>U.num(n)+' so‘m';
+U.mln=n=>Math.abs(n)>=1e9?(n/1e9).toFixed(2).replace('.',',')+' mlrd':Math.abs(n)>=1e6?(n/1e6).toFixed(1).replace('.',',')+' mln':U.num(n);
+U.val=(n,v)=>v==='USD'?'$'+U.num(n):v==='EUR'?'€'+U.num(n):v==='RUB'?U.num(n)+' ₽':U.num(n)+' so‘m';
+U.vaqt=v=>{const d=new Date(v),m=Math.round((Date.now()-d)/6e4);return m<1?'hozir':m<60?m+' daq oldin':m<1440?Math.round(m/60)+' soat oldin':U.fd(d)};
+U.rnd=seed=>{let s=seed;return()=>{s=(s*9301+49297)%233280;return s/233280}};
+U.pick=(r,a)=>a[Math.floor(r()*a.length)];
+U.uid=p=>(p||'x')+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+
+/* saqlash */
+U.store=key=>({load(){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}},save(d){try{localStorage.setItem(key,JSON.stringify(d))}catch(e){}},clear(){try{localStorage.removeItem(key)}catch(e){}}});
+
+/* toast */
+U.toast=(m,tg)=>{const t=document.createElement('div');t.className='toast';t.innerHTML=(tg?'<span class="tg">'+(tg===true?'Telegram':U.esc(tg))+'</span>':'')+U.esc(m);document.body.appendChild(t);setTimeout(()=>t.remove(),3200)};
+
+/* modal */
+U.closeM=()=>{const m=U.$('#mo');if(m)m.remove();document.body.style.overflow=''};
+U.modal=(h,b,f,wide)=>{U.closeM();const m=document.createElement('div');m.className='mod';m.id='mo';m.innerHTML=`<div class="box" ${wide?'style="width:min(980px,100%)"':''}><div class="hd">${h}<button class="x" aria-label="Yopish">×</button></div><div class="bd">${b}</div>${f?'<div class="ft">'+f+'</div>':''}</div>`;document.body.appendChild(m);document.body.style.overflow='hidden';m.querySelector('.x').onclick=U.closeM;m.addEventListener('mousedown',e=>{if(e.target===m)U.closeM()});return m};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')U.closeM()});
+
+/* jadval */
+U.table=(cols,rows,opt)=>{opt=opt||{};if(!rows.length)return'<div class="card empty">'+(opt.empty||'Ma‘lumot yo‘q')+'</div>';
+return`<div class="tw"><table class="t"><thead><tr>${cols.map(c=>`<th class="${c.n?'n':''} ${c.m?'hide-m':''}">${c.t}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr class="${opt.click?'cl':''}" ${opt.click?opt.click(r):''}>${cols.map(c=>`<td class="${c.n?'n':''} ${c.m?'hide-m':''}">${c.f(r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`};
+
+/* Excel */
+U.xls=()=>window.XLSX?Promise.resolve(window.XLSX):new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>ok(window.XLSX);s.onerror=no;document.head.appendChild(s)});
+U.csv=(rs,fn)=>{const h=Object.keys(rs[0]||{});const t=[h.join(';')].concat(rs.map(r=>h.map(k=>'"'+String(r[k]==null?'':r[k]).replace(/"/g,'""')+'"').join(';'))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+t],{type:'text/csv'}));a.download=fn.replace(/\.xlsx$/,'.csv');a.click()};
+U.exportX=(sheets,fn)=>{U.toast('Excel fayl tayyorlanmoqda…');U.xls().then(X=>{const wb=X.utils.book_new();Object.keys(sheets).forEach(n=>{const ws=X.utils.json_to_sheet(sheets[n]);ws['!cols']=Object.keys(sheets[n][0]||{}).map(k=>({wch:Math.max(10,Math.min(32,k.length+4))}));X.utils.book_append_sheet(wb,ws,n.slice(0,30))});X.writeFile(wb,fn)}).catch(()=>U.csv(sheets[Object.keys(sheets)[0]],fn))};
+U.readX=(file,cb)=>{const rd=new FileReader();rd.onload=()=>{U.xls().then(X=>{const wb=X.read(new Uint8Array(rd.result),{type:'array',cellDates:true});cb(X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''}))}).catch(()=>U.toast("Excel kutubxonasi yuklanmadi — internetni tekshiring"))};rd.readAsArrayBuffer(file)};
+U.norm=s=>String(s).toLowerCase().replace(/[^a-zа-яё0-9]/gi,'');
+U.mapCols=(keys,spec)=>{const M={};Object.keys(spec).forEach(k=>{M[k]=keys.find(h=>spec[k].some(s=>U.norm(h).includes(s)))||null});return M};
+U.toNum=v=>+String(v==null?'':v).replace(/\s/g,'').replace(',','.')||0;
+
+/* ilova karkasi: menyu, rollar, render */
+U.app=cfg=>{
+ const A={view:cfg.boshlang||cfg.bolimlar[0],rol:'direktor'};
+ const bol=()=>cfg.bolimlar.filter(k=>!cfg.rollar||cfg.rollar[A.rol].includes(k));
+ A.navs=()=>{const ks=bol();const b=k=>{const n=cfg.badge?cfg.badge(k):0;return n?'<span class="bdg">'+n+'</span>':''};
+  U.$('#nav').innerHTML=ks.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][1]}${b(k)}</button>`).join('');
+  U.$('#mnav').innerHTML=ks.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][2]}${b(k)}</button>`).join('')};
+ A.render=()=>{if(!bol().includes(A.view))A.view=bol()[0];A.navs();const a=U.$('#app');a.className='';void a.offsetWidth;a.className='fade';cfg.render[A.view](a);try{history.replaceState(null,'','#'+A.view)}catch(e){}};
+ A.go=(v,f)=>{A.view=v;if(cfg.onGo)cfg.onGo(v,f);A.render();window.scrollTo(0,0)};
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(b&&(b.closest('#nav')||b.closest('#mnav')))A.go(b.dataset.v)});
+ U.$('#lg1').textContent=U.$('#lg2').textContent=cfg.logo;U.$('#bn1').textContent=U.$('#bn2').textContent=cfg.nom;U.$('#bs1').textContent=U.$('#bs2').textContent=cfg.shior;
+ const r=document.documentElement.style;r.setProperty('--acc',cfg.rang[0]);r.setProperty('--acc2',cfg.rang[1]);r.setProperty('--accbg',cfg.rang[2]);
+ if(cfg.rollar){const s=U.$('#rolsel');s.innerHTML=Object.keys(cfg.rollar).map(k=>`<option value="${k}">${cfg.rolNom[k]}</option>`).join('');s.onchange=()=>{A.rol=s.value;U.$$('.rolnom').forEach(x=>x.textContent=cfg.rolNom[A.rol]);U.toast(cfg.rolNom[A.rol]+' sifatida: faqat o‘z bo‘limlari ko‘rinadi');A.render()};U.$('#rolsel2').innerHTML=s.innerHTML;U.$('#rolsel2').onchange=e=>{s.value=e.target.value;s.onchange()}}
+ const h=location.hash.slice(1);if(cfg.bolimlar.includes(h))A.view=h;
+ return A};
+window.U=U;
+})();
+</script>
+<script>/* POLYPACK — CPP/MCPP plyonka zavodi uchun buyurtma va ishlab chiqarish tizimi (NAMUNA) */
+(function(){
+const {$,$$,esc,iso,addD,addH,dd,fd,fdt,num,som,mln,toast,modal,closeM,table}=U;
+const T=U.TODAY, KEY='polypack_namuna_v4', ST=U.store(KEY);
+const BOS=[{id:'yangi',nom:'Yangi',r:'#94a3b8'},{id:'tasdiq',nom:'Navbatda',r:'#6366f1'},{id:'ishlab',nom:'Ishlab chiqarishda',r:'#0ea5e9'},{id:'sifat',nom:'Sifat nazorati',r:'#f59e0b'},{id:'tayyor',nom:'Omborda tayyor',r:'#10b981'},{id:'jonatildi',nom:"Jo'natildi",r:'#14b8a6'},{id:'yopildi',nom:'Yopildi',r:'#64748b'}];
+const BI=id=>BOS.findIndex(b=>b.id===id), BN=id=>(BOS.find(b=>b.id===id)||{}).nom, BR=id=>(BOS.find(b=>b.id===id)||{}).r;
+const QAL=[20,25,30,35,40,50,60], ENI=[500,600,700,800,900,1000,1100,1200,1300];
+let D, P={}, F={q:'',st:'',mij:'',xavf:false}, KV=matchMedia('(max-width:860px)').matches?'royxat':'kanban', OT='rulon', JT='tayyor';
+
+/* ================= NAMUNA MA'LUMOT ================= */
+function seed(){
+ const r=U.rnd(11);
+ const S={zich:{CPP:0.91,MCPP:0.91},narx:{CPP:24500,MCPP:31500},yupqa:1500,qalin:-1000,ozak:{76:1.1,152:2.4},qirqim:3.0,brak:1.2,sozlashSoat:1.5,sozlashKg:140,kesSozlash:0.3,ishSoat:22,qcSoat:10,granulaNarx:15200,boshqa:3800,metallNarx:2600,mbFoiz:1.5,aluKgT:1.4,retsept:{g1:80,g2:20},
+  liniya:[{id:'E1',nom:'Ekstruziya-1',tur:'ekstr',q:180},{id:'E2',nom:'Ekstruziya-2',tur:'ekstr',q:150},{id:'M1',nom:'Metallizatsiya',tur:'metall',q:260},{id:'K1',nom:'Kesish (slitting)',tur:'kesish',q:420}],
+  kirim:{kg:20000,sana:addD(4),nom:'PP granula (homopolimer), 20 t — yo‘lda'}};
+ const MIJ=[
+  {id:'m1',nom:'Baraka Makaron',soha:'makaron fabrikasi',shahar:'Toshkent',tel:'+998 90 111 22 33',limit:250e6,kun:30},
+  {id:'m2',nom:'Shirin Qandolat',soha:'qandolat',shahar:'Samarqand',tel:'+998 91 222 33 44',limit:180e6,kun:21},
+  {id:'m3',nom:'Muzqaymoq Plus',soha:'muzqaymoq',shahar:'Toshkent',tel:'+998 93 333 44 55',limit:150e6,kun:14},
+  {id:'m4',nom:'Choy Pack',soha:'choy qadoqlash',shahar:'Toshkent',tel:'+998 94 444 55 66',limit:120e6,kun:30},
+  {id:'m5',nom:'Flex Print',soha:'bosmaxona va laminatsiya',shahar:'Toshkent',tel:'+998 95 555 66 77',limit:400e6,kun:45},
+  {id:'m6',nom:'Non Zavodi №3',soha:'non mahsulotlari',shahar:'Chirchiq',tel:'+998 97 666 77 88',limit:80e6,kun:15},
+  {id:'m7',nom:'Chuchvara Uz',soha:'muzlatilgan chuchvara',shahar:'Toshkent',tel:'+998 98 777 88 99',limit:100e6,kun:21},
+  {id:'m8',nom:'Sharq Laminat',soha:'laminatsiya (converter)',shahar:"Farg'ona",tel:'+998 99 888 99 00',limit:300e6,kun:30},
+  {id:'m9',nom:'Oltin Don',soha:'yorma va shakar qadoqlash',shahar:'Guliston',tel:'+998 90 999 00 11',limit:90e6,kun:0}];
+ const X=[ // [mijoz, tur, qal, eni, kg, bosqich, muddat(kun), tolov%, liniya, sanaOldin]
+  ['m1','CPP',30,1000,5000,'yopildi',-34,100,'E1',-50],['m2','MCPP',25,800,3000,'yopildi',-27,100,'E2',-45],['m5','CPP',20,1200,8000,'yopildi',-20,100,'E1',-38],['m4','CPP',25,700,2000,'yopildi',-12,100,'E2',-26],
+  ['m5','CPP',25,1200,7000,'jonatildi',-52,30,'E1',-70],['m8','MCPP',30,1000,6000,'jonatildi',-9,50,'E1',-24],['m3','CPP',40,600,2500,'jonatildi',-4,0,'E2',-18],
+  ['m1','CPP',30,1000,4000,'tayyor',1,50,'E1',-14],['m7','CPP',50,500,1800,'tayyor',2,100,'E2',-12],
+  ['m2','MCPP',25,800,3500,'sifat',2,50,'E2',-11],['m6','CPP',35,900,1500,'sifat',3,100,'E1',-9],
+  ['m8','CPP',30,1300,6000,'ishlab',4,30,'E1',-7],['m4','MCPP',30,700,2500,'ishlab',5,50,'E2',-6],
+  ['m1','CPP',30,1000,5000,'tasdiq',6,30,'E1',-4],['m3','CPP',40,600,3000,'tasdiq',5,0,'E2',-4],['m9','CPP',35,900,2000,'tasdiq',8,100,'E1',-3],['m2','MCPP',25,800,4000,'tasdiq',9,30,'E2',-2],['m6','CPP',30,1000,2500,'tasdiq',11,0,'E1',-2],['m3','CPP',35,600,2200,'tasdiq',9,0,'E2',-1],['m8','CPP',30,1300,4500,'tasdiq',13,30,'E1',-1],
+  ['m5','CPP',20,1200,9000,'yangi',12,0,'',0],['m7','CPP',50,500,2000,'yangi',10,0,'',0]];
+ const B=[];let n=1030,navb={E1:0,E2:0};
+ X.forEach((x,i)=>{const[mi,tur,qal,eni,kg,bos,mud,tp,lin,so]=x;const m=MIJ.find(z=>z.id===mi);const narx=Math.round((S.narx[tur]+(qal<=25?S.yupqa:qal>=50?S.qalin:0))/100)*100+(r()<.5?0:500);
+  const o={id:'o'+(++n),raqam:'PP-'+n,mijoz:m.nom,mid:mi,tur,qal,eni,ozak:76,korona:tur==='MCPP'?'Bir tomon':U.pick(r,['Bir tomon','Bir tomon','Ikki tomon','Yo‘q']),rulonKg:eni>=1000?110:eni>=800?95:75,kg,narx,muddat:addD(mud),sana:addD(so||-1),tolovShart:m.kun?m.kun+' kun keyin':'100% oldindan',kun:m.kun,po:'PO-'+(2400+i*7),bosqich:bos,liniya:lin,navbat:lin?++navb[lin]:0,qilingan:bos==='ishlab'?Math.round(kg*(i%2?.35:.62)):(BI(bos)>=3?kg:0),masul:U.pick(r,['Dilshod (sotuv)','Malika (sotuv)']),tolovlar:[],tarix:[{v:addD(so||-1)+'T10:00',m:'Buyurtma qabul qilindi'}],izoh:''};
+  if(tp){const s=o.kg*o.narx;o.tolovlar.push({sana:addD((so||-1)+1),summa:Math.round(s*tp/100),izoh:tp===100&&bos!=='yopildi'?'100% oldindan':'Avans'})}
+  if(bos==='yopildi'&&tp===100)o.tolovlar=[{sana:addD((so||-1)+1),summa:Math.round(o.kg*o.narx*.5),izoh:'Avans'},{sana:addD(mud+ (m.kun?8:0)),summa:o.kg*o.narx-Math.round(o.kg*o.narx*.5),izoh:'Qoldiq'}];
+  if(BI(bos)>=1)o.tarix.push({v:addD((so||-1)+1)+'T09:00',m:'Tasdiqlandi, '+(lin==='E1'?'Ekstruziya-1':'Ekstruziya-2')+' navbatiga qo‘yildi'});
+  if(BI(bos)>=2)o.tarix.push({v:addD((so||-1)+3)+'T08:00',m:'Ishlab chiqarish boshlandi'});
+  if(BI(bos)>=5)o.jonatSana=addD(Math.min(mud,-1)-(bos==='jonatildi'&&mi==='m5'?0:0));
+  B.push(o)});
+ B.find(o=>o.raqam==='PP-1035').jonatSana=addD(-65); // Flex Print — muddati o'tgan qarz
+ B.find(o=>o.raqam==='PP-1036').jonatSana=addD(-9);B.find(o=>o.raqam==='PP-1037').jonatSana=addD(-19);
+ B.find(o=>o.raqam==='PP-1047').izoh='Shoshilinch — mijoz yangi mahsulot chiqaryapti';
+ // partiyalar va rulonlar
+ const L=[],R=[];let rn=1;
+ B.filter(o=>BI(o.bosqich)>=3).forEach((o,k)=>{const pid='P-'+o.raqam.slice(3);const hold=o.raqam==='PP-1040';const pend=o.raqam==='PP-1041';
+  L.push({id:pid,oid:o.id,liniya:o.liniya,smena:k%2?'2-smena (Jasur)':'1-smena (Sherzod)',granula:'GR-'+(2609+k%3)+'-0'+(1+k%4),sana:addD(BI(o.bosqich)>=5?-14:-1),natija:hold?'ushlab':pend?'kutilmoqda':'otdi',
+   olch:pend?null:hold?{qal:o.qal+0.6,eni:o.eni+1,korona:38,cof:0.31,teshik:3,holat:'yaxshi',metall:1.6}:{qal:o.qal+(r()-.5)*.8,eni:o.eni+Math.round((r()-.5)*2),korona:38+Math.round(r()*3),cof:+(0.22+r()*.12).toFixed(2),teshik:0,holat:'yaxshi',metall:o.tur==='MCPP'?2.4:null},
+   izoh:hold?'Metall qatlam zichligi (OD 1,6) me‘yordan past — qayta tekshiruv':''});
+  const cnt=Math.round(o.kg/o.rulonKg);const show=BI(o.bosqich)<=5?cnt:0;const core=S.ozak[o.ozak]*o.eni/1000;
+  for(let j=0;j<show;j++){const net=+(o.rulonKg+(r()-.5)*6).toFixed(1);R.push({id:'R-'+String(10000+rn++),oid:o.id,pid,tur:o.tur,qal:o.qal,eni:o.eni,ozak:o.ozak,netto:net,brutto:+(net+core).toFixed(1),uzun:Math.round(net/(o.qal*1e-6*o.eni/1000*S.zich[o.tur]*1000)),joy:'A-'+(1+k%4)+'-'+String(1+j%12).padStart(2,'0'),holat:o.bosqich==='jonatildi'?'jonatildi':hold||pend?'sifatda':'band',sana:addD(-2)})}});
+ // bo'sh (sotilmagan) rulonlar va brak
+ [['CPP',30,1000,8],['CPP',25,800,6],['CPP',40,600,5],['MCPP',25,800,4],['CPP',20,1200,3]].forEach(([tur,qal,eni,c],k)=>{for(let j=0;j<c;j++){const net=+(95+(r()-.5)*20).toFixed(1);const core=1.1*eni/1000;R.push({id:'R-'+String(10000+rn++),oid:null,pid:'P-Z'+(k+1),tur,qal,eni,ozak:76,netto:net,brutto:+(net+core).toFixed(1),uzun:Math.round(net/(qal*1e-6*eni/1000*0.91*1000)),joy:'B-'+(k+1)+'-'+String(j+1).padStart(2,'0'),holat:'bosh',sana:addD(-20+k*3)})}});
+ for(let j=0;j<2;j++)R.push({id:'R-'+String(10000+rn++),oid:null,pid:'P-1029',tur:'CPP',qal:30,eni:1000,ozak:76,netto:88+j*4,brutto:89.1+j*4,uzun:3200,joy:'BRAK',holat:'brak',sana:addD(-6),izoh:'Gel dog‘lari — qayta ishlashga'});
+ B.filter(o=>o.bosqich==='ishlab').forEach(o=>{const core=S.ozak[o.ozak]*o.eni/1000;let q=o.qilingan,j=0;o.qilingan=0;while(q>o.rulonKg*0.5){const net=+(o.rulonKg+(r()-.5)*4).toFixed(1);q-=net;o.qilingan+=net;R.push({id:'R-'+String(10000+rn++),oid:o.id,pid:'P-'+o.raqam.slice(3),tur:o.tur,qal:o.qal,eni:o.eni,ozak:o.ozak,netto:net,brutto:+(net+core).toFixed(1),uzun:Math.round(net/(o.qal*1e-6*o.eni/1000*S.zich[o.tur]*1000)),joy:'Q-'+String(++j).padStart(2,'0'),holat:'sifatda',sana:addD(-1),tortildi:true,smena:j%2?'1-smena (Sherzod)':'2-smena (Jasur)'})}o.qilingan=+o.qilingan.toFixed(1)});
+ const XOM=[{id:'g1',nom:'PP granula (homopolimer)',birlik:'kg',qoldiq:21500,min:6000,partiya:'GR-2611-04',qc:'otdi',narx:15200},{id:'g2',nom:'PP granula (kopolimer)',birlik:'kg',qoldiq:3800,min:1500,partiya:'GK-2610-02',qc:'otdi',narx:16800},{id:'g3',nom:'Slip/antiblok masterbatch',birlik:'kg',qoldiq:380,min:200,partiya:'MB-2609-01',qc:'otdi',narx:42000},{id:'g4',nom:"Qog'oz o'zak 76 mm",birlik:'dona',qoldiq:1150,min:400,partiya:'OZ-2609',qc:'otdi',narx:9000},{id:'g5',nom:'Alyuminiy sim (metallizatsiya)',birlik:'kg',qoldiq:140,min:150,partiya:'AL-2609',qc:'otdi',narx:68000}];
+ const BUGUN=[{soat:'08:00–14:00',liniya:'E1',kg:1680},{soat:'08:00–14:00',liniya:'E2',kg:1240},{soat:'14:00–hozir',liniya:'E1',kg:820},{soat:'08:00–hozir',liniya:'K1',kg:2950}];
+ D={S,mij:MIJ,B,L,R,X:XOM,J:[],harakat:[{v:addD(-3)+'T10:20',m:'Kirim: PP granula (homopolimer) +20 000 kg, partiya GR-2611-04, «Lotte Chemical» — sertifikat ✓'},{v:addD(-8)+'T15:05',m:'Kirim: Qog\u2018oz o\u2018zak 76 mm +1 500 dona, partiya OZ-2609'}],bugun:BUGUN,chiq:{qirqim:3.1,brak:1.4},xabar:[],log:[],seq:n,ver:4};
+ const HG={g1:['GR-2609-02','GR-2610-01','GR-2611-04'],g2:['GK-2609-01','GK-2610-02'],g3:['MB-2609-01'],g5:['AL-2609']};const yl=1-(S.qirqim+S.brak)/100;
+ D.R.forEach((r,k)=>{const o=B.find(x=>x.id===r.oid)||{tur:r.tur};const yangi=o.bosqich==='ishlab';const inp=r.netto/yl;const pk=a=>a[yangi?a.length-1:(k>>3)%a.length];r.lot={g1:{p:pk(HG.g1),kg:+(inp*0.8).toFixed(1)},g2:{p:pk(HG.g2),kg:+(inp*0.2).toFixed(1)},g3:{p:HG.g3[0],kg:+(inp*S.mbFoiz/100).toFixed(2)}};if(r.tur==='MCPP')r.lot.g5={p:HG.g5[0],kg:+(r.netto/1000*S.aluKgT).toFixed(2)}});
+ L.forEach(l=>{l.granula=lotlar(R.filter(r=>r.pid===l.id))||'—'});
+ B.filter(o=>o.bosqich==='jonatildi'||o.bosqich==='yopildi').forEach(o=>D.J.push({id:'J-'+o.raqam.slice(3),oid:o.id,sana:o.jonatSana||addD(-20),mashina:U.pick(r,['01 A 345 BC','30 K 112 AA','10 B 777 CB']),haydovchi:U.pick(r,['Bahrom','Oybek','Sanjar']),kg:o.kg,rulon:Math.round(o.kg/o.rulonKg)}));
+ D.xabar=[{v:new Date(Date.now()-36e5*2).toISOString(),kim:'direktor',m:'⚠ PP-1040 (Shirin Qandolat, MCPP 25 mkm): sifat nazorati ushlab turdi — metall qatlam OD 1,6'},{v:new Date(Date.now()-36e5*5).toISOString(),kim:'mijoz',m:'Choy Pack: «PP-1044 buyurtmangiz ishlab chiqarishga tushdi. Taxminiy tayyor sana — '+fd(addD(4))+'»'},{v:new Date(Date.now()-36e5*20).toISOString(),kim:'direktor',m:'⚠ Alyuminiy sim qoldig‘i minimaldan past: 140 kg (min 150)'}];
+ save()}
+function save(){ST.save(D)}
+function load(){const x=ST.load();if(x&&x.ver===4)D=x;else seed()}
+
+/* ================= HISOB-KITOBLAR ================= */
+const S=()=>D.S;
+const sum=o=>o.kg*o.narx, tol=o=>o.tolovlar.reduce((a,p)=>a+p.summa,0), qol=o=>Math.max(0,sum(o)-tol(o));
+const yield_=()=>1-(S().qirqim+S().brak)/100;
+const kirimKg=o=>Math.round(Math.max(0,o.kg-(o.qilingan||0))/yield_());
+const metr=(kg,o)=>Math.round(kg/(o.qal*1e-6*o.eni/1000*S().zich[o.tur]*1000));
+const spec=o=>`${o.tur} ${o.qal} mkm × ${o.eni} mm`;
+const mij=o=>D.mij.find(m=>m.id===o.mid)||{nom:o.mijoz,limit:0,kun:0};
+const dueDate=o=>o.jonatSana?addD(o.kun||0,o.jonatSana):null;
+const kech=o=>{if(!qol(o)||!o.jonatSana)return 0;const k=-dd(dueDate(o));return k>0?k:0};
+const mijQarz=mid=>{const os=D.B.filter(o=>o.mid===mid);return{jami:os.filter(o=>o.jonatSana).reduce((a,o)=>a+qol(o),0),kech:os.reduce((a,o)=>a+(kech(o)?qol(o):0),0),kun:Math.max(0,...os.map(kech))}};
+const kreditBlok=mid=>{const m=D.mij.find(x=>x.id===mid);if(!m)return null;const q=mijQarz(mid);if(q.kech>0&&q.kun>15)return`${m.nom}da ${q.kun} kun kechikkan ${mln(q.kech)} so‘m qarz bor`;if(m.limit>0&&q.jami>m.limit)return`${m.nom} qarzi limitdan oshgan: ${mln(q.jami)} / ${mln(m.limit)}`;return null};
+const tannarx=o=>Math.round(o.kg/yield_()*S().granulaNarx+o.kg*S().boshqa+(o.tur==='MCPP'?o.kg*S().metallNarx:0));
+const foyda=o=>sum(o)-tannarx(o);
+const rate=l=>l.q*S().ishSoat/24;
+
+/* Reja: 3 bosqichli navbat (ekstruziya → metallizatsiya → kesish) */
+function plan(extra){
+ const now=new Date(),res={},gantt={E1:[],E2:[],M1:[],K1:[]};const L=id=>S().liniya.find(l=>l.id===id);
+ const act=D.B.filter(o=>o.bosqich==='tasdiq'||o.bosqich==='ishlab').concat(extra?[extra]:[]);
+ const ex=[];
+ ['E1','E2'].forEach(lid=>{const q=act.filter(o=>o.liniya===lid).sort((a,b)=>(b.bosqich==='ishlab')-(a.bosqich==='ishlab')||a.navbat-b.navbat);let t=now,prev=null;
+  q.forEach(o=>{const setup=prev?(prev.qal!==o.qal||prev.tur!==o.tur):false;const s0=new Date(t);if(setup)t=addH(S().sozlashSoat,t);const st=new Date(t);t=addH(kirimKg(o)/rate(L(lid)),t);
+   res[o.id]={liniya:lid,boshla:st,ekstr:new Date(t),setup,setupBosh:s0};gantt[lid].push({o,a:s0,b:new Date(t),setup});ex.push(o);prev=o})});
+ let mt=now;ex.filter(o=>o.tur==='MCPP').sort((a,b)=>res[a.id].ekstr-res[b.id].ekstr).forEach(o=>{const st=new Date(Math.max(mt,res[o.id].ekstr));mt=addH(o.kg/rate(L('M1')),st);res[o.id].metall=new Date(mt);gantt.M1.push({o,a:st,b:new Date(mt)})});
+ let kt=now,pe=null;ex.map(o=>[o,res[o.id].metall||res[o.id].ekstr]).sort((a,b)=>a[1]-b[1]).forEach(([o,rd])=>{let st=new Date(Math.max(kt,rd));if(pe&&(pe.eni!==o.eni||pe.ozak!==o.ozak))st=addH(S().kesSozlash,st);kt=addH(o.kg/rate(L('K1')),st);pe=o;const x=res[o.id];x.kesish=new Date(kt);x.tayyor=addH(S().qcSoat,kt);x.kech=o.muddat?Math.ceil((x.tayyor-new Date(o.muddat+'T18:00'))/864e5):0;gantt.K1.push({o,a:st,b:new Date(kt)})});
+ return{res,gantt}}
+function xomHolat(extra){const{res}=plan(extra);const act=D.B.filter(o=>o.bosqich==='tasdiq'||o.bosqich==='ishlab').concat(extra?[extra]:[]).filter(o=>res[o.id]).sort((a,b)=>res[a.id].boshla-res[b.id].boshla);
+ const stock=D.X.filter(x=>x.id==='g1'||x.id==='g2').reduce((a,x)=>a+x.qoldiq,0),k=S().kirim;let cum=0,alu=0,mb=0,oz=0;const m={},boshqa={};const X_=id=>D.X.find(x=>x.id===id).qoldiq;
+ act.forEach(o=>{const n=kirimKg(o);cum+=n;const av=stock+(k.sana<=iso(res[o.id].boshla)?k.kg:0);m[o.id]=cum>av?Math.min(n,cum-av):0;
+  const rem=Math.max(0,o.kg-(o.qilingan||0));mb+=n*S().mbFoiz/100;oz+=Math.ceil(rem/(o.rulonKg||100));if(o.tur==='MCPP')alu+=rem/1000*S().aluKgT;
+  const b=[];if(o.tur==='MCPP'&&alu>X_('g5'))b.push(`alyuminiy ${num(alu-X_('g5'))} kg`);if(mb>X_('g3'))b.push(`masterbatch ${num(mb-X_('g3'))} kg`);if(oz>X_('g4'))b.push(`o\u2018zak ${num(oz-X_('g4'))} dona`);if(b.length)boshqa[o.id]=b.join(', ')});
+ const oldin=act.filter(o=>k.sana>iso(res[o.id].boshla)).reduce((a,o)=>a+kirimKg(o),0);return{m,boshqa,stock,oldin,kam:Math.max(0,oldin-stock),alu,mb,oz}}
+function xomEhtiyoj(extra){const navb=D.B.filter(o=>o.bosqich==='tasdiq'||o.bosqich==='ishlab').reduce((a,o)=>a+kirimKg(o),0)+(extra?kirimKg(extra):0);const bor=D.X.filter(x=>x.id==='g1'||x.id==='g2').reduce((a,x)=>a+x.qoldiq,0);return{navb,bor,kam:Math.max(0,navb-bor)}}
+let XH=null;function recalc(){P=plan().res;XH=xomHolat()}
+const xavf=o=>{const p=P[o.id];if(o.bosqich==='yangi')return null;if(p&&p.kech>0)return{t:'er',m:`Taxminan ${p.kech} kun kechikadi`};if(!['jonatildi','yopildi'].includes(o.bosqich)&&dd(o.muddat)<0)return{t:'er',m:`Muddati ${-dd(o.muddat)} kun o‘tdi`};
+ if(o.bosqich==='sifat'&&D.L.find(l=>l.oid===o.id&&l.natija==='ushlab'))return{t:'er',m:'Sifat nazorati ushlab turdi'};if(p&&p.kech>-1)return{t:'wr',m:'Muddatga juda yaqin'};if(XH&&XH.m[o.id])return{t:'wr',m:'Granula kirimini kutadi'};
+ if(!['jonatildi','yopildi'].includes(o.bosqich)&&dd(o.muddat)<=1)return{t:'wr',m:dd(o.muddat)===0?'Muddati bugun':'Muddati ertaga'};return null};
+const LN={g1:'homopolimer',g2:'kopolimer',g3:'masterbatch',g4:'o\u2018zak',g5:'alyuminiy'};
+function lotMatn(lot){if(!lot)return'—';return Object.keys(lot).filter(k=>k!=='g4').map(k=>`${LN[k]} ${lot[k].p} — ${String(lot[k].kg).replace('.',',')} kg`).join(' · ')}
+function lotlar(rs,kz){const u={};rs.forEach(r=>{if(!r.lot)return;Object.keys(r.lot).filter(k=>k!=='g4'&&(!kz||kz.includes(k))).forEach(k=>{const key=k+'|'+r.lot[k].p;u[key]=(u[key]||0)+r.lot[k].kg})});
+ const g={};Object.keys(u).forEach(key=>{const[k,p]=key.split('|');const n=k==='g1'||k==='g2'?'granula':LN[k];(g[n]=g[n]||[]).push(`${p} (${num(u[key])} kg)`)});return Object.keys(g).map(n=>n+' '+g[n].join(' + ')).join(' · ')}
+function sarfReja(o,n){const rc=S().retsept||{g1:100},inp=n/yield_();const r=Object.keys(rc).filter(id=>rc[id]>0).map(id=>[id,Math.round(inp*rc[id]/100)]);r.push(['g3',+(inp*S().mbFoiz/100).toFixed(1)],['g4',1]);if(o.tur==='MCPP')r.push(['g5',+(n/1000*S().aluKgT).toFixed(2)]);return r}
+function sarfKam(o,n){return sarfReja(o,n).map(([id,q])=>{const x=D.X.find(z=>z.id===id);return x.qoldiq<q?`${x.nom}: kerak ${num(q)}, bor ${num(x.qoldiq)}`:null}).filter(Boolean)}
+function sarfla(o,n,izoh,jim){const r=sarfReja(o,n);if(sarfKam(o,n).length)return null;const lot={};r.forEach(([id,q])=>{const x=D.X.find(z=>z.id===id);x.qoldiq=+(x.qoldiq-q).toFixed(2);lot[id]={p:x.partiya,kg:q}});
+ if(!jim)D.harakat.unshift({v:new Date().toISOString(),m:`Sarf (${o.raqam}, ${izoh}): `+r.map(([id,q])=>{const x=D.X.find(z=>z.id===id);return `${x.nom.replace('PP granula (','granula ').replace(')','')} −${String(q).replace('.',',')} (${x.partiya})`}).join(', ')});return lot}
+function logla(m,o){D.log.unshift({v:new Date().toISOString(),m,oid:o&&o.id});D.log=D.log.slice(0,80)}
+function xabar(kim,m,o){D.xabar.unshift({v:new Date().toISOString(),kim,m,oid:o&&o.id});D.xabar=D.xabar.slice(0,60);if(kim==='mijoz')toast(m,'Telegram → mijoz');else toast(m,'Telegram → '+kim)}
+
+/* ================= UMUMIY KO'RINISH ELEMENTLARI ================= */
+const pill=(t,m)=>`<span class="pill ${t}">${m}</span>`;
+const tpill=o=>{const s=sum(o),t=tol(o);if(t>=s-1)return pill('ok',"To'langan");if(kech(o))return pill('er',kech(o)+' kun kechikdi');return t>0?pill('wr','To‘langan '+Math.round(t/s*100)+'%'):pill('mu',"To'lanmagan")};
+const bpill=o=>`<span class="pill mu"><i class="dot" style="background:${BR(o.bosqich)}"></i>${BN(o.bosqich)}</span>`;
+function zanjir(o,p,chk){ // "buyurtma → navbat → xomashyo → tayyor sana → mas'ul"
+ const x=chk||{};const it=(ok,t,s)=>`<div class="zn ${ok===true?'ok':ok===false?'er':ok==='wr'?'wr':''}"><i>${ok===true?'✓':ok===false?'!':ok==='wr'?'!':'•'}</i><b>${t}</b><small>${s}</small></div>`;
+ const L=p?S().liniya.find(l=>l.id===p.liniya):null;
+ return`<div class="zanjir">${it(true,'Buyurtma',`${spec(o)} · ${num(o.kg)} kg`)}${it(x.kredit?false:true,'Mijoz to‘lovi',x.kredit||'Qarz limiti ichida')}${it(x.xom?false:true,'Xomashyo',x.xom||'Granula yetarli')}${p?it(p.setup?'wr':true,L.nom,p.setup?'Qayta sozlash +'+S().sozlashSoat+' soat':'Sozlashsiz — oldingi buyurtma bilan bir xil'):''}${p?it(p.kech>0?false:p.kech>-1?'wr':true,'Taxminiy tayyor',`${fdt(p.tayyor)} · muddat ${fd(o.muddat)}${p.kech>0?' — '+p.kech+' kun kech':''}`):''}${it(null,"Mas'ul",o.masul||'—')}</div>`}
+
+/* ================= DIREKTOR PANELI ================= */
+function rPanel(a){recalc();const B=D.B,act=B.filter(o=>!['jonatildi','yopildi'].includes(o.bosqich));const xv=act.map(o=>[o,xavf(o)]).filter(x=>x[1]);
+ const j7=act.filter(o=>dd(o.muddat)<=7&&dd(o.muddat)>=0);const bug=D.bugun.filter(b=>b.liniya!=='K1').reduce((s,b)=>s+b.kg,0);
+ const bosh=D.R.filter(r=>r.holat==='bosh');const kq=B.reduce((s,o)=>s+(kech(o)?qol(o):0),0);const xh=xomHolat();const sifat=D.L.filter(l=>l.natija==='ushlab');
+ const g=plan().gantt;const band=id=>{const x=g[id];return x.length?x[x.length-1].b:new Date()};
+ const diq=[...xv.filter(x=>x[1].t==='er'),...(xh.kam?[[null,{t:'er',m:`Granula: kirimgacha (${fd(S().kirim.sana)}) ${num(xh.kam)} kg yetmaydi — ${D.B.filter(o=>xh.m[o.id]).map(o=>o.raqam).join(', ')} kutib qoladi`}]]:[]),...D.X.filter(x=>x.qoldiq<x.min).map(x=>[null,{t:'wr',m:`${x.nom}: ${num(x.qoldiq)} ${x.birlik} (min ${num(x.min)})`}]),...D.mij.map(m=>[m,mijQarz(m.id)]).filter(x=>x[1].kun>15).map(([m,q])=>[null,{t:'er',m:`${m.nom}: ${q.kun} kun kechikkan qarz ${mln(q.kech)} so‘m — yangi jo‘natish to‘xtatiladi`}]),...xv.filter(x=>x[1].t==='wr')].slice(0,9);
+ a.innerHTML=`<div class="top"><div><h1>Assalomu alaykum, Tojiboy aka</h1><div class="sub">POLYPACK · bugun ${fd(T)} · buyurtmalar, liniyalar va pul — bir qarashda</div></div><span class="sp"></span><button class="btn p" id="nb">＋ Yangi buyurtma</button></div>
+ <div class="grid k5">
+  <div class="card kpi ${xv.filter(x=>x[1].t==='er').length?'er':'ok'}" data-g="xavf"><div class="l">Xavfli buyurtmalar</div><div class="v">${xv.filter(x=>x[1].t==='er').length}</div><div class="d">${xv.filter(x=>x[1].t==='wr').length} tasi muddatga yaqin</div></div>
+  <div class="card kpi" data-g="j7"><div class="l">7 kunda topshiriladi</div><div class="v">${j7.length}</div><div class="d">${num(j7.reduce((s,o)=>s+o.kg,0))} kg</div></div>
+  <div class="card kpi ok" data-g="ish"><div class="l">Bugun ishlab chiqarildi</div><div class="v">${num(bug)} kg</div><div class="d">chiqindi ${String(D.chiq.qirqim+D.chiq.brak).replace('.',',')}% (qirqim ${String(D.chiq.qirqim).replace('.',',')}%)</div></div>
+  <div class="card kpi" data-g="rul"><div class="l">Tayyor bo'sh rulonlar</div><div class="v">${num(bosh.reduce((s,r)=>s+r.netto,0))} kg</div><div class="d">${bosh.length} ta rulon, sotuvga tayyor</div></div>
+  <div class="card kpi ${kq?'er':'ok'}" data-g="pul"><div class="l">Muddati o'tgan to'lovlar</div><div class="v">${mln(kq)}</div><div class="d">so'm · ${D.mij.filter(m=>mijQarz(m.id).kech).length} ta mijoz</div></div>
+ </div>
+ <div class="grid k2" style="margin-top:14px">
+  <div class="card hero"><h3>⚡ Buyurtmani qabul qila olamizmi?<span class="sp"></span><small>5 soniyada tekshiruv</small></h3>
+   <div class="frm f5" id="qf"><label>Mijoz<select class="inp" data-k="mid">${D.mij.map(m=>`<option value="${m.id}">${esc(m.nom)}</option>`).join('')}</select></label><label>Turi<select class="inp" data-k="tur"><option>CPP</option><option>MCPP</option></select></label><label>Qalinlik, mkm<select class="inp" data-k="qal">${QAL.map(q=>`<option ${q===30?'selected':''}>${q}</option>`).join('')}</select></label><label>Eni, mm<select class="inp" data-k="eni">${ENI.map(q=>`<option ${q===1000?'selected':''}>${q}</option>`).join('')}</select></label><label>Miqdor, kg<input class="inp" data-k="kg" type="number" value="4000" min="100" step="100"></label><label>Mijoz so'ragan sana<input class="inp" data-k="muddat" type="date" value="${addD(12)}"></label></div>
+   <div id="qr" style="margin-top:12px"></div></div>
+  <div class="card"><h3>⚠️ Diqqat talab qiladi<span class="sp"></span><small>${diq.length} ta</small></h3><div class="list">${diq.map(([o,x])=>`<div class="it" ${o&&o.raqam?`data-o="${o.id}"`:''}><span class="dot" style="background:var(--${x.t==='er'?'er':'wr'})"></span><div class="m"><b>${o&&o.raqam?esc(o.raqam+' · '+o.mijoz):esc(x.m)}</b>${o&&o.raqam?`<small>${spec(o)} · ${num(o.kg)} kg · ${BN(o.bosqich)}</small>`:''}</div>${o&&o.raqam?pill(x.t,x.m):''}</div>`).join('')||'<div class="empty">Hammasi joyida 👍</div>'}</div></div>
+ </div>
+ <div class="grid k2" style="margin-top:14px">
+  <div class="card"><h3>🏭 Liniyalar bandligi<span class="sp"></span><button class="btn s" data-go="ishlab">Navbatni ochish →</button></h3>${S().liniya.map(l=>{const b=band(l.id),h=Math.max(0,(b-new Date())/36e5);return`<div class="lnb"><div><b>${l.nom}</b><small>${g[l.id].length} ta buyurtma · ${l.q} kg/soat</small></div><div class="lnbar"><i style="width:${Math.min(100,h/168*100)}%"></i></div><small>${h<1?'bo‘sh':'band: '+fdt(b)}</small></div>`}).join('')}<p class="note">Chiziq — keyingi 7 kunlik bandlik.</p></div>
+  <div class="card"><h3>Buyurtmalar bosqichlar bo'yicha</h3><div class="stagebar">${BOS.map(b=>`<div style="width:${B.filter(o=>o.bosqich===b.id).length/B.length*100}%;background:${b.r}" title="${b.nom}"></div>`).join('')}</div><div class="leg">${BOS.map(b=>`<span data-st="${b.id}"><i class="dot" style="background:${b.r}"></i>${b.nom} <b>${B.filter(o=>o.bosqich===b.id).length}</b></span>`).join('')}</div>
+   <h3 style="margin-top:18px">🕑 So'nggi o'zgarishlar</h3><div class="list">${D.log.slice(0,5).map(l=>`<div class="it" ${l.oid?`data-o="${l.oid}"`:''}><div class="m"><b style="font-weight:600">${esc(l.m)}</b></div><small class="note">${U.vaqt(l.v)}</small></div>`).join('')||'<div class="empty" style="padding:10px">Hali o‘zgarish yo‘q — buyurtmani keyingi bosqichga o‘tkazib ko‘ring.</div>'}</div></div>
+ </div>`;
+ const chk=()=>{const x={};$$('#qf [data-k]').forEach(i=>x[i.dataset.k]=i.type==='number'||['qal','eni'].includes(i.dataset.k)?+i.value:i.value);$('#qr').innerHTML=tekshir(x,true)};$$('#qf [data-k]').forEach(i=>i.oninput=chk);chk();
+ $$('[data-g]',a).forEach(k=>k.onclick=()=>{const t=k.dataset.g;if(t==='xavf')APP.go('buyurtmalar',{xavf:true});else if(t==='pul')APP.go('jonatish',{t:'qarz'});else if(t==='rul')APP.go('ombor',{t:'rulon',h:'bosh'});else if(t==='ish')APP.go('ishlab');else APP.go('buyurtmalar')});
+ $$('.leg [data-st]',a).forEach(k=>k.onclick=()=>APP.go('buyurtmalar',{st:k.dataset.st}));$$('[data-go]',a).forEach(b=>b.onclick=()=>APP.go(b.dataset.go));
+ $('#nb').onclick=()=>forma();bindO(a)}
+function tekshir(x,qisqa){ // asosiy ssenariy
+ const m=D.mij.find(z=>z.id===x.mid)||{};const o={id:'_t',tur:x.tur,qal:+x.qal,eni:+x.eni,kg:+x.kg||0,muddat:x.muddat,mid:x.mid,narx:x.narx||(S().narx[x.tur]+(x.qal<=25?S().yupqa:x.qal>=50?S().qalin:0)),bosqich:'tasdiq',qilingan:0};
+ if(!(o.kg>0))return'<div class="note">Miqdorni kiriting</div>';
+ const vars=['E1','E2'].map(l=>{const t=Object.assign({},o,{liniya:l,navbat:999});const p=plan(t).res['_t'];return{l,p}});const best=vars.sort((a,b)=>a.p.tayyor-b.p.tayyor)[0];
+ const t2=Object.assign({},o,{liniya:best.l,navbat:999});const xh=xomHolat(t2);const kamKg=xh.m['_t']||0;const kr=kreditBlok(x.mid);let p=best.p;let xomM=null;if(xh.boshqa['_t'])xomM=`Yetmaydi: ${xh.boshqa['_t']}`;if(kamKg>0){xomM=`Granula ${num(kamKg)} kg yetmaydi — kirim ${fd(S().kirim.sana)} da`;const k=new Date(S().kirim.sana+'T12:00');if(p.tayyor<k){p=Object.assign({},p,{tayyor:addH(48,k)});p.kech=o.muddat?Math.ceil((p.tayyor-new Date(o.muddat+'T18:00'))/864e5):0}}
+ const f=foyda(o),fp=f/sum(o)*100;const ok=!kr&&p.kech<=0;
+ return`${zanjir(Object.assign(o,{masul:'Sotuv bo‘limi'}),p,{kredit:kr,xom:xomM})}
+ <div class="verdict ${ok?'ok':kr?'er':'wr'}"><b>${kr?'⛔ Avval qarz masalasini hal qiling':ok?'✅ Qabul qilsa bo‘ladi':'⚠ Mijoz sanasiga ulgurmaymiz'}</b><span>${ok?`Eng erta tayyor: <b>${fdt(p.tayyor)}</b> (${S().liniya.find(l=>l.id===best.l).nom})`:kr?esc(kr):`Eng erta xavfsiz sana: <b>${fd(addD(1,iso(p.tayyor)))}</b> — mijozga shu sanani ayting`}</span><span>Summa ${mln(sum(o))} so‘m · taxminiy foyda <b>${mln(f)}</b> (${fp.toFixed(0)}%) · granula ${num(kirimKg(o))} kg</span></div>
+ ${qisqa?`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="btn p" id="qb">Shu ma'lumot bilan buyurtma ochish →</button><span class="note">Dastlabki baho. O'zak, korona, rulon og'irligi va to'lov sharti buyurtma formasida qo'shiladi.</span></div>`:''}`}
+document.addEventListener('click',e=>{if(e.target.id==='qb'){const x={};$$('#qf [data-k]').forEach(i=>x[i.dataset.k]=i.value);forma(null,x)}});
+function bindO(a){$$('[data-o]',a).forEach(x=>x.onclick=e=>{if(e.target.closest('[data-nx]'))return;ochO(x.dataset.o)})}
+
+/* ================= BUYURTMALAR ================= */
+function filt(){const q=F.q.toLowerCase();return D.B.filter(o=>(!F.st||o.bosqich===F.st)&&(!F.mij||o.mijoz===F.mij)&&(!F.xavf||(xavf(o)||{}).t==='er')&&(!q||(o.raqam+' '+o.mijoz+' '+spec(o)+' '+o.po).toLowerCase().includes(q))).sort((a,b)=>(((xavf(b)||{}).t==='er')-((xavf(a)||{}).t==='er'))||String(a.muddat).localeCompare(String(b.muddat)))}
+function kartaO(o){const x=xavf(o),i=BI(o.bosqich),nx=BOS[i+1];return`<div class="oc ${x?(x.t==='er'?'late':'soon'):''}" data-o="${o.id}"><div class="r1"><span>${esc(o.raqam)}</span><span style="color:${x?'var(--'+x.t+')':''}">⏱ ${fd(o.muddat)}</span></div><b>${esc(o.mijoz)}</b><div class="pr">${spec(o)} · <b style="display:inline;margin:0">${num(o.kg)} kg</b></div>${x?`<div class="pr" style="color:var(--${x.t});font-weight:700;margin-top:3px">${x.m}</div>`:''}<div class="r3">${tpill(o)}${nx&&i<5&&o.bosqich!=='sifat'?`<button class="nx" data-nx="${o.id}">→ ${nx.nom}</button>`:''}</div></div>`}
+function rBuy(a){recalc();const L=filt();const n=id=>D.B.filter(o=>o.bosqich===id).length,nx=D.B.filter(o=>(xavf(o)||{}).t==='er').length;
+ a.innerHTML=`<div class="top"><div><h1>Buyurtmalar</h1><div class="sub">${D.B.length} ta · har birining bosqichi, muddati, liniyasi va to'lovi</div></div><span class="sp"></span><button class="btn" id="ex">📑 Excel'dan</button><button class="btn p" id="nb">＋ Yangi buyurtma</button></div>
+ <div class="tools"><input class="inp" id="q" placeholder="🔍 Raqam, mijoz, PO yoki «CPP 30»…" value="${esc(F.q)}" style="flex:1;min-width:180px"><div class="seg"><button data-kv="kanban" class="${KV==='kanban'?'on':''}">Bosqichlar</button><button data-kv="royxat" class="${KV==='royxat'?'on':''}">Ro'yxat</button></div></div>
+ <div class="chips" style="margin-bottom:14px"><button class="chip ${!F.st&&!F.xavf?'on':''}" data-f="">Hammasi <em>${D.B.length}</em></button><button class="chip ${F.xavf?'on':''}" data-f="xavf" style="${nx&&!F.xavf?'color:var(--er)':''}">⚠ Xavfli <em>${nx}</em></button>${BOS.map(b=>`<button class="chip ${F.st===b.id?'on':''}" data-f="${b.id}"><i class="dot" style="background:${b.r}"></i>${b.nom} <em>${n(b.id)}</em></button>`).join('')}</div>
+ ${F.mij?`<div class="alert">👤 Faqat <b>${esc(F.mij)}</b> buyurtmalari <button class="btn s" id="cm" style="margin-left:auto">Bekor qilish</button></div>`:''}<div id="ol"></div>`;
+ const ol=$('#ol');
+ if(KV==='kanban'&&!F.st)ol.innerHTML=`<div class="kan">${BOS.map(b=>{const xs=L.filter(o=>o.bosqich===b.id);return`<div class="col"><h4><i class="dot" style="background:${b.r}"></i>${b.nom}<em>${xs.length}</em></h4>${xs.map(kartaO).join('')||'<div class="empty" style="padding:12px">—</div>'}</div>`}).join('')}</div>`;
+ else ol.innerHTML=table([{t:'Raqam',f:o=>`<b>${esc(o.raqam)}</b>`},{t:'Mijoz',f:o=>esc(o.mijoz)},{t:'Mahsulot',m:1,f:o=>spec(o)},{t:'kg',n:1,f:o=>num(o.kg)},{t:'Bosqich',f:bpill},{t:'Muddat',f:o=>{const x=xavf(o);return`<span style="${x?'color:var(--'+x.t+');font-weight:800':''}">${fd(o.muddat)}</span>`}},{t:'Taxminiy tayyor',m:1,f:o=>P[o.id]?fdt(P[o.id].tayyor):'—'},{t:"To'lov",f:tpill}],L,{click:o=>`data-o="${o.id}"`,empty:'Bu filtr bo‘yicha buyurtma yo‘q'});
+ $('#q').oninput=e=>{F.q=e.target.value;const p=e.target.selectionStart;rBuy(a);const q=$('#q');q.focus();q.setSelectionRange(p,p)};
+ $$('[data-kv]',a).forEach(b=>b.onclick=()=>{KV=b.dataset.kv;rBuy(a)});$$('[data-f]',a).forEach(b=>b.onclick=()=>{const f=b.dataset.f;F.xavf=f==='xavf';F.st=f==='xavf'?'':f;rBuy(a)});
+ if($('#cm'))$('#cm').onclick=()=>{F.mij='';rBuy(a)};$$('[data-nx]',a).forEach(b=>b.onclick=e=>{e.stopPropagation();keyingi(b.dataset.nx)});
+ $('#nb').onclick=()=>forma();$('#ex').onclick=()=>APP.go('excel');bindO(a)}
+
+function bosqichga(o,n,izoh){const old=o.bosqich;o.bosqich=n;o.tarix.push({v:new Date().toISOString(),m:'Bosqich: '+BN(n)+(izoh?' — '+izoh:'')});logla(`${o.raqam} · ${o.mijoz} → ${BN(n)}`,o);
+ if(n==='ishlab')xabar('mijoz',`${o.mijoz}: «${o.raqam} buyurtmangiz ishlab chiqarishga tushdi. Taxminiy tayyor sana — ${P[o.id]?fd(P[o.id].tayyor):fd(o.muddat)}»`,o);
+ if(n==='tayyor')xabar('mijoz',`${o.mijoz}: «${o.raqam} (${spec(o)}, ${num(o.kg)} kg) tayyor, sifat nazoratidan o‘tdi»`,o);
+ if(n==='jonatildi')xabar('mijoz',`${o.mijoz}: «${o.raqam} jo‘natildi. Hujjatlar Didox orqali yuboriladi»`,o);save()}
+function keyingi(id){const o=D.B.find(x=>x.id===id),i=BI(o.bosqich);
+ if(o.bosqich==='yangi')return forma(o);
+ if(o.bosqich==='ishlab'){const tg=D.R.filter(r=>r.oid===o.id).reduce((s,r)=>s+r.netto,0);if(tg<o.kg*0.98)return tugatish(o,tg);partiyaYarat(o);bosqichga(o,'sifat');toast(`${o.raqam}: partiya sifat nazoratiga yuborildi`);return APP.render()}
+ if(o.bosqich==='sifat'){APP.go('ombor',{t:'partiya'});return}
+ if(o.bosqich==='tayyor')return jonatish(o);
+ if(o.bosqich==='jonatildi'){if(qol(o)>0){toast(`Avval to‘lovni yakunlang: qoldiq ${som(qol(o))}`);return ochO(o.id)}bosqichga(o,'yopildi');return APP.render()}
+ if(o.bosqich==='tasdiq'){bosqichga(o,'ishlab');APP.render()}}
+function partiyaYarat(o){const pid='P-'+o.raqam.slice(3);const gl=lotlar(D.R.filter(r=>r.oid===o.id));if(!D.L.find(l=>l.id===pid))D.L.unshift({id:pid,oid:o.id,liniya:o.liniya,smena:'1-smena (Sherzod)',granula:gl||'—',sana:iso(T),natija:'kutilmoqda',olch:null});
+ D.R.filter(r=>r.oid===o.id&&r.holat!=='jonatildi').forEach(r=>{r.holat='sifatda';r.pid=pid});const L_=D.L.find(l=>l.id===pid);if(L_)L_.granula=lotlar(D.R.filter(r=>r.pid===pid))||'—'}
+function tugatish(o,tg){const qolgan=o.kg-tg,n=Math.ceil(qolgan/o.rulonKg);
+ const m=modal(`<h2>⚖️ ${esc(o.raqam)}: ishlab chiqarish tugamagan</h2>`,`<div class="verdict wr"><b>Tortilgan: ${num(tg)} / ${num(o.kg)} kg — yana ~${n} ta rulon</b><span>Sifat nazoratiga faqat tarozida tortilgan rulonlar o'tadi (taxminiy rulon yaratilmaydi).</span></div>
+ <p class="note">Namunada operator ishini tez ko'rish uchun: qolgan ${n} ta rulonni ketma-ket tortishni simulyatsiya qilish mumkin — har biri xuddi tarozidagidek yoziladi va xomashyo sarflanadi.</p>`,`<button class="btn" id="t1">⚖ Bitta rulon tortish</button><button class="btn p" id="tn">▶ Qolgan ${n} ta rulonni tortish (simulyatsiya)</button>`);
+ m.querySelector('#t1').onclick=()=>{closeM();tortish(o)};
+ m.querySelector('#tn').onclick=()=>{const core=S().ozak[o.ozak]*o.eni/1000;let q=qolgan,j=D.R.filter(r=>r.oid===o.id).length,sim=0,sn=0;while(q>o.rulonKg*0.3){const net=+Math.min(q,o.rulonKg+(Math.random()-.5)*4).toFixed(1);q-=net;const id='R-'+String(10001+D.R.length);D.R.push({id,oid:o.id,pid:'P-'+o.raqam.slice(3),tur:o.tur,qal:o.qal,eni:o.eni,ozak:o.ozak,netto:net,brutto:+(net+core).toFixed(1),uzun:metr(net,o),joy:'Q-'+String(++j).padStart(2,'0'),holat:'sifatda',sana:iso(T),tortildi:true,smena:'1-smena (Sherzod)'});const lot=sarfla(o,net,id,true);if(!lot){D.R.pop();toast('Xomashyo tugadi: '+sarfKam(o,net).join('; '));break}D.R[D.R.length-1].lot=lot;o.qilingan=+(o.qilingan+net).toFixed(1);sim+=net;sn++}
+  D.harakat.unshift({v:new Date().toISOString(),m:`Sarf (${o.raqam}, ${sn} ta rulon, ${num(sim)} kg): ${lotlar(D.R.filter(r=>r.oid===o.id).slice(-sn))} · o\u2018zak −${sn} dona`});
+  o.tarix.push({v:new Date().toISOString(),m:`Qolgan rulonlar tortildi (simulyatsiya): jami ${num(o.qilingan)} kg`});logla(`${o.raqam}: ishlab chiqarish tugadi — ${num(o.qilingan)} kg`,o);save();closeM();keyingi(o.id)}}
+/* ---------- buyurtma kartasi ---------- */
+function ochO(id){recalc();const o=D.B.find(x=>x.id===id);if(!o)return;const i=BI(o.bosqich),p=P[o.id],x=xavf(o),kr=['yangi','tasdiq'].includes(o.bosqich)?kreditBlok(o.mid):null;
+ const rs=D.R.filter(r=>r.oid===o.id),pa=D.L.find(l=>l.oid===o.id);const core=S().ozak[o.ozak]*o.eni/1000;
+ const m=modal(`<div><h2>${esc(o.raqam)} · ${esc(o.mijoz)}</h2><div class="note">${spec(o)} · ${num(o.kg)} kg · o'zak ${o.ozak} mm · korona: ${o.korona} · PO ${esc(o.po||'—')}</div></div>`,
+ `${x?`<div class="alert" style="${x.t==='er'?'background:var(--erbg);color:#8f1c1c':''}">⏱ ${x.m}</div>`:''}
+ ${['yangi','tasdiq','ishlab'].includes(o.bosqich)?`<div class="sec" style="margin-top:0"><h4>🔗 Zanjir: qachon tayyor bo'ladi?</h4>${zanjir(o,p,{kredit:kr,xom:(xomHolat().m[o.id]||0)?num(xomHolat().m[o.id])+' kg granula yetmaydi (kirim '+fd(S().kirim.sana)+')':null})}</div>`:''}
+ <div class="dl" style="margin-top:12px"><div><small>Summa</small><b>${som(sum(o))}</b></div><div><small>Narx</small><b>${num(o.narx)} so'm/kg</b></div><div><small>Taxminiy foyda</small><b>${mln(foyda(o))} (${(foyda(o)/sum(o)*100).toFixed(0)}%)</b></div><div><small>Rulonlar</small><b>~${Math.round(o.kg/o.rulonKg)} ta × ${o.rulonKg} kg</b></div><div><small>Uzunligi</small><b>~${num(metr(o.kg,o)/1000)} km</b></div><div><small>Kerakli granula</small><b>${num(Math.round(o.kg/yield_()))} kg</b></div><div><small>Liniya</small><b>${o.liniya?S().liniya.find(l=>l.id===o.liniya).nom:'—'}</b></div><div><small>Muddat</small><b>${fd(o.muddat)}</b></div><div><small>To'lov sharti</small><b>${esc(o.tolovShart)}</b></div></div>
+ <div class="step">${BOS.map((b,j)=>`<button class="${j<i?'dn':j===i?'cu':''}" disabled>${j<i?'✓ ':''}${b.nom}</button>`).join('')}</div>
+ ${o.bosqich==='ishlab'?`<div class="sec"><h4>⚖️ Ishlab chiqarilgan: ${num(o.qilingan)} / ${num(o.kg)} kg</h4><div class="prog"><i style="width:${o.qilingan/o.kg*100}%;background:var(--acc)"></i></div><button class="btn s" id="rt">＋ Rulon tortish (brutto → netto avtomatik)</button></div>`:''}
+ ${pa?`<div class="sec"><h4>🧪 Sifat nazorati: ${pa.id} ${pa.natija==='otdi'?pill('ok','O‘tdi'):pa.natija==='ushlab'?pill('er','Ushlab turilgan'):pill('wr','Kutilmoqda')}</h4><div class="note">${esc(pa.smena)} · granula partiyasi ${esc(pa.granula)}${pa.izoh?' · '+esc(pa.izoh):''}</div></div>`:''}
+ ${rs.length?`<div class="sec"><h4>🧻 Rulonlar: ${rs.length} ta · netto ${num(rs.reduce((s,r)=>s+r.netto,0))} kg</h4><div class="note">O'zak og'irligi (${(core).toFixed(2).replace('.',',')} kg) avtomatik ayrilgan. Rulonni bossangiz — tarixi.</div><div class="chips" style="flex-wrap:wrap;margin-top:6px">${rs.slice(0,24).map(r=>`<button class="chip" data-r="${r.id}">${r.id} · ${String(r.netto).replace('.',',')} kg</button>`).join('')}${rs.length>24?'<span class="note">… yana '+(rs.length-24)+'</span>':''}</div></div>`:''}
+ <div class="sec"><h4>💳 To'lov ${tpill(o)}</h4><div class="prog"><i style="width:${Math.min(100,tol(o)/sum(o)*100)}%"></i></div><div class="note">To'langan <b style="color:var(--tx)">${som(tol(o))}</b> / ${som(sum(o))} · qoldiq <b style="color:${qol(o)?'var(--er)':'var(--ok)'}">${som(qol(o))}</b>${o.jonatSana?' · to‘lov muddati '+fd(dueDate(o)):''}</div>
+ ${o.tolovlar.length?`<div class="list" style="margin-top:4px">${o.tolovlar.map(t=>`<div class="it" style="cursor:default"><div class="m"><b>${som(t.summa)}</b><small>${fd(t.sana)} · ${esc(t.izoh)}</small></div></div>`).join('')}</div>`:''}
+ ${qol(o)>0?`<div class="pay" style="margin-top:8px"><input class="inp" id="ps" type="number" value="${Math.round(qol(o))}" style="width:170px"><select class="inp" id="pi"><option>Bank o'tkazmasi</option><option>Naqd</option></select><button class="btn g" id="pb">＋ To'lov qo'shish</button></div>`:''}</div>
+ <div class="sec"><h4>🕑 Tarix</h4><div class="hist">${o.tarix.slice().reverse().map(h=>`<div>${esc(h.m)}<br><small>${fdt(h.v)}</small></div>`).join('')}</div></div>`,
+ `<button class="btn" id="ed">✏️ Tahrirlash</button>${o.bosqich==='tasdiq'?`<button class="btn" id="ur">⚡ Navbatda 1-o'ringa</button>`:''}${o.bosqich==='yangi'?`<button class="btn p" id="nx">Tekshirish va tasdiqlash →</button>`:o.bosqich==='sifat'?`<button class="btn p" id="nx">Sifat nazoratiga o'tish →</button>`:i<6?`<button class="btn p" id="nx">→ ${o.bosqich==='tayyor'?"Jo'natish":BOS[i+1].nom}</button>`:''}`);
+ m.querySelector('#ed').onclick=()=>forma(o);if(m.querySelector('#nx'))m.querySelector('#nx').onclick=()=>{closeM();keyingi(o.id)};
+ if(m.querySelector('#ur'))m.querySelector('#ur').onclick=()=>{closeM();shoshilinch(o.id)};
+ if(m.querySelector('#rt'))m.querySelector('#rt').onclick=()=>tortish(o);
+ $$('[data-r]',m).forEach(b=>b.onclick=()=>rulonTarix(b.dataset.r));
+ if(m.querySelector('#pb'))m.querySelector('#pb').onclick=()=>{const s=+m.querySelector('#ps').value;if(!(s>0))return toast('Summani kiriting');o.tolovlar.push({sana:iso(new Date()),summa:Math.min(s,qol(o)),izoh:m.querySelector('#pi').value});o.tarix.push({v:new Date().toISOString(),m:"To'lov: "+som(s)});logla(`${o.raqam} · ${o.mijoz} — to‘lov ${som(s)}`,o);if(o.bosqich==='jonatildi'&&qol(o)===0)bosqichga(o,'yopildi','to‘liq to‘landi');save();toast("To'lov qo'shildi");APP.render();ochO(o.id)}}
+function tortish(o){const core=S().ozak[o.ozak]*o.eni/1000;const pid='P-'+o.raqam.slice(3);const mine=D.R.filter(r=>r.oid===o.id&&r.tortildi);
+ const m=modal(`<h2>⚖️ Rulon tortish · ${esc(o.raqam)}</h2>`,`<p class="note" style="margin-top:0">Operator faqat tarozidagi <b>brutto</b>ni yozadi. O'zak (${o.ozak} mm × ${o.eni} mm = ${core.toFixed(2).replace('.',',')} kg) avtomatik ayriladi, metr hisoblanadi, rulon raqami beriladi.</p>
+ <div class="frm"><label>Brutto, kg<input class="inp big" id="br" type="number" step="0.1" min="0" value="${(o.rulonKg+core+1.3).toFixed(1)}"></label><label>Smena<select class="inp" id="sm"><option>1-smena (Sherzod)</option><option>2-smena (Jasur)</option></select></label></div><div class="verdict ok" id="nt" style="margin-top:12px"></div>
+ ${mine.length?`<p class="note">Shu buyurtmada tortilgan: ${mine.length} ta rulon · ${num(mine.reduce((s,r)=>s+r.netto,0))} kg</p>`:''}`,`<button class="btn p" id="sv">Saqlash</button>`);
+ const qolgan=Math.max(0,o.kg-D.R.filter(r=>r.oid===o.id).reduce((s,r)=>s+r.netto,0));const up=()=>{const b=+$('#br').value,n=b-core;const ok=n>5&&n<=o.rulonKg*1.6&&n<=qolgan+o.rulonKg*0.2;$('#nt').className='verdict '+(ok?'ok':'er');$('#nt').innerHTML=ok?`<b>Netto: ${n.toFixed(1).replace('.',',')} kg</b><span>uzunligi ≈ ${num(metr(n,o))} m · keyingi rulon raqami R-${String(10001+D.R.length)}</span>`:`<b>Tekshiring: netto ${n.toFixed(1).replace('.',',')} kg</b><span>${n>qolgan+o.rulonKg*0.2?`Buyurtmada atigi ${num(qolgan)} kg qoldi — ortiqcha ishlab chiqarish alohida (bo\u2018sh rulon) kiritiladi`:`Brutto o'zakdan og'ir va rulon me'yoridan (${o.rulonKg} kg) 60% dan oshmasligi kerak`}</span>`;return ok?+n.toFixed(1):0};$('#br').oninput=up;up();
+ m.querySelector('#sv').onclick=()=>{const n=up();if(!n)return toast('Brutto noto\u2018g\u2018ri kiritilgan');const id='R-'+String(10001+D.R.length);
+  D.R.push({id,oid:o.id,pid,tur:o.tur,qal:o.qal,eni:o.eni,ozak:o.ozak,netto:n,brutto:+(n+core).toFixed(1),uzun:metr(n,o),joy:'Q-'+String(mine.length+1).padStart(2,'0'),holat:'sifatda',sana:iso(T),tortildi:true,smena:$('#sm').value});
+  const lot=sarfla(o,n,id);if(!lot){D.R.pop();return toast('Xomashyo yetmaydi: '+sarfKam(o,n).join('; ')+' — avval kirim qiling')}D.R[D.R.length-1].lot=lot;o.qilingan=+((o.qilingan||0)+n).toFixed(1);
+  D.bugun.push({soat:'hozir',liniya:o.liniya,kg:n});o.tarix.push({v:new Date().toISOString(),m:`${id} tortildi: netto ${String(n).replace('.',',')} kg (${$('#sm').value})`});logla(`${o.raqam}: ${id} tortildi — ${String(n).replace('.',',')} kg`,o);save();
+  toast(`${id}: netto ${String(n).replace('.',',')} kg · granula −${num(n/yield_())} kg`);closeM();APP.render();ochO(o.id)}}
+function rulonTarix(rid){const r=D.R.find(x=>x.id===rid),o=D.B.find(x=>x.id===r.oid),pa=D.L.find(l=>l.id===r.pid),j=o&&D.J.find(z=>z.oid===o.id);
+ modal(`<h2>🧻 ${r.id} — rulon tarixi</h2>`,`<div class="zanjir">${[['Xomashyo partiyasi (sarf)',lotMatn(r.lot)],['Liniya va smena',pa?(S().liniya.find(l=>l.id===pa.liniya)||{nom:'—'}).nom+' · '+pa.smena:'—'],['Sifat nazorati',pa?(pa.natija==='otdi'?'O‘tdi':pa.natija==='ushlab'?'Ushlab turilgan':'Kutilmoqda'):'—'],['Ombor joyi',r.joy],['Mijoz',o?o.mijoz+' · '+o.raqam:'— (bo‘sh, sotuvga tayyor)'],["Jo'natish",j?fd(j.sana)+' · '+j.mashina:'—']].map(([a,b],k)=>`<div class="zn ${k<5||j?'ok':''}"><i>${k+1}</i><b>${a}</b><small>${esc(b)}</small></div>`).join('')}</div>
+ <div class="dl" style="margin-top:14px"><div><small>Spetsifikatsiya</small><b>${r.tur} ${r.qal} mkm × ${r.eni} mm</b></div><div><small>Brutto / Netto</small><b>${String(r.brutto).replace('.',',')} / ${String(r.netto).replace('.',',')} kg</b></div><div><small>Uzunligi</small><b>${num(r.uzun)} m</b></div></div>`)}
+
+/* ---------- forma (yangi / tahrir) ---------- */
+function forma(o,pre){const yangi=!o;pre=pre||{};o=o||{id:'o'+Date.now(),raqam:'PP-'+(++D.seq),sana:iso(T),bosqich:'yangi',tolovlar:[],tarix:[],ozak:76,korona:'Bir tomon',rulonKg:110,masul:'Dilshod (sotuv)',qilingan:0,mid:pre.mid||'m1',tur:pre.tur||'CPP',qal:+pre.qal||30,eni:+pre.eni||1000,kg:+pre.kg||4000,muddat:pre.muddat||addD(8)};
+ const narxDef=(t,q)=>S().narx[t]+(q<=25?S().yupqa:q>=50?S().qalin:0);
+ const sel=(k,a,v)=>`<select class="inp" data-k="${k}">${a.map(x=>`<option ${String(x)===String(v)?'selected':''}>${x}</option>`).join('')}</select>`;
+ const m=modal(`<h2>${yangi?'Yangi buyurtma':'Buyurtma: '+esc(o.raqam)}</h2>`,`<div class="frm">
+ <label class="w2">Mijoz<select class="inp" data-k="mid">${D.mij.map(z=>`<option value="${z.id}" ${z.id===o.mid?'selected':''}>${esc(z.nom)} — ${esc(z.soha)}</option>`).join('')}</select></label>
+ <label>Turi${sel('tur',['CPP','MCPP'],o.tur)}</label><label>Qalinlik, mkm${sel('qal',QAL,o.qal)}</label><label>Eni, mm${sel('eni',ENI,o.eni)}</label><label>O'zak, mm${sel('ozak',[76,152],o.ozak)}</label>
+ <label>Korona ishlovi${sel('korona',['Bir tomon','Ikki tomon','Yo‘q'],o.korona)}</label><label>Rulon og'irligi, kg<input class="inp" data-k="rulonKg" type="number" value="${o.rulonKg}"></label>
+ <label>Miqdor, kg<input class="inp" data-k="kg" type="number" value="${o.kg}" step="100"></label><label>Narx, so'm/kg<input class="inp" data-k="narx" type="number" value="${o.narx||narxDef(o.tur,o.qal)}" step="100"></label>
+ <label>Mijoz so'ragan sana<input class="inp" data-k="muddat" type="date" value="${o.muddat}"></label><label>Mijozning PO raqami<input class="inp" data-k="po" value="${esc(o.po||'')}"></label>
+ <label class="w2">Izoh<input class="inp" data-k="izoh" value="${esc(o.izoh||'')}" placeholder="Masalan: COF 0,2–0,3; logotipli yorliq; 6 dyuym o'zak…"></label></div>
+ <div class="sec"><h4>⚡ Tekshiruv</h4><div id="ck"></div></div><div class="sec" id="xul"></div>`,
+ `<button class="btn" id="cn">Bekor</button><button class="btn" id="sq">Qoralama sifatida saqlash</button><button class="btn p" id="sv">✓ Tasdiqlash va navbatga qo'yish</button>`,true);
+ const rd=()=>{const x={};$$('[data-k]',m).forEach(i=>x[i.dataset.k]=['kg','narx','rulonKg','qal','eni','ozak'].includes(i.dataset.k)?+i.value:i.value);return x};
+ let narxQol=!yangi;$$('[data-k]',m).forEach(i=>i.addEventListener('input',e=>{if(e.target.dataset.k==='narx')narxQol=true;if(!narxQol&&['tur','qal'].includes(e.target.dataset.k)){const x=rd();m.querySelector('[data-k=narx]').value=narxDef(x.tur,x.qal)}up()}));
+ const late_=!yangi&&!['yangi','tasdiq'].includes(o.bosqich);if(late_){m.querySelector('#sq').style.display='none';m.querySelector('#ck').closest('.sec').style.display='none'}
+ const up=()=>{const x=rd();if(!late_)$('#ck').innerHTML=tekshir(x);const mz=D.mij.find(z=>z.id===x.mid)||{};$('#xul').innerHTML=late_?'':`<h4>📋 Tasdiqlashdan oldin</h4><div class="dl"><div><small>To'lov sharti</small><b>${mz.kun?mz.kun+' kun keyin':'100% oldindan'}</b></div><div><small>O'zak / korona</small><b>${x.ozak} mm · ${esc(x.korona)}</b></div><div><small>Rulon</small><b>${x.rulonKg} kg × ~${Math.ceil(x.kg/x.rulonKg)} ta</b></div><div><small>Retsept</small><b>${Object.keys(S().retsept).filter(id=>S().retsept[id]>0).map(id=>LN[id]+' '+S().retsept[id]+'%').join(' / ')}${x.tur==='MCPP'?' + Al':''}</b></div><div><small>Granula partiyalari</small><b>${Object.keys(S().retsept||{g1:100}).filter(id=>S().retsept[id]>0).map(id=>D.X.find(z=>z.id===id).partiya).join(' + ')}</b></div><div><small>Izoh</small><b>${esc(x.izoh||'—')}</b></div></div>`;const kr=late_?null:kreditBlok(x.mid);const b=$('#sv');b.textContent=late_?'Saqlash':o.bosqich==='tasdiq'?'Saqlash':kr?'🔒 Direktor ruxsati bilan tasdiqlash':'✓ Tasdiqlash va navbatga qo‘yish';b.dataset.kr=kr||''};up();
+ const yoz=x=>{const mz=D.mij.find(z=>z.id===x.mid);Object.assign(o,x,{mijoz:mz.nom,kun:mz.kun,tolovShart:mz.kun?mz.kun+' kun keyin':'100% oldindan'});if(yangi){o.tarix.push({v:new Date().toISOString(),m:'Buyurtma qabul qilindi'});D.B.unshift(o);logla(`Yangi buyurtma ${o.raqam} · ${o.mijoz}`,o)}};
+ m.querySelector('#cn').onclick=closeM;
+ m.querySelector('#sq').onclick=()=>{const x=rd();if(!(x.kg>0))return toast('Miqdorni kiriting');yoz(x);if(!yangi)o.tarix.push({v:new Date().toISOString(),m:'Tahrirlandi'});save();closeM();toast('Saqlandi');APP.render()};
+ m.querySelector('#sv').onclick=()=>{const x=rd();if(!(x.kg>0))return toast('Miqdorni kiriting');const kr=$('#sv').dataset.kr;
+  if(kr&&APP.rol!=='direktor')return toast('Qarz sababli faqat direktor tasdiqlay oladi');
+  yoz(x);if(['yangi','tasdiq'].includes(o.bosqich)){const best=['E1','E2'].map(l=>({l,p:plan(Object.assign({},o,{liniya:l,navbat:999,bosqich:'tasdiq'})).res[o.id]})).sort((a,b)=>a.p.tayyor-b.p.tayyor)[0];
+   o.liniya=o.liniya&&o.bosqich==='tasdiq'?o.liniya:best.l;o.navbat=o.bosqich==='tasdiq'?o.navbat:1+Math.max(0,...D.B.filter(z=>z.liniya===o.liniya&&z.bosqich==='tasdiq').map(z=>z.navbat));
+   if(o.bosqich==='yangi'){o.bosqich='tasdiq';o.tarix.push({v:new Date().toISOString(),m:`Tasdiqlandi${kr?' (direktor ruxsati: '+kr+')':''}, ${S().liniya.find(l=>l.id===o.liniya).nom} navbatiga qo‘yildi`});logla(`${o.raqam} tasdiqlandi → ${S().liniya.find(l=>l.id===o.liniya).nom}`,o);recalc();xabar('mijoz',`${o.mijoz}: «${o.raqam} buyurtmangiz qabul qilindi. Taxminiy tayyor sana — ${fd(P[o.id].tayyor)}»`,o)}}
+  save();closeM();APP.render();ochO(o.id)}}
+
+/* ================= ISHLAB CHIQARISH NAVBATI ================= */
+function shoshilinch(id){const o=D.B.find(x=>x.id===id);const old=plan().res;D.B.filter(x=>x.liniya===o.liniya&&x.bosqich==='tasdiq').forEach(x=>{if(x.id!==o.id)x.navbat+=1});o.navbat=0;const nw=plan().res;
+ const yom=D.B.filter(x=>x.id!==id&&old[x.id]&&nw[x.id]&&nw[x.id].kech>0&&nw[x.id].kech>old[x.id].kech);o.tarix.push({v:new Date().toISOString(),m:'Navbatda 1-o‘ringa ko‘tarildi'});logla(`${o.raqam} navbatda 1-o‘ringa ko‘tarildi`,o);save();
+ APP.go('ishlab');modal('<h2>⚡ Navbat o‘zgardi — oqibati</h2>',`<p style="margin-top:0"><b>${esc(o.raqam)} · ${esc(o.mijoz)}</b> endi ${fdt(nw[id].tayyor)} da tayyor bo'ladi (oldin: ${fdt(old[id].tayyor)}).</p>${yom.length?`<div class="alert" style="background:var(--erbg);color:#8f1c1c">Buning evaziga <b>${yom.length} ta</b> buyurtma muddatidan kechikadi:</div><div class="list">${yom.map(x=>`<div class="it"><div class="m"><b>${esc(x.raqam)} · ${esc(x.mijoz)}</b><small>muddat ${fd(x.muddat)} → taxminan ${fdt(nw[x.id].tayyor)}${old[x.id].kech>0?' (oldin ham '+old[x.id].kech+' kun kech edi)':''}</small></div>${pill('er',nw[x.id].kech+' kun kech')}</div>`).join('')}</div><button class="btn p" id="nx_" style="margin-top:10px">📨 Shu mijozlarga yangi sanani yuborish</button>`:'<div class="verdict ok"><b>✅ Boshqa hech bir buyurtma kechikmaydi</b></div>'}`);const nb=$('#nx_');if(nb)nb.onclick=()=>{yom.forEach(x=>xabar('mijoz',`${x.mijoz}: «${x.raqam} buyurtmangiz ${fd(addD(1,iso(nw[x.id].tayyor)))} da tayyor bo\u2018ladi. Kechikish uchun uzr so\u2018raymiz»`,x));save();closeM()}}
+function rIshlab(a){const{res,gantt}=plan();P=res;const now=new Date(),end=addH(168,now);const pos=d=>Math.max(0,Math.min(100,(d-now)/(end-now)*100));
+ const lin=S().liniya;const bug=D.bugun;
+ a.innerHTML=`<div class="top"><div><h1>Ishlab chiqarish navbati</h1><div class="sub">Ekstruziya → Metallizatsiya (faqat MCPP) → Kesish · tartibni o'zgartirsangiz, sanalar qayta hisoblanadi</div></div></div>
+ <div class="card" style="margin-bottom:14px"><h3>📅 Keyingi 7 kun<span class="sp"></span><small>${S().ishSoat} soat/kun · qayta sozlash ${String(S().sozlashSoat).replace('.',',')} soat</small></h3><div style="overflow-x:auto;margin:0 -4px;padding:0 4px"><div class="gantt">${lin.map(l=>`<div class="gr"><div class="gl">${l.nom}</div><div class="gt">${gantt[l.id].map(g=>`<div class="gb ${(res[g.o.id]||{}).kech>0?'late':''}" style="left:${pos(g.a)}%;width:${Math.max(.6,pos(g.b)-pos(g.a))}%;background:${g.o.tur==='MCPP'?'#a78bfa':'var(--acc)'}" data-o="${g.o.id}" title="${g.o.raqam} · ${spec(g.o)}">${g.setup?'<s></s>':''}<span>${g.o.raqam.slice(3)}</span></div>`).join('')}</div></div>`).join('')}<div class="gr"><div class="gl"></div><div class="gt ax">${[0,1,2,3,4,5,6].map(k=>`<span style="left:${k/7*100}%">${fd(addD(k))}</span>`).join('')}</div></div></div></div><p class="note"><span class="pill ac">CPP</span> <span class="pill" style="background:#ede9fe;color:#6d28d9">MCPP</span> · qizil chegara — muddatdan kechikadi · chiziqcha — qayta sozlash</p></div>
+ <div class="lines">${['E1','E2'].map(lid=>{const l=lin.find(x=>x.id===lid);const q=gantt[lid];return`<div class="card"><h3>${l.nom}<span class="sp"></span><small>${l.q} kg/soat</small></h3>${q.map((g,k)=>{const o=g.o,p=res[o.id];return`<div class="q ${p.kech>0?'qlate':''}"><div class="no">${k+1}</div><div class="m" data-o="${o.id}" style="cursor:pointer"><b>${esc(o.raqam)} · ${esc(o.mijoz)}</b><small>${spec(o)} · ${num(o.kg-(o.qilingan||0))} kg qoldi${g.setup?' · <span style="color:var(--wr)">⚙ sozlash</span>':''}</small><small>${o.bosqich==='ishlab'?'▶ Ishlanmoqda · ':''}tayyor ${fdt(p.tayyor)} · muddat ${fd(o.muddat)} ${p.kech>0?'<b style="color:var(--er)">· '+p.kech+' kun kech</b>':''}</small></div>${o.bosqich==='tasdiq'?`<div class="ud"><button data-up="${o.id}" title="Yuqoriga">▲</button><button data-dn="${o.id}" title="Pastga">▼</button></div>${k>0&&q[k-1].o.bosqich==='tasdiq'?`<button class="btn s" data-sh="${o.id}" title="Shoshilinch: navbat boshiga">⚡</button>`:''}`:`<button class="btn s" data-rt="${o.id}">⚖ Tortish</button>`}</div>`}).join('')||'<div class="empty">Navbat bo‘sh</div>'}<button class="btn s" data-gr="${lid}" style="margin-top:6px">🧩 Bir xil qalinlikni ketma-ket guruhlash</button></div>`}).join('')}
+ <div class="card"><h3>📊 Bugun</h3><div class="list">${bug.map(b=>`<div class="it" style="cursor:default"><div class="m"><b>${(lin.find(l=>l.id===b.liniya)||{nom:b.liniya}).nom}</b><small>${b.soat}</small></div><b>${num(b.kg)} kg</b></div>`).join('')}</div><div class="dl" style="margin-top:10px;grid-template-columns:1fr 1fr"><div><small>Qirqim (qayta ishlanadi)</small><b>${String(D.chiq.qirqim).replace('.',',')}%</b></div><div><small>Yaroqsiz brak</small><b>${String(D.chiq.brak).replace('.',',')}%</b></div></div><p class="note">Qirqim granulaga qaytadi; brak — yo'qotish. Me'yorlar sozlamada.</p></div></div>`;
+ const mv=(id,d)=>{const o=D.B.find(x=>x.id===id);const q=D.B.filter(x=>x.liniya===o.liniya&&x.bosqich==='tasdiq').sort((a,b)=>a.navbat-b.navbat);const i=q.indexOf(o),j=i+d;if(j<0||j>=q.length)return;const old=plan().res;[q[i].navbat,q[j].navbat]=[q[j].navbat,q[i].navbat];const nw=plan().res;save();
+  const ch=D.B.filter(x=>old[x.id]&&nw[x.id]&&Math.sign(nw[x.id].kech>0)!==Math.sign(old[x.id].kech>0));rIshlab(a);if(ch.length)toast(ch.map(x=>`${x.raqam}: ${nw[x.id].kech>0?'endi '+nw[x.id].kech+' kun kechikadi':'endi o‘z vaqtida'}`).join(' · '));else toast('Navbat o‘zgardi, sanalar qayta hisoblandi')};
+ $$('[data-up]',a).forEach(b=>b.onclick=()=>mv(b.dataset.up,-1));$$('[data-dn]',a).forEach(b=>b.onclick=()=>mv(b.dataset.dn,1));$$('[data-sh]',a).forEach(b=>b.onclick=()=>shoshilinch(b.dataset.sh));
+ $$('[data-rt]',a).forEach(b=>b.onclick=()=>tortish(D.B.find(o=>o.id===b.dataset.rt)));
+ $$('[data-gr]',a).forEach(b=>b.onclick=()=>{const lid=b.dataset.gr;const old=plan();const q=D.B.filter(x=>x.liniya===lid&&x.bosqich==='tasdiq');const run=D.B.find(x=>x.liniya===lid&&x.bosqich==='ishlab');q.sort((x,y)=>(Math.abs(x.qal-(run?run.qal:0))-Math.abs(y.qal-(run?run.qal:0)))||x.qal-y.qal||String(x.muddat).localeCompare(y.muddat)).forEach((x,k)=>x.navbat=k+1);const nw=plan();
+  const s0=old.gantt[lid].filter(g=>g.setup).length,s1=nw.gantt[lid].filter(g=>g.setup).length;const late=D.B.filter(x=>nw.res[x.id]&&nw.res[x.id].kech>0&&!(old.res[x.id].kech>0));save();rIshlab(a);
+  toast(`Qayta sozlashlar: ${s0} → ${s1} (≈${num((s0-s1)*S().sozlashKg)} kg chiqindi tejaldi)${late.length?' · diqqat: '+late.map(x=>x.raqam).join(', ')+' kechikadi':''}`)});
+ bindO(a)}
+
+/* ================= OMBOR VA SIFAT ================= */
+function rOmbor(a){const tabs=[['rulon','🧻 Rulonlar'],['partiya','🧪 Sifat nazorati'],['xom','🛢 Xomashyo']];const RH={bosh:'Tayyor bo‘sh',band:'Mijozga band',sifatda:'Sifatda',brak:'Brak',jonatildi:"Jo'natilgan"};
+ const sum_=h=>D.R.filter(r=>r.holat===h).reduce((s,r)=>s+r.netto,0);
+ a.innerHTML=`<div class="top"><div><h1>Ombor va sifat</h1><div class="sub">Har bir rulon: kimniki, qayerda, sifatdan o'tganmi</div></div></div>
+ <div class="seg" style="margin-bottom:14px">${tabs.map(([k,t])=>`<button data-t="${k}" class="${OT===k?'on':''}">${t}${k==='partiya'&&D.L.filter(l=>l.natija!=='otdi').length?' <span class="pill er" style="padding:0 6px">'+D.L.filter(l=>l.natija!=='otdi').length+'</span>':''}</button>`).join('')}</div><div id="ob"></div>`;
+ const ob=$('#ob');
+ if(OT==='rulon'){const h=APP.rh||'';const L=D.R.filter(r=>!h||r.holat===h);
+  ob.innerHTML=`<div class="grid k5" style="margin-bottom:14px">${Object.keys(RH).map(k=>`<div class="card kpi ${k==='brak'?'er':k==='bosh'?'ok':k==='sifatda'?'wr':''}" data-h="${k}" style="${h===k?'outline:2px solid var(--acc)':''}"><div class="l">${RH[k]}</div><div class="v" style="font-size:20px">${num(sum_(k))} kg</div><div class="d">${D.R.filter(r=>r.holat===k).length} ta rulon</div></div>`).join('')}</div>
+  ${h?`<div class="alert">Filtr: <b>${RH[h]}</b> <button class="btn s" id="hc" style="margin-left:auto">Hammasi</button></div>`:''}
+  ${table([{t:'Rulon',f:r=>`<b>${r.id}</b>`},{t:'Spetsifikatsiya',f:r=>`${r.tur} ${r.qal} × ${r.eni}`},{t:'Netto',n:1,f:r=>String(r.netto).replace('.',',')+' kg'},{t:'Brutto',n:1,m:1,f:r=>String(r.brutto).replace('.',',')},{t:'Metr',n:1,m:1,f:r=>num(r.uzun)},{t:'Joy',m:1,f:r=>r.joy},{t:'Holat',f:r=>pill(r.holat==='bosh'?'ok':r.holat==='brak'?'er':r.holat==='sifatda'?'wr':r.holat==='band'?'ac':'mu',RH[r.holat])},{t:'Mijoz',m:1,f:r=>{const o=D.B.find(x=>x.id===r.oid);return o?esc(o.mijoz):'—'}}],L.slice(0,120),{click:r=>`data-rul="${r.id}"`})}${L.length>120?'<p class="note">… yana '+(L.length-120)+' ta</p>':''}`;
+  $$('[data-h]',ob).forEach(k=>k.onclick=()=>{APP.rh=APP.rh===k.dataset.h?'':k.dataset.h;rOmbor(a)});if($('#hc'))$('#hc').onclick=()=>{APP.rh='';rOmbor(a)};$$('[data-rul]',ob).forEach(t=>t.onclick=()=>rulonTarix(t.dataset.rul))}
+ if(OT==='partiya'){const L=D.L.slice().sort((x,y)=>(x.natija==='otdi')-(y.natija==='otdi'));
+  ob.innerHTML=`<p class="note" style="margin-top:0">Sifat nazorati <b>partiya bo'yicha</b> — har rulonga alohida emas. 3 bosqich: xomashyo kirimi → ishlab chiqarish → tayyor mahsulot. «Ushlab turilgan» partiya rulonlari jo'natilmaydi.</p><div class="lines">${L.slice(0,12).map(l=>{const o=D.B.find(x=>x.id===l.oid);const MS=me(o);return`<div class="card"><h3>${l.id} ${l.natija==='otdi'?pill('ok','O‘tdi'):l.natija==='ushlab'?pill('er','Ushlab turilgan'):pill('wr','Kutilmoqda')}<span class="sp"></span><small>${fd(l.sana)}</small></h3><div class="note">${o?esc(o.raqam+' · '+o.mijoz+' · '+spec(o)):''}<br>${esc(l.smena)} · xomashyo: ${esc(l.granula)}${l.namuna?'<br>Namuna: '+l.namuna.map(id=>id+(l.namunaOlch&&l.namunaOlch[id]!=null?' ('+String(l.namunaOlch[id]).replace('.',',')+' mkm)':'')).join(', ')+' · '+esc(l.inspektor||'')+(l.vaqt?' · '+fdt(l.vaqt):''):''}</div>
+   ${l.olch?`<table class="t" style="margin-top:8px"><tbody>${MS.map(([k,n,mn,mx,u])=>{const v=l.olch[k];if(v==null)return'';const ok=(mn==null||v>=mn)&&(mx==null||v<=mx);return`<tr><td>${n}</td><td class="n">${typeof v==='number'?String(+v.toFixed(2)).replace('.',','):v} ${u}</td><td class="n note">${mn!=null?String(mn).replace('.',','):''}…${mx!=null?String(mx).replace('.',','):''}</td><td>${ok?'✅':'❌'}</td></tr>`}).join('')}</tbody></table>${l.izoh?`<div class="note" style="color:var(--er);margin-top:6px">${esc(l.izoh)}</div>`:''}`:''}
+   <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">${l.natija!=='otdi'?`<button class="btn s p" data-qc="${l.id}">${l.olch?'Qayta tekshirish':'O‘lchovlarni kiritish'}</button>`:''}</div></div>`}).join('')}</div>`;
+  $$('[data-qc]',ob).forEach(b=>b.onclick=()=>qcForma(b.dataset.qc))}
+ if(OT==='xom'){const xe=xomEhtiyoj(),xh=xomHolat();
+  ob.innerHTML=`<div class="alert" style="${xh.kam?'background:var(--erbg);color:#8f1c1c':'background:var(--okbg);color:#11692f'}">${xh.kam?`⚠ Kirimgacha (${fd(S().kirim.sana)}) boshlanadigan buyurtmalarga <b>${num(xh.oldin)} kg</b> granula kerak, omborda <b>${num(xh.stock)} kg</b> — <b>${num(xh.kam)} kg yetmaydi</b>. Kirim: ${esc(S().kirim.nom)}.`:`✅ Kirimgacha (${fd(S().kirim.sana)}) kerak bo‘ladigan ${num(xh.oldin)} kg granula omborda bor (${num(xh.stock)} kg). Butun navbatga jami ${num(xe.navb)} kg kerak — qolgani kirimdan.`}</div>
+  ${table([{t:'Xomashyo',f:x=>`<b>${esc(x.nom)}</b>`},{t:'Qoldiq',n:1,f:x=>`<b style="color:${x.qoldiq<x.min?'var(--er)':''}">${num(x.qoldiq)} ${x.birlik}</b>`},{t:'Minimal',n:1,m:1,f:x=>num(x.min)},{t:'Partiya',m:1,f:x=>x.partiya},{t:'Kirim nazorati',m:1,f:x=>pill(x.qc==='otdi'?'ok':'wr',x.qc==='otdi'?'Sertifikat ✓':'Tekshirilmoqda')},{t:'',f:x=>`<button class="btn s" data-kr="${x.id}">＋ Kirim</button>`}],D.X)}
+  <div class="card" style="margin-top:14px"><h3>📒 Ombor harakatlari jurnali<span class="sp"></span><small>o\u2018zgartirib bo\u2018lmaydi</small></h3><div class="list" style="max-height:220px;overflow:auto">${D.harakat.slice(0,30).map(h=>`<div class="it" style="cursor:default"><div class="m"><b style="font-weight:600;font-size:13px">${esc(h.m)}</b></div><small class="note">${fdt(h.v)}</small></div>`).join('')}</div></div><div class="card" style="margin-top:14px;max-width:620px"><h3>🚛 Kutilayotgan kirim</h3><div class="frm"><label>Nomi<input class="inp" id="kn" value="${esc(S().kirim.nom)}"></label><label>Miqdor, kg<input class="inp" id="kk" type="number" value="${S().kirim.kg}"></label><label>Kelish sanasi<input class="inp" id="ks_" type="date" value="${S().kirim.sana}"></label></div><p class="note">Sanani o'zgartirsangiz — qaysi buyurtma granula kutib qolishi darhol qayta hisoblanadi.</p></div><p class="note">Ehtiyoj navbat tartibida hisoblanadi: kg ÷ (1 − qirqim − brak); MCPP uchun alyuminiy ${String(S().aluKgT).replace('.',',')} kg/t, masterbatch ${String(S().mbFoiz).replace('.',',')}%, har rulonga 1 o'zak.</p>`;
+  ['kn','kk','ks_'].forEach(i=>$('#'+i).onchange=()=>{S().kirim={nom:$('#kn').value,kg:+$('#kk').value,sana:$('#ks_').value};save();toast('Kirim yangilandi — navbat qayta hisoblandi');rOmbor(a)});
+  $$('[data-kr]',ob).forEach(b=>b.onclick=()=>{const x=D.X.find(z=>z.id===b.dataset.kr);const m=modal(`<h2>＋ Kirim: ${esc(x.nom)}</h2>`,`<div class="frm"><label>Miqdor (${x.birlik})<input class="inp" id="kq" type="number" value="${x.birlik==='kg'?5000:500}"></label><label>Partiya raqami<input class="inp" id="kp" value="${x.partiya.replace(/\d$/,d=>+d+1)}"></label><label>Yetkazuvchi<input class="inp" id="ky" value="${x.id==='g1'||x.id==='g2'?'Lotte Chemical (Koreya)':'Mahalliy yetkazuvchi'}"></label><label class="w2">Kirim nazorati<select class="inp" id="kc"><option value="otdi">Sertifikat bor, ko'rinishi yaxshi — qabul</option><option value="kut">Tekshiruvga</option></select></label></div>`,`<button class="btn p" id="ks">Qabul qilish</button>`);
+   m.querySelector('#ks').onclick=()=>{const q=+$('#kq').value,pt=$('#kp').value.trim();if(!(q>0))return toast('Miqdor musbat bo\u2018lishi kerak');if(!pt||D.harakat.some(h=>h.m.includes('partiya '+pt+',')))return toast('Partiya raqami bo\u2018sh yoki avval kiritilgan');const ky=$('#ky').value.trim();if(!ky)return toast('Yetkazuvchini kiriting');x.qoldiq+=q;x.partiya=pt;x.qc=$('#kc').value;D.harakat.unshift({v:new Date().toISOString(),m:`Kirim: ${x.nom} +${num(q)} ${x.birlik}, partiya ${pt}, ${ky} — ${x.qc==='otdi'?'sertifikat ✓':'tekshiruvda'}`});logla(`Kirim: ${x.nom} +${num(q)} ${x.birlik}`);save();closeM();toast('Kirim qabul qilindi');rOmbor(a)}})}
+ $$('[data-t]',a).forEach(b=>b.onclick=()=>{OT=b.dataset.t;rOmbor(a)})}
+function me(o){const q=o?o.qal:30,e=o?o.eni:1000;return[['qal','Qalinlik',q-1.5,q+1.5,'mkm'],['eni','Eni',e-2,e+2,'mm'],['korona','Korona',36,null,'din'],['cof','COF',0.15,0.4,''],['teshik','Teshik/gel',null,1,'dona/m²'],['metall','Metall qatlam (OD)',2.2,null,''],['holat','Rulon holati',null,null,'']]}
+function qcForma(pid){const l=D.L.find(x=>x.id===pid),o=D.B.find(x=>x.id===l.oid);const MS=me(o).filter(x=>x[0]!=='holat'&&(x[0]!=='metall'||o.tur==='MCPP'));const v=l.olch||{};
+ const m=modal(`<h2>🧪 ${l.id} · ${esc(o.raqam)}</h2>`,`<p class="note" style="margin-top:0">${spec(o)} · namuna rulonlar: <b>${(()=>{const rr=D.R.filter(r=>r.pid===l.id);return[rr[0],rr[Math.floor(rr.length/2)],rr[rr.length-1]].filter(Boolean).map(r=>r.id).join(', ')||'—'})()}</b> (boshi, o'rtasi, oxiri). Me'yordan chiqqan qiymat qizil bo'ladi.</p><div class="frm">${(()=>{const rr=D.R.filter(r=>r.pid===l.id);return[rr[0],rr[Math.floor(rr.length/2)],rr[rr.length-1]].filter(Boolean).map((r,i)=>`<label>Qalinlik — ${r.id} (mkm) <span class="note">${o.qal-1.5}…${o.qal+1.5}</span><input class="inp" data-nq="${r.id}" type="number" step="0.1" value="${(o.qal+(i-1)*0.3).toFixed(1)}"></label>`).join('')})()}${MS.filter(x=>x[0]!=='qal').map(([k,n,mn,mx,u])=>`<label>${n}${u?' ('+u+')':''} <span class="note">${mn!=null?mn:''}…${mx!=null?mx:''}</span><input class="inp" data-q="${k}" type="number" step="0.01" value="${v[k]!=null?(+v[k]).toFixed(2):k==='qal'?o.qal:k==='eni'?o.eni:k==='korona'?38:k==='cof'?0.25:k==='teshik'?0:2.4}"></label>`).join('')}<label class="w2">Izoh<input class="inp" id="qi" value=""></label></div><div id="qv" style="margin-top:10px"></div>`,`<button class="btn" id="hold">Ushlab turish</button><button class="btn p" id="pass">✓ O'tdi — rulonlarni ochish</button>`);
+ const chk=()=>{let bad=[];$$('[data-nq]',m).forEach(i=>{const x=+i.value,ok=x>=o.qal-1.5&&x<=o.qal+1.5;i.style.borderColor=ok?'':'var(--er)';i.style.background=ok?'':'var(--erbg)';if(!ok)bad.push('qalinlik '+i.dataset.nq)});$$('[data-q]',m).forEach(i=>{const s=MS.find(x=>x[0]===i.dataset.q),x=+i.value,ok=(s[2]==null||x>=s[2])&&(s[3]==null||x<=s[3]);i.style.borderColor=ok?'':'var(--er)';i.style.background=ok?'':'var(--erbg)';if(!ok)bad.push(s[1])});$('#qv').innerHTML=bad.length?`<div class="verdict er"><b>Me'yordan chiqdi: ${bad.join(', ')}</b><span>Tavsiya: ushlab turing va qayta tekshiring</span></div>`:'<div class="verdict ok"><b>Hammasi me‘yorda</b></div>';return bad};$$('[data-q]',m).forEach(i=>i.oninput=chk);chk();
+ const yoz=()=>{const x={};$$('[data-q]',m).forEach(i=>x[i.dataset.q]=+i.value);const nq={};$$('[data-nq]',m).forEach(i=>nq[i.dataset.nq]=+i.value);const vs=Object.values(nq);x.qal=vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:o.qal;l.namunaOlch=nq;l.qoida='Partiya namunalar (boshi, o\u2018rtasi, oxiri) me\u2018yorda bo\u2018lsa ochiladi';x.holat='yaxshi';l.olch=x;l.izoh=$('#qi').value;const rr=D.R.filter(r=>r.pid===l.id);l.namuna=[rr[0],rr[Math.floor(rr.length/2)],rr[rr.length-1]].filter(Boolean).map(r=>r.id);l.inspektor='Laborant: Gulnora';l.vaqt=new Date().toISOString()};
+ m.querySelector('#hold').onclick=()=>{yoz();l.natija='ushlab';o.tarix.push({v:new Date().toISOString(),m:'Sifat nazorati: ushlab turildi'});xabar('direktor',`⚠ ${o.raqam} (${o.mijoz}): sifat nazorati partiyani ushlab turdi`,o);save();closeM();APP.render()};
+ m.querySelector('#pass').onclick=()=>{if(chk().length&&!confirm2())return;yoz();l.natija='otdi';D.R.filter(r=>r.pid===l.id).forEach(r=>r.holat='band');bosqichga(o,'tayyor','sifatdan o‘tdi');closeM();APP.render()}}
+function confirm2(){toast('Me‘yordan chiqqan qiymat bor — avval «Ushlab turish» tavsiya etiladi');return false}
+
+/* ================= JO'NATISH VA TO'LOVLAR ================= */
+function jonatish(o){const rs=D.R.filter(r=>r.oid===o.id&&r.holat==='band');const kr=kreditBlok(o.mid);const oldin=D.J.filter(j=>j.oid===o.id).reduce((s,j)=>s+j.kg,0);const kerak=Math.max(0,o.kg-oldin);
+ const m=modal(`<h2>🚚 Jo'natish · ${esc(o.raqam)} · ${esc(o.mijoz)}</h2>`,`${kr?`<div class="alert" style="background:var(--erbg);color:#8f1c1c">⛔ ${esc(kr)}. Jo'natish faqat direktor ruxsati bilan.</div>`:''}
+ <div class="dl"><div><small>Buyurtma</small><b>${num(o.kg)} kg</b></div><div><small>Oldin jo'natilgan</small><b>${num(oldin)} kg</b></div><div><small>Tanlangan</small><b id="tn">—</b></div></div>
+ <div class="frm" style="margin-top:12px"><label>Mashina raqami<input class="inp" id="jm" value="01 A 345 BC"></label><label>Haydovchi<input class="inp" id="jh" value="Bahrom"></label></div>
+ <div class="sec"><h4>🧻 Rulonlar (sifatdan o'tgan) <button class="btn s" id="ha" style="margin-left:auto">Hammasini belgilash</button></h4><div class="tw" style="max-height:240px;overflow:auto"><table class="t"><thead><tr><th></th><th>Rulon</th><th>Spets.</th><th class="n">Netto</th><th class="n">Brutto</th><th>Joy</th></tr></thead><tbody>${rs.map(r=>`<tr><td><input type="checkbox" data-c="${r.id}" checked></td><td>${r.id}</td><td>${r.tur} ${r.qal}×${r.eni}</td><td class="n">${String(r.netto).replace('.',',')}</td><td class="n">${String(r.brutto).replace('.',',')}</td><td>${r.joy}</td></tr>`).join('')}</tbody></table></div>
+ <div id="jv" style="margin-top:8px"></div><label id="osb" style="display:none;margin-top:8px" class="frm"><span class="note">Ortiqcha jo'natish sababi (majburiy)</span><input class="inp" id="os" placeholder="masalan: mijoz roziligi — menejer Dilshod, 2-okt"></label><p class="note">Jo'natilgach: mijozga Telegram xabar, packing list va Didox/1C uchun Excel tayyor bo'ladi (eksport — integratsiya emas). Plyonkada ±2% farq odatiy hisoblanadi.</p></div>`,
+ `<button class="btn" id="pl">🖨 Packing list</button><button class="btn p" id="js">✓ Jo'natish</button>`,true);
+ const sel=()=>rs.filter(r=>m.querySelector(`[data-c="${r.id}"]`).checked);const up=()=>{const s=sel(),kg=s.reduce((a,r)=>a+r.netto,0),f=kerak?kg/kerak*100-100:0;$('#tn').textContent=num(kg)+' kg ('+s.length+' rulon)';
+  $('#jv').innerHTML=!s.length?'<div class="verdict er"><b>Rulon tanlanmagan</b></div>':f<-2?`<div class="verdict wr"><b>Qisman jo'natish: ${num(kerak-kg)} kg qoladi</b><span>Buyurtma «Omborda tayyor»da qoladi, qolgan qism keyingi mashinada</span></div>`:f>2?`<div class="verdict wr"><b>Buyurtmadan ${f.toFixed(1).replace('.',',')}% ortiq</b><span>Mijoz roziligi bo'lsa jo'nating — ortiqcha kg hisob-fakturaga qo'shiladi</span></div>`:`<div class="verdict ok"><b>Miqdor mos: ${num(kg)} / ${num(kerak)} kg</b></div>`;$('#osb').style.display=f>2?'grid':'none';$('#js').disabled=!s.length;return{s,kg,f}};
+ $$('[data-c]',m).forEach(c=>c.onchange=up);m.querySelector('#ha').onclick=()=>{$$('[data-c]',m).forEach(c=>c.checked=true);up()};up();$('#js').textContent=kr?'🔒 Direktor ruxsati bilan jo\u2018natish':'✓ Jo\u2018natish';
+ m.querySelector('#pl').onclick=()=>window.print();
+ m.querySelector('#js').onclick=()=>{const{s,kg,f}=up();if(!s.length)return;if(f>2&&!$('#os').value.trim())return toast('Ortiqcha jo\u2018natish sababini yozing');if(kr&&APP.rol!=='direktor')return toast('Qarz sababli faqat direktor ruxsat bera oladi');s.forEach(r=>r.holat='jonatildi');
+  D.J.unshift({id:'J-'+o.raqam.slice(3)+(oldin?'-'+(D.J.filter(j=>j.oid===o.id).length+1):''),oid:o.id,sana:iso(T),mashina:$('#jm').value,haydovchi:$('#jh').value,kg:Math.round(kg),rulon:s.length});o.jonatSana=iso(T);
+  if(f<-2){o.tarix.push({v:new Date().toISOString(),m:`Qisman jo'natildi: ${num(kg)} kg, qoldi ${num(kerak-kg)} kg`});logla(`${o.raqam}: qisman jo\u2018natildi ${num(kg)} kg`,o);xabar('mijoz',`${o.mijoz}: «${o.raqam}: ${num(kg)} kg jo\u2018natildi, qolgan ${num(kerak-kg)} kg keyingi mashinada»`,o);save()}
+  else bosqichga(o,qol(o)>0?'jonatildi':'yopildi',(kr?'direktor ruxsati bilan · ':'')+num(kg)+' kg'+(f>2?' · ortiqcha: '+$('#os').value.trim():''));closeM();APP.render()}}
+function rJon(a){const tabs=[['tayyor',"🚚 Jo'natishga tayyor"],['qarz','💳 Qarzlar'],['tarix',"📄 Jo'natmalar"]];
+ a.innerHTML=`<div class="top"><div><h1>Jo'natish va to'lovlar</h1><div class="sub">Sifatdan o'tgan rulonlar → mashina → mijoz to'lovi</div></div></div><div class="seg" style="margin-bottom:14px">${tabs.map(([k,t])=>`<button data-t="${k}" class="${JT===k?'on':''}">${t}</button>`).join('')}</div><div id="jb"></div>`;const jb=$('#jb');
+ if(JT==='tayyor'){const L=D.B.filter(o=>o.bosqich==='tayyor');jb.innerHTML=L.length?`<div class="lines">${L.map(o=>{const rs=D.R.filter(r=>r.oid===o.id&&r.holat==='band');const kr=kreditBlok(o.mid);return`<div class="card"><h3>${esc(o.raqam)} · ${esc(o.mijoz)}<span class="sp"></span>${tpill(o)}</h3><div class="note">${spec(o)} · ${rs.length} rulon · ${num(rs.reduce((s,r)=>s+r.netto,0))} kg netto · muddat ${fd(o.muddat)}</div>${kr?`<div class="alert" style="margin:10px 0 0;background:var(--erbg);color:#8f1c1c">⛔ ${esc(kr)}</div>`:''}<button class="btn p" data-j="${o.id}" style="margin-top:10px">🚚 Jo'natishni rasmiylashtirish</button></div>`}).join('')}</div>`:'<div class="card empty">Hozir jo‘natishga tayyor buyurtma yo‘q</div>';$$('[data-j]',jb).forEach(b=>b.onclick=()=>jonatish(D.B.find(o=>o.id===b.dataset.j)))}
+ if(JT==='qarz'){const M=D.mij.map(m=>{const q=mijQarz(m.id);return Object.assign({},m,q)}).filter(m=>m.jami>0).sort((x,y)=>y.kech-x.kech||y.jami-x.jami);
+  jb.innerHTML=`<div class="grid k5" style="margin-bottom:14px"><div class="card kpi er"><div class="l">Muddati o'tgan</div><div class="v">${mln(M.reduce((s,m)=>s+m.kech,0))}</div><div class="d">so'm</div></div><div class="card kpi wr"><div class="l">Jami debitorlik</div><div class="v">${mln(M.reduce((s,m)=>s+m.jami,0))}</div><div class="d">so'm, jo'natilgan buyurtmalar</div></div></div>
+  ${table([{t:'Mijoz',f:m=>`<b>${esc(m.nom)}</b><br><small class="note">${esc(m.soha)}</small>`},{t:'Qarz',n:1,f:m=>som(m.jami)},{t:"Muddati o'tgan",n:1,f:m=>m.kech?`<b style="color:var(--er)">${som(m.kech)}</b><br><small class="note">${m.kun} kun</small>`:'—'},{t:'Limit',n:1,m:1,f:m=>mln(m.limit)},{t:'Holat',f:m=>kreditBlok(m.id)?pill('er','Yangi jo‘natish to‘xtatiladi'):pill('ok','Limit ichida')},{t:'',f:m=>m.kech?`<button class="btn s" data-es="${m.id}">🔔 Eslatma</button>`:''}],M,{empty:'Qarz yo‘q'})}
+  <p class="note">To'lov muddati = jo'natish sanasi + mijoz shartnomasidagi kun. 15 kundan ortiq kechiksa, yangi buyurtma tasdig'i va jo'natish qulflanadi (faqat direktor ochadi).</p>`;
+  $$('[data-es]',jb).forEach(b=>b.onclick=()=>{const m=D.mij.find(x=>x.id===b.dataset.es);xabar('mijoz',`${m.nom}: «Hurmatli hamkor, ${mln(mijQarz(m.id).kech)} so‘m to‘lov muddati o‘tgan. Iltimos, to‘lovni amalga oshiring.»`);save();b.disabled=true;b.textContent='✓ Yuborildi'})}
+ if(JT==='tarix')jb.innerHTML=table([{t:"Jo'natma",f:j=>`<b>${j.id}</b>`},{t:'Sana',f:j=>fd(j.sana)},{t:'Mijoz',f:j=>{const o=D.B.find(x=>x.id===j.oid);return o?esc(o.mijoz):''}},{t:'Rulon',n:1,f:j=>j.rulon},{t:'kg',n:1,f:j=>num(j.kg)},{t:'Mashina',m:1,f:j=>esc(j.mashina)+' · '+esc(j.haydovchi)},{t:"To'lov",f:j=>{const o=D.B.find(x=>x.id===j.oid);return o?tpill(o):''}}],D.J,{click:j=>`data-o="${j.oid}"`});
+ $$('[data-t]',a).forEach(b=>b.onclick=()=>{JT=b.dataset.t;rJon(a)});bindO(a)}
+
+/* ================= EXCEL ================= */
+let IMP=null;
+function rExcel(a){a.innerHTML=`<div class="top"><div><h1>Excel bilan ishlash</h1><div class="sub">Hozirgi Excel jadvalingiz yo'qolmaydi: tizimga yuklanadi va istalgan payt qayta Excel'ga chiqariladi</div></div></div>
+ <div class="grid k2"><div class="card"><h3>⬆️ Excel'dan buyurtmalarni yuklash</h3><div class="drop" id="dz"><div style="font-size:30px">📄</div><b>Excel yoki CSV faylni tanlang</b><div class="note">Ustunlar avtomatik taniladi: mijoz, turi (CPP/MCPP), qalinlik, eni, kg, narx, muddat. Takror va spetsifikatsiyasi to'liq bo'lmagan qatorlar belgilanadi.</div></div><div id="pv"></div></div>
+ <div class="card"><h3>⬇️ Excel'ga chiqarish</h3><div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start"><button class="btn p" data-x="buy">Buyurtmalar (bosqich, sana, to'lov)</button><button class="btn" data-x="rul">Ombor: rulonlar</button><button class="btn" data-x="qarz">Mijozlar qarzi</button><button class="btn" data-x="didox">Didox / 1C uchun jo'natmalar</button><button class="btn" data-x="shablon">Bo'sh shablon (yuklash uchun)</button></div><p class="note">«Didox / 1C uchun» — jo'natmalar va summalar Excel ko'rinishida. Bu eksport; avtomatik integratsiya emas.</p></div></div>`;
+ $('#dz').onclick=()=>$('#fin').click();
+ $$('[data-x]',a).forEach(b=>b.onclick=()=>{const t=b.dataset.x;const BR_=()=>D.B.map(o=>({Raqam:o.raqam,Sana:o.sana,Mijoz:o.mijoz,Turi:o.tur,'Qalinlik (mkm)':o.qal,'Eni (mm)':o.eni,'Miqdor (kg)':o.kg,"Narx (so'm/kg)":o.narx,"Summa (so'm)":sum(o),"To'langan":tol(o),Qoldiq:qol(o),Bosqich:BN(o.bosqich),Muddat:o.muddat,Liniya:o.liniya||'',PO:o.po||''}));
+  if(t==='buy')U.exportX({Buyurtmalar:BR_()},'polypack-buyurtmalar.xlsx');
+  if(t==='rul')U.exportX({Rulonlar:D.R.map(r=>({Rulon:r.id,Turi:r.tur,'Qalinlik':r.qal,'Eni':r.eni,'Netto kg':r.netto,'Brutto kg':r.brutto,'Metr':r.uzun,Joy:r.joy,Holat:r.holat,Buyurtma:(D.B.find(o=>o.id===r.oid)||{}).raqam||''}))},'polypack-rulonlar.xlsx');
+  if(t==='qarz')U.exportX({Qarzlar:D.mij.map(m=>{const q=mijQarz(m.id);return{Mijoz:m.nom,"Qarz (so'm)":q.jami,"Muddati o'tgan":q.kech,'Kun':q.kun,Limit:m.limit}})},'polypack-qarzlar.xlsx');
+  if(t==='didox')U.exportX({"Jo'natmalar":D.J.map(j=>{const o=D.B.find(x=>x.id===j.oid);return{Sana:j.sana,Xaridor:o.mijoz,Mahsulot:`Plyonka ${o.tur} ${o.qal} mkm × ${o.eni} mm`,'Birlik':'kg','Miqdor':j.kg,"Narx (QQSsiz)":o.narx,'Summa':j.kg*o.narx,'Shartnoma/PO':o.po}})},'polypack-didox.xlsx');
+  if(t==='shablon')U.exportX({Buyurtmalar:BR_().slice(0,2)},'polypack-shablon.xlsx')});
+ if(IMP)impKor()}
+$('#fin').onchange=e=>{const f=e.target.files[0];if(!f)return;U.readX(f,js=>{const keys=js.length?Object.keys(js[0]):[];const M=U.mapCols(keys,{mijoz:['mijoz','klient','заказчик','клиент','client','xaridor'],tur:['turi','тип','type','mahsulot','продук','марка'],qal:['qalin','толщ','mkm','мкм','micron'],eni:['eni','ширин','width'],kg:['miqdor','kg','кг','вес','колич','hajm'],narx:['narx','цена','price'],muddat:['muddat','срок','sana','дата','date'],po:['po','заказ']});
+ const seen=new Set(D.B.map(o=>(o.po||'')+o.mijoz));const rows=js.map(r=>{const o={};Object.keys(M).forEach(k=>{if(M[k])o[k]=r[M[k]]});o.kg=U.toNum(o.kg);o.qal=U.toNum(o.qal);o.eni=U.toNum(o.eni);o.narx=U.toNum(o.narx);o.tur=/m/i.test(String(o.tur))?'MCPP':'CPP';if(o.muddat instanceof Date)o.muddat=iso(o.muddat);o.xato=[!o.qal&&'qalinlik',!o.eni&&'eni',!o.kg&&'kg'].filter(Boolean);o.takror=seen.has((o.po||'')+o.mijoz);return o}).filter(o=>o.mijoz);IMP={M,rows};impKor()});e.target.value=''};
+function impKor(){const p=$('#pv');if(!p)return;const{M,rows}=IMP;p.innerHTML=`<div class="sec"><h4>Topilgan ustunlar</h4><div class="chips" style="flex-wrap:wrap">${Object.keys(M).map(k=>pill(M[k]?'ok':'mu',k+': '+(M[k]?esc(M[k]):'—'))).join(' ')}</div>
+ <p class="note">${rows.length} qator · ${rows.filter(r=>r.xato.length).length} tasida ma'lumot yetishmaydi · ${rows.filter(r=>r.takror).length} ta takror</p>${table([{t:'Mijoz',f:r=>esc(r.mijoz)},{t:'Spets.',f:r=>`${r.tur} ${r.qal||'?'}×${r.eni||'?'}`},{t:'kg',n:1,f:r=>num(r.kg)},{t:'',f:r=>r.xato.length?pill('er',r.xato.join(', ')+' yo‘q'):r.takror?pill('wr','takror'):pill('ok','tayyor')}],rows.slice(0,8))}
+ <div style="margin-top:10px;display:flex;gap:8px"><button class="btn p" id="ok">✓ ${rows.filter(r=>!r.xato.length&&!r.takror).length} ta to'liq qatorni qo'shish</button><button class="btn" id="no">Bekor</button></div></div>`;
+ $('#ok').onclick=()=>{const g=rows.filter(r=>!r.xato.length&&!r.takror);g.forEach(r=>{let m=D.mij.find(z=>z.nom.toLowerCase()===String(r.mijoz).toLowerCase());if(!m){m={id:'m'+Date.now()+Math.random().toString(36).slice(2,4),nom:String(r.mijoz),soha:'—',shahar:'',limit:100e6,kun:30};D.mij.push(m)}D.B.unshift({id:U.uid('o'),raqam:'PP-'+(++D.seq),sana:iso(T),mijoz:m.nom,mid:m.id,tur:r.tur,qal:r.qal,eni:r.eni,ozak:76,korona:'Bir tomon',rulonKg:100,kg:r.kg,narx:r.narx||S().narx[r.tur],muddat:r.muddat||addD(10),po:r.po||'',bosqich:'yangi',kun:m.kun,tolovShart:m.kun+' kun keyin',qilingan:0,masul:'Dilshod (sotuv)',tolovlar:[],tarix:[{v:new Date().toISOString(),m:"Excel'dan yuklandi"}]})});logla(`${g.length} ta buyurtma Excel'dan yuklandi`);save();IMP=null;toast(g.length+' ta buyurtma qo‘shildi — «Yangi» bosqichida tekshiruvni kutmoqda');APP.go('buyurtmalar',{st:'yangi'})};
+ $('#no').onclick=()=>{IMP=null;p.innerHTML=''}}
+
+/* ================= SOZLAMALAR VA XABARNOMALAR ================= */
+function rSoz(a){const s=S();const f=(k,n,u,st)=>`<label>${n}${u?' ('+u+')':''}<input class="inp" data-s="${k}" type="number" step="${st||'any'}" value="${k.split('.').reduce((o,x)=>o[x],s)}"></label>`;
+ const hisobot=`📊 POLYPACK — ${fd(T)} kunlik hisobot\n\nIshlab chiqarildi: ${num(D.bugun.filter(b=>b.liniya!=='K1').reduce((x,b)=>x+b.kg,0))} kg\nYangi buyurtmalar: ${D.B.filter(o=>o.sana===iso(T)).length}\nJo'natildi: ${D.J.filter(j=>j.sana===iso(T)).length} ta mashina\nXavfli: ${D.B.filter(o=>(xavf(o)||{}).t==='er').length} ta buyurtma\nMuddati o'tgan to'lov: ${mln(D.B.reduce((x,o)=>x+(kech(o)?qol(o):0),0))} so'm`;
+ a.innerHTML=`<div class="top"><div><h1>Sozlamalar va xabarnomalar</h1><div class="sub">Hisob-kitoblar qotirilgan emas — o'zingizning me'yorlaringiz bilan ishlaydi</div></div></div>
+ <div class="grid k2" style="align-items:start"><div class="card"><h3>⚙️ Me'yorlar</h3><div class="frm">${f('narx.CPP','CPP narxi',"so'm/kg",100)}${f('narx.MCPP','MCPP narxi',"so'm/kg",100)}${f('zich.CPP','CPP zichligi','g/sm³',0.01)}${f('ozak.76',"O'zak 76 mm",'kg/m',0.1)}${f('qirqim','Qirqim (qayta ishlanadi)','%',0.1)}${f('brak','Yaroqsiz brak','%',0.1)}${f('sozlashSoat','Qayta sozlash vaqti','soat',0.1)}${f('sozlashKg','Sozlashdagi chiqindi','kg',10)}${f('ishSoat','Ish soati','soat/kun',1)}${f('granulaNarx','Granula narxi',"so'm/kg",100)}
+ ${s.liniya.map((l,i)=>f('liniya.'+i+'.q',l.nom+' quvvati','kg/soat',10)).join('')}</div><p class="note">O'zgartirsangiz — navbat, sanalar, xomashyo ehtiyoji va foyda darhol qayta hisoblanadi.</p></div>
+ <div><div class="card" style="margin-bottom:14px"><h3>🔔 Telegram xabarnomalar<span class="sp"></span><small>bir tomonlama</small></h3><div class="list">${D.xabar.slice(0,8).map(x=>`<div class="it" style="cursor:default"><span class="pill ${x.kim==='mijoz'?'ac':'wr'}">${x.kim==='mijoz'?'→ mijoz':'→ '+x.kim}</span><div class="m"><b style="font-weight:600">${esc(x.m)}</b></div><small class="note">${U.vaqt(x.v)}</small></div>`).join('')}</div><p class="note">Direktor va menejerga: kechikish, xomashyo kamligi, sifat ushlab turishi. Mijozga: «qabul qilindi», «ishlab chiqarishda», «tayyor», «jo'natildi».</p></div>
+ <div class="card"><h3>📱 Direktorga har kuni 18:00</h3><div class="mg bt" style="max-width:100%;background:#f1f5f9;box-shadow:none">${esc(hisobot)}</div></div></div></div>`;
+ $$('[data-s]',a).forEach(i=>i.onchange=()=>{const ks=i.dataset.s.split('.');let o=s;ks.slice(0,-1).forEach(k=>o=o[k]);o[ks[ks.length-1]]=+i.value;save();toast('Saqlandi — hisob-kitoblar yangilandi')})}
+
+/* ================= ILOVA ================= */
+load();
+const APP=U.app({nom:'POLYPACK',logo:'PP',shior:'CPP · MCPP plyonka',rang:['#0f6fd6','#0a4f9c','#e8f1fc'],
+ bolimlar:['panel','buyurtmalar','ishlab','ombor','jonatish','excel','sozlama'],
+ mod:{panel:['📊','Direktor paneli','Panel'],buyurtmalar:['📦','Buyurtmalar','Buyurtma'],ishlab:['🏭','Ishlab chiqarish','Navbat'],ombor:['🧻','Ombor va sifat','Ombor'],jonatish:['🚚',"Jo'natish va to'lov","Jo'natish"],excel:['📑','Excel','Excel'],sozlama:['⚙️','Sozlamalar','Sozlama']},
+ rollar:{direktor:['panel','buyurtmalar','ishlab','ombor','jonatish','excel','sozlama'],menejer:['buyurtmalar','jonatish','excel'],ishlab:['ishlab','ombor'],ombor:['ombor','jonatish']},
+ rolNom:{direktor:'Direktor',menejer:'Sotuv menejeri',ishlab:'Ishlab chiqarish',ombor:'Omborchi'},
+ badge:k=>{recalc();if(k==='buyurtmalar')return D.B.filter(o=>(xavf(o)||{}).t==='er').length;if(k==='ombor')return D.L.filter(l=>l.natija!=='otdi').length;if(k==='jonatish')return D.B.filter(o=>o.bosqich==='tayyor').length;return 0},
+ onGo:(v,f)=>{f=f||{};if(v==='buyurtmalar'){F={q:'',st:f.st||'',mij:f.mij||'',xavf:!!f.xavf};if(f.xavf||f.st)KV=f.st?'royxat':KV}if(v==='ombor'&&f.t){OT=f.t;APP.rh=f.h||''}if(v==='jonatish'&&f.t)JT=f.t},
+ render:{panel:rPanel,buyurtmalar:rBuy,ishlab:rIshlab,ombor:rOmbor,jonatish:rJon,excel:rExcel,sozlama:rSoz}});
+window.APP=APP;
+$('#rst').onclick=()=>{ST.clear();seed();toast('Namuna ma‘lumoti tiklandi');APP.render()};
+APP.render();
+})();
+</script>
+</body>
+</html>
