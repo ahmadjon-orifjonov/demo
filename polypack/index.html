@@ -193,6 +193,78 @@ label.chk{cursor:pointer}
 @media (max-width:860px){.gantt{min-width:640px}.gr{grid-template-columns:96px 1fr}}
 .route{overflow:visible}.rs{min-width:0}.rs span{line-height:1.2;word-break:break-word}
 .card h3{flex-wrap:wrap;row-gap:4px}
+/* r7: professional chiziqli ikonlar (emoji o'rniga) */
+svg.i{width:1.1em;height:1.1em;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block}
+.nav .ic svg.i,.mnav .ic svg.i{width:19px;height:19px;vertical-align:middle;stroke-width:1.8}
+.nav .ic{display:inline-flex;align-items:center;justify-content:center;opacity:.9}
+.card h3 svg.i{color:var(--acc);width:18px;height:18px}
+.zn i svg.i{width:11px;height:11px;stroke-width:3;vertical-align:0}
+.btn svg.i{width:16px;height:16px}
+.chk svg.i{width:16px;height:16px}.chk.ok svg.i{color:var(--ok)}.chk:not(.ok) svg.i{color:#94a3b8}
+.alert svg.i,.pill svg.i{width:14px;height:14px}
+/* r8: korporativ uslub — keskin burchak, chegara, bo'g'iq ranglar */
+:root{--r:8px;--bg:#f4f6f8;--tx:#1b2533;--mut:#5f6b7a;--ln:#dfe4ea;--sh:none;--ok:#15803d;--okbg:#eef7f1;--wr:#b45309;--wrbg:#fdf6ec;--er:#b42318;--erbg:#fdf1f0}
+body{font-size:14px;color:var(--tx)}
+.card{border:1px solid var(--ln);box-shadow:none;border-radius:8px}
+.hero{background:#fff;border:1px solid var(--ln)}
+.tw{border:1px solid var(--ln);box-shadow:none;border-radius:8px}
+.box{border-radius:10px}
+.btn{border-radius:6px}.btn.s{border-radius:5px}
+.pill{border-radius:4px;font-weight:600;padding:2px 7px}
+.chip{border-radius:6px}.seg{border-radius:6px}
+.inp{border-radius:6px}
+.logo{background:var(--acc);border-radius:7px}
+.nav button{border-radius:6px}
+.nav .bdg,.mnav .bdg{border-radius:4px;background:#d92d20;font-weight:700}
+.kpi{border-left:3px solid var(--ln)}.kpi:hover{transform:none;border-color:#c7cfd9}
+.kpi .v{color:var(--tx)!important;font-size:24px}
+.kpi.er{border-left-color:var(--er)}.kpi.wr{border-left-color:var(--wr)}.kpi.ok{border-left-color:var(--ok)}
+.kpi.er .l{color:var(--er)}.kpi.wr .l{color:var(--wr)}
+.oc{border-radius:6px;box-shadow:none;border:1px solid var(--ln);border-left-width:3px}
+.col{background:#eef1f5;border-radius:8px}
+.q{border-radius:6px}
+.zn{border-radius:6px;background:#f7f9fb;border:1px solid var(--ln);border-left:3px solid #cbd5e1}
+.zn i{background:none!important;color:#94a3b8}.zn.ok{background:#f7f9fb;border-left-color:var(--ok)}.zn.ok i{color:var(--ok)}
+.zn.er{background:#fdf6f5;border-left-color:var(--er)}.zn.er i{color:var(--er)}.zn.wr{background:#fdfaf4;border-left-color:var(--wr)}.zn.wr i{color:var(--wr)}
+.zn i svg.i{width:15px;height:15px;stroke-width:2.2}
+.verdict{border-radius:6px;border-left:3px solid currentColor}
+.verdict.ok{background:#f3f9f5}.verdict.wr{background:#fdf8f0}.verdict.er{background:#fdf3f2}
+.alert{border-radius:6px}
+.gb{border-radius:3px;box-shadow:none}.gb[style*="var(--acc)"]{background:#3d5f86!important}.gb[style*="#a78bfa"]{background:#7a6a9e!important}
+.gb.late{box-shadow:inset 0 0 0 2px #e5484d}
+.gt{border-radius:4px}
+.stagebar{border-radius:3px;height:10px}
+.lnbar{border-radius:3px}.lnbar i{background:var(--acc);border-radius:3px}
+.prog{border-radius:3px}.prog i{border-radius:3px}
+.rs i{width:10px;height:10px}.rs:before{top:4px;height:2px}
+.wfb,.wfb i{border-radius:3px}
+.bars .b i{border-radius:3px 3px 0 0;background:var(--acc)}
+.step button{border-radius:5px}
+.toast{border-radius:8px}
+.namuna{background:#111827}
+.wfb i,.stagebar div,.leg .dot,.col h4 .dot,.chip .dot,.pill .dot{filter:saturate(.55) brightness(.95)}
+.card h3 svg.i{color:#475569}
+/* r9: sokin korporativ ranglar */
+.namuna{background:#eef1f4;color:#475569;border-bottom:1px solid var(--ln);font-size:12px;padding:5px 12px}.namuna b{color:#b45309}
+.nav button{border-left:3px solid transparent;border-radius:0 6px 6px 0;color:#c3ccd8}
+.nav button.on{background:rgba(255,255,255,.08);color:#fff;border-left-color:#7fa7d6}
+.nav button:hover{background:rgba(255,255,255,.05)}
+.nav .bdg,.mnav .bdg{background:#a83a32;font-size:10.5px;padding:0 5px;border-radius:3px;font-weight:600}
+.logo{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff;font-weight:800;letter-spacing:.5px;border-radius:6px}
+.mhead .logo{border-color:var(--acc);color:var(--acc)}
+.pill.er{background:transparent;border:1px solid #f0c9c5;color:#a83a32}
+.pill.wr{background:transparent;border:1px solid #f1dcc0;color:#94530c}
+.pill.ok{background:transparent;border:1px solid #c9e3d2;color:#1d6b3c}
+.pill.mu{background:#f3f5f8}
+.list .it .dot{width:6px;height:6px}
+.mnav button.on{color:var(--acc);box-shadow:inset 0 2px 0 var(--acc)}
+.btn.p{box-shadow:none}.btn.p:hover{filter:brightness(.92)}
+.kpi{border-left-width:2px}.zn,.verdict,.oc{border-left-width:2px}
+.gb{box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);border-radius:2px}
+.mnav button{font-size:11px}
+svg.i{stroke-width:1.8}
+.morekpi{display:none}
+@media (max-width:860px){.k4.kam .kpi:nth-child(n+5){display:none}.morekpi{display:inline-flex;margin-top:10px}}
 </style>
 </head>
 <body>
@@ -282,7 +354,7 @@ window.U=U;
 <script>/* POLYPACK — CPP/MCPP plyonka zavodi uchun buyurtma va ishlab chiqarish tizimi (NAMUNA) */
 (function(){
 const {$,$$,esc,iso,addD,addH,dd,fd,fdt,num,som,mln,toast,modal,closeM,table}=U;
-const T=U.TODAY, KEY='polypack_namuna_v4', ST=U.store(KEY);
+const T=U.TODAY, KEY='polypack_namuna_v5', ST=U.store(KEY);
 const BOS=[{id:'yangi',nom:'Yangi',r:'#94a3b8'},{id:'tasdiq',nom:'Navbatda',r:'#6366f1'},{id:'ishlab',nom:'Ishlab chiqarishda',r:'#0ea5e9'},{id:'sifat',nom:'Sifat nazorati',r:'#f59e0b'},{id:'tayyor',nom:'Omborda tayyor',r:'#10b981'},{id:'jonatildi',nom:"Jo'natildi",r:'#14b8a6'},{id:'yopildi',nom:'Yopildi',r:'#64748b'}];
 const BI=id=>BOS.findIndex(b=>b.id===id), BN=id=>(BOS.find(b=>b.id===id)||{}).nom, BR=id=>(BOS.find(b=>b.id===id)||{}).r;
 const QAL=[20,25,30,35,40,50,60], ENI=[500,600,700,800,900,1000,1100,1200,1300];
@@ -336,9 +408,9 @@ function seed(){
  [['CPP',30,1000,8],['CPP',25,800,6],['CPP',40,600,5],['MCPP',25,800,4],['CPP',20,1200,3]].forEach(([tur,qal,eni,c],k)=>{for(let j=0;j<c;j++){const net=+(95+(r()-.5)*20).toFixed(1);const core=1.1*eni/1000;R.push({id:'R-'+String(10000+rn++),oid:null,pid:'P-Z'+(k+1),tur,qal,eni,ozak:76,netto:net,brutto:+(net+core).toFixed(1),uzun:Math.round(net/(qal*1e-6*eni/1000*0.91*1000)),joy:'B-'+(k+1)+'-'+String(j+1).padStart(2,'0'),holat:'bosh',sana:addD(-20+k*3)})}});
  for(let j=0;j<2;j++)R.push({id:'R-'+String(10000+rn++),oid:null,pid:'P-1029',tur:'CPP',qal:30,eni:1000,ozak:76,netto:88+j*4,brutto:89.1+j*4,uzun:3200,joy:'BRAK',holat:'brak',sana:addD(-6),izoh:'Gel dog‘lari — qayta ishlashga'});
  B.filter(o=>o.bosqich==='ishlab').forEach(o=>{const core=S.ozak[o.ozak]*o.eni/1000;let q=o.qilingan,j=0;o.qilingan=0;while(q>o.rulonKg*0.5){const net=+(o.rulonKg+(r()-.5)*4).toFixed(1);q-=net;o.qilingan+=net;R.push({id:'R-'+String(10000+rn++),oid:o.id,pid:'P-'+o.raqam.slice(3),tur:o.tur,qal:o.qal,eni:o.eni,ozak:o.ozak,netto:net,brutto:+(net+core).toFixed(1),uzun:Math.round(net/(o.qal*1e-6*o.eni/1000*S.zich[o.tur]*1000)),joy:'Q-'+String(++j).padStart(2,'0'),holat:'sifatda',sana:addD(-1),tortildi:true,smena:j%2?'1-smena (Sherzod)':'2-smena (Jasur)'})}o.qilingan=+o.qilingan.toFixed(1)});
- const XOM=[{id:'g1',nom:'PP granula (homopolimer)',birlik:'kg',qoldiq:21500,min:6000,partiya:'GR-2611-04',qc:'otdi',narx:15200},{id:'g2',nom:'PP granula (kopolimer)',birlik:'kg',qoldiq:3800,min:1500,partiya:'GK-2610-02',qc:'otdi',narx:16800},{id:'g3',nom:'Slip/antiblok masterbatch',birlik:'kg',qoldiq:380,min:200,partiya:'MB-2609-01',qc:'otdi',narx:42000},{id:'g4',nom:"Qog'oz o'zak 76 mm",birlik:'dona',qoldiq:1150,min:400,partiya:'OZ-2609',qc:'otdi',narx:9000},{id:'g5',nom:'Alyuminiy sim (metallizatsiya)',birlik:'kg',qoldiq:140,min:150,partiya:'AL-2609',qc:'otdi',narx:68000}];
+ const XOM=[{id:'g1',nom:'PP granula (homopolimer)',birlik:'kg',qoldiq:21500,min:6000,partiya:'GR-2611-04',qc:'otdi',narx:15200},{id:'g2',nom:'PP granula (kopolimer)',birlik:'kg',qoldiq:3800,min:1500,partiya:'GK-2610-02',qc:'otdi',narx:16800},{id:'g3',nom:'Slip/antiblok masterbatch',birlik:'kg',qoldiq:860,min:200,partiya:'MB-2609-01',qc:'otdi',narx:42000},{id:'g4',nom:"Qog'oz o'zak 76 mm",birlik:'dona',qoldiq:1150,min:400,partiya:'OZ-2609',qc:'otdi',narx:9000},{id:'g5',nom:'Alyuminiy sim (metallizatsiya)',birlik:'kg',qoldiq:140,min:150,partiya:'AL-2609',qc:'otdi',narx:68000}];
  const BUGUN=[{soat:'08:00–14:00',liniya:'E1',kg:1680},{soat:'08:00–14:00',liniya:'E2',kg:1240},{soat:'14:00–hozir',liniya:'E1',kg:820},{soat:'08:00–hozir',liniya:'K1',kg:2950}];
- D={S,mij:MIJ,B,L,R,X:XOM,J:[],harakat:[{v:addD(-3)+'T10:20',m:'Kirim: PP granula (homopolimer) +20 000 kg, partiya GR-2611-04, «Lotte Chemical» — sertifikat ✓'},{v:addD(-8)+'T15:05',m:'Kirim: Qog\u2018oz o\u2018zak 76 mm +1 500 dona, partiya OZ-2609'}],bugun:BUGUN,chiq:{qirqim:3.1,brak:1.4},xabar:[],log:[],seq:n,ver:4};
+ D={S,mij:MIJ,B,L,R,X:XOM,J:[],harakat:[{v:addD(-3)+'T10:20',m:'Kirim: PP granula (homopolimer) +20 000 kg, partiya GR-2611-04, «Lotte Chemical» — sertifikat ✓'},{v:addD(-8)+'T15:05',m:'Kirim: Qog\u2018oz o\u2018zak 76 mm +1 500 dona, partiya OZ-2609'}],bugun:BUGUN,chiq:{qirqim:3.1,brak:1.4},xabar:[],log:[],seq:n,ver:5};
  const HG={g1:['GR-2609-02','GR-2610-01','GR-2611-04'],g2:['GK-2609-01','GK-2610-02'],g3:['MB-2609-01'],g5:['AL-2609']};const yl=1-(S.qirqim+S.brak)/100;
  D.R.forEach((r,k)=>{const o=B.find(x=>x.id===r.oid)||{tur:r.tur};const yangi=o.bosqich==='ishlab';const inp=r.netto/yl;const pk=a=>a[yangi?a.length-1:(k>>3)%a.length];r.lot={g1:{p:pk(HG.g1),kg:+(inp*0.8).toFixed(1)},g2:{p:pk(HG.g2),kg:+(inp*0.2).toFixed(1)},g3:{p:HG.g3[0],kg:+(inp*S.mbFoiz/100).toFixed(2)}};if(r.tur==='MCPP')r.lot.g5={p:HG.g5[0],kg:+(r.netto/1000*S.aluKgT).toFixed(2)}});
  L.forEach(l=>{l.granula=lotlar(R.filter(r=>r.pid===l.id))||'—'});
@@ -346,7 +418,7 @@ function seed(){
  D.xabar=[{v:new Date(Date.now()-36e5*2).toISOString(),kim:'direktor',m:'⚠ PP-1040 (Shirin Qandolat, MCPP 25 mkm): sifat nazorati ushlab turdi — metall qatlam OD 1,6'},{v:new Date(Date.now()-36e5*5).toISOString(),kim:'mijoz',m:'Choy Pack: «PP-1044 buyurtmangiz ishlab chiqarishga tushdi. Taxminiy tayyor sana — '+fd(addD(4))+'»'},{v:new Date(Date.now()-36e5*20).toISOString(),kim:'direktor',m:'⚠ Alyuminiy sim qoldig‘i minimaldan past: 140 kg (min 150)'}];
  save()}
 function save(){ST.save(D)}
-function load(){const x=ST.load();if(x&&x.ver===4)D=x;else seed()}
+function load(){const x=ST.load();if(x&&x.ver===5)D=x;else seed()}
 
 /* ================= HISOB-KITOBLAR ================= */
 const S=()=>D.S;
@@ -440,9 +512,9 @@ function tekshir(x,qisqa){ // asosiy ssenariy
  if(!(o.kg>0))return'<div class="note">Miqdorni kiriting</div>';
  const vars=['E1','E2'].map(l=>{const t=Object.assign({},o,{liniya:l,navbat:999});const p=plan(t).res['_t'];return{l,p}});const best=vars.sort((a,b)=>a.p.tayyor-b.p.tayyor)[0];
  const t2=Object.assign({},o,{liniya:best.l,navbat:999});const xh=xomHolat(t2);const kamKg=xh.m['_t']||0;const kr=kreditBlok(x.mid);let p=best.p;let xomM=null;if(xh.boshqa['_t'])xomM=`Yetmaydi: ${xh.boshqa['_t']}`;if(kamKg>0){xomM=`Granula ${num(kamKg)} kg yetmaydi — kirim ${fd(S().kirim.sana)} da`;const k=new Date(S().kirim.sana+'T12:00');if(p.tayyor<k){p=Object.assign({},p,{tayyor:addH(48,k)});p.kech=o.muddat?Math.ceil((p.tayyor-new Date(o.muddat+'T18:00'))/864e5):0}}
- const f=foyda(o),fp=f/sum(o)*100;const ok=!kr&&p.kech<=0;
+ const f=foyda(o),fp=f/sum(o)*100;const bq=xh.boshqa['_t'];const ok=!kr&&p.kech<=0&&!bq;
  return`${zanjir(Object.assign(o,{masul:'Sotuv bo‘limi'}),p,{kredit:kr,xom:xomM})}
- <div class="verdict ${ok?'ok':kr?'er':'wr'}"><b>${kr?'⛔ Avval qarz masalasini hal qiling':ok?'✅ Qabul qilsa bo‘ladi':'⚠ Mijoz sanasiga ulgurmaymiz'}</b><span>${ok?`Eng erta tayyor: <b>${fdt(p.tayyor)}</b> (${S().liniya.find(l=>l.id===best.l).nom})`:kr?esc(kr):`Eng erta xavfsiz sana: <b>${fd(addD(1,iso(p.tayyor)))}</b> — mijozga shu sanani ayting`}</span><span>Summa ${mln(sum(o))} so‘m · taxminiy foyda <b>${mln(f)}</b> (${fp.toFixed(0)}%) · granula ${num(kirimKg(o))} kg</span></div>
+ <div class="verdict ${ok?'ok':kr?'er':'wr'}"><b>${kr?'⛔ Avval qarz masalasini hal qiling':ok?'✅ Qabul qilsa bo‘ladi':bq&&p.kech<=0?'⚠ Qabul qilsa bo‘ladi, lekin xomashyo buyurtma qilish kerak':'⚠ Mijoz sanasiga ulgurmaymiz'}</b><span>${ok||(bq&&p.kech<=0)?`${bq?'Yetishmaydi: '+esc(bq)+' — kirimni rejalashtiring. ':''}Eng erta tayyor: <b>${fdt(p.tayyor)}</b> (${S().liniya.find(l=>l.id===best.l).nom})`:kr?esc(kr):`Eng erta xavfsiz sana: <b>${fd(addD(1,iso(p.tayyor)))}</b> — mijozga shu sanani ayting`}</span><span>Summa ${mln(sum(o))} so‘m · taxminiy foyda <b>${mln(f)}</b> (${fp.toFixed(0)}%) · granula ${num(kirimKg(o))} kg</span></div>
  ${qisqa?`<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="btn p" id="qb">Shu ma'lumot bilan buyurtma ochish →</button><span class="note">Dastlabki baho. O'zak, korona, rulon og'irligi va to'lov sharti buyurtma formasida qo'shiladi.</span></div>`:''}`}
 document.addEventListener('click',e=>{if(e.target.id==='qb'){const x={};$$('#qf [data-k]').forEach(i=>x[i.dataset.k]=i.value);forma(null,x)}});
 function bindO(a){$$('[data-o]',a).forEach(x=>x.onclick=e=>{if(e.target.closest('[data-nx]'))return;ochO(x.dataset.o)})}
@@ -657,7 +729,7 @@ function rSoz(a){const s=S();const f=(k,n,u,st)=>`<label>${n}${u?' ('+u+')':''}<
 
 /* ================= ILOVA ================= */
 load();
-const APP=U.app({nom:'POLYPACK',logo:'PP',shior:'CPP · MCPP plyonka',rang:['#0f6fd6','#0a4f9c','#e8f1fc'],
+const APP=U.app({nom:'POLYPACK',logo:'PP',shior:'CPP · MCPP plyonka',rang:['#1d4f8f','#163e72','#e9eff7'],
  bolimlar:['panel','buyurtmalar','ishlab','ombor','jonatish','excel','sozlama'],
  mod:{panel:['📊','Direktor paneli','Panel'],buyurtmalar:['📦','Buyurtmalar','Buyurtma'],ishlab:['🏭','Ishlab chiqarish','Navbat'],ombor:['🧻','Ombor va sifat','Ombor'],jonatish:['🚚',"Jo'natish va to'lov","Jo'natish"],excel:['📑','Excel','Excel'],sozlama:['⚙️','Sozlamalar','Sozlama']},
  rollar:{direktor:['panel','buyurtmalar','ishlab','ombor','jonatish','excel','sozlama'],menejer:['buyurtmalar','jonatish','excel'],ishlab:['ishlab','ombor'],ombor:['ombor','jonatish']},
@@ -668,6 +740,66 @@ const APP=U.app({nom:'POLYPACK',logo:'PP',shior:'CPP · MCPP plyonka',rang:['#0f
 window.APP=APP;
 $('#rst').onclick=()=>{ST.clear();seed();toast('Namuna ma‘lumoti tiklandi');APP.render()};
 APP.render();
+})();
+</script>
+<script>/* Emojilarni professional chiziqli SVG ikonlarga almashtirish (Lucide uslubi). Telegram xabar namunalari (.mg) va forma elementlari tegilmaydi. */
+(function(){
+const P={
+panel:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+paket:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/>',
+zavod:'<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/>',
+rulon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><ellipse cx="12" cy="5" rx="2.5" ry=".8"/>',
+yuk:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+jadval:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h8M12 11v8"/>',
+sozlama:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+ogoh:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/>',
+chaqmoq:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+belgi:'<path d="M20 6 9 17l-5-5"/>',
+okdoira:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+taqiq:'<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+tarozi:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+kolba:'<path d="M10 2v7.31M14 9.3V2M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>',
+soat:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+karta:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+qulf:'<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+hujjat:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/>',
+qongiroq:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+qidir:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+odam:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+zanjir:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+qalam:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>',
+yubor:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+kalendar:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+qatlam:'<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+baza:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
+xoch:'<path d="M18 6 6 18M6 6l12 12"/>',
+kitob:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+printer:'<path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/>',
+yukla:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>',
+tushir:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+telefon:'<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+samolyot:'<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+pul:'<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+nihol:'<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+termometr:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+nuqta:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+qor:'<path d="M2 12h20M12 2v20m8-6-4-4 4-4M4 8l4 4-4 4m12-12-4 4-4-4m0 16 4-4 4 4"/>',
+aylan:'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+radar:'<path d="M19.07 4.93A10 10 0 0 0 6.99 3.34M4 6h.01M2.29 9.62A10 10 0 1 0 21.31 8.35M16.24 7.76A6 6 0 1 0 8.23 16.67M12 18h.01M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/>',
+osish:'<path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/>',
+yol:'<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+qayt:'<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+kvadrat:'<rect width="18" height="18" x="3" y="3" rx="2"/>'};
+const M={'📊':'panel','📦':'paket','🏭':'zavod','🧻':'rulon','🚚':'yuk','🚛':'yuk','📑':'jadval','⚙':'sozlama','⚠':'ogoh','⚡':'chaqmoq','✓':'belgi','✅':'okdoira','👍':'okdoira','⛔':'taqiq','⚖':'tarozi','🧪':'kolba','🕑':'soat','⏱':'soat','💳':'karta','🔒':'qulf','📄':'hujjat','📋':'hujjat','🧾':'hujjat','🔔':'qongiroq','🔍':'qidir','👤':'odam','🔗':'zanjir','✏':'qalam','📨':'yubor','📅':'kalendar','🧩':'qatlam','🛢':'baza','❌':'xoch','✗':'xoch','📒':'kitob','🖨':'printer','⬆':'yukla','⬇':'tushir','📱':'telefon','✈':'samolyot','💵':'pul','👨‍🌾':'nihol','🌡':'termometr','📍':'nuqta','🧊':'qor','💱':'aylan','🔁':'aylan','🗼':'radar','📈':'osish','🛣':'yol','↺':'qayt','⬜':'kvadrat'};
+const keys=Object.keys(M).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+const RE=new RegExp('('+keys.join('|')+')\\uFE0F?','gu');
+const svg=n=>`<svg class="i i-${n}" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const SKIP='SCRIPT,STYLE,TEXTAREA,INPUT,SELECT,OPTION,svg,TITLE';
+function ishla(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{RE.lastIndex=0;if(!RE.test(t.nodeValue))return NodeFilter.FILTER_REJECT;const p=t.parentElement;if(!p||p.closest(SKIP)||p.closest('.mg'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});const ts=[];while(w.nextNode())ts.push(w.currentNode);
+ ts.forEach(t=>{const sp=document.createElement('span');sp.className='ic-w';sp.innerHTML=t.nodeValue.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(RE,(m,k)=>svg(M[k]));t.replaceWith(...sp.childNodes)})}
+let q=false;const mo=new MutationObserver(()=>{if(q)return;q=true;requestAnimationFrame(()=>{q=false;mo.disconnect();ishla(document.body);mo.observe(document.body,{childList:true,subtree:true,characterData:true})})});
+document.addEventListener('DOMContentLoaded',()=>{ishla(document.body);mo.observe(document.body,{childList:true,subtree:true,characterData:true})});
+if(document.readyState!=='loading'){ishla(document.body);mo.observe(document.body,{childList:true,subtree:true,characterData:true})}
 })();
 </script>
 </body>
