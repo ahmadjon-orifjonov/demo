@@ -1,0 +1,2814 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="POLYPACK">
+<title>POLYPACK</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+/* Tokenlar. Shrift: 11 / 12 / 13 / 14 / 16 / 20 / 24 / 28; oraliqlar 4 px ga karrali. */
+:root{
+	--bg:#fff;--bg2:#F6F7F8;--bg3:#ECEEF0;
+	--line:#E1E4E8;--line2:#EEF0F2;
+	--tx:#16181D;--tx2:#4A505A;--tx3:#7B818B;--tx4:#A5AAB2;
+	--br:#1F5E66;--br2:#174B52;--br3:#6E9BA0;--brm:#A9C4C7;--brt:#E8F0F1;
+	--red:#B5402B;--amb:#A86E12;--grn:#2E7D50;--blu:#3B6FA8;
+	--elev:0 4px 12px rgba(16,18,24,.08);
+	--f:-apple-system,"Segoe UI",Roboto,Inter,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:14px/1.45 var(--f);color:var(--tx);background:var(--bg);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+h1{font-size:20px;font-weight:600;margin:0;letter-spacing:-.01em}
+h2{font-size:14px;font-weight:600;margin:0}
+h3{font-size:12px;font-weight:600;color:var(--tx3);margin:0 0 8px}
+p,dl,dd{margin:0}
+.num,.tn{font-variant-numeric:tabular-nums}
+.num{text-align:right;white-space:nowrap}
+.muted{color:var(--tx3)}
+.sm{font-size:12px}
+.nowrap{white-space:nowrap}
+.strong{font-weight:600}
+.id{font-variant-numeric:tabular-nums;color:var(--tx2);font-weight:400}
+svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Qobiq */
+.app{display:grid;grid-template-columns:224px minmax(0,1fr);min-height:100vh;min-height:100dvh}
+.side{position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;padding:16px 8px 8px;background:var(--bg2);border-right:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em}
+.logo img{width:20px;height:20px;border-radius:4px;flex:none}
+.side .logo{padding:0 8px 16px}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav-i{display:flex;align-items:center;gap:8px;width:100%;height:32px;padding:0 8px;border:0;border-radius:6px;background:none;color:var(--tx2);font-size:13px;text-align:left}
+.nav-i:hover{background:var(--bg3);color:var(--tx)}
+.nav-i[aria-current=page]{background:var(--bg3);color:var(--tx);font-weight:500}
+.nav-i[aria-current=page] svg{color:var(--br)}
+.side-foot{position:relative;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.user{display:flex;align-items:center;gap:8px;width:100%;padding:4px 8px;border:0;border-radius:6px;background:none;text-align:left}
+.user:hover{background:var(--bg3)}
+.user span span{display:block;line-height:1.3}
+.user .n{font-size:13px;font-weight:500}
+.user .r{font-size:12px;color:var(--tx3)}
+.ava{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brt);color:var(--br);font-size:11px;font-weight:600;flex:none}
+.demo-note{padding:8px 8px 0;font-size:11px;color:var(--tx4)}
+.menu{position:absolute;z-index:31;min-width:224px;padding:4px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:var(--elev);}
+.side .menu{left:4px;bottom:56px}
+.menu .hd{padding:8px;margin-bottom:4px;border-bottom:1px solid var(--line2);font-size:13px}
+.menu button{display:flex;align-items:center;gap:8px;width:100%;height:36px;padding:0 8px;border:0;border-radius:4px;background:none;font-size:13px;text-align:left}
+.menu button:hover{background:var(--bg2)}
+.scrim{position:fixed;inset:0;z-index:30}
+.main{min-width:0}
+.page{max-width:1160px;padding:24px 32px 64px}
+.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.ph .sub{margin-top:4px;font-size:13px;color:var(--tx3)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.topbar,.bnav{display:none}
+
+/* Tugma, maydon, belgilar */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:32px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--tx);font-size:13px;font-weight:500;white-space:nowrap}
+.btn:hover{background:var(--bg2)}
+.btn.pri{background:var(--br);border-color:var(--br);color:var(--bg)}
+.btn.pri:hover{background:var(--br2)}
+.btn.dng{color:var(--red)}
+.btn.ghost{border-color:transparent;background:none}
+.btn.ghost:hover{background:var(--bg3)}
+.btn.s{height:28px;padding:0 8px}
+.btn.ic{width:28px;padding:0}
+.btn:disabled{opacity:.4;pointer-events:none}
+:focus-visible{outline:2px solid var(--brm);outline-offset:1px}
+.in{width:100%;height:32px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-size:14px;font-variant-numeric:tabular-nums;outline:0}
+.in:focus{border-color:var(--br);box-shadow:0 0 0 3px var(--brt);}
+.in[aria-invalid]{border-color:var(--red)}
+.fld .ferr{color:var(--red)}
+.ferr:empty{display:none}
+textarea.in{height:auto;min-height:64px;padding:8px 12px;resize:vertical;line-height:1.45}
+select.in{appearance:none;-webkit-appearance:none;padding-right:28px;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%237B818B' stroke-width='1.5' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5'/%3E%3C/svg%3E") no-repeat right 8px center}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld>span{font-size:12px;font-weight:500;color:var(--tx2)}
+.fld small{font-size:12px;color:var(--tx3)}
+.iu{position:relative}
+.iu .in{padding-right:64px}
+.iu b{position:absolute;top:0;bottom:0;right:12px;display:flex;align-items:center;font-size:12px;font-weight:400;color:var(--tx3);pointer-events:none}
+.dsel{display:grid;grid-template-columns:72px minmax(0,1fr) 88px;gap:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+.st{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);white-space:nowrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c,var(--tx4));flex:none}
+.flag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--red);white-space:nowrap}
+.flag.amb{color:var(--amb)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--tx2);font-size:13px;white-space:nowrap}
+.chip:hover{background:var(--bg2)}
+.chip b{font-weight:400;color:var(--tx4);font-variant-numeric:tabular-nums}
+.chip[aria-pressed=true]{background:var(--tx);border-color:var(--tx);color:var(--bg)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{height:30px;padding:0 12px;border:0;border-left:1px solid var(--line);background:var(--bg);color:var(--tx2);font-size:13px}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed=true]{background:var(--bg3);color:var(--tx);font-weight:500}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.search{position:relative;width:280px}
+.search svg{position:absolute;top:8px;left:8px;color:var(--tx4)}
+.search .in{padding-left:32px}
+.sec{margin-top:32px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}
+.sec-h .c{margin-left:8px;font-weight:400;color:var(--tx3)}
+.hint{font-size:12px;color:var(--tx3)}
+.note{font-size:13px;color:var(--tx2)}
+.note b{font-weight:600;color:var(--tx)}
+.note.warn{padding:12px;border-radius:6px;background:var(--bg2)}
+.empty{padding:24px 0;font-size:13px;color:var(--tx3)}
+.link{padding:0;border:0;background:none;color:var(--br);font-size:inherit;font-weight:500;text-decoration:none}
+.link:hover{text-decoration:underline}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+
+/* Jadval */
+.tw{overflow-x:auto}
+.tbl th:first-child,.tbl td:first-child{padding-left:0}
+.tbl th:last-child,.tbl td:last-child{padding-right:0}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{padding:8px 12px;border-bottom:1px solid var(--line);font-size:12px;font-weight:500;color:var(--tx3);text-align:left;white-space:nowrap}
+.tbl th.num{text-align:right}
+.tbl th.srt{cursor:pointer;user-select:none}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.tbl tr.ck{cursor:pointer}
+.tbl tr.ck:hover td{background:var(--bg2)}
+.tbl tr.chg td{background:var(--brt)}
+.tbl tfoot td,.tbl tr.tot td{font-weight:600;border-bottom:0}
+.tbl .sub{display:block;font-size:12px;font-weight:400;color:var(--tx3)}
+.tbl tr.gap td{padding:4px 0;font-size:12px;color:var(--tx3)}
+.tbl tr.part td{padding-top:0;font-size:12px;color:var(--tx3)}
+.tbl tr.grp td{padding-top:16px;border-bottom-color:var(--line);font-size:12px;font-weight:500;color:var(--tx3)}
+.m-only,.tbl .sub-m,.tbl td.d-none{display:none}
+.cell-acts{display:flex;align-items:center;justify-content:flex-end;gap:4px}
+
+/* Bugun */
+.facts{display:flex;flex-wrap:wrap;gap:0 16px;font-size:13px;color:var(--tx2)}
+.facts.quiet{font-size:12px;color:var(--tx3)}
+.today h3{margin:16px 0 0}
+.today .sec-h+h3{margin-top:0}
+.today{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px}
+.today .sec{margin-top:24px}
+.row-b{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:8px 0;border:0;border-bottom:1px solid var(--line2);background:none;text-align:left}
+.row-b:hover{background:var(--bg2)}
+.row-b .x,.item .x{flex:1;min-width:0}
+.row-b .x span,.item .x span{display:block}
+.row-b .t,.item .t{font-size:13px;font-weight:500}
+.row-b .m,.item .m{font-size:12px;color:var(--tx3)}
+.row-b .x .st{display:flex;margin-top:2px;font-size:12px}
+.item{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 0;border-bottom:1px solid var(--line2)}
+.item .x{padding:0;border:0;background:none;text-align:left}
+.item .x:hover .t{color:var(--br)}
+.row-b>svg:last-child{color:var(--tx4)}
+.more{margin-top:8px;font-size:13px}
+.chart{position:relative;display:flex;align-items:flex-end;gap:4px;height:96px;margin:16px 32px 0 0;border-bottom:1px solid var(--line)}
+.chart .gl{position:absolute;left:0;right:0;border-top:1px dashed var(--line);pointer-events:none}
+.chart .gl span{position:absolute;right:-32px;top:-8px;width:28px;text-align:right;font-size:11px;color:var(--tx4);font-variant-numeric:tabular-nums}
+.chart .b{flex:1;padding:0;border:0;background:var(--brm)}
+.chart .b.now{background:var(--br)}
+.cx{display:flex;gap:4px;margin:4px 32px 0 0;font-size:11px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.cx span{flex:1;text-align:center}
+
+/* Yon panel, oyna, xabar */
+.ovl{position:fixed;inset:0;z-index:40;background:rgba(16,18,24,.28)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:41;display:flex;flex-direction:column;width:min(520px,100%);background:var(--bg);border-left:1px solid var(--line);box-shadow:var(--elev);}
+.drawer>*{min-width:0}
+.enter{animation:enter .12s ease-out}
+@keyframes enter{from{opacity:0}}
+.dh{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 16px 8px 24px;border-bottom:1px solid var(--line)}
+.dh .x{flex:1;min-width:0}
+.dbody{flex:1;overflow-y:auto;padding:16px 24px 32px}
+.dfoot{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.dsec{margin-top:24px}
+.dbody>.note{margin-bottom:16px}
+.dl{display:grid;grid-template-columns:144px minmax(0,1fr);gap:8px 16px;font-size:13px}
+.dl.wide{grid-template-columns:208px minmax(0,1fr)}
+.dl dt{color:var(--tx3)}
+.dl dd{min-width:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.dl dd .flag{white-space:normal}
+.steps{display:flex;margin:8px 0 0}
+.step{position:relative;flex:1;padding-top:20px;font-size:11px;line-height:1.3;color:var(--tx3);text-align:center}
+.step::before{content:"";position:absolute;z-index:1;top:4px;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 2px var(--tx4);}
+.step::after{content:"";position:absolute;top:7px;left:-50%;right:50%;height:2px;background:var(--line)}
+.step:first-child::after{display:none}
+.step.done::before{background:var(--br);box-shadow:0 0 0 2px var(--br);}
+.step.done::after,.step.cur::after{background:var(--br)}
+.step.cur{color:var(--tx);font-weight:500}
+.step.cur::before{box-shadow:0 0 0 2px var(--br),0 0 0 4px var(--brt);}
+.hist{margin:0;padding:0;list-style:none;font-size:13px}
+.hist li{display:flex;gap:12px;padding:4px 0;color:var(--tx2)}
+.hist li span:first-child{flex:none;width:56px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.mwrap{position:fixed;inset:0;z-index:51;display:flex;align-items:flex-start;justify-content:center;padding:10vh 16px 0;pointer-events:none}
+#modal .ovl{z-index:50}
+.modal{display:flex;flex-direction:column;width:min(440px,100%);max-height:80vh;max-height:80dvh;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:var(--elev);pointer-events:auto}
+.modal.wide{width:min(720px,100%)}
+.mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 20px;border-bottom:1px solid var(--line)}
+.mb{padding:20px;overflow-y:auto}
+.mf{display:flex;justify-content:flex-end;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.cf{color:var(--tx2)}
+#toasts{position:fixed;left:0;right:0;bottom:24px;z-index:70;display:flex;justify-content:center;padding:0 16px;pointer-events:none}
+.toast{max-width:440px;padding:8px 12px;border-radius:6px;background:var(--tx);color:var(--bg);font-size:13px;box-shadow:var(--elev);}
+
+/* Forma va tekshiruv */
+.split{display:grid;grid-template-columns:minmax(0,560px) 336px;gap:48px;align-items:start}
+.chk-p{padding-left:32px;border-left:1px solid var(--line)}
+.verdict{display:flex;align-items:center;gap:8px;font-weight:600}
+.verdict+.chk{margin-top:8px}
+.chk{display:grid;grid-template-columns:8px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line2);font-size:13px}
+.chk .dot{margin-top:4px}
+.chk .k{font-size:12px;color:var(--tx3)}
+.chk .v{font-weight:500;font-variant-numeric:tabular-nums}
+.chk .d{font-size:12px;color:var(--tx2)}
+
+/* Kalkulyatsiya */
+.tabs-row{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:0 16px}
+.tabs-row .tabs{flex:1}
+.tabs-row .seg{margin-bottom:16px}
+.sec-h .seg{align-self:center}
+.steps-l{margin:0 0 16px;padding-left:20px;font-size:13px;color:var(--tx2)}
+.calc-sum{display:flex;flex-wrap:wrap;gap:4px 32px;margin-bottom:16px;font-size:13px;color:var(--tx2)}
+.calc-sum b{font-weight:600;color:var(--tx);font-variant-numeric:tabular-nums}
+.calc-sum s{color:var(--tx3)}
+.narrow{max-width:760px}
+.more-d{margin-top:8px}
+.more-d summary{padding:8px 0;font-size:12px;font-weight:600;color:var(--tx3);cursor:pointer}
+.live{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:8px 40px}
+.grp4 td{padding:4px 0}
+.grp4 td:first-child{color:var(--tx2)}
+.grp4 tr.tot td{border-top:1px solid var(--line);color:var(--tx)}
+.bal{max-width:480px;font-size:13px}
+.bal td{padding:4px 0}
+.bal td:first-child{color:var(--tx2)}
+.bal tr.tot td{border-top:1px solid var(--line);color:var(--tx)}
+.norms{columns:3 280px;column-gap:40px}
+.ng{margin:0 0 16px;padding:0;border:0;break-inside:avoid}
+.ng summary{display:flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;cursor:pointer}
+details.ng{margin:0;border-bottom:1px solid var(--line2)}
+.ng legend{margin-bottom:4px;padding:0;font-size:12px;font-weight:600;color:var(--tx3)}
+.nrow{display:grid;grid-template-columns:minmax(0,1fr) 88px 72px;align-items:center;gap:8px;min-height:32px;font-size:13px;color:var(--tx2)}
+.nrow .in{height:28px;padding:0 8px;font-size:13px;text-align:right}
+.nrow em{font-size:11px;font-style:normal;line-height:1.2;color:var(--tx3)}
+.big{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 32px;margin:8px 0 0}
+.big .l{font-size:12px;color:var(--tx3)}
+.big .v{font-size:20px;font-weight:600;line-height:1.3;font-variant-numeric:tabular-nums}
+.big .v.xl{font-size:28px;letter-spacing:-.02em}
+.big small{margin-left:4px;font-size:13px;font-weight:400;letter-spacing:0;color:var(--tx3)}
+.share{display:flex;height:8px;margin:16px 0 8px;border-radius:4px;overflow:hidden}
+.share i{display:block;height:100%;background:var(--c)}
+.dv{font-weight:500;white-space:nowrap}
+.dv.grn{color:var(--grn)}
+.dv.amb{color:var(--amb)}
+.dv.red{color:var(--red)}
+.oc-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;align-items:end;gap:12px}
+
+/* Navbat */
+.tabs{display:flex;gap:4px;margin-bottom:16px;box-shadow:inset 0 -1px 0 var(--line);overflow-x:auto}
+.tab{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:0;border-bottom:2px solid transparent;background:none;color:var(--tx2);font-size:13px;white-space:nowrap}
+.tab b{font-weight:400;color:var(--tx4);font-variant-numeric:tabular-nums}
+.tab:hover{color:var(--tx)}
+.tab[aria-pressed=true]{border-bottom-color:var(--br);color:var(--tx);font-weight:500}
+.lhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-bottom:8px;font-size:13px;color:var(--tx2)}
+.prog{display:inline-block;width:64px;height:4px;margin-right:8px;border-radius:2px;background:var(--bg3);vertical-align:middle;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--br)}
+
+/* Ombor va jo‘natish */
+.ship{display:grid;grid-template-columns:320px minmax(0,1fr);gap:40px;align-items:start}
+.ship .row-b[aria-pressed=true]{background:var(--brt)}
+.ship .row-b{padding:8px}
+.ship-list{position:sticky;top:16px}
+.rolls-box{max-height:calc(100vh - 400px);max-height:calc(100dvh - 400px);min-height:160px;overflow-y:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rolls-box th{position:sticky;top:0;background:var(--bg)}
+.rolls-box :is(th,td):last-child{padding-right:12px}
+.offline{font-size:11px;color:var(--amb)}
+.cbx{width:16px;height:16px;margin:0;accent-color:var(--br);vertical-align:middle}
+.ship-sum{padding:12px 0}
+.ship-sum b{font-weight:600;color:var(--tx);font-variant-numeric:tabular-nums}
+.ro{padding:4px 0;font-size:13px}
+.ro.rest{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 16px;margin-top:8px;color:var(--tx2)}
+.netto{font-size:28px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.netto small{font-size:14px;font-weight:500;letter-spacing:0;color:var(--tx3)}
+.pl{font-size:12px}
+.pl .h{font-size:16px;font-weight:600}
+.pl table{width:100%;margin-top:12px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.pl th,.pl td{padding:4px 8px;border:1px solid var(--tx4);text-align:left}
+.pl th{font-weight:600}
+.pl .r{text-align:right}
+.pl .meta{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:4px 12px;margin-top:12px}
+.pl .meta span:nth-child(odd){color:var(--tx2)}
+.pl .sig{display:flex;justify-content:space-between;gap:24px;margin-top:32px}
+.pl .sig div{flex:1;padding-top:4px;border-top:1px solid var(--tx2);color:var(--tx2)}
+.imp-map{display:flex;flex-wrap:wrap;gap:4px 16px;margin:12px 0 4px;font-size:12px;color:var(--tx2)}
+.imp-map .no{color:var(--tx4)}
+
+/* Kirish */
+.login{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;padding:32px 16px;background:var(--bg2)}
+.lbox{width:100%;max-width:360px}
+.demo-tag{display:inline-block;margin-bottom:32px;font-size:11px;color:var(--tx3)}
+.login h1{margin:24px 0 4px;font-size:16px}
+.login .lead-t{margin-bottom:16px;font-size:13px;color:var(--tx3)}
+.roles,.pin-box{border:1px solid var(--line);border-radius:8px;background:var(--bg);overflow:hidden}
+.role{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:12px 16px;border:0;border-top:1px solid var(--line2);background:var(--bg);text-align:left}
+.role:first-child{border-top:0}
+.role:hover{background:var(--bg2)}
+.role .x{flex:1}
+.role .x span{display:block}
+.role .n{font-weight:500}
+.role .d{font-size:12px;color:var(--tx3)}
+.role>svg{color:var(--tx4)}
+.pin-box{padding:16px}
+.pin-box .btn{width:100%}
+.pin{height:48px;padding-left:20px;font-size:24px;letter-spacing:12px;text-align:center}
+.err{min-height:20px;margin-top:4px;font-size:12px;color:var(--red)}
+.center{margin-top:12px;text-align:center}
+.sec-h h2 .flag{margin-left:8px;vertical-align:middle}
+
+/* Yordamchi klasslar oxirida: komponent qoidalaridan ustun turadi */
+.mt0{margin-top:0}
+.mt8{margin-top:8px}
+/* matn ekran o‘quvchilar uchun qoladi, ko‘zga ko‘rinmaydi */
+.vh{font-size:0}
+.mt16{margin-top:16px}
+
+#print{display:none}
+@media print{
+	body>*:not(#print){display:none!important}
+	#print{display:block}
+	@page{margin:14mm}
+}
+
+/* Telefon */
+@media (max-width:820px){
+	.app{display:block}
+	.side{display:none}
+	.topbar{display:flex;position:sticky;top:0;z-index:20;align-items:center;justify-content:space-between;height:52px;padding:env(safe-area-inset-top) 8px 0 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+	.topbar>div:last-child{position:relative}
+	.topbar .ava{width:32px;height:32px}
+	.topbar .user{width:auto;padding:4px}
+	.topbar .menu{right:0;top:44px}
+	.main,.page{max-width:100%}
+	.page{padding:16px 16px calc(88px + env(safe-area-inset-bottom))}
+	.ph{flex-wrap:wrap}
+	.bnav{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 8px env(safe-area-inset-bottom);background:var(--bg);border-top:1px solid var(--line)}
+	.bnav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:56px;padding:0 4px;border:0;background:none;color:var(--tx3);font-size:11px}
+	.bnav button span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+	.bnav svg.i{width:20px;height:20px}
+	.bnav button[aria-current=page]{color:var(--br);font-weight:500}
+	.btn{height:44px;padding:0 16px;font-size:14px}
+	.btn.s{height:36px;padding:0 12px;font-size:13px}
+	.btn.ic{width:40px;height:40px;padding:0}
+	.in{height:44px;font-size:16px}
+	.nrow .in{height:44px;font-size:16px}
+	.seg button{height:42px;font-size:14px}
+	.chip{height:36px;padding:0 12px}
+	.toolbar{flex-direction:column;align-items:stretch}
+	.toolbar>*{min-width:0;max-width:100%}
+	.search{width:100%}
+	.search svg{top:14px;left:12px}
+	.search .in{padding-left:36px}
+	.grid2{grid-template-columns:1fr}
+	.tabs-row .tabs{flex-basis:100%}
+	.tabs.fit .tab{flex:1;justify-content:center;padding:0 4px}
+	.tabsel{margin-bottom:16px}
+	.split,.ship,.live{grid-template-columns:1fr;gap:24px}
+	.m-hide{display:none}
+	.more-d summary{padding:12px 0}
+	.live{gap:8px}
+	.chk-p{padding-left:0;border-left:0}
+	.ship-list{position:static}
+	.rolls-box{max-height:320px}
+	.cbx{width:20px;height:20px}
+	.item .btn{flex:none}
+	.tab{height:44px}
+	.tw{margin:0 -16px}
+	.tbl.cards thead{display:none}
+	.tbl.cards,.tbl.cards tbody,.tbl.cards tfoot{display:block}
+	.tbl.cards tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;min-height:44px;padding:12px 16px;border-bottom:1px solid var(--line2)}
+	.tbl.cards td{display:flex;align-items:center;justify-content:space-between;gap:12px;grid-column:1/-1;padding:0;border:0;text-align:right}
+	.tbl.cards td::before{content:attr(data-l);color:var(--tx3);text-align:left}
+	.tbl.cards td.c-main{grid-column:1;grid-row:1;justify-content:flex-start;font-size:14px;font-weight:600;text-align:left}
+	.tbl.cards td.c-aside{grid-column:2;grid-row:1;justify-content:flex-end}
+	.tbl.cards td.c-sub{justify-content:flex-start;margin-bottom:4px;color:var(--tx2);text-align:left}
+	.tbl.cards td.c-main::before,.tbl.cards td.c-aside::before,.tbl.cards td.c-sub::before,.tbl.cards td.c-acts::before{display:none}
+	.tbl.cards td.m-hide{display:none} /* umumiy .m-hide dan kuchliroq bo‘lishi kerak: td bu yerda flex */
+	.tbl.cards td.c-acts{justify-content:flex-end;margin-top:4px}
+	.tbl.cards tr.gap,.tbl.cards tr.grp{display:block;min-height:0;padding:8px 16px}
+	.tbl.cards tr.gap td,.tbl.cards tr.grp td{display:block;padding:0;text-align:left}
+	.tbl.cards tr.gap td::before,.tbl.cards tr.grp td::before{display:none}
+	.m-only{display:inline}
+	.tbl .sub-m{display:block}
+	.tbl .m-none{display:none}
+	.tbl.cards td.d-none{display:flex}
+	.grid2.duo{grid-template-columns:1fr 1fr}
+	.wide-m{grid-column:1/-1}
+	.today{grid-template-columns:1fr;gap:0}
+	.row-b .t,.row-b .m{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+	.more{display:inline-flex;align-items:center;min-height:44px;margin-top:0}
+	.drawer{width:100%;border-left:0}
+	.dh{padding-left:16px}
+	.dl{grid-template-columns:120px minmax(0,1fr)}
+	.dl.wide{grid-template-columns:minmax(0,1fr) auto}
+	.dl.wide dd{text-align:right}
+	.dbody{padding:16px 16px 24px}
+	.mwrap{align-items:flex-end;padding:0}
+	.modal,.modal.wide{width:100%;max-height:88vh;max-height:88dvh;border-radius:8px 8px 0 0}
+	#toasts{bottom:calc(72px + env(safe-area-inset-bottom))}
+	.oc-in{grid-template-columns:1fr 1fr}
+	.oc-in>:first-child{grid-column:1/-1}
+	.tbl.cards tfoot.hide-m{display:none}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="layer"></div>
+<div id="modal"></div>
+<div id="toasts" aria-live="polite"></div>
+<div id="print"></div>
+<script>
+'use strict';
+
+/* ===== 1. Konstantalar ===== */
+
+const DAY = 864e5, HOUR = 36e5;
+const MONTHS = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
+const WEEKDAYS = ['yakshanba', 'dushanba', 'seshanba', 'chorshanba', 'payshanba', 'juma', 'shanba'];
+
+// Sanalar 'YYYY-MM-DD' ko‘rinishida saqlanadi, vaqt kerak bo‘lgan joyda — millisekund.
+const Time = {
+	p2: n => String(n).padStart(2, '0'),
+	iso(d) { d = new Date(d); return d.getFullYear() + '-' + Time.p2(d.getMonth() + 1) + '-' + Time.p2(d.getDate()); },
+	date: s => typeof s === 'string' ? new Date(s + 'T00:00:00') : new Date(s),
+	add(n, base) { const d = Time.date(base || Time.today); d.setDate(d.getDate() + n); return Time.iso(d); },
+	between: (a, b) => Math.round((Time.date(b) - Time.date(a)) / DAY)
+};
+Time.today = Time.iso(Date.now());
+
+const ROLES = {
+	direktor: { nom: 'Direktor', izoh: 'Umumiy holat, kalkulyatsiya, qarzlar', menu: ['bugun', 'buyurtmalar', 'kalk', 'qarzlar', 'sozlama'] },
+	menejer: { nom: 'Sotuv menejeri', izoh: 'Buyurtmalar va mijozlar', menu: ['buyurtmalar', 'yangi', 'mijozlar'] },
+	ishlab: { nom: 'Ishlab chiqarish boshlig‘i', izoh: 'Liniyalar navbati va smena hisoboti', menu: ['navbat', 'smena'] },
+	ombor: { nom: 'Omborchi', izoh: 'Xomashyo, tayyor rulonlar, jo‘natish', menu: ['xomashyo', 'rulonlar', 'jonatish'] }
+};
+const STATUS = {
+	yangi: { t: 'Yangi', c: 'tx4' },
+	navbat: { t: 'Navbatda', c: 'tx3' },
+	ishlab: { t: 'Ishlab chiqarishda', c: 'blu' },
+	tayyor: { t: 'Tayyor', c: 'grn' },
+	qisman: { t: 'Qisman jo‘natildi', c: 'amb' },
+	jonatildi: { t: 'Jo‘natildi', c: 'tx2' }
+};
+const STATUS_ORDER = ['yangi', 'navbat', 'ishlab', 'tayyor', 'qisman', 'jonatildi'];
+const ROLL_STATUS = {
+	bosh: { t: 'Bo‘sh', c: 'grn' },
+	band: { t: 'Band', c: 'blu' },
+	jonatildi: { t: 'Jo‘natildi', c: 'tx4' }
+};
+const THICKNESS = [20, 25, 30, 35, 40, 50, 60];
+const DEFAULT_PIN = '1111';
+
+// Amallar jadvali. Jadvalda yo‘q amal bajarilmaydi; tugmalarni ko‘rsatishni ham shu jadval boshqaradi.
+const GUEST_ACTIONS = ['pickRole', 'login']; // kirish oynasi
+const OPEN_ACTIONS = ['go', 'showOrders', 'toggleMenu', 'logout', 'install', 'openOrder', 'openClient', 'openStock', 'closeDrawer', 'closeModal', 'confirmOk', 'filterOrders', 'sendStatus', 'copyMessage']; // tizimga kirgan har kim
+const CAN = {
+	direktor: ['showCalc', 'showAllAttention', 'pickDay', 'approve', 'permit', 'permitOver', 'forceFinish', 'openPayment', 'openClientPayment', 'savePayment',
+		'setCalcTab', 'setCalcType', 'editNorm', 'resetNorms', 'sortBy', 'openUser', 'saveUser', 'resetData', 'exportCSV', 'chooseFile', 'importTemplate', 'applyImport', 'queueImported', 'cancelImport'],
+	menejer: ['approve', 'openPayment', 'openClientPayment', 'savePayment', 'setType', 'useSuggestedPrice', 'submitOrder', 'repeatOrder'],
+	ishlab: ['setLine', 'moveOrder', 'startStage', 'finishStage', 'submitShift'],
+	ombor: ['openMove', 'receiveKirim', 'saveMove', 'filterRolls', 'openRoll', 'saveRoll', 'selectShipment', 'toggleShipRolls', 'openPacking', 'printPacking', 'ship']
+};
+const can = act => GUEST_ACTIONS.includes(act) || (!!CAN[session.role] && (OPEN_ACTIONS.includes(act) || CAN[session.role].includes(act)));
+
+// Chegaralar va yo‘l qo‘yiladigan farqlar
+const TOLERANCE_KG = 0.5;    // shundan kichik material farqi yetishmovchilik emas
+const TOLERANCE_PCS = 0;     // o‘zak donalab sanaladi
+const MARGIN_LOW = 10;       // % — bundan past marja haqida ogohlantiriladi
+const DEVIATION_OK = 1, DEVIATION_WARN = 5; // me’yordan farq, %: joyida / e’tibor / yomon
+const PERCENT_MAX = 50;      // chiqindi va yo‘qotish me’yorlarining yuqori chegarasi, %
+const MIN_ROLL_KG = 5;       // rulon nettosi shundan kam bo‘lmaydi
+
+// Liniyalar unumdorligi (kgh…) bitta manba: reja ham, tannarx me’yori ham shundan hisoblanadi.
+const NORMS_DEFAULT = {
+	homo: 80, kopo: 18, mb: 2,
+	narxHomo: 15600, narxKopo: 16800, narxMb: 36000, narxAlu: 68000, narxOzak: 9000,
+	chiqindi: 5, regranulyat: 65,
+	kghE1: 400, kghE2: 300, kghM: 500, kghK: 600,
+	kvt: 230, ishchi: 7,
+	metallKwhT: 300, aluKgT: 6, aluYoq: 35, metallChiqindi: 1, metallIshchi: 2, metallBoshqa: 1300,
+	tarif: 1000, smenaSoat: 12, smenaOy: 15, oylik: 6000000,
+	sozlash: 1.5, metSozlash: 0.5, kesSozlash: 0.3, qcSoat: 4, ozakT: 8, ozakKgM: 1.1,
+	boshqa: 1800, narxCPP: 24500, narxMCPP: 30000, jonatFarq: 3
+};
+// Me’yorlar formasi: [guruh, [[kalit, nom, birlik], ...]]
+const NORM_FIELDS = [
+	['Retsept', [['homo', 'Homopolimer', '%'], ['kopo', 'Kopolimer', '%'], ['mb', 'Masterbatch', '%']]],
+	['Xomashyo narxi', [['narxHomo', 'PP homopolimer', 'so‘m/kg'], ['narxKopo', 'PP kopolimer', 'so‘m/kg'], ['narxMb', 'Masterbatch', 'so‘m/kg'], ['narxAlu', 'Alyuminiy sim', 'so‘m/kg'], ['narxOzak', 'O‘zak 76 mm', 'so‘m/dona']]],
+	['Chiqindi', [['chiqindi', 'Ekstruziya chiqindisi', '%'], ['regranulyat', 'Regranulyat bo‘lib qaytadi', '% chiqindidan']]],
+	['Liniyalar unumdorligi', [['kghE1', 'Ekstruziya-1', 'kg/soat'], ['kghE2', 'Ekstruziya-2', 'kg/soat'], ['kghM', 'Metallizatsiya', 'kg/soat'], ['kghK', 'Kesish', 'kg/soat']]],
+	['Ekstruziya', [['kvt', 'Bir liniya quvvati', 'kVt'], ['ishchi', 'Smenadagi ishchilar', 'kishi']]],
+	['Metallizatsiya', [['metallKwhT', 'Qo‘shimcha elektr', 'kVt·soat/t'], ['aluKgT', 'Alyuminiy sim sarfi', 'kg/t'], ['aluYoq', 'Simning plyonkaga o‘tirmaydigan qismi', '%'], ['metallChiqindi', 'Plyonka yo‘qotishi', '%'], ['metallIshchi', 'Smenadagi ishchilar', 'kishi'], ['metallBoshqa', 'Kamera xizmati, amortizatsiya', 'so‘m/kg']]],
+	['Elektr va ish haqi', [['tarif', 'Elektr tarifi', 'so‘m/kVt·soat'], ['smenaSoat', 'Smena', 'soat'], ['smenaOy', 'Bir ishchining smenalari', 'oyiga'], ['oylik', 'O‘rtacha oylik', 'so‘m']]],
+	['Reja va rulon', [['sozlash', 'Qayta sozlash, ekstruziya', 'soat'], ['metSozlash', 'Qayta sozlash, metallizatsiya', 'soat'], ['kesSozlash', 'Qayta sozlash, kesish', 'soat'], ['qcSoat', 'Sifat nazorati', 'soat'], ['ozakT', 'O‘zak sarfi', 'dona/t'], ['ozakKgM', 'O‘zak og‘irligi', 'kg/m']]],
+	['Boshqa va sotuv', [['boshqa', 'Boshqa xarajatlar', 'so‘m/kg'], ['narxCPP', 'Sotuv narxi, CPP', 'so‘m/kg'], ['narxMCPP', 'Sotuv narxi, MCPP', 'so‘m/kg'], ['jonatFarq', 'Jo‘natish farqi, ±', '%']]]
+];
+const NORMS_NONZERO = ['kghE1', 'kghE2', 'kghM', 'kghK', 'smenaSoat', 'smenaOy'];
+const NORMS_PERCENT = ['chiqindi', 'aluYoq', 'metallChiqindi', 'jonatFarq'];
+
+// CSV import: ustun sarlavhasida shu so‘zlardan biri uchrasa, maydon tanilgan hisoblanadi.
+const IMPORT_FIELDS = [
+	['mijoz', 'Mijoz', ['mijoz', 'klient', 'buyurtmachi', 'client']],
+	['tur', 'Turi', ['turi', 'tur', 'mahsulot', 'type']],
+	['qal', 'Qalinlik', ['qalinlik', 'mkm', 'mikron']],
+	['eni', 'Eni', ['eni', 'kenglik', 'width']],
+	['kg', 'Miqdor', ['miqdor', 'hajm', 'og‘irlik', 'vazn']],
+	['muddat', 'Muddat', ['muddat', 'topshirish', 'deadline']],
+	['narx', 'Narx', ['narx', 'price']]
+];
+
+/* ===== 2. Data — holat, namuna ma’lumot, saqlash ===== */
+
+let db;            // saqlanadigan ma’lumot
+let session = {};  // { role, user } yoki kirish oynasida { pick }
+const ui = {
+	page: null, menu: false, drawer: null, online: navigator.onLine, install: null,
+	orderFilter: { st: 'faol', q: '' },
+	rollFilter: { st: 'bosh', q: '' },
+	clientFilter: { q: '' }, debtSort: { k: 'days', dir: -1 },
+	line: 'E1', changed: [], attAll: false,
+	shipSel: null, shipRolls: false, chartDay: null, imported: null, modalForm: null, printId: null,
+	calcTab: 'cost', calcTur: 'CPP', normBase: null, imp: null,
+	f: {}  // ochiq formalar qiymatlari: ui.f.<forma>.<maydon>
+};
+
+const Data = {
+	KEY: 'polypack.v3.data', SESSION: 'polypack.v3.session', VERSION: 10,
+
+	read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } },
+	persist() {
+		try { localStorage.setItem(Data.KEY, JSON.stringify(db)); } catch (e) { UI.toast('Saqlab bo‘lmadi: brauzer xotirasi to‘lgan'); }
+	},
+	save() { db.dirty = true; Data.persist(); },
+	saveSession() { try { localStorage.setItem(Data.SESSION, JSON.stringify(session)); } catch (e) { /* xotira yopiq bo‘lsa, sessiya saqlanmaydi */ } },
+
+	// Namuna har kuni «bugun»ga moslanadi. Tegilmagan ma’lumot qayta yaratiladi,
+	// foydalanuvchi o‘zgartirgan bo‘lsa — faqat sanalar suriladi.
+	load() {
+		db = Data.read(Data.KEY);
+		if (!db || db.v !== Data.VERSION || !db.dirty) Data.seed();
+		else if (db.base !== Time.today) Data.rebase(Time.between(db.base, Time.today));
+		session = Data.read(Data.SESSION) || {};
+	},
+	rebase(n) {
+		const shift = (obj, ...keys) => keys.forEach(k => { if (obj[k]) obj[k] = Time.add(n, obj[k]); });
+		db.orders.forEach(o => { shift(o, 'sana', 'muddat', 'tayyorSana', 'jonatSana', 'ruxsat'); o.tarix.forEach(h => shift(h, 'd')); o.yakun.forEach(y => shift(y, 'd')); });
+		db.rolls.forEach(r => shift(r, 'sana'));
+		db.reports.forEach(r => shift(r, 'sana'));
+		db.moves.forEach(m => shift(m, 'd'));
+		db.ships.forEach(s => shift(s, 'd'));
+		db.normLog.forEach(x => shift(x, 'd'));
+		if (db.kirim) db.kirim.at += n * DAY;
+		db.base = Time.today;
+		Data.persist();
+	},
+
+	order: id => db.orders.find(o => o.id === id),
+	client: x => db.clients.find(c => c.id === (x.cid || x)) || { nom: '—', tolovKun: 0, limit: 0 },
+	mat: k => db.mats.find(m => m.k === k),
+	line: id => db.lines.find(l => l.id === id),
+	user: () => db.users.find(u => u.id === session.user) || db.users.find(u => u.rol === session.role),
+	log: (o, m) => o.tarix.push({ d: Time.today, m }),
+	newOrder: fields => ({
+		id: 'PP-' + (++db.seq), holat: 'yangi', liniya: '', tartib: 0, etap: 0, faol: false, done: 0,
+		sana: Time.today, tayyorSana: null, jonatSana: null, jonatKg: 0, ozak: 0, tolangan: 0, ruxsat: null, sorovKg: null, ruxsatKg: null, tarix: [], yakun: [], ...fields
+	}),
+	// Bosqich tugaganda material ombordan chiqariladi (miqdor — Calc.stageNeed). Qoldiq yetmasa, amal
+	// Calc.materialCheck orqali to‘xtatiladi; faqat direktor ruxsati bilan davom etadi va shunda
+	// yetmagan miqdor jurnalga «tuzatish» bo‘lib yoziladi — qoldiq hech qachon manfiy bo‘lmaydi.
+	consume(o, stage) {
+		const need = Calc.stageNeed(o, stage), where = `${o.id}, ${{ E: 'ekstruziya', M: 'metallizatsiya', K: 'kesish' }[stage]}`;
+		Object.keys(need).forEach(k => {
+			const m = Data.mat(k), kg = Math.min(m.qoldiq, need[k]);
+			m.qoldiq = +(m.qoldiq - kg).toFixed(1);
+			if (kg > 0) db.moves.unshift({ d: Time.today, k, tur: 'chiqim', kg, izoh: where });
+			if (k === 'ozak') o.ozak += need[k];
+			if (need[k] - kg > Calc.tolerance(k)) db.moves.unshift({ d: Time.today, k, tur: 'tuzatish', kg: +(need[k] - kg).toFixed(1), izoh: `${where}: qoldiqdan ortiq sarf, direktor ruxsati bilan` });
+		});
+	},
+
+	// Mijoz avansi (ortiqcha to‘langan pul) yangi buyurtmaga avtomatik o‘tkaziladi.
+	applyAdvance(o) {
+		const c = Data.client(o), pay = Math.min(c.avans || 0, o.kg * o.narx);
+		if (pay <= 0) return;
+		c.avans -= pay;
+		o.tolangan += pay;
+		Data.log(o, `Avansdan hisobga olindi: ${F.som(pay)}`);
+	},
+
+	// Har rulonga bitta o‘zak. Kesish tugaganda reja bo‘yicha olinadi (o.ozak); rulon qo‘lda kiritilganda
+	// faqat shu hisobdan ortig‘i yoki buyurtmasiz (zaxira) rulon uchun yana bittasi chiqariladi.
+	takeCore(o) {
+		if (o && db.rolls.filter(r => r.oid === o.id).length < o.ozak) return true;
+		const m = Data.mat('ozak');
+		if (m.qoldiq < 1) return false;
+		m.qoldiq -= 1;
+		if (o) o.ozak += 1;
+		db.moves.unshift({ d: Time.today, k: 'ozak', tur: 'chiqim', kg: 1, izoh: `${o ? o.id : 'Zaxira'}, rulon kiritish` });
+		return true;
+	},
+
+	// Me’yor qachon o‘zgarganini eslab qoladi («Reja va haqiqiy»dagi izoh uchun).
+	logNorm(k) { if (!db.normLog.some(x => x.d === Time.today && x.k === k)) db.normLog.push({ d: Time.today, k }); },
+
+	seed() {
+		const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(11);
+		const clients = [
+			['c1', 'Baraka Makaron', 'Makaron fabrikasi', 'Toshkent', 'Anvar Saidov', '+998 90 117 42 08', 250e6, 30],
+			['c2', 'Shirin Qandolat', 'Qandolat', 'Samarqand', 'Gulnora Rasulova', '+998 91 540 18 77', 180e6, 21],
+			['c3', 'Muzqaymoq Plus', 'Muzqaymoq', 'Toshkent', 'Rustam Ergashev', '+998 93 381 66 12', 150e6, 14],
+			['c4', 'Choy Pack', 'Choy qadoqlash', 'Toshkent', 'Javlon Murodov', '+998 94 625 09 31', 120e6, 30],
+			['c5', 'Flex Print', 'Bosmaxona va laminatsiya', 'Toshkent', 'Oybek Hamidov', '+998 95 172 80 44', 400e6, 45],
+			['c6', 'Chirchiq Non', 'Non zavodi', 'Chirchiq', 'Shuhrat Nazarov', '+998 97 233 51 60', 80e6, 15],
+			['c7', 'Mazali Chuchvara', 'Muzlatilgan chuchvara', 'Toshkent', 'Lola Karimova', '+998 98 450 72 19', 100e6, 21],
+			['c8', 'Sharq Laminat', 'Laminatsiya', 'Farg‘ona', 'Akmal Yo‘ldoshev', '+998 99 814 37 05', 300e6, 30],
+			['c9', 'Oltin Don', 'Yorma va shakar qadoqlash', 'Guliston', 'Bekzod Tursunov', '+998 90 966 25 48', 90e6, 0]
+		].map(([id, nom, soha, shahar, kontakt, tel, limit, tolovKun]) => ({ id, nom, soha, shahar, kontakt, tel, limit, tolovKun, avans: 0 }));
+
+		// [mijoz, tur, qalinlik, eni, kg, holat, liniya, x, to‘langan %, qabul qilingan kun]
+		// x: jo‘natilgan — jo‘natilgan kun; tayyor va yangi — muddat; navbat va ishlab — muddat zaxirasi, kun
+		const rows = `
+			c5 CPP 25 1200 7000 jonatildi E1 -92 30 -110
+			c1 CPP 30 1000 5000 jonatildi E1 -20 100 -34
+			c2 MCPP 25 800 3000 jonatildi E2 -15 100 -30
+			c4 CPP 25 700 2000 jonatildi E2 -12 60 -24
+			c8 MCPP 30 1000 6000 jonatildi E1 -9 50 -22
+			c3 CPP 40 600 2500 jonatildi E2 -5 0 -16
+			c1 CPP 30 1000 4000 tayyor E1 1 50 -12
+			c5 CPP 20 1200 3500 tayyor E2 2 0 -11
+			c7 CPP 50 500 1800 tayyor E2 2 100 -10
+			c8 CPP 30 1300 6000 ishlab E1 2 30 -8
+			c4 MCPP 30 700 2500 ishlab E2 3 50 -7
+			c2 MCPP 25 800 3500 ishlab E2 1 50 -6
+			c1 CPP 30 1000 5000 navbat E1 3 30 -5
+			c3 CPP 40 600 3000 navbat E2 4 0 -5
+			c9 CPP 35 900 2000 navbat E1 2 100 -4
+			c2 MCPP 25 800 4000 navbat E2 -2 30 -3
+			c6 CPP 30 1000 2500 navbat E1 3 0 -3
+			c3 CPP 35 600 2200 navbat E2 2 0 -2
+			c8 CPP 30 1300 4500 navbat E1 -1 30 -2
+			c7 CPP 25 800 1500 navbat E2 5 0 -1
+			c5 CPP 20 1200 8000 yangi - 12 0 0`.trim().split(/\s*\n\s*/).map(r => r.split(' ').map(v => isNaN(v) ? v : +v));
+		const user = (ism, rol, tel, i) => ({ id: 'u' + i, ism, rol, tel, pin: DEFAULT_PIN });
+
+		db = {
+			v: Data.VERSION, base: Time.today, dirty: false, seq: 1040,
+			norms: { ...NORMS_DEFAULT },
+			// lastQal — liniyada oxirgi ishlangan qalinlik (qayta sozlash kerakligini bilish uchun)
+			lines: [
+				{ id: 'E1', nom: 'Ekstruziya-1', lastQal: 30 },
+				{ id: 'E2', nom: 'Ekstruziya-2', lastQal: 25 },
+				{ id: 'M', nom: 'Metallizatsiya' },
+				{ id: 'K', nom: 'Kesish' }
+			],
+			mats: [
+				{ k: 'homo', nom: 'PP granula, homopolimer', birlik: 'kg', qoldiq: 0, min: 6000 },
+				{ k: 'kopo', nom: 'PP granula, kopolimer', birlik: 'kg', qoldiq: 0, min: 1500 },
+				{ k: 'mb', nom: 'Masterbatch', birlik: 'kg', qoldiq: 900, min: 200 },
+				{ k: 'ozak', nom: 'Qog‘oz o‘zak 76 mm', birlik: 'dona', qoldiq: 1150, min: 400 },
+				{ k: 'alu', nom: 'Alyuminiy sim', birlik: 'kg', qoldiq: 140, min: 150 }
+			],
+			users: [
+				['Tojiboy Karimov', 'direktor', '+998 90 300 11 22'], ['Dilnoza Yusupova', 'menejer', '+998 90 412 55 10'], ['Malika Hasanova', 'menejer', '+998 91 208 34 61'],
+				['Sherzod Aliyev', 'ishlab', '+998 93 517 20 09'], ['Jasur Toshev', 'ishlab', '+998 94 880 14 72'], ['Bahodir Qodirov', 'ombor', '+998 97 646 03 38']
+			].map((u, i) => user(...u, i + 1)),
+			clients, orders: [], rolls: [], reports: [], moves: [], ships: [], normLog: [], kirim: null
+		};
+
+		const tartib = { E1: 0, E2: 0 };
+		rows.forEach(([cid, tur, qal, eni, kg, holat, liniya, x, paid, created]) => {
+			if (liniya === '-') liniya = '';
+			const narx = (tur === 'MCPP' ? 30000 : 24500) + (qal <= 25 ? 1000 : qal >= 50 ? -800 : 0) + [0, 500, -500][Math.floor(rnd() * 3)];
+			const o = Data.newOrder({
+				cid, tur, qal, eni, kg, narx, holat, liniya, sana: Time.add(created), muddat: Time.add(30),
+				tolangan: Math.round(kg * narx * paid / 100), tarix: [{ d: Time.add(created), m: 'Buyurtma qabul qilindi' }]
+			});
+			if (holat !== 'yangi') o.tarix.push({ d: Time.add(created + 1), m: Data.line(liniya).nom + ' navbatiga qo‘yildi' });
+			if (holat === 'tayyor' || holat === 'jonatildi') {
+				o.etap = Calc.route(o).length;
+				o.tayyorSana = holat === 'tayyor' ? Time.add(-1 - Math.floor(rnd() * 2)) : Time.add(x - 1);
+				o.muddat = holat === 'tayyor' ? Time.add(x) : Time.add(x + Math.floor(rnd() * 2));
+				o.tarix.push({ d: Time.add(created + 3), m: 'Ishlab chiqarish boshlandi' }, { d: o.tayyorSana, m: 'Tayyor, omborga topshirildi' });
+				if (holat === 'jonatildi') { o.jonatSana = Time.add(x); o.jonatKg = kg; o.tarix.push({ d: o.jonatSana, m: 'Jo‘natildi' }); }
+			}
+			if (holat === 'navbat') o.tartib = ++tartib[liniya];
+			if (holat === 'yangi') o.muddat = Time.add(x);
+			db.orders.push(o);
+		});
+
+		Object.assign(Data.order('PP-1050'), { faol: true, done: 3800 });
+		Object.assign(Data.order('PP-1051'), { etap: 1, faol: true, done: 900 });
+		Object.assign(Data.order('PP-1052'), { faol: true, done: 1200 });
+		['PP-1050', 'PP-1051', 'PP-1052'].forEach(id => Data.log(Data.order(id), 'Ishlab chiqarish boshlandi'));
+		Data.log(Data.order('PP-1061'), 'Mijozda muddati o‘tgan qarz — direktor ruxsatini kutmoqda');
+
+		// Muddatlar rejadan olinadi: ikki buyurtmada zaxira manfiy, ya’ni ular kechikish xavfida.
+		const first = Calc.plan();
+		rows.forEach((row, i) => {
+			const o = db.orders[i];
+			if (first.res[o.id]) o.muddat = Time.add(row[7], Time.iso(first.res[o.id].tayyor));
+		});
+
+		// Granula: PP-1057 navbati kirimdan oldin keladi va unga yetmaydi; qolganiga zaxira yetadi.
+		const pl = Calc.plan(), need = o => Calc.needs(o.kg, o.tur, o.eni);
+		const queue = Calc.active().filter(o => o.etap === 0).sort((a, b) => pl.res[a.id].E.start - pl.res[b.id].E.start);
+		const short = Data.order('PP-1057'), at = queue.indexOf(short), next = queue[at + 1];
+		Data.mat('homo').qoldiq = Math.round((Calc.sum(queue.slice(0, at), o => need(o).homo) + need(short).homo * 0.45) / 50) * 50;
+		Data.mat('kopo').qoldiq = Math.round((Calc.sum(queue, o => need(o).kopo) + 1800) / 50) * 50;
+		const gap = next ? pl.res[next.id].E.start - pl.res[short.id].E.start : 8 * HOUR;
+		db.kirim = { mat: 'homo', kg: 20000, at: pl.res[short.id].E.start + Math.min(gap / 2, 4 * HOUR), kim: 'Sho‘rtan GKM' };
+
+		let rollNo = 24100;
+		// exact berilsa, oxirgi rulon og‘irligi yig‘indini aynan shu kg ga yetkazadi
+		// buyurtma rulonlariga ketgan o‘zak soni buyurtmada yoziladi (o.ozak) — har rulonga bitta
+		const addRolls = (o, holat, n, spec = o, exact = 0) => {
+			let sum = 0;
+			if (o) o.ozak = n;
+			for (let i = 0; i < n; i++) {
+				const netto = exact && i === n - 1 ? +(exact - sum).toFixed(1) : +(Calc.rollKg(spec.eni) + (rnd() - .5) * 6).toFixed(1);
+				sum += netto;
+				db.rolls.push({
+					id: 'R-' + (++rollNo), oid: o ? o.id : null, tur: spec.tur, qal: spec.qal, eni: spec.eni,
+					netto, brutto: +(netto + Calc.coreKg(spec.eni)).toFixed(1), holat,
+					sana: o && o.tayyorSana ? o.tayyorSana : Time.add(-20 + i)
+				});
+			}
+		};
+		db.orders.filter(o => o.holat === 'tayyor').forEach(o => addRolls(o, 'band', Math.round(o.kg / Calc.rollKg(o.eni))));
+		db.orders.filter(o => o.holat === 'jonatildi').forEach(o => addRolls(o, 'jonatildi', Math.round(o.kg / Calc.rollKg(o.eni)), o, o.kg));
+		[['CPP', 30, 1000, 5], ['CPP', 25, 800, 4], ['MCPP', 25, 800, 3]].forEach(([tur, qal, eni, n]) => addRolls(null, 'bosh', n, { tur, qal, eni }));
+
+		// 14 kunlik smena hisobotlari. Sarf me’yordan biroz yuqori chiqadi — «Reja va haqiqiy» uchun.
+		const fresh = Calc.cost('CPP').fresh / 1000, meter = { E1: 418200, E2: 296450, M: 120380 };
+		// Har hisobot shu smenada ishlangan buyurtma bilan bog‘langan (parts): CPP va MCPP sarfi alohida hisoblanadi.
+		const ran = (lid, d) => lid === 'M' ? (d >= -1 ? 'PP-1051' : 'PP-1045')
+			: lid === 'E1' ? ([-11, -10, -4, -3].includes(d) ? 'PP-1045' : d >= -1 ? 'PP-1050' : 'PP-1042')
+			: d >= -1 ? 'PP-1052' : d >= -6 && d <= -5 ? 'PP-1043' : 'PP-1046';
+		const report = (d, smena, liniya, r) => {
+			const o = Data.order(ran(liniya, d));
+			db.reports.push({ sana: Time.add(d), smena, liniya, soat: 12, granula: 0, alu: 0, izoh: '', ...r, parts: [{ id: o.id, tur: o.tur, kg: r.ishlab }], m0: meter[liniya], m1: meter[liniya] + r.kwh });
+			meter[liniya] += r.kwh;
+		};
+		for (let d = -13; d <= 0; d++) {
+			[1, 2].forEach(smena => {
+				if (d === 0 && smena === 2) return;
+				['E1', 'E2'].forEach(lid => {
+					const stop = d === -9 && lid === 'E2' && smena === 1;
+					const ishlab = Math.round(Calc.rate(lid) * 12 * (0.89 + rnd() * 0.06) * (stop ? 0.5 : 1) / 10) * 10;
+					const share = 0.049 + rnd() * 0.006, chiqindi = Math.round(ishlab * share / (1 - share));
+					report(d, smena, lid, {
+						ishlab, chiqindi, granula: Math.round(ishlab * fresh * (0.994 + rnd() * 0.012)),
+						kwh: Math.round((ishlab + chiqindi) * (0.675 + rnd() * 0.04)),
+						...(stop ? { soat: 6, izoh: 'Rejali ta’mir: shnek tozalash, 6 soat to‘xtash' } : rnd() < 0.2 ? { soat: 11.5 } : {})
+					});
+				});
+				if (smena === 1) {
+					const ishlab = Math.round((5400 + rnd() * 500) / 10) * 10;
+					report(d, 1, 'M', { ishlab, chiqindi: Math.round(ishlab * 0.011), alu: +(ishlab * (6.1 + rnd() * 0.4) / 1000).toFixed(1), kwh: Math.round(ishlab * (0.30 + rnd() * 0.03)) });
+				}
+			});
+		}
+
+		db.moves = [
+			{ d: Time.add(-1), k: 'homo', tur: 'chiqim', kg: 4200, izoh: 'Ekstruziya-1 ga, 1-smena' },
+			{ d: Time.add(-3), k: 'homo', tur: 'kirim', kg: 20000, izoh: 'Sho‘rtan GKM, partiya GR-2609-04' },
+			{ d: Time.add(-8), k: 'ozak', tur: 'kirim', kg: 800, izoh: 'Partiya OZ-2609' }
+		];
+		db.ships = db.orders.filter(o => o.holat === 'jonatildi').map((o, i) => ({
+			id: 'J-' + o.id.slice(3), oid: o.id, d: o.jonatSana, kg: o.kg,
+			rulon: Math.round(o.kg / Calc.rollKg(o.eni)), mashina: ['01 A 345 BC', '30 K 112 AA', '10 B 777 CB'][i % 3]
+		}));
+		// Jurnal boshidagi qoldiq: joriy qoldiq = shu + jurnaldagi harakatlar (Xomashyo jadvalida ko‘rsatiladi)
+		db.opening = Object.fromEntries(db.mats.map(m => [m.k, m.qoldiq - Calc.sum(db.moves.filter(x => x.k === m.k), x => x.tur === 'kirim' ? x.kg : x.tur === 'chiqim' ? -x.kg : 0)]));
+		Data.persist();
+	},
+
+	// Eksport jadvali: [fayl nomi, satrlar]. Excel uchun «;» ajratgich bilan yoziladi (UI.csv).
+	exportTable(kind) {
+		const dec = v => String(v).replace('.', ',');
+		return {
+			orders: () => ['buyurtmalar', [['Raqam', 'Mijoz', 'Turi', 'Qalinlik (mkm)', 'Eni (mm)', 'Miqdor (kg)', 'Jo‘natilgan (kg)', 'Narx (so‘m/kg)', 'Summa (so‘m)', 'To‘langan (so‘m)', 'Muddat', 'Holat', 'Liniya'],
+				...db.orders.map(o => [o.id, Data.client(o).nom, o.tur, o.qal, o.eni, o.kg, dec(o.jonatKg), o.narx, o.kg * o.narx, o.tolangan, F.dots(o.muddat), STATUS[o.holat].t, o.liniya ? Data.line(o.liniya).nom : ''])]],
+			rolls: () => ['rulonlar', [['Rulon', 'Buyurtma', 'Mijoz', 'Turi', 'Qalinlik (mkm)', 'Eni (mm)', 'Netto (kg)', 'Brutto (kg)', 'Holat', 'Sana'],
+				...db.rolls.map(r => [r.id, r.oid || 'Zaxira', r.oid ? Data.client(Data.order(r.oid)).nom : '', r.tur, r.qal, r.eni, dec(r.netto), dec(r.brutto), ROLL_STATUS[r.holat].t, F.dots(r.sana)])]],
+			debts: () => ['qarzlar', [['Mijoz', 'Jami qarz (so‘m)', 'Muddati o‘tgan (so‘m)', 'Kechikish (kun)', 'Limit (so‘m)'],
+				...db.clients.map(c => ({ c, ...Calc.clientDebt(c.id) })).filter(x => x.total > 0).map(x => [x.c.nom, x.total, x.overdue, x.days, x.c.limit])]]
+		}[kind]();
+	},
+
+	parseCSV(text) {
+		const lines = text.replace(/^﻿/, '').split(/\r?\n/).filter(l => l.trim());
+		if (lines.length < 2) return null;
+		// qo‘shtirnoq ichidagi ajratgich va ikkilangan qo‘shtirnoq ("") hisobga olinadi
+		const split = (l, sep) => {
+			const out = []; let cell = '', quoted = false;
+			for (let i = 0; i < l.length; i++) {
+				const ch = l[i];
+				if (quoted) { if (ch !== '"') cell += ch; else if (l[i + 1] === '"') { cell += '"'; i++; } else quoted = false; }
+				else if (ch === '"') quoted = true;
+				else if (ch === sep) { out.push(cell); cell = ''; }
+				else cell += ch;
+			}
+			out.push(cell);
+			return out.map(c => c.trim());
+		};
+		// ajratgich: sarlavhani eng ko‘p ustunga bo‘ladigani (qo‘shtirnoq ichidagilari hisobga olinmaydi)
+		const sep = [';', '\t', ','].sort((a, b) => split(lines[0], b).length - split(lines[0], a).length)[0];
+		const head = split(lines[0], sep), map = {};
+		if (head.length < 2) return null;
+		const norm = s => s.toLowerCase().replace(/['`ʻʼ’]/g, '‘');
+		head.forEach((h, i) => {
+			const hit = IMPORT_FIELDS.find(([k, , keys]) => map[k] == null && keys.some(x => norm(h).includes(x)));
+			if (hit) map[hit[0]] = i;
+		});
+		const toIso = s => {
+			const m = /^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/.exec(s);
+			return m ? `${m[3]}-${Time.p2(m[2])}-${Time.p2(m[1])}` : /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
+		};
+		// «4 000», «4000,5», «1,234.56» va «1.234,56» ko‘rinishlari o‘qiladi
+		const toNum = s => {
+			s = String(s || '').replace(/\s/g, '');
+			if (s.includes(',') && s.includes('.')) s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+			else if (/^\d{1,3}(,\d{3})+$/.test(s)) s = s.replace(/,/g, '');
+			return +s.replace(',', '.');
+		};
+		const rows = lines.slice(1).map(l => {
+			const cells = split(l, sep), get = k => map[k] == null ? '' : cells[map[k]] || '';
+			const c = db.clients.find(x => x.nom.toLowerCase() === get('mijoz').toLowerCase());
+			const v = { mijoz: get('mijoz'), cid: c && c.id, tur: get('tur').toUpperCase(), qal: toNum(get('qal')), eni: toNum(get('eni')), kg: toNum(get('kg')), muddat: toIso(get('muddat')), narx: toNum(get('narx')) };
+			const err = !c ? 'mijoz topilmadi'
+				: !['CPP', 'MCPP'].includes(v.tur) ? 'turi noma’lum'
+				: !THICKNESS.includes(v.qal) ? `qalinlik ${THICKNESS[0]}–${THICKNESS[THICKNESS.length - 1]} mkm ro‘yxatida yo‘q`
+				: !(v.eni >= 300 && v.eni <= 1800) ? 'eni noto‘g‘ri'
+				: !(v.kg >= 100) ? 'miqdor noto‘g‘ri'
+				: !v.muddat ? 'muddat noto‘g‘ri'
+				: null;
+			// bir xil buyurtma takrorlanishi mumkin — bu xato emas, faqat ogohlantirish
+			const twin = !err && db.orders.find(o => o.cid === v.cid && o.tur === v.tur && o.qal === v.qal && o.eni === v.eni && o.kg === v.kg && o.holat !== 'jonatildi');
+			return { v, err, warn: twin ? `o‘xshash buyurtma bor: ${twin.id}` : null };
+		});
+		return { head, map, rows };
+	}
+};
+
+/* ===== 3. Calc — hisob-kitob =====
+	 Tannarx, reja, material va qarz shu yerda hisoblanadi. Bu funksiyalar faqat db ni o‘qiydi:
+	 DOM va saqlashga tegmaydi, ekranlar raqamni faqat shu yerdan oladi. */
+
+const Calc = {
+	sum: (list, f) => list.reduce((s, x) => s + (+f(x) || 0), 0),
+	rollKg: eni => eni >= 1000 ? 150 : eni >= 800 ? 130 : 100,
+	coreKg: eni => db.norms.ozakKgM * eni / 1000,
+	rate: (lid, n = db.norms) => n['kgh' + lid],
+	// ekstruziyaning o‘rtacha unumdorligi — ikki liniya ko‘rsatkichidan
+	extRate: n => (n.kghE1 + n.kghE2) / 2,
+	STAGE_MATS: { E: ['homo', 'kopo', 'mb'], M: ['alu'], K: ['ozak'] },
+	ready: o => o.holat === 'tayyor' || o.holat === 'qisman',
+	tolerance: k => k === 'ozak' ? TOLERANCE_PCS : TOLERANCE_KG,
+	recipeSum: (n = db.norms) => n.homo + n.kopo + n.mb,
+	// Me’yordan farq rangi: joyida / e’tibor / yomon
+	tone(actual, norm) { const d = (actual - norm) / norm * 100; return d <= DEVIATION_OK ? 'grn' : d <= DEVIATION_WARN ? 'amb' : 'red'; },
+	route: o => o.tur === 'MCPP' ? ['E', 'M', 'K'] : ['E', 'K'],
+	stage: o => Calc.route(o)[o.etap],
+	stageLine: o => Calc.stage(o) === 'E' ? o.liniya : Calc.stage(o),
+	// extra — hali saqlanmagan buyurtmalar ro‘yxati (yangi buyurtma tekshiruvi uchun)
+	// extra — hali saqlanmagan yoki «boshqa liniyada bo‘lsa-chi» deb sinalayotgan buyurtmalar; shu id dagi asl nusxa o‘rnini bosadi
+	active: (extra = []) => db.orders.filter(o => (o.holat === 'navbat' || o.holat === 'ishlab') && !extra.some(x => x.id === o.id)).concat(extra),
+	remaining: o => o.kg - o.done, // done faqat joriy bosqich ishlanayotganda noldan farq qiladi
+	// Muddatgacha necha kalendar kun qoladi; manfiy — kechikish.
+	daysLeft: (due, readyMs) => Time.between(Time.iso(readyMs), due),
+	listPrice: tur => tur === 'MCPP' ? db.norms.narxMCPP : db.norms.narxCPP,
+
+	// 1 tonna tayyor (netto) plyonka uchun massa balansi va tannarx.
+	//   yangi xomashyo + regranulyat = eritma → chiqindi (bir qismi regranulyat bo‘lib qaytadi) → plyonka
+	//   MCPP: plyonka − metallizatsiya yo‘qotishi + o‘tirgan alyuminiy = 1000 kg netto
+	cost(tur, n = db.norms) {
+		const metal = tur === 'MCPP', waste = n.chiqindi / 100, back = n.regranulyat / 100;
+		const aluLayer = metal ? n.aluKgT * (1 - n.aluYoq / 100) : 0;
+		const film = metal ? (1000 - aluLayer) / (1 - n.metallChiqindi / 100) : 1000;
+		const melt = film / (1 - waste), scrap = melt - film, regran = scrap * back, fresh = melt - regran;
+		const recipe = Calc.recipeSum(n) || 1; // 100 % bo‘lmasa, ulushlar mutanosib keltiriladi (ekranda ogohlantirish chiqadi)
+		const mats = [
+			{ k: 'homo', nom: 'PP granula, homopolimer', kg: fresh * n.homo / recipe, narx: n.narxHomo },
+			{ k: 'kopo', nom: 'PP granula, kopolimer', kg: fresh * n.kopo / recipe, narx: n.narxKopo },
+			{ k: 'mb', nom: 'Masterbatch', kg: fresh * n.mb / recipe, narx: n.narxMb }
+		];
+		if (metal) mats.push({ k: 'alu', nom: 'Alyuminiy sim', kg: n.aluKgT, narx: n.narxAlu });
+		mats.push({ k: 'ozak', nom: 'O‘zak 76 mm', kg: n.ozakT, narx: n.narxOzak }); // dona
+		mats.forEach(m => { m.som = m.kg * m.narx; });
+
+		const unum = Calc.extRate(n);
+		const kwhE = melt * n.kvt / unum, kwhM = metal ? n.metallKwhT * film / 1000 : 0;
+		const mhE = n.ishchi * melt / unum, mhM = metal ? n.metallIshchi * film / n.kghM : 0;
+		const rate = n.oylik / (n.smenaSoat * n.smenaOy);
+		const parts = {
+			xom: Calc.sum(mats, m => m.som),
+			elek: (kwhE + kwhM) * n.tarif,
+			ish: (mhE + mhM) * rate,
+			boshqa: (n.boshqa + (metal ? n.metallBoshqa : 0)) * 1000
+		};
+		const jami = parts.xom + parts.elek + parts.ish + parts.boshqa, perKg = jami / 1000;
+		const price = metal ? n.narxMCPP : n.narxCPP;
+		return {
+			mats, parts, jami, perKg, price, rate, kwhE, kwhM, kwh: kwhE + kwhM, mhE, mhM, mh: mhE + mhM,
+			fresh, regran, melt, scrap, film, aluLayer, metalLoss: metal ? film - (1000 - aluLayer) : 0, aluLost: metal ? n.aluKgT - aluLayer : 0,
+			freshPrice: Calc.sum(mats.slice(0, 3), m => m.som) / fresh,
+			marja: price - perKg, marjaPct: price ? (price - perKg) / price * 100 : 0,
+			hours: melt / unum
+		};
+	},
+
+	// Berilgan miqdor uchun materiallar, elektr, ish soati va tannarx. Eni berilsa — o‘zaklar soni ham.
+	needs(kg, tur, eni) {
+		const c = Calc.cost(tur), f = kg / 1000, r = { homo: 0, kopo: 0, mb: 0, alu: 0 };
+		c.mats.forEach(m => { r[m.k] = m.kg * f; });
+		return { ...r, ozak: Math.ceil(eni ? kg / Calc.rollKg(eni) : r.ozak), granula: c.fresh * f, kwh: c.kwh * f, mh: c.mh * f, hours: c.hours * f, tannarx: c.jami * f };
+	},
+	// Buyurtma iqtisodi: Bugun, buyurtma kartasi va kalkulyatsiya shu bitta hisobdan foydalanadi.
+	economy(o) {
+		const tannarx = Calc.needs(o.kg, o.tur).tannarx, summa = o.kg * o.narx;
+		return { tannarx, summa, marja: summa - tannarx, marjaPct: summa ? (summa - tannarx) / summa * 100 : 0 };
+	},
+
+	// Bosqichda sarflanadigan materiallar: { material: miqdor }.
+	// Reja, yetishmovchilik tekshiruvi va ombordan chiqim shu bitta manbadan oladi.
+	stageNeed(o, stage) {
+		const n = Calc.needs(o.kg, o.tur, o.eni);
+		n.ozak = Math.max(0, n.ozak - (o.ozak || 0)); // rulon kiritishda olinganlari qayta olinmaydi
+		// o‘zak — butun dona, qolganlari 0,1 kg aniqlikda
+		return Object.fromEntries(Calc.STAGE_MATS[stage].map(k => [k, k === 'ozak' ? Math.ceil(n[k]) : Math.round(n[k] * 10) / 10]));
+	},
+	// Bosqich uchun omborda hozir nima yetmaydi: [{ mat, lack }]. Bo‘sh ro‘yxat — hammasi yetarli.
+	materialCheck(o, stage = Calc.stage(o)) {
+		const need = Calc.stageNeed(o, stage);
+		return Object.keys(need).map(k => ({ mat: k, stage, lack: need[k] - Data.mat(k).qoldiq })).filter(x => x.lack > Calc.tolerance(x.mat));
+	},
+
+	suggestPrice(cid, tur, qal) {
+		const last = db.orders.filter(o => o.cid === cid && o.tur === tur && o.qal === qal).sort((a, b) => b.sana.localeCompare(a.sana))[0];
+		if (last) return { narx: last.narx, src: `shu mijozga oxirgi narx (${last.id})` };
+		const delta = qal <= 25 ? 1000 : qal >= 50 ? -800 : 0;
+		return { narx: Calc.listPrice(tur) + delta, src: 'narxlar ro‘yxati' + (delta > 0 ? ', yupqa plyonka +1 000' : delta < 0 ? ', qalin plyonka −800' : '') };
+	},
+
+	// Ishlab chiqarish rejasi: ekstruziya → (MCPP uchun) metallizatsiya → kesish.
+	// res[id] — bosqichlar vaqti, tayyor vaqti, kechikish (kun); q[liniya] — navbat.
+	plan(extra = []) {
+		const p = { now: Date.now(), act: Calc.active(extra), res: {}, q: { E1: [], E2: [], M: [], K: [] } };
+		p.act.forEach(o => { p.res[o.id] = {}; });
+		['E1', 'E2'].forEach(lid => Calc.planExtrusion(p, lid));
+		Calc.planLine(p, 'M', o => p.res[o.id].E.end, db.norms.metSozlash);
+		Calc.planLine(p, 'K', o => (p.res[o.id].M || p.res[o.id].E).end, db.norms.kesSozlash);
+		p.act.forEach(o => Calc.planDue(o, p.res[o.id]));
+		return { res: p.res, q: p.q };
+	},
+	// Ekstruziya navbati: ishlanayotgan buyurtma birinchi, qolganlari tartib bo‘yicha.
+	// Qalinlik liniyada oxirgi ishlanganidan farq qilsa (birinchi buyurtmada ham) — qayta sozlash.
+	planExtrusion(p, lid) {
+		const n = db.norms;
+		let t = p.now, prev = Data.line(lid).lastQal;
+		p.act.filter(o => o.liniya === lid && o.etap === 0).sort((a, b) => (b.faol - a.faol) || (a.tartib - b.tartib)).forEach(o => {
+			const setup = !o.faol && prev != null && prev !== o.qal;
+			const start = t + (setup ? n.sozlash * HOUR : 0);
+			t = start + Calc.remaining(o) / (1 - n.chiqindi / 100) / Calc.rate(lid) * HOUR;
+			p.res[o.id].E = { start, end: t };
+			p.q[lid].push({ o, start, end: t, setup, from: prev });
+			prev = o.qal;
+		});
+	},
+	// Metallizatsiya va kesish: tartib oldingi bosqich tugash vaqtidan kelib chiqadi; eni o‘zgarsa — qayta sozlash.
+	planLine(p, lid, readyAt, setupHours) {
+		const index = o => Calc.route(o).indexOf(lid);
+		let t = p.now, prev = null;
+		p.act.filter(o => index(o) >= o.etap)
+			.map(o => { const here = o.etap === index(o); return { o, running: here && o.faol, ready: here ? p.now : readyAt(o), kg: here ? Calc.remaining(o) : o.kg }; })
+			.sort((a, b) => (b.running - a.running) || (a.ready - b.ready))
+			.forEach(x => {
+				const setup = !!prev && prev.eni !== x.o.eni;
+				const start = Math.max(t, x.ready) + (setup ? setupHours * HOUR : 0);
+				t = start + x.kg / Calc.rate(lid) * HOUR;
+				p.res[x.o.id][lid] = { start, end: t };
+				p.q[lid].push({ o: x.o, start, end: t, setup, from: prev && prev.eni });
+				prev = x.o;
+			});
+	},
+	// Tayyor vaqti (kesish + sifat nazorati) va muddatga nisbatan zaxira yoki kechikish, kun.
+	planDue(o, r) {
+		// bosqichlari tugagan buyurtmada kesish rejasi yo‘q — u allaqachon tayyor
+		r.tayyor = r.K ? r.K.end + db.norms.qcSoat * HOUR : Date.now();
+		r.zaxira = Calc.daysLeft(o.muddat, r.tayyor);
+		r.kech = Math.max(0, -r.zaxira);
+	},
+
+	bestLine(o) {
+		return ['E1', 'E2'].map(lid => { const pl = Calc.plan([{ ...o, liniya: lid, tartib: 1e6 }]); return { lid, pl, r: pl.res[o.id] }; })
+			.sort((a, b) => a.r.tayyor - b.r.tayyor)[0];
+	},
+
+	// Navbatdagi bosqichlar material sarfi, boshlanish vaqti tartibida.
+	demand(pl, extra = []) {
+		const steps = [];
+		Calc.active(extra).forEach(o => {
+			const r = pl.res[o.id];
+			Calc.route(o).slice(o.etap).forEach(stage => steps.push({ o, stage, at: r[stage].start, need: Calc.stageNeed(o, stage) }));
+		});
+		return steps.sort((a, b) => a.at - b.at);
+	},
+	// Qaysi buyurtmaga qaysi bosqichda qaysi material yetmaydi: { buyurtma: [{ mat, stage, lack }] }.
+	// Kutilayotgan kirim bosqich boshlanishidan oldin kelsagina hisobga olinadi.
+	matShort(pl, extra = [], withKirim = true) {
+		const kirim = withKirim && db.kirim, used = {}, short = {};
+		Calc.demand(pl, extra).forEach(({ o, stage, at, need }) => Object.keys(need).forEach(k => {
+			used[k] = (used[k] || 0) + need[k];
+			const have = Data.mat(k).qoldiq + (kirim && kirim.mat === k && kirim.at <= at ? kirim.kg : 0);
+			const lack = Math.min(need[k], used[k] - have);
+			if (lack > Calc.tolerance(k)) (short[o.id] = short[o.id] || []).push({ mat: k, stage, lack });
+		}));
+		return short;
+	},
+	queueNeeds(pl) {
+		const total = { homo: 0, kopo: 0, mb: 0, alu: 0, ozak: 0 };
+		Calc.demand(pl).forEach(s => Object.keys(s.need).forEach(k => { total[k] += s.need[k]; }));
+		return total;
+	},
+
+	// Navbatga hali qo‘yilmagan («yangi») buyurtmalar uchun material ehtiyoji.
+	newNeeds() {
+		const total = { homo: 0, kopo: 0, mb: 0, alu: 0, ozak: 0 };
+		db.orders.filter(o => o.holat === 'yangi').forEach(o => { const n = Calc.needs(o.kg, o.tur, o.eni); Object.keys(total).forEach(k => { total[k] += n[k]; }); });
+		return total;
+	},
+	// Material holati: minimaldan kam / navbatga yetmaydi / yetarli.
+	matState: (m, need) => m.qoldiq < m.min ? ['red', 'Minimaldan kam'] : need - m.qoldiq > Calc.tolerance(m.k) ? ['amb', 'Navbatga yetmaydi'] : ['grn', 'Yetarli'],
+
+	// Buyurtma bo‘yicha pul: summa — butun buyurtma, billed — jo‘natilgan miqdor uchun hisoblangan,
+	// debt — mijoz qarzi (faqat jo‘natilgani uchun), open — buyurtma to‘liq yopilishiga qolgan to‘lov.
+	money(o) {
+		const total = Math.round(o.kg * o.narx), billed = Math.round(o.jonatKg * o.narx); // butun so‘m — tiyinlik qarz qolmaydi
+		return { total, billed, paid: o.tolangan, debt: Math.max(0, billed - o.tolangan), open: Math.max(0, Math.max(total, billed) - o.tolangan) };
+	},
+	// Jo‘natish tekshiruvi: jami jo‘natilgan miqdor buyurtmaga nisbatan — qisman, to‘liq yoki ortiqcha.
+	// Rulon og‘irligi buyurtmaga aynan teng chiqmaydi, shuning uchun «Jo‘natish farqi» me’yori (±%) ichidagi farq to‘liq hisoblanadi.
+	shipCheck(o, kg) {
+		const tol = db.norms.jonatFarq, total = +(o.jonatKg + kg).toFixed(1), diff = (total / o.kg - 1) * 100, extraKg = Math.max(0, total - o.kg);
+		// farq ruxsat etilgan chegarada (±tol %) bo‘lsa — to‘liq; kam bo‘lsa — qisman; ko‘p bo‘lsa — direktor ruxsati kerak
+		const kind = diff < -tol - 1e-9 ? 'partial' : diff > tol + 1e-9 ? 'over' : 'full';
+		// Ortiqcha jo‘natishga ruxsat aniq miqdorga beriladi (sorovKg — so‘ralgan, ruxsatKg — ruxsat berilgan jami kg):
+		//   'ok' — jami ruxsat berilgan miqdordan oshmaydi; 'wait' — shu miqdorga so‘rov yuborilgan, javob kutilmoqda;
+		//   'ask' — ruxsat yo‘q yoki tanlangani ruxsatdan ko‘p: yangi so‘rov kerak. Ortiqcha bo‘lmasa — null.
+		const within = limit => limit != null && total <= limit + TOLERANCE_KG;
+		const permit = kind !== 'over' ? null : within(o.ruxsatKg) ? 'ok' : within(o.sorovKg) ? 'wait' : 'ask';
+		return { total, diff, tol, extraKg, extraSom: extraKg * o.narx, kind, permit };
+	},
+	// To‘lovni taqsimlash tartibi: 1) muddati o‘tgan qarz, eng eskisi birinchi; 2) boshqa jo‘natilgan qarz;
+	// 3) hali jo‘natilmagan qism — buyurtma summasigacha, eng eski buyurtma birinchi; 4) ortgani — mijoz avansi.
+	// only berilsa, pul faqat shu buyurtmaga yoziladi (ortgani baribir avansga).
+	allocate(cid, sum, only) {
+		const mine = only ? [only] : db.orders.filter(o => o.cid === cid), got = new Map();
+		let rest = sum;
+		const give = (o, max) => { const part = Math.min(rest, max); if (part > 0) { got.set(o, (got.get(o) || 0) + part); rest -= part; } };
+		mine.map(o => ({ o, d: Calc.orderDebt(o) })).filter(x => x.d.left > 0)
+			.sort((a, b) => (b.d.days > 0) - (a.d.days > 0) || a.d.due.localeCompare(b.d.due)).forEach(x => give(x.o, x.d.left));
+		mine.slice().sort((a, b) => a.sana.localeCompare(b.sana)).forEach(o => give(o, Calc.money(o).open - (got.get(o) || 0)));
+		return { parts: [...got].map(([o, som]) => ({ o, som })), avans: rest };
+	},
+	// Direktor javobini kutayotgan ortiqcha jo‘natish so‘rovi bormi (avvalgi ruxsatdan ko‘pi so‘ralgan bo‘lsa ham).
+	overAsked: o => o.sorovKg != null && !(o.ruxsatKg >= o.sorovKg),
+	orderDebt(o) {
+		const left = Calc.money(o).debt;
+		if (!left) return { left: 0, due: null, days: 0 };
+		const due = Time.add(Data.client(o).tolovKun, o.jonatSana);
+		return { left, due, days: Math.max(0, Time.between(due, Time.today)) };
+	},
+	clientDebt(cid) {
+		const r = { total: 0, overdue: 0, days: 0 };
+		db.orders.filter(o => o.cid === cid).forEach(o => {
+			const d = Calc.orderDebt(o);
+			r.total += d.left;
+			if (d.days > 0) { r.overdue += d.left; r.days = Math.max(r.days, d.days); }
+		});
+		return r;
+	},
+	blocked: o => Calc.clientDebt(o.cid).overdue > 0 && !o.ruxsat,
+
+	// Yangi buyurtmani qabul qilish tekshiruvi (qoidalar shu yerda, matn — Views.orderCheck da).
+	// Hali saqlanmagan buyurtmaga material yetarliligi:
+	//   'bor'      — ombordagisi yetadi;
+	//   'kirim'    — kutilayotgan kirim bilan yetadi (kirim bosqich boshlanishidan oldin keladi);
+	//   'kutadi'   — kirim bosqichdan keyin keladi: buyurtma kirimni kutsa yetadi;
+	//   'yetmaydi' — kirim bilan ham yetmaydi.
+	supply(pl, o) {
+		const lacks = Calc.matShort(pl, [o])[o.id] || [], kirim = db.kirim;
+		if (!lacks.length) return { state: (Calc.matShort(pl, [o], false)[o.id] || []).length ? 'kirim' : 'bor', lacks };
+		return { state: kirim && lacks.every(s => s.mat === kirim.mat && s.lack <= kirim.kg) ? 'kutadi' : 'yetmaydi', lacks };
+	},
+	orderCheck(o) {
+		const best = Calc.bestLine(o), r = best.r, c = Data.client(o.cid);
+		const supply = Calc.supply(best.pl, { ...o, liniya: best.lid });
+		// buyurtma kirimni kutsa, tayyor sana shunga qarab suriladi
+		const first = r[Calc.route(o)[o.etap || 0]]; // qolgan birinchi bosqich (yangi buyurtmada — ekstruziya)
+		const ready = supply.state === 'kutadi' && first ? db.kirim.at + r.tayyor - first.start : r.tayyor, left = Calc.daysLeft(o.muddat, ready);
+		const eco = Calc.economy(o), debt = Calc.clientDebt(o.cid);
+		return {
+			line: best.lid, supply: supply.state, short: supply.lacks, ready, left, late: Math.max(0, -left), eco, debt, limit: c.limit,
+			needs: Calc.needs(o.kg, o.tur), overLimit: !debt.overdue && debt.total + eco.summa > c.limit, lowMargin: eco.marjaPct < MARGIN_LOW
+		};
+	},
+
+	producedOn: d => Calc.sum(db.reports.filter(r => r.sana === d && r.liniya !== 'M'), r => r.ishlab),
+	lastMeter: lid => Math.max(0, ...db.reports.filter(r => r.liniya === lid).map(r => r.m1)),
+
+	// Me’yordan chetlanish. Satr: [nom, birlik, me’yor, haqiqiy, birlik narxi (so‘m), kasr xonalari, part].
+	// Har satrning 1 kg tannarxga ta’siri = (haqiqiy − me’yor) × narx / 1000; jami — satrlar yig‘indisi.
+	// part — izoh satri («shundan …»): boshqa satr ichida hisoblangan, jamiga qayta qo‘shilmaydi.
+	deviation(list) {
+		const rows = list.map(([name, unit, norm, actual, price, digits, part]) => ({ name, unit, norm, actual, digits, part, cost: (actual - norm) * price / 1000 }));
+		return { rows, over: Calc.sum(rows.filter(r => !r.part), r => r.cost) };
+	},
+	// Hisobotdagi shu mahsulot turining ulushi (parts bo‘yicha, kg). Bog‘lanmagan eski hisobot CPP deb olinadi.
+	share(r, tur) {
+		const kg = Calc.sum(r.parts || [], p => p.kg);
+		return kg ? Calc.sum(r.parts.filter(p => p.tur === tur), p => p.kg) / kg : tur === 'CPP' ? 1 : 0;
+	},
+	// Oxirgi kunlardagi smena hisobotlaridan shu mahsulot uchun 1 tonnaga haqiqiy sarf.
+	// MCPP: uning asos plyonkasi ishlangan ekstruziya smenalari + metallizatsiya. Ishlab chiqarilmagan bo‘lsa — null.
+	actuals(days, tur) {
+		const from = Time.add(1 - days), rs = db.reports.filter(r => r.sana >= from && r.sana <= Time.today), n = db.norms;
+		const ext = rs.filter(r => r.liniya !== 'M' && Calc.share(r, tur) > 0), met = tur === 'MCPP' ? rs.filter(r => r.liniya === 'M') : [];
+		const part = f => Calc.sum(ext, r => f(r) * Calc.share(r, tur));
+		const made = part(r => r.ishlab), scrap = part(r => r.chiqindi), madeM = Calc.sum(met, r => r.ishlab);
+		if (!made || (tur === 'MCPP' && !madeM)) return null;
+		const perT = (sum, total) => total ? sum / total * 1000 : 0;
+		return {
+			n: ext.length + met.length, made, waste: scrap / (made + scrap) * 100,
+			granT: perT(part(r => r.granula), made), kwhT: perT(part(r => r.kwh), made), mhT: perT(part(r => r.soat * n.ishchi), made),
+			kwhMT: perT(Calc.sum(met, r => r.kwh), madeM), aluT: perT(Calc.sum(met, r => r.alu), madeM), mhMT: perT(Calc.sum(met, r => r.soat * n.metallIshchi), madeM)
+		};
+	},
+	// Ko‘rsatkichlar ro‘yxati (deviation uchun). Ekstruziya satrlari 1 t tayyor mahsulotga keltiriladi:
+	// MCPP ga plyonka ko‘proq kerak, shuning uchun haqiqiy sarf base.film / 1000 ga ko‘paytiriladi.
+	// Xomashyo bir marta hisoblanadi — granula satrida; chiqindi satri shuning ichidagi ulushni ko‘rsatadi.
+	indicators(tur, a) {
+		const n = db.norms, base = Calc.cost(tur), k = base.film / 1000, w = a.waste / 100;
+		const freshAt = base.film / (1 - w) * (1 - w * n.regranulyat / 100);
+		const wastePrice = a.waste === n.chiqindi ? 0 : (freshAt - base.fresh) * base.freshPrice / (a.waste - n.chiqindi);
+		const rows = [
+			['Yangi granula', 'kg/t', base.fresh, a.granT * k, base.freshPrice],
+			['Shundan chiqindi hisobiga', '%', n.chiqindi, a.waste, wastePrice, 1, true],
+			['Elektr', 'kVt·soat/t', base.kwhE, a.kwhT * k, n.tarif],
+			['Ishchi kuchi', 'odam-soat/t', base.mhE, a.mhT * k, base.rate, 1]
+		];
+		return tur !== 'MCPP' ? rows : rows.concat([
+			['Elektr, metallizatsiya', 'kVt·soat/t', base.kwhM, a.kwhMT, n.tarif],
+			['Alyuminiy sim', 'kg/t', n.aluKgT, a.aluT, n.narxAlu, 1],
+			['Ishchi kuchi, metallizatsiya', 'odam-soat/t', base.mhM, a.mhMT, base.rate, 1]
+		]);
+	},
+	// Reja va haqiqiy. Taqqoslash joriy me’yor bilan; me’yor shu davrda o‘zgargan bo‘lsa, changed — o‘sha sana.
+	// Davrda shu mahsulot chiqmagan bo‘lsa, uning haqiqiy tannarxi hisoblanmaydi (null).
+	planVsActual(days = 7) {
+		const from = Time.add(1 - days);
+		if (!db.reports.some(r => r.sana >= from && r.sana <= Time.today)) return null;
+		const total = tur => {
+			const a = Calc.actuals(days, tur);
+			if (!a) return null;
+			const d = Calc.deviation(Calc.indicators(tur, a)), norm = Calc.cost(tur).perKg;
+			return { ...d, norm, actual: norm + d.over, n: a.n, monthKg: a.made / days * 30 };
+		};
+		const changed = db.normLog.filter(x => x.d >= from).map(x => x.d).sort().pop() || null;
+		return { changed, cpp: total('CPP'), mcpp: total('MCPP') };
+	}
+};
+
+/* ===== 4. UI — format, komponentlar, formalar ===== */
+
+const $ = (s, root = document) => root.querySelector(s);
+const NB = ' ';
+
+// Raqamlar: minglik ajratgich — bo‘sh joy, kasr — vergul.
+const F = {
+	num(n, digits = 0) {
+		if (n == null || !isFinite(n)) return '—';
+		const v = Math.abs(n).toFixed(digits), [int, frac] = v.split('.');
+		return (n < 0 && +v !== 0 ? '−' : '') + int.replace(/\B(?=(\d{3})+(?!\d))/g, NB) + (frac ? ',' + frac : '');
+	},
+	kg: (n, digits) => F.num(n, digits) + NB + 'kg',
+	som: n => F.num(n) + NB + 'so‘m',
+	mln: n => F.num(n / 1e6, 1) + NB + 'mln',
+	pct: (n, digits = 1) => F.num(n, digits) + NB + '%',
+	signed: (n, digits) => (n > 0 ? '+' : '') + F.num(n, digits),
+	date(s) { const d = Time.date(s); return d.getDate() + '-' + MONTHS[d.getMonth()].slice(0, 3); },
+	dateLong(s) { const d = Time.date(s); return d.getDate() + '-' + MONTHS[d.getMonth()]; },
+	dateTime(ms) { const d = new Date(ms); return F.date(ms) + ', ' + Time.p2(d.getHours()) + ':' + Time.p2(d.getMinutes()); },
+	dots: s => s ? s.split('-').reverse().join('.') : '',
+	spec: o => `${o.tur} ${o.qal} mkm × ${F.num(o.eni)} mm`,
+	lack: list => list.map(x => `${Data.mat(x.mat).nom}: ${F.qty(x.lack, Data.mat(x.mat))} yetmaydi`).join(', '),
+	qty: (n, m) => `${F.num(n, n < 100 && n % 1 ? 1 : 0)} ${m.birlik}`,
+	initials: s => s.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase(),
+	paid(o) {
+		const total = Calc.money(o).total;
+		return o.tolangan >= total ? 'To‘langan' : o.tolangan > 0 ? 'Qisman, ' + F.pct(o.tolangan / total * 100, 0) : 'To‘lanmagan';
+	}
+};
+
+const ICONS = {
+	home: 'M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-4.5v-6h-6v6H4.5a1 1 0 0 1-1-1z',
+	list: 'M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01',
+	calc: 'M5 2.5h14v19H5zM8.5 6.5h7v3h-7zM8.5 13.5h.01M12 13.5h.01M15.5 13.5h.01M8.5 17.5h.01M12 17.5h.01M15.5 17.5h.01',
+	wallet: 'M4 7.5A2 2 0 0 1 6 5.5h12.5v3M4 7.5v10a2 2 0 0 0 2 2h14v-11H6a2 2 0 0 1-2-1.5zM16.5 14h.01',
+	sliders: 'M4 6.5h9M17 6.5h3M4 12h3M11 12h9M4 17.5h11M19 17.5h1M15 4.5v4M9 10v4M17 15.5v4',
+	plus: 'M12 5v14M5 12h14',
+	users: 'M15.5 20v-1.5a3.5 3.5 0 0 0-3.5-3.5H7a3.5 3.5 0 0 0-3.5 3.5V20M9.5 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM20.5 20v-1.5a3.5 3.5 0 0 0-2.5-3.35M15 4.65a3.5 3.5 0 0 1 0 6.7',
+	layers: 'M12 3.5 3.5 8l8.5 4.5L20.5 8zM3.5 12.5l8.5 4.5 8.5-4.5M3.5 16.5 12 21l8.5-4.5',
+	clip: 'M9 3.5h6v3H9zM9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15M8.5 11.5h7M8.5 15.5h5',
+	box: 'M20.5 7.5 12 3 3.5 7.5v9L12 21l8.5-4.5zM3.5 7.5 12 12l8.5-4.5M12 12v9',
+	roll: 'M5 6.5c0-1.66 3.13-3 7-3s7 1.34 7 3-3.13 3-7 3-7-1.34-7-3zM5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11',
+	truck: 'M2.5 6h11v10h-11zM13.5 9.5h4l3 3.5v3h-7M7 19a1.75 1.75 0 1 0 0-3.5A1.75 1.75 0 0 0 7 19zM17 19a1.75 1.75 0 1 0 0-3.5A1.75 1.75 0 0 0 17 19z',
+	chev: 'M9.5 6l6 6-6 6',
+	back: 'M14.5 6l-6 6 6 6',
+	x: 'M6.5 6.5l11 11M17.5 6.5l-11 11',
+	search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
+	up: 'M12 18.5v-13M6.5 11 12 5.5l5.5 5.5',
+	down: 'M12 5.5v13M6.5 13l5.5 5.5 5.5-5.5'
+};
+const LOGO = '<img src="icon.svg" alt="">';
+
+const UI = {
+	esc: s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])),
+	mobile: () => matchMedia('(max-width:820px)').matches,
+	// Sahifaning nomlangan bo‘laklarini (Views.parts) yangilaydi; bo‘lak ekranda bo‘lmasa, o‘tkazib yuboradi.
+	refresh(...ids) { ids.forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = Views.part(id); }); },
+
+	icon: name => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[name]}"/></svg>`,
+	dot: tone => `<i class="dot" style="--c:var(--${tone})"></i>`,
+	badge: (map, key) => `<span class="st">${UI.dot(map[key].c)}${map[key].t}</span>`,
+	flag: (text, tone = 'red') => `<span class="flag ${tone}">${UI.dot(tone)}${text}</span>`,
+	head: (title, sub, actions) => `<div class="ph"><div><h1>${title}</h1>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${actions ? `<div class="acts">${actions}</div>` : ''}</div>`,
+	sec: (title, right = '') => `<div class="sec-h"><h2>${title}</h2>${right}</div>`,
+	note: (html, cls = '') => `<div class="note ${cls}">${html}</div>`,
+	who: o => UI.esc(Data.client(o).nom),
+	more: (label, html, open) => `<details class="more-d"${open ? ' open' : ''}><summary>${label}</summary>${html}</details>`,
+	// Qisqa faktlar qatori: bo‘lak butunicha keyingi satrga tushadi, ajratgich satr boshida yoki oxirida osilib qolmaydi
+	facts: (list, cls = '') => `<p class="facts ${cls}">${list.filter(Boolean).map(x => `<span>${x}</span>`).join('')}</p>`,
+	dl: (rows, cls = '') => `<dl class="dl ${cls}">${rows.filter(Boolean).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`,
+
+	// Forma maydonlari ui.f.<forma>.<kalit> bilan data-f orqali bog‘lanadi (qarang: Actions.field).
+	// group: true — bir nechta boshqaruvdan iborat maydon (sana, tur tanlovi): <label> o‘rniga guruh
+	field(label, inner, { hint, cls = '', key, group } = {}) {
+		const tag = group ? `div role="group" aria-label="${label}"` : 'label';
+		return `<${tag} class="fld ${cls}"><span>${label}</span>${inner}${hint ? `<small>${hint}</small>` : ''}${key ? `<small class="ferr" data-err="${key}"></small>` : ''}</${group ? 'div' : 'label'}>`;
+	},
+	group: (label, inner, opt) => UI.field(label, inner, { ...opt, group: true }),
+	unit: (html, unit) => `<div class="iu">${html}<b>${unit}</b></div>`,
+	input: (key, attrs = '') => { const [form, k] = key.split('.'); return `<input class="in" data-f="${key}" value="${UI.esc(ui.f[form][k])}" ${attrs}>`; },
+	num: (key, attrs = '') => UI.input(key, `type="number" inputmode="decimal" data-num ${attrs}`),
+	numField: (label, key, unit, opt = {}) => UI.field(label, UI.unit(UI.num(key, opt.attrs), unit), { ...opt, key }),
+	options: (list, current) => list.map(([v, t]) => `<option value="${UI.esc(v)}"${String(v) === String(current) ? ' selected' : ''}>${UI.esc(t)}</option>`).join(''),
+	select: (key, list) => { const [form, k] = key.split('.'); return `<select class="in" data-f="${key}">${UI.options(list, ui.f[form][k])}</select>`; },
+	// Sana uchta ro‘yxatdan tanlanadi: brauzer tiliga bog‘liq bo‘lmaydi.
+	date(key, years) {
+		const [form, k] = key.split('.'), [y, m, d] = ui.f[form][k].split('-').map(Number);
+		return `<div class="dsel" data-date="${key}">
+			<select class="in" data-part="d" aria-label="Kun">${UI.options([...Array(31)].map((_, i) => [i + 1, i + 1]), d)}</select>
+			<select class="in" data-part="m" aria-label="Oy">${UI.options(MONTHS.map((name, i) => [i + 1, name]), m)}</select>
+			<select class="in" data-part="y" aria-label="Yil">${UI.options(years.map(v => [v, v]), y)}</select></div>`;
+	},
+	seg: (act, current, list) => `<div class="seg">${list.map(([v, t]) => `<button type="button" data-act="${act}" data-v="${v}" aria-pressed="${v === current}">${t}</button>`).join('')}</div>`,
+	// Filtr: noutbukda tugmalar qatori, telefonda bitta ro‘yxat
+	filter(act, current, list) {
+		if (UI.mobile()) return `<select class="in" data-filter="${act}" aria-label="Filtr">${UI.options(list.map(([v, t, n]) => [v, `${t} · ${n}`]), current)}</select>`;
+		return `<div class="chips">${list.map(([v, t, n]) => `<button type="button" class="chip" aria-pressed="${v === current}" data-act="${act}" data-v="${v}">${t}<b>${n}</b></button>`).join('')}</div>`;
+	},
+	// Bo‘lim tablari: [qiymat, nom, son, telefondagi qisqa nom]. Telefonda qisqa nom bo‘lmasa — ro‘yxat.
+	tabs(act, current, list) {
+		const mobile = UI.mobile();
+		if (mobile && !list[0][3]) return `<select class="in tabsel" data-filter="${act}" aria-label="Bo‘lim">${UI.options(list.map(([v, t, n]) => [v, `${t} · ${n}`]), current)}</select>`;
+		return `<div class="tabs${mobile ? ' fit' : ''}">${list.map(([v, t, n, short]) => `<button class="tab" aria-pressed="${v === current}" data-act="${act}" data-v="${v}"><span>${mobile ? short : t}</span>${n == null ? '' : `<b>${n}</b>`}</button>`).join('')}</div>`;
+	},
+	search: (name, value, placeholder) => `<div class="search">${UI.icon('search')}<input class="in" type="search" data-search="${name}" placeholder="${placeholder}" value="${UI.esc(value)}" aria-label="Qidirish"></div>`,
+
+	// cols: [sarlavha, klass, katak funksiyasi, saralash kaliti]
+	// Telefonda qator karta: c-main — sarlavha, c-aside — o‘ng burchak, c-sub — ikkinchi qator.
+	table(cols, rows, opt = {}) {
+		if (!rows.length) return `<div class="empty">${opt.empty || 'Hozircha yozuv yo‘q'}</div>`;
+		const th = ([t, c, , sort]) => {
+			const s = opt.sort && sort;
+			return `<th class="${c}${s ? ' srt' : ''}"${s ? ` data-act="sortBy" data-k="${sort}"` : ''}>${t}${s && opt.sort.k === sort ? (opt.sort.dir > 0 ? ' ↑' : ' ↓') : ''}</th>`;
+		};
+		const td = ([t, c, k], r) => `<td class="${c}" data-l="${t}"><span>${k(r)}</span></td>`;
+		return `<div class="tw"><table class="tbl cards"><thead><tr>${cols.map(th).join('')}</tr></thead>
+			<tbody>${rows.map(r => `<tr ${opt.row ? opt.row(r) : ''}>${cols.map(c => td(c, r)).join('')}</tr>`).join('')}</tbody>${opt.foot || ''}</table></div>`;
+	},
+
+	toast(text, ms = 2000) {
+		$('#toasts').innerHTML = `<div class="toast enter">${UI.esc(text)}</div>`;
+		clearTimeout(UI.toastTimer);
+		UI.toastTimer = setTimeout(() => { $('#toasts').innerHTML = ''; }, ms);
+	},
+	// body berilmasa, oyna ichi ui.modalForm dagi forma bo‘ladi (Views.parts.mbody)
+	modal(title, body, foot, wide) {
+		if (body == null) body = Views.part('mbody');
+		$('#modal').innerHTML = `<div class="ovl" data-act="closeModal"></div><div class="mwrap"><div class="modal enter${wide ? ' wide' : ''}" role="dialog" aria-modal="true" aria-label="${UI.esc(title)}">
+			<div class="mh"><h2>${title}</h2><button class="btn ic ghost" data-act="closeModal" aria-label="Yopish">${UI.icon('x')}</button></div>
+			<div class="mb" id="mbody">${body}</div>${foot ? `<div class="mf">${foot}</div>` : ''}</div></div>`;
+		const first = $('#modal [autofocus]');
+		if (first) first.focus();
+	},
+	closeModal() { $('#modal').innerHTML = ''; },
+	buttons: (ok, act, cancel = 'Bekor qilish') => `<button class="btn" data-act="closeModal">${cancel}</button><button class="btn pri" data-act="${act}">${ok}</button>`,
+	confirm(text, ok, fn) {
+		UI.onConfirm = fn;
+		UI.modal('Tasdiqlang', `<p class="cf">${text}</p>`, UI.buttons(ok, 'confirmOk'));
+	},
+	copy(text) {
+		const legacy = () => {
+			const a = document.createElement('textarea');
+			a.value = text; document.body.appendChild(a); a.select();
+			const ok = document.execCommand('copy');
+			a.remove();
+			UI.toast(ok ? 'Matn nusxalandi' : 'Nusxalab bo‘lmadi');
+		};
+		if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => UI.toast('Matn nusxalandi'), legacy);
+		else legacy();
+	},
+	// CSV Excel uchun: «;» ajratgich va BOM.
+	csv: rows => '﻿' + rows.map(r => r.map(v => { v = String(v == null ? '' : v); return /[;"\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(';')).join('\r\n'),
+	download(name, text) {
+		const a = document.createElement('a');
+		a.href = URL.createObjectURL(new Blob([text], { type: 'text/csv;charset=utf-8' }));
+		a.download = name;
+		document.body.appendChild(a); a.click();
+		setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+	}
+};
+
+// Har formaning tekshiruv qoidalari bitta joyda: maydon → [shart, xabar].
+const Forms = {
+	rules: {
+		no: {
+			eni: [v => v >= 300 && v <= 1800, '300–1800 mm oralig‘ida bo‘lsin'],
+			kg: [v => v >= 100, 'Kamida 100 kg'],
+			muddat: [v => v >= Time.today, 'Muddat o‘tib ketgan'],
+			narx: [v => v > 0, 'Narxni kiriting']
+		},
+		sr: {
+			sana: [v => v <= Time.today, 'Sana bugundan keyin bo‘lmasin'],
+			soat: [v => v >= 1 && v <= 12, '1–12 soat oralig‘ida bo‘lsin'],
+			ishlab: [v => v > 0, 'Miqdorni kiriting'],
+			chiqindi: [v => v === '' || v >= 0, 'Manfiy bo‘lmasin'],
+			granula: [(v, f) => f.liniya === 'M' || v > 0, 'Sarflangan granulani kiriting'],
+			alu: [(v, f) => f.liniya !== 'M' || v > 0, 'Sarflangan simni kiriting'],
+			m1: [(v, f) => v > f.m0, 'Smena boshidagi ko‘rsatkichdan katta bo‘lsin'],
+			// bir nechta buyurtma bo‘lsa, ularga kiritilgan kg jami ishlab chiqarilgandan oshmasin
+			parts: [(v, f) => Views.shiftParts(f).every(p => p.kg >= 0), 'Buyurtmalarga yozilgan kg jami ishlab chiqarilgandan oshmasin']
+		},
+		roll: {
+			eni: [(v, f) => f.oid || v >= 300, 'Enini kiriting'],
+			brutto: [v => v > Calc.coreKg(Views.rollSpec().eni) + MIN_ROLL_KG, 'Brutto og‘irlikni kiriting']
+		},
+		mv: {
+			kg: [(v, f) => v > 0 && (f.tur === 'kirim' || v <= Data.mat(f.k).qoldiq), 'Miqdor noto‘g‘ri yoki qoldiqdan ko‘p']
+		},
+		pay: { sum: [v => v > 0, 'Summani kiriting'] },
+		user: { ism: [v => v.trim(), 'Ismni kiriting'], pin: [v => /^\d{4}$/.test(v), '4 ta raqam kiriting'] }
+	},
+	error(key) {
+		const [form, k] = key.split('.'), rule = (Forms.rules[form] || {})[k];
+		return rule && !rule[0](ui.f[form][k], ui.f[form]) ? rule[1] : '';
+	},
+	show(key) {
+		const msg = Forms.error(key), slot = $(`[data-err="${key}"]`), input = $(`[data-f="${key}"]`);
+		if (slot) slot.textContent = msg;
+		if (input) input.toggleAttribute('aria-invalid', !!msg);
+		return msg;
+	},
+	// Saqlashdan oldin: hamma maydon tekshiriladi, birinchi xatoga fokus beriladi
+	valid(form) {
+		const bad = Object.keys(Forms.rules[form]).map(k => `${form}.${k}`).filter(Forms.show);
+		if (!bad.length) return true;
+		const input = $(`[data-f="${bad[0]}"]`);
+		if (input) input.focus();
+		if (!$(`[data-err="${bad[0]}"]`)) UI.toast(Forms.error(bad[0]));
+		return false;
+	}
+};
+
+/* ===== 5. Views — har ekran uchun bitta render funksiyasi (HTML satr qaytaradi) ===== */
+
+const PAGES = {
+	bugun: { t: 'Bugun', icon: 'home', view: 'today' },
+	buyurtmalar: { t: 'Buyurtmalar', icon: 'list', view: 'orders' },
+	kalk: { t: 'Kalkulyatsiya', icon: 'calc', view: 'calc' },
+	qarzlar: { t: 'Qarzlar', icon: 'wallet', view: 'debts' },
+	sozlama: { t: 'Sozlamalar', icon: 'sliders', view: 'settings' },
+	yangi: { t: 'Yangi buyurtma', short: 'Yangi', icon: 'plus', view: 'newOrder' },
+	mijozlar: { t: 'Mijozlar', icon: 'users', view: 'clients' },
+	navbat: { t: 'Navbat', icon: 'layers', view: 'queue' },
+	smena: { t: 'Smena hisoboti', short: 'Smena', icon: 'clip', view: 'shift' },
+	xomashyo: { t: 'Xomashyo', icon: 'box', view: 'materials' },
+	rulonlar: { t: 'Tayyor rulonlar', short: 'Rulonlar', icon: 'roll', view: 'rolls' },
+	jonatish: { t: 'Jo‘natish', icon: 'truck', view: 'ship' }
+};
+
+const Views = {
+	render() {
+		if (!ROLES[session.role]) {
+			$('#app').innerHTML = Views.login();
+			$('#layer').innerHTML = '';
+			if ($('#pin')) $('#pin').focus();
+			return;
+		}
+		const role = ROLES[session.role], user = Data.user(), mobile = UI.mobile();
+		if (!role.menu.includes(ui.page)) ui.page = role.menu[0];
+		const navItem = (p, cls, label) => `<button class="${cls}" data-act="go" data-p="${p}"${p === ui.page ? ' aria-current="page"' : ''}>${UI.icon(PAGES[p].icon)}<span>${label}</span></button>`;
+		const userButton = full => `<button class="user" data-act="toggleMenu" aria-haspopup="menu" aria-expanded="${ui.menu}" aria-label="Profil: ${UI.esc(user.ism)}"><span class="ava">${F.initials(user.ism)}</span>${full ? `<span><span class="n">${UI.esc(user.ism)}</span><span class="r">${role.nom}</span></span>` : ''}</button>`;
+		const installed = matchMedia('(display-mode: standalone)').matches;
+		const menu = !ui.menu ? '' : `<div class="scrim" data-act="toggleMenu"></div><div class="menu" role="menu">
+			<div class="hd"><div class="strong">${UI.esc(user.ism)}</div><div class="muted sm">${role.nom}</div></div>
+			${installed ? '' : `<button role="menuitem" data-act="install">Telefonga o‘rnatish</button>`}
+			<button role="menuitem" data-act="logout">Chiqish / rolni almashtirish</button></div>`;
+		const offline = ui.online ? '' : '<span class="offline">Oflayn</span>';
+		$('#app').innerHTML = `<div class="app">
+			<div class="side">
+				<div class="logo">${LOGO}POLYPACK</div>
+				<nav class="nav" aria-label="Bo‘limlar">${role.menu.map(p => navItem(p, 'nav-i', PAGES[p].t)).join('')}</nav>
+				<div class="side-foot">${userButton(true)}${mobile ? '' : menu}<div class="demo-note">${offline || 'Namuna — ma’lumotlar o‘ylab topilgan'}</div></div>
+			</div>
+			<main class="main">
+				<header class="topbar"><div class="logo">${LOGO}POLYPACK</div>${offline}<div>${userButton(false)}${mobile ? menu : ''}</div></header>
+				<div class="page">${Views[PAGES[ui.page].view]()}</div>
+			</main>
+			<nav class="bnav" aria-label="Bo‘limlar">${role.menu.map(p => navItem(p, '', PAGES[p].short || PAGES[p].t)).join('')}</nav>
+		</div>`;
+		UI.refresh('layer');
+		ui.changed = [];
+	},
+
+	// Qisman yangilanadigan bo‘laklar: element id → HTML (UI.refresh shu yerdan oladi).
+	parts: {
+		layer() {
+			const d = ui.drawer;
+			return !d ? '' : `<div class="ovl" data-act="closeDrawer"></div><div class="drawer${d.enter ? ' enter' : ''}" role="dialog" aria-modal="true">${Views[d.type + 'Card'](d.id)}</div>`;
+		},
+		list: () => Views[{ buyurtmalar: 'ordersTable', rulonlar: 'rollsTable', mijozlar: 'clientsTable' }[ui.page]](),
+		mbody: () => Views[ui.modalForm](),
+		print: () => ui.printId ? Views.packing(Data.order(ui.printId)) : '',
+		'calc-body': () => Views[{ cost: 'calcCost', actual: 'calcActual', order: 'calcOrder', norms: 'calcNorms' }[ui.calcTab]](),
+		// qolganlari — shu nomdagi render funksiyasi
+		chart: 'chart', check: 'orderCheck', 'price-hint': 'priceHint', 'shift-form': 'shiftForm', 'shift-check': 'shiftCheck', 'shift-rest': 'shiftRest', 'roll-net': 'rollNet', 'pay-plan': 'payPlanLive',
+		'calc-sum': 'calcSummary', 'calc-live': 'calcLive', 'order-result': 'calcOrderResult', 'recipe-note': 'recipeNote', import: 'importPreview'
+	},
+	part(id) { const p = Views.parts[id]; return typeof p === 'string' ? Views[p]() : p(); },
+	drawerHead: (title, sub, extra = '') => `<div class="dh"><div class="x"><h2>${title}</h2>${sub ? `<div class="muted sm">${sub}</div>` : ''}</div>${extra}<button class="btn ic ghost" data-act="closeDrawer" aria-label="Yopish">${UI.icon('x')}</button></div>`,
+
+	/* --- Kirish --- */
+
+	login() {
+		const pick = session.pick;
+		const head = `<span class="demo-tag">Namuna — ma’lumotlar o‘ylab topilgan</span><div class="logo">${LOGO}POLYPACK</div>`;
+		if (!ROLES[pick]) {
+			return `<div class="login"><div class="lbox">${head}
+				<h1>Kim sifatida kirasiz?</h1><p class="lead-t">Har bir xodim faqat o‘z bo‘limlarini ko‘radi.</p>
+				<div class="roles">${Object.entries(ROLES).map(([k, r]) => `<button class="role" data-act="pickRole" data-r="${k}"><span class="x"><span class="n">${r.nom}</span><span class="d">${r.izoh}</span></span>${UI.icon('chev')}</button>`).join('')}</div>
+			</div></div>`;
+		}
+		const users = db.users.filter(u => u.rol === pick);
+		return `<div class="login"><div class="lbox">${head}
+			<h1>${ROLES[pick].nom}</h1><p class="lead-t">${UI.esc(users.map(u => u.ism).join(', '))}</p>
+			<form class="pin-box" data-form="pin" autocomplete="off">
+				<label class="fld"><span>PIN kod</span><input id="pin" class="in pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="pinerr"></label>
+				<div class="err" id="pinerr" role="alert"></div>
+				<button class="btn pri" type="submit">Kirish</button>
+				${users.some(u => u.pin === DEFAULT_PIN) ? `<p class="hint center">Namuna uchun PIN: ${DEFAULT_PIN}</p>` : ''}
+			</form>
+			<div class="center"><button class="link" data-act="pickRole" data-r="">Boshqa rolni tanlash</button></div>
+		</div></div>`;
+	},
+
+	/* --- Direktor: Bugun --- */
+
+	// «Diqqat talab qiladi»: t — kim yoki nima, m — muammo; go/id — qator bosilganda, btn — o‘ngdagi amal.
+	attention(pl) {
+		const items = [], short = Calc.matShort(pl), kirim = db.kirim, waiting = {};
+		const title = o => `${o.id} · ${Data.client(o).nom}`;
+		Calc.active().filter(o => pl.res[o.id].kech > 0).forEach(o => {
+			items.push({ c: 'red', t: title(o), m: `Muddatdan ${pl.res[o.id].kech} kun kech tayyor bo‘ladi · ${F.date(pl.res[o.id].tayyor)}`, go: 'openOrder', id: o.id });
+		});
+		Object.keys(short).forEach(id => {
+			const s = short[id][0], m = Data.mat(s.mat);
+			items.push({ c: 'amb', t: title(Data.order(id)), m: `${m.nom}: ${F.qty(s.lack, m)} yetmaydi${kirim && kirim.mat === s.mat ? ` · kirim ${F.date(kirim.at)}` : ''}`, go: 'openOrder', id, btn: ['openStock', 'Qoldiqni ko‘rish'] });
+		});
+		// qarz sabab to‘xtab turgan buyurtmalar mijoz bo‘yicha bitta qatorga yig‘iladi
+		db.orders.filter(o => Calc.ready(o) || o.holat === 'yangi').forEach(o => {
+			if (Calc.blocked(o)) (waiting[o.cid] = waiting[o.cid] || []).push(o);
+			else if (o.holat === 'yangi') items.push({ c: 'blu', t: title(o), m: `Yangi buyurtma · ${F.spec(o)} · ${F.kg(o.kg)}`, go: 'openOrder', id: o.id, btn: ['approve', 'Navbatga qo‘shish'] });
+		});
+		db.orders.filter(Calc.overAsked).forEach(o => {
+			items.push({ c: 'amb', t: title(o), m: `Buyurtmadan ${F.kg(o.sorovKg - o.kg)} ko‘p jo‘natishga ruxsat so‘ralmoqda${o.ruxsatKg ? ` · avvalgi ruxsat ${F.kg(o.ruxsatKg)} gacha` : ''}`, go: 'openOrder', id: o.id, btn: ['permitOver', 'Ruxsat berish'] });
+		});
+		Object.keys(waiting).forEach(cid => {
+			const d = Calc.clientDebt(cid);
+			items.push({ c: 'red', t: Data.client(cid).nom, m: `${d.days} kun kechikkan qarz · ${waiting[cid].length} ta buyurtma ruxsat kutmoqda`, go: 'openClient', id: cid, btn: ['openClient', 'Ko‘rib chiqish'] });
+		});
+		db.mats.filter(m => m.qoldiq < m.min).forEach(m => {
+			items.push({ c: 'amb', t: m.nom, m: `Qoldiq ${F.qty(m.qoldiq, m)} — minimal ${F.qty(m.min, m)} dan kam`, go: 'openStock', id: '' });
+		});
+		return items;
+	},
+
+	today() {
+		const pl = Calc.plan(), open = db.orders.filter(o => o.holat !== 'jonatildi');
+		const risk = Calc.active().filter(o => pl.res[o.id].kech > 0).length;
+		const overdue = Calc.sum(db.clients, c => Calc.clientDebt(c.id).overdue);
+		const eco = open.map(Calc.economy), kg = Calc.sum(open, o => o.kg);
+		const summa = Calc.sum(eco, e => e.summa), tannarx = Calc.sum(eco, e => e.tannarx);
+		const items = Views.attention(pl), limit = ui.attAll ? items.length : UI.mobile() ? 4 : 6;
+		const row = (x, right) => `<div class="item">${x.c ? UI.dot(x.c) : ''}
+			<button class="x" data-act="${x.go}" data-id="${x.id}"><span class="t">${UI.esc(x.t)}</span><span class="m">${UI.esc(x.m)}</span></button>${right}</div>`;
+		const att = x => row(x, x.btn ? `<button class="btn s" data-act="${x.btn[0]}" data-id="${x.id}">${x.btn[1]}</button>` : UI.icon('chev'));
+
+		const endOfTomorrow = Time.date(Time.add(2)).getTime();
+		const order = (o, m) => row({ go: 'openOrder', id: o.id, t: `${o.id} · ${Data.client(o).nom}`, m }, `<span class="muted sm tn">${F.kg(o.kg - o.jonatKg)}</span>`);
+		const group = (title, list, text) => !list.length ? '' : `<h3>${title}</h3>${list.slice(0, 4).map(o => order(o, text(o))).join('')}`;
+		const ready = db.orders.filter(Calc.ready);
+		const soon = Calc.active().filter(o => pl.res[o.id].tayyor < endOfTomorrow).sort((a, b) => pl.res[a.id].tayyor - pl.res[b.id].tayyor);
+
+		return `${UI.head('Bugun', `${F.dateLong(Time.today)}, ${WEEKDAYS[Time.date(Time.today).getDay()]}`)}
+		${UI.facts([risk ? `<button class="link" data-act="showOrders" data-v="xavf">${risk} ta buyurtma kechikish xavfida</button>` : 'Kechikish xavfi yo‘q', overdue >= 1 ? `<button class="link" data-act="go" data-p="qarzlar">${F.mln(overdue)} so‘m muddati o‘tgan qarz</button>` : 'Muddati o‘tgan qarz yo‘q', `Faol ${F.kg(kg)}, ${open.length} ta`, `Bugun ${F.kg(Calc.producedOn(Time.today))}`])}
+		${UI.facts(['Faol buyurtmalar bo‘yicha o‘rtacha:', `1 kg tannarx ${F.som(tannarx / (kg || 1))}`, `sotuv narxi ${F.som(summa / (kg || 1))}`, `marja ${F.pct((summa - tannarx) / (summa || 1) * 100)}`, '<button class="link" data-act="showCalc" data-v="cost">Kalkulyatsiya</button>'], 'quiet')}
+		<div class="today">
+			<section class="sec">
+				${UI.sec(`Diqqat talab qiladi<span class="c">${items.length}</span>`)}
+				${items.length ? items.slice(0, limit).map(att).join('') : '<div class="empty">Hozircha hammasi joyida</div>'}
+				${items.length > limit ? `<button class="link more" data-act="showAllAttention">Yana ${items.length - limit} ta</button>` : ''}
+			</section>
+			<div>
+				<section class="sec">
+					${UI.sec('Jo‘natish va tayyor bo‘lish')}
+					${group('Jo‘natishga tayyor', ready, o => `Muddat ${F.date(o.muddat)}${o.jonatKg ? ` · ${STATUS.qisman.t}, qoldi ${F.kg(o.kg - o.jonatKg)}` : ''}`) + group('Bugun-ertaga tayyor bo‘ladi', soon, o => `${F.dateTime(pl.res[o.id].tayyor)} · muddat ${F.date(o.muddat)}`)
+						|| '<div class="empty">Yaqin ikki kunda tayyor bo‘ladigan buyurtma yo‘q</div>'}
+				</section>
+				<section class="sec" id="chart">${Views.chart()}</section>
+			</div>
+		</div>`;
+	},
+
+	// 14 kunlik ishlab chiqarish. Ustun bosilsa, shu kun qiymati pastda ko‘rinadi.
+	chart() {
+		const days = [...Array(14)].map((_, i) => Time.add(i - 13)), kg = days.map(Calc.producedOn);
+		const top = Math.ceil(Math.max(...kg, 1) / 4000) * 4000, avg = Calc.sum(kg.slice(0, -1), x => x) / 13;
+		const sel = ui.chartDay == null ? 13 : ui.chartDay;
+		return `${UI.sec('Ishlab chiqarish, 14 kun', '<span class="muted sm">Ekstruziya</span>')}
+		<div class="chart">
+			${[0.5, 1].map(f => `<div class="gl" style="bottom:${f * 100}%"><span>${F.num(top * f / 1000)} t</span></div>`).join('')}
+			${kg.map((x, i) => `<button class="b${i === sel ? ' now' : ''}" style="height:${Math.max(2, x / top * 100)}%" data-act="pickDay" data-v="${i}" aria-label="${F.date(days[i])}: ${F.kg(x)}"></button>`).join('')}
+		</div>
+		<div class="cx">${days.map((d, i) => `<span>${i % 2 ? Time.date(d).getDate() : ''}</span>`).join('')}</div>
+		<p class="hint mt8"><span class="strong">${F.date(days[sel])}: ${F.kg(kg[sel])}</span> · kuniga o‘rtacha ${F.kg(avg)}</p>`;
+	},
+
+	/* --- Buyurtmalar --- */
+
+	orders() {
+		const f = ui.orderFilter, pl = Calc.plan();
+		const count = st => db.orders.filter(o => o.holat === st).length;
+		const list = [['faol', 'Faol', db.orders.length - count('jonatildi')], ...STATUS_ORDER.map(st => [st, STATUS[st].t, count(st)]),
+			['xavf', 'Kechikish xavfi', Calc.active().filter(o => pl.res[o.id].kech > 0).length], ['', 'Hammasi', db.orders.length]];
+		const add = can('submitOrder') ? `<button class="btn pri" data-act="go" data-p="yangi">${UI.icon('plus')}Yangi buyurtma</button>` : '';
+		return `${UI.head('Buyurtmalar', null, add)}
+		<div class="toolbar">${UI.filter('filterOrders', f.st, list)}${UI.search('orderFilter', f.q, 'Raqam, mijoz yoki spetsifikatsiya')}</div>
+		<div id="list">${Views.ordersTable(pl)}</div>`;
+	},
+	ordersTable(pl = Calc.plan()) {
+		const f = ui.orderFilter, q = f.q.trim().toLowerCase();
+		const late = o => (pl.res[o.id] || {}).kech > 0, open = o => o.holat !== 'jonatildi';
+		const match = o => f.st === 'faol' ? open(o) : f.st === 'xavf' ? late(o) : !f.st || o.holat === f.st;
+		const rows = db.orders
+			.filter(o => match(o) && (!q || `${o.id} ${Data.client(o).nom} ${F.spec(o)}`.toLowerCase().includes(q)))
+			.sort((a, b) => (open(b) - open(a)) || (late(b) - late(a)) || (open(a) ? a.muddat.localeCompare(b.muddat) : b.jonatSana.localeCompare(a.jonatSana)));
+		return UI.table([
+			['Raqam', 'm-hide', o => `<span class="id">${o.id}</span>`],
+			['Mijoz', 'c-main', o => UI.who(o)],
+			['Spetsifikatsiya', 'c-sub', o => `<span class="m-only">${o.id} · </span>${F.spec(o)}<span class="m-only"> · ${F.kg(o.kg)}</span>`],
+			['Miqdor', 'num m-hide', o => F.kg(o.kg)],
+			['Muddat', 'nowrap', o => F.date(o.muddat) + (late(o) ? ' ' + UI.flag(`+${pl.res[o.id].kech} kun`) : '')],
+			['Tayyor sana', 'm-hide nowrap', o => pl.res[o.id] ? F.date(pl.res[o.id].tayyor) : `<span class="muted">${o.tayyorSana ? F.date(o.tayyorSana) : '—'}</span>`],
+			['Holat', 'c-aside', o => UI.badge(STATUS, o.holat)]
+		], rows, { row: o => `class="ck" data-act="openOrder" data-id="${o.id}" tabindex="0"`, empty: 'Bu filtr bo‘yicha buyurtma topilmadi' });
+	},
+
+	orderCard(id) {
+		const o = Data.order(id);
+		if (!o) return Views.drawerHead('Buyurtma topilmadi');
+		const pl = Calc.plan(), r = pl.res[o.id], c = Data.client(o), cd = Calc.clientDebt(o.cid), debt = Calc.orderDebt(o), eco = Calc.economy(o);
+		const money = Calc.money(o);
+		// «Qisman jo‘natildi» bosqichi faqat shunday buyurtmada ko‘rinadi
+		const stages = STATUS_ORDER.filter(st => st !== 'qisman' || o.holat === 'qisman'), at = stages.indexOf(o.holat);
+		const boss = can('permit'), blocked = Calc.blocked(o);
+
+		let production;
+		if (r) {
+			const short = o.faol ? Calc.materialCheck(o) : Calc.matShort(pl)[o.id] || [];
+			const route = Calc.route(o).map((s, i) => {
+				const name = Data.line(s === 'E' ? o.liniya : s).nom;
+				return i < o.etap ? `<span class="muted">${name}</span>` : i === o.etap ? `<span class="strong">${name}${o.faol ? ', ishlanmoqda' : ''}</span>` : name;
+			}).join(' → ');
+			production = [
+				['Marshrut', route],
+				['Tayyor bo‘ladi', `${F.dateTime(r.tayyor)} ${r.kech > 0 ? UI.flag(`muddatdan ${r.kech} kun kech`) : `<span class="muted">· ${r.zaxira ? `muddatdan ${r.zaxira} kun oldin` : 'muddat kuni'}</span>`}`],
+				o.faol && ['Bajarildi', `${F.kg(o.done)} / ${F.kg(o.kg)}`],
+				short.length && ['Material', UI.flag(F.lack(short), 'amb')]
+			];
+		} else if (o.holat === 'yangi') {
+			const best = Calc.bestLine(o);
+			production = [['Navbatga qo‘yilsa', `${Data.line(best.lid).nom}, ${F.dateTime(best.r.tayyor)} da tayyor ${best.r.kech > 0 ? UI.flag(`muddatdan ${best.r.kech} kun kech`) : ''}`]];
+		} else {
+			production = [['Liniya', Data.line(o.liniya).nom], ['Tayyor bo‘ldi', o.tayyorSana ? F.date(o.tayyorSana) : '—'], o.jonatSana && [o.holat === 'qisman' ? 'Oxirgi jo‘natish' : 'Jo‘natildi', F.date(o.jonatSana)],
+				(o.ruxsatKg || Calc.overAsked(o)) && ['Ortiqcha jo‘natish', [o.ruxsatKg && `Ruxsat berilgan: ${F.kg(o.ruxsatKg)} gacha`, Calc.overAsked(o) && `So‘ralgan: ${F.kg(o.sorovKg)}`].filter(Boolean).join(' · ')]];
+		}
+
+		const inStock = db.rolls.filter(x => x.oid === o.id && x.holat !== 'jonatildi');
+		const warning = (o.holat === 'yangi' || Calc.ready(o)) && blocked
+			? UI.note(`<b>${UI.esc(c.nom)}da ${cd.days} kun kechikkan ${F.som(cd.overdue)} qarz bor.</b> ${o.holat === 'yangi' ? 'Navbatga qo‘yish' : 'Jo‘natish'} uchun direktor ruxsati kerak.`, 'warn')
+			: o.ruxsat ? UI.note(`Direktor ${F.date(o.ruxsat)} kuni qarzga qaramay ruxsat bergan.`) : '';
+
+		const actions = [`<button class="btn" data-act="sendStatus" data-id="${o.id}">Mijozga holatni yuborish</button>`];
+		if (money.open > 0 && can('openPayment')) actions.push(`<button class="btn" data-act="openPayment" data-id="${o.id}">To‘lov kiritish</button>`);
+		if (o.holat === 'yangi' && can('approve')) actions.push(`<button class="btn pri" data-act="approve" data-id="${o.id}"${blocked && !boss ? ' disabled' : ''}>Navbatga qo‘shish</button>`);
+		if (o.faol && can('forceFinish') && Calc.materialCheck(o).length) actions.push(`<button class="btn" data-act="forceFinish" data-id="${o.id}">Baribir tugatish</button>`);
+		if (Calc.overAsked(o) && can('permitOver')) actions.push(`<button class="btn pri" data-act="permitOver" data-id="${o.id}">Ortiqcha jo‘natishga ruxsat</button>`);
+		if (Calc.ready(o) && boss && blocked) actions.push(`<button class="btn pri" data-act="permit" data-id="${o.id}">Jo‘natishga ruxsat berish</button>`);
+
+		return Views.drawerHead(`<span class="id">${o.id}</span> · ${UI.esc(c.nom)}`, `${F.spec(o)} · ${F.kg(o.kg)}`, UI.badge(STATUS, o.holat)) + `<div class="dbody">
+			${warning}
+			<div class="steps" aria-label="Bosqichlar">${stages.map((st, i) => `<div class="step${i < at ? ' done' : i === at ? ' cur' : ''}">${STATUS[st].t}</div>`).join('')}</div>
+			${o.holat === 'qisman' ? `<p class="hint center">Jo‘natildi ${F.kg(o.jonatKg)}, qoldi ${F.kg(o.kg - o.jonatKg)}</p>` : ''}
+			<div class="dsec"><h3>Buyurtma</h3>${UI.dl([
+				['Mijoz', `<button class="link" data-act="openClient" data-id="${c.id}">${UI.esc(c.nom)}</button>`],
+				['Spetsifikatsiya', `${F.spec(o)}, o‘zak 76 mm`],
+				['Miqdor', `${F.kg(o.kg)} · ${Math.ceil(o.kg / Calc.rollKg(o.eni))} rulon`],
+				['Muddat', F.dateLong(o.muddat)],
+				['Qabul qilingan', F.date(o.sana)]])}</div>
+			<div class="dsec"><h3>Ishlab chiqarish</h3>${UI.dl(production)}</div>
+			<div class="dsec"><h3>Pul</h3>${UI.dl([
+				['Narx', `${F.num(o.narx)} so‘m/kg`],
+				['Buyurtma summasi', F.som(money.total)],
+				o.jonatKg > 0 && ['Jo‘natilgan', `${F.kg(o.jonatKg)} / ${F.kg(o.kg)} · ${F.som(money.billed)}`],
+				boss && ['Tannarx, jami', `<span id="card-cost">${F.som(eco.tannarx)}</span> · ${F.num(eco.tannarx / o.kg)} so‘m/kg`],
+				boss && ['Marja', `<span id="card-margin">${F.som(eco.marja)} · ${F.pct(eco.marjaPct)}</span>`],
+				['To‘langan', `${F.som(o.tolangan)} · ${F.paid(o)}`],
+				money.debt > 0 && ['Qarz', `<span id="card-debt">${F.som(money.debt)}</span>`],
+				debt.due && ['To‘lov muddati', `${F.date(debt.due)} ${debt.days ? UI.flag(`${debt.days} kun o‘tgan`) : ''}`]])}</div>
+			${inStock.length ? `<div class="dsec"><h3>Rulonlar</h3>${UI.dl([
+				['Omborda', `${inStock.length} rulon · ${F.kg(Calc.sum(inStock, x => x.netto))} netto`]])}</div>` : ''}
+			<div class="dsec"><h3>Tarix</h3><ul class="hist">${o.tarix.slice().reverse().map(h => `<li><span>${F.date(h.d)}</span><span>${UI.esc(h.m)}</span></li>`).join('')}</ul></div>
+		</div><div class="dfoot">${actions.join('')}</div>`;
+	},
+
+	clientCard(id) {
+		const c = Data.client(id), d = Calc.clientDebt(id);
+		const orders = db.orders.filter(o => o.cid === id).sort((a, b) => b.sana.localeCompare(a.sana));
+		// direktor qarz sabab to‘xtab turgan buyurtmaga shu yerning o‘zida ruxsat beradi
+		const waits = o => (Calc.ready(o) || o.holat === 'yangi') && Calc.blocked(o);
+		const item = o => `<div class="item">
+			<button class="x" data-act="openOrder" data-id="${o.id}"><span class="t">${o.id} · ${F.spec(o)}</span><span class="m">${F.kg(o.kg)} · ${F.date(o.sana)} · ${STATUS[o.holat].t}${waits(o) ? ' · ruxsat kutmoqda' : ''}</span></button>
+			${waits(o) && can('permit') ? `<button class="btn s" data-act="${o.holat === 'yangi' ? 'approve' : 'permit'}" data-id="${o.id}">${o.holat === 'yangi' ? 'Navbatga qo‘shish' : 'Jo‘natishga ruxsat'}</button>` : ''}
+			${can('repeatOrder') ? `<button class="btn s" data-act="repeatOrder" data-id="${o.id}">Takroriy buyurtma</button>` : ''}</div>`;
+		return Views.drawerHead(UI.esc(c.nom), `${UI.esc(c.soha)} · ${UI.esc(c.shahar)}`) + `<div class="dbody">
+			${UI.dl([
+				['Aloqa', `${UI.esc(c.kontakt)} · <a class="link" href="tel:${c.tel.replace(/\s/g, '')}">${UI.esc(c.tel)}</a>`],
+				['To‘lov sharti', c.tolovKun ? c.tolovKun + ' kun keyin' : '100 % oldindan'],
+				['Kredit limiti', F.som(c.limit)],
+				['Qarz', `${d.total ? F.som(d.total) : 'Yo‘q'} ${d.overdue ? UI.flag(`${F.mln(d.overdue)} · ${d.days} kun o‘tgan`) : ''}`],
+				c.avans > 0 && ['Avans', `${F.som(c.avans)} · keyingi buyurtmaga o‘tadi`]])}
+			<div class="dsec"><h3>Buyurtmalar · ${orders.length}</h3>${orders.map(item).join('')}</div>
+		</div>${d.total && can('openClientPayment') ? `<div class="dfoot"><button class="btn pri" data-act="openClientPayment" data-id="${id}">To‘lov kiritish</button></div>` : ''}`;
+	},
+
+	stockCard() {
+		return Views.drawerHead('Xomashyo qoldig‘i') + `<div class="dbody">${Views.materialsTable()}<div class="mt16">${Views.kirimNote(false)}</div></div>`;
+	},
+
+	/* --- Sotuv: Yangi buyurtma --- */
+
+	resetNewOrder(from = {}) {
+		const cid = from.cid || 'c1', tur = from.tur || 'CPP', qal = from.qal || 30;
+		ui.f.no = { cid, tur, qal, eni: from.eni || 1000, kg: from.kg || 3000, muddat: Time.add(10), narx: Calc.suggestPrice(cid, tur, qal).narx, manual: false };
+	},
+	draftOrder() {
+		const f = ui.f.no;
+		return { id: 'yangi', cid: f.cid, tur: f.tur, qal: +f.qal, eni: +f.eni || 0, kg: +f.kg || 0, narx: +f.narx || 0, muddat: f.muddat, holat: 'navbat', liniya: 'E1', tartib: 1e6, etap: 0, faol: false, done: 0 };
+	},
+	priceHint() {
+		const f = ui.f.no, s = Calc.suggestPrice(f.cid, f.tur, +f.qal);
+		return `Taklif: ${F.num(s.narx)} so‘m/kg — ${s.src}` + (f.manual && +f.narx !== s.narx ? ` · <button type="button" class="link" data-act="useSuggestedPrice">taklifni qo‘yish</button>` : '');
+	},
+	newOrder() {
+		if (!ui.f.no) Views.resetNewOrder();
+		const f = ui.f.no, year = +Time.today.slice(0, 4);
+		return `${UI.head('Yangi buyurtma')}
+		<form class="split" data-form="newOrder" novalidate>
+			<div class="grid2">
+				${UI.field('Mijoz', UI.select('no.cid', db.clients.map(c => [c.id, c.nom])), { cls: 'full' })}
+				${UI.group('Turi', `<div>${UI.seg('setType', f.tur, [['CPP', 'CPP — shaffof'], ['MCPP', 'MCPP — metallangan']])}</div>`, { cls: 'full' })}
+				${UI.field('Qalinlik', UI.select('no.qal', THICKNESS.map(x => [x, x + ' mkm'])))}
+				${UI.numField('Eni', 'no.eni', 'mm', { attrs: 'min="300" max="1800" step="10"' })}
+				${UI.numField('Miqdor', 'no.kg', 'kg', { attrs: 'min="100" step="100"' })}
+				${UI.group('Muddat', UI.date('no.muddat', [year, year + 1]), { key: 'no.muddat' })}
+				${UI.numField('Narx', 'no.narx', 'so‘m/kg', { attrs: 'min="0" step="100"', hint: `<span id="price-hint">${Views.priceHint()}</span>`, cls: 'full' })}
+			</div>
+			<div class="chk-p" id="check" aria-live="polite">${Views.orderCheck()}</div>
+		</form>`;
+	},
+	// Buyurtmani qabul qilish mumkinmi: xulosa, muammolar va tugma. Tugma xulosadan keyin turadi.
+	orderCheck() {
+		const o = Views.draftOrder();
+		const button = (label, off) => `<div class="foot"><button class="btn pri" type="submit"${off ? ' disabled' : ''}>${label}</button></div>`;
+		if (['no.eni', 'no.kg', 'no.narx', 'no.muddat'].some(Forms.error)) return button('Buyurtmani qabul qilish', true);
+
+		const x = Calc.orderCheck(o), kirim = db.kirim, { short, late, left, debt, eco } = x, n = x.needs;
+		const waits = x.supply === 'kutadi', viaKirim = x.supply === 'kirim';
+		const problems = short.map(s => {
+			const m = Data.mat(s.mat);
+			return ['amb', `${m.nom} yetmaydi: ${F.qty(s.lack, m)}`, waits ? `Kirim ${F.dateLong(kirim.at)} kuni kutilmoqda, ish undan keyin boshlanadi.` : 'Navbatdagi buyurtmalar va kutilayotgan kirimdan keyin ham yetmaydi — xarid qilish kerak.'];
+		});
+		if (late) problems.push(['red', `Muddatga ulgurmaydi: ${late} kun kech`, `Eng erta ${F.dateLong(x.ready)}da tayyor bo‘ladi.`]);
+		if (debt.overdue > 0) problems.push(['red', `Mijozda ${debt.days} kun kechikkan qarz: ${F.mln(debt.overdue)} so‘m`, 'Navbatga faqat direktor ruxsati bilan qo‘yiladi.']);
+		if (x.overLimit) problems.push(['amb', 'Kredit limitidan oshadi', `Qarz ${F.mln(debt.total)} + bu buyurtma ${F.mln(eco.summa)}, limit ${F.mln(x.limit)} so‘m.`]);
+		if (x.lowMargin) problems.push([eco.marja < 0 ? 'red' : 'amb', `Marja past: ${F.pct(eco.marjaPct)}`, `Tannarx ${F.num(eco.tannarx / o.kg)} so‘m/kg.`]);
+
+		const fine = [!short.length && `Material yetadi${viaKirim ? ` (${F.date(kirim.at)} kirimi bilan)` : ''}`, !late && !short.length && (left ? `Muddatdan ${left} kun oldin` : 'Muddat kuni tayyor'), !debt.total && 'Mijozda qarz yo‘q'];
+		return `<div class="verdict">${UI.dot(problems.length ? problems[0][0] : 'grn')}${problems.length ? `Qabul qilishdan oldin: ${problems.length} ta masala` : 'Qabul qilish mumkin'}</div>
+		${problems.map(([tone, title, text]) => `<div class="chk">${UI.dot(tone)}<div><div class="v">${title}</div><div class="d">${text}</div></div></div>`).join('')}
+		${UI.facts(fine, 'quiet mt8')}
+		${UI.dl([
+			['Tayyor bo‘ladi', `${F.dateLong(x.ready)} · ${Data.line(x.line).nom}`],
+			['Xomashyo', `granula ${F.kg(n.granula)}${n.alu ? ` · alyuminiy ${F.kg(n.alu, 1)}` : ''} · o‘zak ${Calc.needs(o.kg, o.tur, o.eni).ozak} dona`],
+			['Summa', F.som(eco.summa)],
+			['Marja', `${F.pct(eco.marjaPct)} · ${F.mln(eco.marja)} so‘m`]], 'mt16')}
+		${button(debt.overdue > 0 ? 'Saqlash — direktor ruxsatini kutadi' : problems.length ? 'Shunga qaramay qabul qilish' : 'Buyurtmani qabul qilish')}`;
+	},
+
+	/* --- Sotuv: Mijozlar --- */
+
+	clients() {
+		return `${UI.head('Mijozlar')}
+		<div class="toolbar"><span></span>${UI.search('clientFilter', ui.clientFilter.q, 'Mijoz nomi')}</div>
+		<div id="list">${Views.clientsTable()}</div>`;
+	},
+	clientsTable() {
+		const q = ui.clientFilter.q.trim().toLowerCase();
+		const rows = db.clients.filter(c => !q || c.nom.toLowerCase().includes(q)).map(c => {
+			const orders = db.orders.filter(o => o.cid === c.id).sort((a, b) => b.sana.localeCompare(a.sana));
+			return { c, n: orders.length, last: orders[0], d: Calc.clientDebt(c.id) };
+		}).sort((a, b) => (b.last ? b.last.sana : '').localeCompare(a.last ? a.last.sana : ''));
+		return UI.table([
+			['Mijoz', 'c-main', x => `${UI.esc(x.c.nom)}<span class="sub">${UI.esc(x.c.soha)}</span>`],
+			['Shahar', 'm-hide', x => UI.esc(x.c.shahar)],
+			['Buyurtmalar', 'num m-hide', x => x.n],
+			['Oxirgi buyurtma', '', x => x.last ? `${F.date(x.last.sana)} <span class="muted">· ${F.spec(x.last)}</span>` : '—'],
+			['Qarz', 'num', x => x.d.total ? F.som(x.d.total) : '<span class="muted">—</span>'],
+			['Muddati o‘tgan', 'num m-hide', x => x.d.overdue ? F.som(x.d.overdue) : '<span class="muted">—</span>'],
+			['Kechikish', 'c-aside', x => x.d.days ? UI.flag(`${x.d.days} kun`) : '']
+		], rows, { row: x => `class="ck" data-act="openClient" data-id="${x.c.id}" tabindex="0"`, empty: 'Mijoz topilmadi' });
+	},
+
+	/* --- Ishlab chiqarish: Navbat --- */
+
+	queue() {
+		const pl = Calc.plan(), lid = ui.line, ln = Data.line(lid), rows = pl.q[lid], extrusion = lid !== 'M' && lid !== 'K';
+		const short = Calc.matShort(pl), cfg = db.norms;
+		const movable = extrusion ? rows.filter(x => x.o.holat === 'navbat' && !x.o.faol).map(x => x.o) : [];
+
+		let hint = '';
+		const setupHours = lid === 'M' ? cfg.metSozlash : cfg.kesSozlash;
+		if (!extrusion) hint = `Tartib oldingi bosqich tugashiga qarab belgilanadi. Eni o‘zgarsa, ${F.num(setupHours * 60)} daqiqa qayta sozlash qo‘shiladi.`;
+		else if (rows.length > 1) {
+			const setups = rows.filter(x => x.setup).length, least = new Set(rows.map(x => x.o.qal)).size - 1;
+			const saved = (setups - least) * cfg.sozlash;
+			hint = !setups ? '' : `Qayta sozlash: ${setups} marta, jami ${F.num(setups * cfg.sozlash, 1)} soat.`
+				+ (saved > 0 ? ` Bir xil qalinlikdagi buyurtmalar ketma-ket qo‘yilsa, ${F.num(saved, 1)} soat tejaladi.` : '');
+		}
+
+		const body = rows.map((x, i) => {
+			const o = x.o, r = pl.res[o.id], here = Calc.stageLine(o) === lid, running = here && o.faol, at = movable.indexOf(o);
+			const gap = !x.setup ? '' : `<tr class="gap"><td colspan="6">Qayta sozlash · ${extrusion ? `${F.num(cfg.sozlash, 1)} soat · ${x.from} → ${o.qal} mkm` : `${F.num(setupHours * 60)} daqiqa · eni ${F.num(x.from)} → ${F.num(o.eni)} mm`}</td></tr>`;
+			const arrow = (dir, name, label, off) => `<button class="btn s ic" data-act="moveOrder" data-id="${o.id}" data-dir="${dir}"${off ? ' disabled' : ''} aria-label="${label}">${UI.icon(name)}</button>`;
+			const move = at < 0 ? '' : arrow(-1, 'up', 'Yuqoriga', at === 0) + arrow(1, 'down', 'Pastga', at === movable.length - 1);
+			const action = running ? `<button class="btn s" data-act="finishStage" data-id="${o.id}">Tugatish</button>`
+				: `<button class="btn s" data-act="startStage" data-id="${o.id}"${here ? '' : ' disabled'}>Boshlash</button>`;
+			// shu bosqichda hozir yetmayotgani birinchi; bo‘lmasa — reja bo‘yicha keyingi bosqichlarda yetmaydigani (bosqich nomi bilan)
+			const stageId = extrusion ? 'E' : lid, lacks = short[o.id] || [];
+			const lack = (here && Calc.materialCheck(o)[0]) || lacks.find(s => s.stage === stageId) || lacks[0];
+			const where = lack && lack.stage !== stageId ? { E: 'Ekstruziyada: ', M: 'Metallizatsiyada: ', K: 'Kesishda: ' }[lack.stage] : '';
+			const lackFlag = lack ? UI.flag(`${where}${Data.mat(lack.mat).nom.split(',')[0]} yetmaydi`, 'amb') : '';
+			const due = r.kech > 0 ? UI.flag(`${r.kech} kun kech`) : `<span class="muted sm nowrap">${r.zaxira ? `${r.zaxira} kun oldin` : 'Muddat kuni'}</span>`;
+			const progress = !running ? '' : ` <span class="nowrap muted"><span class="prog"><i style="width:${Math.min(100, o.done / o.kg * 100)}%"></i></span>${F.kg(o.done)}</span>`;
+			return gap + `<tr${ui.changed.includes(o.id) ? ' class="chg"' : ''}>
+				<td class="m-hide num muted">${i + 1}</td>
+				<td class="c-main nowrap"><span><span class="id">${o.id}</span> · ${UI.who(o)}</span></td>
+				<td class="c-sub"><span>${F.spec(o)}<span class="sub">${F.kg(o.kg)}${progress} <span class="m-none">${lackFlag}</span></span></span></td>
+				<td class="nowrap tn" data-l="Boshlanish – tugash"><span>${running ? 'hozir' : F.dateTime(x.start)} → ${F.dateTime(x.end)}</span></td>
+				<td class="nowrap tn" data-l="Tayyor / muddat"><span>${F.date(r.tayyor)} / ${F.date(o.muddat)}<span class="sub m-none">${due}</span></span></td>
+				<td class="c-aside d-none">${r.kech > 0 || !lack ? due : lackFlag}</td>
+				<td class="c-acts"><div class="cell-acts">${move}${action}</div></td></tr>`;
+		}).join('');
+
+		return `${UI.head('Navbat')}
+		${UI.tabs('setLine', lid, db.lines.map(l => [l.id, l.nom, pl.q[l.id].length]))}
+		<div class="lhead"><span>${F.num(Calc.rate(lid))} kg/soat${extrusion ? ' · 2 smena' : ''}</span><span class="tn">${rows.length ? `Navbatda ${F.kg(Calc.sum(rows, x => x.o.kg))} · ${F.dateTime(rows[rows.length - 1].end)} gacha band` : ''}</span></div>
+		${hint ? UI.note(hint) : ''}
+		${rows.length ? `<div class="tw mt16"><table class="tbl cards"><thead><tr><th class="num">№</th><th>Buyurtma</th><th>Spetsifikatsiya</th><th>Boshlanish – tugash</th><th>Tayyor / muddat</th><th></th></tr></thead><tbody>${body}</tbody></table></div>` : '<div class="empty">Bu liniyada navbat yo‘q</div>'}`;
+	},
+
+	/* --- Ishlab chiqarish: Smena hisoboti --- */
+
+	emptyShift: (base = {}) => ({ sana: Time.today, smena: 1, liniya: 'E1', soat: db.norms.smenaSoat, tur: 'CPP', ...base, ishlab: '', chiqindi: '', granula: '', alu: '', m1: '', izoh: '' }),
+	shift() {
+		if (!ui.f.sr) ui.f.sr = Views.emptyShift({ m0: Calc.lastMeter('E1') });
+		return `${UI.head('Smena hisoboti')}
+		<div class="split">
+			<form data-form="shift" novalidate id="shift-form">${Views.shiftForm()}</form>
+			<div class="chk-p" id="shift-check" aria-live="polite">${Views.shiftCheck()}</div>
+		</div>
+		<section class="sec">${UI.sec('Oxirgi hisobotlar')}${Views.reports()}</section>`;
+	},
+	// To‘lov qayerga yozilishi: «PP-1048: 20 000 000 so‘m · avans: 0 so‘m».
+	payPlan: plan => plan.parts.map(p => `${p.o.id}:${NB}${F.som(p.som)}`).concat(`avans:${NB}${F.som(plan.avans)}`).join(' · '),
+	payPlanLive() {
+		const f = ui.f.pay, only = f.id && Data.order(f.id);
+		return +f.sum > 0 ? Views.payPlan(Calc.allocate(only ? only.cid : f.cid, +f.sum, only)) : '';
+	},
+	// Smenada shu liniyada ishlangan buyurtmalar: hozir ishlanayotgani va shu kuni bosqichi tugaganlari.
+	shiftOrders(f) {
+		return db.orders.filter(o => (f.sana === Time.today && o.faol && Calc.stageLine(o) === f.liniya) || o.yakun.some(y => y.lid === f.liniya && y.d === f.sana));
+	},
+	// Hisobotga yoziladigan mahsulot bo‘laklari: [{ id, tur, kg }]. Bitta buyurtma — hammasi unga;
+	// bir nechta — kiritilgan kg, oxirgisiga qolgani; buyurtma topilmasa — tanlangan mahsulot turi.
+	shiftParts(f) {
+		const list = Views.shiftOrders(f), made = +f.ishlab || 0;
+		if (!list.length) return [{ tur: f.liniya === 'M' ? 'MCPP' : f.tur, kg: made }];
+		let rest = made;
+		return list.map((o, i) => {
+			const kg = i === list.length - 1 ? rest : +f['kg_' + o.id] || 0;
+			rest -= kg;
+			return { id: o.id, tur: o.tur, kg };
+		});
+	},
+	// Oxirgi buyurtmaga yoziladigan kg qo‘lda kiritilmaydi: jami − qolganlari, faqat o‘qish uchun.
+	shiftRest() {
+		const f = ui.f.sr, kg = Views.shiftParts(f).pop().kg;
+		return !(+f.ishlab > 0) ? 'qolgani — jami kiritilgach hisoblanadi' : kg < 0 ? `qolgani: jami miqdordan ${F.kg(-kg)} ortiq` : `qolgani: <b>${F.kg(kg)}</b>`;
+	},
+	shiftProduct() {
+		const f = ui.f.sr, list = Views.shiftOrders(f), label = o => `${o.id} · ${UI.who(o)} · ${F.spec(o)}`;
+		if (!list.length) return f.liniya === 'M' ? '' : UI.field('Mahsulot', UI.select('sr.tur', [['CPP', 'CPP'], ['MCPP', 'MCPP uchun plyonka']]), { cls: 'full', hint: 'Bu smenaga bog‘langan buyurtma topilmadi' });
+		if (list.length === 1) return `<div class="fld full"><span>Buyurtma</span><div class="ro">${label(list[0])}</div></div>`;
+		return `<div class="fld full"><span>Buyurtmalar — ishlab chiqarilgan kg qanday bo‘linadi</span>${list.map((o, i) => i < list.length - 1
+			? UI.numField(label(o), 'sr.kg_' + o.id, 'kg', { attrs: 'min="0" step="10"' })
+			: `<div class="ro rest"><span>${label(o)}</span><span id="shift-rest">${Views.shiftRest()}</span></div>`).join('')}<small class="ferr" data-err="sr.parts"></small></div>`;
+	},
+	shiftForm() {
+		const f = ui.f.sr, year = +Time.today.slice(0, 4);
+		return `<div class="grid2 duo">
+			${UI.group('Sana', UI.date('sr.sana', Time.today.slice(5, 7) === '01' ? [year - 1, year] : [year]), { key: 'sr.sana', cls: 'wide-m' })}
+			${UI.field('Smena', UI.select('sr.smena', [[1, '1-smena · 08:00–20:00'], [2, '2-smena · 20:00–08:00']]), { cls: 'wide-m' })}
+			${UI.field('Liniya', UI.select('sr.liniya', db.lines.filter(l => l.id !== 'K').map(l => [l.id, l.nom])))}
+			${UI.numField('Ishlangan soat', 'sr.soat', 'soat', { attrs: 'min="1" max="12" step="0.5"' })}
+			${Views.shiftProduct()}
+			${UI.numField('Ishlab chiqarildi', 'sr.ishlab', 'kg', { attrs: 'min="0" step="10"' })}
+			${UI.numField('Chiqindi', 'sr.chiqindi', 'kg', { attrs: 'min="0"' })}
+			${f.liniya === 'M' ? UI.numField('Sarflangan alyuminiy sim', 'sr.alu', 'kg', { attrs: 'min="0" step="0.1"', cls: 'full' })
+				: UI.numField('Sarflangan granula', 'sr.granula', 'kg', { attrs: 'min="0" step="10"', cls: 'full' })}
+			${UI.numField('Hisoblagich, boshida', 'sr.m0', 'kVt·soat', { attrs: 'min="0"' })}
+			${UI.numField('Hisoblagich, oxirida', 'sr.m1', 'kVt·soat', { attrs: 'min="0"' })}
+			${UI.field('Izoh', `<textarea class="in" data-f="sr.izoh" rows="2">${UI.esc(f.izoh)}</textarea>`, { cls: 'full' })}
+		</div>
+		<div class="foot"><button class="btn pri" type="submit">Hisobotni saqlash</button></div>`;
+	},
+	delta: (actual, norm) => !actual || !norm ? '' : `<span class="dv ${Calc.tone(actual, norm)}">${F.signed((actual - norm) / norm * 100, 1)} %</span>`,
+	shiftCheck() {
+		const f = ui.f.sr, c = Calc.cost('CPP'), n = db.norms, metal = f.liniya === 'M';
+		const made = +f.ishlab || 0, kwh = (+f.m1 || 0) - (+f.m0 || 0);
+		if (!made) return '';
+		const row = (key, actual, norm, text, normText) => `<div class="chk">${UI.dot(actual > 0 ? Calc.tone(actual, norm) : 'line')}<div><div class="k">${key}</div><div class="v">${actual > 0 ? `${text} ${Views.delta(actual, norm)}` : '—'}</div><div class="d">me’yor ${normText}</div></div></div>`;
+		const kwhT = kwh / made * 1000, kwhNorm = metal ? n.metallKwhT : c.kwhE;
+		const out = ['<h2>Me’yorga nisbatan</h2>', row('Elektr, 1 t ga', kwhT, kwhNorm, `${F.num(kwhT)} kVt·soat`, `${F.num(kwhNorm)} kVt·soat/t`)];
+		if (metal) {
+			const aluT = (+f.alu || 0) / made * 1000;
+			out.push(row('Alyuminiy sim, 1 t ga', aluT, n.aluKgT, F.kg(aluT, 1), `${F.kg(n.aluKgT, 1)}/t`));
+		} else {
+			const waste = (+f.chiqindi || 0) / (made + (+f.chiqindi || 0)) * 100, granT = (+f.granula || 0) / made * 1000;
+			out.push(row('Chiqindi', waste, n.chiqindi, F.pct(waste), F.pct(n.chiqindi)), row('Granula, 1 t ga', granT, c.fresh, F.kg(granT), `${F.kg(c.fresh)}/t`));
+		}
+		return out.join('');
+	},
+	reports() {
+		const rows = db.reports.slice().sort((a, b) => b.sana.localeCompare(a.sana) || b.smena - a.smena || a.liniya.localeCompare(b.liniya)).slice(0, UI.mobile() ? 5 : 15);
+		return UI.table([
+			['Sana', 'c-main', r => `${F.date(r.sana)}, ${r.smena}-smena`],
+			['Liniya', 'c-aside', r => `<span class="muted">${Data.line(r.liniya).nom}</span>`],
+			['Mahsulot', 'm-hide', r => (r.parts || []).map(p => `${p.tur}${p.id ? ' · ' + p.id : ''}`).join(', ')],
+			['Soat', 'num m-hide', r => F.num(r.soat, r.soat % 1 ? 1 : 0)],
+			['Ishlab chiqarildi', 'num', r => F.kg(r.ishlab)],
+			['Chiqindi', 'num', r => F.pct(r.chiqindi / (r.ishlab + r.chiqindi) * 100)],
+			['Granula, kg/t', 'num m-hide', r => r.granula ? F.num(r.granula / r.ishlab * 1000) : '—'],
+			['kVt·soat/t', 'num', r => F.num(r.kwh / r.ishlab * 1000)],
+			['Izoh', 'm-hide muted', r => UI.esc(r.izoh)]
+		], rows);
+	},
+
+	/* --- Ombor: Xomashyo --- */
+
+	// «Navbatga kerak» — navbatdagi buyurtmalar (Navbat ekranidagi belgilar bilan bir hisobdan),
+	// «Yangi buyurtmalarga» — hali navbatga qo‘yilmaganlari uchun qo‘shimcha ehtiyoj.
+	materialsTable() {
+		const need = Calc.queueNeeds(Calc.plan()), more = Calc.newNeeds();
+		return UI.table([
+			['Material', 'c-main', m => UI.esc(m.nom)],
+			['Jurnal boshida', 'num m-hide', m => F.qty(db.opening[m.k], m)],
+			['Qoldiq', 'num', m => F.qty(m.qoldiq, m)],
+			['Minimal', 'num m-hide', m => F.qty(m.min, m)],
+			['Navbatga kerak', 'num', m => F.qty(need[m.k], m)],
+			['Yangi buyurtmalarga yana', 'num', m => more[m.k] ? F.qty(more[m.k], m) : '<span class="muted">—</span>'],
+			['Holat', 'c-aside', m => { const [tone, text] = Calc.matState(m, need[m.k]); return `<span class="st">${UI.dot(tone)}${text}</span>`; }]
+		], db.mats);
+	},
+	kirimNote(withAction) {
+		const k = db.kirim;
+		return !k ? '' : UI.facts([`Kutilayotgan kirim: ${Data.mat(k.mat).nom}, ${F.kg(k.kg)}`, UI.esc(k.kim), F.date(k.at), withAction && '<button class="link" data-act="receiveKirim">Keldi, kirim qilish</button>']);
+	},
+	materials() {
+		return `${UI.head('Xomashyo', null, `<button class="btn" data-act="openMove" data-v="chiqim">Chiqim</button><button class="btn pri" data-act="openMove" data-v="kirim">${UI.icon('plus')}Kirim</button>`)}
+		${Views.materialsTable()}
+		<div class="mt16">${Views.kirimNote(true)}</div>
+		<section class="sec">${UI.sec('Harakatlar')}
+		${UI.table([
+			['Sana', 'm-hide nowrap', x => F.date(x.d)],
+			['Material', 'c-main', x => UI.esc(Data.mat(x.k).nom)],
+			['Turi', 'c-aside', x => x.tur === 'tuzatish' ? UI.flag('Tuzatish', 'amb') : `<span class="muted">${x.tur === 'kirim' ? 'Kirim' : 'Chiqim'}</span>`],
+			['Miqdor', 'num', x => `${x.tur === 'kirim' ? '+' : '−'}${F.qty(x.kg, Data.mat(x.k))}`],
+			['Izoh', 'c-sub', x => `<span class="m-only">${F.date(x.d)} · </span>${UI.esc(x.izoh)}`]
+		], db.moves.slice(0, UI.mobile() ? 6 : 20))}</section>`;
+	},
+	moveForm() {
+		const f = ui.f.mv, m = Data.mat(f.k), incoming = f.tur === 'kirim';
+		return `<div class="grid2">
+			${UI.field('Material', UI.select('mv.k', db.mats.map(x => [x.k, x.nom])), { cls: 'full' })}
+			${UI.numField('Miqdor', 'mv.kg', m.birlik, { attrs: 'min="0" autofocus', hint: `Qoldiq: ${F.qty(m.qoldiq, m)}`, cls: 'full' })}
+			${UI.field(incoming ? 'Yetkazuvchi, partiya' : 'Kimga', UI.input('mv.izoh'), { cls: 'full' })}
+		</div>`;
+	},
+
+	/* --- Ombor: Tayyor rulonlar --- */
+
+	rolls() {
+		const f = ui.rollFilter, count = st => db.rolls.filter(r => !st || r.holat === st).length;
+		return `${UI.head('Tayyor rulonlar', null, `<button class="btn pri" data-act="openRoll">${UI.icon('plus')}Rulon kiritish</button>`)}
+		<div class="toolbar">${UI.filter('filterRolls', f.st, [...['bosh', 'band', 'jonatildi'].map(st => [st, ROLL_STATUS[st].t, count(st)]), ['', 'Hammasi', count('')]])}${UI.search('rollFilter', f.q, 'Rulon, buyurtma yoki mijoz')}</div>
+		<div id="list">${Views.rollsTable()}</div>`;
+	},
+	rollsTable() {
+		const f = ui.rollFilter, q = f.q.trim().toLowerCase(), cap = UI.mobile() ? 20 : 200;
+		const owner = r => r.oid ? `${r.oid} · ${Data.client(Data.order(r.oid)).nom}` : 'Zaxira';
+		const rows = db.rolls.filter(r => (!f.st || r.holat === f.st) && (!q || `${r.id} ${owner(r)}`.toLowerCase().includes(q)))
+			.sort((a, b) => b.sana.localeCompare(a.sana) || b.id.localeCompare(a.id));
+		return UI.table([
+			['Rulon', 'c-main', r => `<span class="id">${r.id}</span>`],
+			['Buyurtma', 'c-sub', r => `${r.oid ? UI.esc(owner(r)) : '<span class="muted">Zaxira</span>'}<span class="m-only"> · ${F.spec(r)}</span>`],
+			['Spetsifikatsiya', 'm-hide', r => F.spec(r)],
+			['Netto', 'num', r => F.kg(r.netto, 1)],
+			['Brutto', 'num m-hide', r => F.kg(r.brutto, 1)],
+			['Sana', 'm-hide nowrap', r => F.date(r.sana)],
+			['Holat', 'c-aside', r => UI.badge(ROLL_STATUS, r.holat)]
+		], rows.slice(0, cap), {
+			empty: 'Rulon topilmadi',
+			foot: `<tfoot><tr><td class="c-main" colspan="3">Jami: ${rows.length} rulon${rows.length > cap ? `, oxirgi ${cap} tasi ko‘rsatilgan` : ''}</td><td class="num" data-l="Netto">${F.kg(Calc.sum(rows, r => r.netto), 1)}</td><td class="m-hide" colspan="3"></td></tr></tfoot>`
+		});
+	},
+	rollOrders: () => db.orders.filter(o => o.holat === 'ishlab' || Calc.ready(o)),
+	rollSpec() {
+		const f = ui.f.roll, o = f.oid && Data.order(f.oid);
+		return o ? { tur: o.tur, qal: o.qal, eni: o.eni } : { tur: f.tur, qal: +f.qal, eni: +f.eni || 0 };
+	},
+	rollForm() {
+		const f = ui.f.roll, s = Views.rollSpec();
+		const manual = f.oid ? `<div class="full hint">${F.spec(s)} · o‘zak 76 mm</div>`
+			: UI.field('Turi', UI.select('roll.tur', [['CPP', 'CPP'], ['MCPP', 'MCPP']])) + UI.field('Qalinlik', UI.select('roll.qal', THICKNESS.map(x => [x, x + ' mkm']))) + UI.numField('Eni', 'roll.eni', 'mm', { attrs: 'min="300" step="10"', cls: 'full' });
+		return `<div class="grid2">
+			${UI.field('Buyurtma', UI.select('roll.oid', [...Views.rollOrders().map(o => [o.id, `${o.id} · ${Data.client(o).nom} · ${F.spec(o)}`]), ['', 'Zaxira (buyurtmasiz)']]), { cls: 'full' })}
+			${manual}
+			${UI.numField('Brutto, tarozida', 'roll.brutto', 'kg', { attrs: 'min="0" step="0.1" autofocus', cls: 'full' })}
+		</div>
+		<div id="roll-net" class="mt16">${Views.rollNet()}</div>`;
+	},
+	rollNet() {
+		const s = Views.rollSpec(), core = Calc.coreKg(s.eni), brutto = +ui.f.roll.brutto || 0;
+		return `<div class="netto">${brutto > core ? F.num(brutto - core, 1) : '0,0'} <small>kg netto</small></div>
+			<div class="hint">brutto − o‘zak ${F.num(core, 2)} kg</div>`;
+	},
+
+	/* --- Ombor: Jo‘natish --- */
+
+	readyRolls: oid => db.rolls.filter(r => r.oid === oid && r.holat === 'band'),
+	shipForm(o) {
+		if (!ui.f.ship || ui.f.ship.oid !== o.id) ui.f.ship = { oid: o.id, pick: Views.readyRolls(o.id).map(r => r.id), mashina: '', haydovchi: '' };
+		return ui.f.ship;
+	},
+	ship() {
+		const ready = db.orders.filter(Calc.ready), mobile = UI.mobile();
+		const current = ready.find(o => o.id === ui.shipSel) || (mobile ? null : ready[0]);
+		const item = o => {
+			const rolls = Views.readyRolls(o.id);
+			return `<button class="row-b" data-act="selectShipment" data-id="${o.id}" aria-pressed="${o === current}"><span class="x"><span class="t">${o.id} · ${UI.who(o)}</span><span class="m">${rolls.length} rulon · ${F.kg(Calc.sum(rolls, r => r.netto))}</span>${o.jonatKg ? UI.badge(STATUS, 'qisman') : ''}</span>${Calc.blocked(o) ? UI.flag('Qarz') : ''}${UI.icon('chev')}</button>`;
+		};
+		const list = ready.length ? ready.map(item).join('') : '<div class="empty">Jo‘natishga tayyor buyurtma yo‘q</div>';
+		const history = `<section class="sec">${UI.sec('Oxirgi jo‘natmalar')}${UI.table([
+			['Hujjat', 'm-hide', s => `<span class="id">${s.id}</span>`],
+			['Buyurtma', 'c-main', s => `${s.oid} · ${UI.esc(Data.client(Data.order(s.oid) || {}).nom)}<span class="sub sub-m">${s.id}${s.mashina ? ' · ' + UI.esc(s.mashina) : ''} · ${s.rulon} rulon</span>`],
+			['Rulon', 'num m-hide', s => s.rulon],
+			['Netto', 'num', s => F.kg(s.kg)],
+			['Mashina', 'm-hide', s => UI.esc(s.mashina || '—')],
+			['Sana', 'c-aside', s => `<span class="muted">${F.date(s.d)}</span>`]
+		], db.ships.slice().sort((a, b) => b.d.localeCompare(a.d)).slice(0, mobile ? 4 : 8))}</section>`;
+
+		if (mobile) {
+			return current
+				? `<button class="btn s ghost" data-act="selectShipment" data-id="">${UI.icon('back')}Tayyor buyurtmalar</button><div class="mt8">${Views.shipDetail(current)}</div>`
+				: UI.head('Jo‘natish') + list + history;
+		}
+		return UI.head('Jo‘natish') + `<div class="ship"><div class="ship-list">${list}</div><div>${current ? Views.shipDetail(current) : ''}</div></div>` + history;
+	},
+	// Rulonlar o‘z maydonida aylanadi; jami va tugmalar doim ko‘rinib turadi.
+	shipDetail(o) {
+		const rolls = Views.readyRolls(o.id), f = Views.shipForm(o), picked = rolls.filter(r => f.pick.includes(r.id)), kg = Calc.sum(picked, r => r.netto);
+		const debt = Calc.clientDebt(o.cid), blocked = Calc.blocked(o), name = UI.who(o), open = ui.shipRolls || !UI.mobile();
+		const warning = !debt.overdue ? ''
+			: blocked ? UI.note(`<b>${name}da ${debt.days} kun kechikkan ${F.som(debt.overdue)} qarz bor.</b> Jo‘natishga faqat direktor ruxsat beradi.`, 'warn')
+			: UI.note(`Muddati o‘tgan qarz bor. Direktor ${F.date(o.ruxsat)} kuni jo‘natishga ruxsat bergan.`);
+		const rows = rolls.map(r => `<tr>
+			<td><input type="checkbox" class="cbx" data-roll="${r.id}"${f.pick.includes(r.id) ? ' checked' : ''} aria-label="${r.id}"></td>
+			<td><span class="id">${r.id}</span></td>
+			<td class="num">${F.kg(r.netto, 1)}</td>
+			<td class="num">${F.kg(r.brutto, 1)}</td></tr>`).join('');
+		const check = Calc.shipCheck(o, kg), needsPermit = check.permit === 'ask' || check.permit === 'wait';
+		const state = !picked.length ? '' : check.kind === 'partial' ? UI.flag(`Qisman: ${F.kg(o.kg)} dan ${F.kg(check.total)}`, 'amb')
+			: check.kind === 'over' ? UI.flag(`Buyurtmadan ${F.kg(check.extraKg)} ko‘p — ${check.permit === 'ok' ? 'direktor ruxsat bergan' : check.permit === 'wait' ? 'ruxsat kutilmoqda' : o.ruxsatKg ? 'yangi ruxsat kerak' : 'direktor ruxsati kerak'}`, 'amb') : '';
+		const label = !picked.length ? 'Jo‘natildi' : check.kind === 'partial' ? STATUS.qisman.t : needsPermit ? (check.permit === 'wait' ? 'Ruxsat kutilmoqda' : 'Direktordan ruxsat so‘rash') : 'Jo‘natildi';
+		const table = !rolls.length ? '<div class="empty">Omborda bu buyurtmaning ruloni yo‘q. «Tayyor rulonlar» bo‘limida kiriting.</div>'
+			: !open ? `<button class="link more" data-act="toggleShipRolls">Rulonlarni ko‘rsatish</button>`
+			: `<div class="rolls-box"><table class="tbl"><thead><tr><th><input type="checkbox" class="cbx" data-roll-all${picked.length === rolls.length ? ' checked' : ''} aria-label="Hammasini belgilash"></th><th>Rulon</th><th class="num">Netto</th><th class="num">Brutto</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+		return `<h2>${o.id} · ${name}</h2><div class="muted sm">${F.spec(o)} · buyurtma ${F.kg(o.kg)}</div>
+		${warning ? `<div class="mt16">${warning}</div>` : ''}
+		${UI.facts([`Buyurtma <b>${F.kg(o.kg)}</b>`, o.jonatKg > 0 && `Avval jo‘natilgan <b>${F.kg(o.jonatKg)}</b>`, `Tanlandi <b>${F.kg(kg)}</b> (${picked.length} / ${rolls.length} rulon)`,
+			picked.length > 0 && `Farq <b>${F.signed(check.diff, 1)} %</b> (ruxsat ±${F.num(check.tol, check.tol % 1 ? 1 : 0)} %)`, 'Hisob jo‘natilgan kg bo‘yicha', state, o.ruxsatKg && `Ruxsat berilgan: ${F.kg(o.ruxsatKg)} gacha`], 'ship-sum')}
+		${table}
+		<div class="grid2 mt16">${UI.field('Mashina raqami', UI.input('ship.mashina'))}${UI.field('Haydovchi', UI.input('ship.haydovchi'))}</div>
+		<div class="foot">
+			<button class="btn" data-act="openPacking" data-id="${o.id}"${picked.length ? '' : ' disabled'}>Packing list</button>
+			<button class="btn pri" data-act="ship" data-id="${o.id}"${blocked || !picked.length || check.permit === 'wait' ? ' disabled' : ''}>${label}</button>
+			${blocked ? '<span class="hint">Direktor ruxsati kerak</span>' : ''}
+		</div>`;
+	},
+	packing(o) {
+		const f = Views.shipForm(o), rolls = db.rolls.filter(r => f.pick.includes(r.id)), c = Data.client(o);
+		return `<div class="pl">
+			<div class="h">POLYPACK MChJ</div><div>Sirdaryo EIZ</div>
+			<div class="h mt16">Packing list № J-${o.id.slice(3)}</div>
+			<div class="meta">
+				<span>Sana</span><span>${F.dateLong(Time.today)}</span><span>Buyurtma</span><span>${o.id}</span>
+				<span>Qabul qiluvchi</span><span>${UI.esc(c.nom)}, ${UI.esc(c.shahar)}</span><span>Mashina</span><span>${UI.esc(f.mashina || '—')}</span>
+				<span>Mahsulot</span><span>${F.spec(o)}, o‘zak 76 mm</span><span>Haydovchi</span><span>${UI.esc(f.haydovchi || '—')}</span>
+			</div>
+			<table><thead><tr><th>№</th><th>Rulon</th><th>Spetsifikatsiya</th><th class="r">Netto, kg</th><th class="r">Brutto, kg</th></tr></thead><tbody>
+				${rolls.map((r, i) => `<tr><td>${i + 1}</td><td>${r.id}</td><td>${F.spec(r)}</td><td class="r">${F.num(r.netto, 1)}</td><td class="r">${F.num(r.brutto, 1)}</td></tr>`).join('')}
+				<tr><th colspan="3">Jami: ${rolls.length} rulon</th><th class="r">${F.num(Calc.sum(rolls, r => r.netto), 1)}</th><th class="r">${F.num(Calc.sum(rolls, r => r.brutto), 1)}</th></tr>
+			</tbody></table>
+			<div class="sig"><div>Topshirdi (omborchi)</div><div>Qabul qildi (haydovchi)</div></div>
+		</div>`;
+	},
+
+	/* --- Direktor: Kalkulyatsiya --- */
+
+	calc() {
+		const norms = ui.calcTab === 'norms';
+		return `${UI.head('Kalkulyatsiya')}
+		<div class="tabs-row${norms ? '' : ' narrow'}">
+			${UI.tabs('setCalcTab', ui.calcTab, [['cost', 'Tannarx', null, 'Tannarx'], ['actual', 'Reja va haqiqiy', null, '<span class="vh">Reja va </span>Haqiqiy'], ['order', 'Buyurtma hisobi', null, 'Buyurtma<span class="vh"> hisobi</span>'], ['norms', 'Me’yorlar', null, 'Me’yorlar']])}
+			${norms || UI.mobile() ? '' : Views.typeSwitch()}
+		</div>
+		<div id="calc-body">${Views.part('calc-body')}</div>`;
+	},
+	typeSwitch: () => UI.seg('setCalcType', ui.calcTur, [['CPP', 'CPP'], ['MCPP', 'MCPP']]),
+	// telefonda tanlov bo‘lim sarlavhasining o‘ng tomonida turadi
+	typeHead: (title, right = '') => UI.sec(title, UI.mobile() ? Views.typeSwitch() : right),
+	// Me’yor o‘zgarganda «avvalgi → yangi» ko‘rinadi.
+	calcSummary() {
+		const base = ui.normBase;
+		return ['CPP', 'MCPP'].map(tur => {
+			const c = Calc.cost(tur), was = base && Math.round(base[tur]) !== Math.round(c.perKg) ? `<s>${F.num(base[tur])}</s> → ` : '';
+			return `<span>${tur} tannarxi <b>${was}${F.num(c.perKg)}</b> so‘m/kg · marja <b>${F.pct(c.marjaPct)}</b></span>`;
+		}).join('');
+	},
+	costParts: c => [['Xomashyo', c.parts.xom, 'br'], ['Elektr', c.parts.elek, 'br3'], ['Ishchi kuchi', c.parts.ish, 'brm'], ['Boshqa', c.parts.boshqa, 'tx4']],
+	// To‘rt guruh bo‘yicha qisqa tarkib: telefonda asosiy ko‘rinish, Me’yorlar bo‘limida jonli natija.
+	costGroups(tur, total = 'Jami tannarx') {
+		const c = Calc.cost(tur);
+		return `<table class="tbl grp4"><tbody>${Views.costParts(c).map(([name, v, tone]) => `<tr><td>${UI.dot(tone)} ${name}</td><td class="num">${F.num(v / 1000)} so‘m/kg</td><td class="num">${F.pct(v / c.jami * 100)}</td></tr>`).join('')}
+			<tr class="tot"><td>${total}</td><td class="num">${F.num(c.perKg)} so‘m/kg</td><td class="num">100 %</td></tr></tbody></table>`;
+	},
+	calcLive: () => ['CPP', 'MCPP'].map(tur => Views.costGroups(tur, `Jami tannarx, ${tur}`)).join(''),
+	calcCost() {
+		const tur = ui.calcTur, c = Calc.cost(tur), n = db.norms, metal = tur === 'MCPP', mobile = UI.mobile();
+		const share = x => F.pct(x / c.jami * 100), parts = Views.costParts(c);
+		const row = (name, sub, qty, som) => `<tr><td class="c-main"><span>${name}<span class="sub">${sub}</span></span></td><td class="num" data-l="Miqdor, 1 t ga">${qty}</td><td class="num" data-l="So‘m / t">${F.num(som)}</td><td class="num m-hide">${share(som)}</td></tr>`;
+		const mass = (label, kg, cls = '') => `<tr class="${cls}"><td>${label}</td><td class="num">${F.kg(kg, kg < 30 ? 1 : 0)}</td></tr>`;
+		const table = `<div class="tw"><table class="tbl cards">
+			<thead><tr><th>Modda</th><th class="num">Miqdor, 1 t ga</th><th class="num">So‘m / t</th><th class="num">Ulush</th></tr></thead><tbody id="cost-rows">
+			${c.mats.map(m => m.k === 'ozak' ? row(m.nom, `${F.num(m.narx)} so‘m/dona`, `${F.num(m.kg)} dona`, m.som) : row(m.nom, `${F.num(m.narx)} so‘m/kg`, F.kg(m.kg, m.kg < 30 ? 1 : 0), m.som)).join('')}
+			${row('Elektr', `Ekstruziya ${F.num(c.kwhE)}${metal ? ` + metallizatsiya ${F.num(c.kwhM)}` : ''} · ${F.num(n.tarif)} so‘m/kVt·soat`, `${F.num(c.kwh)}${NB}kVt·soat`, c.parts.elek)}
+			${row('Ishchi kuchi', `1 odam-soat ${F.som(c.rate)}`, `${F.num(c.mh, 1)}${NB}odam-soat`, c.parts.ish)}
+			${row('Boshqa xarajatlar', 'amortizatsiya, ta’mir, qadoq, transport', '—', c.parts.boshqa)}
+			<tr class="tot"><td class="c-main">Jami tannarx</td><td class="m-hide"></td><td class="num" data-l="So‘m / t" id="cost-total">${F.num(c.jami)}</td><td class="num m-hide">100 %</td></tr>
+		</tbody></table></div>`;
+		const balance = `<table class="tbl bal"><tbody>
+			${mass('Yangi xomashyo (ombordan)', c.fresh)}
+			${mass('+ regranulyat qaytadi', c.regran)}
+			${mass('Eritiladi', c.melt, 'tot')}
+			${mass(`− chiqindi ${F.pct(n.chiqindi)}, shundan ${F.kg(c.scrap - c.regran)} yo‘qotiladi`, c.scrap)}
+			${mass(metal ? 'Plyonka, metallizatsiyaga' : 'Tayyor plyonka, netto', c.film, 'tot')}
+			${metal ? mass(`− metallizatsiyada yo‘qotish ${F.pct(n.metallChiqindi)}`, c.metalLoss)
+				+ mass(`+ alyuminiy qatlami (sim ${F.kg(n.aluKgT, 1)}, shundan ${F.kg(c.aluLost, 1)} o‘tirmaydi)`, c.aluLayer)
+				+ mass('Tayyor MCPP, netto', 1000, 'tot') : ''}
+		</tbody></table>`;
+		return `<div class="narrow">
+			${Views.typeHead(`1 tonna tayyor ${tur} ${Views.recipeFlag()}`)}
+			<div class="big">
+				<div><div class="l">Tannarx</div><div class="v xl">${F.num(c.perKg)}<small>so‘m/kg</small></div></div>
+				<div><div class="l">Sotuv narxi</div><div class="v">${F.num(c.price)}<small>so‘m/kg</small></div></div>
+				<div><div class="l">Marja</div><div class="v">${F.pct(c.marjaPct)}<small>${F.num(c.marja)} so‘m/kg</small></div></div>
+			</div>
+			<div class="share" aria-hidden="true">${parts.map(([, v, tone]) => `<i style="width:${v / c.jami * 100}%;--c:var(--${tone})"></i>`).join('')}</div>
+			${Views.costGroups(tur)}
+			${UI.more('Batafsil', `${table}<h3 class="mt16">Massa balansi</h3>${balance}`, !mobile)}
+		</div>`;
+	},
+	calcActual() {
+		const p = Calc.planVsActual(7), tur = ui.calcTur, x = p && (tur === 'MCPP' ? p.mcpp : p.cpp);
+		if (!x) return `<div class="narrow">${UI.mobile() ? Views.typeHead('Oxirgi 7 kun') : ''}<div class="empty">${p ? `Oxirgi 7 kunda ${tur} ishlab chiqarilmagan` : 'Oxirgi 7 kunda smena hisoboti yo‘q'}</div></div>`;
+		const row = (r, i) => `${i === 4 ? '<tr class="grp"><td colspan="5">Metallizatsiya</td></tr>' : ''}<tr${r.part ? ' class="part"' : ''}><td>${r.name}<span class="sub">${r.unit}</span></td><td class="num m-hide">${F.num(r.norm, r.digits)}</td><td class="num">${F.num(r.actual, r.digits)}</td><td class="num">${Views.delta(r.actual, r.norm)}</td><td class="num">${F.signed(r.cost)}</td></tr>`;
+		const worst = x.rows.filter(r => !r.part).sort((a, b) => b.cost - a.cost)[0];
+		return `<div class="narrow">
+			${Views.typeHead(`Oxirgi 7 kun, ${tur}: ${x.n} ta smena hisoboti`)}
+			<div><table class="tbl">
+				<thead><tr><th>Ko‘rsatkich</th><th class="num m-hide">Joriy me’yor</th><th class="num">Haqiqiy</th><th class="num">Farq</th><th class="num">1 kg ga, so‘m</th></tr></thead><tbody>
+				${x.rows.map(row).join('')}
+				<tr class="tot"><td>1 kg ${tur} tannarxi</td><td class="num m-hide">${F.num(x.norm)}</td><td class="num">${F.num(x.actual)}</td><td></td><td class="num">${F.signed(x.over)}</td></tr>
+			</tbody></table></div>
+			<div class="mt16">${UI.note(x.over > 0
+				? `Eng katta farq — <b>${worst.name.toLowerCase()}</b>: 1 kg ga ${F.signed(worst.cost)} so‘m. Oyiga ${F.num(x.monthKg / 1000)} t hajmda me’yordan ortiq xarajat <b>${F.mln(x.over * x.monthKg)} so‘m</b> atrofida.`
+				: `Haqiqiy tannarx me’yordan ${F.num(-x.over)} so‘m/kg kam.`)}</div>
+			${p.changed ? `<p class="hint mt8">Me’yor ${F.date(p.changed)} kuni o‘zgargan — taqqoslash joriy me’yor bilan.</p>` : ''}
+		</div>`;
+	},
+	calcOrder() {
+		if (!ui.f.oc) ui.f.oc = { oid: '', kg: 5000, narx: Calc.listPrice(ui.calcTur) };
+		const open = db.orders.filter(o => o.holat !== 'jonatildi');
+		return `<div class="narrow">${UI.mobile() ? Views.typeHead(`${ui.calcTur} buyurtmasi`) : ''}<div class="oc-in">
+			${UI.field('Buyurtmani tanlash', UI.select('oc.oid', [['', 'Qo‘lda kiritish'], ...open.map(o => [o.id, `${o.id} · ${Data.client(o).nom}`])]))}
+			${UI.numField('Miqdor', 'oc.kg', 'kg', { attrs: 'min="0" step="100"' })}
+			${UI.numField('Narx', 'oc.narx', 'so‘m/kg', { attrs: 'min="0" step="100"' })}
+		</div>
+		<div id="order-result">${Views.calcOrderResult()}</div></div>`;
+	},
+	calcOrderResult() {
+		const f = ui.f.oc, kg = +f.kg || 0, tur = ui.calcTur;
+		if (kg <= 0) return '<div class="empty">Miqdorni kiriting</div>';
+		// mavjud buyurtma tanlansa, o‘zak soni uning eni bo‘yicha (karta va Navbatdagi bilan bir xil); qo‘lda — 1 t me’yoridan
+		const o = Data.order(f.oid), n = Calc.needs(kg, tur, o && o.eni), eco = Calc.economy({ kg, tur, narx: +f.narx || 0 });
+		return UI.dl([
+			['PP granula, homopolimer', F.kg(n.homo)], ['PP granula, kopolimer', F.kg(n.kopo)], ['Masterbatch', F.kg(n.mb, 1)],
+			n.alu && ['Alyuminiy sim', F.kg(n.alu, 1)],
+			[o ? `O‘zak 76 mm (${F.num(o.eni)} mm rulon)` : 'O‘zak (me’yor bo‘yicha)', `${n.ozak} dona`],
+			['Elektr', `${F.num(n.kwh)}${NB}kVt·soat`], ['Ishchi kuchi', `${F.num(n.mh)}${NB}odam-soat`],
+			['Ekstruziya vaqti', `${F.num(n.hours, 1)}${NB}soat`],
+			['Tannarx', `<span class="strong" id="oc-cost">${F.som(eco.tannarx)}</span>`], ['Summa', F.som(eco.summa)],
+			['Marja', `<span id="oc-margin">${F.som(eco.marja)} · ${F.pct(eco.marjaPct)}</span>`]], 'wide mt16');
+	},
+	calcNorms() {
+		const row = ([k, label, unit]) => `<label class="nrow"><span>${label}</span><input class="in" type="number" inputmode="decimal" step="any" min="0" data-norm="${k}" value="${db.norms[k]}"><em>${unit}</em></label>`;
+		return `<div class="calc-sum" id="calc-sum">${Views.calcSummary()}</div>
+		<div class="live" id="calc-live">${Views.calcLive()}</div>
+		<div class="sec-h mt16"><p class="hint">Me’yorlar namunaviy — o‘z raqamlaringizni kiriting. <span id="recipe-note">${Views.recipeNote()}</span></p><button class="btn s" data-act="resetNorms">Boshlang‘ich qiymatlar</button></div>
+		<div class="norms">${NORM_FIELDS.map(([group, rows], i) => UI.mobile()
+			? `<details class="ng"${i ? '' : ' open'}><summary>${group}</summary>${rows.map(row).join('')}</details>`
+			: `<fieldset class="ng"><legend>${group}</legend>${rows.map(row).join('')}</fieldset>`).join('')}</div>`;
+	},
+	// Tannarx sarlavhasidagi qisqa belgi: retsept 100 % emasligi natijaga ta’sir qiladi
+	recipeFlag() { const total = Calc.recipeSum(); return Math.abs(total - 100) > 0.01 ? UI.flag(`Retsept ${F.num(total, 1)} %`, 'amb') : ''; },
+	recipeNote() {
+		const total = Calc.recipeSum();
+		return Math.abs(total - 100) > 0.01 ? `<span class="flag amb">Retsept yig‘indisi ${F.num(total, 1)} % — hisobda 100 % ga keltirildi.</span>` : '';
+	},
+
+	/* --- Direktor: Qarzlar --- */
+
+	debts() {
+		const s = ui.debtSort;
+		const rows = db.clients.map(c => ({ c, nom: c.nom, limit: c.limit, ...Calc.clientDebt(c.id) })).filter(x => x.total > 0).map(x => ({ ...x, use: x.limit ? x.total / x.limit * 100 : 0 }));
+		rows.sort((a, b) => (typeof a[s.k] === 'string' ? a[s.k].localeCompare(b[s.k]) : a[s.k] - b[s.k]) * s.dir);
+		const total = Calc.sum(rows, x => x.total), overdue = Calc.sum(rows, x => x.overdue);
+		return `${UI.head('Qarzlar', `Jami ${F.som(total)} · muddati o‘tgan ${F.som(overdue)}`)}
+		${UI.mobile() ? `<div class="toolbar"><select class="in" data-filter="sortBy" aria-label="Saralash">${UI.options([['days', 'Kechikish kuni bo‘yicha'], ['total', 'Qarz summasi bo‘yicha'], ['nom', 'Mijoz nomi bo‘yicha']], s.k)}</select></div>` : ''}
+		${UI.table([
+			['Mijoz', 'c-main', x => UI.esc(x.nom), 'nom'],
+			['Jami qarz', 'num', x => F.som(x.total), 'total'],
+			['Muddati o‘tgan', 'num', x => x.overdue ? F.som(x.overdue) : '<span class="muted">—</span>', 'overdue'],
+			['Kechikish', 'c-aside', x => x.days ? UI.flag(`${x.days} kun`) : '<span class="muted sm">Muddatida</span>', 'days'],
+			['Limit', 'num m-hide', x => F.mln(x.limit), 'limit'],
+			['Limitdan', 'num m-hide', x => F.pct(x.use, 0), 'use'],
+			['', 'c-acts', x => `<div class="cell-acts"><button class="btn s" data-act="openClientPayment" data-id="${x.c.id}">To‘lov kiritish</button></div>`]
+		], rows, {
+			sort: s, empty: 'Qarzdor mijoz yo‘q',
+			row: x => `class="ck" data-act="openClient" data-id="${x.c.id}" tabindex="0"`,
+			foot: `<tfoot class="hide-m"><tr><td>Jami</td><td class="num">${F.som(total)}</td><td class="num">${F.som(overdue)}</td><td colspan="4"></td></tr></tfoot>`
+		})}`;
+	},
+
+	/* --- Direktor: Sozlamalar --- */
+
+	settings() {
+		return `${UI.head('Sozlamalar')}
+		<section>
+			${UI.sec('Xodimlar va rollar', `<button class="btn s" data-act="openUser" data-v="-1">${UI.icon('plus')}Xodim qo‘shish</button>`)}
+			${UI.table([
+				['Ism', 'c-main nowrap', u => UI.esc(u.ism)],
+				['Rol', 'c-sub', u => ROLES[u.rol].nom],
+				['Telefon', 'm-hide nowrap', u => UI.esc(u.tel || '—')],
+				['Bo‘limlar', 'm-hide muted', u => ROLES[u.rol].menu.map(p => PAGES[p].t).join(', ')],
+				['PIN', 'c-aside', () => '<span class="muted">••••</span>'],
+				['', 'c-acts', u => `<div class="cell-acts"><button class="btn s" data-act="openUser" data-v="${db.users.indexOf(u)}">PIN ni almashtirish</button></div>`]
+			], db.users)}
+		</section>
+		<div class="narrow"><section class="sec">
+			${UI.sec('Excel bilan almashish')}
+			<h3>CSV faylga chiqarish</h3>
+			<div class="acts">
+				<button class="btn" data-act="exportCSV" data-v="orders">Buyurtmalar</button>
+				<button class="btn" data-act="exportCSV" data-v="rolls">Rulonlar</button>
+				<button class="btn" data-act="exportCSV" data-v="debts">Qarzlar</button>
+			</div>
+			<h3 class="mt16">CSV fayldan buyurtma yuklash</h3>
+			<div class="foot mt0"><button class="btn" data-act="chooseFile">Fayl tanlash</button><input type="file" accept=".csv,text/csv" data-import hidden><button class="link" data-act="importTemplate">Namuna faylni olish</button></div>
+			<div id="import">${Views.importPreview()}</div>
+		</section>
+		<section class="sec">
+			${UI.sec('Namuna ma’lumotlari')}
+			<button class="btn dng" data-act="resetData">Namuna ma’lumotlarini tiklash</button>
+		</section></div>`;
+	},
+	importPreview() {
+		const imp = ui.imp, done = ui.imported;
+		if (done) {
+			const fresh = done.map(Data.order).filter(o => o.holat === 'yangi'), free = fresh.filter(o => !Calc.blocked(o));
+			return `<div class="mt16">${UI.note(`${done.length} ta buyurtma «Yangi» holatida qo‘shildi${fresh.length > free.length ? `. Qarzdor mijozlar buyurtmalari: ${fresh.length - free.length} ta — direktor ruxsati kerak` : ''}.`)}</div>
+			<div class="foot mt8">${free.length ? `<button class="btn pri" data-act="queueImported">Qarzi yo‘q mijozlar buyurtmalarini navbatga qo‘shish (${free.length} ta)</button>` : ''}<button class="btn" data-act="cancelImport">Yopish</button></div>`;
+		}
+		if (!imp) return `<p class="hint mt8">Ustunlar sarlavhadan taniladi: ${IMPORT_FIELDS.map(f => f[1]).join(', ')}.</p>`;
+		if (imp.bad) return `<div class="mt16">${UI.note('Faylni o‘qib bo‘lmadi. Birinchi qatorda ustun nomlari bo‘lsin.', 'warn')}</div>`;
+		const ok = imp.rows.filter(r => !r.err).length;
+		return `<div class="imp-map">${IMPORT_FIELDS.map(([k, label]) => `<span${imp.map[k] == null ? ' class="no"' : ''}>${label} → ${imp.map[k] == null ? 'topilmadi' : UI.esc(imp.head[imp.map[k]])}</span>`).join('')}</div>
+		${UI.table([
+			['Mijoz', 'c-main', r => UI.esc(r.v.mijoz || '—')],
+			['Spetsifikatsiya', 'c-sub', r => `${UI.esc(r.v.tur)} ${F.num(r.v.qal)} mkm × ${F.num(r.v.eni)} mm`],
+			['Miqdor', 'num', r => F.kg(r.v.kg)],
+			['Muddat', '', r => r.v.muddat ? F.date(r.v.muddat) : '—'],
+			['Holat', 'c-aside', r => r.err ? UI.flag(r.err) : r.warn ? UI.flag(r.warn, 'amb') : `<span class="st">${UI.dot('grn')}Tayyor</span>`]
+		], imp.rows.slice(0, 50))}
+		<div class="foot"><button class="btn pri" data-act="applyImport"${ok ? '' : ' disabled'}>${ok} ta buyurtmani qo‘shish</button><button class="btn" data-act="cancelImport">Bekor qilish</button></div>`;
+	}
+};
+
+/* ===== 6. Actions — hodisalar =====
+	 Bosish — data-act (qiymati data-v / data-id), forma maydoni — data-f. */
+
+// Amallar ichida qayta ishlatiladigan qadamlar (foydalanuvchi to‘g‘ridan to‘g‘ri chaqirmaydi).
+const Steps = {
+	enqueue(o) {
+		const lid = Calc.bestLine({ ...o, holat: 'navbat' }).lid;
+		const last = Math.max(0, ...db.orders.filter(x => x.liniya === lid && x.holat === 'navbat').map(x => x.tartib));
+		Object.assign(o, { holat: 'navbat', liniya: lid, etap: 0, faol: false, done: 0, tartib: last + 1 });
+		Data.log(o, `${Data.line(lid).nom} navbatiga qo‘yildi`);
+	},
+	// To‘lov bitta buyurtmaga (id) yoki mijozga (cid) kiritiladi.
+	// Mijozga kiritilsa, avval to‘lov muddati eng eski buyurtmalar yopiladi.
+	paymentModal(f, text) {
+		ui.f.pay = f;
+		UI.modal('To‘lov kiritish', `<p class="cf">${text}</p><div class="mt16">${UI.numField('Summa', 'pay.sum', 'so‘m', { attrs: 'min="0" step="1000" autofocus' })}</div><p class="hint mt8" id="pay-plan">${Views.payPlanLive()}</p>`, UI.buttons('Saqlash', 'savePayment'));
+	},
+	completeStage(o) {
+		const name = Data.line(Calc.stageLine(o)).nom;
+		Data.log(o, `${name}: tugadi`);
+		Data.consume(o, Calc.stage(o));
+		o.yakun.push({ lid: Calc.stageLine(o), d: Time.today }); // smena hisoboti shu buyurtmani topishi uchun
+		if (o.etap === 0) Data.line(o.liniya).lastQal = o.qal;
+		Object.assign(o, { etap: o.etap + 1, faol: false, done: 0 });
+		const finished = o.etap >= Calc.route(o).length;
+		if (finished) { Object.assign(o, { holat: 'tayyor', tayyorSana: Time.today }); Data.log(o, 'Tayyor, omborga topshirildi'); }
+		Data.save(); Views.render();
+		UI.toast(finished ? `${o.id} tayyor, omborga topshirildi` : `${o.id} keyingi bosqichga o‘tdi: ${Data.line(Calc.stageLine(o)).nom}`);
+	},
+	moveModal(f) {
+		ui.f.mv = f;
+		ui.modalForm = 'moveForm';
+		UI.modal(f.tur === 'kirim' ? 'Kirim' : 'Chiqim', null, UI.buttons('Saqlash', 'saveMove'));
+	}
+};
+
+const Actions = {
+	/* navigatsiya */
+	go(d) { Object.assign(ui, { page: d.p, menu: false, drawer: null, attAll: false, normBase: null }); Views.render(); window.scrollTo(0, 0); },
+	showOrders(d) { ui.orderFilter = { st: d.v, q: '' }; Actions.go({ p: 'buyurtmalar' }); },
+	showCalc(d) { ui.calcTab = d.v; Actions.go({ p: 'kalk' }); },
+	toggleMenu() { ui.menu = !ui.menu; Views.render(); },
+	pickRole(d) { session = { pick: d.r }; Views.render(); },
+	login() {
+		const input = $('#pin'), user = db.users.find(u => u.rol === session.pick && u.pin === input.value);
+		if (user) {
+			session = { role: user.rol, user: user.id };
+			Data.saveSession();
+			ui.page = null;
+			Views.render();
+		} else {
+			$('#pinerr').textContent = 'PIN noto‘g‘ri';
+			input.value = '';
+			input.focus();
+		}
+	},
+	logout() { $('#toasts').innerHTML = ''; session = {}; Data.saveSession(); Object.assign(ui, { menu: false, drawer: null, page: null, chartDay: null, f: {} }); Views.render(); },
+	// Brauzer o‘rnatish oynasini bermasa (iPhone), qo‘lda o‘rnatish yo‘li ko‘rsatiladi.
+	install() {
+		ui.menu = false;
+		Views.render();
+		const steps = (title, a, b) => `<h3>${title}</h3><ol class="steps-l"><li>${a}</li><li>${b}</li></ol>`;
+		const manual = () => UI.modal('Telefonga o‘rnatish', steps('iPhone, Safari', '«Ulashish» tugmasi', '«Ekranga qo‘shish»') + steps('Android, Chrome', 'Brauzer menyusi', '«Ilovani o‘rnatish»'), '<button class="btn" data-act="closeModal">Yopish</button>');
+		if (!ui.install) return manual();
+		ui.install.prompt().catch(manual);
+		ui.install = null;
+	},
+	openOrder(d) { ui.drawer = { type: 'order', id: d.id, enter: true }; UI.refresh('layer'); ui.drawer.enter = false; },
+	openClient(d) { ui.drawer = { type: 'client', id: d.id, enter: true }; UI.refresh('layer'); ui.drawer.enter = false; },
+	openStock(d) { ui.drawer = { type: 'stock', id: d.id, enter: true }; UI.refresh('layer'); ui.drawer.enter = false; },
+	closeDrawer() { ui.drawer = null; UI.refresh('layer'); },
+	closeModal() { UI.closeModal(); },
+	confirmOk() { const fn = UI.onConfirm; UI.onConfirm = null; UI.closeModal(); if (fn) fn(); },
+	showAllAttention() { ui.attAll = true; Views.render(); },
+	pickDay(d) { ui.chartDay = +d.v; UI.refresh('chart'); },
+
+	/* buyurtmalar */
+	filterOrders(d) { ui.orderFilter.st = d.v; Views.render(); },
+	setType(d) { const f = ui.f.no; f.tur = d.v; if (!f.manual) f.narx = Calc.suggestPrice(f.cid, f.tur, +f.qal).narx; Views.render(); },
+	useSuggestedPrice() { const f = ui.f.no; f.narx = Calc.suggestPrice(f.cid, f.tur, +f.qal).narx; f.manual = false; Views.render(); },
+	repeatOrder(d) {
+		Views.resetNewOrder(Data.order(d.id));
+		Object.assign(ui, { page: 'yangi', drawer: null });
+		Views.render();
+		window.scrollTo(0, 0);
+	},
+	submitOrder() {
+		if (!Forms.valid('no')) return;
+		const d = Views.draftOrder();
+		const o = Data.newOrder({ cid: d.cid, tur: d.tur, qal: d.qal, eni: d.eni, kg: d.kg, narx: d.narx, muddat: d.muddat });
+		const blocked = Calc.blocked(o);
+		Data.log(o, 'Buyurtma qabul qilindi');
+		Data.applyAdvance(o);
+		if (blocked) Data.log(o, 'Mijozda muddati o‘tgan qarz — direktor ruxsatini kutmoqda');
+		else Steps.enqueue(o);
+		db.orders.push(o);
+		Data.save();
+		Object.assign(ui, { page: 'buyurtmalar', orderFilter: { st: 'faol', q: '' } });
+		ui.f.no = null;
+		Views.render();
+		Actions.openOrder(o);
+		UI.toast(blocked ? `${o.id} direktorga yuborildi` : `${o.id} qabul qilindi · ${Data.line(o.liniya).nom}`);
+	},
+	approve(d) {
+		const o = Data.order(d.id), debt = Calc.clientDebt(o.cid);
+		if (debt.overdue > 0 && !can('permit')) return UI.toast('Qarzdor mijoz buyurtmasiga faqat direktor ruxsat beradi');
+		const run = () => {
+			Steps.enqueue(o);
+			if (debt.overdue > 0) { o.ruxsat = Time.today; Data.log(o, 'Direktor qarzga qaramay ruxsat berdi: navbat va jo‘natish'); }
+			Data.save(); Views.render();
+			UI.toast(`${o.id} ${Data.line(o.liniya).nom} navbatiga qo‘yildi`);
+		};
+		if (debt.overdue > 0) UI.confirm(`${UI.esc(Data.client(o).nom)}da ${debt.days} kun kechikkan ${F.som(debt.overdue)} qarz bor. Baribir navbatga qo‘yilsinmi? Ruxsat jo‘natishga ham tegishli bo‘ladi va tarixga yoziladi.`, 'Navbatga qo‘shish', run);
+		else run();
+	},
+	permit(d) {
+		const o = Data.order(d.id);
+		UI.confirm(`${o.id} (${UI.esc(Data.client(o).nom)}) qarz to‘lanmagan holda jo‘natilsinmi? Ruxsat tarixga yoziladi va omborchiga ko‘rinadi.`, 'Ruxsat berish', () => {
+			o.ruxsat = Time.today;
+			Data.log(o, 'Direktor jo‘natishga ruxsat berdi');
+			Data.save(); Views.render();
+			UI.toast(`${o.id}: jo‘natishga ruxsat berildi`);
+		});
+	},
+	permitOver(d) {
+		const o = Data.order(d.id), kg = o.sorovKg;
+		if (!Calc.overAsked(o)) return;
+		// ruxsat aynan so‘ralgan miqdorga beriladi; keyin ko‘proq tanlansa, yangi so‘rov kerak bo‘ladi
+		UI.confirm(`${o.id}: jami ${F.kg(kg)} gacha jo‘natiladi — buyurtmadan ${F.kg(kg - o.kg)} ko‘p, mijozga ${F.som((kg - o.kg) * o.narx)} qo‘shimcha hisoblanadi. Ruxsat berilsinmi?`, 'Ruxsat berish', () => {
+			Object.assign(o, { ruxsatKg: kg, sorovKg: null });
+			Data.log(o, `Direktor ${F.kg(kg)} gacha jo‘natishga ruxsat berdi`);
+			Data.save(); Views.render();
+			UI.toast(`${o.id}: ortiqcha jo‘natishga ruxsat berildi`);
+		});
+	},
+	openPayment(d) {
+		const o = Data.order(d.id), m = Calc.money(o);
+		// qarz bo‘lsa — qarz summasi, bo‘lmasa (hali jo‘natilmagan) — oldindan to‘lov uchun buyurtma qoldig‘i taklif qilinadi
+		Steps.paymentModal({ id: o.id, sum: Math.round(m.debt || m.open) }, `${o.id} · ${UI.who(o)}. Qarz: <b id="pay-debt">${F.som(m.debt)}</b>${o.jonatKg ? ` (jo‘natilgan ${F.kg(o.jonatKg)} uchun)` : ''}. Buyurtma summasi ${F.som(m.total)}, to‘langan ${F.som(m.paid)}.`);
+	},
+	openClientPayment(d) {
+		const debt = Calc.clientDebt(d.id);
+		Steps.paymentModal({ cid: d.id, sum: Math.round(debt.total) }, `${UI.esc(Data.client(d.id).nom)} · qarz ${F.som(debt.total)}${debt.overdue ? `, shundan muddati o‘tgani ${F.som(debt.overdue)}` : ''}. Avval muddati o‘tgan qarz, keyin boshqa qarz, so‘ng jo‘natilmagan buyurtmalar yopiladi.`);
+	},
+	savePayment() {
+		if (!Forms.valid('pay')) return;
+		const f = ui.f.pay, only = f.id && Data.order(f.id), c = Data.client(only || f.cid);
+		const plan = Calc.allocate(c.id, +f.sum, only);
+		plan.parts.forEach(p => { p.o.tolangan += p.som; Data.log(p.o, `To‘lov qabul qilindi: ${F.som(p.som)}`); });
+		// ortib qolgan summa yo‘qolmaydi: mijoz avansiga yoziladi va keyingi buyurtmaga o‘tadi
+		c.avans = (c.avans || 0) + plan.avans;
+		Data.save(); UI.closeModal(); Views.render();
+		UI.toast(Views.payPlan(plan), 5000);
+	},
+	sendStatus(d) {
+		const o = Data.order(d.id), r = Calc.plan().res[o.id], manager = session.role === 'menejer' ? Data.user() : db.users.find(u => u.rol === 'menejer');
+		const ready = r ? `Tayyor bo‘lish sanasi — ${F.dateLong(r.tayyor)}.` : '';
+		const state = {
+			yangi: 'qabul qilindi, navbatga qo‘yilmoqda.',
+			navbat: `ishlab chiqarish navbatida. ${ready}`,
+			ishlab: `ishlab chiqarilmoqda. ${ready}`,
+			tayyor: 'tayyor, omborda. Jo‘natish vaqtini kelishib olsak.',
+			qisman: `${F.kg(o.jonatKg)} jo‘natildi, qolgani tayyorlanmoqda.`,
+			jonatildi: `${o.jonatSana ? F.dateLong(o.jonatSana) : ''} kuni jo‘natildi.`
+		}[o.holat];
+		ui.f.msg = { text: `Assalomu alaykum! POLYPACK’dan yozyapmiz.\nBuyurtma ${o.id}: ${F.spec(o)}, ${F.kg(o.kg)} — ${state}\nSavol bo‘lsa: ${manager.ism}, ${manager.tel}` };
+		UI.modal('Mijozga holatni yuborish', `<textarea class="in" data-f="msg.text" rows="6" aria-label="Telegram uchun xabar">${UI.esc(ui.f.msg.text)}</textarea>`, UI.buttons('Nusxalash', 'copyMessage', 'Yopish'));
+	},
+	copyMessage() { UI.copy(ui.f.msg.text); UI.closeModal(); },
+
+	/* navbat */
+	setLine(d) { ui.line = d.v; Views.render(); },
+	moveOrder(d) {
+		const o = Data.order(d.id);
+		const list = db.orders.filter(x => x.liniya === o.liniya && x.holat === 'navbat' && x.etap === 0 && !x.faol).sort((a, b) => a.tartib - b.tartib);
+		const other = list[list.indexOf(o) + (+d.dir)];
+		if (!other) return;
+		const before = Calc.plan().res;
+		[o.tartib, other.tartib] = [other.tartib, o.tartib];
+		const after = Calc.plan().res, ids = Object.keys(after);
+		Data.save();
+		const late = ids.filter(id => after[id].kech > 0 && !before[id].kech), saved = ids.filter(id => !after[id].kech && before[id].kech > 0);
+		ui.changed = ids.filter(id => Math.abs(after[id].tayyor - before[id].tayyor) > 60000);
+		Views.render();
+		UI.toast(late.length ? `${late.join(', ')} endi muddatdan kech qoladi` : saved.length ? `${saved.join(', ')} endi muddatida tayyor bo‘ladi` : 'Sanalar qayta hisoblandi');
+	},
+	// Material omborda yetmasa, bosqich boshlanmaydi va tugatilmaydi (Calc.materialCheck).
+	startStage(d) {
+		const o = Data.order(d.id), lid = Calc.stageLine(o), lack = Calc.materialCheck(o);
+		const busy = db.orders.find(x => x !== o && x.faol && x.holat === 'ishlab' && Calc.stageLine(x) === lid);
+		if (busy) return UI.toast(`${Data.line(lid).nom}da ${busy.id} ishlanmoqda — avval uni tugating`);
+		if (lack.length) return UI.toast(`Boshlab bo‘lmaydi. ${F.lack(lack)}`);
+		Object.assign(o, { faol: true, done: 0, holat: 'ishlab' });
+		Data.log(o, `${Data.line(lid).nom}: boshlandi`);
+		Data.save(); Views.render();
+		UI.toast(`${o.id}: ${Data.line(lid).nom} boshlandi`);
+	},
+	finishStage(d) {
+		const o = Data.order(d.id), lack = Calc.materialCheck(o);
+		if (lack.length) return UI.toast(`Tugatib bo‘lmaydi. ${F.lack(lack)}. Kirim qiling yoki direktorga murojaat qiling`);
+		UI.confirm(`${o.id} (${UI.who(o)}) — ${Data.line(Calc.stageLine(o)).nom} bosqichi tugadimi? Sarflangan material ombordan chiqariladi.`, 'Tugatish', () => Steps.completeStage(o));
+	},
+	// Faqat direktor: omborda material yetmasa ham bosqichni yopadi, farq jurnalga tuzatish bo‘lib yoziladi.
+	forceFinish(d) {
+		const o = Data.order(d.id), lack = Calc.materialCheck(o);
+		if (!o.faol) return;
+		UI.confirm(`${o.id}: ${F.lack(lack)}. Bosqich baribir tugatilsinmi? Yetmagan miqdor harakatlar jurnaliga tuzatish bo‘lib yoziladi.`, 'Baribir tugatish', () => {
+			Data.log(o, 'Direktor material yetishmasa ham bosqichni tugatishga ruxsat berdi');
+			Steps.completeStage(o);
+		});
+	},
+
+	/* ombor */
+	openMove(d) { Steps.moveModal({ tur: d.v, k: 'homo', kg: '', izoh: '' }); },
+	receiveKirim() { const k = db.kirim; Steps.moveModal({ tur: 'kirim', k: k.mat, kg: k.kg, izoh: k.kim, fromKirim: true }); },
+	saveMove() {
+		if (!Forms.valid('mv')) return;
+		const f = ui.f.mv, m = Data.mat(f.k), incoming = f.tur === 'kirim';
+		m.qoldiq = +(m.qoldiq + (incoming ? +f.kg : -f.kg)).toFixed(2);
+		db.moves.unshift({ d: Time.today, k: f.k, tur: f.tur, kg: +f.kg, izoh: f.izoh.trim() });
+		if (f.fromKirim && db.kirim && db.kirim.mat === f.k) db.kirim = null;
+		Data.save(); UI.closeModal(); Views.render();
+		UI.toast(`${incoming ? 'Kirim' : 'Chiqim'} saqlandi · qoldiq ${F.qty(m.qoldiq, m)}`);
+	},
+	filterRolls(d) { ui.rollFilter.st = d.v; Views.render(); },
+	openRoll() {
+		const first = Views.rollOrders()[0];
+		ui.f.roll = { oid: first ? first.id : '', tur: 'CPP', qal: 30, eni: 1000, brutto: '' };
+		ui.modalForm = 'rollForm';
+		UI.modal('Rulon kiritish', null, UI.buttons('Saqlash', 'saveRoll', 'Yopish'));
+	},
+	// Oyna yopilmaydi: omborchi rulonlarni ketma-ket tortib kiritadi.
+	saveRoll() {
+		if (!Forms.valid('roll')) return;
+		const f = ui.f.roll, s = Views.rollSpec(), brutto = +f.brutto, netto = +(brutto - Calc.coreKg(s.eni)).toFixed(1);
+		const id = 'R-' + (Math.max(24100, ...db.rolls.map(r => +r.id.slice(2))) + 1);
+		if (!Data.takeCore(f.oid && Data.order(f.oid))) return UI.toast('Omborda o‘zak qolmagan — avval kirim qiling');
+		db.rolls.push({ id, oid: f.oid || null, ...s, netto, brutto, holat: f.oid ? 'band' : 'bosh', sana: Time.today });
+		Data.save();
+		f.brutto = '';
+		Views.render();
+		UI.refresh('mbody');
+		$('[data-f="roll.brutto"]').focus();
+		UI.toast(`${id} saqlandi · netto ${F.kg(netto, 1)}`);
+	},
+	selectShipment(d) { ui.shipSel = d.id || null; ui.shipRolls = false; Views.render(); window.scrollTo(0, 0); },
+	toggleShipRolls() { ui.shipRolls = true; Views.render(); },
+	openPacking(d) {
+		UI.modal('Packing list', Views.packing(Data.order(d.id)), `<button class="btn" data-act="closeModal">Yopish</button><button class="btn pri" data-act="printPacking" data-id="${d.id}">Chop etish</button>`, true);
+	},
+	printPacking(d) { ui.printId = d.id; UI.refresh('print'); window.print(); },
+	// Ortiqcha jo‘natish («Jo‘natish farqi» me’yoridan ko‘p) — faqat direktor ruxsati bilan: omborchi so‘rov yuboradi.
+	ship(d) {
+		const o = Data.order(d.id), f = Views.shipForm(o), rolls = db.rolls.filter(r => f.pick.includes(r.id)), kg = +Calc.sum(rolls, r => r.netto).toFixed(1);
+		if (Calc.blocked(o)) return UI.toast('Mijozda muddati o‘tgan qarz bor — direktor ruxsati kerak');
+		if (!rolls.length) return;
+		const x = Calc.shipCheck(o, kg), partial = x.kind === 'partial', n = db.ships.filter(s => s.oid === o.id).length;
+		const extra = `Buyurtmadan ${F.kg(x.extraKg)} ko‘p — mijozga ${F.som(x.extraSom)} qo‘shimcha hisoblanadi.`;
+		if (x.permit === 'wait') return UI.toast('So‘rov yuborilgan — direktor ruxsati kutilmoqda');
+		if (x.permit === 'ask') {
+			const again = o.ruxsatKg ? ` Avvalgi ruxsat ${F.kg(o.ruxsatKg)} gacha edi.` : '';
+			return UI.confirm(`${extra}${again} Buning uchun direktor ruxsati kerak. So‘rov yuborilsinmi?`, 'So‘rov yuborish', () => {
+				o.sorovKg = x.total;
+				Data.log(o, `Omborchi jami ${F.kg(x.total)} (${F.kg(x.extraKg)} ortiqcha) jo‘natishga ruxsat so‘radi`);
+				Data.save(); Views.render();
+				UI.toast('So‘rov direktorga yuborildi');
+			});
+		}
+		const text = partial ? `${F.kg(o.kg)} dan ${F.kg(x.total)} jo‘natiladi. Buyurtma «${STATUS.qisman.t}» holatiga o‘tadi, qolgan ${F.kg(o.kg - x.total)} keyin jo‘natiladi. Davom etilsinmi?`
+			: x.kind === 'over' ? `${extra} Direktor ${F.kg(o.ruxsatKg)} gacha ruxsat bergan. Jo‘natilsinmi?`
+			: `${o.id}: ${rolls.length} rulon, ${F.kg(kg)} netto ${UI.who(o)}ga jo‘natilsinmi?`;
+		UI.confirm(text, partial ? STATUS.qisman.t : 'Jo‘natildi', () => {
+			rolls.forEach(r => { r.holat = 'jonatildi'; });
+			Object.assign(o, { holat: partial ? 'qisman' : 'jonatildi', jonatSana: o.jonatSana || Time.today, jonatKg: x.total, sorovKg: null }); // jo‘natilgach javobsiz so‘rov o‘z kuchini yo‘qotadi
+			Data.log(o, `${STATUS[o.holat].t}: ${rolls.length} rulon, ${F.kg(kg)}${f.mashina ? ', ' + f.mashina : ''}`);
+			db.ships.push({ id: 'J-' + o.id.slice(3) + (n ? '-' + (n + 1) : ''), oid: o.id, d: Time.today, kg, rulon: rolls.length, mashina: f.mashina });
+			ui.shipSel = partial ? o.id : null;
+			ui.f.ship = null;
+			Data.save(); Views.render();
+			UI.toast(partial ? `${o.id}: ${F.kg(x.total)} jo‘natildi, ${F.kg(o.kg - x.total)} qoldi` : `${o.id} jo‘natildi`);
+		});
+	},
+	submitShift() {
+		if (!Forms.valid('sr')) return;
+		const f = ui.f.sr, metal = f.liniya === 'M';
+		const same = db.reports.find(r => r.sana === f.sana && r.smena === +f.smena && r.liniya === f.liniya);
+		const store = () => {
+			db.reports = db.reports.filter(r => r !== same);
+			db.reports.push({ sana: f.sana, smena: +f.smena, liniya: f.liniya, soat: +f.soat, parts: Views.shiftParts(f), ishlab: +f.ishlab, chiqindi: +f.chiqindi || 0, granula: metal ? 0 : +f.granula, alu: metal ? +f.alu : 0, m0: +f.m0, m1: +f.m1, kwh: f.m1 - f.m0, izoh: f.izoh.trim() });
+			Data.save();
+			ui.f.sr = Views.emptyShift({ sana: f.sana, smena: f.smena, liniya: f.liniya, m0: +f.m1 });
+			Views.render();
+			UI.toast('Hisobot saqlandi');
+		};
+		if (same) UI.confirm(`${F.dateLong(f.sana)}, ${f.smena}-smena, ${Data.line(f.liniya).nom} uchun hisobot bor. Almashtirilsinmi?`, 'Almashtirish', store);
+		else store();
+	},
+
+	/* kalkulyatsiya, qarzlar, sozlamalar */
+	setCalcTab(d) {
+		ui.calcTab = d.v;
+		ui.normBase = d.v === 'norms' ? { CPP: Calc.cost('CPP').perKg, MCPP: Calc.cost('MCPP').perKg } : null;
+		Views.render();
+	},
+	// CPP/MCPP — Tannarx, Reja va haqiqiy, Buyurtma hisobi uchun umumiy tanlov
+	setCalcType(d) {
+		const f = ui.f.oc;
+		if (f) { if (+f.narx === Calc.listPrice(ui.calcTur)) f.narx = Calc.listPrice(d.v); f.oid = ''; }
+		ui.calcTur = d.v;
+		Views.render();
+	},
+	// t — me’yor maydoni. Forma qayta chizilmaydi (kursor joyida qoladi), natija yonidagi bo‘laklarda yangilanadi.
+	editNorm(t) {
+		const k = t.dataset.norm, v = +t.value;
+		const bad = t.value === '' || !isFinite(v) || v < 0 || (NORMS_NONZERO.includes(k) && v === 0) || (NORMS_PERCENT.includes(k) && v >= PERCENT_MAX) || (k === 'regranulyat' && v > 100);
+		t.toggleAttribute('aria-invalid', bad);
+		if (bad) return;
+		db.norms[k] = v;
+		Data.logNorm(k);
+		Data.save();
+		UI.refresh('calc-sum', 'calc-live', 'recipe-note');
+	},
+	resetNorms() {
+		UI.confirm('Me’yorlar boshlang‘ich qiymatlarga qaytarilsinmi?', 'Qaytarish', () => { db.norms = { ...NORMS_DEFAULT }; Data.logNorm('*'); Data.save(); Views.render(); UI.toast('Me’yorlar qaytarildi'); });
+	},
+	// jadval sarlavhasidan (d.k) yoki telefondagi ro‘yxatdan (d.v)
+	sortBy(d) { const s = ui.debtSort, k = d.k || d.v; ui.debtSort = { k, dir: d.k && s.k === k ? -s.dir : k === 'nom' ? 1 : -1 }; Views.render(); },
+	exportCSV(d) {
+		const [name, rows] = Data.exportTable(d.v);
+		UI.download(`polypack_${name}_${Time.today}.csv`, UI.csv(rows));
+		UI.toast('Fayl yuklab olindi');
+	},
+	importTemplate() {
+		UI.download('polypack_import_namuna.csv', UI.csv([
+			['Mijoz', 'Turi', 'Qalinlik (mkm)', 'Eni (mm)', 'Miqdor (kg)', 'Muddat', 'Narx (so‘m/kg)'],
+			['Baraka Makaron', 'CPP', 30, 1000, 4000, F.dots(Time.add(14)), 24500],
+			['Sharq Laminat', 'MCPP', 25, 800, 3000, F.dots(Time.add(18)), 31000]
+		]));
+	},
+	chooseFile() { $('[data-import]').click(); },
+	applyImport() {
+		const rows = ui.imp.rows.filter(r => !r.err);
+		ui.imported = rows.map(({ v }) => {
+			const o = Data.newOrder({ cid: v.cid, tur: v.tur, qal: v.qal, eni: v.eni, kg: v.kg, muddat: v.muddat, narx: v.narx || Calc.suggestPrice(v.cid, v.tur, v.qal).narx, tarix: [{ d: Time.today, m: 'Excel’dan yuklandi' }] });
+			Data.applyAdvance(o);
+			db.orders.push(o);
+			return o.id;
+		});
+		ui.imp = null;
+		Data.save(); Views.render();
+		UI.toast(`${rows.length} ta buyurtma qo‘shildi`);
+	},
+	// Importdan keyin: qarzi yo‘q mijozlarning yangi buyurtmalari bir yo‘la navbatga qo‘yiladi.
+	queueImported() {
+		const list = ui.imported.map(Data.order).filter(o => o.holat === 'yangi' && !Calc.blocked(o));
+		list.forEach(Steps.enqueue);
+		ui.imported = null;
+		Data.save(); Views.render();
+		UI.toast(`${list.length} ta buyurtma navbatga qo‘yildi`);
+	},
+	cancelImport() { ui.imp = ui.imported = null; Views.render(); },
+	resetData() {
+		UI.confirm('Barcha o‘zgarishlar o‘chib, namuna ma’lumotlari qaytadi. Davom etilsinmi?', 'Tiklash', () => {
+			Data.seed();
+			Object.assign(ui, { f: {}, imp: null, imported: null, drawer: null, shipSel: null, chartDay: null });
+			Views.render();
+			UI.toast('Namuna ma’lumotlari tiklandi');
+		});
+	},
+	// d.v — xodim tartib raqami; −1 bo‘lsa, yangi xodim qo‘shiladi, aks holda faqat PIN almashtiriladi.
+	openUser(d) {
+		const i = +d.v, u = db.users[i];
+		ui.f.user = u ? { i, ism: u.ism, pin: '' } : { i, ism: '', rol: 'menejer', tel: '', pin: '' };
+		const pin = UI.field(u ? 'Yangi PIN' : 'PIN', UI.input('user.pin', `type="password" inputmode="numeric" maxlength="4" autocomplete="off"${u ? ' autofocus' : ''}`), { key: 'user.pin', hint: '4 ta raqam' });
+		UI.modal(u ? `PIN ni almashtirish · ${UI.esc(u.ism)}` : 'Xodim qo‘shish', u ? pin
+			: `<div class="grid2">${UI.field('Ism', UI.input('user.ism', 'autofocus'), { cls: 'full', key: 'user.ism' })}${UI.field('Rol', UI.select('user.rol', Object.entries(ROLES).map(([k, r]) => [k, r.nom])))}${UI.field('Telefon', UI.input('user.tel', 'type="tel"'))}${pin}</div>`, UI.buttons('Saqlash', 'saveUser'));
+	},
+	saveUser() {
+		if (!Forms.valid('user')) return;
+		const f = ui.f.user, u = db.users[f.i];
+		if (u) u.pin = f.pin;
+		else db.users.push({ ism: f.ism.trim(), rol: f.rol, tel: f.tel.trim(), pin: f.pin });
+		Data.save(); UI.closeModal(); Views.render();
+		UI.toast(u ? 'PIN almashtirildi' : 'Xodim qo‘shildi');
+	}
+};
+
+const Fields = {
+	// Forma maydoni o‘zgarganda sahifa to‘liq qayta chizilmaydi (kursor joyida qoladi) —
+	// faqat shu maydonga bog‘liq bo‘lak yangilanadi.
+	live: {
+		no(k) {
+			const f = ui.f.no;
+			if (k === 'narx') f.manual = true;
+			else if (!f.manual && (k === 'cid' || k === 'qal')) { f.narx = Calc.suggestPrice(f.cid, f.tur, +f.qal).narx; $('[data-f="no.narx"]').value = f.narx; }
+			UI.refresh('price-hint', 'check');
+		},
+		sr(k) {
+			if (k === 'liniya') ui.f.sr.m0 = Calc.lastMeter(ui.f.sr.liniya);
+			if (k === 'liniya' || k === 'sana') UI.refresh('shift-form'); // shu liniya va kunda ishlangan buyurtmalar o‘zgaradi
+			UI.refresh('shift-check', 'shift-rest');
+			if (k === 'ishlab' || k.startsWith('kg_')) Forms.show('sr.parts');
+		},
+		oc(k) {
+			const f = ui.f.oc, o = k === 'oid' && Data.order(f.oid);
+			if (!o) return UI.refresh('order-result');
+			Object.assign(f, { kg: o.kg, narx: o.narx });
+			ui.calcTur = o.tur;
+			Views.render();
+		},
+		roll(k) {
+			UI.refresh(k === 'oid' || k === 'tur' ? 'mbody' : 'roll-net');
+		},
+		mv(k) { if (k === 'k') UI.refresh('mbody'); },
+		pay() { UI.refresh('pay-plan'); }
+	},
+
+	change(e) {
+		const t = e.target, data = t.dataset, discrete = t.tagName === 'SELECT' || t.type === 'checkbox' || t.type === 'file';
+		if (e.type !== (discrete ? 'change' : 'input')) return;
+		const changed = key => { const [form, k] = key.split('.'); Forms.show(key); if (Fields.live[form]) Fields.live[form](k); };
+
+		if (t.id === 'pin') {
+			$('#pinerr').textContent = '';
+			if (t.value.length === 4) Actions.login();
+		} else if (data.f) {
+			const [form, k] = data.f.split('.');
+			ui.f[form][k] = 'num' in data && t.value !== '' ? +t.value : t.value;
+			changed(data.f);
+		} else if (data.part) {
+			// sana: kun oyga sig‘masa, oyning oxirgi kuniga tushiriladi
+			const box = t.closest('[data-date]'), [form, k] = box.dataset.date.split('.');
+			const part = p => +$(`[data-part=${p}]`, box).value;
+			const y = part('y'), m = part('m'), d = Math.min(part('d'), new Date(y, m, 0).getDate());
+			$('[data-part=d]', box).value = d;
+			ui.f[form][k] = `${y}-${Time.p2(m)}-${Time.p2(d)}`;
+			changed(box.dataset.date);
+		} else if (data.norm) {
+			Actions.editNorm(t);
+		} else if (data.filter) {
+			Actions[data.filter]({ v: t.value });
+		} else if (data.search) {
+			ui[data.search].q = t.value;
+			UI.refresh('list');
+		} else if (data.roll || 'rollAll' in data) {
+			const f = ui.f.ship;
+			f.pick = !data.roll ? (t.checked ? Views.readyRolls(f.oid).map(r => r.id) : [])
+				: t.checked ? f.pick.concat(data.roll) : f.pick.filter(x => x !== data.roll);
+			Views.render();
+		} else if ('import' in data && t.files[0]) {
+			const reader = new FileReader();
+			reader.onload = () => { ui.imp = Data.parseCSV(String(reader.result)) || { bad: true }; UI.refresh('import'); };
+			reader.readAsText(t.files[0], 'utf-8');
+		}
+	}
+};
+
+// Har amal ruxsat jadvalidan o‘tadi (qarang: CAN): tugma yashirilgani yetarli emas.
+// Jadvalda umuman yo‘q amal bajarilmaydi; ishlab chiqish paytida bu haqda konsolga yoziladi.
+const deny = name => {
+	if ([...GUEST_ACTIONS, ...OPEN_ACTIONS, ...Object.values(CAN).flat()].includes(name)) UI.toast('Bu amal sizning rolingizga ruxsat etilmagan');
+	else if (['localhost', '127.0.0.1'].includes(location.hostname)) console.debug('Jadvalda yo‘q amal:', name);
+};
+Object.keys(Actions).forEach(name => {
+	const run = Actions[name];
+	Actions[name] = d => can(name) ? run(d) : deny(name);
+});
+
+document.addEventListener('click', e => {
+	const el = e.target.closest('[data-act]');
+	if (!el || el.disabled) return;
+	const name = el.dataset.act;
+	if (can(name) && Actions[name]) Actions[name](el.dataset);
+	else deny(name);
+});
+document.addEventListener('input', Fields.change);
+document.addEventListener('change', Fields.change);
+document.addEventListener('submit', e => {
+	const submit = { pin: Actions.login, newOrder: Actions.submitOrder, shift: Actions.submitShift }[e.target.dataset.form];
+	if (!submit) return;
+	e.preventDefault();
+	submit();
+});
+document.addEventListener('keydown', e => {
+	if (e.key === 'Escape') {
+		if ($('#modal').innerHTML) UI.closeModal();
+		else if (ui.drawer) Actions.closeDrawer();
+		else if (ui.menu) Actions.toggleMenu();
+	} else if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('tr[data-act]')) {
+		e.preventDefault();
+		e.target.click();
+	}
+});
+matchMedia('(max-width:820px)').addEventListener('change', () => { if (session.role) Views.render(); });
+window.addEventListener('afterprint', () => { ui.printId = null; UI.refresh('print'); });
+['online', 'offline'].forEach(type => window.addEventListener(type, () => { ui.online = navigator.onLine; Views.render(); }));
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); ui.install = e; });
+
+/* ===== 7. Ishga tushirish ===== */
+
+Data.load();
+Views.render();
+
+// Service worker faqat http(s) da ishlaydi; file:// dan ochilganda ro‘yxatdan o‘tkazilmaydi.
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+	window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { /* oflayn rejimsiz ham ishlaydi */ }));
+}
+</script>
+</body>
+</html>
