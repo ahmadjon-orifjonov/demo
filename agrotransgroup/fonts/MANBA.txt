@@ -1,0 +1,3 @@
+Inter — SIL Open Font License 1.1 (LICENSE-Inter-OFL.txt), Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter).
+inter.woff2 — latin, inter-ext.woff2 — latin-ext (o‘, g‘ va boshqa belgilar uchun), variable 100–900.
+Ikonlar — Lucide, ISC (LICENSE-Lucide-ISC.txt). Manba: npm lucide-static.
