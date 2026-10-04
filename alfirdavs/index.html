@@ -306,7 +306,8 @@ select.in{appearance:none;-webkit-appearance:none;padding-right:28px;background:
 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--line);border-radius:8px;background:var(--line);overflow:hidden}
 .trio div{padding:12px 14px;background:var(--sf)}
 .trio span{display:block;font-size:12px;color:var(--tx3)}
-.trio b{font-size:18px;font-weight:600}
+.trio b{display:block;font-size:18px;font-weight:600}
+.trio .st{margin-top:4px}
 .vst{margin:0;padding:0;list-style:none}
 .vst li{position:relative;padding:0 0 14px 24px;font-size:13px}
 .vst li::before{content:"";position:absolute;left:2px;top:5px;width:8px;height:8px;border-radius:50%;background:var(--sf);box-shadow:0 0 0 2px var(--tx4)}
@@ -869,7 +870,8 @@ const EVENTS = {
 	tolov: { icon: 'coin', c: 'grn' },
 	chiqarish: { icon: 'minus', c: 'red' },
 	bekor: { icon: 'stop', c: '' },
-	sozlama: { icon: 'sliders', c: '' }
+	sozlama: { icon: 'sliders', c: '' },
+	eslatma: { icon: 'send', c: '' }
 };
 
 /* Ruxsatlar. Har amal shu jadvaldan o‘tadi (d.js: deny) — tugmani yashirish yetarli emas. */
@@ -1240,6 +1242,8 @@ const Calc = {
 	sales: c => db.orders.filter(o => o.cid === c.id && DONE_ST.includes(o.holat)),
 	paid: c => Calc.sum(db.pays.filter(p => p.cid === c.id), p => p.sum),
 	debt: c => Math.max(0, Calc.sum(Calc.sales(c), Calc.oSum) - Calc.paid(c)),
+	// Avans: to‘lov sotuvdan ko‘p bo‘lsa — keyingi topshirilgan buyurtmaga avtomatik o‘tadi (qarz = sotuv − to‘lov)
+	avans: c => Math.max(0, Calc.paid(c) - Calc.sum(Calc.sales(c), Calc.oSum)),
 	aging(c) {
 		const out = { kel: 0, d7: 0, d30: 0, d90: 0, max: 0, list: [] };
 		let left = Calc.paid(c);
@@ -1386,6 +1390,8 @@ const UI = {
 	sd(o) { const c = STATUS[o.holat].c || 'tx4'; return `<span class="sd">${UI.dot(c)}${STATUS[o.holat].t}</span>`; },
 	flag: (text, tone = 'red') => `<span class="flag ${tone}">${text}</span>`,
 	u: (v, unit) => `${v}<small class="u">${NB}${unit}</small>`,   // raqam + ochroq birlik
+	// Telefonda yig‘iladigan blok: sarlavha + bir qator xulosa; ochiq holati ui.open da eslab qolinadi
+	acc: (title, sum, body, key) => `<details class="card acc" data-acc="${key}"${(ui.open || {})[key] ? ' open' : ''}><summary><span><span class="t">${title}</span><span class="m">${sum}</span></span>${UI.icon('down')}</summary>${body}</details>`,
 	card: (title, body, { right = '', cls = '', id = '' } = {}) => `<section class="card ${cls}"${id ? ` id="${id}"` : ''}>${title ? `<div class="sec-h"><h2>${title}</h2>${right}</div>` : ''}${body}</section>`,
 	empty: (text, icon = 'list') => `<div class="empty">${UI.icon(icon)}<span>${text}</span></div>`,
 	rule: text => `<p class="rule">${text}</p>`,
@@ -1470,7 +1476,7 @@ const Forms = {
 			fefo: [(v, f) => !f.lot || !Views.noFefoBroken(f) || v.trim().length > 2, 'FEFO dan boshqa partiya — sababini yozing'],
 			narx: [v => pos(v), 'Narxni kiriting']
 		},
-		pay: { sum: [(v, f) => pos(v) && +v <= Calc.debt(Data.client(f.cid)), (v, f) => pos(v) ? `Qarzdan ko‘p: qarz ${F.som(Calc.debt(Data.client(f.cid)))}` : 'Summani kiriting'] },
+		pay: { sum: [v => pos(v), 'Summani kiriting'] },
 		stage: { sana: [v => !!v && v <= Time.today, 'Sana bugundan keyin bo‘lmasin'] },
 		cost: { sum: [v => pos(v), 'Summani kiriting'] },
 		lot: {
@@ -1600,7 +1606,7 @@ const Views = {
 		},
 		mbody: () => Views[ui.modalForm](),
 		'gs-res': 'searchResults', list: 'ordersList', clist: 'clientsList',
-		'no-hit': 'noHit', 'no-picks': 'noPicks', 'no-lots': 'noLots', 'no-sum': 'noSummary', 'no-bar': 'noBar', 'rec-res': 'recResult', 'drv-res': 'drvResult', 'pick-res': 'pickResult', 'rep-body': 'reportBody', 'set-body': 'settingsBody'
+		'no-hit': 'noHit', 'no-picks': 'noPicks', 'pay-av': 'payAvans', 'no-lots': 'noLots', 'no-sum': 'noSummary', 'no-bar': 'noBar', 'rec-res': 'recResult', 'drv-res': 'drvResult', 'pick-res': 'pickResult', 'rep-body': 'reportBody', 'set-body': 'settingsBody'
 	},
 	part(id) { const p = Views.parts[id]; return typeof p === 'string' ? Views[p]() : p(); },
 	drawerHead: (title, sub, extra = '') => `<div class="dh"><button class="btn ic ghost dh-back" data-act="closeDrawer" aria-label="Orqaga">${UI.icon('back')}</button><div class="x"><h2>${title}</h2>${sub ? `<div class="muted sm">${sub}</div>` : ''}</div>${extra}<button class="btn ic ghost dh-x" data-act="closeDrawer" aria-label="Yopish">${UI.icon('x')}</button></div>`,
@@ -1740,27 +1746,33 @@ const Views = {
 			${(m => kpi('qarz', 'Muddati o‘tgan qarz', m.parts[0], 'mln so‘m', `${ag.n} xaridor<br>jami qarz ${m.total} mln`))(F.msplit([ag.over, ag.kel]))}
 		</div>`;
 		const att = Views.attention(), shown = ui.attAll ? att : att.slice(0, 5);
-		const attRow = a => `<div class="att"><span class="ai ${a.tone}">${UI.icon(a.icon)}</span><div class="x"><span class="t">${UI.esc(a.t)}</span><span class="m">${UI.esc(a.m)}</span></div>
-			${a.tel ? `<a class="btn s" href="${F.telHref(a.tel)}" aria-label="${a.btn}: ${UI.esc(a.tel)}" title="${a.btn}: ${UI.esc(a.tel)}">${UI.icon('phone')}<span class="m-hide">${a.btn}</span></a>` : `<button class="btn s" data-act="${a.act}" data-id="${a.id}">${a.btn}</button>`}</div>`;
-		const attCard = UI.card(`Diqqat<span class="c">${att.length}</span>`, att.length ? `<div class="rows">${shown.map(attRow).join('')}</div>
+		const attRow = (a, i) => `<div class="att"><span class="ai ${a.tone}">${UI.icon(a.icon)}</span><div class="x"><span class="t">${UI.esc(a.t)}</span><span class="m">${UI.esc(a.m)}</span></div>
+			${a.tel ? `<a class="btn s${i ? '' : ' pri'}" href="${F.telHref(a.tel)}" aria-label="${a.btn}: ${UI.esc(a.tel)}" title="${a.btn}: ${UI.esc(a.tel)}">${UI.icon('phone')}<span class="m-hide">${a.btn}</span></a>` : `<button class="btn s${i ? '' : ' pri'}" data-act="${a.act}" data-id="${a.id}">${a.btn}</button>`}</div>`;
+		const attCard = UI.card(`Diqqat<span class="c">${att.length}</span>`, att.length ? `<div class="rows">${shown.map((a, i) => attRow(a, i)).join('')}</div>
 			${att.length > 5 ? `<div class="more-row"><button class="link sm" data-act="showAtt">${ui.attAll ? 'Qisqartirish' : `Yana ${att.length - 5} ta: ${[...new Set(att.slice(5).map(a => ATT_KIND[a.key[0]]))].join(', ')}`}</button></div>` : ''}` : UI.empty('Hal qilinadigan masala yo‘q', 'check'), { id: 'diqqat', cls: 'attc' });
 		const lotRow = p => `<button class="lrow" data-act="openLot" data-id="${p.id}"><span class="x"><span class="t">${p.id} · ${Data.prod(p.prod).qisqa} <span class="muted">${F.tn(p.kgInv)}</span></span>${UI.lotState(p)}</span>
 			<span class="eta"><span class="muted sm">${Calc.delay(p) ? 'taxmin' : 'kelishi'}</span><b>${F.date(Calc.eta(p))}</b></span></button>`;
 		const way = db.lots.filter(p => !p.qabul).sort((a, b) => Calc.eta(a) < Calc.eta(b) ? -1 : 1);
-		const lots = UI.card('Yo‘ldagi partiyalar', `<div class="rows">${way.map(lotRow).join('')}</div>`, { right: `<button class="link sm" data-act="go" data-p="partiyalar">Hammasi</button>` });
+		const wayLate = way.filter(p => Calc.delay(p) > 0).length;
+		const lots = UI.mobile() ? UI.acc('Yo‘ldagi partiyalar', `${way.length} partiya${wayLate ? ` · ${wayLate} tasi kechikmoqda` : ''}`, `<div class="rows">${way.map(lotRow).join('')}</div>`, 'way')
+			: UI.card('Yo‘ldagi partiyalar', `<div class="rows">${way.map(lotRow).join('')}</div>`, { right: `<button class="link sm" data-act="go" data-p="partiyalar">Hammasi</button>` });
+		// Kompyuterda chap ustun: muddati yaqin qoldiq (≤ 4 qator)
+		const near = db.lots.filter(p => p.qabul && Calc.stock(p).qoldiq > 0).sort((a, b) => a.yaroq < b.yaroq ? -1 : 1).slice(0, 4);
+		const nearCard = UI.mobile() ? '' : UI.card('Ombor: muddati yaqin', `<div class="rows">${near.map(p => { const d = Calc.daysLeft(p); return `<button class="lrow" data-act="openLot" data-id="${p.id}"><span class="x"><span class="t">${p.id} · ${Data.prod(p.prod).qisqa}</span><span class="m">${p.kamera} · ${F.kg(Calc.stock(p).qoldiq)}${Calc.stage(p) < 5 ? ' · karantin' : ''}</span></span><span class="eta"><span class="muted sm">qolgan</span><b class="${d <= 14 ? 'red-t' : d <= 30 ? 'amb-t' : ''}">${d} kun</b></span></button>`; }).join('')}</div>`, { right: `<button class="link sm" data-act="go" data-p="ombor">Ombor</button>` });
 		const dRow = o => `<button class="lrow" data-act="openOrder" data-id="${o.id}"><span class="x"><span class="t">${UI.esc(Data.client(o).nom)}</span><span class="m">${Data.prod(o.prod).qisqa}, ${F.kg(Calc.oKg(o))} · ${F.short(Data.userById(o.drv).ism)}</span></span>${UI.sd(o)}</button>`;
 		const deliv = UI.card('Bugun yetkazish', `<div class="tri"><div><b>${td.yolda}</b>yo‘lda</div><div><b>${td.done}</b>topshirildi</div><div><b>${td.wait}</b>kutilmoqda</div></div>
 			<div class="rows">${td.os.sort((a, b) => SOLD_ST.indexOf(b.holat) - SOLD_ST.indexOf(a.holat)).slice(0, UI.mobile() ? 3 : 8).map(dRow).join('')}</div>
 			${UI.mobile() && td.os.length > 3 ? `<div class="more-row"><button class="link sm" data-act="showToday">Hammasi (${td.os.length})</button></div>` : ''}`, { id: 'deliv' });
 		const dline = UI.mobile() ? `<button class="card dline" data-act="showToday"><span><b>Bugun yetkazish:</b> ${td.yolda} yo‘lda · ${td.done} topshirildi · ${td.wait} kutilmoqda</span>${UI.icon('chev')}</button>` : '';
 		return `<p class="upd">${UI.icon('refresh')}Ma’lumot ${Time.hm(db.upd)} da yangilangan · internetsiz ham ishlaydi</p>${kpis}
-			<div class="cols"><div class="stack">${attCard}${dline}${lots}</div><div class="stack">${deliv}${Views.feed()}</div></div>`;
+			<div class="cols"><div class="stack">${attCard}${dline}${lots}${nearCard}</div><div class="stack">${deliv}${Views.feed()}</div></div>`;
 	},
 	feed() {
 		const all = db.events.slice().reverse(), list = ui.feedAll ? all.slice(0, 30) : all.slice(0, UI.mobile() ? 3 : 8);
 		const row = e => `<div class="ev"><span class="ev-t">${Time.dayOf(e.t) === Time.today ? Time.hm(e.t) : F.day(e.t)}</span><span class="x"><span class="t">${UI.esc(e.m)}</span><span class="m">${UI.esc(Views.actor(e))}</span></span></div>`;
-		return UI.card('Hodisalar', `<div class="rows">${list.map(row).join('')}</div>
-			<div class="more-row"><button class="link sm" data-act="showFeed">${ui.feedAll ? 'Qisqartirish' : 'Ko‘proq'}</button></div>`, { id: 'feed' });
+		const body = `<div class="rows">${list.map(row).join('')}</div>
+			<div class="more-row"><button class="link sm" data-act="showFeed">${ui.feedAll ? 'Qisqartirish' : 'Ko‘proq'}</button></div>`;
+		return UI.mobile() ? UI.acc('Hodisalar', all.length ? `oxirgi: ${Time.hm(all[0].t)} ${all[0].m.slice(0, 36)}${all[0].m.length > 36 ? '…' : ''}` : 'hali yo‘q', body, 'feed') : UI.card('Hodisalar', body, { id: 'feed' });
 	},
 	// Raqam kartasi bosilganda: izoh + tegishli ekranga o‘tish
 	kpiBody(k) {
@@ -1834,7 +1846,7 @@ Object.assign(Views, {
 		const sup = Data.sup(p.sup), pr = Data.prod(p.prod), i = Calc.stage(p), late = Calc.delay(p), c = Calc.cost(p), s = Calc.stock(p), sp = Calc.soldPct(p), closed = Calc.closed(p);
 		const imp = can('openStage'), tone = closed ? '' : late ? 'red' : i === 5 ? 'grn' : i === 4 ? 'amb' : 'br';
 		const trio = `<div class="trio"><div><span>${p.qabul ? 'Qabul qilingan' : 'Invoys'}</span><b>${UI.u(F.num(p.qabul ? p.qabul.kg : p.kgInv), 'kg')}</b></div>
-			<div><span>1 kg tannarx${c.est ? ', taxminiy' : ''}</span><b>${UI.u(F.num(c.perKg), 'so‘m')}</b></div><div><span>Sotilgan</span><b>${UI.u(F.num(Math.round(sp.sot * 100)), '%')}</b></div></div>`;
+			<div><span>1 kg tannarx</span><b>${UI.u(F.num(c.perKg), 'so‘m')}</b>${c.est ? UI.chip('taxminiy (invoys kg)', 'amb') : p.qot ? UI.chip('qotirilgan', 'grn') : UI.chip('yakuniy (tarozi kg)', 'br')}</div><div><span>Sotilgan</span><b>${UI.u(F.num(Math.round(sp.sot * 100)), '%')}</b></div></div>`;
 		// Vertikal bosqichlar: reja / amalda, kechikish, izoh
 		const steps = `<ol class="vst">${p.st.map((x, k) => {
 			// kechikish joriy bosqichda ko‘rsatiladi (tovar shu yerda turib qolgan), keyingisi — kutilmoqda
@@ -2115,7 +2127,7 @@ Object.assign(Views, {
 			+ `<div class="dbody cl2"><div>
 				${UI.dl([['Mas’ul', UI.esc(c.kontakt)], ['Telefon', `${UI.esc(c.tel)} ${UI.call(c.tel)}`], ['Manzil', UI.esc(c.manzil)], ['Narx turi', NARX_TUR[c.narx]],
 					['Chegara', F.som(c.limit)], ['To‘lov muddati', c.kun ? `${c.kun} kun` : 'yetkazganda, naqd'], ['Menejer', UI.esc(Data.userById(c.mid).ism)]])}
-				<div class="dsec"><h3>Qarz</h3><div class="kv"><span>Jami</span><b class="${a.over ? 'red-t' : ''}">${F.som(debt)}</b></div>
+				<div class="dsec"><h3>Qarz</h3><div class="kv"><span>Jami</span><b class="${a.over ? 'red-t' : ''}">${F.som(debt)}</b></div>${Calc.avans(c) ? `<div class="kv"><span>Avans</span><b class="grn-t">${F.som(Calc.avans(c))}</b></div>` : ''}${c.eslatma ? `<p class="hint">Oxirgi eslatma: ${F.day(c.eslatma)}, ${Time.hm(c.eslatma)}</p>` : ''}
 					${debt ? `${UI.bar([['Kelmagan', a.kel, 'br3'], ['1–7', a.d7, 'amb'], ['8–30', a.d30, 'org'], ['30+', a.d90, 'red']])}
 					<div class="legend"><span>kelmagan <b>${F.num(a.kel)}</b></span><span>1–7 <b>${F.num(a.d7)}</b></span><span>8–30 <b>${F.num(a.d30)}</b></span><span>30+ <b>${F.num(a.d90)}</b></span></div>` : ''}</div>
 				<div class="dsec"><h3>Xarid, 6 oy (t)</h3><div class="mbars">${mo.map((v, i) => `<div><i style="height:${Math.max(2, v / Math.max(...mo, 1) * 48).toFixed(0)}px"></i><b>${F.t(v)}</b><span>${MON3[Time.date(Time.monthStart(i - 5)).getMonth()]}</span></div>`).join('')}</div></div>
@@ -2155,7 +2167,7 @@ Object.assign(Views, {
 		const sup = db.lots.filter(p => Calc.supDebt(p) > 0);
 		const supB = session.role === 'direktor' && sup.length ? `<div class="mt16">${UI.card('Yetkazib beruvchilarga majburiyat', `<table class="calc pad">${sup.map(p => `<tr><td>${UI.esc(Data.sup(p.sup).nom)}<span class="sub">${p.id} · ${Calc.holat(p).toLowerCase()} · oldindan to‘langan ${F.val(Calc.sum(p.tolov, x => x.sum), p.val)}</span></td><td>${F.val(Calc.supDebt(p), p.val)}${p.qolganTolov ? `<span class="sub">${F.date(p.qolganTolov)} gacha</span>` : ''}</td></tr>`).join('')}</table>`)}</div>` : '';
 		return `${top}<div class="toolbar">${session.role === 'direktor' ? (UI.mobile() ? `<select class="in" data-filter="setDebtMgr" aria-label="Menejer">${UI.options([['', 'Hamma menejerlar'], ...mgrs.map(u => [u.id, u.ism])], ui.debtMgr)}</select>` : UI.seg('setDebtMgr', ui.debtMgr, [['', 'Hammasi'], ...mgrs.map(u => [u.id, F.short(u.ism)])])) : '<span class="hint">Faqat sizning xaridorlaringiz</span>'}<span class="grow"></span><span class="hint m-hide">To‘lov eng eski qarzdan boshlab yopiladi</span></div>
-			<section class="card">${UI.table(cols, list, { open: x => ['openClient', x.c.id], empty: 'Qarz yo‘q', icon: 'wallet', cls: 'debt-t', rowCls: x => x.a.over ? 'od' : '' })}</section>${supB}`;
+			<section class="card">${UI.table(cols, list, { open: x => ['openClient', x.c.id], empty: 'Qarz yo‘q', icon: 'wallet', cls: 'debt-t', rowCls: x => x.a.over ? 'od' : '' })}</section>${(av => av.length ? `<div class="mt16">${UI.card('Avanslar', `<table class="calc pad">${av.map(c => `<tr><td><button class="link" data-act="openClient" data-id="${c.id}">${UI.esc(c.nom)}</button><span class="sub">keyingi yetkazishga o‘tadi</span></td><td class="grn-t">avans ${F.num(Calc.avans(c))}</td></tr>`).join('')}</table>`)}</div>` : '')(db.clients.filter(c => Views.mineC(c) && (!mid || c.mid === mid) && Calc.avans(c) > 0))}${supB}`;
 	}
 });
 
@@ -2345,8 +2357,10 @@ Object.assign(Views, {
 		const f = ui.f.pay, c = Data.client(f.cid), a = Calc.aging(c);
 		return `<p class="note"><b>${UI.esc(c.nom)}</b> · qarz ${F.som(Calc.debt(c))}${a.over ? `, shundan muddati o‘tgan <span class="red-t">${F.som(a.over)}</span>` : ''}</p>
 			${UI.field('Summa', UI.unit(UI.num('pay.sum', 'autofocus'), 'so‘m'), { key: 'pay.sum' })}
-			${UI.field('Usul', UI.select('pay.usul', Object.entries(USUL)))}${UI.rule('To‘lov eng eski qarzdan boshlab yopiladi. Qarzdan ortiq summa qabul qilinmaydi.')}`;
+			<div id="pay-av">${Views.payAvans()}</div>
+			${UI.field('Usul', UI.select('pay.usul', Object.entries(USUL)))}${UI.rule('To‘lov eng eski qarzdan boshlab yopiladi. Ortig‘i avans bo‘lib keyingi yetkazishga o‘tadi.')}`;
 	},
+	payAvans() { const f = ui.f.pay, x = (+f.sum || 0) - Calc.debt(Data.client(f.cid)); return x > 0 ? `<div class="vrd amb">${UI.icon('alert')}<span>Qarzdan ${F.mln(x)} ortiq — <b>avans</b> sifatida yoziladi</span></div>` : ''; },
 	remindText(c) {
 		const a = Calc.aging(c), u = Data.userById(c.mid);
 		return `Assalomu alaykum, ${c.kontakt.split(' ')[0]} aka! ALFIRDAVS TM dan yozyapmiz. ${F.dateLong(Time.today)} holatiga jami qarzingiz ${F.som(Calc.debt(c))}${a.over ? `, shundan ${F.som(a.over)} muddati o‘tgan (${a.max} kun)` : ''}. To‘lov sanasini aytib yuborsangiz. Hurmat bilan, ${u.ism}, ${u.tel}.`;
@@ -2425,6 +2439,14 @@ const Steps = {
 		if (f.prod) f.narx = Data.prod(f.prod).narx[c.narx];
 	},
 	defaultLot() { const f = ui.f.no, { sell, wait } = Calc.fefo(f.prod); f.lot = (sell[0] || wait[0] || {}).id || ''; f.fefo = ''; },
+	// Qarz eslatmasi yuborildi (Telegram yoki nusxa) — jurnal va xaridor kartasi
+	reminded() {
+		const c = ui.f.rem && Data.client(ui.f.rem.cid);
+		if (!c || !c.id) return;
+		c.eslatma = Time.now();
+		Data.log(`Eslatma yuborildi — ${c.nom} (qarz ${F.mln(Calc.debt(c))})`, 'eslatma', { cid: c.id });
+		Data.save();
+	},
 	// Ikki marta bosishdan himoya
 	guard() { const now = Date.now(); if (now - (Steps.last || 0) < 700) return false; Steps.last = now; return true; },
 	stageModal(p, force) {
@@ -2580,18 +2602,21 @@ const Actions = {
 	savePayment() {
 		if (!Forms.valid('pay') || !Steps.guard()) return;
 		const f = ui.f.pay, c = Data.client(f.cid);
-		db.pays.push({ cid: c.id, t: Time.now(), sum: +f.sum, usul: f.usul, uid: session.user });
-		Data.log(`${USUL[f.usul]} ${F.som(+f.sum)} — ${c.nom} (kiritdi ${F.short(Data.user().ism)})`, 'tolov', { cid: c.id });
+		const av = Math.max(0, +f.sum - Calc.debt(c));
+		db.pays.push({ cid: c.id, t: Time.now(), sum: +f.sum, usul: f.usul, uid: session.user, izoh: av ? `shundan avans ${F.mln(av)}` : '' });
+		Data.log(`${USUL[f.usul]} ${F.som(+f.sum)} — ${c.nom} (kiritdi ${F.short(Data.user().ism)}${av ? `; avans ${F.mln(av)}` : ''})`, 'tolov', { cid: c.id });
 		Data.save(); UI.closeModal(); Views.render(); UI.refresh('layer');
 		UI.toast('To‘lov saqlandi');
 	},
 	openRemind(d) { ui.f.rem = { cid: d.id }; ui.modalForm = 'remindForm'; UI.modal('Qarz eslatmasi', null, '<button class="btn" data-act="closeModal">Yopish</button>'); },
 	// Telegram havolasi ochiladi (brauzer o‘zi), matn esa baribir nusxalanadi
 	shareTg() {
+		Steps.reminded();
 		const t = $('#remtext'), done = () => UI.toast('Matn nusxalandi — Telegram ochilmasa, xabarga joylang', 3500);
 		if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(done, done); else { t.select(); document.execCommand('copy'); done(); }
 	},
 	copyText() {
+		Steps.reminded();
 		const t = $('#remtext');
 		const done = () => UI.toast('Matn nusxalandi');
 		if (navigator.clipboard) navigator.clipboard.writeText(t.value).then(done, () => { t.select(); document.execCommand('copy'); done(); });
@@ -2781,6 +2806,7 @@ const Fields = {
 		},
 		rec(k) { if (k !== 'sabab') UI.refresh('rec-res'); },
 		pick() { UI.refresh('pick-res'); },
+		pay(k) { if (k === 'sum') UI.refresh('pay-av'); },
 		drv(k) {
 			const f = ui.f.drv;
 			if (k === 'naqd') { f.naqdManual = true; const el = $('#drv-naqd-t'), sp = $('#drv-split'); if (el) el.textContent = Views.naqdText(f); if (sp) sp.textContent = Views.naqdSplit(f); }
@@ -2899,6 +2925,7 @@ const Router = {
 	}
 };
 window.addEventListener('popstate', () => { UI.closeModal(); Steps.closePops(); ui.menu = false; if (Router.read() || !session.role) Views.render(); else Router.sync(); });
+document.addEventListener('toggle', e => { const k = e.target.dataset && e.target.dataset.acc; if (k) { ui.open = ui.open || {}; ui.open[k] = e.target.open; } }, true);
 document.addEventListener('input', Fields.change);
 document.addEventListener('change', Fields.change);
 document.addEventListener('submit', e => {

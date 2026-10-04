@@ -1,6 +1,6 @@
 // Oflayn kesh. Fayllar o‘zgarganda VERSION oshiriladi — eski kesh o‘chadi, ilova o‘zi yangilanadi (yoki «Yangi versiya bor» deydi).
 // (Ma’lumot tuzilmasi versiyasi index.html ichidagi Data.VERSION — bunga bog‘liq emas.)
-const VERSION = 'alfirdavs-9';
+const VERSION = 'alfirdavs-10';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png',
   'fonts/plex-400.woff2', 'fonts/plex-500.woff2', 'fonts/plex-600.woff2',
   'fonts/plex-ext-400.woff2', 'fonts/plex-ext-500.woff2', 'fonts/plex-ext-600.woff2'];
