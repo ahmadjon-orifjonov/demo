@@ -1,0 +1,19 @@
+{
+  "id": "./index.html",
+  "name": "A Frozen Foods",
+  "short_name": "A Frozen",
+  "description": "IQF muzlatilgan meva va sabzavot: sovutgich qoldig‘i, band va to‘lov, jo‘natma, lot kuzatuvi",
+  "lang": "uz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f5f4",
+  "theme_color": "#17302c",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
