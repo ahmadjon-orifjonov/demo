@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Бошқарув — ALFIRDAVS TM</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/panel.css">
+</head>
+<body class="pn">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+</defs></svg>
+
+<!-- PIN -->
+<section class="pin" id="pinView" aria-labelledby="pin-h">
+  <form class="pin__card" id="pinForm" autocomplete="off">
+    <img class="pin__logo" src="img/logo.svg" width="64" height="64" alt="">
+    <h1 id="pin-h">Бошқарув панели</h1>
+    <p>ALFIRDAVS TM · <span class="badge">Намуна</span></p>
+    <label class="pin__lbl" for="pinIn">PIN код</label>
+    <input class="pin__in num" id="pinIn" type="password" inputmode="numeric" maxlength="8" autofocus autocomplete="off" placeholder="••••" aria-describedby="pinErr">
+    <p class="pin__err" id="pinErr" aria-live="polite"></p>
+    <button class="btn btn--red btn--lg btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>Кириш</span></button>
+    <p class="pin__hint">Намуна учун PIN: <b class="num">1111</b></p>
+  </form>
+</section>
+
+<!-- PANEL -->
+<div class="app" id="app" hidden>
+  <header class="ptop">
+    <div class="ptop__in">
+      <a class="brand" href="index.html"><img class="brand__mark" src="img/logo.svg" width="36" height="36" alt=""><span class="brand__txt"><span class="brand__name">ALFIRDAVS <b>TM</b></span><span class="ptop__sub">Бошқарув</span></span></a>
+      <a class="btn btn--line btn--sm" href="index.html" target="_blank" rel="noopener"><span>Сайт</span><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Бўлимлар">
+      <button type="button" role="tab" id="tab-p" aria-controls="v-p" aria-selected="true">Маҳсулотлар</button>
+      <button type="button" role="tab" id="tab-r" aria-controls="v-r" aria-selected="false">Ҳудудлар</button>
+      <button type="button" role="tab" id="tab-c" aria-controls="v-c" aria-selected="false">Алоқа</button>
+    </nav>
+  </header>
+
+  <main class="pmain">
+    <p class="note" id="note"><b>Намуна:</b> ўзгаришлар фақат шу қурилмада сақланади. Ишга тушганда сервер орқали ҳамма кўради.</p>
+
+    <!-- Mahsulotlar -->
+    <section class="view" id="v-p" role="tabpanel" aria-labelledby="tab-p">
+      <div class="vhead">
+        <h2>Маҳсулотлар <small class="num" id="pCount"></small></h2>
+        <button type="button" class="btn btn--red" id="pAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Қўшиш</span></button>
+      </div>
+      <div class="chips chips--scroll pfilter" id="pFilter" role="group" aria-label="Давлат бўйича"></div>
+      <ul class="plist" id="pList"></ul>
+    </section>
+
+    <!-- Hududlar -->
+    <section class="view" id="v-r" role="tabpanel" aria-labelledby="tab-r" hidden>
+      <div class="vhead"><h2>Ҳудудлар</h2></div>
+      <form class="box" id="rForm">
+        <h3>Янги ҳудуд қўшиш</h3>
+        <div class="fld"><label for="rCountry">Давлат</label><select id="rCountry"></select></div>
+        <div class="fld"><label for="rUzc">Номи (ЎЗ)</label><input id="rUzc" type="text" maxlength="40" placeholder="Масалан, Измир" required></div>
+        <div class="fld2">
+          <div class="fld"><label for="rRu">Номи (RU)</label><input id="rRu" type="text" maxlength="40" placeholder="Измир"></div>
+          <div class="fld"><label for="rEn">Номи (EN)</label><input id="rEn" type="text" maxlength="40" placeholder="Izmir"></div>
+        </div>
+        <button class="btn btn--red btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Ҳудуд қўшиш</span></button>
+      </form>
+      <div id="rList"></div>
+    </section>
+
+    <!-- Aloqa -->
+    <section class="view" id="v-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+      <div class="vhead"><h2>Алоқа маълумотлари</h2></div>
+      <form class="box" id="cForm" novalidate>
+        <p class="box__p">Бу ердаги маълумот сайтдаги барча тугмаларга қўйилади: юқори панел, алоқа ойнаси, пастки панел ва footer. Бўш қолган майдон сайтда кўринмайди.</p>
+        <div class="fld"><label for="cPhone">Асосий телефон</label><input id="cPhone" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 905 11 44" aria-describedby="e-cPhone"><small class="ferr" id="e-cPhone"></small></div>
+        <div class="fld"><label for="cPhone2">Қўшимча телефон</label><input id="cPhone2" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 784 11 44" aria-describedby="e-cPhone2"><small class="ferr" id="e-cPhone2"></small></div>
+        <div class="fld"><label for="cTg">Telegram</label><input id="cTg" type="text" maxlength="60" placeholder="+998999051144, @username ёки t.me/..." aria-describedby="e-cTg"><small class="ferr" id="e-cTg"></small></div>
+        <div class="fld"><label for="cWa">WhatsApp рақами</label><input id="cWa" type="tel" inputmode="tel" maxlength="24" placeholder="Бўш бўлса — асосий телефон" aria-describedby="e-cWa"><small class="ferr" id="e-cWa"></small></div>
+        <div class="fld"><label for="cMax">MAX (рақам ёки ҳавола)</label><input id="cMax" type="text" maxlength="200" placeholder="+998999051144 ёки https://max.ru/..." aria-describedby="e-cMax"><small class="ferr" id="e-cMax"></small></div>
+        <div class="fld"><label for="cIg">Instagram</label><input id="cIg" type="text" maxlength="100" placeholder="username ёки https://instagram.com/..." aria-describedby="e-cIg"><small class="ferr" id="e-cIg"></small></div>
+        <fieldset class="fset"><legend>Манзил 1 — омбор (Тошкент)</legend>
+          <div class="fld"><label for="cAddrUzc">ЎЗ</label><input id="cAddrUzc" type="text" maxlength="140"></div>
+          <div class="fld"><label for="cAddrRu">RU</label><input id="cAddrRu" type="text" maxlength="140"></div>
+          <div class="fld"><label for="cAddrEn">EN</label><input id="cAddrEn" type="text" maxlength="140"></div>
+          <div class="fld fld--wide"><label for="cMap">Харита ҳаволаси</label><input id="cMap" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap"><small class="ferr" id="e-cMap"></small></div>
+        </fieldset>
+        <fieldset class="fset"><legend>Манзил 2 — Самарқанд</legend>
+          <div class="fld"><label for="cAddr2Uzc">ЎЗ</label><input id="cAddr2Uzc" type="text" maxlength="140"></div>
+          <div class="fld"><label for="cAddr2Ru">RU</label><input id="cAddr2Ru" type="text" maxlength="140"></div>
+          <div class="fld"><label for="cAddr2En">EN</label><input id="cAddr2En" type="text" maxlength="140"></div>
+          <div class="fld fld--wide"><label for="cMap2">Харита ҳаволаси</label><input id="cMap2" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap2"><small class="ferr" id="e-cMap2"></small></div>
+        </fieldset>
+        <fieldset class="fset"><legend>Иш вақти</legend>
+          <div class="fld"><label for="cHrsUzc">ЎЗ</label><input id="cHrsUzc" type="text" maxlength="60"></div>
+          <div class="fld"><label for="cHrsRu">RU</label><input id="cHrsRu" type="text" maxlength="60"></div>
+          <div class="fld"><label for="cHrsEn">EN</label><input id="cHrsEn" type="text" maxlength="60"></div>
+        </fieldset>
+        <p class="ferr" id="cErr" aria-live="polite"></p>
+        <button class="btn btn--red btn--lg btn--block" type="submit"><span>Сақлаш</span></button>
+      </form>
+    </section>
+
+    <div class="danger">
+      <button type="button" class="btn btn--line btn--block" id="resetAll"><svg class="ic" aria-hidden="true"><use href="#i-reset"/></svg><span>Намунага қайтариш</span></button>
+      <button type="button" class="linkbtn" id="logout">Чиқиш</button>
+    </div>
+  </main>
+</div>
+
+<!-- Tahrirlash oynasi -->
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-h">
+  <form class="sheet__in" id="pForm" novalidate>
+    <div class="sheet__top">
+      <h2 id="sheet-h">Маҳсулот</h2>
+      <button type="button" class="iconbtn" id="sheetX" aria-label="Ёпиш"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="sheet__body">
+      <div class="imgbox">
+        <div class="imgbox__prev" id="fImgPrev"><span>Сурат йўқ — сайтда намунавий ёрлиқ кўринади</span></div>
+        <div class="imgbox__btns">
+          <input type="file" id="fImg" class="vh" accept="image/*"><label class="btn btn--line btn--sm" for="fImg"><svg class="ic" aria-hidden="true"><use href="#i-img"/></svg><span>Сурат юклаш</span></label>
+          <button type="button" class="btn btn--line btn--sm" id="fImgDel" hidden><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span>Олиб ташлаш</span></button>
+        </div>
+        <p class="imgbox__info" id="fImgInfo" aria-live="polite"></p>
+        <fieldset class="fset fset--alt"><legend>Сурат тавсифи (alt) — бўш бўлса номдан</legend>
+          <div class="fld"><label for="fAltUzc">ЎЗ</label><input id="fAltUzc" type="text" maxlength="120"></div>
+          <div class="fld"><label for="fAltRu">RU</label><input id="fAltRu" type="text" maxlength="120"></div>
+          <div class="fld"><label for="fAltEn">EN</label><input id="fAltEn" type="text" maxlength="120"></div>
+        </fieldset>
+      </div>
+      <div class="fld"><label for="fType">Маҳсулот тури</label><select id="fType"></select></div>
+      <div class="fld"><label for="fNameUzc">Номи (ЎЗ)</label><input id="fNameUzc" type="text" maxlength="60" required></div>
+      <div class="fld2">
+        <div class="fld"><label for="fNameRu">Номи (RU)</label><input id="fNameRu" type="text" maxlength="60"></div>
+        <div class="fld"><label for="fNameEn">Номи (EN)</label><input id="fNameEn" type="text" maxlength="60"></div>
+      </div>
+      <div class="fld2">
+        <div class="fld"><label for="fCountry">Давлат</label><select id="fCountry"></select></div>
+        <div class="fld"><label for="fRegion">Ҳудуд</label><select id="fRegion"></select></div>
+      </div>
+      <div class="newreg" id="newReg" hidden>
+        <div class="fld"><label for="nrName">Янги ҳудуд номи (ЎЗ)</label><input id="nrName" type="text" maxlength="40" placeholder="Масалан, Измир"></div>
+        <div class="newreg__btns"><button type="button" class="btn btn--red btn--sm" id="nrOk">Қўшиш</button><button type="button" class="btn btn--line btn--sm" id="nrNo">Бекор</button></div>
+      </div>
+      <button type="button" class="linkbtn" id="nrOpen"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Шу давлатга янги ҳудуд</button>
+      <fieldset class="fld seg-f"><legend>Ҳолати</legend>
+        <div class="seg" id="fStatus">
+          <label><input type="radio" name="st" value="in"><span class="seg--in">Бор</span></label>
+          <label><input type="radio" name="st" value="way"><span class="seg--way">Йўлда</span></label>
+          <label><input type="radio" name="st" value="out"><span class="seg--out">Тугаган</span></label>
+        </div>
+      </fieldset>
+      <div class="fld"><label for="fKg">Қути оғирлиги, кг</label><input id="fKg" class="num" type="number" inputmode="numeric" min="1" max="1000" step="1"></div>
+      <p class="ferr" id="fErr" aria-live="polite"></p>
+    </div>
+    <div class="sheet__foot">
+      <button type="button" class="btn btn--line" id="pDel"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span>Ўчириш</span></button>
+      <button type="submit" class="btn btn--red"><span>Сақлаш</span></button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/panel.js"></script>
+</body>
+</html>
