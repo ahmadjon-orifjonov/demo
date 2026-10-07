@@ -138,12 +138,14 @@
         var tx = reduce ? -16 : -16 + prog * 6 + it.my * -10;
         var ty = reduce ? it.base : it.base - prog * 14 + it.mx * 18;
         it.rx += (tx - it.rx) * 0.12; it.ry += (ty - it.ry) * 0.12;
-        if (Math.abs(tx - it.rx) > 0.05 || Math.abs(ty - it.ry) > 0.05) again = true;
-        it.rot.style.transform = 'rotateX(' + it.rx.toFixed(2) + 'deg) rotateY(' + it.ry.toFixed(2) + 'deg)';
+        var fy = reduce ? 0 : Math.sin(performance.now() / 1100 + it.base) * 6; // sekin suzish
+        if (!reduce) again = true;
+        it.rot.style.transform = 'translateY(' + fy.toFixed(2) + 'px) rotateX(' + it.rx.toFixed(2) + 'deg) rotateY(' + it.ry.toFixed(2) + 'deg)';
       });
-      if (again) req();
+      if (again && !document.hidden) req();
     }
     function req() { if (!raf) raf = requestAnimationFrame(tick); }
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) req(); });
     items.forEach(function (it) {
       if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { it.on = en[0].isIntersecting; if (it.on) req(); }).observe(it.el);
       else it.on = true;
@@ -182,12 +184,12 @@
     else { e.removeAttribute('data-k'); e.textContent = ''; f.classList.remove('is-bad'); }
   }
   function radio(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
-  function setRadio(name, v) { var r = form.querySelector('input[name="' + name + '"][value="' + v + '"]'); if (r) { r.checked = true; setErr(name === 'product' ? 'eProd' : 'eVol'); } }
+  function setRadio(name, v) { var r = form.querySelector('input[name="' + name + '"][value="' + v + '"]'); if (r) r.checked = true; }
   /* kontekst belgisi: har bir tugma formaga nima tanlanganini ko'rsatadi */
   var ctxView = null; // {kind:'book'|'seg'|'prod'|'gen', key}
   function renderCtx() {
     var tag = $('#ctxTag'); if (!tag) return;
-    if (!ctxView) { tag.hidden = true; $('.tags-ctx').classList.remove('has-tag'); return; }
+    if (!ctxView || ctxView.kind === 'gen') { tag.hidden = true; $('.tags-ctx').classList.remove('has-tag'); return; }
     var v = ctxView, txt;
     if (v.kind === 'book') txt = t('ctx.' + v.key);
     else if (v.kind === 'seg') txt = t('form.chosen') + ' ' + t('seg.' + v.key);
@@ -201,10 +203,11 @@
   function volLabel(v) { return t(v === '0.5' ? 'vol.05' : 'vol.' + v); }
   function renderDone() {
     var L = lastLead;
-    var pName = t(L.product === 'mmo' ? 'prod.mmo.name' : 'prod.skin.name');
-    $('#doneSum').textContent = pName + ' · ' + volLabel(L.vol) + (L.seg ? ' · ' + t('seg.' + L.seg) : '');
+    var pName = L.product ? t(L.product === 'mmo' ? 'prod.mmo.name' : 'prod.skin.name') : t('ctx.gen');
+    var vName = L.vol ? volLabel(L.vol) : '';
+    $('#doneSum').textContent = [pName, vName, L.seg ? t('seg.' + L.seg) : ''].filter(Boolean).join(' · ');
     var msg = fill(t('tg.order'), {
-      p: pName, v: volLabel(L.vol),
+      p: vName ? pName + ', ' + vName : pName,
       c: L.ctx ? ' ' + t('ctx.' + L.ctx) + '.' : '',
       s: L.seg ? fill(t('tg.seg'), { s: t('seg.' + L.seg) }) : '',
       n: L.name, t: '+998 ' + fmtPhone(L.phone)
@@ -219,17 +222,12 @@
       if (d.length === 9) setErr('ePhone');
     });
     fName.addEventListener('input', function () { if (fName.value.trim().length >= 2) setErr('eName'); });
-    $$('input[type=radio]', form).forEach(function (r) {
-      r.addEventListener('change', function () { setErr(r.name === 'product' ? 'eProd' : 'eVol'); });
-    });
     $('#ctxClear').addEventListener('click', function () { setSeg(null); setCtx(null); setView(null); fName.focus(); });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = fName.value.trim(), ph = phoneDigits(), pr = radio('product'), vol = radio('vol'), bad = [];
       if (name.length < 2) { setErr('eName', 'err.name'); bad.push(fName); } else setErr('eName');
       if (ph.length !== 9) { setErr('ePhone', 'err.phone'); bad.push(fPhone); } else setErr('ePhone');
-      if (!pr) { setErr('eProd', 'err.product'); bad.push(form.querySelector('input[name=product]')); } else setErr('eProd');
-      if (!vol) { setErr('eVol', 'err.vol'); bad.push(form.querySelector('input[name=vol]')); } else setErr('eVol');
       fName.setAttribute('aria-invalid', String(name.length < 2));
       fPhone.setAttribute('aria-invalid', String(ph.length !== 9));
       if (bad.length) { bad[0].focus(); return; }
@@ -282,6 +280,9 @@
   var start = LANGS.indexOf(q) >= 0 ? q : store('alf_lang');
   applyLang(LANGS.indexOf(start) >= 0 ? start : 'uz', LANGS.indexOf(q) >= 0);
   initMap();
+  if ('IntersectionObserver' in window) $$('.marquee, #map').forEach(function (el) {
+    new IntersectionObserver(function (en) { el.classList.toggle('is-off', !en[0].isIntersecting); }).observe(el);
+  });
   initBoxes();
 
   /* ---------- skroll animatsiyalari (GSAP bo'lsa) ---------- */
@@ -305,7 +306,23 @@
       if (mp) g.to(mp, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
     });
   }
-  initScrollFx();
+  function loadScript(src) { return new Promise(function (res, rej) { var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+  var gsapLoading = null;
+  function startFx() {
+    if (reduce) return;
+    if (window.gsap && window.ScrollTrigger) return initScrollFx();
+    if (!gsapLoading) gsapLoading = loadScript('js/vendor/gsap.min.js').then(function () { return loadScript('js/vendor/ScrollTrigger.min.js'); }).then(initScrollFx).catch(function () {});
+  }
+  startFx();
+  // himoya: skroll-animatsiya ishlamay qolsa, kontent 1,5 s da baribir ko'rinadi
+  function safety() {
+    $$('[data-r]').forEach(function (el) {
+      var cs = getComputedStyle(el);
+      if ((cs.visibility === 'hidden' || +cs.opacity === 0) && el.getBoundingClientRect().top < window.innerHeight) { el.style.visibility = 'visible'; el.style.opacity = '1'; el.style.transform = 'none'; }
+    });
+  }
+  setTimeout(safety, 1500);
+  window.addEventListener('scroll', function () { clearTimeout(safety.t); safety.t = setTimeout(safety, 1500); }, { passive: true });
 
   /* reduced-motion sozlamasi o'zgarsa */
   if (mqReduce) {
@@ -313,7 +330,7 @@
       reduce = mqReduce.matches;
       if (mapCtl) mapCtl.onReduce();
       if (reduce && gsapCtx) { gsapCtx.revert(); gsapCtx = null; $$('[data-r]').forEach(function (el) { el.style.opacity = ''; el.style.visibility = ''; el.style.transform = ''; }); }
-      else if (!reduce && !gsapCtx) initScrollFx();
+      else if (!reduce && !gsapCtx) startFx();
     };
     if (mqReduce.addEventListener) mqReduce.addEventListener('change', onRM); else if (mqReduce.addListener) mqReduce.addListener(onRM);
   }
