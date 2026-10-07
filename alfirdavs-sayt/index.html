@@ -29,7 +29,7 @@
 var F={uz:['golos-latin','unbounded-latin'],uzc:['golos-cyrillic','golos-cyrillic-ext','montserrat-cyrillic','montserrat-cyrillic-ext'],ru:['golos-cyrillic','unbounded-cyrillic']}[l]||['golos-latin','unbounded-latin'];
 F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as='font';k.type='font/woff2';k.crossOrigin='anonymous';k.href='fonts/'+f+'.woff2';document.head.appendChild(k)})})();
 </script>
-<link rel="stylesheet" href="css/style.css?v=1007120451">
+<link rel="stylesheet" href="css/style.css?v=1007124345">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json" id="ld">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"ALFIRDAVS TM","description":"Polsha va Rossiyadan tovuq farshi (MMO) va tovuq terisi ulgurji importi","telephone":"+998997841144","foundingDate":"2022","address":{"@type":"PostalAddress","streetAddress":"Vodnik ko‘chasi 48/60","addressLocality":"Toshkent","addressCountry":"UZ"},"areaServed":"UZ","sameAs":["https://t.me/firdavs2310"],"url":"https://ahmadjon-orifjonov.github.io/demo/alfirdavs-sayt/","image":"https://ahmadjon-orifjonov.github.io/demo/alfirdavs-sayt/img/og.jpg","priceRange":"ulgurji"}
@@ -284,7 +284,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
     </div>
     <div class="board glass" data-r>
       <div class="board__top">
-        <span class="live"><span class="dot-live dot-live--green" aria-hidden="true"></span><span data-t="batch.live">Ombor holati</span><span class="badge" data-t="badge">Namuna</span></span>
+        <span class="live"><span class="dot-live dot-live--green" aria-hidden="true"></span><span data-t="batch.live">Ombor holati</span></span>
         <span class="board__upd num" data-t="batch.upd">Yangilandi: 7-oktabr · namuna</span>
       </div>
       <div class="lot">
@@ -294,7 +294,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
           <span class="lot__qty num" data-t="batch.qty">21 t</span>
         </div>
         <div class="lot__bar"><span class="st st--ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-t="batch.instock">Omborda</span></span>
-          <a class="btn btn--accent btn--sm" href="#ariza" data-cta data-product="mmo" data-vol="20" data-ctx="mmo"><span data-t="batch.book">Band qilish</span></a></div>
+          <span class="lot__act"><span class="badge" data-t="badge">Namuna</span><a class="btn btn--accent btn--sm" href="#ariza" data-cta data-product="mmo" data-vol="20" data-ctx="mmo"><span data-t="batch.book">Band qilish</span></a></span></div>
       </div>
       <div class="lot">
         <div class="lot__main">
@@ -309,7 +309,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
           <li data-t="batch.s4">Ombor</li>
         </ol>
         <div class="lot__bar"><span class="st st--way"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg><span data-t="batch.onway">Bojxonada · ~12-oktabr</span></span>
-          <a class="btn btn--line btn--sm" href="#ariza" data-cta data-product="skin" data-ctx="skin"><span data-t="batch.book">Band qilish</span></a></div>
+          <span class="lot__act"><span class="badge" data-t="badge">Namuna</span><a class="btn btn--line btn--sm" href="#ariza" data-cta data-product="skin" data-ctx="skin"><span data-t="batch.book">Band qilish</span></a></span></div>
       </div>
       <p class="note" data-t="batch.note">Namuna ma’lumot — haqiqiy saytda telefondan yangilanadi.</p>
     </div>
@@ -351,7 +351,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
     <div class="order__copy" data-r>
       <p class="idx"><span class="idx__n num">05</span><i></i><span data-t="form.kicker">Ariza</span><span class="badge" data-t="form.badge">Namuna forma</span></p>
       <h2 id="form-h" class="h2" data-t="form.h2">Narxni bilib oling — qo‘ng‘iroq qilamiz</h2>
-      <p class="lead" data-t="form.sub">Narx va bor partiyalar haqida qo‘ng‘iroq qilib aytamiz.</p>
+      <p class="lead" data-t="form.sub">Ulgurji narx va bor partiyalarni aytamiz.</p>
     </div>
 
     <div class="formcard glass" data-r>
@@ -416,7 +416,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
   <div class="wrap foot__grid">
     <div class="foot__brand">
       <span class="brand"><svg class="brand__mark" width="34" height="34" aria-hidden="true"><use href="#i-logo"/></svg><span class="brand__name">ALFIRDAVS TM</span></span>
-      <p data-t="foot.tag">Polsha va Rossiyadan tovuq farshi (MMO) va terisi — ulgurji.</p>
+      <p data-t="foot.tag">Polsha va Rossiyadan tovuq farshi (MMO) va terisi — kolbasa va chuchvara sexlari uchun ulgurji.</p>
       <p class="foot__since" data-t="foot.since">2022-yildan</p>
       <a class="btn btn--accent foot__cta" href="#ariza" data-cta><span data-t="cta.price">Narxni bilish</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
@@ -440,7 +440,7 @@ F.forEach(function(f){var k=document.createElement('link');k.rel='preload';k.as=
   <a class="bar__cta" href="#ariza" data-cta><span data-t="cta.price">Narxni bilish</span></a>
 </nav>
 
-<script src="js/i18n.js?v=1007120451" defer></script>
-<script src="js/app.js?v=1007120451" defer></script>
+<script src="js/i18n.js?v=1007124345" defer></script>
+<script src="js/app.js?v=1007124345" defer></script>
 </body>
 </html>
