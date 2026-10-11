@@ -15,7 +15,20 @@
     // avail: mahsulot holati («bor/yo'lda/tugagan») ko'rsatiladimi. Tasdiqlanmagan ma'lumot bilan yasalgan prod'da — yo'q.
     var avail = ctx.avail !== false;
     var db = ctx.db, S = ctx.S;
-    function t(key) { var s = ctx.D[key]; return s != null ? s : ''; }
+    // r17 — ikkinchi daraja nomi (S.l2): 'region' (standart) | 'maker' | 'plant' | 'own' (o'z so'zi S.l2name). Matn tanlash: kalit@<holat> -> kalit@n -> kalit.
+    var l2 = S && (S.l2 === 'maker' || S.l2 === 'plant' || S.l2 === 'own') ? S.l2 : 'region';
+    var l2w = l2 === 'own' ? String((S.l2name && (S.l2name[lang] || S.l2name.uzc || S.l2name.ru || S.l2name.en)) || '').trim().slice(0, 40) : '';
+    if (l2 === 'own' && !l2w) l2 = 'region';
+    function t(key) {
+      var D = ctx.D, s;
+      if (l2 !== 'region') { s = D[key + '@' + l2]; if (s == null) s = D[key + '@n']; }
+      if (s == null) s = D[key];
+      if (s == null) return '';
+      return l2 === 'own' ? String(s).split('{w}').join(l2w) : s;
+    }
+    // ixtiyoriy «ishlab chiqaruvchi / zavod»: mkTxt — shu tildagi yozuv, mkKey — tilga bog'liq bo'lmagan kalit (filtr uchun)
+    function mkTxt(p) { var m = p && p.maker; if (!m) return ''; return String(typeof m === 'string' ? m : (m[lang] || m.uzc || m.ru || m.en || '')).trim().slice(0, 60); }
+    function mkKey(p) { var m = p && p.maker; if (!m) return ''; return String(typeof m === 'string' ? m : (m.uzc || m.ru || m.en || '')).trim().slice(0, 60); }
     function L(o) { if (!o) return ''; if (typeof o === 'string') return o; return o[lang] || o.uzc || o.ru || o.en || ''; }
     function country(id) { for (var i = 0; i < db.countries.length; i++) if (db.countries[i].id === id) return db.countries[i]; return null; }
     function region(c, id) { if (!c) return null; for (var i = 0; i < c.regions.length; i++) if (c.regions[i].id === id) return c.regions[i]; return null; }
@@ -130,7 +143,7 @@
         '<div class="card__media">' + imgHtml(p) + /*DEMO-START*/cardSmp(p) + /*DEMO-END*/'<span class="card__code">' + esc(c ? c.code : '') + '</span></div>' +
         '<div class="card__body"><div class="card__top"><span class="st st--' + st + ' card__st">' + esc(t('st.' + st)) + '</span><span class="card__sub">' + esc(L(tp.sub)) + '</span></div>' +
         '<h3>' + (tu ? '<a href="' + esc(tu) + '">' + nm + '</a>' : nm) + '</h3>' +
-        '<p class="card__origin">' + ic('pin') + '<span>' + esc(c ? L(c.name) : '') + (r ? ' · <b>' + esc(L(r.name)) + '</b>' : '') + '</span></p>' +
+        '<p class="card__origin">' + ic('pin') + '<span>' + esc(c ? L(c.name) : '') + (r ? ' · <b>' + esc(L(r.name)) + '</b>' : '') + (mkTxt(p) ? ' · <span class="card__mk">' + esc(mkTxt(p)) + '</span>' : '') + '</span></p>' +
         '<p class="card__meta"><span>' + ic('snow') + '<span class="num">−18 °C</span></span><span>' + ic('box') + '<span class="num">' + esc(packTxt(p.kg)) + '</span></span></p>' +
         '<a class="btn btn--line card__btn" href="' + esc(url('contacts/')) + '" data-ask="' + esc(p.id) + '"><span>' + esc(t('cta.price')) + '</span>' + ic('arrow') + '</a>' +
         '</div></li>';
@@ -143,6 +156,7 @@
       if (skip !== 'country' && F.country && p.country !== F.country) return false;
       if (skip !== 'country' && skip !== 'region' && F.region && p.region !== F.region) return false;
       if (skip !== 'type' && F.type && p.type !== F.type) return false;
+      if (skip !== 'maker' && F.maker && mkKey(p) !== F.maker) return false;
       if (avail && F.stock && p.status !== 'in') return false;
       return true;
     }
@@ -173,6 +187,18 @@
         th += chip('data-type', tp.id, L(tp.name), { n: n }, F.type === tp.id, n === 0 && F.type !== tp.id);
       });
       o.type = th;
+      // «ishlab chiqaruvchi / zavod» bo'yicha filtr — faqat kamida 2 xil qiymat bo'lganda (aks holda ortiqcha)
+      var mks = [], mseen = {};
+      db.products.forEach(function (p) { var k = mkKey(p); if (k && !mseen[k]) { mseen[k] = 1; mks.push({ k: k, n: mkTxt(p) }); } });
+      o.maker = '';
+      if (mks.length >= 2) {
+        var mh = chip('data-maker', '', t('cat.all'), null, !F.maker);
+        mks.forEach(function (x) {
+          var n = count(function (p) { return mkKey(p) === x.k && match(F, p, 'maker'); });
+          mh += chip('data-maker', x.k, x.n, { n: n }, F.maker === x.k, n === 0 && F.maker !== x.k);
+        });
+        o.maker = mh;
+      }
       var list = byStatus(db.products.filter(function (p) { return match(F, p); }));
       var shown = limit ? list.slice(0, limit) : list;
       o.total = list.length; o.rest = list.length - shown.length;
@@ -238,7 +264,7 @@
       return list.map(function (p) {
         var c = country(p.country), r = region(c, p.region), st = stOf(p), nm = pName(p), own = nm !== L(tp.name);
         return '<li class="orig__it' + (st === 'out' ? ' is-out' : '') + '" data-id="' + esc(p.id) + '"><span class="orig__code">' + esc(c ? c.code : '') + '</span>' +
-          '<span class="orig__t"><b>' + esc(c ? L(c.name) : '') + (r ? ' · ' + esc(L(r.name)) : '') + '</b>' + (own ? '<small>' + esc(nm) + '</small>' : '') + '</span>' +
+          '<span class="orig__t"><b>' + esc(c ? L(c.name) : '') + (r ? ' · ' + esc(L(r.name)) : '') + '</b>' + (own || mkTxt(p) ? '<small>' + esc([own ? nm : '', mkTxt(p)].filter(Boolean).join(' · ')) + '</small>' : '') + '</span>' +
           '<span class="st st--' + st + '">' + esc(t('st.' + st)) + '</span><span class="orig__pack num">' + esc(packTxt(p.kg)) + '</span>' +
           '<a class="btn btn--line btn--sm orig__btn" href="' + esc(url('contacts/')) + '" data-ask="' + esc(p.id) + '"><span>' + esc(t('cta.price')) + '</span>' + ic('arrow') + '</a></li>';
       }).join('');
@@ -330,7 +356,7 @@
       t: t, L: L, esc: esc, fill: fill, plural: plural, ic: ic, url: url, asset: asset, tag: tag, demo: demo,
       /*DEMO-START*/isStock: isStock, smp: smp, smpTag: smpTag, /*DEMO-END*/
       country: country, region: region, type: type, product: product, pName: pName, typeUrl: typeUrl, typeStat: typeStat,
-      contacts: contacts, maxTxt: maxTxt, cbtns: cbtns, match: match,
+      contacts: contacts, maxTxt: maxTxt, cbtns: cbtns, match: match, l2: l2, l2w: l2w, mkTxt: mkTxt, mkKey: mkKey,
       label: label, pic: pic, card: card, catalog: catalog, more: more, tiles: tiles, spec: spec, origins: origins, originTxt: originTxt, packsTxt: packsTxt,
       stats: stats, certs: certs, gallery: gallery, photo: photo, faq: faq, faqList: faqList, terms: terms, termOne: termOne, hasPay: hasPay, avail: avail
     };

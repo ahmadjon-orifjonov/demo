@@ -138,6 +138,23 @@
     <section class="view" id="v-r" role="region" aria-labelledby="r-h" hidden>
       <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
       <div class="vhead"><h2 id="r-h" data-t="m.r"></h2></div>
+      <form class="box" id="l2Form" novalidate>
+        <h3 data-t="l2.h"></h3>
+        <p class="l2__p" data-t="l2.p"></p>
+        <div class="l2opts" id="l2Opts" role="radiogroup" aria-labelledby="l2-h">
+          <label><input type="radio" name="l2" value="region"><span data-t="l2.region"></span></label>
+          <label><input type="radio" name="l2" value="maker"><span data-t="l2.maker"></span></label>
+          <label><input type="radio" name="l2" value="plant"><span data-t="l2.plant"></span></label>
+          <label><input type="radio" name="l2" value="own"><span data-t="l2.own"></span></label>
+        </div>
+        <fieldset class="tg" data-tg="l2w" id="l2W" hidden><legend data-t="l2.oz"></legend>
+          <div class="tg__row" data-l="uzc"><label for="l2Uzc">ЎЗ</label><input id="l2Uzc" type="text" maxlength="30"></div>
+          <div class="tg__row" data-l="ru"><label for="l2Ru">RU</label><input id="l2Ru" type="text" maxlength="30"></div>
+          <div class="tg__row" data-l="en"><label for="l2En">EN</label><input id="l2En" type="text" maxlength="30"></div>
+        </fieldset>
+        <p class="ferr" id="l2Err" aria-live="polite"></p>
+        <button class="btn btn--line btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-t="saqlash"></span></button>
+      </form>
       <form class="box" id="rForm" novalidate>
         <h3 data-t="r.yangi"></h3>
         <div class="fld"><label for="rCountry" data-t="f.davlat"></label><select id="rCountry"></select></div>
@@ -324,6 +341,7 @@
         <div class="newreg__btns"><button type="button" class="btn btn--red btn--sm" id="nrOk"><span data-t="qoshish"></span></button><button type="button" class="btn btn--line btn--sm" id="nrNo"><span data-t="bekor"></span></button></div>
       </div>
       <button type="button" class="linkbtn" id="nrOpen"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="f.hududqosh"></span></button>
+      <div class="fld"><label for="fMaker" data-t="f.zavod"></label><input id="fMaker" type="text" maxlength="60" autocomplete="off" data-tp="f.zavod.ph"></div>
       <fieldset class="fld seg-f"><legend data-t="f.holat"></legend>
         <div class="seg" id="fStatus">
           <label><input type="radio" name="st" value="in"><span class="seg--in" data-t="st.in"></span></label>

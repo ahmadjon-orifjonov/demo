@@ -89,15 +89,16 @@
   });
 
   /* ---------- katalog ---------- */
-  var F = { country: '', region: '', type: '', stock: false, more: false };
+  var F = { country: '', region: '', type: '', maker: '', stock: false, more: false };
   var LIMIT = PAGE === 'home' ? 8 : 0;
   var elCountry = $('#fCountry'), elRegion = $('#fRegion'), elRegionRow = $('#fRegionRow'), elType = $('#fType'),
-      elStock = $('#fStock'), elCount = $('#fCount'), elCards = $('#cards'), elEmpty = $('#empty'), elMore = $('#moreWrap');
+      elMaker = $('#fMaker'), elMakerRow = $('#fMakerRow'), elStock = $('#fStock'), elCount = $('#fCount'), elCards = $('#cards'), elEmpty = $('#empty'), elMore = $('#moreWrap');
   var mapCtl = null;
   function cleanF() {
     var c = R.country(F.country);
     if (!c) { F.country = ''; F.region = ''; } else if (F.region && !R.region(c, F.region)) F.region = '';
     if (F.type && !R.type(F.type)) F.type = '';
+    if (F.maker && !db.products.some(function (p) { return R.mkKey(p) === F.maker; })) F.maker = '';
   }
   function renderCatalog() {
     if (!elCards) return;
@@ -106,6 +107,7 @@
     elCountry.innerHTML = o.country;
     elRegion.innerHTML = o.region; elRegionRow.hidden = !o.region;
     elType.innerHTML = o.type;
+    if (elMaker) { elMaker.innerHTML = o.maker; elMakerRow.hidden = !o.maker; if (!o.maker) F.maker = ''; }
     elCards.innerHTML = o.cards;
     if (elMore) { elMore.innerHTML = R.more(o); elMore.hidden = !(o.rest > 0); }
     elEmpty.hidden = o.total > 0;
@@ -114,8 +116,8 @@
     if (PAGE === 'catalog') {
       try {
         var u = new URL(location.href), q = u.searchParams;
-        ['c', 'r', 't', 'stock'].forEach(function (k) { q.delete(k); });
-        if (F.country) q.set('c', F.country); if (F.region) q.set('r', F.region); if (F.type) q.set('t', F.type); if (F.stock) q.set('stock', '1');
+        ['c', 'r', 't', 'm', 'stock'].forEach(function (k) { q.delete(k); });
+        if (F.country) q.set('c', F.country); if (F.region) q.set('r', F.region); if (F.type) q.set('t', F.type); if (F.maker) q.set('m', F.maker); if (F.stock) q.set('stock', '1');
         history.replaceState(null, '', u);
       } catch (e) {}
     }
@@ -131,9 +133,10 @@
       if (b.hasAttribute('data-country')) setFilter('country', b.getAttribute('data-country'));
       else if (b.hasAttribute('data-region')) setFilter('region', b.getAttribute('data-region'));
       else if (b.hasAttribute('data-type')) setFilter('type', b.getAttribute('data-type'));
+      else if (b.hasAttribute('data-maker')) setFilter('maker', b.getAttribute('data-maker'));
     });
     elStock.addEventListener('change', function () { setFilter('stock', elStock.checked); });
-    $('#fReset').addEventListener('click', function () { F = { country: '', region: '', type: '', stock: false, more: false }; elStock.checked = false; renderCatalog(); });
+    $('#fReset').addEventListener('click', function () { F = { country: '', region: '', type: '', maker: '', stock: false, more: false }; elStock.checked = false; renderCatalog(); });
     if (elMore) elMore.addEventListener('click', function (e) {
       if (e.target.closest('#moreBtn')) { e.preventDefault(); F.more = true; renderCatalog(); var f = $('#cards .card:nth-child(' + (LIMIT + 1) + ') a'); if (f) try { f.focus({ preventScroll: true }); } catch (x) {} }
     });
@@ -344,7 +347,24 @@
     var ph = $('[data-dyn-photo]');
     if (ph) { var g = R.photo(), im = $('img', ph); ph.hidden = !g; if (g && im && !/^img\//.test(g.src)) { im.removeAttribute('srcset'); im.src = R.asset(g.src); im.alt = g.t; } }
   }
+  // r17 (namuna): panelda ikkinchi daraja nomi almashtirilganda sahifadagi tayyor matnlar ham almashadi — sahifa qaysi holatda yasalgani
+  // <html data-l2> da; matni holatga bog'liq kalitlar («kalit@…») bo'yicha eski matn yangi matnga aniq tenglik bilan almashtiriladi.
+  function termTexts() {
+    var D = ctx.D, eski = html.getAttribute('data-l2') || 'region', ew = html.getAttribute('data-l2w') || '', yangi = R.l2, yw = R.l2w || '';
+    if (eski === yangi && ew === yw) return;
+    function res(key, mode, w) { var s; if (mode !== 'region') { s = D[key + '@' + mode]; if (s == null) s = D[key + '@n']; } if (s == null) s = D[key]; return mode === 'own' ? String(s).split('{w}').join(w) : String(s); }
+    var map = Object.create(null), seen = Object.create(null), k, n = 0;
+    for (k in D) { var i = k.indexOf('@'); if (i < 0) continue; var b = k.slice(0, i); if (seen[b] || D[b] == null) continue; seen[b] = 1; var a = res(b, eski, ew), c = res(b, yangi, yw); if (a !== c && a.indexOf('{') < 0 && a.indexOf('<') < 0) { map[a] = c; n++; } }
+    if (n && document.createTreeWalker) {
+      var w = document.createTreeWalker(document.body, 4, null), nd, list = [];
+      while ((nd = w.nextNode())) list.push(nd);
+      list.forEach(function (x) { var v = x.nodeValue, tr = v.trim(); if (tr && map[tr] != null) x.nodeValue = v.replace(tr, function () { return map[tr]; }); });
+    }
+    $$('[data-regs]').forEach(function (el) { el.textContent = R.plural('tile.regions', +el.getAttribute('data-regs') || 0); });   // «5 та ҳудуд» kabi sanoq
+    html.setAttribute('data-l2', yangi); html.setAttribute('data-l2w', yw);
+  }
   function renderAll() {
+    termTexts();
     applySettings(document.body, pageType ? typeMsg() : t('msg.hello'));
     renderCatalog(); renderDynamic();
     if (dlgCtx) setDlg(dlgCtx);
@@ -392,7 +412,7 @@
   var hasQ = false;
   if (elCards && sp) {
     if (R.country(sp.get('c'))) { F.country = sp.get('c'); hasQ = true; if (sp.get('r')) F.region = sp.get('r'); }
-    if (PAGE === 'catalog') { if (R.type(sp.get('t'))) { F.type = sp.get('t'); hasQ = true; } if (sp.get('stock') === '1') { F.stock = true; elStock.checked = true; hasQ = true; } }
+    if (PAGE === 'catalog') { if (R.type(sp.get('t'))) { F.type = sp.get('t'); hasQ = true; } if (sp.get('m')) { F.maker = String(sp.get('m')).slice(0, 60); hasQ = true; } if (sp.get('stock') === '1') { F.stock = true; elStock.checked = true; hasQ = true; } }
   }
   if (ALF.hasOverride()) renderAll();
   else { if (hasQ) renderCatalog(); else if (mapCtl) mapCtl.mark(''); if (elStock && elStock.checked && !F.stock) setFilter('stock', true); }

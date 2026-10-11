@@ -1,7 +1,7 @@
 /* ALFIRDAVS TM — NAMUNA QATLAMI (r16). FAQAT namuna (demo) build'da, panel.html ga js/qatlam.js dan OLDIN ulanadi.
    Haqiqiy panel (sayt/server/panel) fayllari o'zgarmagan holda ishlaydi: bu qatlam panelning `api/…` so'rovlarini shu brauzerda
    ushlab, server o'rniga o'zi javob beradi. Ma'lumot brauzer xotirasida (localStorage) turadi — hech qayerga yuborilmaydi.
-   «Сайтга чиқариш» bosilganda ma'lumot namuna sayt o'qiydigan kalitlarga yoziladi (js/data.js: alf_db_r16 / alf_set_r16) —
+   «Сайтга чиқариш» bosilganda ma'lumot namuna sayt o'qiydigan kalitlarga yoziladi (js/data.js: alf_db_r17 / alf_set_r17) —
    shu brauzerda ochilgan namuna sayt yangi ko'rinishda chiqadi.
    Bu yerda HAQIQIY PAROL YO'Q: kirish ma'lumoti ochiq (namuna / namuna) va kirish sahifasining o'zida yozib qo'yilgan.
    Haqiqiy saytga (prod build) va server paketiga bu fayl KIRMAYDI. */
@@ -9,8 +9,8 @@
   'use strict';
   var ALF = window.ALF;
   var LOGIN = 'namuna', PAROL = 'namuna';                    // ochiq namuna kirish ma'lumoti (sir emas)
-  var K = { holat: 'alf_nm_holat', tarix: 'alf_nm_tarix', jurnal: 'alf_nm_jurnal', kirgan: 'alf_nm_kirgan' };
-  var SAYT = { db: 'alf_db_r16', set: 'alf_set_r16' };       // namuna sayt o'qiydigan kalitlar (r11/data.tpl.js bilan bir xil bo'lishi shart)
+  var K = { holat: 'alf_nm17_holat', tarix: 'alf_nm17_tarix', jurnal: 'alf_nm17_jurnal', kirgan: 'alf_nm17_kirgan' };   // r17: ma'lumot tuzilishi kengaydi — eski namuna yozuvlari o'qilmaydi
+  var SAYT = { db: 'alf_db_r17', set: 'alf_set_r17' };       // namuna sayt o'qiydigan kalitlar (r11/data.tpl.js bilan bir xil bo'lishi shart)
   var TARIX_MAX = 8, JURNAL_MAX = 30;
   var aslMahsulot = ALF.loadProducts, aslSozlama = ALF.loadSettings;   // qatlam.js almashtirishidan oldingi (boshlang'ich ma'lumot)
 

@@ -21,7 +21,7 @@
   function type(id) { return db.types.filter(function (x) { return x.id === id; })[0] || null; }
   function prod(d, id) { return d.products.filter(function (p) { return p.id === id; })[0] || null; }
   function pName(p) { var tn = (type(p.type) || {}).name || {}, l = TIL.til(); return (p.name && p.name[l]) || tn[l] || L(p.name) || L(tn); }
-  function joyNomi(p) { var c = country(db, p.country), r = region(c, p.region); return (c ? L(c.name) : '—') + (r ? ' · ' + L(r.name) : ''); }
+  function joyNomi(p) { var c = country(db, p.country), r = region(c, p.region), mk = String(L(p.maker) || '').trim(); return (c ? L(c.name) : '—') + (r ? ' · ' + L(r.name) : '') + (mk ? ' · ' + mk : ''); }
   function uid(pre) { return pre + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
   function norm(s) { return String(s || '').trim().toLowerCase().replace(/\s+/g, ' '); }
   function toast(m, bad) { SRV.toast(m, bad); }
@@ -181,6 +181,7 @@
     $$('#fStatus input').forEach(function (r) { r.checked = r.value === st; });
     $('#fKg').value = p ? (p.kg || 20) : 20;
     curImg = p ? (p.img || '') : '';
+    $('#fMaker').value = p ? String(L(p.maker) || '').trim() : '';
     var al = (p && p.alt) || {}; $('#fAltUzc').value = al.uzc || ''; $('#fAltRu').value = al.ru || ''; $('#fAltEn').value = al.en || '';
     $('#fImgInfo').textContent = ''; $('#fErr').textContent = '';
     $('#newReg').hidden = true;
@@ -238,6 +239,9 @@
     var same = !nm || (nm.uzc === x.name.uzc && (!nm.ru || nm.ru === x.name.ru) && (!nm.en || nm.en === x.name.en));
     var pr = pendingReg, id = curId, neu = isNew, img = curImg;
     var alt = uchTil($('#fAltUzc').value, $('#fAltRu').value, $('#fAltEn').value);
+    // ishlab chiqaruvchi / zavod: ixtiyoriy, bitta yozuv (firma nomi tarjima qilinmaydi — uch tilga bir xil yoziladi); bo'sh bo'lsa saqlanmaydi
+    var mkv = $('#fMaker').value.replace(/\s+/g, ' ').trim().slice(0, 60), eskiMk = (prod(db, curId) || {}).maker || null;
+    var mk = !mkv ? null : (eskiMk && L(eskiMk) === mkv ? eskiMk : { uzc: mkv, ru: mkv, en: mkv });
     function yoz() {
       var ok = commit(function (d) {
         if (pr && pr.country === cid && rid === pr.r.id) {
@@ -247,11 +251,12 @@
         var o = prod(d, id);
         if (!o) { if (!neu) { toast(t('f.yoqolgan'), true); return false; } o = { id: id }; d.products.unshift(o); }
         o.type = tp; o.name = same ? null : nm; o.country = cid; o.region = rid; o.status = st; o.kg = +kgRaw; o.img = img; o.alt = alt;
+        if (mk) o.maker = mk; else delete o.maker;
       }, t(neu ? 'f.qoshildi' : 'f.saqlandi'));
       if (ok) { pendingReg = null; isNew = false; sheet.close(); renderRegions(); }
     }
     // takror: yangi mahsulot aynan bor mahsulotning nusxasi bo'lsa (tur + davlat + hudud bir xil) — avval so'raladi
-    var bor = neu ? db.products.filter(function (p) { return p.type === tp && p.country === cid && p.region === rid; })[0] : null;
+    var bor = neu ? db.products.filter(function (p) { return p.type === tp && p.country === cid && p.region === rid && norm(L(p.maker)) === norm(mkv); })[0] : null;
     if (bor) SRV.sora(t('f.takror.h'), t('f.takror.p', { n: pName(bor) + ' — ' + joyNomi(bor) }), t('f.takror.ha'), t('f.takror.yoq'), yoz);
     else yoz();
   });
@@ -296,6 +301,24 @@
       if (d.products.some(function (p) { return p.country === cid && p.region === rid; })) { toast(t('r.band'), true); return false; }
       c.regions = c.regions.filter(function (r) { return r.id !== rid; });
     }, t('r.ochirildi'));
+  });
+
+  /* ---------- r17: davlat ichidagi ro'yxat saytda nima deb ataladi (hudud / ishlab chiqaruvchi / zavod / o'z so'zi) ---------- */
+  function l2Chiz() {
+    var v = S.l2 === 'maker' || S.l2 === 'plant' || S.l2 === 'own' ? S.l2 : 'region', n = S.l2name || {};
+    $$('#l2Opts input').forEach(function (r) { r.checked = r.value === v; });
+    $('#l2Uzc').value = n.uzc || ''; $('#l2Ru').value = n.ru || ''; $('#l2En').value = n.en || '';
+    $('#l2W').hidden = v !== 'own'; $('#l2Err').textContent = '';
+    tgChiz($('[data-tg="l2w"]'));
+  }
+  $('#l2Opts').addEventListener('change', function () { var own = ($('#l2Opts input:checked') || {}).value === 'own'; $('#l2W').hidden = !own; $('#l2Err').textContent = ''; if (own) { tgChiz($('[data-tg="l2w"]')); var q = $('.tg__row.is-asosiy input', $('#l2W')); if (q) q.focus(); } });
+  $('#l2Form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = ($('#l2Opts input:checked') || {}).value || 'region', o = uchTil($('#l2Uzc').value, $('#l2Ru').value, $('#l2En').value);
+    if (v === 'own' && !o) { $('#l2Err').textContent = t('l2.e.oz'); var q = $('.tg__row.is-asosiy input', $('#l2W')); if (q) q.focus(); return; }
+    if (o) { var asos = birinchi(o); o.uzc = (o.uzc || asos).slice(0, 30); o.ru = (o.ru || asos).slice(0, 30); o.en = (o.en || asos).slice(0, 30); }
+    var next = ALF.loadSettings(); next.l2 = v; next.l2name = o || { uzc: '', ru: '', en: '' };
+    if (ALF.saveSettings(next)) { S = next; TIL.yangila(); l2Chiz(); toast(t('l2.ok')); }
   });
 
   /* ---------- aloqa (tekshiruv bilan) ---------- */
@@ -523,7 +546,7 @@
     if (ok) { $('#tForm').hidden = true; delete $('#tSlug').dataset.qol; }
   });
 
-  function renderData() { renderFilter(); renderList(); renderRegions(); renderTypes(); if (!xDirty) xLoad(); }
+  function renderData() { renderFilter(); renderList(); renderRegions(); renderTypes(); if (!xDirty) xLoad(); l2Chiz(); }
   // qatlam.js uchun: serverdan yangi holat kelganda (bekor qilish, tarixdan qaytarish), til almashganda va ko'rib chiqishdagi
   // «tahrirlash» belgisi bosilganda
   window.ALFPANEL = {
