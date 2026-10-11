@@ -8,6 +8,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF8F4">
+<script src="js/tema.js"></script>
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
@@ -42,12 +43,15 @@
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="i-save" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
   <symbol id="i-sort" viewBox="0 0 24 24"><path d="m7 4-4 4h8Z"/><path d="M7 8v12"/><path d="m17 20 4-4h-8Z"/><path d="M17 16V4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.9 19.1 1.4-1.4"/><path d="m17.7 6.3 1.4-1.4"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
 </defs></svg>
 
 <!-- KIRISH -->
 <section class="pin" id="loginView" aria-labelledby="pin-h" hidden>
   <form class="pin__card" id="loginForm" novalidate>
+    <button type="button" class="pbtn pbtn--tema pbtn--pin" data-tema-btn aria-pressed="false" data-ta="tema.tun"><svg class="ic tema__tun" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ic tema__kun" aria-hidden="true"><use href="#i-sun"/></svg></button>
     <div class="til til--pin" role="group" data-ta="til.aria"><button type="button" data-til="uzc" aria-pressed="true" lang="uz-Cyrl">ЎЗ</button><button type="button" data-til="ru" aria-pressed="false" lang="ru">RU</button></div>
     <img class="pin__logo" src="img/logo.svg" width="64" height="64" alt="">
     <h1 id="pin-h" data-t="kirish.h"></h1>
@@ -72,7 +76,8 @@
       <div class="brand"><img class="brand__mark" src="img/logo.svg" width="36" height="36" alt=""><span class="brand__txt"><span class="brand__name">ALFIRDAVS <b>TM</b></span><span class="ptop__sub" data-t="top.sub"></span></span></div>
       <div class="ptop__r">
         <div class="til" role="group" data-ta="til.aria"><button type="button" data-til="uzc" aria-pressed="true" lang="uz-Cyrl">ЎЗ</button><button type="button" data-til="ru" aria-pressed="false" lang="ru">RU</button></div>
-        <a class="pbtn" id="siteLink" href="./" target="_blank" rel="noopener noreferrer"><span data-t="top.sayt"></span><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        <a class="pbtn" id="siteLink" href="./" target="_blank" rel="noopener noreferrer" data-ta="top.sayt"><span data-t="top.sayt"></span><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        <button type="button" class="pbtn pbtn--tema" data-tema-btn aria-pressed="false" data-ta="tema.tun"><svg class="ic tema__tun" aria-hidden="true"><use href="#i-moon"/></svg><svg class="ic tema__kun" aria-hidden="true"><use href="#i-sun"/></svg></button>
         <button type="button" class="pbtn" id="logout"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg><span data-t="top.chiqish"></span></button>
       </div>
     </div>

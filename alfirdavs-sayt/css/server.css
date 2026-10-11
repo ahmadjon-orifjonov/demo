@@ -176,3 +176,36 @@
 .l2opts input{width:20px;height:20px;accent-color:var(--red);flex:none}
 .l2opts label:has(input:checked){border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
 #l2Form{margin-bottom:14px}
+
+/* =====================================================================
+   r19 — QORONG'U REJIM (panel). Asosiy ranglar sayt uslubidagi o'zgaruvchilardan (css/style.css: html[data-tema="tun"]);
+   bu yerda faqat panelning o'z qattiq yozilgan ranglari. Chop etishga ta'sir qilmaydi.
+   ===================================================================== */
+.pbtn--tema{width:44px;min-width:44px;padding:0;justify-content:center}
+.pbtn--tema .tema__kun{display:none}
+html[data-tema="tun"] .pbtn--tema .tema__kun{display:block}
+html[data-tema="tun"] .pbtn--tema .tema__tun{display:none}
+.pin__card{position:relative}
+.pbtn--pin{position:absolute;left:18px;top:18px}
+@media screen{
+html[data-tema="tun"] .pin{background:radial-gradient(80% 60% at 50% 0%,rgba(196,47,42,.12),transparent 70%),var(--bg)}
+html[data-tema="tun"] .ptop{background:rgba(23,19,18,.96)}
+html[data-tema="tun"] .tabs button[aria-selected="true"],html[data-tema="tun"] .til button[aria-pressed="true"],html[data-tema="tun"] .kor__eni button[aria-pressed="true"]{background:var(--tun-pill);color:var(--tun-pill-tx)}
+html[data-tema="tun"] .note,html[data-tema="tun"] .pub{background:#33290F;border-color:#6E5622;color:#EBCB8B}
+html[data-tema="tun"] .pub p{color:#EBCB8B}
+html[data-tema="tun"] .note--bad{background:#3A1B18;border-color:#6B2C26;color:#F3A59C}
+html[data-tema="tun"] .seg input:checked+.seg--in,html[data-tema="tun"] .seg button[aria-pressed="true"].s-in{background:#1F6B4F;color:#fff}
+html[data-tema="tun"] .seg input:checked+.seg--out,html[data-tema="tun"] .seg button[aria-pressed="true"].s-out{background:#6B5F5A;color:#fff}
+html[data-tema="tun"] .rgroup h3 i{background:var(--tun-tint)}
+html[data-tema="tun"] .xitem textarea{background:var(--white)}
+html[data-tema="tun"] .xbtns{background:rgba(34,28,26,.97);box-shadow:0 14px 34px -14px rgba(0,0,0,.8)}
+html[data-tema="tun"] .toast{background:var(--tun-pill);color:var(--tun-pill-tx)}
+html[data-tema="tun"] .toast.is-bad{background:#8E1F1A;color:#fff}
+html[data-tema="tun"] .hitem.is-cur{border-color:#2F5A49}
+html[data-tema="tun"] .sheet::backdrop,html[data-tema="tun"] .tasdiq::backdrop{background:rgba(8,6,5,.66)}
+html[data-tema="tun"] .tasdiq{box-shadow:0 0 0 1px var(--line),0 30px 80px -24px rgba(0,0,0,.8)}
+html[data-tema="tun"] .l2opts label{background:var(--white)}
+html[data-tema="tun"] input,html[data-tema="tun"] select,html[data-tema="tun"] textarea{color:var(--tx)}
+}
+/* r19: tor telefonda sarlavhaga 5 ta narsa sig'ishi uchun «Сайт» tugmasi faqat belgi bilan (nomi aria-label'da); logo siqilmaydi */
+@media (max-width:479px){.ptop #siteLink span{display:none}.ptop #siteLink{width:44px;min-width:44px;padding:0;justify-content:center}.ptop .brand__mark{flex:none}}

@@ -332,6 +332,7 @@ window.I18N = {
  "smp.manba": "Sample photo credits",
  "smp.manba.p": "These photos do not belong to the company — sample only. Authors and licenses:",
  "smp.kes": "cropped",
+ "tema.tun": "Dark mode",
  "cat.maker": "Plant",
  "cat.maker@plant": "Producer",
  "cat.region@maker": "Producer",

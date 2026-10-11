@@ -407,6 +407,23 @@
     cold.forEach(function (c) { cio.observe(c); });
   }
 
+  /* ---------- r19: qorong'u rejim tugmasi (sarlavhada va telefon menyusida) ---------- */
+  function temaSync() {
+    var tun = html.getAttribute('data-tema') === 'tun';
+    $$('[data-tema-btn]').forEach(function (b) { b.setAttribute('aria-pressed', String(tun)); });
+    var tm = document.querySelector('meta[name="theme-color"]'); if (tm) tm.setAttribute('content', tun ? '#171312' : '#FBF8F4');
+  }
+  function temaQoy(tun) { if (tun) html.setAttribute('data-tema', 'tun'); else html.removeAttribute('data-tema'); temaSync(); }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-tema-btn]'); if (!b) return;
+    var tun = html.getAttribute('data-tema') !== 'tun';
+    temaQoy(tun);
+    try { if (tun) window.localStorage.setItem('alf_tema', 'tun'); else window.localStorage.removeItem('alf_tema'); } catch (x) {}
+  });
+  // boshqa varaqda (yoki panelda) almashtirilsa — shu sahifa ham almashadi
+  window.addEventListener('storage', function (e) { if (e.key === 'alf_tema' || e.key === null) { var v = null; try { v = window.localStorage.getItem('alf_tema'); } catch (x) {} temaQoy(v === 'tun'); } });
+  temaSync();
+
   /* ---------- boshlash ---------- */
   afterPaint(function () { try { initMap(); } catch (e) { mapCtl = null; } if (mapCtl) mapCtl.mark(F.country); });
   var hasQ = false;

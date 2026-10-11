@@ -13,3 +13,11 @@
 .nm-kir b{font-weight:700;color:var(--tx,#1E1A19)}
 .nm-kir small{display:block;margin-top:4px;font-size:12px;color:#6B5536}
 .nm-izoh{margin-bottom:12px}
+/* r19 — qorong'u rejimda namuna tasmasi va kirish ma'lumoti ham o'qilsin */
+@media screen{
+html[data-tema="tun"] .nm{background:#33290F;border-bottom-color:#6E5622;color:#EBCB8B}
+html[data-tema="tun"] .nm__b{background:#221C1A;border-color:#8A6D2E;color:#EBCB8B}
+html[data-tema="tun"] .nm__b:hover{background:#2B2420}
+html[data-tema="tun"] .nm-kir{background:#33290F;border-color:#8A6D2E;color:#EBCB8B}
+html[data-tema="tun"] .nm-kir small{color:#CDB684}
+}

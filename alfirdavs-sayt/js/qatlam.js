@@ -14,6 +14,7 @@
   /* ================= LUG'AT: kalit -> [ўзбекча (кирилл), русча] ================= */
   var LUGAT = {
     'til.aria': ['Панел тили', 'Язык панели'],
+    'tema.tun': ['Қоронғу режим', 'Тёмная тема'],
     'kirish.h': ['Бошқарув панели', 'Панель управления'],
     'kirish.login': ['Логин', 'Логин'],
     'kirish.parol': ['Парол', 'Пароль'],
@@ -384,6 +385,20 @@
     tilQoy(document);
     if (yuklandi) { pubChiz(); sozChiz(); korIzoh(); if (window.ALFPANEL) window.ALFPANEL.til(); if (!$('#v-h').hidden) tarixOl(); if (!$('#v-s').hidden) jurnalChiz(); }
   }
+  /* r19 — qorong'u rejim tugmasi: tanlov saytniki bilan bitta kalitda (alf_tema); sahifa ochilishida js/tema.js qo'yadi */
+  function temaSync() {
+    var tun = document.documentElement.getAttribute('data-tema') === 'tun';
+    $$('[data-tema-btn]').forEach(function (b) { b.setAttribute('aria-pressed', String(tun)); });
+    var tm = $('meta[name="theme-color"]'); if (tm) tm.setAttribute('content', tun ? '#171312' : '#FBF8F4');
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tema-btn]'); if (!b) return;
+    var d = document.documentElement, tun = d.getAttribute('data-tema') !== 'tun';
+    if (tun) d.setAttribute('data-tema', 'tun'); else d.removeAttribute('data-tema');
+    try { if (tun) window.localStorage.setItem('alf_tema', 'tun'); else window.localStorage.removeItem('alf_tema'); } catch (x) {}
+    temaSync();
+  });
+  temaSync();
   window.ALFTIL = { t: t, til: function () { return til; }, izoh: izoh, qoy: tilQoy, yangila: function () { tilTanla(til, false); } };
   document.addEventListener('click', function (e) { var b = e.target.closest('[data-til]'); if (b) tilTanla(b.getAttribute('data-til'), true); });
 
