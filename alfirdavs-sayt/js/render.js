@@ -143,7 +143,7 @@
         '<div class="card__media">' + imgHtml(p) + /*DEMO-START*/cardSmp(p) + /*DEMO-END*/'<span class="card__code">' + esc(c ? c.code : '') + '</span></div>' +
         '<div class="card__body"><div class="card__top"><span class="st st--' + st + ' card__st">' + esc(t('st.' + st)) + '</span><span class="card__sub">' + esc(L(tp.sub)) + '</span></div>' +
         '<h3>' + (tu ? '<a href="' + esc(tu) + '">' + nm + '</a>' : nm) + '</h3>' +
-        '<p class="card__origin">' + ic('pin') + '<span>' + esc(c ? L(c.name) : '') + (r ? ' · <b>' + esc(L(r.name)) + '</b>' : '') + (mkTxt(p) ? ' · <span class="card__mk">' + esc(mkTxt(p)) + '</span>' : '') + '</span></p>' +
+        '<p class="card__origin">' + ic('pin') + '<span>' + esc(c ? L(c.name) : '') + (r ? ' · <b>' + esc(L(r.name)) + '</b>' : '') + (mkTxt(p) ? '<i class="card__sep"> · </i><span class="card__mk">' + esc(mkTxt(p)) + '</span>' : '') + '</span></p>' +
         '<p class="card__meta"><span>' + ic('snow') + '<span class="num">−18 °C</span></span><span>' + ic('box') + '<span class="num">' + esc(packTxt(p.kg)) + '</span></span></p>' +
         '<a class="btn btn--line card__btn" href="' + esc(url('contacts/')) + '" data-ask="' + esc(p.id) + '"><span>' + esc(t('cta.price')) + '</span>' + ic('arrow') + '</a>' +
         '</div></li>';
