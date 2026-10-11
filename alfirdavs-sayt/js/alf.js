@@ -1,0 +1,140 @@
+/* ALFIRDAVS TM — ma'lumot qatlami (build11.mjs yasaydi; standart ma'lumot manbasi: ishchi/r11/malumot.mjs).
+   Panel o'zgartirsa — localStorage da saqlanadi. Server ulanganda faqat loadProducts/saveProducts va
+   loadSettings/saveSettings ichini almashtirish kifoya. */
+(function (G) {
+  'use strict';
+  var KEY_DB = 'alf_db_v2', KEY_SET = 'alf_set_v2';
+  var DEF = {"db":{"countries":[{"id":"ru","code":"RU","name":{"uzc":"Россия","ru":"Россия","en":"Russia"},"regions":[{"id":"belgorod","name":{"uzc":"Белгород","ru":"Белгород","en":"Belgorod"}},{"id":"kursk","name":{"uzc":"Курск","ru":"Курск","en":"Kursk"}},{"id":"penza","name":{"uzc":"Пенза","ru":"Пенза","en":"Penza"}}]},{"id":"by","code":"BY","name":{"uzc":"Беларус","ru":"Беларусь","en":"Belarus"},"regions":[{"id":"minsk","name":{"uzc":"Минск","ru":"Минск","en":"Minsk"}},{"id":"brest","name":{"uzc":"Брест","ru":"Брест","en":"Brest"}},{"id":"grodno","name":{"uzc":"Гродно","ru":"Гродно","en":"Grodno"}}]},{"id":"pl","code":"PL","name":{"uzc":"Польша","ru":"Польша","en":"Poland"},"regions":[{"id":"wlkp","name":{"uzc":"Великопольша","ru":"Великопольша","en":"Wielkopolska"}},{"id":"mazow","name":{"uzc":"Мазовия","ru":"Мазовия","en":"Mazowsze"}}]},{"id":"in","code":"IN","name":{"uzc":"Ҳиндистон","ru":"Индия","en":"India"},"regions":[{"id":"up","name":{"uzc":"Уттар-Прадеш","ru":"Уттар-Прадеш","en":"Uttar Pradesh"}},{"id":"mh","name":{"uzc":"Маҳараштра","ru":"Махараштра","en":"Maharashtra"}}]},{"id":"ir","code":"IR","name":{"uzc":"Эрон","ru":"Иран","en":"Iran"},"regions":[{"id":"maz","name":{"uzc":"Мозандарон","ru":"Мазендеран","en":"Mazandaran"}},{"id":"gil","name":{"uzc":"Гилон","ru":"Гилян","en":"Gilan"}}]},{"id":"tr","code":"TR","name":{"uzc":"Туркия","ru":"Турция","en":"Türkiye"},"regions":[{"id":"bolu","name":{"uzc":"Болу","ru":"Болу","en":"Bolu"}},{"id":"sakarya","name":{"uzc":"Сакарья","ru":"Сакарья","en":"Sakarya"}},{"id":"manisa","name":{"uzc":"Маниса","ru":"Маниса","en":"Manisa"}},{"id":"corum","name":{"uzc":"Чорум","ru":"Чорум","en":"Çorum"}},{"id":"balikesir","name":{"uzc":"Балиқесир","ru":"Балыкесир","en":"Balıkesir"}}]},{"id":"cn","code":"CN","name":{"uzc":"Хитой","ru":"Китай","en":"China"},"regions":[{"id":"shandong","name":{"uzc":"Шандун","ru":"Шаньдун","en":"Shandong"}},{"id":"liaoning","name":{"uzc":"Ляонин","ru":"Ляонин","en":"Liaoning"}}]}],"types":[{"id":"mmo","g":"p","slug":"chicken-mdm","img":"","name":{"uzc":"Товуқ ММО","ru":"Куриное ММО","en":"Chicken MDM"},"sub":{"uzc":"Механик ажратилган гўшт","ru":"Мясо механической обвалки","en":"Mechanically deboned meat"},"desc":{"uzc":"Колбаса, сосиска ва ярим тайёр маҳсулотлар ишлаб чиқариш учун хомашё. Музлатилган блокларда.","ru":"Сырьё для колбас, сосисок и полуфабрикатов. В замороженных блоках.","en":"Raw material for sausages, frankfurters and processed meat products. Supplied in frozen blocks."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"skin","g":"p","slug":"chicken-skin","img":"","name":{"uzc":"Товуқ териси","ru":"Куриная кожа","en":"Chicken skin"},"sub":{"uzc":"Музлатилган блок","ru":"Замороженный блок","en":"Frozen block"},"desc":{"uzc":"Колбаса ва ярим тайёр маҳсулотлар ишлаб чиқаришда ишлатилади. Музлатилган блокларда.","ru":"Используется в производстве колбас и полуфабрикатов. В замороженных блоках.","en":"Used in sausage and processed meat production. Supplied in frozen blocks."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"leg","g":"p","slug":"chicken-leg-quarters","img":"img/s/tovuq-soni","name":{"uzc":"Товуқ сони","ru":"Окорочок","en":"Chicken leg quarters"},"sub":{"uzc":"Бутун сон","ru":"Окорочок целый","en":"Whole leg quarter"},"desc":{"uzc":"Бутун товуқ сони — савдо тармоқлари, умумий овқатланиш ва қайта ишлаш учун.","ru":"Целый куриный окорочок — для розницы, общепита и переработки.","en":"Whole chicken leg quarters for retail, food service and further processing."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"wing","g":"p","slug":"chicken-wings","img":"img/s/tovuq-qanoti","name":{"uzc":"Товуқ қаноти","ru":"Куриное крыло","en":"Chicken wings"},"sub":{"uzc":"Уч бўғинли","ru":"Трёхфаланговое","en":"3-joint wings"},"desc":{"uzc":"Уч бўғинли товуқ қаноти — савдо ва умумий овқатланиш учун.","ru":"Трёхфаланговое куриное крыло — для розницы и общепита.","en":"Whole 3-joint chicken wings for retail and food service."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"fillet","g":"p","slug":"chicken-breast-fillet","img":"img/s/tovuq-filesi","name":{"uzc":"Товуқ филеси","ru":"Куриное филе","en":"Chicken breast fillet"},"sub":{"uzc":"Кўкрак филеси","ru":"Филе грудки","en":"Breast fillet"},"desc":{"uzc":"Товуқ кўкрак филеси — савдо, умумий овқатланиш ва қайта ишлаш учун.","ru":"Филе куриной грудки — для розницы, общепита и переработки.","en":"Chicken breast fillet for retail, food service and further processing."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"offal","g":"s","slug":"chicken-hearts-livers","img":"","name":{"uzc":"Юрак ва жигар","ru":"Сердце и печень","en":"Chicken hearts & livers"},"sub":{"uzc":"Товуқ субпродукти","ru":"Куриные субпродукты","en":"Chicken offal"},"desc":{"uzc":"Товуқ юраги ва жигари — савдо ва қайта ишлаш учун.","ru":"Куриные сердце и печень — для розницы и переработки.","en":"Chicken hearts and livers for retail and processing."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"paws","g":"s","slug":"chicken-paws","img":"","name":{"uzc":"Товуқ панжаси","ru":"Куриные лапки","en":"Chicken paws"},"sub":{"uzc":"Тозаланган","ru":"Очищенные","en":"Cleaned"},"desc":{"uzc":"Тозаланган товуқ панжаси — савдо ва умумий овқатланиш учун.","ru":"Очищенные куриные лапки — для розницы и общепита.","en":"Cleaned chicken paws for retail and food service."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]},{"id":"beef","g":"m","slug":"beef","img":"img/s/mol-goshti","name":{"uzc":"Мол гўшти","ru":"Говядина","en":"Beef"},"sub":{"uzc":"Музлатилган гўшт","ru":"Замороженное мясо","en":"Frozen meat"},"desc":{"uzc":"Музлатилган мол гўшти ва буйвол гўшти — қайта ишлаш ва савдо учун.","ru":"Замороженная говядина и мясо буйвола — для переработки и розницы.","en":"Frozen beef and buffalo meat for processing and retail."},"spec":[{"k":{"uzc":"Сақлаш муддати","ru":"Срок хранения","en":"Shelf life"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Энг кам буюртма","ru":"Минимальный заказ","en":"Minimum order"},"v":{"uzc":"","ru":"","en":""},"sample":true},{"k":{"uzc":"Етказиш шарти","ru":"Условия поставки","en":"Delivery terms"},"v":{"uzc":"","ru":"","en":""},"sample":true}]}],"products":[{"id":"p01","type":"mmo","country":"pl","region":"wlkp","status":"in","kg":20,"name":null,"img":""},{"id":"p02","type":"mmo","country":"ru","region":"belgorod","status":"in","kg":20,"name":null,"img":""},{"id":"p03","type":"mmo","country":"tr","region":"bolu","status":"way","kg":20,"name":null,"img":""},{"id":"p04","type":"skin","country":"pl","region":"mazow","status":"in","kg":10,"name":null,"img":""},{"id":"p05","type":"leg","country":"tr","region":"manisa","status":"in","kg":15,"name":null,"img":""},{"id":"p06","type":"beef","country":"in","region":"up","status":"in","kg":20,"name":{"uzc":"Буйвол гўшти","ru":"Мясо буйвола","en":"Buffalo meat (carabeef)"},"img":""},{"id":"p07","type":"skin","country":"ru","region":"penza","status":"way","kg":10,"name":null,"img":""},{"id":"p08","type":"wing","country":"tr","region":"corum","status":"way","kg":10,"name":null,"img":""},{"id":"p09","type":"fillet","country":"cn","region":"shandong","status":"in","kg":12,"name":null,"img":""},{"id":"p10","type":"mmo","country":"by","region":"minsk","status":"in","kg":20,"name":null,"img":""},{"id":"p11","type":"offal","country":"by","region":"brest","status":"in","kg":10,"name":null,"img":""},{"id":"p12","type":"fillet","country":"ir","region":"maz","status":"way","kg":12,"name":null,"img":""},{"id":"p13","type":"skin","country":"tr","region":"balikesir","status":"in","kg":10,"name":null,"img":""},{"id":"p14","type":"paws","country":"cn","region":"liaoning","status":"way","kg":10,"name":null,"img":""},{"id":"p15","type":"beef","country":"in","region":"mh","status":"way","kg":20,"name":{"uzc":"Буйвол гўшти","ru":"Мясо буйвола","en":"Buffalo meat (carabeef)"},"img":""},{"id":"p16","type":"leg","country":"ir","region":"gil","status":"out","kg":15,"name":null,"img":""},{"id":"p17","type":"skin","country":"tr","region":"sakarya","status":"out","kg":10,"name":null,"img":""},{"id":"p18","type":"mmo","country":"ru","region":"kursk","status":"out","kg":20,"name":null,"img":""},{"id":"p19","type":"beef","country":"by","region":"grodno","status":"in","kg":20,"name":null,"img":""}],"stats":[{"v":{"uzc":"7","ru":"7","en":"7"},"ph":{"uzc":"","ru":"","en":""},"l":{"uzc":"давлатдан импорт","ru":"стран-поставщиков","en":"supplier countries"}},{"v":{"uzc":"2022","ru":"2022","en":"2022"},"ph":{"uzc":"","ru":"","en":""},"l":{"uzc":"йилдан бери бозорда","ru":"год основания","en":"year founded"}},{"v":{"uzc":"","ru":"","en":""},"ph":{"uzc":"0 000 т","ru":"0 000 т","en":"0,000 t"},"l":{"uzc":"йиллик ҳажм","ru":"годовой объём","en":"annual volume"},"sample":true},{"v":{"uzc":"","ru":"","en":""},"ph":{"uzc":"000 т","ru":"000 т","en":"000 t"},"l":{"uzc":"омбор сиғими","ru":"вместимость склада","en":"warehouse capacity"},"sample":true},{"v":{"uzc":"","ru":"","en":""},"ph":{"uzc":"00+","ru":"00+","en":"00+"},"l":{"uzc":"доимий мижоз","ru":"постоянных клиентов","en":"regular customers"},"sample":true}],"certs":[{"t":{"uzc":"Ветеринария сертификати","ru":"Ветеринарный сертификат","en":"Veterinary certificate"},"img":"","file":"","sample":true},{"t":{"uzc":"Сифат сертификати","ru":"Сертификат качества","en":"Quality certificate"},"img":"","file":"","sample":true},{"t":{"uzc":"Ҳалол сертификати","ru":"Сертификат халяль","en":"Halal certificate"},"img":"","file":"","sample":true}],"gallery":[{"t":{"uzc":"Рефрижератор фуралар","ru":"Рефрижераторные фуры","en":"Reefer trucks"},"img":"img/fura-800.webp","sample":true},{"t":{"uzc":"Омбор","ru":"Склад","en":"Warehouse"},"img":"img/s/ombor-800.webp","sample":true},{"t":{"uzc":"Музлатгич камера","ru":"Морозильная камера","en":"Freezer room"},"img":"","sample":true},{"t":{"uzc":"Юк тушириш","ru":"Разгрузка","en":"Unloading"},"img":"","sample":true}],"faq":[{"q":{"uzc":"Қайси давлатлардан маҳсулот олиб келасизлар?","ru":"Из каких стран вы поставляете продукцию?","en":"Which countries do you import from?"},"a":{"uzc":"Россия, Беларус, Польша, Ҳиндистон, Эрон, Туркия ва Хитойдан. Каталогда ҳар маҳсулотнинг давлати ва ҳудуди кўрсатилган.","ru":"Из России, Беларуси, Польши, Индии, Ирана, Турции и Китая. В каталоге у каждой позиции указаны страна и регион.","en":"Russia, Belarus, Poland, India, Iran, Türkiye and China. Every catalog item shows its country and region of origin."}},{"q":{"uzc":"Маълум бир ҳудуднинг маҳсулотини танлаш мумкинми?","ru":"Можно ли выбрать продукцию конкретного региона?","en":"Can I choose product from a specific region?"},"a":{"uzc":"Ҳа. Каталогда давлат ва ҳудудни танланг ёки бизга ёзинг — керакли ҳудуддан олиб берамиз.","ru":"Да. Выберите страну и регион в каталоге или напишите нам — привезём из нужного региона.","en":"Yes. Pick the country and region in the catalog or message us — we source from the region you need."}},{"q":{"uzc":"Нархни қандай билсам бўлади?","ru":"Как узнать цену?","en":"How do I get a price?"},"a":{"uzc":"Телефон, Telegram, WhatsApp ёки MAX орқали. Маҳсулот, ҳудуд ва ҳажмни ёзинг — нарх ва мавжудликни айтамиз.","ru":"По телефону, в Telegram, WhatsApp или MAX. Укажите продукт, регион и объём — сообщим цену и наличие.","en":"By phone, Telegram, WhatsApp or MAX. Tell us the product, origin and volume — we will reply with price and availability."}},{"q":{"uzc":"Маҳсулот қандай ҳароратда сақланади?","ru":"При какой температуре хранится продукция?","en":"What temperature is the product kept at?"},"a":{"uzc":"−18 °C да. Юклашдан омборгача совуқ занжир узилмайди.","ru":"При −18 °C. Холодовая цепь не прерывается от погрузки до склада.","en":"At −18 °C. The cold chain is unbroken from loading to our warehouse."}},{"q":{"uzc":"Партия билан қандай ҳужжатлар берилади?","ru":"Какие документы идут с партией?","en":"Which documents come with a lot?"},"a":{"uzc":"Ветеринария ва сифат сертификати, лаборатория текшируви натижаси, божхона декларацияси.","ru":"Ветеринарный сертификат, сертификат качества, протокол лабораторных испытаний, таможенная декларация.","en":"Veterinary and quality certificates, lab test results and the customs declaration."}},{"q":{"uzc":"Омбор қаерда жойлашган?","ru":"Где находится склад?","en":"Where is your warehouse?"},"a":{"uzc":"Тошкент шаҳрида. Аниқ манзил ва харита — «Алоқа» саҳифасида.","ru":"В Ташкенте. Точный адрес и карта — на странице «Контакты».","en":"In Tashkent. The exact address and map are on the Contact page."}},{"q":{"uzc":"Энг кам буюртма ҳажми қанча?","ru":"Какой минимальный объём заказа?","en":"What is the minimum order?"},"a":{"uzc":"Ҳажмга қараб келишамиз.","ru":"Обсуждается в зависимости от объёма.","en":"Agreed depending on volume."},"sample":true},{"q":{"uzc":"Тўлов қандай амалга оширилади?","ru":"Как производится оплата?","en":"How is payment made?"},"a":{"uzc":"Шартлари ҳар бир партия учун келишилади.","ru":"Условия согласуются для каждой партии.","en":"Terms are agreed for each lot."},"sample":true,"pay":true},{"q":{"uzc":"Бошқа давлатга етказиб берасизларми?","ru":"Доставляете ли вы в другие страны?","en":"Do you deliver to other countries?"},"a":{"uzc":"Тошкент омборидан юклаймиз. Қўшни давлатларга етказиш — келишув асосида.","ru":"Отгружаем со склада в Ташкенте. Доставка в соседние страны — по договорённости.","en":"We load at our Tashkent warehouse. Delivery to neighbouring countries is by agreement."},"sample":true}],"terms":[{"t":{"uzc":"Етказиш","ru":"Доставка","en":"Delivery"},"d":{"uzc":"Тошкент омборидан юклаймиз. Қўшни давлатларга — келишув асосида.","ru":"Отгрузка со склада в Ташкенте. В соседние страны — по договорённости.","en":"Loading at our Tashkent warehouse. Neighbouring countries by agreement."},"sample":true},{"t":{"uzc":"Энг кам партия","ru":"Минимальная партия","en":"Minimum order"},"d":{"uzc":"Ҳажмга қараб келишамиз.","ru":"Обсуждается в зависимости от объёма.","en":"Agreed depending on volume."},"sample":true},{"t":{"uzc":"Тўлов","ru":"Оплата","en":"Payment"},"d":{"uzc":"Шартлари ҳар бир партия учун келишилади.","ru":"Условия согласуются для каждой партии.","en":"Terms agreed for each lot."},"sample":true,"pay":true}]},"settings":{"phone":"+998 99 905 11 44","phone2":"+998 99 784 11 44","tg":"+998999051144","wa":"998999051144","max":"+998999051144","instagram":"","addr":{"uzc":"Тошкент, Водник кўчаси 48/60","ru":"Ташкент, ул. Водник, 48/60","en":"48/60 Vodnik St, Tashkent"},"mapUrl":"https://yandex.uz/maps/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D0%92%D0%BE%D0%B4%D0%BD%D0%B8%D0%BA%2048%2F60","addr2":{"uzc":"Самарқанд вилояти, Пастдарғом тумани, Эски Жума МФЙ, 128","ru":"Самаркандская обл., Пастдаргомский р-н, МСГ Эски Жума, 128","en":"128 Eski Juma, Pastdargom District, Samarkand Region"},"mapUrl2":"https://yandex.uz/maps/?text=%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4%2C%20%D0%9F%D0%B0%D1%81%D1%82%D0%B4%D0%B0%D1%80%D0%B3%D0%BE%D0%BC%2C%20%D0%AD%D1%81%D0%BA%D0%B8%20%D0%96%D1%83%D0%BC%D0%B0%20128","hours":{"uzc":"Ду–Шн, 9:00–18:00","ru":"Пн–Сб, 9:00–18:00","en":"Mon–Sat, 9:00–18:00"},"hoursSample":true,"email":"","legal":"","inn":""},"files":["img/fura-1600.webp","img/fura-800.webp","img/icon-192.png","img/icon-512.png","img/icon-maskable-512.png","img/logo.svg","img/og-en.jpg","img/og-ru.jpg","img/og-uzc.jpg","img/s/mol-goshti-1600.webp","img/s/mol-goshti-480.webp","img/s/mol-goshti-800.webp","img/s/ombor-1600.webp","img/s/ombor-800.webp","img/s/tovuq-filesi-1600.webp","img/s/tovuq-filesi-480.webp","img/s/tovuq-filesi-800.webp","img/s/tovuq-qanoti-1600.webp","img/s/tovuq-qanoti-480.webp","img/s/tovuq-qanoti-800.webp","img/s/tovuq-soni-1600.webp","img/s/tovuq-soni-480.webp","img/s/tovuq-soni-800.webp"]};
+  // LS: brauzer xotirasi (panel) ishlatiladimi. Haqiqiy (prod) build'da false — sayt localStorage'ni umuman o'qimaydi.
+  var LS = false;
+  var LISTS = ['stats', 'certs', 'gallery', 'faq', 'terms'];
+
+  /* ---- normallash (panel va sayt bir xil qoidadan foydalanadi) ---- */
+  function digits(v) { return String(v == null ? '' : v).replace(/\D/g, ''); }
+  // telefon: '' -> {ok:true, empty:true}; 9 xona -> 998 qo'shiladi; 10–15 xona; harf bo'lsa xato
+  function normPhone(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return { ok: true, empty: true, d: '' };
+    if (/[^\d\s+()\-.]/.test(s)) return { ok: false };
+    var d = digits(s);
+    if (d.length === 9) d = '998' + d;
+    if (d.length < 10 || d.length > 15) return { ok: false };
+    return { ok: true, d: d, text: fmtPhone(d) };
+  }
+  function fmtPhone(d) {
+    if (d.length === 12 && d.indexOf('998') === 0) return '+998 ' + d.slice(3, 5) + ' ' + d.slice(5, 8) + ' ' + d.slice(8, 10) + ' ' + d.slice(10);
+    return '+' + d;
+  }
+  // Telegram: @user, user, t.me/user, raqam -> {kind:'user'|'phone', id, href, text}
+  function normTg(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return null;
+    s = s.replace(/^https?:\/\//i, '').replace(/^(www\.)?(t|telegram)\.me\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '');
+    if (/^\+?[\d\s()\-]{9,20}$/.test(s)) { var p = normPhone(s); if (!p.ok || p.empty) return null; return { kind: 'phone', id: p.d, href: 'https://t.me/+' + p.d, text: p.text }; }
+    if (!/^[A-Za-z][A-Za-z0-9_]{3,31}$/.test(s)) return null;
+    return { kind: 'user', id: s, href: 'https://t.me/' + s, text: '@' + s };
+  }
+  // tashqi havola: FAQAT https (javascript:, data:, http: va boshqalar rad etiladi)
+  function safeUrl(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return '';
+    if (/^http:\/\//i.test(s)) s = 'https://' + s.slice(7);
+    if (!/^https:\/\//i.test(s)) { if (/^[a-z0-9.-]+\.[a-z]{2,}(\/|$)/i.test(s)) s = 'https://' + s; else return null; }
+    try { var u = new URL(s); if (u.protocol !== 'https:' || u.username || u.password) return null; return u.href; } catch (e) { return null; }
+  }
+  // surat manbai: FAQAT sayt ichidagi img/… yo'li yoki panel siqqan data:image (png/jpeg/webp). Boshqasi — ''.
+  function safeImg(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return '';
+    if (/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(s)) return s;
+    if (/^img\/[\w./-]+\.(webp|jpg|jpeg|png|svg)$/i.test(s) && s.indexOf('..') < 0) return s;
+    return '';
+  }
+  // yuklab olinadigan fayl: sayt ichidagi files/… yoki https
+  function safeFile(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return '';
+    if (/^files\/[\w./-]+\.(pdf|jpg|jpeg|png|webp)$/i.test(s) && s.indexOf('..') < 0) return s;
+    if (/^https:\/\//i.test(s)) return safeUrl(s) || '';
+    return '';
+  }
+  // e-pochta: oddiy manzil (mailto: havolasi uchun); boshqasi — ''
+  function safeEmail(v) {
+    var s = String(v == null ? '' : v).trim();
+    return /^[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/.test(s) && s.length <= 120 ? s : '';
+  }
+  // STIR: 9 xonali son
+  function normInn(v) { var d = digits(v); return d.length === 9 ? d : ''; }
+  // saytda shu fayl bormi (build paytida yozilgan ro'yxat) — yo'q o'lchamga murojaat qilmaslik uchun
+  function hasFile(p) { return DEF.files.indexOf(p) >= 0; }
+  // MAX: raqam (ko'rsatiladi, bosilsa nusxalanadi) yoki https havola
+  function normMax(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return null;
+    if (/^\+?[\d\s()\-]{9,20}$/.test(s)) { var p = normPhone(s); return p.ok && !p.empty ? { kind: 'phone', id: p.d, text: p.text } : null; }
+    var u = safeUrl(s); return u ? { kind: 'url', href: u, text: u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') } : null;
+  }
+  function normIg(v) {
+    var s = String(v == null ? '' : v).trim();
+    if (!s) return null;
+    s = s.replace(/^https?:\/\//i, '').replace(/^(www\.)?instagram\.com\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '');
+    if (!/^[A-Za-z0-9._]{1,30}$/.test(s)) return null;
+    return { href: 'https://instagram.com/' + s, text: '@' + s };
+  }
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  var lastError = '';
+  function lsGet() { return null; }
+  function lsSet() { return false; }
+  function storageOk() { return false; }
+  function lsDel() {}
+/* ---- mahsulotlar (davlatlar, hududlar, turlar, sahifa bo'limlari bilan birga) ---- */
+  function defaults() { var d = clone(DEF.db); d.v = 1; return d; }
+  // eski (r10) saqlangan ma'lumotga yangi maydonlarni qo'shadi
+  function upgrade(db) {
+    var d = DEF.db;
+    if (!Array.isArray(db.types)) db.types = clone(d.types);
+    LISTS.forEach(function (k) { if (!Array.isArray(db[k])) db[k] = clone(d[k]); });
+    // r11 da raqam bitta satr edi — endi uch tilda (birlik tilga qarab)
+    db.stats.forEach(function (s) { ['v', 'ph'].forEach(function (k) { if (typeof s[k] !== 'object' || !s[k]) { var x = String(s[k] == null ? '' : s[k]); s[k] = { uzc: x, ru: x, en: x }; } }); });
+    db.types.forEach(function (t) {
+      var o = null; d.types.forEach(function (x) { if (x.id === t.id) o = x; });
+      if (o) { if (!t.slug) t.slug = o.slug; if (!t.desc) t.desc = clone(o.desc); if (!Array.isArray(t.spec)) t.spec = clone(o.spec); }
+      else { if (!t.desc) t.desc = { uzc: '', ru: '', en: '' }; if (!Array.isArray(t.spec)) t.spec = []; }
+    });
+    return db;
+  }
+  function loadProducts() {
+    var raw = lsGet(KEY_DB);
+    if (raw) {
+      try {
+        var db = JSON.parse(raw);
+        if (db && db.v === 1 && Array.isArray(db.products) && Array.isArray(db.countries)) return upgrade(db);
+      } catch (e) {}
+    }
+    return defaults();
+  }
+  function saveProducts(db) { return lsSet(KEY_DB, JSON.stringify(db)); }
+  function resetProducts() { lsDel(KEY_DB); return defaults(); }
+
+  /* ---- aloqa sozlamalari ---- */
+  function loadSettings() {
+    var s = clone(DEF.settings), raw = lsGet(KEY_SET);
+    if (raw) { try { var o = JSON.parse(raw); for (var k in o) if (Object.prototype.hasOwnProperty.call(s, k)) s[k] = o[k]; } catch (e) {} }
+    return s;
+  }
+  function saveSettings(s) { return lsSet(KEY_SET, JSON.stringify(s)); }
+  function resetSettings() { lsDel(KEY_SET); return clone(DEF.settings); }
+  // panel shu qurilmada biror narsani o'zgartirganmi (sayt shunda statik HTML ustidan qayta chizadi)
+  function hasOverride() { return LS && !!(lsGet(KEY_DB) || lsGet(KEY_SET)); }
+
+  G.ALF = {
+    loadProducts: loadProducts, saveProducts: saveProducts, resetProducts: resetProducts,
+    loadSettings: loadSettings, saveSettings: saveSettings, resetSettings: resetSettings, hasOverride: hasOverride,
+    normPhone: normPhone, fmtPhone: fmtPhone, normTg: normTg, normMax: normMax, normIg: normIg,
+    safeUrl: safeUrl, safeImg: safeImg, safeFile: safeFile, safeEmail: safeEmail, normInn: normInn, hasFile: hasFile, panel: LS,
+    storageOk: storageOk, lastError: function () { return lastError; },
+    KEYS: { db: KEY_DB, set: KEY_SET },
+    slugs: DEF.db.types.map(function (t) { return t.slug; })
+  };
+})(typeof window !== 'undefined' ? window : globalThis);

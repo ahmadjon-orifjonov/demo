@@ -4,14 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Бошқарув — ALFIRDAVS TM</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FBF8F4">
+<link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/panel.css">
+<link rel="stylesheet" href="css/server.css">
+<link rel="stylesheet" href="css/namuna.css">
 </head>
 <body class="pn">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<!-- Matnlar shu faylda YO'Q: har element `data-t` kaliti bo'yicha js/qatlam.js dagi lug'atdan (ЎЗ / RU) to'ldiriladi. -->
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
   <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
@@ -25,19 +31,37 @@
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15"/><path d="M15 6v15"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></symbol>
+  <symbol id="i-hist" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="m7 4-4 4h8Z"/><path d="M7 8v12"/><path d="m17 20 4-4h-8Z"/><path d="M17 16V4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
 </defs></svg>
 
-<!-- PIN -->
-<section class="pin" id="pinView" aria-labelledby="pin-h">
-  <form class="pin__card" id="pinForm" autocomplete="off">
+<!-- KIRISH -->
+<section class="pin" id="loginView" aria-labelledby="pin-h" hidden>
+  <form class="pin__card" id="loginForm" novalidate>
+    <div class="til til--pin" role="group" data-ta="til.aria"><button type="button" data-til="uzc" aria-pressed="true" lang="uz-Cyrl">ЎЗ</button><button type="button" data-til="ru" aria-pressed="false" lang="ru">RU</button></div>
     <img class="pin__logo" src="img/logo.svg" width="64" height="64" alt="">
-    <h1 id="pin-h">Бошқарув панели</h1>
-    <p>ALFIRDAVS TM · <span class="badge">Намуна</span></p>
-    <label class="pin__lbl" for="pinIn">PIN код</label>
-    <input class="pin__in num" id="pinIn" type="password" inputmode="numeric" maxlength="8" autofocus autocomplete="off" placeholder="••••" aria-describedby="pinErr">
-    <p class="pin__err" id="pinErr" aria-live="polite"></p>
-    <button class="btn btn--red btn--lg btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>Кириш</span></button>
-    <p class="pin__hint">Намуна учун PIN: <b class="num">1111</b></p>
+    <h1 id="pin-h" data-t="kirish.h"></h1>
+    <p>ALFIRDAVS TM</p>
+    <label class="pin__lbl" for="lgLogin" data-t="kirish.login"></label>
+    <input class="lg__in" id="lgLogin" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="60" required>
+    <label class="pin__lbl" for="lgParol" data-t="kirish.parol"></label>
+    <input class="lg__in" id="lgParol" name="password" type="password" autocomplete="current-password" maxlength="200" required aria-describedby="lgErr">
+    <div id="lgKodW" hidden>
+      <label class="pin__lbl" for="lgKod" data-t="kirish.kod"></label>
+      <input class="lg__in num" id="lgKod" name="one-time-code" type="text" inputmode="numeric" autocomplete="one-time-code" autocapitalize="none" spellcheck="false" maxlength="12">
+    </div>
+    <p class="pin__err" id="lgErr" aria-live="polite"></p>
+    <button class="btn btn--red btn--lg btn--block" type="submit" id="lgBtn"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span data-t="kirish.btn"></span></button>
   </form>
 </section>
 
@@ -45,141 +69,322 @@
 <div class="app" id="app" hidden>
   <header class="ptop">
     <div class="ptop__in">
-      <a class="brand" href="index.html"><img class="brand__mark" src="img/logo.svg" width="36" height="36" alt=""><span class="brand__txt"><span class="brand__name">ALFIRDAVS <b>TM</b></span><span class="ptop__sub">Бошқарув</span></span></a>
-      <a class="btn btn--line btn--sm" href="index.html" target="_blank" rel="noopener"><span>Сайт</span><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      <div class="brand"><img class="brand__mark" src="img/logo.svg" width="36" height="36" alt=""><span class="brand__txt"><span class="brand__name">ALFIRDAVS <b>TM</b></span><span class="ptop__sub" data-t="top.sub"></span></span></div>
+      <div class="ptop__r">
+        <div class="til" role="group" data-ta="til.aria"><button type="button" data-til="uzc" aria-pressed="true" lang="uz-Cyrl">ЎЗ</button><button type="button" data-til="ru" aria-pressed="false" lang="ru">RU</button></div>
+        <a class="pbtn" id="siteLink" href="./" target="_blank" rel="noopener noreferrer"><span data-t="top.sayt"></span><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        <button type="button" class="pbtn" id="logout"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg><span data-t="top.chiqish"></span></button>
+      </div>
     </div>
-    <nav class="tabs" role="tablist" aria-label="Бўлимлар">
-      <button type="button" role="tab" id="tab-p" aria-controls="v-p" aria-selected="true">Маҳсулотлар</button>
-      <button type="button" role="tab" id="tab-r" aria-controls="v-r" aria-selected="false">Ҳудудлар</button>
-      <button type="button" role="tab" id="tab-c" aria-controls="v-c" aria-selected="false">Алоқа</button>
+    <nav class="tabs" role="tablist" data-ta="nav.aria">
+      <button type="button" role="tab" id="tab-p" data-och="p" aria-controls="v-p" aria-selected="true"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg><span data-t="nav.mahsulot"></span></button>
+      <button type="button" role="tab" id="tab-m" data-och="m" aria-controls="v-m" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg><span data-t="nav.sozlama"></span></button>
     </nav>
   </header>
 
   <main class="pmain">
-    <p class="note" id="note"><b>Намуна:</b> ўзгаришлар фақат шу қурилмада сақланади. Ишга тушганда сервер орқали ҳамма кўради.</p>
-
-    <!-- Mahsulotlar -->
-    <section class="view" id="v-p" role="tabpanel" aria-labelledby="tab-p">
-      <div class="vhead">
-        <h2>Маҳсулотлар <small class="num" id="pCount"></small></h2>
-        <button type="button" class="btn btn--red" id="pAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Қўшиш</span></button>
+    <div class="pub" id="pub" hidden role="status">
+      <p><b data-t="pub.h"></b> <span id="pubInfo"></span></p>
+      <div class="pub__b">
+        <button type="button" class="btn btn--line btn--sm" id="pubKor"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg><span data-t="pub.kor"></span></button>
+        <button type="button" class="btn btn--red btn--sm" id="pubOk"><span data-t="pub.ok"></span></button>
+        <button type="button" class="btn btn--line btn--sm pub__no" id="pubNo"><span data-t="pub.no"></span></button>
       </div>
-      <div class="chips chips--scroll pfilter" id="pFilter" role="group" aria-label="Давлат бўйича"></div>
+    </div>
+    <p class="ferr pub__err" id="pubErr" aria-live="assertive"></p>
+
+    <!-- BOSH EKRAN: mahsulotlar va holati -->
+    <section class="view" id="v-p" role="tabpanel" aria-labelledby="tab-p">
+      <p class="note" id="note" data-t="p.note"></p>
+      <div class="warn" id="tasdiqYoq" hidden><p data-t="p.tasdiqyoq"></p><button type="button" class="btn btn--line btn--sm" data-och="m" data-joy="sTasdiqBox"><span data-t="p.tasdiqbtn"></span></button></div>
+      <div class="vhead">
+        <h2><span data-t="p.h"></span> <small class="num" id="pCount"></small></h2>
+        <button type="button" class="btn btn--red" id="pAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="p.add"></span></button>
+      </div>
+      <div class="chips chips--scroll pfilter" id="pFilter" role="group" data-ta="p.filter"></div>
       <ul class="plist" id="pList"></ul>
+      <div class="pfoot">
+        <button type="button" class="linkbtn" id="pOrd" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg><span data-t="p.ord"></span></button>
+        <button type="button" class="linkbtn" id="pKor"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg><span data-t="kor.btn"></span></button>
+      </div>
+    </section>
+
+    <!-- SOZLAMALAR: qolgan hamma narsa shu yerdan ochiladi -->
+    <section class="view" id="v-m" role="tabpanel" aria-labelledby="tab-m" hidden>
+      <div class="vhead"><h2 data-t="m.h"></h2></div>
+      <div class="mlist">
+        <button type="button" class="mrow" id="mKor"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></span><span class="mrow__t"><b data-t="kor.btn"></b><small data-t="m.kor.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-c" data-och="c"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="mrow__t"><b data-t="m.c"></b><small data-t="m.c.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-r" data-och="r"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg></span><span class="mrow__t"><b data-t="m.r"></b><small data-t="m.r.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-t" data-och="t"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span><span class="mrow__t"><b data-t="m.t"></b><small data-t="m.t.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-x" data-och="x"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg></span><span class="mrow__t"><b data-t="m.x"></b><small data-t="m.x.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-h" data-och="h"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-hist"/></svg></span><span class="mrow__t"><b data-t="m.h2"></b><small data-t="m.h2.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button type="button" class="mrow" id="tab-s" data-och="s"><span class="mrow__ic"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><span class="mrow__t"><b data-t="m.s"></b><small data-t="m.s.d"></small></span><svg class="ic mrow__go" aria-hidden="true"><use href="#i-chev"/></svg></button>
+      </div>
+      <div class="box" id="sTasdiqBox">
+        <h3 data-t="tas.h"></h3>
+        <p class="box__p" data-t="tas.p"></p>
+        <label class="chk"><input type="checkbox" id="sTasdiq"><span data-t="tas.chk"></span></label>
+      </div>
+      <div class="box">
+        <h3 data-t="exp.h"></h3>
+        <p class="box__p" data-t="exp.p"></p>
+        <button type="button" class="btn btn--line btn--block" id="exportAll"><svg class="ic" aria-hidden="true"><use href="#i-save"/></svg><span data-t="exp.btn"></span></button>
+      </div>
+      <p class="kim"><span data-t="m.kim"></span> <b id="meLogin"></b></p>
     </section>
 
     <!-- Hududlar -->
-    <section class="view" id="v-r" role="tabpanel" aria-labelledby="tab-r" hidden>
-      <div class="vhead"><h2>Ҳудудлар</h2></div>
-      <form class="box" id="rForm">
-        <h3>Янги ҳудуд қўшиш</h3>
-        <div class="fld"><label for="rCountry">Давлат</label><select id="rCountry"></select></div>
-        <div class="fld"><label for="rUzc">Номи (ЎЗ)</label><input id="rUzc" type="text" maxlength="40" placeholder="Масалан, Измир" required></div>
-        <div class="fld2">
-          <div class="fld"><label for="rRu">Номи (RU)</label><input id="rRu" type="text" maxlength="40" placeholder="Измир"></div>
-          <div class="fld"><label for="rEn">Номи (EN)</label><input id="rEn" type="text" maxlength="40" placeholder="Izmir"></div>
-        </div>
-        <button class="btn btn--red btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Ҳудуд қўшиш</span></button>
+    <section class="view" id="v-r" role="region" aria-labelledby="r-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="r-h" data-t="m.r"></h2></div>
+      <form class="box" id="rForm" novalidate>
+        <h3 data-t="r.yangi"></h3>
+        <div class="fld"><label for="rCountry" data-t="f.davlat"></label><select id="rCountry"></select></div>
+        <fieldset class="tg" data-tg="r"><legend data-t="r.nomi"></legend>
+          <div class="tg__row" data-l="uzc"><label for="rUzc">ЎЗ</label><input id="rUzc" type="text" maxlength="40"></div>
+          <div class="tg__row" data-l="ru"><label for="rRu">RU</label><input id="rRu" type="text" maxlength="40"></div>
+          <div class="tg__row" data-l="en"><label for="rEn">EN</label><input id="rEn" type="text" maxlength="40"></div>
+        </fieldset>
+        <p class="ferr" id="rErr" aria-live="polite"></p>
+        <button class="btn btn--red btn--block" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="r.add"></span></button>
       </form>
       <div id="rList"></div>
     </section>
 
+    <!-- Sahifa matnlari: raqamlar, sertifikatlar, galereya, savol-javob, shartlar, mahsulot tavsifi -->
+    <section class="view" id="v-x" role="region" aria-labelledby="x-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="x-h" data-t="m.x"></h2></div>
+      <div class="box">
+        <p class="box__p" data-t="x.p"></p>
+        <div class="fld"><label for="xSec" data-t="x.sec"></label><select id="xSec">
+          <option value="stats" data-t="x.stats"></option>
+          <option value="certs" data-t="x.certs"></option>
+          <option value="gallery" data-t="x.gallery"></option>
+          <option value="faq" data-t="x.faq"></option>
+          <option value="terms" data-t="x.terms"></option>
+          <option value="spec" data-t="x.spec"></option>
+        </select></div>
+        <div class="fld" id="xTypeRow" hidden><label for="xType" data-t="f.tur"></label><select id="xType"></select></div>
+      </div>
+      <div id="xList"></div>
+      <p class="ferr" id="xErr" aria-live="polite"></p>
+      <div class="xbtns">
+        <button type="button" class="btn btn--line" id="xAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="x.add"></span></button>
+        <button type="button" class="btn btn--red" id="xSave"><span data-t="saqlash"></span></button>
+      </div>
+    </section>
+
     <!-- Aloqa -->
-    <section class="view" id="v-c" role="tabpanel" aria-labelledby="tab-c" hidden>
-      <div class="vhead"><h2>Алоқа маълумотлари</h2></div>
+    <section class="view" id="v-c" role="region" aria-labelledby="c-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="c-h" data-t="m.c"></h2></div>
       <form class="box" id="cForm" novalidate>
-        <p class="box__p">Бу ердаги маълумот сайтдаги барча тугмаларга қўйилади: юқори панел, алоқа ойнаси, пастки панел ва footer. Бўш қолган майдон сайтда кўринмайди.</p>
-        <div class="fld"><label for="cPhone">Асосий телефон</label><input id="cPhone" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 905 11 44" aria-describedby="e-cPhone"><small class="ferr" id="e-cPhone"></small></div>
-        <div class="fld"><label for="cPhone2">Қўшимча телефон</label><input id="cPhone2" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 784 11 44" aria-describedby="e-cPhone2"><small class="ferr" id="e-cPhone2"></small></div>
-        <div class="fld"><label for="cTg">Telegram</label><input id="cTg" type="text" maxlength="60" placeholder="+998999051144, @username ёки t.me/..." aria-describedby="e-cTg"><small class="ferr" id="e-cTg"></small></div>
-        <div class="fld"><label for="cWa">WhatsApp рақами</label><input id="cWa" type="tel" inputmode="tel" maxlength="24" placeholder="Бўш бўлса — асосий телефон" aria-describedby="e-cWa"><small class="ferr" id="e-cWa"></small></div>
-        <div class="fld"><label for="cMax">MAX (рақам ёки ҳавола)</label><input id="cMax" type="text" maxlength="200" placeholder="+998999051144 ёки https://max.ru/..." aria-describedby="e-cMax"><small class="ferr" id="e-cMax"></small></div>
-        <div class="fld"><label for="cIg">Instagram</label><input id="cIg" type="text" maxlength="100" placeholder="username ёки https://instagram.com/..." aria-describedby="e-cIg"><small class="ferr" id="e-cIg"></small></div>
-        <fieldset class="fset"><legend>Манзил 1 — омбор (Тошкент)</legend>
-          <div class="fld"><label for="cAddrUzc">ЎЗ</label><input id="cAddrUzc" type="text" maxlength="140"></div>
-          <div class="fld"><label for="cAddrRu">RU</label><input id="cAddrRu" type="text" maxlength="140"></div>
-          <div class="fld"><label for="cAddrEn">EN</label><input id="cAddrEn" type="text" maxlength="140"></div>
-          <div class="fld fld--wide"><label for="cMap">Харита ҳаволаси</label><input id="cMap" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap"><small class="ferr" id="e-cMap"></small></div>
+        <p class="box__p" data-t="c.p"></p>
+        <div class="fld"><label for="cPhone" data-t="c.phone"></label><input id="cPhone" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 905 11 44" aria-describedby="e-cPhone"><small class="ferr" id="e-cPhone"></small></div>
+        <div class="fld"><label for="cPhone2" data-t="c.phone2"></label><input id="cPhone2" type="tel" inputmode="tel" maxlength="24" placeholder="+998 99 784 11 44" aria-describedby="e-cPhone2"><small class="ferr" id="e-cPhone2"></small></div>
+        <div class="fld"><label for="cTg">Telegram</label><input id="cTg" type="text" maxlength="60" data-tp="c.tg.ph" aria-describedby="e-cTg"><small class="ferr" id="e-cTg"></small></div>
+        <div class="fld"><label for="cWa" data-t="c.wa"></label><input id="cWa" type="tel" inputmode="tel" maxlength="24" data-tp="c.wa.ph" aria-describedby="e-cWa"><small class="ferr" id="e-cWa"></small></div>
+        <div class="fld"><label for="cMax" data-t="c.max"></label><input id="cMax" type="text" maxlength="200" data-tp="c.max.ph" aria-describedby="e-cMax"><small class="ferr" id="e-cMax"></small></div>
+        <div class="fld"><label for="cIg">Instagram</label><input id="cIg" type="text" maxlength="100" data-tp="c.ig.ph" aria-describedby="e-cIg"><small class="ferr" id="e-cIg"></small></div>
+        <fieldset class="tg" data-tg="cAddr"><legend data-t="c.addr1"></legend>
+          <div class="tg__row" data-l="uzc"><label for="cAddrUzc">ЎЗ</label><input id="cAddrUzc" type="text" maxlength="140"></div>
+          <div class="tg__row" data-l="ru"><label for="cAddrRu">RU</label><input id="cAddrRu" type="text" maxlength="140"></div>
+          <div class="tg__row" data-l="en"><label for="cAddrEn">EN</label><input id="cAddrEn" type="text" maxlength="140"></div>
         </fieldset>
-        <fieldset class="fset"><legend>Манзил 2 — Самарқанд</legend>
-          <div class="fld"><label for="cAddr2Uzc">ЎЗ</label><input id="cAddr2Uzc" type="text" maxlength="140"></div>
-          <div class="fld"><label for="cAddr2Ru">RU</label><input id="cAddr2Ru" type="text" maxlength="140"></div>
-          <div class="fld"><label for="cAddr2En">EN</label><input id="cAddr2En" type="text" maxlength="140"></div>
-          <div class="fld fld--wide"><label for="cMap2">Харита ҳаволаси</label><input id="cMap2" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap2"><small class="ferr" id="e-cMap2"></small></div>
+        <div class="fld"><label for="cMap" data-t="c.map1"></label><input id="cMap" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap"><small class="ferr" id="e-cMap"></small></div>
+        <fieldset class="tg" data-tg="cAddr2"><legend data-t="c.addr2"></legend>
+          <div class="tg__row" data-l="uzc"><label for="cAddr2Uzc">ЎЗ</label><input id="cAddr2Uzc" type="text" maxlength="140"></div>
+          <div class="tg__row" data-l="ru"><label for="cAddr2Ru">RU</label><input id="cAddr2Ru" type="text" maxlength="140"></div>
+          <div class="tg__row" data-l="en"><label for="cAddr2En">EN</label><input id="cAddr2En" type="text" maxlength="140"></div>
         </fieldset>
-        <fieldset class="fset"><legend>Иш вақти</legend>
-          <div class="fld"><label for="cHrsUzc">ЎЗ</label><input id="cHrsUzc" type="text" maxlength="60"></div>
-          <div class="fld"><label for="cHrsRu">RU</label><input id="cHrsRu" type="text" maxlength="60"></div>
-          <div class="fld"><label for="cHrsEn">EN</label><input id="cHrsEn" type="text" maxlength="60"></div>
+        <div class="fld"><label for="cMap2" data-t="c.map2"></label><input id="cMap2" type="url" maxlength="300" placeholder="https://yandex.uz/maps/..." aria-describedby="e-cMap2"><small class="ferr" id="e-cMap2"></small></div>
+        <fieldset class="tg" data-tg="cHrs"><legend data-t="c.hours"></legend>
+          <div class="tg__row" data-l="uzc"><label for="cHrsUzc">ЎЗ</label><input id="cHrsUzc" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="ru"><label for="cHrsRu">RU</label><input id="cHrsRu" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="en"><label for="cHrsEn">EN</label><input id="cHrsEn" type="text" maxlength="60"></div>
         </fieldset>
+        <label class="chk"><input type="checkbox" id="cHrsSample"><span data-t="c.hours.namuna"></span></label>
+        <h3 class="box__h" data-t="c.korxona"></h3>
+        <div class="fld"><label for="cEmail" data-t="c.email"></label><input id="cEmail" type="email" inputmode="email" maxlength="120" placeholder="info@alfirdavstm.com" aria-describedby="e-cEmail"><small class="ferr" id="e-cEmail"></small></div>
+        <div class="fld"><label for="cLegal" data-t="c.legal"></label><input id="cLegal" type="text" maxlength="120" data-tp="c.legal.ph"></div>
+        <div class="fld"><label for="cInn" data-t="c.inn"></label><input id="cInn" class="num" type="text" inputmode="numeric" maxlength="11" aria-describedby="e-cInn"><small class="ferr" id="e-cInn"></small></div>
         <p class="ferr" id="cErr" aria-live="polite"></p>
-        <button class="btn btn--red btn--lg btn--block" type="submit"><span>Сақлаш</span></button>
+        <button class="btn btn--red btn--lg btn--block" type="submit"><span data-t="saqlash"></span></button>
       </form>
     </section>
 
-    <div class="danger">
-      <button type="button" class="btn btn--line btn--block" id="resetAll"><svg class="ic" aria-hidden="true"><use href="#i-reset"/></svg><span>Намунага қайтариш</span></button>
-      <button type="button" class="linkbtn" id="logout">Чиқиш</button>
-    </div>
+    <!-- Mahsulot turlari -->
+    <section class="view" id="v-t" role="region" aria-labelledby="t-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="t-h" data-t="m.t"></h2><button type="button" class="btn btn--red" id="tAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="t.add"></span></button></div>
+      <p class="tnote" data-t="t.note"></p>
+      <form class="box" id="tForm" hidden novalidate>
+        <h3 id="tFormH"></h3>
+        <fieldset class="tg" data-tg="tName"><legend data-t="f.nomi"></legend>
+          <div class="tg__row" data-l="uzc"><label for="tNameUzc">ЎЗ</label><input id="tNameUzc" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="ru"><label for="tNameRu">RU</label><input id="tNameRu" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="en"><label for="tNameEn">EN</label><input id="tNameEn" type="text" maxlength="60"></div>
+        </fieldset>
+        <fieldset class="tg" data-tg="tSub"><legend data-t="t.sub"></legend>
+          <div class="tg__row" data-l="uzc"><label for="tSubUzc">ЎЗ</label><input id="tSubUzc" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="ru"><label for="tSubRu">RU</label><input id="tSubRu" type="text" maxlength="60"></div>
+          <div class="tg__row" data-l="en"><label for="tSubEn">EN</label><input id="tSubEn" type="text" maxlength="60"></div>
+        </fieldset>
+        <fieldset class="tg" data-tg="tDesc"><legend data-t="t.desc"></legend>
+          <div class="tg__row" data-l="uzc"><label for="tDescUzc">ЎЗ</label><input id="tDescUzc" type="text" maxlength="300"></div>
+          <div class="tg__row" data-l="ru"><label for="tDescRu">RU</label><input id="tDescRu" type="text" maxlength="300"></div>
+          <div class="tg__row" data-l="en"><label for="tDescEn">EN</label><input id="tDescEn" type="text" maxlength="300"></div>
+        </fieldset>
+        <div class="fld"><label for="tG" data-t="t.g"></label><select id="tG"><option value="p" data-t="t.g.p"></option><option value="m" data-t="t.g.m"></option><option value="s" data-t="t.g.s"></option></select></div>
+        <div class="ximg" id="tImgW"><span id="tImgPrev"></span><input type="file" class="vh" id="tImg" accept="image/*"><label class="btn btn--line btn--sm" for="tImg"><svg class="ic" aria-hidden="true"><use href="#i-img"/></svg><span id="tImgL"></span></label><button type="button" class="btn btn--line btn--sm" id="tImgDel" hidden><span data-t="olib"></span></button></div>
+        <p class="tnote" data-t="t.img.note"></p>
+        <div class="fld"><label for="tSlug" data-t="t.slug"></label><input id="tSlug" type="text" maxlength="60" autocapitalize="none" spellcheck="false" placeholder="chicken-neck" aria-describedby="tSlugH"><small id="tSlugH"><span data-t="t.slug.h1"></span> /catalog/<b id="tSlugP">…</b>/ <span data-t="t.slug.h2"></span></small></div>
+        <p class="ferr" id="tErr" aria-live="polite"></p>
+        <div class="row2"><button type="button" class="btn btn--line" id="tNo"><span data-t="bekor"></span></button><button type="submit" class="btn btn--red"><span data-t="saqlash"></span></button></div>
+      </form>
+      <ul class="tlist" id="tList"></ul>
+    </section>
+
+    <!-- Tarix -->
+    <section class="view" id="v-h" role="region" aria-labelledby="h-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="h-h" data-t="m.h2"></h2><button type="button" class="btn btn--line btn--sm" id="hRef"><span data-t="yangilash"></span></button></div>
+      <p class="tnote" data-t="h.note"></p>
+      <ul class="hlist" id="hList"></ul>
+    </section>
+
+    <!-- Xavfsizlik: ikki bosqichli kirish, parol, kirishlar -->
+    <section class="view" id="v-s" role="region" aria-labelledby="s-h" hidden>
+      <button type="button" class="back" data-och="m"><svg class="ic" aria-hidden="true"><use href="#i-back"/></svg><span data-t="orqaga"></span></button>
+      <div class="vhead"><h2 id="s-h" data-t="m.s"></h2></div>
+      <form class="box" id="pwForm" novalidate>
+        <h3 data-t="pw.h"></h3>
+        <p class="box__p" data-t="pw.p"></p>
+        <input class="vh" type="text" name="username" autocomplete="username" id="pwUser" tabindex="-1" aria-hidden="true">
+        <div class="fld"><label for="pwOld" data-t="pw.old"></label><input id="pwOld" type="password" autocomplete="current-password" maxlength="200"></div>
+        <div class="fld"><label for="pwNew" data-t="pw.new"></label><input id="pwNew" type="password" autocomplete="new-password" maxlength="200"></div>
+        <div class="fld"><label for="pwNew2" data-t="pw.new2"></label><input id="pwNew2" type="password" autocomplete="new-password" maxlength="200"></div>
+        <p class="ferr" id="pwErr" aria-live="polite"></p>
+        <button class="btn btn--red btn--block" type="submit"><span data-t="pw.btn"></span></button>
+      </form>
+      <div class="box" id="ikkiBox">
+        <h3 data-t="ik.h"></h3>
+        <p class="box__p" data-t="ik.p"></p>
+        <p class="ikki__h" id="ikkiHolat"></p>
+        <div id="ikki1" hidden>
+          <div class="fld"><label for="ikkiParol" data-t="pw.old"></label><input id="ikkiParol" type="password" autocomplete="current-password" maxlength="200"></div>
+          <button type="button" class="btn btn--line btn--block" id="ikkiBoshla"><span data-t="ik.boshla"></span></button>
+        </div>
+        <div id="ikki2" hidden>
+          <p class="box__p" id="ikkiQrP"><b>1.</b> <span data-t="ik.qr"></span></p>
+          <div class="ikki__qr" id="ikkiQr" role="img" data-ta="ik.qr.aria"></div>
+          <p class="box__p" data-t="ik.qol"></p>
+          <p class="ikki__k num" id="ikkiKalit"></p>
+          <div class="row2"><button type="button" class="btn btn--line" id="ikkiNusxa"><span data-t="ik.nusxa"></span></button><a class="btn btn--line" id="ikkiHavola" href="#"><span data-t="ik.havola"></span></a></div>
+          <div class="fld"><label for="ikkiKod"><b>2.</b> <span data-t="ik.kod"></span></label><input id="ikkiKod" class="num" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="7"></div>
+          <div class="row2"><button type="button" class="btn btn--line" id="ikkiBekor"><span data-t="bekor"></span></button><button type="button" class="btn btn--red" id="ikkiYoq"><span data-t="ik.yoq"></span></button></div>
+        </div>
+        <div id="ikki3" hidden>
+          <p class="box__p"><b data-t="ik.zh"></b> <span data-t="ik.zp"></span></p>
+          <ul class="ikki__z num" id="ikkiZ"></ul>
+          <button type="button" class="btn btn--red btn--block" id="ikkiTayyor"><span data-t="ik.tayyor"></span></button>
+        </div>
+        <div id="ikki4" hidden>
+          <div class="fld"><label for="ikkiParol2" data-t="ik.ochparol"></label><input id="ikkiParol2" type="password" autocomplete="current-password" maxlength="200"></div>
+          <button type="button" class="btn btn--line btn--block" id="ikkiOchir"><span data-t="ik.ochir"></span></button>
+        </div>
+        <p class="ferr" id="ikkiErr" aria-live="polite"></p>
+      </div>
+      <div class="box">
+        <div class="vhead vhead--in"><h3 data-t="j.h"></h3><button type="button" class="btn btn--line btn--sm" id="jRef"><span data-t="yangilash"></span></button></div>
+        <ul class="jlist" id="jList"></ul>
+        <button type="button" class="btn btn--line btn--block" id="jYana" hidden><span data-t="j.yana"></span></button>
+      </div>
+    </section>
   </main>
 </div>
 
-<!-- Tahrirlash oynasi -->
+<!-- Mahsulotni tahrirlash oynasi -->
 <dialog class="sheet" id="sheet" aria-labelledby="sheet-h">
   <form class="sheet__in" id="pForm" novalidate>
     <div class="sheet__top">
-      <h2 id="sheet-h">Маҳсулот</h2>
-      <button type="button" class="iconbtn" id="sheetX" aria-label="Ёпиш"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <h2 id="sheet-h"></h2>
+      <button type="button" class="iconbtn" id="sheetX" data-ta="yopish"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
     </div>
     <div class="sheet__body">
-      <div class="imgbox">
-        <div class="imgbox__prev" id="fImgPrev"><span>Сурат йўқ — сайтда намунавий ёрлиқ кўринади</span></div>
-        <div class="imgbox__btns">
-          <input type="file" id="fImg" class="vh" accept="image/*"><label class="btn btn--line btn--sm" for="fImg"><svg class="ic" aria-hidden="true"><use href="#i-img"/></svg><span>Сурат юклаш</span></label>
-          <button type="button" class="btn btn--line btn--sm" id="fImgDel" hidden><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span>Олиб ташлаш</span></button>
-        </div>
-        <p class="imgbox__info" id="fImgInfo" aria-live="polite"></p>
-        <fieldset class="fset fset--alt"><legend>Сурат тавсифи (alt) — бўш бўлса номдан</legend>
-          <div class="fld"><label for="fAltUzc">ЎЗ</label><input id="fAltUzc" type="text" maxlength="120"></div>
-          <div class="fld"><label for="fAltRu">RU</label><input id="fAltRu" type="text" maxlength="120"></div>
-          <div class="fld"><label for="fAltEn">EN</label><input id="fAltEn" type="text" maxlength="120"></div>
-        </fieldset>
-      </div>
-      <div class="fld"><label for="fType">Маҳсулот тури</label><select id="fType"></select></div>
-      <div class="fld"><label for="fNameUzc">Номи (ЎЗ)</label><input id="fNameUzc" type="text" maxlength="60" required></div>
+      <div class="fld"><label for="fType" data-t="f.tur"></label><select id="fType"></select></div>
       <div class="fld2">
-        <div class="fld"><label for="fNameRu">Номи (RU)</label><input id="fNameRu" type="text" maxlength="60"></div>
-        <div class="fld"><label for="fNameEn">Номи (EN)</label><input id="fNameEn" type="text" maxlength="60"></div>
-      </div>
-      <div class="fld2">
-        <div class="fld"><label for="fCountry">Давлат</label><select id="fCountry"></select></div>
-        <div class="fld"><label for="fRegion">Ҳудуд</label><select id="fRegion"></select></div>
+        <div class="fld"><label for="fCountry" data-t="f.davlat"></label><select id="fCountry"></select></div>
+        <div class="fld"><label for="fRegion" data-t="f.hudud"></label><select id="fRegion"></select></div>
       </div>
       <div class="newreg" id="newReg" hidden>
-        <div class="fld"><label for="nrName">Янги ҳудуд номи (ЎЗ)</label><input id="nrName" type="text" maxlength="40" placeholder="Масалан, Измир"></div>
-        <div class="newreg__btns"><button type="button" class="btn btn--red btn--sm" id="nrOk">Қўшиш</button><button type="button" class="btn btn--line btn--sm" id="nrNo">Бекор</button></div>
+        <div class="fld"><label for="nrName" data-t="f.yangihudud"></label><input id="nrName" type="text" maxlength="40"></div>
+        <div class="newreg__btns"><button type="button" class="btn btn--red btn--sm" id="nrOk"><span data-t="qoshish"></span></button><button type="button" class="btn btn--line btn--sm" id="nrNo"><span data-t="bekor"></span></button></div>
       </div>
-      <button type="button" class="linkbtn" id="nrOpen"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Шу давлатга янги ҳудуд</button>
-      <fieldset class="fld seg-f"><legend>Ҳолати</legend>
+      <button type="button" class="linkbtn" id="nrOpen"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-t="f.hududqosh"></span></button>
+      <fieldset class="fld seg-f"><legend data-t="f.holat"></legend>
         <div class="seg" id="fStatus">
-          <label><input type="radio" name="st" value="in"><span class="seg--in">Бор</span></label>
-          <label><input type="radio" name="st" value="way"><span class="seg--way">Йўлда</span></label>
-          <label><input type="radio" name="st" value="out"><span class="seg--out">Тугаган</span></label>
+          <label><input type="radio" name="st" value="in"><span class="seg--in" data-t="st.in"></span></label>
+          <label><input type="radio" name="st" value="way"><span class="seg--way" data-t="st.way"></span></label>
+          <label><input type="radio" name="st" value="out"><span class="seg--out" data-t="st.out"></span></label>
         </div>
       </fieldset>
-      <div class="fld"><label for="fKg">Қути оғирлиги, кг</label><input id="fKg" class="num" type="number" inputmode="numeric" min="1" max="1000" step="1"></div>
+      <div class="fld"><label for="fKg" data-t="f.kg"></label><input id="fKg" class="num" type="number" inputmode="numeric" min="1" max="1000" step="1"></div>
+      <fieldset class="tg" data-tg="fName"><legend data-t="f.nomi2"></legend>
+        <div class="tg__row" data-l="uzc"><label for="fNameUzc">ЎЗ</label><input id="fNameUzc" type="text" maxlength="60"></div>
+        <div class="tg__row" data-l="ru"><label for="fNameRu">RU</label><input id="fNameRu" type="text" maxlength="60"></div>
+        <div class="tg__row" data-l="en"><label for="fNameEn">EN</label><input id="fNameEn" type="text" maxlength="60"></div>
+      </fieldset>
+      <div class="imgbox">
+        <div class="imgbox__prev" id="fImgPrev"></div>
+        <div class="imgbox__btns">
+          <input type="file" id="fImg" class="vh" accept="image/*"><label class="btn btn--line btn--sm" for="fImg"><svg class="ic" aria-hidden="true"><use href="#i-img"/></svg><span data-t="f.surat"></span></label>
+          <button type="button" class="btn btn--line btn--sm" id="fImgDel" hidden><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span data-t="olib"></span></button>
+        </div>
+        <p class="imgbox__info" id="fImgInfo" aria-live="polite"></p>
+        <fieldset class="tg" data-tg="fAlt"><legend data-t="f.alt"></legend>
+          <div class="tg__row" data-l="uzc"><label for="fAltUzc">ЎЗ</label><input id="fAltUzc" type="text" maxlength="120"></div>
+          <div class="tg__row" data-l="ru"><label for="fAltRu">RU</label><input id="fAltRu" type="text" maxlength="120"></div>
+          <div class="tg__row" data-l="en"><label for="fAltEn">EN</label><input id="fAltEn" type="text" maxlength="120"></div>
+        </fieldset>
+      </div>
       <p class="ferr" id="fErr" aria-live="polite"></p>
     </div>
     <div class="sheet__foot">
-      <button type="button" class="btn btn--line" id="pDel"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span>Ўчириш</span></button>
-      <button type="submit" class="btn btn--red"><span>Сақлаш</span></button>
+      <button type="button" class="btn btn--line" id="pDel"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg><span></span></button>
+      <button type="submit" class="btn btn--red"><span data-t="saqlash"></span></button>
     </div>
   </form>
 </dialog>
 
+<!-- Tasdiqlash oynasi (brauzerning standart oynasi o'rniga) -->
+<dialog class="tasdiq" id="tasdiq" aria-labelledby="tasdiq-h">
+  <div class="tasdiq__in">
+    <h2 id="tasdiq-h"></h2>
+    <p id="tasdiq-p"></p>
+    <div class="row2"><button type="button" class="btn btn--line" id="tasdiqNo"><span></span></button><button type="button" class="btn btn--red" id="tasdiqOk"><span></span></button></div>
+  </div>
+</dialog>
+
+<!-- «Saytda qanday ko'rinadi»: chiqarilmagan o'zgarishlar bilan yasalgan sayt — faqat shu oynada, faqat kirgan odamga -->
+<dialog class="kor" id="kor" aria-labelledby="kor-h">
+  <div class="kor__top">
+    <div class="kor__t"><b id="kor-h" data-t="kor.h"></b><small id="korIzoh"></small></div>
+    <div class="kor__b">
+      <div class="kor__eni" role="group" data-ta="kor.eni"><button type="button" data-eni="tel" aria-pressed="true" data-t="kor.tel"></button><button type="button" data-eni="komp" aria-pressed="false" data-t="kor.komp"></button></div>
+      <button type="button" class="btn btn--red btn--sm" id="korPub"><span data-t="pub.ok"></span></button>
+      <button type="button" class="btn btn--line btn--sm" id="korX"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span data-t="yopish"></span></button>
+    </div>
+  </div>
+  <div class="kor__w" id="korW"><iframe id="korF" class="kor__f" data-ta="kor.h" sandbox="allow-scripts allow-same-origin allow-popups" referrerpolicy="no-referrer"></iframe></div>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/data.js"></script>
-<script src="js/panel.js"></script>
+<script src="js/alf.js" defer></script>
+<script src="js/namuna.js" defer></script>
+<script src="js/qatlam.js" defer></script>
 </body>
 </html>

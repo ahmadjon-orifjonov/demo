@@ -1,0 +1,641 @@
+/* ALFIRDAVS TM — serverli panel: til (ЎЗ / RU), kirish, bo'limlar orasida yurish, ma'lumot qatlami, «Сайтга чиқариш»,
+   «Сайтда қандай кўринади», tarix va xavfsizlik bo'limi.
+   panel.js ma'lumotni ALF.loadProducts/saveProducts va ALF.loadSettings/saveSettings orqali oladi — bu yerda ular
+   serverdan olingan holatning xotiradagi QORALAMASIGA ulanadi. Qoralama «Сайтга чиқариш» bosilganda serverga yuboriladi:
+   server tekshiradi -> saytni qayta yasaydi -> almashtiradi. Brauzer xotirasida ma'lumot saqlanmaydi; faqat tanlangan
+   til `alf_til` nomli oddiy cookie'da turadi (unda maxfiy narsa yo'q — server xabarlari ham shu tilda keladi). */
+(function () {
+  'use strict';
+  var ALF = window.ALF;
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var API = 'api/';
+
+  /* ================= LUG'AT: kalit -> [ўзбекча (кирилл), русча] ================= */
+  var LUGAT = {
+    'til.aria': ['Панел тили', 'Язык панели'],
+    'kirish.h': ['Бошқарув панели', 'Панель управления'],
+    'kirish.login': ['Логин', 'Логин'],
+    'kirish.parol': ['Парол', 'Пароль'],
+    'kirish.kod': ['Тасдиқлаш коди — телефондаги иловада кўринган 6 рақам ёки захира код', 'Код подтверждения — 6 цифр из приложения в телефоне или резервный код'],
+    'kirish.btn': ['Кириш', 'Войти'],
+    'kirish.bosh': ['Логин ва паролни ёзинг', 'Введите логин и пароль'],
+    'kirish.kodyoz': ['Тасдиқлаш кодини киритинг', 'Введите код подтверждения'],
+    'kirish.muddat': ['Узоқ вақт ҳаракат бўлмагани учун қайта кириш сўраляпти. Ёзганларингиз шу ойнада сақланиб турибди.', 'Вы долго ничего не делали, поэтому нужно войти ещё раз. Всё, что вы ввели, осталось в этом окне.'],
+    'kirish.yuklanmadi': ['Панел очилмади — саҳифани янгиланг', 'Панель не открылась — обновите страницу'],
+    'kirish.parolyangi': ['Парол алмаштирилди. Янги парол билан киринг.', 'Пароль изменён. Войдите с новым паролем.'],
+    'tarmoq': ['Интернет узилди ёки сайт вақтинча ишламаяпти. Бироздан кейин қайта уриниб кўринг.', 'Нет связи или сайт временно не работает. Попробуйте ещё раз чуть позже.'],
+    'javobyoq': ['Сайт жавоб бермади. Бироздан кейин қайта уриниб кўринг.', 'Сайт не ответил. Попробуйте ещё раз чуть позже.'],
+    'top.sub': ['Бошқарув', 'Управление'],
+    'top.sayt': ['Сайт', 'Сайт'],
+    'top.chiqish': ['Чиқиш', 'Выйти'],
+    'nav.aria': ['Бўлимлар', 'Разделы'],
+    'nav.mahsulot': ['Маҳсулотлар', 'Продукция'],
+    'nav.sozlama': ['Созламалар', 'Настройки'],
+    'orqaga': ['Созламалар', 'Настройки'],
+    'saqlash': ['Сақлаш', 'Сохранить'],
+    'bekor': ['Бекор', 'Отмена'],
+    'yopish': ['Ёпиш', 'Закрыть'],
+    'qoshish': ['Қўшиш', 'Добавить'],
+    'olib': ['Олиб ташлаш', 'Убрать'],
+    'yangilash': ['Янгилаш', 'Обновить'],
+    'tasdiqlash': ['Тасдиқлаш', 'Подтвердить'],
+    'ochirish': ['Ўчириш', 'Удалить'],
+    'tahrir': ['Таҳрир', 'Изменить'],
+    'tanlang': ['— танланг —', '— выберите —'],
+    'yangi': ['янги', 'новый'],
+
+    /* saytga chiqarish tasmasi */
+    'pub.h': ['Сайтга чиқарилмаган ўзгаришлар бор.', 'Есть изменения, которые ещё не на сайте.'],
+    'pub.info': ['Сайтдаги ҳолат: {v}.', 'На сайте сейчас: версия от {v}.'],
+    'pub.kor': ['Кўриб чиқиш', 'Посмотреть'],
+    'pub.ok': ['Сайтга чиқариш', 'Опубликовать на сайте'],
+    'pub.no': ['Бекор қилиш', 'Отменить'],
+    'pub.no2': ['Ўзгаришлар йўқолади — тасдиқлаш', 'Изменения пропадут — подтвердить'],
+    'pub.ketmoqda': ['Чиқариляпти…', 'Публикуется…'],
+    'pub.boldi': ['Сайт янгиланди', 'Сайт обновлён'],
+    'pub.chiqmadi': ['Сайтга чиқмади', 'Не опубликовано'],
+    'pub.bekor': ['Ўзгаришлар бекор қилинди', 'Изменения отменены'],
+    'avval': ['Аввал ўзгаришларни сайтга чиқаринг ёки бекор қилинг', 'Сначала опубликуйте изменения на сайте или отмените их'],
+
+    /* bosh ekran */
+    'p.note': ['Ҳолатни («Бор», «Йўлда», «Тугаган») бир марта босиб ўзгартиринг, кейин юқорида чиқадиган «Сайтга чиқариш»ни босинг.', 'Статус («В наличии», «В пути», «Нет») меняется одним нажатием. Затем нажмите «Опубликовать на сайте» — кнопка появится вверху.'],
+    'p.tasdiqyoq': ['Ҳолатлар сайтда ҳали кўринмайди: каталог тасдиқланмаган. Рўйхат ҳақиқий бўлгач, тасдиқ белгисини қўйинг.', 'Статусы пока не видны на сайте: каталог не подтверждён. Когда список станет настоящим, поставьте отметку подтверждения.'],
+    'p.tasdiqbtn': ['Тасдиқ белгиси', 'Отметка подтверждения'],
+    'p.h': ['Маҳсулотлар', 'Продукция'],
+    'p.add': ['Қўшиш', 'Добавить'],
+    'p.filter': ['Давлат бўйича', 'По странам'],
+    'p.hammasi': ['Ҳаммаси', 'Все'],
+    'p.ord': ['Тартибни ўзгартириш', 'Изменить порядок'],
+    'p.ord2': ['Тартиб тайёр', 'Порядок готов'],
+    'p.holat': ['Ҳолати', 'Статус'],
+    'p.yuqoriga': ['Юқорига', 'Выше'],
+    'p.pastga': ['Пастга', 'Ниже'],
+    'p.holatok': ['Ҳолат ўзгарди: {n}', 'Статус изменён: {n}'],
+    'p.tartibok': ['Тартиб ўзгарди', 'Порядок изменён'],
+    'p.bosh': ['Бу давлатдан ҳозирча маҳсулот йўқ.', 'Из этой страны пока нет продукции.'],
+    'st.in': ['Бор', 'В наличии'],
+    'st.way': ['Йўлда', 'В пути'],
+    'st.out': ['Тугаган', 'Нет'],
+
+    /* mahsulot oynasi */
+    'f.yangi': ['Янги маҳсулот', 'Новый продукт'],
+    'f.tahrir': ['Маҳсулотни ўзгартириш', 'Изменить продукт'],
+    'f.tur': ['Маҳсулот тури', 'Вид продукции'],
+    'f.davlat': ['Давлат', 'Страна'],
+    'f.hudud': ['Ҳудуд', 'Регион'],
+    'f.yangihudud': ['Янги ҳудуд номи', 'Название нового региона'],
+    'f.hududqosh': ['Рўйхатда йўқ ҳудудни қўшиш', 'Добавить регион, которого нет в списке'],
+    'f.holat': ['Ҳолати', 'Статус'],
+    'f.kg': ['Қути оғирлиги, кг', 'Вес короба, кг'],
+    'f.nomi': ['Номи', 'Название'],
+    'f.nomi2': ['Номи (бўш қолса — тур номи чиқади)', 'Название (если пусто — берётся название вида)'],
+    'f.surat': ['Сурат юклаш', 'Загрузить фото'],
+    'f.suratalm': ['Суратни алмаштириш', 'Заменить фото'],
+    'f.suratyoq': ['Сурат йўқ — сайтда картон қути расми кўринади', 'Фото нет — на сайте будет рисунок короба'],
+    'f.alt': ['Суратда нима борлиги (ихтиёрий; қидирув тизимлари ва сурат очилмаган ҳолат учун)', 'Что изображено на фото (по желанию; для поисковиков и если фото не загрузилось)'],
+    'f.tayyor': ['Сурат тайёрланмоқда…', 'Фото обрабатывается…'],
+    'f.yuklandi': ['Юкланди: {w}×{h}', 'Загружено: {w}×{h}'],
+    'f.ochilmadi': ['Бу файлни очиб бўлмади', 'Не удалось открыть этот файл'],
+    'f.katta': ['Файл жуда катта (кўпи {n} МБ)', 'Файл слишком большой (не более {n} МБ)'],
+    'f.e.tur': ['Маҳсулот турини танланг', 'Выберите вид продукции'],
+    'f.e.davlat': ['Давлатни танланг', 'Выберите страну'],
+    'f.e.hudud': ['Ҳудудни танланг ёки янгисини қўшинг', 'Выберите регион или добавьте новый'],
+    'f.e.kg': ['Қути оғирлиги 1 дан 1000 кг гача бутун сон бўлсин', 'Вес короба — целое число от 1 до 1000 кг'],
+    'f.e.hududbor': ['Бу ҳудуд аллақачон бор: {n}', 'Такой регион уже есть: {n}'],
+    'f.qoshildi': ['Маҳсулот қўшилди', 'Продукт добавлен'],
+    'f.saqlandi': ['Сақланди', 'Сохранено'],
+    'f.ochirildi': ['Ўчирилди', 'Удалено'],
+    'f.yoqolgan': ['Бу маҳсулот бошқа ойнада ўчирилган', 'Этот продукт уже удалён в другом окне'],
+    'f.takror.h': ['Бундай маҳсулот аллақачон бор', 'Такой продукт уже есть'],
+    'f.takror.p': ['Рўйхатда бор: {n}. Яна битта шундай маҳсулот қўшилсинми?', 'В списке уже есть: {n}. Добавить ещё один такой же продукт?'],
+    'f.takror.ha': ['Ҳа, қўшиш', 'Да, добавить'],
+    'f.takror.yoq': ['Йўқ', 'Нет'],
+
+    /* matn maydonlari: bir til + boshqa tillar */
+    'tg.boshqa': ['Бошқа тиллар', 'Другие языки'],
+    'tg.yashir': ['Бошқа тилларни яшириш', 'Скрыть другие языки'],
+    'tg.bosh': ['бўш', 'пусто'],
+    'tg.bor': ['ёзилган', 'заполнено'],
+
+    /* sozlamalar menyusi */
+    'm.h': ['Созламалар', 'Настройки'],
+    'm.kor.d': ['Ўзгаришлар сайтга чиқмасдан олдин қандай кўринишини текшириш', 'Проверить, как изменения будут выглядеть, до публикации'],
+    'm.c': ['Алоқа маълумотлари', 'Контакты'],
+    'm.c.d': ['Телефон, Telegram, WhatsApp, манзил, иш вақти', 'Телефон, Telegram, WhatsApp, адрес, часы работы'],
+    'm.r': ['Ҳудудлар', 'Регионы'],
+    'm.r.d': ['Давлат ичидаги ҳудудни қўшиш ёки ўчириш', 'Добавить или удалить регион внутри страны'],
+    'm.t': ['Маҳсулот турлари', 'Виды продукции'],
+    'm.t.d': ['Тур номи, изоҳи, сурати; янги тур қўшиш', 'Название, описание и фото вида; добавить новый вид'],
+    'm.x': ['Саҳифа матнлари', 'Тексты страниц'],
+    'm.x.d': ['Рақамлар, сертификатлар, суратлар, савол-жавоб, шартлар', 'Цифры, сертификаты, фото, вопросы и ответы, условия'],
+    'm.h2': ['Ўзгаришлар тарихи', 'История изменений'],
+    'm.h2.d': ['Сайтни олдинги ҳолатига қайтариш', 'Вернуть сайт к прежнему состоянию'],
+    'm.s': ['Хавфсизлик', 'Безопасность'],
+    'm.s.d': ['Парол, икки босқичли кириш, ким қачон кирган', 'Пароль, двухэтапный вход, кто и когда входил'],
+    'm.kim': ['Сиз шу логин билан киргансиз:', 'Вы вошли под логином:'],
+    'tas.h': ['Каталог тасдиғи', 'Подтверждение каталога'],
+    'tas.p': ['Маҳсулотлар рўйхати, ҳудудлар ва «Бор / Йўлда / Тугаган» ҳолатлари ҳақиқий эканини текшириб, белгини қўйинг. Шундан сўнг ҳолатлар сайтда кўринади. Белги қўйилмагунча сайтда «сўров бўйича» деб туради.', 'Проверьте, что список продукции, регионы и статусы «В наличии / В пути / Нет» настоящие, и поставьте отметку. После этого статусы появятся на сайте. Пока отметки нет, на сайте стоит «по запросу».'],
+    'tas.chk': ['Каталог тасдиқланди — ҳолатлар сайтда кўрсатилсин', 'Каталог подтверждён — показывать статусы на сайте'],
+    'tas.qoyildi': ['Белги қўйилди — энди «Сайтга чиқариш»ни босинг', 'Отметка поставлена — теперь нажмите «Опубликовать на сайте»'],
+    'tas.olindi': ['Белги олинди — энди «Сайтга чиқариш»ни босинг', 'Отметка снята — теперь нажмите «Опубликовать на сайте»'],
+    'exp.h': ['Маълумот нусхаси', 'Копия данных'],
+    'exp.p': ['Ҳамма маҳсулот ва матнлар битта файлга сақланади. Эҳтиёт учун вақти-вақти билан юклаб қўйинг.', 'Вся продукция и тексты сохраняются в один файл. Скачивайте его время от времени на всякий случай.'],
+    'exp.btn': ['Нусхани юклаб олиш', 'Скачать копию'],
+
+    /* hududlar */
+    'r.yangi': ['Янги ҳудуд қўшиш', 'Добавить регион'],
+    'r.nomi': ['Ҳудуд номи', 'Название региона'],
+    'r.add': ['Ҳудуд қўшиш', 'Добавить регион'],
+    'r.e.nom': ['Ҳудуд номини ёзинг', 'Введите название региона'],
+    'r.bor': ['Бу ҳудуд аллақачон бор: {n}', 'Такой регион уже есть: {n}'],
+    'r.qoshildi': ['Ҳудуд қўшилди: {n}', 'Регион добавлен: {n}'],
+    'r.ochirildi': ['Ҳудуд ўчирилди', 'Регион удалён'],
+    'r.band': ['Бу ҳудудда маҳсулот бор — аввал уни бошқа ҳудудга ўтказинг', 'В этом регионе есть продукты — сначала перенесите их в другой регион'],
+    'n.mahsulot': ['{n} та маҳсулот', 'продуктов: {n}'],
+    'n.yoq': ['маҳсулот йўқ', 'продуктов нет'],
+
+    /* sahifa matnlari */
+    'x.p': ['«Намуна» белгиси турган қатор ҳақиқий сайтда кўринмайди. Ҳақиқий маълумотни ёзиб, белгини олиб ташланг. Бўш қолган қатор ҳам кўринмайди.', 'Строка с отметкой «Образец» на настоящем сайте не показывается. Впишите настоящие данные и снимите отметку. Пустая строка тоже не показывается.'],
+    'x.sec': ['Сайтнинг қайси қисми?', 'Какая часть сайта?'],
+    'x.stats': ['Компания рақамлари', 'Цифры компании'],
+    'x.certs': ['Сертификатлар', 'Сертификаты'],
+    'x.gallery': ['Суратлар (омбор, юклаш)', 'Фото (склад, отгрузка)'],
+    'x.faq': ['Савол-жавоб', 'Вопросы и ответы'],
+    'x.terms': ['Улгуржи ва экспорт шартлари', 'Условия опта и экспорта'],
+    'x.spec': ['Маҳсулот тавсифи жадвали', 'Таблица характеристик продукта'],
+    'x.add': ['Қатор қўшиш', 'Добавить строку'],
+    'x.bosh': ['Ҳозирча бўш — сайтда бу қисм кўринмайди.', 'Пока пусто — на сайте этой части не будет.'],
+    'x.namuna': ['Намуна — ҳали тасдиқланмаган, ҳақиқий сайтда кўринмайди', 'Образец — ещё не подтверждено, на настоящем сайте не показывается'],
+    'x.ochir': ['Ўчириш: {n}-қатор', 'Удалить: строка {n}'],
+    'x.kop': ['Кўпи билан 30 та қатор', 'Не более 30 строк'],
+    'x.f.v': ['Қиймат (бирлиги билан: 1 200 т, EN: 1,200 t)', 'Значение (с единицей: 1 200 т, EN: 1,200 t)'],
+    'x.f.l': ['Қиймат остидаги изоҳ', 'Подпись под значением'],
+    'x.f.cert': ['Ҳужжат номи', 'Название документа'],
+    'x.f.pdf': ['Ҳужжат файли — PDF юкланг ёки https:// ҳавола ёзинг (ихтиёрий)', 'Файл документа — загрузите PDF или укажите ссылку https:// (по желанию)'],
+    'x.f.gal': ['Сурат остидаги изоҳ', 'Подпись под фото'],
+    'x.f.q': ['Савол', 'Вопрос'],
+    'x.f.a': ['Жавоб', 'Ответ'],
+    'x.f.t': ['Сарлавҳа', 'Заголовок'],
+    'x.f.d': ['Матн', 'Текст'],
+    'x.f.k': ['Қатор номи (масалан: Сақлаш муддати)', 'Название строки (например: Срок хранения)'],
+    'x.f.sv': ['Қиймати', 'Значение'],
+    'x.pdfbtn': ['PDF юклаш', 'Загрузить PDF'],
+    'x.pdfok': ['Ҳужжат юкланди — «Сақлаш»ни босинг', 'Документ загружен — нажмите «Сохранить»'],
+    'x.suratok': ['Сурат тайёр: {w}×{h} — «Сақлаш»ни босинг', 'Фото готово: {w}×{h} — нажмите «Сохранить»'],
+    'x.rad': ['Бу файл қабул қилинмади', 'Этот файл не принят'],
+    'x.e.havola': ['{n}-қатор: ҳавола https:// билан бошлансин', 'Строка {n}: ссылка должна начинаться с https://'],
+
+    /* aloqa */
+    'c.p': ['Бу ердаги маълумот сайтдаги ҳамма алоқа тугмаларига қўйилади. Бўш қолган майдон сайтда кўринмайди.', 'Эти данные подставляются во все кнопки связи на сайте. Пустое поле на сайте не показывается.'],
+    'c.phone': ['Асосий телефон', 'Основной телефон'],
+    'c.phone2': ['Қўшимча телефон', 'Дополнительный телефон'],
+    'c.tg.ph': ['+998999051144, @username ёки t.me/...', '+998999051144, @username или t.me/...'],
+    'c.wa': ['WhatsApp рақами', 'Номер WhatsApp'],
+    'c.wa.ph': ['Бўш бўлса — асосий телефон', 'Если пусто — основной телефон'],
+    'c.max': ['MAX мессенжери (рақам ёки ҳавола)', 'Мессенджер MAX (номер или ссылка)'],
+    'c.max.ph': ['+998999051144 ёки https://max.ru/...', '+998999051144 или https://max.ru/...'],
+    'c.ig.ph': ['username ёки https://instagram.com/...', 'username или https://instagram.com/...'],
+    'c.addr1': ['1-манзил — омбор (Тошкент)', 'Адрес 1 — склад (Ташкент)'],
+    'c.map1': ['1-манзил харитадаги ҳаволаси', 'Ссылка на карту для адреса 1'],
+    'c.addr2': ['2-манзил — Самарқанд', 'Адрес 2 — Самарканд'],
+    'c.map2': ['2-манзил харитадаги ҳаволаси', 'Ссылка на карту для адреса 2'],
+    'c.hours': ['Иш вақти', 'Часы работы'],
+    'c.hours.namuna': ['Иш вақти ҳали тасдиқланмаган — ҳақиқий сайтда кўрсатилмасин', 'Часы работы ещё не подтверждены — не показывать на настоящем сайте'],
+    'c.korxona': ['Корхона маълумоти (ихтиёрий)', 'Сведения о компании (по желанию)'],
+    'c.email': ['Электрон почта', 'Электронная почта'],
+    'c.legal': ['Корхонанинг тўлиқ номи (ҳужжатдагидек)', 'Полное название компании (как в документах)'],
+    'c.legal.ph': ['Масалан: «…» МЧЖ', 'Например: ООО «…»'],
+    'c.inn': ['СТИР (9 та рақам)', 'ИНН (9 цифр)'],
+    'c.e.shart': ['Асосий телефон шарт', 'Основной телефон обязателен'],
+    'c.e.tel': ['Рақам нотўғри: +998 XX XXX XX XX', 'Номер указан неверно: +998 XX XXX XX XX'],
+    'c.e.tg': ['Username (@...), t.me ҳавола ёки рақам ёзинг', 'Укажите username (@...), ссылку t.me или номер'],
+    'c.e.max': ['Рақам ёки https:// билан бошланадиган ҳавола ёзинг', 'Укажите номер или ссылку, начинающуюся с https://'],
+    'c.e.ig': ['Instagram username ёки ҳавола ёзинг', 'Укажите username или ссылку Instagram'],
+    'c.e.email': ['Почта манзили нотўғри: nom@domen.uz', 'Адрес почты указан неверно: name@domain.uz'],
+    'c.e.inn': ['СТИР 9 та рақамдан иборат', 'ИНН состоит из 9 цифр'],
+    'c.e.url': ['Ҳавола https:// билан бошлансин', 'Ссылка должна начинаться с https://'],
+    'c.e.addr': ['1-манзилни ёзинг', 'Укажите адрес 1'],
+    'c.e.jami': ['Хатоларни тузатинг — ҳеч нарса сақланмади.', 'Исправьте ошибки — ничего не сохранено.'],
+    'c.ok': ['Алоқа маълумотлари сақланди', 'Контакты сохранены'],
+
+    /* turlar */
+    't.add': ['Янги тур', 'Новый вид'],
+    't.note': ['Ҳар тур учун сайтда алоҳида саҳифа очилади (уч тилда). Тур ўчирилса, саҳифаси ҳам йўқолади. Маҳсулоти бор турни ўчириб бўлмайди.', 'Для каждого вида на сайте есть отдельная страница (на трёх языках). Если удалить вид, страница исчезнет. Вид, в котором есть продукты, удалить нельзя.'],
+    't.yangi': ['Янги тур', 'Новый вид'],
+    't.tahrir': ['Турни ўзгартириш', 'Изменить вид'],
+    't.sub': ['Қисқа изоҳ (масалан: «Музлатилган блок»)', 'Краткое пояснение (например: «Замороженный блок»)'],
+    't.desc': ['Тавсиф (саҳифа бошида 1–2 жумла)', 'Описание (1–2 предложения в начале страницы)'],
+    't.g': ['Қайси гуруҳга киради? (сурати йўқ маҳсулот расмининг ранги шунга қараб)', 'К какой группе относится? (от этого зависит цвет рисунка у продукта без фото)'],
+    't.g.p': ['Парранда', 'Птица'],
+    't.g.m': ['Мол гўшти', 'Говядина'],
+    't.g.s': ['Субмаҳсулот', 'Субпродукты'],
+    't.img': ['Тур сурати', 'Фото вида'],
+    't.img.note': ['Тур сурати шу тур саҳифасининг бошида ва сурати йўқ маҳсулотларда кўринади.', 'Фото вида показывается в начале его страницы и у продуктов, для которых нет своего фото.'],
+    't.slug': ['Сайтдаги манзили — инглизча, фақат лотин ҳарф, рақам ва чизиқча', 'Адрес на сайте — по-английски, только латинские буквы, цифры и дефис'],
+    't.slug.h1': ['Сайтда:', 'На сайте:'],
+    't.slug.h2': ['— кейин ўзгартириб бўлмайди', '— потом изменить нельзя'],
+    't.e.nom': ['Тур номини ёзинг', 'Введите название вида'],
+    't.e.slug': ['Сайтдаги манзилини ёзинг: лотин ҳарф, рақам ва чизиқча (масалан: chicken-neck)', 'Укажите адрес на сайте: латинские буквы, цифры и дефис (например: chicken-neck)'],
+    't.e.slugbor': ['Бундай манзилли тур аллақачон бор', 'Вид с таким адресом уже есть'],
+    't.e.kop': ['Кўпи билан 60 та тур', 'Не более 60 видов'],
+    't.saqlandi': ['Тур сақланди', 'Вид сохранён'],
+    't.qoshildi': ['Тур қўшилди — саҳифаси сайтга чиқарилганда пайдо бўлади', 'Вид добавлен — страница появится после публикации на сайте'],
+    't.ochirildi': ['Тур ўчирилди', 'Вид удалён'],
+    't.band': ['Бу турда маҳсулот бор — аввал уларни бошқа турга ўтказинг', 'В этом виде есть продукты — сначала перенесите их в другой вид'],
+
+    /* tarix */
+    'h.note': ['Сайтга чиқарилган охирги 20 та ҳолат сақланади. Исталганига қайтариш мумкин — сайт ўша кундаги кўринишига қайтади.', 'Хранятся последние 20 опубликованных состояний. Можно вернуться к любому — сайт станет таким, каким был тогда.'],
+    'h.saytda': ['Сайтда', 'На сайте'],
+    'h.qaytar': ['Қайтариш', 'Вернуть'],
+    'h.bosh': ['Тарих бўш', 'История пуста'],
+    'h.ok': ['Сайт танланган ҳолатга қайтарилди', 'Сайт возвращён к выбранному состоянию'],
+
+    /* xavfsizlik */
+    'pw.h': ['Паролни алмаштириш', 'Смена пароля'],
+    'pw.p': ['Камида 10 та белги. Осон парол (1234567890, qwerty, логин ёки фирма номи) қабул қилинмайди — учта сўз ва рақамни аралаштиринг. Алмаштирилгач, ҳамма қурилмада қайта кириш сўралади.', 'Не меньше 10 символов. Простой пароль (1234567890, qwerty, логин или название фирмы) не принимается — соедините три слова и цифры. После смены на всех устройствах нужно будет войти заново.'],
+    'pw.old': ['Жорий парол', 'Текущий пароль'],
+    'pw.new': ['Янги парол', 'Новый пароль'],
+    'pw.new2': ['Янги парол (яна бир марта)', 'Новый пароль (ещё раз)'],
+    'pw.btn': ['Паролни алмаштириш', 'Сменить пароль'],
+    'pw.e.bosh': ['Жорий ва янги паролни ёзинг', 'Введите текущий и новый пароль'],
+    'pw.e.uzun': ['Янги парол 10 тадан 200 тагача белги бўлсин', 'Новый пароль — от 10 до 200 символов'],
+    'pw.e.mos': ['Янги парол икки марта бир хил ёзилмади', 'Новый пароль введён два раза по-разному'],
+    'ik.h': ['Икки босқичли кириш', 'Двухэтапный вход'],
+    'ik.p': ['Ихтиёрий қўшимча ҳимоя: паролдан кейин телефондаги илова (Google Authenticator, Яндекс Ключ ва шу кабилар) кўрсатадиган 6 хонали код сўралади. Паролни кимдир билиб олса ҳам, телефонингизсиз кира олмайди.', 'Дополнительная защита по желанию: после пароля спрашивается код из 6 цифр, который показывает приложение в телефоне (Google Authenticator, Яндекс Ключ и подобные). Даже узнав пароль, без вашего телефона никто не войдёт.'],
+    'ik.yoqilgan': ['Ҳолати: ёқилган', 'Сейчас: включён'],
+    'ik.yoqilmagan': ['Ҳолати: ёқилмаган', 'Сейчас: не включён'],
+    'ik.boshla': ['Ёқишни бошлаш', 'Начать включение'],
+    'ik.qr': ['Телефондаги иловани очиб, шу расмни (QR-код) камера билан ўқитинг:', 'Откройте приложение в телефоне и наведите камеру на этот рисунок (QR-код):'],
+    'ik.qr.aria': ['Иловага қўшиш учун QR-код', 'QR-код для добавления в приложение'],
+    'ik.qol': ['Камера ўқимаса — иловада «Калитни қўлда киритиш»ни танлаб, шу калитни ёзинг (ёки шу телефондаги иловада очинг):', 'Если камера не считывает — выберите в приложении «Ввести ключ вручную» и введите этот ключ (или откройте в приложении на этом телефоне):'],
+    'ik.nusxa': ['Калитни нусхалаш', 'Скопировать ключ'],
+    'ik.havola': ['Иловада очиш', 'Открыть в приложении'],
+    'ik.kod': ['Илова кўрсатаётган 6 хонали код', 'Код из 6 цифр, который показывает приложение'],
+    'ik.yoq': ['Тасдиқлаш ва ёқиш', 'Подтвердить и включить'],
+    'ik.zh': ['Захира кодлар.', 'Резервные коды.'],
+    'ik.zp': ['Телефон йўқолса ёки илова ўчиб кетса, шу кодларнинг бири билан кирасиз. Ҳар бири бир марта ишлайди. Ҳозир қоғозга ёзиб олинг — қайта кўрсатилмайди.', 'Если телефон потеряется или приложение удалится, вы войдёте по одному из этих кодов. Каждый работает один раз. Запишите их на бумагу сейчас — больше они не покажутся.'],
+    'ik.tayyor': ['Ёзиб олдим', 'Записал'],
+    'ik.ochparol': ['Ўчириш учун жорий парол', 'Текущий пароль для отключения'],
+    'ik.ochir': ['Икки босқичли киришни ўчириш', 'Отключить двухэтапный вход'],
+    'ik.e.parol': ['Жорий паролни ёзинг', 'Введите текущий пароль'],
+    'ik.e.kod': ['6 хонали кодни киритинг', 'Введите код из 6 цифр'],
+    'ik.nusxaok': ['Калит нусхаланди', 'Ключ скопирован'],
+    'ik.nusxayoq': ['Нусхалаб бўлмади — калитни қўлда ёзинг', 'Не удалось скопировать — введите ключ вручную'],
+    'ik.yoqildi': ['Икки босқичли кириш ёқилди', 'Двухэтапный вход включён'],
+    'ik.ochirildi': ['Икки босқичли кириш ўчирилди', 'Двухэтапный вход отключён'],
+    'j.h': ['Ким, қачон кирган', 'Кто и когда входил'],
+    'j.yana': ['Яна кўрсатиш', 'Показать ещё'],
+    'j.bosh': ['Ҳозирча бўш', 'Пока пусто'],
+    'j.ikki': ['Икки босқичли кириш', 'Двухэтапный вход'],
+    'j.kirish': ['Кирди', 'Вход'],
+    'j.kirish_xato': ['Хато уриниш', 'Неудачная попытка'],
+    'j.chiqish': ['Чиқди', 'Выход'],
+    'j.saqlash': ['Сайтга чиқарди', 'Публикация на сайте'],
+    'j.qaytarish': ['Тарихдан қайтарди', 'Возврат из истории'],
+    'j.parol': ['Парол', 'Пароль'],
+    'j.yuklash': ['Файл юклади', 'Загрузка файла'],
+    'j.yasash_xato': ['Сайт янгиланмади', 'Сайт не обновился'],
+
+    /* chiqish */
+    'chq.h': ['Сайтга чиқарилмаган ўзгаришлар бор', 'Есть неопубликованные изменения'],
+    'chq.p': ['Ҳозир чиқсангиз, улар йўқолади. Аввал «Сайтга чиқариш»ни босишингиз мумкин.', 'Если выйти сейчас, они пропадут. Сначала можно нажать «Опубликовать на сайте».'],
+    'chq.ha': ['Барибир чиқиш', 'Всё равно выйти'],
+    'chq.yoq': ['Қолиш', 'Остаться'],
+
+    /* saytda qanday ko'rinadi */
+    'kor.btn': ['Сайтда қандай кўринади', 'Как это выглядит на сайте'],
+    'kor.h': ['Сайтда қандай кўринади', 'Как это выглядит на сайте'],
+    'kor.izoh1': ['Бу ҳали сайтга чиқмаган — фақат сиз кўряпсиз. Қалам белгисини боссангиз, панелнинг ўша жойи очилади.', 'Это ещё не на сайте — видите только вы. Нажмите на карандаш, и откроется нужное место панели.'],
+    'kor.izoh0': ['Сайт ҳозир шундай кўринади. Қалам белгисини боссангиз, панелнинг ўша жойи очилади.', 'Так сайт выглядит сейчас. Нажмите на карандаш, и откроется нужное место панели.'],
+    'kor.eni': ['Экран кенглиги', 'Ширина экрана'],
+    'kor.tel': ['Телефон', 'Телефон'],
+    'kor.komp': ['Компьютер', 'Компьютер'],
+    'kor.tayyor': ['Кўриб чиқиш тайёрланмоқда…', 'Готовим предпросмотр…'],
+    'kor.yoq': ['Кўриб чиқиш ҳозир очилмади. Бироздан кейин қайта уриниб кўринг.', 'Предпросмотр сейчас не открылся. Попробуйте ещё раз чуть позже.']
+  };
+  /* serverda (bazada) o'zbekcha saqlangan qisqa izohlar — ruscha ko'rinishi (tarix va kirishlar ro'yxati uchun) */
+  var IZOH_RU = [['Ўзгарди: ', 'Изменено: '], ['Ўзгаришсиз сақланди', 'Сохранено без изменений'], ['Бошланғич маълумот', 'Начальные данные'], ['каталог тасдиғи олинди', 'подтверждение каталога снято'], ['каталог тасдиқланди', 'каталог подтверждён'],
+    ['маҳсулотлар', 'продукция'], ['ҳудудлар', 'регионы'], ['турлар', 'виды продукции'], ['рақамлар', 'цифры'], ['сертификатлар', 'сертификаты'], ['галерея', 'фото'], ['савол-жавоб', 'вопросы и ответы'], ['шартлар', 'условия'], ['алоқа', 'контакты'],
+    ['сайт ясалмади', 'сайт не обновился'], ['захира код ишлатилди', 'использован резервный код'], ['код хато', 'неверный код'], ['парол алмаштирилди', 'пароль изменён'],
+    ['икки босқичли кириш ёқилди', 'двухэтапный вход включён'], ['икки босқичли кириш ўчирилди', 'двухэтапный вход отключён'], ['буйруқ қатори орқали ўрнатилди', 'установлен на сервере'], ['буйруқ қатори орқали ўчирилди', 'отключён на сервере']];
+
+  var til = 'uzc';
+  function tilOqi() { var m = /(?:^|;\s*)alf_til=(uzc|ru)(?:;|$)/.exec(document.cookie || ''); return m ? m[1] : 'uzc'; }
+  function tilYoz(v) {
+    // cookie faqat panel yo'lida amal qiladi; https'da Secure. Qiymat — «uzc» yoki «ru», boshqa hech narsa.
+    var yol = location.pathname.replace(/[^\/]*$/, '');
+    try { document.cookie = 'alf_til=' + v + '; Path=' + yol + '; Max-Age=31536000; SameSite=Strict' + (location.protocol === 'https:' ? '; Secure' : ''); } catch (e) {}
+  }
+  function t(k, o) {
+    var x = LUGAT[k], s = x ? x[til === 'ru' ? 1 : 0] : k;
+    return o ? s.replace(/\{(\w+)\}/g, function (_, n) { return o[n] == null ? '' : o[n]; }) : s;
+  }
+  function izoh(s) {
+    s = String(s == null ? '' : s); if (til !== 'ru') return s;
+    s = s.replace(/№(\d+) ҳолатга қайтарилди/, 'Возврат к состоянию №$1');
+    IZOH_RU.forEach(function (p) { s = s.split(p[0]).join(p[1]); });
+    return s;
+  }
+  function tilQoy(root) {
+    $$('[data-t]', root).forEach(function (e) { e.textContent = t(e.getAttribute('data-t')); });
+    $$('[data-tp]', root).forEach(function (e) { e.setAttribute('placeholder', t(e.getAttribute('data-tp'))); });
+    $$('[data-ta]', root).forEach(function (e) { e.setAttribute('aria-label', t(e.getAttribute('data-ta'))); });
+  }
+  function tilTanla(v, yoz) {
+    til = v === 'ru' ? 'ru' : 'uzc';
+    if (yoz) tilYoz(til);
+    document.documentElement.lang = til === 'ru' ? 'ru' : 'uz-Cyrl';
+    document.title = t('top.sub') + ' — ALFIRDAVS TM';
+    $$('[data-til]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-til') === til)); });
+    tilQoy(document);
+    if (yuklandi) { pubChiz(); sozChiz(); korIzoh(); if (window.ALFPANEL) window.ALFPANEL.til(); if (!$('#v-h').hidden) tarixOl(); if (!$('#v-s').hidden) jurnalChiz(); }
+  }
+  window.ALFTIL = { t: t, til: function () { return til; }, izoh: izoh, qoy: tilQoy };
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-til]'); if (b) tilTanla(b.getAttribute('data-til'), true); });
+
+  var csrf = '', login = '', ikki = false, holat = null, qoralama = null, iflos = false, yuklandi = false, band = false;
+  function nusxa(o) { return JSON.parse(JSON.stringify(o)); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var toastT = 0;
+  function toast(msg, bad) { var x = $('#toast'); x.textContent = msg; x.classList.toggle('is-bad', !!bad); x.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { x.classList.remove('on'); }, bad ? 5000 : 2600); }
+  function sana(ms) { var d = new Date(ms), p = function (n) { return (n < 10 ? '0' : '') + n; }; return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()); }
+
+  /* ---------- server bilan aloqa ---------- */
+  function sorov(usul, yol, tana, xom) {
+    var h = {}; if (usul !== 'GET') h['X-CSRF'] = csrf;
+    if (tana !== undefined && !xom) { h['Content-Type'] = 'application/json'; tana = JSON.stringify(tana); }
+    if (xom) h['Content-Type'] = 'application/octet-stream';
+    return fetch(API + yol, { method: usul, headers: h, body: tana, credentials: 'same-origin', cache: 'no-store' }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (r.ok) return j;
+        var e = new Error(j.xato || t('javobyoq')); e.holat = r.status; e.ikki = !!j.ikki;
+        if (r.status === 401 && yol !== 'kirish') kirishKorsat(t('kirish.muddat'));
+        throw e;
+      });
+    }, function () { throw new Error(t('tarmoq')); });
+  }
+
+  /* ---------- kirish ---------- */
+  function kirishKorsat(xabar) {
+    if ($('#kor').open) $('#kor').close();
+    $('#loginView').hidden = false; $('#app').hidden = true; $('#lgErr').textContent = xabar || ''; $('#lgParol').value = ''; $('#lgKod').value = ''; $('#lgKodW').hidden = true;
+    setTimeout(function () { ($('#lgLogin').value ? $('#lgParol') : $('#lgLogin')).focus(); }, 50);
+  }
+  function kodSora(xabar) { $('#lgErr').textContent = xabar; $('#lgKodW').hidden = false; $('#lgKod').value = ''; $('#lgKod').focus(); }
+  $('#loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var l = $('#lgLogin').value.trim(), p = $('#lgParol').value, kodKerak = !$('#lgKodW').hidden, kod = $('#lgKod').value.trim();
+    if (!l || !p) { $('#lgErr').textContent = t('kirish.bosh'); return; }
+    if (kodKerak && !kod) { $('#lgErr').textContent = t('kirish.kodyoz'); $('#lgKod').focus(); return; }
+    $('#lgBtn').disabled = true;
+    var tana = { login: l, parol: p }; if (kodKerak) tana.kod = kod;
+    sorov('POST', 'kirish', tana).then(function (j) {
+      // ikki bosqichli kirish yoqilgan: parol to'g'ri, endi kod so'raladi (parol maydoni tozalanmaydi)
+      if (j.kod_kerak) return kodSora(j.xato || t('kirish.kodyoz'));
+      csrf = j.csrf; login = j.login; ikki = !!j.ikki; $('#lgParol').value = ''; $('#lgKod').value = ''; $('#lgKodW').hidden = true; $('#lgErr').textContent = '';
+      boshla();
+    }).catch(function (e) {
+      if (e.ikki) kodSora(e.message);
+      else { $('#lgErr').textContent = e.message; $('#lgParol').value = ''; $('#lgKod').value = ''; $('#lgKodW').hidden = true; $('#lgParol').focus(); }
+    }).then(function () { $('#lgBtn').disabled = false; });
+  });
+  // tasdiqlash oynasi — panel uslubida (brauzerning standart oynasi emas)
+  var tasdiq = $('#tasdiq'), tasdiqFn = null;
+  function sora(sarlavha, matn, ha, yoq, fn) {
+    $('#tasdiq-h').textContent = sarlavha; $('#tasdiq-p').textContent = matn; $('#tasdiqOk').querySelector('span').textContent = ha; $('#tasdiqNo').querySelector('span').textContent = yoq;
+    tasdiqFn = fn; tasdiq.showModal(); $('#tasdiqNo').focus();
+  }
+  $('#tasdiqNo').addEventListener('click', function () { tasdiq.close(); });
+  $('#tasdiqOk').addEventListener('click', function () { var f = tasdiqFn; tasdiqFn = null; tasdiq.close(); if (f) f(); });
+  tasdiq.addEventListener('click', function (e) { if (e.target === tasdiq) tasdiq.close(); });
+  function chiq() { iflos = false; sorov('POST', 'chiqish', {}).catch(function () {}).then(function () { location.reload(); }); }
+  $('#logout').addEventListener('click', function () {
+    if (iflos) sora(t('chq.h'), t('chq.p'), t('chq.ha'), t('chq.yoq'), chiq);
+    else chiq();
+  });
+
+  /* ---------- bo'limlar orasida yurish ----------
+     Ikki asosiy ekran: «Маҳсулотлар» (kundalik ish) va «Созламалар» (qolgan hamma narsa — ro'yxat). Ichki bo'limlar
+     (aloqa, hududlar, turlar, matnlar, tarix, xavfsizlik) sozlamalar ro'yxatidan ochiladi va «orqaga» tugmasi bilan qaytadi.
+     Manzildagi #belgi telefonning «orqaga» tugmasi shu tartibda ishlashi uchun. */
+  var KORINISH = ['p', 'm', 'c', 'r', 't', 'x', 'h', 's'], joriy = 'p';
+  function och(v, joy) {
+    if (KORINISH.indexOf(v) < 0) v = 'p';
+    joriy = v;
+    KORINISH.forEach(function (k) { $('#v-' + k).hidden = k !== v; });
+    $('#tab-p').setAttribute('aria-selected', String(v === 'p')); $('#tab-m').setAttribute('aria-selected', String(v !== 'p'));
+    $('#pub').classList.toggle('pub--ich', v !== 'p');   // «chiqarilmagan o'zgarishlar» tasmasi faqat bosh ekranda yopishib turadi; ichki bo'limlarda joy egallamaydi
+    var h = v === 'p' ? '' : '#' + v;
+    if ((location.hash || '') !== h) { try { history.pushState(null, '', h || location.pathname + location.search); } catch (e) {} }
+    if (v === 'h') { hArm = 0; tarixOl(); }
+    if (v === 's') { sozChiz(); jurnalOl(); }
+    if (v === 'm') sozChiz();
+    var el = joy ? document.getElementById(joy) : null;
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' }); else window.scrollTo(0, 0);
+  }
+  window.addEventListener('popstate', function () { var v = (location.hash || '').slice(1) || 'p'; if (!$('#app').hidden && v !== joriy) och(v); });
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-och]'); if (b) och(b.getAttribute('data-och'), b.getAttribute('data-joy')); });
+
+  /* ---------- ma'lumot qatlami ---------- */
+  function iflosla() { iflos = true; pubChiz(); }
+  function ulash() {
+    ALF.loadProducts = function () { var d = nusxa(qoralama.db); d.v = 1; return d; };
+    ALF.saveProducts = function (d) { var x = nusxa(d); delete x.v; qoralama.db = x; iflosla(); return true; };
+    ALF.resetProducts = ALF.loadProducts;
+    ALF.loadSettings = function () { return nusxa(qoralama.settings); };
+    ALF.saveSettings = function (s) { qoralama.settings = nusxa(s); iflosla(); return true; };
+    ALF.resetSettings = ALF.loadSettings;
+    ALF.storageOk = function () { return true; }; ALF.lastError = function () { return ''; }; ALF.hasOverride = function () { return false; };
+  }
+  // panel.js uchun: fayl yuklash (server turini tekshiradi va suratni qayta kodlaydi), tasdiqlash oynasi, xabar
+  window.ALFSRV = {
+    yukla: function (fayl, tur) {
+      var chek = tur === 'surat' ? 10 : 15;
+      if (!fayl || fayl.size > chek * 1024 * 1024) return Promise.reject(new Error(t('f.katta', { n: chek })));
+      return sorov('POST', 'yuklash?tur=' + tur, fayl, true);
+    },
+    sora: sora, toast: toast, och: och,
+    tasdiqlangan: function () { return !!(qoralama && qoralama.tasdiqlangan && qoralama.tasdiqlangan.katalog); }
+  };
+  function holatOl() {
+    return sorov('GET', 'holat').then(function (j) { holat = { id: j.id, vaqt: j.vaqt, kim: j.kim }; qoralama = j.hujjat; iflos = false; });
+  }
+  function boshla() {
+    $('#loginView').hidden = true; $('#meLogin').textContent = login; $('#pwUser').value = login;
+    if (yuklandi) { $('#app').hidden = false; if (!iflos) holatOl().then(function () { window.ALFPANEL.qayta(); sozChiz(); pubChiz(); }).catch(function () {}); return; }
+    holatOl().then(function () {
+      ulash();
+      var s = document.createElement('script'); s.src = 'js/panel.js';
+      s.onload = function () { yuklandi = true; sozChiz(); pubChiz(); och((location.hash || '').slice(1) || 'p'); };
+      s.onerror = function () { kirishKorsat(t('kirish.yuklanmadi')); };
+      document.body.appendChild(s);
+    }).catch(function (e) { if (e.holat !== 401) kirishKorsat(e.message); });
+  }
+
+  /* ---------- saytga chiqarish ---------- */
+  function pubChiz() {
+    $('#pub').hidden = !iflos; $('#note').hidden = iflos;
+    $('#tasdiqYoq').hidden = !qoralama || window.ALFSRV.tasdiqlangan();
+    if (holat) $('#pubInfo').textContent = t('pub.info', { v: sana(holat.vaqt) });
+    if (!band) $('#pubOk').querySelector('span').textContent = t('pub.ok');
+    if (!noArm) $('#pubNo').querySelector('span').textContent = t('pub.no');
+  }
+  function chiqar() {
+    if (band || !iflos) return;
+    band = true; $('#pubOk').disabled = true; $('#korPub').disabled = true; $('#pubErr').textContent = ''; $('#pubOk').querySelector('span').textContent = t('pub.ketmoqda');
+    sorov('PUT', 'holat', { asos: holat.id, hujjat: qoralama }).then(function (j) {
+      holat = { id: j.id, vaqt: Date.now(), kim: login }; iflos = false; pubChiz(); toast(t('pub.boldi'));
+      if ($('#kor').open) $('#kor').close();
+      if (!$('#v-h').hidden) tarixOl();
+    }).catch(function (e) { if ($('#kor').open) $('#kor').close(); $('#pubErr').textContent = e.message; toast(t('pub.chiqmadi'), true); $('#pub').scrollIntoView({ block: 'center' }); })
+      .then(function () { band = false; $('#pubOk').disabled = false; $('#korPub').disabled = false; $('#pubOk').querySelector('span').textContent = t('pub.ok'); });
+  }
+  $('#pubOk').addEventListener('click', chiqar);
+  var noArm = false, noT = 0;
+  $('#pubNo').addEventListener('click', function () {
+    var b = $('#pubNo');
+    if (!noArm) { noArm = true; b.classList.add('is-confirm'); b.querySelector('span').textContent = t('pub.no2'); noT = setTimeout(function () { noArm = false; b.classList.remove('is-confirm'); b.querySelector('span').textContent = t('pub.no'); }, 5000); return; }
+    clearTimeout(noT); noArm = false; b.classList.remove('is-confirm'); b.querySelector('span').textContent = t('pub.no');
+    holatOl().then(function () { $('#pubErr').textContent = ''; window.ALFPANEL.qayta(); sozChiz(); pubChiz(); toast(t('pub.bekor')); }).catch(function (e) { toast(e.message, true); });
+  });
+  window.addEventListener('beforeunload', function (e) { if (iflos) { e.preventDefault(); e.returnValue = ''; } });
+
+  /* ---------- «Сайтда қандай кўринади» ----------
+     Qoralama serverga yuboriladi -> server undan vaqtinchalik sayt yasaydi (saytga chiqmaydi, bazaga yozilmaydi) va uni faqat
+     shu sessiyaga, panel yo'li ostida beradi. Sahifa shu oynadagi ichki ramkada ochiladi. Undagi «qalam» belgilari
+     (js/korish.js) bosilganda shu oynaga xabar keladi va panelning tegishli joyi ochiladi. */
+  var kor = $('#kor'), korF = $('#korF'), korBand = false;
+  function korIzoh() { $('#korIzoh').textContent = t(iflos ? 'kor.izoh1' : 'kor.izoh0'); $('#korPub').hidden = !iflos; }
+  function korOch() {
+    if (korBand || !qoralama) return;
+    korBand = true; toast(t('kor.tayyor'));
+    sorov('POST', 'korish', { hujjat: qoralama }).then(function (j) {
+      korIzoh();
+      korF.src = (j.yol || 'korish/') + (til === 'ru' ? 'ru/' : '') + '?k=' + Date.now();
+      if (!kor.open) kor.showModal();
+      $('#toast').classList.remove('on');
+    }).catch(function (e) { if (e.holat !== 401) toast(e.holat === 404 || !e.holat ? t('kor.yoq') : e.message, true); })
+      .then(function () { korBand = false; });
+  }
+  ['#pubKor', '#pKor', '#mKor'].forEach(function (s) { $(s).addEventListener('click', korOch); });
+  $('#korX').addEventListener('click', function () { kor.close(); });
+  $('#korPub').addEventListener('click', chiqar);
+  kor.addEventListener('close', function () { korF.removeAttribute('src'); });
+  $$('#kor [data-eni]').forEach(function (b) {
+    b.addEventListener('click', function () { var tel = b.getAttribute('data-eni') === 'tel'; $('#korW').classList.toggle('is-komp', !tel); $$('#kor [data-eni]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); });
+  });
+  // ko'rib chiqish sahifasidan kelgan «tahrirlash» xabari: faqat O'Z manzilimizdan va aynan shu ramkadan qabul qilinadi
+  window.addEventListener('message', function (e) {
+    if (e.origin !== location.origin || e.source !== korF.contentWindow) return;
+    var d = e.data; if (!d || d.alf !== 'tahrir' || typeof d.nima !== 'string') return;
+    kor.close();
+    if (window.ALFPANEL) window.ALFPANEL.joy(String(d.nima).slice(0, 20), String(d.id == null ? '' : d.id).slice(0, 60));
+  });
+
+  /* ---------- tarix ---------- */
+  var hArm = 0;
+  function tarixOl() {
+    sorov('GET', 'tarix').then(function (j) {
+      $('#hList').innerHTML = j.tarix.map(function (x, i) {
+        return '<li class="hitem' + (i === 0 ? ' is-cur' : '') + '" data-id="' + Number(x.id) + '"><span class="hitem__t"><b>' + esc(sana(x.vaqt)) + '</b><small>' + esc(izoh(x.izoh)) + '</small><small class="hitem__k">' + esc(x.kim) + ' · №' + Number(x.id) + '</small></span>' +
+          (i === 0 ? '<span class="st st--in">' + esc(t('h.saytda')) + '</span>' : '<button type="button" class="btn btn--line btn--sm' + (hArm === x.id ? ' is-confirm' : '') + '" data-qayt><span>' + esc(t(hArm === x.id ? 'tasdiqlash' : 'h.qaytar')) + '</span></button>') + '</li>';
+      }).join('') || '<li class="xempty">' + esc(t('h.bosh')) + '</li>';
+    }).catch(function (e) { if (e.holat !== 401) toast(e.message, true); });
+  }
+  $('#hRef').addEventListener('click', tarixOl);
+  $('#hList').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-qayt]'), li = e.target.closest('.hitem'); if (!b || !li || band) return;
+    var id = +li.getAttribute('data-id');
+    if (iflos) { toast(t('avval'), true); return; }
+    if (hArm !== id) { hArm = id; tarixOl(); return; }
+    hArm = 0; band = true; b.disabled = true;
+    sorov('POST', 'qaytarish', { id: id }).then(function () { return holatOl(); }).then(function () { window.ALFPANEL.qayta(); sozChiz(); pubChiz(); tarixOl(); toast(t('h.ok')); })
+      .catch(function (e) { toast(e.message, true); tarixOl(); }).then(function () { band = false; });
+  });
+
+  /* ---------- katalog tasdig'i ---------- */
+  function sozChiz() { if (qoralama) $('#sTasdiq').checked = window.ALFSRV.tasdiqlangan(); ikkiChiz(ikkiQadam === '3' || ikkiQadam === '2' ? ikkiQadam : ''); }
+  $('#sTasdiq').addEventListener('change', function () { qoralama.tasdiqlangan = { katalog: $('#sTasdiq').checked }; iflosla(); toast(t($('#sTasdiq').checked ? 'tas.qoyildi' : 'tas.olindi')); });
+
+  /* ---------- ikki bosqichli kirish (ixtiyoriy) ---------- */
+  var ikkiQadam = '';
+  function ikkiChiz(qadam) { // '' — holatga qarab; '2' — QR va kalit ko'rsatilgan; '3' — zaxira kodlar
+    ikkiQadam = qadam;
+    $('#ikkiHolat').textContent = t(ikki ? 'ik.yoqilgan' : 'ik.yoqilmagan'); $('#ikkiHolat').classList.toggle('is-on', ikki);
+    $('#ikki1').hidden = !!qadam || ikki; $('#ikki2').hidden = qadam !== '2'; $('#ikki3').hidden = qadam !== '3'; $('#ikki4').hidden = !!qadam || !ikki;
+    if (!qadam) { $('#ikkiErr').textContent = ''; $('#ikkiParol').value = ''; $('#ikkiParol2').value = ''; $('#ikkiKod').value = ''; $('#ikkiKalit').textContent = ''; $('#ikkiZ').textContent = ''; $('#ikkiQr').textContent = ''; }
+  }
+  // QR-kod: server faqat «0/1» qatorlarini beradi; rasm shu yerda DOM orqali chiziladi (tayyor HTML qabul qilinmaydi)
+  function qrChiz(qr) {
+    var joy = $('#ikkiQr'); joy.textContent = '';
+    var bor = qr && qr.n > 20 && qr.n < 200 && Array.isArray(qr.q) && qr.q.length === qr.n && qr.q.every(function (r) { return typeof r === 'string' && r.length === qr.n && /^[01]+$/.test(r); });
+    $('#ikkiQrP').hidden = !bor; joy.hidden = !bor;
+    if (!bor) return;
+    var NS = 'http://www.w3.org/2000/svg', h = 4, o = qr.n + h * 2, d = '';
+    for (var y = 0; y < qr.n; y++) for (var x = 0; x < qr.n; x++) if (qr.q[y].charAt(x) === '1') d += 'M' + (x + h) + ' ' + (y + h) + 'h1v1h-1z';
+    var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 ' + o + ' ' + o); svg.setAttribute('shape-rendering', 'crispEdges'); svg.setAttribute('class', 'ikki__svg'); svg.setAttribute('aria-hidden', 'true');
+    var bg = document.createElementNS(NS, 'rect'); bg.setAttribute('width', o); bg.setAttribute('height', o); bg.setAttribute('fill', '#fff');
+    var p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('fill', '#000');
+    svg.appendChild(bg); svg.appendChild(p); joy.appendChild(svg);
+  }
+  var ikkiK = '';
+  $('#ikkiBoshla').addEventListener('click', function () {
+    var p = $('#ikkiParol').value; if (!p) { $('#ikkiErr').textContent = t('ik.e.parol'); return; }
+    sorov('POST', '2fa/boshla', { parol: p }).then(function (j) {
+      ikkiK = j.kalit; $('#ikkiKalit').textContent = j.kalit.replace(/(.{4})/g, '$1 ').trim(); $('#ikkiHavola').href = j.havola; $('#ikkiErr').textContent = ''; ikkiChiz('2'); qrChiz(j.qr); $('#ikkiKod').focus();
+    }).catch(function (e) { if (e.holat !== 401) $('#ikkiErr').textContent = e.message; });
+  });
+  $('#ikkiNusxa').addEventListener('click', function () {
+    var ok = function () { toast(t('ik.nusxaok')); };
+    try { navigator.clipboard.writeText(ikkiK).then(ok, function () { toast(t('ik.nusxayoq'), true); }); } catch (e) { toast(t('ik.nusxayoq'), true); }
+  });
+  $('#ikkiBekor').addEventListener('click', function () { ikkiK = ''; ikkiChiz(''); });
+  $('#ikkiYoq').addEventListener('click', function () {
+    var k = $('#ikkiKod').value.replace(/\s/g, ''); if (!/^\d{6}$/.test(k)) { $('#ikkiErr').textContent = t('ik.e.kod'); return; }
+    sorov('POST', '2fa/yoq', { kod: k }).then(function (j) {
+      ikki = true; ikkiK = ''; $('#ikkiErr').textContent = ''; $('#ikkiQr').textContent = '';
+      $('#ikkiZ').innerHTML = j.kodlar.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''); ikkiChiz('3'); toast(t('ik.yoqildi'));
+    }).catch(function (e) { if (e.holat !== 401) $('#ikkiErr').textContent = e.message; });
+  });
+  $('#ikkiTayyor').addEventListener('click', function () { ikkiChiz(''); });
+  $('#ikkiOchir').addEventListener('click', function () {
+    var p = $('#ikkiParol2').value; if (!p) { $('#ikkiErr').textContent = t('ik.e.parol'); return; }
+    sorov('POST', '2fa/ochir', { parol: p }).then(function () { ikki = false; ikkiChiz(''); toast(t('ik.ochirildi')); }).catch(function (e) { if (e.holat !== 401) $('#ikkiErr').textContent = e.message; });
+  });
+
+  /* ---------- parol ---------- */
+  $('#pwForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = $('#pwOld').value, b = $('#pwNew').value, c = $('#pwNew2').value, er = $('#pwErr');
+    // xato chiqqanda tugma ekrandan chiqib ketmasin (telefonda): xato matni va tugma ko'rinadigan joyga suriladi
+    var xato = function (m) { er.textContent = m; var bt = $('#pwForm button[type="submit"]'); if (bt.scrollIntoView) bt.scrollIntoView({ block: 'center', behavior: 'instant' }); };
+    if (!a || !b) return xato(t('pw.e.bosh'));
+    if (b.length < 10 || b.length > 200) return xato(t('pw.e.uzun'));
+    if (b !== c) return xato(t('pw.e.mos'));
+    if (iflos) return xato(t('avval'));
+    er.textContent = '';
+    sorov('POST', 'parol', { eski: a, yangi: b }).then(function () {
+      $('#pwOld').value = $('#pwNew').value = $('#pwNew2').value = ''; csrf = '';
+      kirishKorsat(t('kirish.parolyangi'));
+    }).catch(function (e) { if (e.holat !== 401) xato(e.message); });
+  });
+
+  /* ---------- kirishlar ro'yxati: avval 20 ta, «яна» bosilganda yana 20 ta ---------- */
+  var jHammasi = [], jSoni = 20;
+  function jurnalChiz() {
+    $('#jList').innerHTML = jHammasi.slice(0, jSoni).map(function (x) {
+      return '<li class="jitem' + (x.tur === 'kirish_xato' || x.tur === 'yasash_xato' ? ' is-bad' : '') + '"><b>' + esc(LUGAT['j.' + x.tur] ? t('j.' + x.tur) : x.tur) + '</b><span>' + esc(sana(x.vaqt)) + ' · ' + esc(x.login || '—') + ' · ' + esc(x.ip) + '</span>' + (x.izoh ? '<small>' + esc(izoh(x.izoh)) + '</small>' : '') + '</li>';
+    }).join('') || '<li class="xempty">' + esc(t('j.bosh')) + '</li>';
+    $('#jYana').hidden = jHammasi.length <= jSoni;
+  }
+  function jurnalOl() {
+    sorov('GET', 'jurnal').then(function (j) { jHammasi = j.jurnal || []; jSoni = 20; jurnalChiz(); }).catch(function (e) { if (e.holat !== 401) toast(e.message, true); });
+  }
+  $('#jRef').addEventListener('click', jurnalOl);
+  $('#jYana').addEventListener('click', function () { jSoni += 20; jurnalChiz(); });
+
+  /* ---------- boshlash: til, keyin sessiya bormi? ---------- */
+  tilTanla(tilOqi(), false);
+  sorov('GET', 'men').then(function (j) { if (!j.kirgan) return kirishKorsat(''); csrf = j.csrf; login = j.login; ikki = !!j.ikki; boshla(); }).catch(function (e) { kirishKorsat(e.holat ? '' : e.message); });
+})();

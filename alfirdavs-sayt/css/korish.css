@@ -1,0 +1,12 @@
+/* ALFIRDAVS TM — ko'rib chiqish sahifasidagi «tahrirlash» belgilari (faqat panel ichidagi ko'rib chiqishda; ommaviy saytda yo'q) */
+.alf-tj{position:relative}
+.alf-tm{position:absolute;top:8px;right:8px;z-index:6;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px 0 12px;border:1px solid #1E1A19;border-radius:999px;background:#fff;color:#1E1A19;font:600 14px/1 "Golos Text","Segoe UI",system-ui,Arial,sans-serif;letter-spacing:0;text-transform:none;white-space:nowrap;cursor:pointer;box-shadow:0 6px 18px -8px rgba(30,26,25,.55)}
+.alf-tm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.alf-tm--q{width:40px;min-width:40px;padding:0;justify-content:center}
+.alf-tm:hover{background:#1E1A19;color:#fff}
+.alf-tm:focus-visible{outline:2px solid #C42F2A;outline-offset:2px}
+.card__media>.alf-tm{top:auto;bottom:8px}
+.sec__head.alf-tj,.wrap.alf-tj{padding-right:0}
+.sec__head>.alf-tm,.wrap>.alf-tm{top:0;right:0}
+.orig__it>.alf-tm{position:static;margin-left:6px;box-shadow:none}
+@media print{.alf-tm{display:none}}
