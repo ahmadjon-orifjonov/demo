@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CONCEPT PRO — система управления производством (образец)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Образец системы для CONCEPT PRO: заказы с размерной сеткой, этапы цеха (вязание, кеттель, ВТО, ОТК), склад пряжи, отгрузки, оплаты, сдельная оплата и брак.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--acc:#1f4e79;--acc2:#173d60;--accbg:#e8eef5;--bg:#f4f6f8;--card:#fff;--tx:#1b2533;--mut:#5f6b7a;--ln:#dfe4ea;--ok:#15803d;--okbg:#eef7f1;--wr:#b45309;--wrbg:#fdf6ec;--er:#b42318;--erbg:#fdf1f0;--side:#0f1b2b;--sidetx:#c3ccd8;--soft:#f4f6f8;--r:8px}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.45;font-weight:500;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+.namuna{background:var(--soft);color:var(--mut);border-bottom:1px solid var(--ln);font-size:12px;text-align:center;padding:5px 12px}
+.namuna b{color:var(--wr)}
+.lay{display:flex;min-height:calc(100vh - 30px)}
+.side{width:236px;flex:none;background:var(--side);color:var(--sidetx);display:flex;flex-direction:column;position:sticky;top:0;height:calc(100vh - 30px)}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 14px}
+.brand b{display:block;color:#fff;font-size:15px}
+.brand small{color:#94a3b8;font-size:12px}
+.logo{width:38px;height:38px;border-radius:6px;border:1.5px solid rgba(255,255,255,.35);display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;flex:none}
+.nav{padding:6px 10px;display:flex;flex-direction:column;gap:2px;flex:1}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;border:0;border-left:2px solid transparent;background:none;color:var(--sidetx);padding:10px 12px;border-radius:0 6px 6px 0;text-align:left;font-weight:600}
+.nav button:hover{background:rgba(255,255,255,.05)}
+.nav button.on{background:rgba(255,255,255,.08);color:#fff;border-left-color:#7fa7d6}
+.nav .ic{width:20px;display:inline-flex;align-items:center;justify-content:center}
+.nav .bdg,.mnav .bdg{margin-left:auto;background:var(--er);color:#fff;border-radius:3px;font-size:12px;padding:0 5px;font-weight:600}
+.sidefoot{padding:12px 16px;font-size:12px;color:#94a3b8;border-top:1px solid rgba(255,255,255,.08)}
+.sidefoot button{background:none;border:1px solid rgba(255,255,255,.18);color:#94a3b8;border-radius:6px;padding:5px 9px;font-size:12px;margin-top:6px}
+.rolsel{width:100%;background:rgba(255,255,255,.06);color:#dfe4ea;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:6px 8px;font-size:12px;margin-bottom:6px}
+.rolsel option{color:var(--tx)}
+.rolsel.m{width:auto;background:#fff;color:var(--tx);border-color:var(--ln);margin:0}
+.main{flex:1;min-width:0;padding:22px 26px 90px}
+.mhead{display:none;align-items:center;gap:10px;margin:-2px 0 14px}
+.mhead b{font-size:15px}.mhead small{color:var(--mut);font-size:12px;display:block}
+.mhead .logo{border-color:var(--acc);color:var(--acc)}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.top h1{font-size:22px;margin:0;font-weight:800}
+.top .sub{color:var(--mut);font-size:13px}
+.top .sp{flex:1}
+.btn{border:1px solid var(--ln);background:#fff;border-radius:6px;padding:8px 13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{border-color:#cbd5e1}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.p:hover{background:var(--acc2)}
+.btn.s{padding:5px 10px;font-size:13px}
+.grid{display:grid;gap:14px}
+.k4{grid-template-columns:repeat(4,1fr)}.k5{grid-template-columns:repeat(5,1fr)}.k2{grid-template-columns:1.4fr 1fr}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);padding:16px}
+.card h3{margin:0 0 12px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:4px}
+.card h3 .sp{flex:1}.card h3 small{font-weight:600;color:var(--mut);font-size:12px}
+.card h3>svg.i{color:#475569}
+.kpi{cursor:pointer;border-left:2px solid var(--ln);position:relative}
+.kpi:hover{border-color:#cbd5e1}
+.kpi .l{color:var(--mut);font-size:13px;font-weight:600}
+.kpi .v{font-size:24px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .v small{font-size:14px;font-weight:600;color:var(--mut);margin-left:2px}
+.kpi .d{font-size:12px;color:var(--mut);margin-top:4px;line-height:1.35}
+.kpi.er{border-left-color:var(--ln)}.kpi.er .d{color:var(--er);font-weight:700}
+.kpi.wr{border-left-color:var(--ln)}.kpi.wr .d{color:var(--wr);font-weight:700}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:4px;padding:2px 7px;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.pill.ok{border-color:#c9e3d2;color:var(--ok)}
+.pill.wr{border-color:#f1dcc0;color:var(--wr)}
+.pill.er{border-color:#f0c9c5;color:var(--er)}
+.pill.mu{background:var(--soft);color:#475569}
+.pill.ac{background:var(--accbg);color:var(--acc2)}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.stagebar{display:flex;height:10px;border-radius:3px;overflow:hidden;background:var(--soft)}
+.stagebar div{height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:13px}
+.leg span{display:flex;align-items:center;gap:6px;cursor:pointer;color:#475569}
+.list .it{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--ln);cursor:pointer}
+.list .it:last-child{border:0}
+.list .it:hover{background:#f4f6f8}
+.list .it .m{flex:1;min-width:0}
+.list .it .m b{display:block;font-size:14px}
+.list .it .m.tx b{display:inline;font-size:inherit}
+.list .it .m small{color:var(--mut);font-size:12px}
+.list .it>svg.i{color:#94a3b8;flex:none}
+.empty{color:var(--mut);text-align:center;padding:22px 8px;font-size:13px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:8px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bars .b i{display:block;width:100%;max-width:46px;background:var(--acc);border-radius:3px 3px 0 0}
+.bars .b small{font-size:12px;color:var(--mut)}
+.bars .b em{font-style:normal;font-size:12px;font-weight:700;color:#475569}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.inp{border:1px solid var(--ln);background:#fff;border-radius:6px;padding:8px 11px;min-width:0}
+.inp:focus{outline:2px solid var(--accbg);border-color:var(--acc)}
+.inp.big{font-size:18px;font-weight:800}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;padding-right:24px}
+.chip{border:1px solid var(--ln);background:#fff;border-radius:6px;padding:5px 11px;font-size:13px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.chip.on{background:var(--tx);border-color:var(--tx);color:#fff}
+.chip em{font-style:normal;opacity:.65;font-size:12px}
+.seg{max-width:100%;overflow-x:auto;display:inline-flex;border:1px solid var(--ln);border-radius:6px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:7px 12px;font-weight:700;font-size:13px;white-space:nowrap}
+.seg button.on{background:var(--accbg);color:var(--acc2)}
+.kan{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);gap:12px;overflow-x:auto;padding-bottom:10px;align-items:start}
+.col{background:#f4f6f8;border:1px solid var(--ln);border-radius:var(--r);padding:10px;min-height:120px}
+.col>h4{margin:2px 4px 10px;font-size:13px;display:flex;align-items:center;gap:7px}
+.col>h4 em{margin-left:auto;font-style:normal;background:#fff;border-radius:4px;padding:0 7px;font-size:12px;color:var(--mut)}
+.oc{background:#fff;border:1px solid var(--ln);border-left:2px solid var(--ln);border-radius:6px;padding:11px 12px;margin-bottom:8px;cursor:pointer}
+.oc:hover{border-color:#cbd5e1}
+.oc.late{border-left-color:var(--er)}.oc.soon{border-left-color:var(--wr)}
+.oc .r1{display:flex;justify-content:space-between;gap:6px;font-size:12px;color:var(--mut);font-weight:700}
+.oc b{display:block;margin:3px 0 2px;font-size:14px}
+.oc .pr{font-size:13px;color:#475569}
+.oc .r3{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+.t th{text-align:left;font-size:12px;color:var(--mut);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--ln);white-space:nowrap;background:#f4f6f8}
+.t td{padding:10px;border-bottom:1px solid var(--ln);vertical-align:middle}
+.t tr:last-child td{border-bottom:0}
+.t tr.cl{cursor:pointer}.t tr.cl:hover td{background:#f4f6f8}
+.t .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r);background:#fff}
+.mod{position:fixed;inset:0;background:rgba(15,23,42,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.box{background:#fff;border-radius:8px;width:min(760px,100%);max-height:92vh;overflow:auto;box-shadow:0 8px 14px rgba(0,0,0,.18);animation:up .18s}
+@keyframes up{from{transform:translateY(10px);opacity:.6}}
+.box .hd{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--ln);position:sticky;top:0;background:#fff;z-index:2}
+.box .hd h2{margin:0;font-size:18px;font-weight:800}
+.box .hd .x{margin-left:auto;border:0;background:var(--soft);border-radius:6px;width:34px;height:34px;font-size:18px}
+.box .bd{padding:16px 18px}
+.ft{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--ln);position:sticky;bottom:0;background:#fff}
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
+.dl div small{display:block;color:var(--mut);font-size:12px;font-weight:600}
+.dl div b{font-size:14px}
+.sec{margin-top:18px}
+.sec h4{margin:0 0 8px;font-size:14px;font-weight:800;display:flex;gap:8px;align-items:center}
+.prog{height:8px;background:var(--soft);border-radius:3px;overflow:hidden;margin:6px 0 4px}
+.prog i{display:block;height:100%;background:var(--ok);border-radius:3px}
+.hist{font-size:13px;border-left:2px solid var(--ln);margin-left:4px;padding-left:12px}
+.hist div{margin-bottom:7px;position:relative}
+.hist div:before{content:"";position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hist small{color:var(--mut)}
+.frm{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.frm.f5{grid-template-columns:repeat(3,1fr)}
+.frm label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#475569}
+.frm .w2{grid-column:span 2}.frm .inp{width:100%}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--side);color:#fff;padding:11px 16px;border-radius:8px;font-weight:600;font-size:13px;z-index:80;box-shadow:0 6px 14px rgba(0,0,0,.2);display:flex;gap:9px;align-items:center;max-width:calc(100vw - 32px)}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:6px;background:var(--wrbg);color:var(--wr);font-size:13px;margin-bottom:12px}
+.alert.er{background:var(--erbg);color:var(--er)}
+.note{font-size:12px;color:var(--mut)}
+.zanjir{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+.zn{flex:1 1 140px;display:flex;flex-direction:column;gap:1px;padding:9px 10px 9px 34px;border-radius:6px;background:#f4f6f8;border:1px solid var(--ln);border-left:2px solid #cbd5e1;position:relative;min-width:0}
+.zn i{position:absolute;left:9px;top:10px;color:#94a3b8;font-style:normal}
+.zn b{font-size:13px}.zn small{font-size:12px;color:var(--mut);line-height:1.3}
+.zn.ok{border-left-color:var(--ok)}.zn.ok i{color:var(--ok)}
+.zn.er{background:var(--erbg);border-left-color:var(--er)}.zn.er i{color:var(--er)}.zn.er small{color:var(--er)}
+.zn.wr{background:var(--wrbg);border-left-color:var(--wr)}.zn.wr i{color:var(--wr)}
+.verdict{margin-top:10px;padding:11px 13px;border-radius:6px;display:flex;flex-direction:column;gap:3px;font-size:13px;border-left:2px solid currentColor}
+.verdict b{font-size:15px}
+.verdict.ok{background:var(--okbg);color:var(--ok)}.verdict.er{background:var(--erbg);color:var(--er)}
+.wfc{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
+.wfc>div{background:var(--soft);border-radius:6px;padding:8px 11px;flex:1 1 120px}
+.wfc>div small{display:block;color:var(--mut);font-size:12px}
+.wfc>div b{font-size:14px}
+.wfc>div.last{background:var(--wrbg)}
+.route{display:flex}
+.rs{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-size:12px;color:var(--mut);position:relative}
+.rs i{width:10px;height:10px;border-radius:50%;background:#cbd5e1;z-index:1}
+.rs:before{content:"";position:absolute;top:4px;left:-50%;width:100%;height:2px;background:#cbd5e1}
+.rs:first-child:before{display:none}
+.rs.on i,.rs.on:before{background:var(--acc)}
+.rs.on span{color:var(--tx);font-weight:700}
+.rs span{line-height:1.2;word-break:break-word}
+.cc{display:inline-block;font-size:12px;font-weight:800;background:#dfe4ea;color:#475569;border-radius:3px;padding:0 4px;vertical-align:2px}
+svg.i{width:1.1em;height:1.1em;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block}
+.nav .ic svg.i,.mnav .ic svg.i{width:19px;height:19px;vertical-align:middle}
+.btn svg.i{width:16px;height:16px}
+.alert svg.i,.pill svg.i{width:14px;height:14px}
+.mnav{display:none}
+.pnl{display:flex;flex-direction:column;gap:14px}
+.k3{grid-template-columns:repeat(3,1fr)}
+.mr{display:flex;gap:2px;margin:8px 0 3px}
+.mr i{flex:1;height:4px;border-radius:1px;background:var(--ln)}
+.mr i.d{background:var(--acc)}.mr i.c{background:#7fa7d6}.mr i.c.late{background:var(--er)}
+.oc.late .prog i{background:var(--er)}
+.prog i{background:var(--acc)}
+.lkb{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+details.rd summary{cursor:pointer;list-style:none}details.rd summary::-webkit-details-marker{display:none}
+details.rd summary h3{margin:0}details.rd[open] summary h3{margin-bottom:12px}
+.top h1{font-weight:700}
+/* --- поток производства --- */
+.flow{display:grid;grid-template-columns:96px repeat(8,minmax(0,1fr));grid-template-rows:auto auto;gap:10px 16px}
+.fl{font-size:13px;font-weight:700;color:var(--tx);align-self:center;line-height:1.3}
+.fl small{display:block;font-weight:500;color:var(--mut);font-size:12px}
+.l1{grid-column:1;grid-row:1}.l2{grid-column:1;grid-row:2}.l3{display:none}
+.a1{grid-column:2;grid-row:1}.a2{grid-column:3;grid-row:1}.a3{grid-column:4;grid-row:1}
+.b1{grid-column:2;grid-row:2}.b2{grid-column:3;grid-row:2}.b3{grid-column:4;grid-row:2}
+.c1{grid-column:5;grid-row:1/3}.c2{grid-column:6;grid-row:1/3}.c3{grid-column:7;grid-row:1/3}.c4{grid-column:8;grid-row:1/3}.c5{grid-column:9;grid-row:1/3}
+.fb{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;text-align:left;background:#fff;border:1px solid var(--ln);border-radius:8px;padding:10px 12px;min-height:96px;min-width:0}
+.fb:hover{border-color:#94a3b8}
+.fb .fn{font-size:12px;font-weight:700;color:#475569}
+.fb b{font-size:22px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums}.fb b small{font-size:12px;font-weight:600;color:var(--mut)}.nw{white-space:nowrap}
+.fb small{font-size:12px;color:var(--mut);line-height:1.3}
+.fb em{font-style:normal;font-size:12px;color:var(--ok);font-weight:700}
+.fb .fx{font-style:normal;font-size:12px;font-weight:700;margin-top:3px;color:var(--er)}
+.fb.bo{background:var(--soft)}.fb.bo b{color:#94a3b8}
+.fb.tor{border-color:#f0c9c5}
+.fb .fx.wr{color:var(--wr)}.fb .fx.hlt{color:var(--acc)}
+.dhint{font-size:13px;color:var(--acc2);background:var(--accbg);border-radius:6px;padding:8px 10px;margin-bottom:8px}
+.fb.skl{border-style:dashed}
+.fb.hl{outline:2px solid var(--acc);outline-offset:2px}
+.fb:not(.end):not(.a3):not(.b3):after{content:"";position:absolute;right:-12px;top:calc(50% - 4px);width:7px;height:7px;border-top:1.5px solid #94a3b8;border-right:1.5px solid #94a3b8;transform:rotate(45deg)}
+.a3:after,.b3:after{content:"";position:absolute;right:-12px;top:calc(50% - 4px);width:7px;height:7px;border-top:1.5px solid #94a3b8;border-right:1.5px solid #94a3b8;transform:rotate(45deg)}
+/* --- как это работает --- */
+.intro{background:#fff;border:1px solid var(--ln);border-left:2px solid var(--acc);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.intro{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.intro .it2{flex:1 1 420px;font-size:14px;line-height:1.45}.intro .it2 span{color:#475569}
+.intro ol{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.intro li{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4}
+.intro li b{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--acc);color:var(--acc);display:grid;place-items:center;font-size:12px}
+.intro .ib{display:flex;gap:8px;flex-wrap:wrap}
+.cta{margin-top:14px;padding:14px 16px;border:1px dashed #cbd5e1;border-radius:var(--r);background:var(--accbg);font-size:13px;color:#475569}
+.cta b{display:block;font-size:14px;color:var(--tx);margin-bottom:2px}
+/* --- требует внимания --- */
+.att .it{border-left:2px solid transparent;padding-left:10px}
+.att .it.er{border-left-color:var(--er)}.att .it.wr{border-left-color:var(--wr)}
+.att .it .m .r{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.att .it .m .r b{font-size:14px}
+.att .it .m small{display:block;margin-top:2px;font-size:13px}
+/* --- цех: результат записи --- */
+.linked{border-left:2px solid var(--ok);margin-bottom:14px}
+.lk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.lk>div{border:1px solid var(--ln);border-radius:6px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.lk>div:hover{border-color:#94a3b8}
+.lk small{color:var(--mut);font-size:12px}.lk b{font-size:15px}
+.btn.pulse{outline:3px solid var(--accbg);outline-offset:2px}
+/* --- маршрут заказа --- */
+.rs.cur i{background:#fff;border:2px solid var(--acc);width:12px;height:12px}
+.rs.cur span{color:var(--acc);font-weight:700}
+.rs.cur.late i{border-color:var(--er)}.rs.cur.late span{color:var(--er)}
+.rs em{font-style:normal;font-size:12px;color:var(--mut);font-weight:700}
+/* --- размерная сетка: телефон --- */
+.mx-m{display:none}
+.mx-h{font-weight:700;margin-bottom:6px}
+.mx-r{display:grid;grid-template-columns:1fr 1fr 1fr;padding:6px 0;border-bottom:1px solid var(--ln);font-variant-numeric:tabular-nums}
+.mx-r span:not(:first-child){text-align:right}
+.mx-t{color:var(--mut);font-size:12px;font-weight:700}.mx-j{font-weight:800;border-bottom:0}
+/* --- «Ещё» --- */
+.more{display:grid;gap:6px}
+.more button{display:flex;align-items:center;gap:10px;border:1px solid var(--ln);background:#fff;border-radius:6px;padding:12px;font-weight:700;text-align:left}
+.more .ic{width:22px;display:inline-flex;color:#475569}
+.more .bdg{margin-left:auto;background:var(--er);color:#fff;border-radius:3px;font-size:12px;padding:0 6px}
+.fade{animation:fd .2s}
+@keyframes fd{from{opacity:0}}
+@media (max-width:1100px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}.flow>*{grid-column:auto!important;grid-row:auto!important}.fl,.l3{display:block;grid-column:1/-1!important;margin-top:4px}.fb:after,.a3:after,.b3:after{display:none}.fb{min-height:0}.k4{grid-template-columns:repeat(2,1fr)}.k5{grid-template-columns:repeat(3,1fr)}.k2{grid-template-columns:1fr}}
+@media (max-width:860px){
+ .side{display:none}.main{padding:14px 14px 92px}.top h1{font-size:18px}
+ .mhead{display:flex}
+ .mnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--ln);z-index:40;padding:4px 2px calc(4px + env(safe-area-inset-bottom));overflow-x:auto}
+ .mnav button{flex:1 0 50px;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;font-weight:700;color:var(--mut);padding:5px 1px;position:relative;white-space:nowrap}
+ .mnav button.on{color:var(--acc);box-shadow:inset 0 2px 0 var(--acc)}
+ .mnav .bdg{position:absolute;top:1px;right:calc(50% - 20px);margin:0}
+ .k5,.k4{grid-template-columns:repeat(2,1fr)}
+ .dl{grid-template-columns:repeat(2,1fr)}
+ .frm,.frm.f5{grid-template-columns:1fr}.frm .w2{grid-column:auto}
+ .box{border-radius:8px 8px 0 0;max-height:94vh;align-self:flex-end}.mod{padding:0;align-items:flex-end}
+ .kan{display:block}.col{margin-bottom:10px;min-height:0}.col.bo{display:none}
+ .inp,select.inp,.rolsel.m{font-size:16px;min-height:44px}
+ .btn{min-height:44px}.btn.s,.chip,.seg button{min-height:38px}
+ .toast{bottom:calc(72px + env(safe-area-inset-bottom))}
+ .ft{justify-content:stretch}.ft .btn{flex:1;justify-content:center}
+ .fsvw{position:sticky;bottom:calc(62px + env(safe-area-inset-bottom));background:#fff;margin:0 -16px -16px;padding:10px 16px;border-top:1px solid var(--ln);z-index:5}
+ .attw{order:2}.kpis{order:3}
+ .k3{grid-template-columns:repeat(2,1fr)}.k3>.kpi:last-child{grid-column:span 2}
+ .k4.kpis .kpi{padding:12px}
+ .flow{display:flex!important;flex-direction:column;gap:0;position:relative;padding-left:20px}
+
+ .flow .fl{margin:12px 0 4px;font-size:12px;font-weight:700;color:var(--mut);text-transform:none}
+ .flow .fl small{display:none}
+ .flow .fl:first-child{margin-top:0}
+ .fb{display:grid!important;grid-template-columns:1fr auto;align-items:center;gap:0 10px;min-height:46px;padding:8px 10px;border:0;border-bottom:1px solid var(--ln);border-radius:0;background:none}
+ .fb.tor{background:none;border-color:var(--ln)}.fb.skl{border-style:none none solid}
+ .fb:before{content:"";position:absolute;left:-19px;top:calc(50% - 6px);width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid #94a3b8}
+ .fb.tor:before{border-color:var(--er)}.fb.bo:before{border-color:var(--ln)}
+ .flow .fb .fn{grid-column:1;font-size:14px;color:var(--tx)}
+ .flow .fb small:nth-of-type(n+2){display:none}
+ .flow .fb{min-height:44px;padding:7px 10px}
+ .flow .fl{border-top:1px solid var(--ln);padding-top:10px}.flow .fl:first-child{border-top:0;padding-top:0}
+ .rs.on{background:var(--accbg);border-color:var(--accbg)}
+ .box .hd .x{width:40px;height:40px}
+ .top .sub{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+ #ex{padding:8px 10px}
+ .frm.f5>label{grid-column:1/-1!important}
+ .fb b{grid-column:2;grid-row:1;font-size:15px;text-align:right}
+ .fb small{grid-column:1/-1;font-size:12px}
+ .fb em,.fb .fx,.fb .nw{grid-column:1/-1;font-size:12px}
+ .fb.hl{outline:0;background:var(--accbg)}
+ .mnav button{flex:1 1 0;font-size:12px;padding:7px 0 6px;gap:3px}
+ .mnav .ic svg.i{width:22px;height:22px}
+ .mhead .rolsel{display:none}.mhead small{display:none}.mhead{margin:0 0 10px}
+ .namuna{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;padding:4px 12px}
+ .k5>.kpi:last-child{grid-column:span 2}
+ .intro ol{grid-template-columns:1fr}
+ .fb b{font-size:18px}.fb{padding:8px 9px}.fb small,.fb em,.fb .fn{font-size:12px}.intro .ih span{display:none}.intro{padding:12px 14px}.intro li{font-size:12px}
+ .mx-d{display:none}.mx-m{display:block;margin-bottom:12px}
+ .mx-r:not(:has(span:nth-child(3))){grid-template-columns:1fr auto}
+ .tw.cm{border:0;background:none;overflow:visible}
+ .tw.cm table,.tw.cm tbody{display:block}
+ .tw.cm thead{display:none}
+ .tw.cm tr{display:block;background:#fff;border:1px solid var(--ln);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+ .tw.cm td{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:3px 0;border:0;text-align:right}
+ .tw.cm td:before{content:attr(data-l);color:var(--mut);font-size:12px;font-weight:600;text-align:left;flex:none}
+ .tw.cm td:first-child{display:block;text-align:left;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--ln)}
+ .tw.cm td:first-child:before,.tw.cm td[data-l=""]:before{display:none}
+ .tw.cm td[data-l=""]{justify-content:flex-end}
+ .tw.cm td.hide-m{display:none}
+ .tw.cm td .cv{min-width:0}
+ .route{flex-wrap:wrap;gap:4px}.rs{flex:none;flex-direction:row;gap:5px;padding:3px 7px;border:1px solid var(--ln);border-radius:4px;font-size:12px}.rs:before{display:none}.rs i{width:7px;height:7px}.rs.cur i{width:8px;height:8px}.rs.cur{border-color:var(--acc)}.rs.cur.late{border-color:var(--er)}.rs em{font-size:12px}
+ .tw.cm tr.cl:hover td{background:none}
+ .hide-m{display:none}
+}
+@media print{body *{visibility:hidden}.box,.box *{visibility:visible}.box{position:absolute;left:0;top:0;box-shadow:none;max-height:none;width:100%}.mod{background:none}.ft,.x{display:none!important}}
+
+.szrow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.szrow label{font-size:12px;gap:3px}
+.szrow .inp{padding:6px 6px;text-align:center}
+@media (max-width:860px){.szrow{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="namuna"><b>ОБРАЗЕЦ</b> · данные условные (клиенты, цены, сотрудники) · в рабочей системе у каждого сотрудника свой логин и пароль</div>
+<div class="lay">
+ <aside class="side">
+  <div class="brand"><div class="logo" id="lg1"></div><div><b id="bn1"></b><small id="bs1"></small></div></div>
+  <nav class="nav" id="nav"></nav>
+  <div class="sidefoot">
+   <label style="display:block;margin-bottom:4px" id="rollbl"></label>
+   <select id="rolsel" class="rolsel"></select>
+   <select id="til" class="rolsel" aria-label="Язык"><option value="ru">Русский</option><option value="uz">O‘zbekcha</option></select>
+   <button id="rst"></button>
+  </div>
+ </aside>
+ <main class="main">
+  <div class="mhead"><div class="logo" id="lg2"></div><div style="flex:1"><b id="bn2"></b><small id="bs2"></small></div><select id="rolsel2" class="rolsel m"></select><select id="til2" class="rolsel m" aria-label="Язык"><option value="ru">RU</option><option value="uz">UZ</option></select></div>
+  <div id="app"></div>
+ </main>
+</div>
+<nav class="mnav" id="mnav"></nav>
+<input type="file" id="fin" accept=".xlsx,.xls,.csv" hidden>
+<script>/* Chiziqli ikonlar (Lucide uslubi) */
+(function(){
+const P={
+panel:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+paket:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/>',
+zavod:'<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/>',
+rulon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><ellipse cx="12" cy="5" rx="2.5" ry=".8"/>',
+yuk:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+jadval:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h8M12 11v8"/>',
+sozlama:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+ogoh:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/>',
+chaqmoq:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+belgi:'<path d="M20 6 9 17l-5-5"/>',
+okdoira:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+taqiq:'<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+tarozi:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+kolba:'<path d="M10 2v7.31M14 9.3V2M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>',
+soat:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+karta:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+qulf:'<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+hujjat:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/>',
+qongiroq:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+qidir:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+odam:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+zanjir:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+qalam:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>',
+yubor:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+kalendar:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+qatlam:'<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+baza:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
+xoch:'<path d="M18 6 6 18M6 6l12 12"/>',
+kitob:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+printer:'<path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/>',
+yukla:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>',
+tushir:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+telefon:'<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+samolyot:'<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+pul:'<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+nihol:'<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+termometr:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+nuqta:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+qor:'<path d="M2 12h20M12 2v20m8-6-4-4 4-4M4 8l4 4-4 4m12-12-4 4-4-4m0 16 4-4 4 4"/>',
+aylan:'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+radar:'<path d="M19.07 4.93A10 10 0 0 0 6.99 3.34M4 6h.01M2.29 9.62A10 10 0 1 0 21.31 8.35M16.24 7.76A6 6 0 1 0 8.23 16.67M12 18h.01M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/>',
+osish:'<path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/>',
+yol:'<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+qayt:'<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+kvadrat:'<rect width="18" height="18" x="3" y="3" rx="2"/>',
+qaychi:'<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
+odamlar:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+tomchi:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+qosh:'<path d="M5 12h14M12 5v14"/>',
+chap:'<path d="m15 18-6-6 6-6"/>',
+ong:'<path d="m9 18 6-6-6-6"/>',
+kiyim:'<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>',
+ip:'<path d="M4 4h16v4H4z"/><path d="M4 16h16v4H4z"/><path d="M7 8v8M12 8v8M17 8v8"/>',
+til:'<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>'};
+window.I=(n,c)=>'<svg class="i'+(c?" "+c:"")+'" viewBox="0 0 24 24" aria-hidden="true">'+(P[n]||"")+'</svg>';
+})();
+</script>
+<script>/* Umumiy yordamchilar: ikkala namuna (POLYPACK, UZ AVIA) uchun. window.U */
+(function(){
+const U={};U.t=s=>s;
+U.$=s=>document.querySelector(s);
+U.$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+U.esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T=new Date();T.setHours(0,0,0,0);U.TODAY=T;
+U.iso=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+U.addD=(n,b)=>{const d=new Date(b||T);d.setDate(d.getDate()+n);return U.iso(d)};
+U.addH=(h,b)=>new Date((b?new Date(b):new Date()).getTime()+h*36e5);
+U.dd=s=>Math.round((new Date(String(s).slice(0,10))-T)/864e5);
+U.OY=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+U.fd=s=>{if(!s)return'—';const d=new Date(s);return d.getDate()+'-'+U.OY[d.getMonth()]};
+U.fdt=s=>{if(!s)return'—';const d=new Date(s);return U.fd(d)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+U.num=(n,k)=>{if(n==null||isNaN(n))return'—';const f=k?Number(n).toFixed(k):Math.round(n);return Number(f).toLocaleString('ru-RU',{minimumFractionDigits:k||0,maximumFractionDigits:k||0}).replace(/[\u202f\u00a0 ]/g,'\u00a0').replace(',',k?',':'')};
+U.som=n=>U.num(n)+' '+U.t('сум');
+U.mln=n=>Math.abs(n)>=1e9?(n/1e9).toFixed(2).replace('.',',')+' '+U.t('млрд'):Math.abs(n)>=1e6?(n/1e6).toFixed(1).replace('.',',')+' '+U.t('млн'):U.num(n);
+U.val=(n,v)=>v==='USD'?'$'+U.num(n):v==='EUR'?'€'+U.num(n):v==='RUB'?U.num(n)+' ₽':U.num(n)+' '+U.t('сум');
+U.vaqt=v=>{const d=new Date(v),m=Math.round((Date.now()-d)/6e4);return m<1?U.t('сейчас'):m<60?m+' '+U.t('мин назад'):m<1440?Math.round(m/60)+' '+U.t('ч назад'):U.fd(d)};
+U.rnd=seed=>{let s=seed;return()=>{s=(s*9301+49297)%233280;return s/233280}};
+U.pick=(r,a)=>a[Math.floor(r()*a.length)];
+U.uid=p=>(p||'x')+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+
+/* saqlash */
+U.store=key=>({load(){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}},save(d){try{localStorage.setItem(key,JSON.stringify(d))}catch(e){}},clear(){try{localStorage.removeItem(key)}catch(e){}}});
+
+/* toast */
+U.toast=(m,tg)=>{const t=document.createElement('div');t.className='toast';t.innerHTML=(tg?'<span class="tg">'+(tg===true?'Telegram':U.esc(tg))+'</span>':'')+U.esc(m);document.body.appendChild(t);setTimeout(()=>t.remove(),2400)};
+
+/* modal */
+U.closeM=pop=>{const m=U.$('#mo');if(m)m.remove();document.body.style.overflow='';if(m&&pop!==true&&history.state&&history.state.mo){U._skip=true;try{history.back()}catch(e){U._skip=false}}};
+window.addEventListener('popstate',()=>{if(U._skip){U._skip=false;if(U._app){try{history.replaceState(null,'','#'+U._app.view)}catch(e){}}if(U.$('#mo')){try{history.pushState({mo:1},'')}catch(e){}}return}if(U.$('#mo'))U.closeM(true)});
+U.modal=(h,b,f,wide)=>{U.closeM(true);U.$$('.toast').forEach(x=>x.remove());const m=document.createElement('div');m.className='mod';m.id='mo';m.innerHTML=`<div class="box" ${wide?'style="width:min(980px,100%)"':''}><div class="hd">${h}<button class="x" aria-label="Закрыть">×</button></div><div class="bd">${b}</div>${f?'<div class="ft">'+f+'</div>':''}</div>`;document.body.appendChild(m);document.body.style.overflow='hidden';try{if(!U._skip&&!(history.state&&history.state.mo))history.pushState({mo:1},'')}catch(e){}m.querySelector('.x').onclick=U.closeM;m.addEventListener('mousedown',e=>{if(e.target===m)U.closeM()});return m};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')U.closeM()});
+
+/* jadval */
+U.table=(cols,rows,opt)=>{opt=opt||{};if(!rows.length)return'<div class="card empty">'+(opt.empty||U.t('Нет данных'))+'</div>';
+return`<div class="tw ${opt.keep?'':'cm'}"><table class="t"><thead><tr>${cols.map(c=>`<th class="${c.n?'n':''} ${c.m?'hide-m':''}">${c.t}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr class="${opt.click?'cl':''}" ${opt.click?opt.click(r):''}>${cols.map(c=>`<td class="${c.n?'n':''} ${c.m?'hide-m':''}" data-l="${String(c.t).replace(/<[^>]*>/g,'').replace(/"/g,'')}"><div class="cv">${c.f(r)}</div></td>`).join('')}</tr>`).join('')}</tbody></table></div>`};
+
+/* Excel */
+U.xls=()=>window.XLSX?Promise.resolve(window.XLSX):new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>ok(window.XLSX);s.onerror=no;document.head.appendChild(s)});
+U.csv=(rs,fn)=>{const h=Object.keys(rs[0]||{});const t=[h.join(';')].concat(rs.map(r=>h.map(k=>'"'+String(r[k]==null?'':r[k]).replace(/"/g,'""')+'"').join(';'))).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+t],{type:'text/csv'}));a.download=fn.replace(/\.xlsx$/,'.csv');a.click()};
+U.exportX=(sheets,fn)=>{U.toast(U.t('Готовим файл Excel…'));U.xls().then(X=>{const wb=X.utils.book_new();Object.keys(sheets).forEach(n=>{const ws=X.utils.json_to_sheet(sheets[n]);ws['!cols']=Object.keys(sheets[n][0]||{}).map(k=>({wch:Math.max(10,Math.min(32,k.length+4))}));X.utils.book_append_sheet(wb,ws,n.slice(0,30))});X.writeFile(wb,fn)}).catch(()=>U.csv(sheets[Object.keys(sheets)[0]],fn))};
+U.readX=(file,cb)=>{const rd=new FileReader();rd.onload=()=>{U.xls().then(X=>{const wb=X.read(new Uint8Array(rd.result),{type:'array',cellDates:true});cb(X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:''}))}).catch(()=>U.toast(U.t("Библиотека Excel не загрузилась — проверьте интернет")))};rd.readAsArrayBuffer(file)};
+U.norm=s=>String(s).toLowerCase().replace(/[^a-zа-яё0-9]/gi,'');
+U.mapCols=(keys,spec)=>{const M={};Object.keys(spec).forEach(k=>{M[k]=keys.find(h=>spec[k].some(s=>U.norm(h).includes(s)))||null});return M};
+U.toNum=v=>+String(v==null?'':v).replace(/\s/g,'').replace(',','.')||0;
+
+/* ilova karkasi: menyu, rollar, render */
+U.app=cfg=>{
+ const A={view:cfg.boshlang||cfg.bolimlar[0],rol:'direktor'};U._app=A;
+ const bol=()=>cfg.bolimlar.filter(k=>!cfg.rollar||cfg.rollar[A.rol].includes(k));
+ A.navs=()=>{const ks=bol();const b=k=>{const n=cfg.badge?cfg.badge(k):0;return n?'<span class="bdg">'+n+'</span>':''};
+  U.$('#nav').innerHTML=ks.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][1]}${b(k)}</button>`).join('');
+  let mk=ks;A.rest=[];if(cfg.mobil){mk=ks.length>5?ks.filter(k=>cfg.mobil.includes(k)).slice(0,4):ks;if(mk.length<2)mk=ks.slice(0,4);A.rest=ks.filter(k=>!mk.includes(k))}
+  const rb=A.rest.reduce((s,k)=>s+(cfg.badge?cfg.badge(k):0),0);
+  U.$('#mnav').innerHTML=mk.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][2]}${b(k)}</button>`).join('')+(cfg.onMore?`<button data-more="1" class="${A.rest.includes(A.view)?'on':''}"><span class="ic">${cfg.moreIc}</span>${cfg.moreNom()}${rb?'<span class="bdg">'+rb+'</span>':''}</button>`:'')};
+ A.render=()=>{if(!bol().includes(A.view))A.view=bol()[0];A.navs();const a=U.$('#app');a.className='';void a.offsetWidth;a.className='fade';cfg.render[A.view](a);try{history.replaceState(null,'','#'+A.view)}catch(e){}};
+ A.go=(v,f)=>{U.$$('.toast').forEach(x=>x.remove());A.view=v;if(cfg.onGo)cfg.onGo(v,f);A.render();window.scrollTo(0,0)};
+ document.addEventListener('click',e=>{const m=e.target.closest('#mnav [data-more]');if(m){cfg.onMore(A.rest);return}const b=e.target.closest('[data-v]');if(b&&(b.closest('#nav')||b.closest('#mnav')))A.go(b.dataset.v)});
+ U.$('#lg1').textContent=U.$('#lg2').textContent=cfg.logo;U.$('#bn1').textContent=U.$('#bn2').textContent=cfg.nom;U.$('#bs1').textContent=U.$('#bs2').textContent=cfg.shior;
+ const r=document.documentElement.style;r.setProperty('--acc',cfg.rang[0]);r.setProperty('--acc2',cfg.rang[1]);r.setProperty('--accbg',cfg.rang[2]);
+ if(cfg.rollar){const s=U.$('#rolsel');s.innerHTML=Object.keys(cfg.rollar).map(k=>`<option value="${k}">${cfg.rolNom[k]}</option>`).join('');s.onchange=()=>{A.rol=s.value;U.$$('.rolnom').forEach(x=>x.textContent=cfg.rolNom[A.rol]);U.toast(cfg.rolNom[A.rol]+': '+U.t('видны только свои разделы'));A.render()};U.$('#rolsel2').innerHTML=s.innerHTML;U.$('#rolsel2').onchange=e=>{s.value=e.target.value;s.onchange()}}
+ const h=location.hash.slice(1);if(cfg.bolimlar.includes(h))A.view=h;
+ return A};
+window.U=U;
+})();
+</script>
+<script>/* CONCEPT PRO — трикотажная фабрика (джемперы, свитеры, кардиганы, поло, футболки). Система управления — ОБРАЗЕЦ */
+(function(){
+const {$,$$,esc,iso,addD,dd,fd,fdt,num,mln,toast,modal,closeM,table}=U;
+const T=U.TODAY,KEY='conceptpro_namuna_v1',ST=U.store(KEY),LK='conceptpro.lang';
+
+/* ---------- язык: русский основной, узбекский по словарю ---------- */
+let LANG='ru';try{LANG=localStorage.getItem(LK)||'ru'}catch(e){}
+const UZ={
+'Сегодня':'Bugun','Заказы':'Buyurtmalar','Заказ':'Buyurtma','Цех':'Sex','Склад':'Ombor','Отгрузка и оплата':'Jo‘natma va to‘lov','Отгрузка':'Jo‘natma','Сдельная оплата':'Ishbay oylik','Оплата труда':'Ishbay','Брак / ОТК':'Brak / OTK','Брак':'Brak',
+'Директор':'Direktor','Бухгалтер':'Buxgalter','Начальник цеха':'Sex boshlig‘i','Кладовщик':'Omborchi','Смотреть как:':'Kim sifatida ko‘rish:','Сбросить данные образца':'Namuna ma’lumotini tiklash','Данные образца восстановлены':'Namuna ma’lumoti tiklandi','видны только свои разделы':'faqat o‘z bo‘limlari ko‘rinadi',
+'сум':'so‘m','млн':'mln','млрд':'mlrd','Нет данных':'Ma’lumot yo‘q','Готовим файл Excel…':'Excel fayl tayyorlanmoqda…','Библиотека Excel не загрузилась — проверьте интернет':'Excel kutubxonasi yuklanmadi — internetni tekshiring','сейчас':'hozir','мин назад':'daq oldin','ч назад':'soat oldin',
+'Новый':'Yangi','Крашение полотна':'Polotno bo‘yash','Вязание':'To‘qish','Кеттлёвка и сборка':'Kettel va yig‘ish','Кеттлёвка':'Kettel','Раскрой':'Bichish','Пошив':'Tikish','Стирка и ВТО':'Yuvish va VTO','ОТК':'OTK','Упаковка':'Qadoqlash','Готово на складе':'Omborda tayyor','Отгружен':'Jo‘natildi','Готово':'Tayyor','Частично отгружен':'Qisman jo‘natildi',
+'Вязальщик':'To‘quvchi','Кеттельщица':'Kettelchi','Раскройщик':'Bichuvchi','Швея':'Tikuvchi','Оператор ВТО':'VTO ishchisi','Контролёр ОТК':'OTK nazoratchisi','Упаковщик':'Qadoqlovchi','Крашение':'Bo‘yash',
+'Здравствуйте':'Assalomu alaykum','состояние цеха, склада и оплат':'sex, ombor va to‘lovlar holati','Новый заказ':'Yangi buyurtma','Заказы в работе':'Ishdagi buyurtmalar','из них опаздывают':'tasi kechikmoqda','Сдано сегодня':'Bugun topshirildi','шт':'dona','вязание':'to‘qish','пошив':'tikish','упаковка':'qadoq','Пряжа на складе':'Ombordagi ip','кг':'kg','не хватает на очередь':'navbatga yetmaydi','хватает на очередь':'navbatga yetadi','Долг клиентов':'Mijozlar qarzi','просрочено':'muddati o‘tgan','Брак за месяц':'Oy braki','дефектов на 100 шт':'100 donaga nuqson','Требует внимания':'Diqqat talab qiladi','Всё в порядке':'Hammasi joyida','Заказы по этапам':'Buyurtmalar bosqichlar bo‘yicha','Сдано за 7 дней':'7 kunda topshirildi','Последние записи из цеха':'Sexdan oxirgi yozuvlar','Перейти в цех':'Sexga o‘tish',
+'На каком этапе каждый заказ, когда будет готов и как оплачен':'Har buyurtma qaysi bosqichda, qachon tayyor va to‘lov holati','Поиск: номер, клиент, модель':'Qidirish: raqam, mijoz, model','В работе':'Jarayonda','Опаздывают':'Kechikayotganlar','По этому фильтру заказов нет':'Bu filtr bo‘yicha buyurtma yo‘q','Срок':'Muddat','Готов примерно':'Tayyor bo‘ladi (taxm.)','Аванс':'Avans','Аванса нет':'Avans yo‘q','Оплачен':'To‘langan','Долг':'Qarz','дн. просрочки':'kun kechikdi',
+'Клиент':'Mijoz','Статус':'Holat','Принят':'Qabul qilingan','Отгружено':'Jo‘natilgan','Модели и размерная сетка':'Modellar va o‘lcham to‘ri','план':'reja','сделано на текущем этапе':'joriy bosqichda bajarildi','Итого':'Jami','Цена':'Narx','Сумма':'Summa','Пряжа':'Ip','партия':'partiya','нужно ~':'kerak ~','с учётом потерь':'yo‘qotish bilan','План по этапам':'Bosqichlar rejasi','по мощности цеха и очереди':'sex quvvati va navbat bo‘yicha','Этап':'Bosqich','Начало':'Boshlanadi','Конец':'Tugaydi','Ожидание':'Navbat kutish','дн.':'kun','Оплата':'To‘lov','Оплачено':'To‘langan','Долг по отгруженному':'Jo‘natilgan qismi qarzi','Срок оплаты':'To‘lov muddati','Себестоимость и прибыль':'Tannarx va foyda','ориентировочно':'taxminiy','Полотно':'Polotno','Сдельная':'Ishbay','Накладные':'Umumiy xarajat','Себестоимость 1 шт':'Tannarx (1 dona)','Прибыль':'Foyda','Продажа':'Sotuv','себестоимость':'tannarx','Курс':'Kurs','История':'Tarix','Перевести на этап':'Bosqichga o‘tkazish','Отгрузить':'Jo‘natish','Внести оплату':'To‘lov kiritish','Заказ принят':'Buyurtma qabul qilindi','Этап':'Bosqich',
+'Модель':'Model','Цвет':'Rang','Срок сдачи клиенту':'Mijozga topshirish muddati','Проверить':'Tekshirish','Сохранить':'Saqlash','Укажите хотя бы один размер':'Kamida bitta o‘lcham kiriting','Проверка':'Tekshiruv','Хватает на складе':'Omborda yetarli','Не нужна':'Kerak emas','не хватает':'yetmaydi','опоздание':'kechikish','успеваем в срок':'muddatga ulguradi','занят':'band','принят':'qabul qilindi','Размеры (шт)':'O‘lchamlar (dona)','Цена за 1 шт':'1 dona narxi',
+'Начальник цеха или бригадир записывает выработку с телефона — статус заказа и сдельная оплата обновляются сами':'Sex boshlig‘i yoki brigadir bajarilgan ishni telefondan kiritadi — buyurtma holati va ishbay oylik o‘zi yangilanadi','Внести сделанное':'Bajarilgan ishni kiritish','Работник':'Ishchi','Размер':'O‘lcham','Сделано (шт)':'Bajarildi (dona)','Брак (шт)':'Brak (dona)','Причина брака':'Brak sababi','Что с браком':'Brak holati','исправлен':'tuzatildi','2-й сорт':'2-sort','списан':'chiqindi','Внесено сегодня':'Bugun kiritilgan','записей':'yozuv','Заказы в цехе по этапам':'Sexdagi buyurtmalar bosqichlar bo‘yicha','Пусто':'Bo‘sh','На этом этапе заказов нет':'Bu bosqichda buyurtma yo‘q','Выберите заказ':'Buyurtmani tanlang','Введите количество':'Miqdorni kiriting','Укажите причину брака':'Brak sababini tanlang','ещё на этапе':'hali bosqichida','Осталось':'Qolgan','количество больше остатка, проверьте':'miqdor qoldiqdan ko‘p, tekshiring','Сохранено':'Saqlandi','этап завершён':'bosqich tugadi','Расценка':'Rastsenka','на окладе':'oklad bo‘yicha','сделано':'bajarilgan','Отдано в красильню':'Bo‘yoqxonaga berilgan',
+'Пряжа, полотно и готовая продукция — в кг и штуках':'Ip, polotno va tayyor mahsulot — kg va dona bilan','Полотно и красильня':'Polotno va bo‘yoqxona','Готовая продукция':'Tayyor mahsulot','Приход':'Kirim','Партия (лот)':'Partiya (lot)','Остаток':'Qoldiq','Нужно на очередь':'Navbatga kerak','Владелец':'Egasi','своя':'o‘zimizniki','давальческая':'mijoz ipi','кг не хватает':'kg yetmaydi','Ниже минимума':'Eng kam qoldiqdan past','Достаточно':'Yetarli','Один заказ — одна партия пряжи, иначе детали отличаются по оттенку. «Нужно на очередь» — по норме расхода модели с потерями':'Bir buyurtma — bitta ip partiyasi, aks holda detallar rangi farq qiladi. «Navbatga kerak» — model sarf me’yori va yo‘qotish bilan','Рулон':'Rulon','Где':'Qayerda','На складе':'Omborda','В раскрое':'Bichishda','В красильне':'Bo‘yoqxonada','свободно':'erkin','Полотно учитывается в кг; после крашения вес и плотность меняются, поэтому в карточке — готовое полотно':'Polotno kg da hisoblanadi; bo‘yashdan keyin og‘irlik va zichlik o‘zgaradi, shuning uchun kartada tayyor polotno','Готово по заказам (ждёт отгрузки)':'Buyurtmaga tayyor (jo‘natish kutmoqda)','Коробок':'Quti','Открытые заказы':'Ochiq buyurtmalar','Подтвердить отгрузку':'Jo‘natishni tasdiqlash','Отгрузка сохранена':'Jo‘natma saqlandi','долг':'qarz','Свободный остаток (на продажу)':'Erkin qoldiq (sotuvga)','Сорт':'Sort','1-й сорт':'1-sort','2-й сорт учитывается отдельно и продаётся по своей цене':'2-sort alohida turadi va alohida narxda sotiladi','Приход пряжи':'Ip kirimi','Вес нетто (кг)':'Og‘irlik (netto, kg)','Цена (сум/кг)':'Narx (so‘m/kg)','Поставщик':'Yetkazuvchi','Введите вес':'Og‘irlikni kiriting',
+'Частичные отгрузки, накладная, долг клиентов':'Qisman jo‘natmalar, nakladnoy, mijoz qarzi','Готово к отгрузке':'Jo‘natishga tayyor','Долг клиентов':'Mijozlar qarzi','Отгрузки':'Jo‘natmalar','Нет заказов, готовых к отгрузке':'Jo‘natishga tayyor buyurtma yo‘q','Подробнее':'Batafsil','Долг, сум':'Qarz, so‘m','Долг, $':'Qarz, $','Просрочено':'Muddati o‘tgan','в сумах по курсу':'so‘mga aylantirilgan','оплата через':'to‘lov','дн.':'kun','Срок не наступил':'Muddati kelmagan','Долга нет':'Qarz yo‘q','Дата':'Sana','Количество':'Miqdor','Машина':'Mashina','Накладная':'Yuk xati','Отгрузка — ':'Jo‘natish — ','Количество (шт)':'Miqdor (dona)','Номер машины':'Mashina raqami','останется на складе':'omborda qoladi','частичная отгрузка':'qisman jo‘natma','Количество от 1 до':'Miqdor 1 dan','Отправитель':'Jo‘natuvchi','Получатель':'Qabul qiluvchi','Всего':'Jami','коробок':'quti','брутто ~':'brutto ~','По этим данным заполняются ЭСФ и ЭТТН (Didox)':'Shu ma’lumot bilan ESF va ETTN (Didox) to‘ldiriladi','Печать':'Chop etish','Тип':'Turi','Остаток долга':'Qarz qoldig‘i','Частичная оплата':'Qisman to‘lov','Введите сумму':'Summani kiriting','Оплата сохранена':'To‘lov saqlandi','Валюта':'Valyuta','по курсу ≈':'kurs bo‘yicha ≈','Город':'Shahar','Срок оплаты, дн.':'To‘lov muddati, kun',
+'считается из записей цеха, брак не оплачивается':'sexdagi yozuvlardan o‘zi hisoblanadi, brak to‘lanmaydi','Excel (бухгалтеру)':'Excel (buxgalterga)','Сдельная за месяц':'Oy ishbay jami','работников':'ishchi','Связано (вязание)':'To‘qildi','комплектов':'komplekt','Сшито и собрано':'Tikildi va yig‘ildi','не оплачивается':'to‘lanmaydi','Дней':'Kun','Сделано':'Bajarildi','Сумма за месяц':'Oy summasi','Расценки по моделям (сум за 1 шт)':'Modellar bo‘yicha rastsenka (1 dona uchun so‘m)','При изменении расценки оплата пересчитывается сразу. ОТК — на окладе':'Rastsenka o‘zgartirilsa oylik darhol qayta hisoblanadi. OTK — oklad','месяц':'oy','Работник видит свой расчёт в телефоне — споров в конце месяца меньше':'Ishchi o‘z hisobini telefonida ko‘radi — oy oxiridagi nizolar kamayadi',
+'На каком этапе и у кого возникает брак, что с ним сделали':'Brak qaysi bosqichda, kimda chiqadi va u bilan nima qilindi','За месяц':'Oy davomida','Исправлено':'Tuzatildi','Во 2-й сорт':'2-sortga','Списано':'Chiqindi','По этапам':'Bosqichlar bo‘yicha','По причинам':'Sabablar bo‘yicha','По работникам':'Ishchilar bo‘yicha','Все записи с браком':'Brak bilan hamma yozuvlar','Причина':'Sabab','Что сделали':'Nima qilindi','Брак фиксируется в цехе вместе со сдачей: партия + этап + работник. Так видно, где теряются деньги':'Brak sex yozuvida partiya + bosqich + ishchi bilan qayd etiladi. Shunda pul qayerda yo‘qolayotgani ko‘rinadi',
+'спуск петель':'tushgan petlya','дыра в детали':'detalda teshik','разнооттеночность':'rang farqi','перекос кеттельного шва':'kettel choki qiyshiq','несоответствие размера':'o‘lcham mos emas','пятно / загрязнение':'dog‘ / ifloslik','перекос шва':'chok qiyshiq','обрыв нити':'ip uzilishi','усадка после ВТО':'VTO dan keyin kirishish','перекос кроя':'bichish qiyshiq','дефект полотна':'polotno nuqsoni','пропуск стежка':'chok tashlab ketgan','Решение по браку':'Brak holati','в утиль':'chiqindi','брак, % от сданного':'brak, % (topshirilgandan)','Связано комплектов':'To‘qilgan komplektlar','с задержкой':'kechikmoqda','Кол-во':'Soni','коробка':'quti','коробки':'quti','Накладные, сум/шт':'Umumiy xarajat, so‘m/dona','не хватает свободного полотна':'erkin polotno yetmaydi','Полотна хватает':'Polotno yetarli',
+'Клиент заказа отличается — отдельный заказ':'Mijoz boshqa — alohida buyurtma','Партия пряжи для заказа':'Buyurtma uchun ip partiyasi','Корпоративный синий':'Korporativ ko‘k','Поло корпоративное, вышивка логотипа':'Korporativ polo, logotip vishivkasi','Приблизительно':'Taxminan','дн. задержки':'kun kechikadi','очередь на этапе':'bosqichida navbat','Едва успеваем в срок':'Muddatga zo‘rg‘a ulguradi','Готов, но срок отгрузки прошёл на':'Tayyor, lekin jo‘natish muddati','дн.':'kun','Полотно в красильне уже':'Polotno bo‘yoqxonada','дн. (норма':'kun (me’yor','дн.)':'kun)',
+'нужно':'kerak','на складе':'omborda','Полотно пике':'Pike polotno','на':'uchun','осталось':'qoldi','мин.':'eng kami','просрочка оплаты':'to‘lov muddati o‘tdi','по заказу':'buyurtma bo‘yicha','Все заказы':'Hamma buyurtmalar','Работа':'Ish','день':'kun','Мощность':'Quvvat','в день':'kuniga','нормы вы задаёте сами':'me’yorlarni o‘zingiz kiritasiz','комплект/день':'komplekt/kun','шт/день':'dona/kun','кол-во':'soni'};
+const t=s=>LANG==='ru'?s:(UZ[s]||s);
+const L=(ru,uz)=>LANG==='ru'?ru:uz;
+U.t=t;
+const OYUZ=['yan','fev','mar','apr','may','iyn','iyl','avg','sen','okt','noy','dek'],OYRU=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+function tilQoy(l){LANG=l;try{localStorage.setItem(LK,l)}catch(e){}U.OY=l==='ru'?OYRU:OYUZ;document.documentElement.lang=l;
+ $('#til').value=l;$('#til2').value=l;$('#rollbl').textContent=t('Смотреть как:');$('#rst').textContent=t('Сбросить данные образца');$('#bs1').textContent=$('#bs2').textContent=l==='ru'?'Трикотаж · Ташкент':'Trikotaj · Toshkent';const nb=document.querySelector('.namuna');if(nb)nb.innerHTML=l==='ru'?'<b>ОБРАЗЕЦ</b> · данные условные (клиенты, цены, сотрудники) · в рабочей системе у каждого сотрудника свой логин и пароль':'<b>NAMUNA</b> · ma’lumotlar shartli (mijozlar, narxlar, xodimlar) · haqiqiy tizimda har xodimning o‘z login-paroli bo‘ladi';
+ if(window.APP){APP.cfg.mod=mods();APP.cfg.rolNom=rolNom();const s=$('#rolsel');s.innerHTML=Object.keys(APP.cfg.rollar).map(k=>`<option value="${k}" ${k===APP.rol?'selected':''}>${rolNom()[k]}</option>`).join('');$('#rolsel2').innerHTML=s.innerHTML;$('#rolsel2').value=APP.rol;APP.render()}}
+
+/* ---------- справочники ---------- */
+const BOS={yangi:'Новый',polotno:'Крашение полотна',toqish:'Вязание',kettel:'Кеттлёвка',bichish:'Раскрой',tikish:'Пошив',vto:'Стирка и ВТО',otk:'ОТК',qadoq:'Упаковка',tayyor:'Готово на складе',jonatildi:'Отгружен'};
+const BR={yangi:'#94a3b8',polotno:'#3d5f86',toqish:'#1f4e79',kettel:'#3d5f86',bichish:'#3d5f86',tikish:'#1f4e79',vto:'#b08a3e',otk:'#5f6b7a',qadoq:'#4f7d6a',tayyor:'#15803d',jonatildi:'#5f6b7a'};
+const ROUTE={reg:['toqish','kettel','vto','otk','qadoq'],kroy:['polotno','bichish','tikish','otk','vto','qadoq']};
+const SZ={adult:['S','M','L','XL','2XL','3XL'],women:['XS','S','M','L','XL'],kids:['6','8','10','12','14']};
+/* модель: тип (reg — вязаная из пряжи, kroy — из полотна), расход г/шт, класс машины, размеры, коробка, расценки по операциям (сум/шт), полотно г/шт */
+const K={
+ 'JM-101':{ust:42000,nom:'Джемпер мужской классический, круглый вырез',tur:'reg',ip:'Акрил 100 %, Nm 32/2',gg:12,sarf:320,sz:'adult',karob:20,r:{toqish:4000,kettel:5000,vto:800,qadoq:900}},
+ 'JM-102':{ust:46000,nom:'Джемпер мужской, V-вырез',tur:'reg',ip:'Акрил 70 / шерсть 30, Nm 28/2',gg:12,sarf:340,sz:'adult',karob:20,r:{toqish:4200,kettel:5200,vto:800,qadoq:900}},
+ 'JM-105':{ust:45000,nom:'Джемпер для охраны с накладками',tur:'reg',ip:'Акрил 100 %, Nm 32/2',gg:12,sarf:380,sz:'adult',karob:20,r:{toqish:4500,kettel:5800,vto:900,qadoq:900}},
+ 'KD-201':{ust:48000,nom:'Кардиган женский на пуговицах',tur:'reg',ip:'Акрил 50 / хлопок 50, Nm 32/2',gg:12,sarf:360,sz:'women',karob:20,r:{toqish:4300,kettel:6000,vto:900,qadoq:1000}},
+ 'SV-301':{ust:14000,nom:'Жилет школьный',tur:'reg',ip:'Акрил 100 %, Nm 32/2',gg:12,sarf:180,sz:'kids',karob:40,r:{toqish:2200,kettel:1800,vto:500,qadoq:600}},
+ 'SV-302':{ust:24000,nom:'Джемпер школьный, V-вырез',tur:'reg',ip:'Акрил 100 %, Nm 32/2',gg:12,sarf:260,sz:'kids',karob:30,r:{toqish:2800,kettel:2400,vto:600,qadoq:700}},
+ 'SW-601':{ust:50000,nom:'Свитер мужской полугольф',tur:'reg',ip:'Акрил 70 / шерсть 30, Nm 28/2',gg:7,sarf:560,sz:'adult',karob:16,r:{toqish:4800,kettel:5500,vto:900,qadoq:900}},
+ 'PL-401':{ust:26000,nom:'Поло мужское пике, короткий рукав',tur:'kroy',pol:'Пике 180 г/м²',sarf:240,sz:'adult',karob:40,og:1.6,r:{bichish:800,tikish:4500,vto:500,qadoq:700}},
+ 'PL-402':{ust:30000,nom:'Поло корпоративное, вышивка логотипа',tur:'kroy',pol:'Пике 200 г/м²',sarf:250,sz:'adult',karob:40,og:1.8,r:{bichish:800,tikish:5000,vto:500,qadoq:700}},
+ 'FT-501':{ust:20000,nom:'Футболка унисекс, кулир',tur:'kroy',pol:'Кулир 160 г/м²',sarf:180,sz:'adult',karob:50,og:1,r:{bichish:600,tikish:2800,vto:400,qadoq:700}}};
+const ISHCHI=[
+ {id:'w1',ism:'Алишер Расулов',rol:'toqish'},{id:'w2',ism:'Бахтиёр Назаров',rol:'toqish'},{id:'w3',ism:'Денис Ан',rol:'toqish'},{id:'w4',ism:'Жасур Хамраев',rol:'toqish'},
+ {id:'w5',ism:'Гульнора Исмаилова',rol:'kettel'},{id:'w6',ism:'Мохира Джураева',rol:'kettel'},{id:'w7',ism:'Наталья Ли',rol:'kettel'},{id:'w8',ism:'Севара Юлдашева',rol:'kettel'},{id:'w9',ism:'Зарина Ташпулатова',rol:'kettel'},
+ {id:'w10',ism:'Рустам Каримов',rol:'bichish'},
+ {id:'w11',ism:'Нилуфар Кадырова',rol:'tikish'},{id:'w12',ism:'Феруза Алимова',rol:'tikish'},{id:'w13',ism:'Дилноза Каримова',rol:'tikish'},{id:'w14',ism:'Ольга Пак',rol:'tikish'},{id:'w15',ism:'Малика Эргашева',rol:'tikish'},
+ {id:'w16',ism:'Озода Раджабова',rol:'vto'},{id:'w17',ism:'Камола Бахтиярова',rol:'vto'},
+ {id:'w18',ism:'Виктория Цой',rol:'otk'},{id:'w19',ism:'Шахноза Мирзаева',rol:'otk'},
+ {id:'w20',ism:'Лола Ахмедова',rol:'qadoq'},{id:'w21',ism:'Дилбар Усманова',rol:'qadoq'}];
+const ROLN={toqish:'Вязальщик',kettel:'Кеттельщица',bichish:'Раскройщик',tikish:'Швея',vto:'Оператор ВТО',otk:'Контролёр ОТК',qadoq:'Упаковщик'};
+const SABAB=['спуск петель','дыра в детали','разнооттеночность','перекос кеттельного шва','несоответствие размера','пятно / загрязнение','перекос шва','обрыв нити','усадка после ВТО','перекос кроя','дефект полотна','пропуск стежка'];
+const SAB_ST={toqish:[0,1,7],kettel:[3,4],bichish:[9,10],tikish:[6,11,4],vto:[8,5],otk:[2,5,4],qadoq:[5]};
+const HOLAT={fix:'исправлен',sort2:'2-й сорт',chiq:'в утиль'};
+
+let D,P={},F={st:'',q:''},OT='ip',JT='tayyor',SX={st:'kettel',oid:''};
+
+/* ---------- данные образца ---------- */
+function seed(){
+ const S={kurs:{UZS:1,USD:12500},
+  cap:{toqish:320,kettel:240,bichish:1500,tikish:360,vto:900,otk:900,qadoq:900},polKun:5,
+  yoq:{toqish:6,bichish:15},polNarx:48000,ustamaDona:10000};
+ const MIJ=[
+  {id:'m1',nom:'ООО «Бек Савдо»',shahar:'Ташкент, рынок Абу Сахий',val:'UZS',kun:10},
+  {id:'m2',nom:'«Сардор Текстиль»',shahar:'Самарканд',val:'UZS',kun:15},
+  {id:'m3',nom:'«Замин» — школьная форма',shahar:'Ташкент',val:'UZS',kun:20},
+  {id:'m4',nom:'Alpha Logistics',shahar:'Ташкент',val:'UZS',kun:0},
+  {id:'m5',nom:'Vesna Market (Uzum, WB)',shahar:'Ташкент',val:'UZS',kun:14},
+  {id:'m6',nom:'Nur-Sultan Textile',shahar:'Алматы, Казахстан',val:'USD',kun:30}];
+ const IP=[
+  {id:'L-2401',nom:'Акрил 100 % HB, Nm 32/2',rang:'тёмно-синий 4521',kg:1240,min:400,narx:51000,yet:'импорт, Турция',egasi:''},
+  {id:'L-2402',nom:'Акрил 100 % HB, Nm 32/2',rang:'чёрный 9000',kg:860,min:400,narx:51000,yet:'импорт, Турция',egasi:''},
+  {id:'L-2403',nom:'Акрил 100 % HB, Nm 32/2',rang:'серый меланж 1180',kg:210,min:300,narx:51000,yet:'импорт, Турция',egasi:''},
+  {id:'L-2404',nom:'Акрил 70 / шерсть 30, Nm 28/2',rang:'тёмно-синий 4521',kg:460,min:200,narx:91000,yet:'импорт, Китай',egasi:''},
+  {id:'L-2405',nom:'Акрил 50 / хлопок 50, Nm 32/2',rang:'бежевый 2110',kg:140,min:150,narx:58000,yet:'импорт, Турция',egasi:''},
+  {id:'L-2406',nom:'Акрил 100 % HB, Nm 32/2',rang:'чёрный 9000',kg:380,min:0,narx:0,yet:'пряжа клиента',egasi:'m3'},
+  {id:'L-2407',nom:'Акрил 70 / шерсть 30, Nm 28/2',rang:'чёрный 9000',kg:290,min:200,narx:91000,yet:'импорт, Китай',egasi:''}];
+ const POL=[
+  {id:'R-311',mato:'Пике 180 г/м², белый',kg:48,joy:'ombor',oid:'o1012'},{id:'R-312',mato:'Пике 180 г/м², белый',kg:46,joy:'ombor',oid:'o1012'},{id:'R-313',mato:'Пике 180 г/м², тёмно-синий',kg:52,joy:'bichish',oid:'o1012'},
+  {id:'R-320',mato:'Кулир 160 г/м², белый',kg:44,joy:'ombor',oid:''},{id:'R-321',mato:'Кулир 160 г/м², чёрный',kg:38,joy:'ombor',oid:''},
+  {id:'R-330',mato:'Пике 200 г/м², суровое (на крашение)',kg:28,joy:'krasil',oid:'o1006'},{id:'R-331',mato:'Пике 200 г/м², суровое (на крашение)',kg:27,joy:'krasil',oid:'o1006'},
+  {id:'R-322',mato:'Кулир 160 г/м², серый меланж',kg:35,joy:'ombor',oid:''}];
+ // [номер, клиент, строки [модель, цвет, лот, размеры{}, цена], этап, сделано на этапе, срок (дн. от сегодня), принят (дн.), доля оплаты, примечание]
+ const X=[
+  ['CP-1027','m1',[['JM-105','чёрный 9000','L-2402',{M:60,L:100,XL:90,'2XL':50},98000]],'jonatildi',0,-24,-50,.5],
+  ['CP-1028','m5',[['FT-501','серый меланж','',{S:80,M:200,L:200,XL:120},48000]],'jonatildi',0,-14,-30,1],
+  ['CP-1029','m6',[['JM-101','тёмно-синий 4521','L-2401',{S:100,M:300,L:300,XL:200,'2XL':100},8.2]],'tayyor',0,-2,-32,.5,'Отгружено 600 из 1 000 — остаток ждёт машину'],
+  ['CP-1030','m2',[['JM-101','чёрный 9000','L-2402',{S:40,M:120,L:120,XL:80,'2XL':40},95000]],'tayyor',0,2,-20,.5],
+  ['CP-1031','m1',[['JM-101','тёмно-синий 4521','L-2401',{S:60,M:180,L:180,XL:120,'2XL':40,'3XL':20},95000]],'kettel',260,6,-12,.5],
+  ['CP-1032','m3',[['SV-301','чёрный 9000','L-2406',{'6':250,'8':350,'10':400,'12':300,'14':200},26000]],'toqish',940,6,-9,.3,'Пряжа клиента (давальческая) — в цене только работа'],
+  ['CP-1033','m4',[['PL-402','корпоративный синий','',{S:20,M:60,L:70,XL:40,'2XL':10},72000]],'polotno',0,9,-8,1,'Полотно в красильне — цвет по макету клиента'],
+  ['CP-1034','m5',[['FT-501','белый','',{S:60,M:120,L:120,XL:80},48000],['FT-501','чёрный','',{S:40,M:80,L:80,XL:40},48000]],'tikish',210,5,-7,.5],
+  ['CP-1035','m2',[['JM-102','тёмно-синий 4521','L-2404',{S:30,M:90,L:90,XL:60,'2XL':30},104000]],'vto',120,2,-14,.5],
+  ['CP-1036','m6',[['SW-601','чёрный 9000','L-2407',{S:80,M:240,L:240,XL:160,'2XL':80},9.5]],'toqish',130,20,-5,.5],
+  ['CP-1037','m1',[['KD-201','бежевый 2110','L-2405',{XS:20,S:60,M:80,L:60,XL:30},104000]],'otk',90,1,-13,.5],
+  ['CP-1038','m3',[['SV-302','тёмно-синий 4521','L-2401',{'6':120,'8':200,'10':250,'12':200,'14':130},58000]],'yangi',0,25,-1,0],
+  ['CP-1039','m1',[['PL-401','белый','',{S:50,M:90,L:90,XL:50,'2XL':20},62000],['PL-401','тёмно-синий','',{S:40,M:60,L:60,XL:40},62000]],'bichish',310,12,-4,.5],
+  ['CP-1040','m4',[['PL-401','белый','',{S:20,M:50,L:50,XL:30},65000]],'yangi',0,30,0,1,'Корпоративный заказ, оплата 100 % вперёд'],
+  ['CP-1025','m5',[['PL-401','белый','',{S:150,M:300,L:300,XL:200,'2XL':50},62000]],'jonatildi',0,-3,-22,1],
+  ['CP-1026','m2',[['FT-501','чёрный','',{S:200,M:400,L:400,XL:200},48000]],'jonatildi',0,-5,-20,1]];
+ const DUR={toqish:6,kettel:4,vto:2,otk:1,qadoq:1,polotno:5,bichish:2,tikish:4};
+ const B=[],J=[],PAY=[];
+ X.forEach(([raqam,mid,q,bos,baj,mud,san,tp,izoh],i)=>{
+  const m=MIJ.find(x=>x.id===mid);
+  const o={id:'o'+(1000+i),raqam,mid,val:m.val,q:q.map(([k,rang,lot,sz,narx])=>({k,rang,lot,sz,narx})),bosqich:bos,bajar:{},muddat:addD(mud),sana:addD(san),izoh:izoh||'',tarix:[{v:addD(san)+'T10:00',m:'Заказ принят'}]};
+  if(!['yangi','jonatildi','tayyor'].includes(bos))o.bajar[bos]=baj;
+  if(bos==='polotno')o.polBer=addD(-7);
+  const rt=route(o),ci=rt.indexOf(bos);
+  {let c=san+1;const rr=U.rnd(i+21);o.tug={};rt.forEach((st,k)=>{c+=DUR[st]||2;o.tug[st]=Math.min(c,-1);if(k<ci||['tayyor','jonatildi'].includes(bos))o.tarix.push({v:addD(Math.min(c,0))+'T'+String(9+Math.floor(rr()*8)).padStart(2,'0')+':'+String(Math.floor(rr()*6)*10).padStart(2,'0'),m:'Этап завершён: '+BOS[st]})})}
+  const s=summa(o);
+  if(tp>0){PAY.push({id:'p'+i,oid:o.id,mid,sana:addD(san+1),summa:Math.round(s*(bos==='jonatildi'?Math.min(tp,.5):tp)*100)/100,val:m.val,izoh:'Аванс'})}
+  if(bos==='jonatildi'){J.push({id:'j'+i,oid:o.id,sana:addD(mud-1),miqdor:jami(o),karob:karoblar(o,jami(o)),mashina:U.pick(U.rnd(i+3),['01 A 214 KA','01 F 517 BA','01 Z 908 MA'])});
+   if(tp>.5)PAY.push({id:'q'+i,oid:o.id,mid,sana:addD(mud+6),summa:Math.round(s*(tp-.5)*100)/100,val:m.val,izoh:'Остаток'})}
+  if(raqam==='CP-1029')J.push({id:'jx',oid:o.id,sana:addD(-3),miqdor:600,karob:30,mashina:'01 A 214 KA'});
+  B.push(o)});
+ const ERK=[{k:'JM-101',rang:'чёрный 9000',sort:'2-й сорт',soni:28},{k:'FT-501',rang:'белый',sort:'1-й сорт',soni:140},{k:'SV-301',rang:'чёрный 9000',sort:'2-й сорт',soni:12},{k:'JM-102',rang:'серый меланж 1180',sort:'1-й сорт',soni:36}];
+ /* записи цеха за 14 дней: по активным заказам (текущий этап = сделано) и по закрытым этапам */
+ const r=U.rnd(11),ISH=[];
+ const yoz=(o,st,n,d0,d1,w)=>{const szs=o.q.flatMap(x=>Object.keys(x.sz).map(s=>[x,s]));let qol=n;
+  while(qol>0){const [x,s]=U.pick(r,szs);const m=Math.min(qol,Math.round(8+r()*30));let brak=0,sabab='',holat='';
+   const BP={toqish:.08,kettel:.05,bichish:.02,tikish:.05,vto:.03,otk:.07,qadoq:0}[st]||0;if(r()<BP){brak=1+Math.round(r());sabab=SABAB[U.pick(r,SAB_ST[st]||[5])];holat=U.pick(r,['fix','fix','sort2','chiq'])}
+   const d=d0+Math.floor(r()*(d1-d0+1));ISH.push({id:'e'+ISH.length,sana:addD(d),w:w||U.pick(r,ISHCHI.filter(z=>z.rol===st)).id,st,oid:o.id,k:x.k,rang:x.rang,size:s,miq:m,brak,sabab,holat,rast:K[x.k].r[st]||0});qol-=m}};
+ B.forEach(o=>{const rt=route(o),ci=['tayyor','jonatildi'].includes(o.bosqich)?rt.length:o.bosqich==='yangi'?-1:rt.indexOf(o.bosqich);
+  rt.forEach((st,k)=>{if(st==='polotno')return;const dOx=-dd(o.sana);if(dOx>25)return;
+   if(k<ci){const n=jami(o);const tg=o.tug[st]||-1,d0=Math.max(-13,tg-(DUR[st]||2)+1),d1=Math.max(d0,Math.min(-1,tg));yoz(o,st,n,d0,d1)}
+   else if(k===ci&&o.bajar[st]){const n=o.bajar[st];yoz(o,st,Math.round(n*.6),-6,-1);yoz(o,st,n-Math.round(n*.6),0,0)}})});
+ /* yozuvlar sana bo‘yicha, kun ichida aralash */
+ ISH.forEach(e=>e.k2=r());ISH.sort((a,b)=>a.sana.localeCompare(b.sana)||a.k2-b.k2);ISH.forEach((e,i)=>{e.id='e'+i;delete e.k2});
+ B.forEach(o=>delete o.tug);
+ D={ver:1,S,mij:MIJ,B,J,PAY,IP,POL,ERK,ISH,seq:1040};
+ save()}
+function save(){ST.save(D)}
+function load(){const x=ST.load();if(x&&x.ver===1)D=x;else seed()}
+
+/* ---------- расчёты ---------- */
+const S=()=>D.S;
+const tur=o=>K[o.q[0].k].tur;
+function route(o){return ROUTE[tur(o)]}
+const qSoni=x=>Object.values(x.sz).reduce((a,b)=>a+(+b||0),0);
+const jami=o=>o.q.reduce((a,x)=>a+qSoni(x),0);
+const summa=o=>Math.round(o.q.reduce((a,x)=>a+qSoni(x)*x.narx,0)*100)/100;
+const karoblar=(o,n)=>{const k=n/jami(o);return o.q.reduce((a,x)=>a+Math.ceil(qSoni(x)*k/(K[x.k].karob||1)),0)};
+const ogAvg=o=>o.q.reduce((a,x)=>a+qSoni(x)*(K[x.k].og||1),0)/jami(o);
+const stJami=(o,st)=>jami(o);
+const mij=o=>D.mij.find(m=>m.id===o.mid);
+const jonQ=o=>D.J.filter(j=>j.oid===o.id).reduce((a,j)=>a+j.miqdor,0);
+const tol=o=>Math.round(D.PAY.filter(p=>p.oid===o.id).reduce((a,p)=>a+p.summa,0)*100)/100;
+const jonQiymat=o=>Math.round(summa(o)*jonQ(o)/jami(o)*100)/100;
+const qarz=o=>Math.max(0,Math.round((jonQiymat(o)-tol(o))*100)/100);
+const somga=(n,v)=>n*(S().kurs[v]||1);
+const vf=(n,v)=>v==='USD'?'$'+num(n,n<100&&n%1?2:0):num(n)+' '+t('сум');
+const birinchiJon=o=>{const js=D.J.filter(j=>j.oid===o.id).map(j=>j.sana).sort();return js[0]||null};
+const tolMuddat=o=>{const s=birinchiJon(o);return s?addD(mij(o).kun,s):null};
+const tolKech=o=>{if(!qarz(o))return 0;const m=tolMuddat(o);if(!m)return 0;const k=-dd(m);return k>0?k:0};
+const narxKor=()=>APP&&APP.rol!=='sex'&&APP.rol!=='ombor';
+/* пряжа на заказ: расход модели × шт × потери */
+const ipKg=o=>o.q.reduce((a,x)=>a+qSoni(x)*K[x.k].sarf/1000,0)/(1-S().yoq.toqish/100);
+const polKg=o=>o.q.reduce((a,x)=>a+qSoni(x)*K[x.k].sarf/1000,0)/(1-S().yoq.bichish/100);
+/* сделано по размерам на текущем этапе — из записей цеха */
+function bajarSz(o,st){const m={};D.ISH.filter(e=>e.oid===o.id&&e.st===st).forEach(e=>{const k=e.k+'|'+e.rang+'|'+e.size;m[k]=(m[k]||0)+e.miq});return m}
+
+/* очередь производства по мощности этапов */
+function plan(){
+ const res={},free={};
+ const act=D.B.filter(o=>!['tayyor','jonatildi'].includes(o.bosqich)).sort((a,b)=>a.muddat.localeCompare(b.muddat));
+ act.forEach(o=>{const rt=route(o);let ci=o.bosqich==='yangi'?0:rt.indexOf(o.bosqich);let tt=o.bosqich==='yangi'?1:0;const qad=[];let tor=null,torKut=0;
+  rt.forEach((st,k)=>{if(k<ci)return;
+   if(st==='polotno'){const otgan=o.polBer&&o.bosqich==='polotno'?-dd(o.polBer):0;const kun=Math.max(1,S().polKun-otgan);qad.push({st,bosh:tt,tug:tt+kun,kut:0});tt+=kun;return}
+   const qol=k===ci?Math.max(0,stJami(o,st)-(o.bajar[st]||0)):stJami(o,st);
+   const yuk=qol*(st==='tikish'?ogAvg(o):1)/S().cap[st];
+   const bosh=Math.max(tt,free[st]||0),kut=bosh-tt;if(kut>torKut){torKut=kut;tor=st}
+   const tug=bosh+yuk;free[st]=tug;qad.push({st,bosh,tug,kut});tt=bosh+Math.max(.5,yuk/2)});
+  const kun=Math.ceil(Math.max(tt,...qad.map(q=>q.tug)));res[o.id]={kun,tayyor:addD(kun),kech:kun-dd(o.muddat),qad,tor,torKut}});
+ P=res;return res}
+function xavf(o){
+ if(o.bosqich==='jonatildi')return null;
+ if(o.bosqich==='tayyor'){const n=-dd(o.muddat);return n>0?{t:'er',k:L(`просрочка отгрузки ${n} дн.`,`jo‘natish ${n} kun kechikdi`),m:L(`Готов, отгрузка просрочена на ${n} ${PL(n,'день','дня','дней','')}`,`Tayyor, jo‘natish muddati o‘tganiga ${n} kun`)}:null}
+ const p=P[o.id];if(!p)return null;
+ if(o.bosqich==='polotno'&&o.polBer&&-dd(o.polBer)>S().polKun){const n=-dd(o.polBer);return{t:'er',k:L(`красильня ${n} дн.`,`bo‘yoqxona ${n} kun`),m:L(`Полотно в красильне уже ${n} дн. (норма ${S().polKun} дн.)`,`Polotno bo‘yoqxonada ${n} kun (me’yor ${S().polKun} kun)`)}}
+ const cur=o.bosqich,hoz=cur==='yangi'?L('ещё не запущен','hali boshlanmagan'):`${t(BOS[cur])} ${num(o.bajar[cur]||0)}/${num(jami(o))}`;
+ const nav=p.tor&&p.tor!==cur?L(` · дальше — очередь: ${BOS[p.tor].toLowerCase()}`,` · keyin navbat: ${t(BOS[p.tor])}`):'';
+ if(p.kech>0)return{t:'er',k:L(`отставание ~${p.kech} ${PL(p.kech,'день','дня','дней','')}`,`≈ ${p.kech} kun kechikadi`),m:L(`Сейчас: ${hoz} · готов ~${fd(p.tayyor)} при сроке ${fd(o.muddat)}`,`Hozir: ${hoz} · tayyor ~${fd(p.tayyor)}, muddat ${fd(o.muddat)}`)+nav};
+ if(p.kech>-2)return{t:'wr',k:L('срок впритык','muddat yaqin'),m:L(`Сейчас: ${hoz} · готов ~${fd(p.tayyor)}, срок ${fd(o.muddat)}`,`Hozir: ${hoz} · tayyor ~${fd(p.tayyor)}, muddat ${fd(o.muddat)}`)};
+ return null}
+/* хватает ли пряжи: заказы, не закончившие вязание */
+function ipHolat(){
+ const kerak={},kim={};
+ D.B.filter(o=>tur(o)==='reg'&&['yangi','toqish'].includes(o.bosqich)).forEach(o=>{
+  const ulush=o.bosqich==='toqish'?Math.max(0,1-(o.bajar.toqish||0)/jami(o)):1;
+  o.q.forEach(x=>{if(!x.lot)return;const kg=qSoni(x)*K[x.k].sarf/1000/(1-S().yoq.toqish/100)*ulush;kerak[x.lot]=(kerak[x.lot]||0)+kg;(kim[x.lot]=kim[x.lot]||[]).push(o.raqam)})});
+ return D.IP.map(l=>({l,kerak:Math.round(kerak[l.id]||0),kam:Math.max(0,Math.round((kerak[l.id]||0)-l.kg)),kim:[...new Set(kim[l.id]||[])]}))}
+/* себестоимость (ориентировочно) */
+function tannarx(o){
+ const s=S(),n=jami(o);let mat=0,kg=0;
+ if(tur(o)==='reg'){o.q.forEach(x=>{const l=D.IP.find(z=>z.id===x.lot);const k=qSoni(x)*K[x.k].sarf/1000/(1-s.yoq.toqish/100);kg+=k;mat+=k*(l&&l.egasi?0:(l?l.narx:51000))})}
+ else{kg=polKg(o);mat=kg*s.polNarx}
+ const ish=o.q.reduce((a,x)=>a+qSoni(x)*Object.values(K[x.k].r).reduce((p,q)=>p+q,0),0);
+ const ust=o.q.reduce((q2,x)=>q2+qSoni(x)*(K[x.k].ust||0),0),jamiS=mat+ish+ust,sot=somga(summa(o),o.val);
+ return{kg:Math.round(kg),mat,ish,ustama:ust,jami:jamiS,birlik:jamiS/n,sot,foyda:sot-jamiS}}
+const ishSumma=e=>Math.max(0,e.miq-(e.brak||0))*(e.rast!=null?e.rast:((K[e.k]&&K[e.k].r[e.st])||0));
+
+/* ---------- мелкие элементы ---------- */
+const PL=(n,a,b,c,uz)=>{if(LANG!=='ru')return uz;const x=n%10,y=n%100;return y>=11&&y<=14?c:x===1?a:x>=2&&x<=4?b:c};
+/* o'lchamlar bo‘yicha butun taqsimot: yig‘indi = yaxlitlangan jami */
+const taqsim=(sz,k)=>{const ks=Object.keys(sz),tot=Math.round(ks.reduce((a,s)=>a+sz[s],0)*k);const fl=ks.map(s=>Math.floor(sz[s]*k));let qol=tot-fl.reduce((a,b)=>a+b,0);const ord=ks.map((s,i)=>[sz[s]*k-fl[i],i]).sort((a,b)=>b[0]-a[0]);for(const [,i] of ord){if(qol<=0)break;fl[i]++;qol--}const o={};ks.forEach((s,i)=>o[s]=fl[i]);return o};
+const KRB=n=>{if(LANG!=='ru')return t('коробок');const a=n%10,b=n%100;return b>=11&&b<=14?'коробок':a===1?'коробка':a>=2&&a<=4?'коробки':'коробок'};
+const pill=(tp,m)=>`<span class="pill ${tp}">${m}</span>`;
+const bpill=o=>{const qism=o.bosqich==='tayyor'&&jonQ(o)>0;return`<span class="pill mu"><i class="dot" style="background:${BR[o.bosqich]}"></i>${qism?t('Частично отгружен'):t(BOS[o.bosqich])}</span>`};
+const prog=(a,b)=>{const p=b?Math.min(100,Math.round(a/b*100)):0;return`<div class="prog"><i style="width:${p}%"></i></div>`};
+function tolPill(o){if(!jonQ(o)){const x=tol(o);return x?pill('mu',t('Аванс')+' '+vf(x,o.val)):pill('mu',t('Аванса нет'))}const q=qarz(o);if(!q)return pill('ok',t('Оплачен'));const k=tolKech(o);return k?pill('er',t('Долг')+' '+vf(q,o.val)+' · '+k+' '+t('дн. просрочки')):pill('wr',t('Долг')+' '+vf(q,o.val))}
+function marshrut(o){const rt=route(o),ci=o.bosqich==='yangi'?-1:['tayyor','jonatildi'].includes(o.bosqich)?rt.length:rt.indexOf(o.bosqich);
+ const nom=st=>t(BOS[st]).replace(' и сборка','').replace(' va yig‘ish','').replace('Крашение полотна',L('Крашение','Bo‘yash')).replace('Polotno bo‘yash','Bo‘yash');
+ const jq=jonQ(o),n=jami(o),tl=tol(o)>=summa(o)-0.01;
+ const uz=[{nm:tur(o)==='reg'?L('Пряжа','Ip'):L('Полотно','Polotno'),on:o.bosqich!=='yangi',cur:false},...rt.map((st,k)=>({nm:nom(st),on:k<ci,cur:k===ci,sub:k===ci&&st!=='polotno'?`${num(o.bajar[st]||0)}/${num(n)}`:''})),
+  {nm:L('Склад','Ombor'),on:['tayyor','jonatildi'].includes(o.bosqich),cur:o.bosqich==='tayyor'},
+  {nm:L('Отгрузка','Jo‘natma'),on:jq>=n,cur:jq>0&&jq<n,sub:jq&&jq<n?`${num(jq)}/${num(n)}`:''},
+  {nm:L('Оплата','To‘lov'),on:tl,cur:false,er:tolKech(o)>0}];
+ const kech=(xavf(o)||{}).t==='er'&&!['tayyor','jonatildi'].includes(o.bosqich);
+ return`<div class="route">${uz.map(z=>`<div class="rs ${z.on?'on':''} ${z.cur?'cur'+(kech?' late':''):''} ${z.er?'cur late':''}"><i></i><span>${z.nm}</span>${z.sub?`<em>${z.sub}</em>`:''}</div>`).join('')}</div>`}
+const qisqa=o=>o.q.map(x=>`${esc(K[x.k].nom.split(',')[0])} · ${esc(x.rang)} — ${num(qSoni(x))} ${t('шт')}`).join('<br>');
+const ism=w=>{const z=ISHCHI.find(x=>x.id===w);return z?z.ism:''};
+/* размерная сетка заказа */
+function matritsa(o,st){const done=st?bajarSz(o,st):{};const nar=narxKor();const bor=st&&Object.keys(done).length;
+ const rang=(d,pl)=>!pl?'var(--mut)':d>pl?'var(--wr)':d===pl?'var(--ok)':'var(--mut)';
+ const izoh=(d,pl)=>d>pl?` <small style="color:var(--wr)">+${num(d-pl)}</small>`:'';
+ return o.q.map(x=>{const szs=SZ[K[x.k].sz];const dn=s=>done[x.k+'|'+x.rang+'|'+s]||0;const jd=szs.reduce((a,s)=>a+dn(s),0);
+  const ust=`${esc(K[x.k].nom.split(',')[0])}<br><small class="note">${esc(x.rang)}${x.lot?' · '+x.lot:''}</small>`;
+  const desk=`<div class="tw mx-d" style="margin-bottom:8px"><table class="t"><thead><tr><th>${ust}</th>${szs.map(s=>`<th class="n">${s}</th>`).join('')}<th class="n">${t('Итого')}</th>${nar?`<th class="n">${t('Сумма')}</th>`:''}</tr></thead><tbody><tr><td>${t('план')}</td>${szs.map(s=>`<td class="n">${x.sz[s]?num(x.sz[s]):'<span class="note">—</span>'}</td>`).join('')}<td class="n"><b>${num(qSoni(x))}</b></td>${nar?`<td class="n">${vf(qSoni(x)*x.narx,o.val)}</td>`:''}</tr>${bor?`<tr><td class="note">${t('сделано на текущем этапе')}</td>${szs.map(s=>{const d=dn(s),pl=x.sz[s]||0;return`<td class="n" style="color:${rang(d,pl)}">${d?num(d):'—'}${izoh(d,pl)}</td>`}).join('')}<td class="n note">${num(jd)}</td>${nar?'<td></td>':''}</tr>`:''}</tbody></table></div>`;
+  const mob=`<div class="mx-m"><div class="mx-h">${ust}</div><div class="mx-r mx-t"><span>${t('Размер')}</span><span>${t('план')}</span>${bor?`<span>${L('сделано','bajarildi')}</span>`:''}</div>${szs.filter(s=>x.sz[s]).map(s=>{const d=dn(s),pl=x.sz[s];return`<div class="mx-r"><span>${s}</span><span>${num(pl)}</span>${bor?`<span style="color:${rang(d,pl)}">${d?num(d):'—'}${izoh(d,pl)}</span>`:''}</div>`}).join('')}<div class="mx-r mx-j"><span>${t('Итого')}</span><span>${num(qSoni(x))}</span>${bor?`<span>${num(jd)}</span>`:''}</div>${nar?`<div class="note" style="margin-top:6px">${t('Сумма')}: ${vf(qSoni(x)*x.narx,o.val)}</div>`:''}</div>`;
+  return desk+mob}).join('')+(bor?`<p class="note">${L('Жёлтым — сделано сверх плана по размеру: лишние детали, которые потом лежат на складе.','Sariq — o‘lcham bo‘yicha rejadan ortiq: ortiqcha detal, keyin omborda qoladi.')}</p>`:'')}
+
+/* ================= СЕГОДНЯ ================= */
+let PANEL_ALL=false;
+const qisqaB=st=>({toqish:L('Вязание','To‘qish'),kettel:L('Кеттлёвка','Kettel'),polotno:L('Крашение полотна','Polotno bo‘yash'),bichish:L('Раскрой','Bichish'),tikish:L('Пошив','Tikish'),vto:L('Стирка и ВТО','Yuvish va VTO'),otk:L('ОТК','OTK'),qadoq:L('Упаковка','Qadoqlash')})[st];
+function ipKunlik(){/* при полной загрузке вязального цеха: мощность × средний расход */const ks=Object.keys(K).filter(k=>K[k].tur==='reg');const g=ks.reduce((a,k)=>a+K[k].sarf,0)/ks.length;return S().cap.toqish*g/1000/(1-S().yoq.toqish/100)}
+let HL=null;
+function polBox(){const erk=D.POL.filter(r=>r.joy==='ombor'&&!r.oid).reduce((q,r)=>q+r.kg,0),kr=D.B.filter(o=>o.bosqich==='polotno'),x=kr.find(o=>(xavf(o)||{}).t==='er');
+ return`<button class="fb b1 skl ${x?'tor':''}" data-go="ombor" data-t="pol"><span class="fn">${L('Полотно','Polotno')}</span><b><span class="nw">${num(erk)}</span> <small>${t('кг')} ${L('свободно','erkin')}</small></b>${kr.length?`<small>${L('в красильне','bo‘yoqxonada')}: ${kr.length} ${PL(kr.length,'заказ','заказа','заказов','buyurtma')}</small>`:''}${x?`<i class="fx er">${xavf(x).k}</i>`:''}</button>`}
+function oqimHTML(){
+ const act=D.B.filter(o=>o.bosqich!=='jonatildi'),bugun=D.ISH.filter(e=>e.sana===iso(T));
+ const torC={};act.forEach(o=>{const p=P[o.id];if(p&&p.kech>0&&p.tor)torC[p.tor]=(torC[p.tor]||0)+1});
+ const tor=Object.keys(torC).sort((a,b)=>torC[b]-torC[a])[0];
+ const box=(st,cls)=>{const os=act.filter(o=>o.bosqich===st),n=os.length,qol=os.reduce((s2,o)=>s2+Math.max(0,jami(o)-(o.bajar[st]||0)),0),bug=bugun.filter(e=>e.st===st).reduce((s2,e)=>s2+e.miq,0),late=os.filter(o=>(xavf(o)||{}).t==='er').length,isT=st===tor;
+  return`<button class="fb ${cls} ${n?'':'bo'} ${isT?'tor':''} ${HL===st?'hl':''}" data-go="buyurtmalar" data-st="${st}"><span class="fn">${qisqaB(st)}</span><b>${n} <small>${PL(n,'заказ','заказа','заказов','buyurtma')}</small></b>${qol?`<small>${L('осталось','qoldi')} <span class="nw">${num(qol)} ${t('шт')}</span></small>`:''}${bug?`<em><span class="nw">+${num(bug)}</span> ${L('сегодня','bugun')}</em>`:''}${HL===st?`<i class="fx hlt">${L('здесь ваша запись','yozuvingiz shu yerda')}</i>`:''}${isT?`<i class="fx wr">${L('узкое место','tor joy')}</i>`:late?`<i class="fx er">${late} ${L('опаздывает','kechikmoqda')}</i>`:''}</button>`};
+ const ip=ipHolat(),kam=ip.filter(x=>x.kam),ipKg=D.IP.filter(l=>!l.egasi).reduce((a,l)=>a+l.kg,0),kun=Math.floor(ipKg/Math.max(1,ipKunlik()));
+ const tay=D.B.filter(o=>o.bosqich==='tayyor'),tayN=tay.reduce((a,o)=>a+jami(o)-jonQ(o),0);
+ const oy=iso(T).slice(0,7),jonOy=D.J.filter(j=>j.sana.slice(0,7)===oy).reduce((a,j)=>a+j.miqdor,0),qarzS=D.B.reduce((a,o)=>a+somga(qarz(o),o.val),0),kechS=D.B.some(o=>tolKech(o)>0);
+ return`<div class="card flowc"><h3>${I('zavod')} ${L('Все этапы производства','Ishlab chiqarishning hamma bosqichlari')}<span class="sp"></span><small>${L('нажмите на этап — откроются его заказы','bosqichni bosing — buyurtmalari ochiladi')}</small></h3>
+ <div class="flow">
+  <div class="fl l1">${L('Вязаные изделия','To‘qilgan mahsulot')}<small>${L('джемперы, свитеры, кардиганы','jemper, sviter, kardigan')}</small></div>
+  <button class="fb a1 skl ${kam.length?'tor':''} ${HL==='toqish'?'hl':''}" data-go="ombor" data-t="ip"><span class="fn">${L('Пряжа','Ip')}</span><b><span class="nw">${num(ipKg)}</span> <small>${t('кг')}</small></b><small>${L(`хватит примерно на ${kun} ${PL(kun,'день','дня','дней','')} работы`,`taxminan ${kun} ish kuniga yetadi`)}</small>${kam.length?`<i class="fx er">${L('не хватит на заказ','yetmaydi:')} ${kam.map(x=>x.kim.join(', ')).join(', ')}</i>`:''}</button>
+  ${box('toqish','a2')}${box('kettel','a3')}
+  <div class="fl l2">${L('Из полотна','Polotnodan')}<small>${L('поло, футболки','polo, futbolka')}</small></div>
+  ${polBox()}${box('bichish','b2')}${box('tikish','b3')}
+  <div class="fl l3">${L('Дальше — общие этапы','Keyin — umumiy bosqichlar')}</div>
+  ${box('vto','c1')}${box('otk','c2')}${box('qadoq','c3')}
+  <button class="fb c4 ${tay.length?'':'bo'}" data-go="jonatish" data-t="tayyor"><span class="fn">${L('Готовая продукция','Tayyor mahsulot')}</span><b>${tay.length} <small>${PL(tay.length,'заказ','заказа','заказов','buyurtma')}</small></b>${tayN?`<small><span class="nw">${num(tayN)} ${t('шт')}</span> ${L('ждут отгрузки','jo‘natish kutmoqda')}</small>`:''}${tay.some(o=>dd(o.muddat)<0)?`<i class="fx er">${L('срок отгрузки прошёл','jo‘natish muddati o‘tdi')}</i>`:''}</button>
+  <button class="fb c5 end" data-go="jonatish" data-t="qarz"><span class="fn">${L('Отгрузка и оплата','Jo‘natma va to‘lov')}</span><b><span class="nw">${num(jonOy)}</span> <small>${t('шт')}</small></b><small>${L('отгружено за месяц','oy davomida jo‘natildi')}</small><small>${L('долг','qarz')} <span class="nw">${mln(qarzS)}</span></small>${kechS?`<i class="fx er">${L('есть просрочка','muddati o‘tgan bor')}</i>`:''}</button>
+ </div></div>`}
+function introHTML(){let ok=false;try{ok=localStorage.getItem('conceptpro.intro')==='1'}catch(e){}if(ok)return'';
+ return`<div class="intro" id="intro"><div class="it2"><b>${L('Как это работает','Bu qanday ishlaydi')}:</b> <span>${L('начальник цеха записывает выработку с телефона → заказ сам движется по этапам → сдельная, брак и пряжа считаются сами.','sex boshlig‘i ishni telefondan yozadi → buyurtma o‘zi bosqichlardan o‘tadi → ishbay, brak va ip o‘zi hisoblanadi.')}</span></div>
+ <div class="ib"><button class="btn p" id="iex">${I('ong')} ${L('Показать на примере','Misolda ko‘rsatish')}</button><button class="btn" id="iok">${L('Понятно','Tushunarli')}</button></div></div>`}
+function rPanel(a){plan();
+ const act=D.B.filter(o=>o.bosqich!=='jonatildi');
+ const xv=act.map(o=>[o,xavf(o)]).filter(x=>x[1]);
+ const bugun=D.ISH.filter(e=>e.sana===iso(T));
+ const sum=(arr,st)=>arr.filter(e=>!st||e.st===st).reduce((s2,e)=>s2+e.miq,0);
+ const qarzS=D.B.reduce((s2,o)=>s2+somga(qarz(o),o.val),0),kechS=D.B.reduce((s2,o)=>s2+(tolKech(o)?somga(qarz(o),o.val):0),0);
+ const ip=ipHolat(),kam=ip.filter(x=>x.kam);const oy=iso(T).slice(0,7),E=D.ISH.filter(e=>e.sana.slice(0,7)===oy);
+ const brak=E.reduce((s2,e)=>s2+e.brak,0),sdano=Math.max(1,...['toqish','kettel','bichish','tikish','vto','otk','qadoq'].map(st=>sum(E,st))),dhu=brak/sdano*100;
+ const brSt={};E.forEach(e=>{if(e.brak&&e.st!=='otk')brSt[e.st]=(brSt[e.st]||0)+e.brak});const brTop=Object.keys(brSt).sort((x,y)=>brSt[y]-brSt[x])[0];
+ const ipKg=D.IP.filter(l=>!l.egasi).reduce((x,l)=>x+l.kg,0),ipKun=Math.floor(ipKg/Math.max(1,ipKunlik()));
+ const kechN=xv.filter(x=>x[1].t==='er').length,wrL=xv.filter(x=>x[1].t==='wr');
+ const diq=[
+  ...xv.filter(x=>x[1].t==='er').map(([o,x])=>({t:'er',h:`${o.raqam} · ${esc(mij(o).nom)}`,p:x.k,m:x.m,o:o.id})),
+  ...kam.map(x=>({t:'er',h:L(`Пряжа «${x.l.rang}» (${x.l.id})`,`Ip «${x.l.rang}» (${x.l.id})`),p:`−${num(x.kam)} ${t('кг')}`,m:L(`не хватит на ${x.kim.join(', ')}: нужно ${num(x.kerak)} кг, на складе ${num(x.l.kg)} кг`,`${x.kim.join(', ')} uchun yetmaydi: ${num(x.kerak)} kg kerak, omborda ${num(x.l.kg)} kg`),g:'ombor',gt:'ip'})),
+  ...D.B.filter(o=>tolKech(o)>0).map(o=>({t:'er',h:esc(mij(o).nom),p:`${L('долг','qarz')} ${vf(qarz(o),o.val)}`,m:L(`заказ ${o.raqam} · просрочка оплаты ${tolKech(o)} дн.`,`buyurtma ${o.raqam} · to‘lov ${tolKech(o)} kun kechikdi`),o:o.id})),
+  ...ip.filter(x=>!x.kam&&x.l.min&&x.l.kg<x.l.min).map(x=>({t:'wr',h:L(`Пряжа «${x.l.rang}» (${x.l.id})`,`Ip «${x.l.rang}» (${x.l.id})`),p:L('ниже минимума','minimumdan kam'),m:L(`осталось ${num(x.l.kg)} кг при минимуме ${num(x.l.min)} кг — пора заказать`,`${num(x.l.kg)} kg qoldi, minimum ${num(x.l.min)} kg — buyurtma berish vaqti`),g:'ombor',gt:'ip'})),
+  ...(wrL.length?[{t:'wr',h:L(`Ещё ${wrL.length} ${PL(wrL.length,'заказ','заказа','заказов','')} — срок впритык`,`Yana ${wrL.length} buyurtma — muddat yaqin`),p:'',m:wrL.map(([o])=>o.raqam).join(', '),g:'buyurtmalar',gs:'all'}]:[])];
+ const kor=PANEL_ALL?diq:diq.slice(0,5);
+ const kunlar=[];for(let d=-6;d<=0;d++){const s2=addD(d);kunlar.push({s:s2,n:D.ISH.filter(e=>e.sana===s2&&['kettel','tikish'].includes(e.st)).reduce((x,e)=>x+e.miq,0)})}
+ const mx=Math.max(1,...kunlar.map(k=>k.n));
+ a.innerHTML=`<div class="top"><div><h1>${t('Здравствуйте')}, Виктор Вячеславович</h1><div class="sub">${L('Вместо тетрадей и звонков по цехам — все этапы здесь','Daftar va sexlarga qo‘ng‘iroq o‘rniga — hamma bosqich shu yerda')} · ${fd(T)}</div></div><span class="sp"></span><button class="btn hide-m" id="nb">${I('qosh')} ${t('Новый заказ')}</button></div>
+ ${introHTML()}
+ <div class="pnl">
+ ${oqimHTML()}
+ <div class="grid k4 kpis">
+  <div class="card kpi ${kechN?'er':''}" data-go="buyurtmalar" data-st="xavf"><div class="l">${L('Опаздывают','Kechikmoqda')}</div><div class="v">${kechN} <small>${L('из','dan')} ${act.length}</small></div><div class="d">${kechN?L('заказов с риском сорвать срок','muddati buzilishi mumkin'):L('все в срок','hammasi muddatida')}</div></div>
+  <div class="card kpi" data-go="sex"><div class="l">${L('Собрано и сшито сегодня','Bugun yig‘ildi va tikildi')}</div><div class="v">${num(sum(bugun,'kettel')+sum(bugun,'tikish'))} <small>${t('шт')}</small></div><div class="d">${L('ещё связано','yana to‘qildi')} ${num(sum(bugun,'toqish'))} ${L('компл.','kompl.')}</div></div>
+  <div class="card kpi ${kechS?'er':''}" data-go="jonatish" data-t="qarz"><div class="l">${t('Долг клиентов')}</div><div class="v">${mln(qarzS)} <small>${t('сум')}</small></div><div class="d">${kechS?t('просрочено')+': '+mln(kechS):L('просрочки нет','muddati o‘tgani yo‘q')}</div></div>
+  <div class="card kpi ${dhu>3?'wr':''}" data-go="brak"><div class="l">${t('Брак за месяц')}</div><div class="v">${dhu.toFixed(1).replace('.',',')} <small>%</small></div><div class="d">${num(brak)} ${t('шт')}${brTop?' · '+L('чаще всего','eng ko‘p')+': '+qisqaB(brTop).toLowerCase():''}</div></div>
+ </div>
+ <div class="grid k2 attw" style="align-items:start">
+  <div class="card"><h3>${I('ogoh')} ${t('Требует внимания')}<span class="sp"></span><small>${diq.length}</small></h3>
+   <div class="list att">${kor.length?kor.map(x=>`<div class="it ${x.t}" ${x.o?`data-o="${x.o}"`:`data-go="${x.g}" ${x.gt?`data-t="${x.gt}"`:''} ${x.gs?`data-st="${x.gs}"`:''}`}><div class="m"><div class="r"><b>${x.h}</b>${x.p?`<span class="pill ${x.t}">${x.p}</span>`:''}</div><small>${x.m}</small></div>${I('ong')}</div>`).join(''):`<div class="empty">${t('Всё в порядке')}</div>`}</div>
+   ${diq.length>5?`<button class="btn s" id="pall" style="margin-top:8px">${PANEL_ALL?L('Свернуть','Yig‘ish'):L(`Показать все (${diq.length})`,`Hammasini ko‘rsatish (${diq.length})`)}</button>`:''}</div>
+  <div class="card hide-m"><h3>${I('osish')} ${L('Собрано и сшито за 7 дней','7 kunda yig‘ildi va tikildi')}<span class="sp"></span><small>${t('шт')}</small></h3>
+    <div class="bars">${kunlar.map(k=>`<div class="b"><em>${k.n?num(k.n):''}</em><i style="height:${k.n/mx*100}%"></i><small>${fd(k.s)}</small></div>`).join('')}</div></div>
+ </div>
+ </div>
+ <div class="cta"><div><b>${L('Это образец на условных данных','Bu shartli ma’lumotdagi namuna')}</b><span>${L('Пришлите список ваших этапов и 2–3 модели — за 2 дня покажу эту же систему на ваших данных. В рабочей системе у каждого сотрудника свой вход с телефона; запуск — 2–3 недели.','Bosqichlaringiz ro‘yxati va 2–3 modelni yuboring — 2 kunda shu tizimni sizning ma’lumotlaringizda ko‘rsataman. Haqiqiy tizimda har xodimning telefondan o‘z kirishi bo‘ladi; ishga tushirish — 2–3 hafta.')}</span></div></div>`;
+ bindCommon(a);HL=null;$('#nb',a).onclick=()=>forma();
+ const pa=$('#pall',a);if(pa)pa.onclick=()=>{PANEL_ALL=!PANEL_ALL;rPanel(a)};
+ const io=$('#iok',a);if(io)io.onclick=()=>{try{localStorage.setItem('conceptpro.intro','1')}catch(e){}$('#intro').remove()};
+ const ie=$('#iex',a);if(ie)ie.onclick=()=>{try{localStorage.setItem('conceptpro.intro','1')}catch(e){}const o=D.B.find(x=>x.raqam==='CP-1032'&&x.bosqich==='toqish')||D.B.find(x=>x.bosqich==='toqish');if(!o){APP.go('sex');return}SX={st:'toqish',oid:o.id,miq:60,demo:1};APP.go('sex')}}
+function sexYozuvlar(rs,un){return`<div class="list">${rs.map(e=>{const o=D.B.find(x=>x.id===e.oid);return`<div class="it" ${o?`data-o="${o.id}"`:''}><div class="m"><b style="font-weight:600">${esc(ism(e.w))} — ${t(BOS[e.st])}: ${num(e.miq)} ${t('шт')} · ${L('р.','o‘lch.')} ${e.size}${e.brak?` <span style="color:var(--er)">· ${t('Брак').toLowerCase()} ${num(e.brak)}</span>`:''}</b><small>${o?o.raqam+' · '+esc(K[e.k].nom.split(',')[0])+' · '+esc(e.rang):''} · ${fd(e.sana)}</small></div>${un&&e.u?`<button class="btn s" data-un="${e.id}">${L('Отменить','Bekor qilish')}</button>`:''}</div>`}).join('')||`<div class="empty">${t('Нет данных')}</div>`}</div>`}
+function bindCommon(a){
+ $$('[data-o]',a).forEach(x=>x.onclick=e=>{const b=e.target.closest('button');if(b&&b!==x)return;ochO(x.dataset.o)});
+ $$('[data-go]',a).forEach(x=>x.onclick=()=>APP.go(x.dataset.go,{t:x.dataset.t,st:x.dataset.st}))}
+
+/* ================= ЗАКАЗЫ ================= */
+function rBuy(a){plan();
+ const q=F.q.toLowerCase();
+ const L=D.B.filter(o=>(F.st?(F.st==='xavf'?(xavf(o)||{}).t==='er':F.st==='all'?true:o.bosqich===F.st):o.bosqich!=='jonatildi')&&(!q||(o.raqam+' '+mij(o).nom+' '+o.q.map(x=>x.k+' '+K[x.k].nom+' '+x.rang).join(' ')).toLowerCase().includes(q)))
+  .sort((x,y)=>(((xavf(y)||{}).t==='er')-((xavf(x)||{}).t==='er'))||x.muddat.localeCompare(y.muddat));
+ const n=st=>D.B.filter(o=>o.bosqich===st).length,nx=D.B.filter(o=>(xavf(o)||{}).t==='er').length;
+ const chips=[['',t('В работе'),D.B.filter(o=>o.bosqich!=='jonatildi').length],['xavf',t('Опаздывают'),nx],...Object.keys(BOS).map(k=>[k,t(BOS[k]),n(k)]).filter(x=>x[2]),['all',t('Все заказы'),D.B.length]];
+ a.innerHTML=`<div class="top"><div><h1>${t('Заказы')}</h1><div class="sub">${t('На каком этапе каждый заказ, когда будет готов и как оплачен')}</div></div><span class="sp"></span>${APP.rol!=='sex'?`<button class="btn" id="ex">${I('tushir')} Excel</button><button class="btn p" id="nb">${I('qosh')} ${t('Новый заказ')}</button>`:''}</div>
+ <div class="tools"><input class="inp" id="q" placeholder="${t('Поиск: номер, клиент, модель')}" value="${esc(F.q)}" style="flex:1 1 220px"></div>
+ <div class="chips" style="margin-bottom:14px">${chips.map(([k,tt,c])=>`<button class="chip ${F.st===k?'on':''}" data-st="${k}">${k&&k!=='xavf'&&k!=='all'?`<i class="dot" style="background:${BR[k]}"></i>`:''}${tt} <em>${c}</em></button>`).join('')}</div>
+ ${L.length?`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(290px,1fr))">${L.map(kartaO).join('')}</div>`:`<div class="card empty">${t('По этому фильтру заказов нет')}</div>`}`;
+ $('#q',a).oninput=e=>{F.q=e.target.value;const p=e.target.selectionStart;rBuy(a);const i=$('#q',a);i.focus();i.setSelectionRange(p,p)};
+ $$('[data-st]',a).forEach(b=>b.onclick=()=>{F.st=b.dataset.st;rBuy(a)});
+ {const on=$('.chips .chip.on',a);if(on&&on.scrollIntoView)on.scrollIntoView({block:'nearest',inline:'center'})}
+ if($('#nb',a))$('#nb',a).onclick=()=>forma();
+ if($('#ex',a))$('#ex',a).onclick=()=>U.exportX({[t('Заказы')]:D.B.map(o=>({[t('Заказ')]:o.raqam,[t('Клиент')]:mij(o).nom,[t('Модель')]:o.q.map(x=>K[x.k].nom.split(',')[0]+' '+x.rang+' '+qSoni(x)).join('; '),[t('Количество')]:jami(o),[t('Сумма')]:summa(o),[t('Валюта')]:o.val,[t('Этап')]:t(BOS[o.bosqich]),[t('Срок')]:o.muddat,[t('Готов примерно')]:P[o.id]?P[o.id].tayyor:'',[t('Оплачено')]:tol(o),[t('Долг')]:qarz(o)}))},'ConceptPro_'+t('Заказы')+'_'+iso(T)+'.xlsx');
+ bindCommon(a)}
+function miniR(o){const rt=route(o),n=rt.length+2,st=o.bosqich,ci=st==='yangi'?-1:st==='tayyor'?rt.length:st==='jonatildi'?rt.length+1:rt.indexOf(st),late=(xavf(o)||{}).t==='er';
+ const yoz=st==='yangi'?L('ещё не запущен','hali boshlanmagan'):st==='jonatildi'?t('Отгружен'):st==='tayyor'?(jonQ(o)?t('Частично отгружен')+` ${num(jonQ(o))}/${num(jami(o))}`:t('Готово на складе')):st==='polotno'?`${t(BOS[st])} · ${-dd(o.polBer)} ${t('дн.')}`:`${t(BOS[st])} ${num(o.bajar[st]||0)}/${num(jami(o))}`;
+ return`<div class="mr">${Array.from({length:n},(_,k)=>`<i class="${k<ci?'d':k===ci?'c'+(late?' late':''):''}"></i>`).join('')}</div><div class="pr note">${L('Этап','Bosqich')} ${Math.max(0,ci)+1} ${L('из','/')} ${n} · ${yoz}</div>`}
+function kartaO(o){const x=xavf(o),p=P[o.id],st=o.bosqich;const done=st==='tayyor'||st==='jonatildi';
+ return`<div class="oc ${x?(x.t==='er'?'late':'soon'):''}" data-o="${o.id}"><div class="r1"><span>${o.raqam}</span><span style="color:${x?'var(--'+x.t+')':''}">${I('soat')} ${fd(o.muddat)}</span></div><b>${esc(mij(o).nom)}</b><div class="pr">${qisqa(o)}</div>${miniR(o)}${x?`<div class="pr" style="color:var(--${x.t});font-weight:700;margin-top:4px">${x.k}</div>`:p&&!done?`<div class="pr" style="margin-top:4px;color:var(--mut)">${t('Готов примерно')}: ${fd(p.tayyor)}</div>`:''}${narxKor()?`<div class="r3">${tolPill(o)}</div>`:''}</div>`}
+
+function ochO(id){plan();const o=D.B.find(x=>x.id===id);if(!o)return;const p=P[o.id],x=xavf(o),m=mij(o),rt=route(o);const nar=narxKor();
+ const tn=nar&&APP.rol==='direktor'?tannarx(o):null;
+ const cur=rt.indexOf(o.bosqich),nxt=o.bosqich==='yangi'?rt[0]:cur>=0?(rt[cur+1]||'tayyor'):null;
+ const stQad=p?`<div class="sec"><h4>${I('kalendar')} ${t('План по этапам')} <small class="note">${t('по мощности цеха и очереди')}</small></h4>${table([{t:t('Этап'),f:r=>t(BOS[r.st])},{t:t('Начало'),f:r=>fd(addD(Math.floor(r.bosh)))},{t:t('Конец'),f:r=>fd(addD(Math.ceil(r.tug)))},{t:t('Ожидание'),n:1,f:r=>r.kut>=.5?`<span style="color:var(--wr)">${Math.round(r.kut)} ${t('дн.')}</span>`:'—'}],p.qad)}<p class="note">${t('Мощность')}: ${t('вязание')} ${num(S().cap.toqish)} ${t('комплект/день')}, ${qisqaB('kettel').toLowerCase()} ${num(S().cap.kettel)} ${t('шт/день')}, ${t('пошив')} ${num(S().cap.tikish)} ${t('шт/день')} — ${t('нормы вы задаёте сами')}.</p></div>`:'';
+ const tolov=nar?`<div class="sec"><h4>${I('pul')} ${t('Оплата')}</h4><div class="dl"><div><small>${t('Сумма')}</small><b>${vf(summa(o),o.val)}</b></div><div><small>${t('Оплачено')}</small><b>${vf(tol(o),o.val)}</b></div><div><small>${t('Долг по отгруженному')}</small><b style="color:${qarz(o)?'var(--er)':''}">${vf(qarz(o),o.val)}</b></div>${jonQ(o)&&tolMuddat(o)?`<div><small>${t('Срок оплаты')}</small><b>${fd(tolMuddat(o))}</b></div>`:''}</div>
+  ${D.PAY.filter(z=>z.oid===o.id).length?`<div class="hist" style="margin-top:10px">${D.PAY.filter(z=>z.oid===o.id).map(z=>`<div>${vf(z.summa,z.val)} — ${t(z.izoh)} <small>${fd(z.sana)}</small></div>`).join('')}</div>`:''}</div>`:'';
+ const tnH=tn?`<div class="sec"><h4>${I('tarozi')} ${t('Себестоимость и прибыль')} <span class="pill wr" style="margin-left:6px">${t('ориентировочно')}</span></h4>
+  <div class="wfc"><div><small>${tur(o)==='reg'?t('Пряжа'):t('Полотно')} (${num(tn.kg)} ${t('кг')})</small><b>${mln(tn.mat)}</b></div><div><small>${t('Сдельная')}</small><b>${mln(tn.ish)}</b></div><div><small>${L('Накладные: аренда, свет, ИТР, нитки, упаковка','Umumiy xarajat: ijara, svet, boshqaruv, ip-igna, qadoq')}</small><b>${mln(tn.ustama)}</b></div><div class="last"><small>${t('Себестоимость 1 шт')}</small><b>${num(tn.birlik)} ${t('сум')}</b></div></div>
+  <div class="verdict ${tn.foyda>0?'ok':'er'}"><b>${t('Прибыль')}: ${mln(tn.foyda)} ${t('сум')} (${Math.round(tn.foyda/tn.sot*100)}%)</b><span>${t('Продажа')} ${mln(tn.sot)} − ${t('себестоимость')} ${mln(tn.jami)}${o.val==='USD'?`. ${t('Курс')}: 1 $ = ${num(S().kurs.USD)} ${t('сум')}`:''}${tur(o)==='reg'&&o.q.some(x=>{const l=D.IP.find(z=>z.id===x.lot);return l&&l.egasi})?(LANG==='ru'?'. Пряжа клиента — в себестоимость не входит':'. Mijoz ipi — tannarxga kirmaydi'):''}</span></div></div>`:'';
+ const btns=[nxt&&APP.rol!=='ombor'?`<button class="btn" id="nx" title="${L('Обычно этап закрывается сам, когда цех сдал весь объём','Odatda bosqich sex hammasini topshirganda o‘zi yopiladi')}">${I('ong')} ${L('Передать дальше','Keyingisiga o‘tkazish')}: ${t(BOS[nxt])}</button>`:'',o.bosqich==='tayyor'&&APP.rol!=='sex'?`<button class="btn p" id="jn">${I('yuk')} ${t('Отгрузить')}</button>`:'',nar?`<button class="btn" id="tl">${I('pul')} ${t('Внести оплату')}</button>`:''].join('');
+ modal(`<h2>${o.raqam} · ${esc(m.nom)}</h2>`,`
+  ${x?`<div class="alert ${x.t==='er'?'er':''}">${I('ogoh')} ${x.m}</div>`:''}
+  ${marshrut(o)}
+  <div class="dl" style="margin-top:14px"><div><small>${t('Клиент')}</small><b>${esc(m.nom)}</b><br><small>${esc(m.shahar)}</small></div><div><small>${t('Статус')}</small><b>${bpill(o)}</b></div><div><small>${t('Срок')}</small><b>${fd(o.muddat)}</b></div><div><small>${t('Принят')}</small><b>${fd(o.sana)}</b></div><div><small>${L('Готовность','Tayyorlik')}</small><b style="color:${p&&p.kech>0?'var(--er)':''}">${p?L('ожидается ','kutilmoqda ')+fd(p.tayyor):['tayyor','jonatildi'].includes(o.bosqich)?L('готов','tayyor'):'—'}</b></div><div><small>${t('Отгружено')}</small><b>${num(jonQ(o))} / ${num(jami(o))} ${t('шт')}</b></div></div>
+  ${o.izoh?`<p class="note" style="margin-top:10px">${esc(o.izoh)}</p>`:''}
+  <div class="sec"><h4>${I('kiyim')} ${t('Модели и размерная сетка')}</h4>${matritsa(o,!['yangi','tayyor','jonatildi','polotno'].includes(o.bosqich)?o.bosqich:null)}
+  ${tur(o)==='reg'?`<p class="note">${t('Пряжа')}: ${o.q.map(x=>x.lot?x.lot+' ('+esc(K[x.k].ip)+', '+esc(x.rang)+')':'—').join('; ')} — ${t('нужно ~')}${num(ipKg(o))} ${t('кг')} ${t('с учётом потерь')} ${S().yoq.toqish}%.</p>`:`<p class="note">${t('Полотно')}: ${esc(K[o.q[0].k].pol)} — ${t('нужно ~')}${num(polKg(o))} ${t('кг')} ${t('с учётом потерь')} ${S().yoq.bichish}%.</p>`}</div>
+  ${stQad}${tolov}${tnH}
+  <div class="sec"><h4>${I('soat')} ${t('История')}</h4><div class="hist">${o.tarix.slice().reverse().map(z=>`<div>${esc(tarixT(z.m))} <small>${fdt(z.v)}</small></div>`).join('')}</div></div>`,btns,true);
+ const nb=$('#nx');if(nb)nb.onclick=()=>{const cs=o.bosqich;if(!['yangi','polotno'].includes(cs)&&(o.bajar[cs]||0)<jami(o)&&nb.dataset.ok!=='1'){nb.dataset.ok='1';nb.textContent=L(`Сдано ${num(o.bajar[cs]||0)} из ${num(jami(o))} — всё равно передать?`,`${num(o.bajar[cs]||0)}/${num(jami(o))} topshirilgan — baribir o‘tkazilsinmi?`);return}bosqichga(o,nxt);closeM();APP.render();toast(o.raqam+' → '+t(BOS[nxt]))};
+ const jb=$('#jn');if(jb)jb.onclick=()=>jonatish(o.id);
+ const tb=$('#tl');if(tb)tb.onclick=()=>tolovForma(o.id)}
+function tarixT(m){if(LANG==='ru')return m;return m.replace('Заказ принят',t('Заказ принят')).replace('Этап завершён: ',t('этап завершён')+': ').replace('Переведён на этап: ',(LANG==='ru'?'Переведён на этап':'Bosqichga o‘tkazildi')+': ').replace('Отгружено: ',t('Отгружено')+': ').replace('Оплата: ',t('Оплата')+': ').replace('Запись отменена: ',L('Запись отменена','Yozuv bekor qilindi')+': ').replace(/(Новый|Крашение полотна|Полотно \/ красильня|Вязание|Кеттель|Раскрой|Пошив|Стирка и ВТО|ОТК|Упаковка|Готово на складе|Отгружен)/g,s=>t(s))}
+function bosqichga(o,st){if(st==='polotno')o.polBer=iso(T);o.bosqich=st;if(st!=='tayyor'&&o.bajar[st]==null)o.bajar[st]=0;o.tarix.push({v:new Date().toISOString(),m:'Переведён на этап: '+BOS[st]});save()}
+
+/* новый заказ */
+function forma(){
+ const kodlar=Object.keys(K);
+ const qator=i=>`<div class="frm f5" style="margin-bottom:8px"><label>${t('Модель')}<select class="inp" name="k${i}"><option value="">—</option>${kodlar.map(k=>`<option value="${k}" ${i===0&&k==='JM-101'?'selected':''}>${k} · ${esc(K[k].nom)}</option>`).join('')}</select></label><label>${t('Цвет')}<input class="inp" name="c${i}" value="${i===0?'тёмно-синий 4521':''}"></label><label>${t('Партия пряжи для заказа')}<select class="inp" name="l${i}"><option value="">—</option>${D.IP.map(l=>`<option value="${l.id}" ${i===0&&l.id==='L-2401'?'selected':''}>${l.id} · ${esc(l.rang)} · ${num(l.kg)} ${t('кг')}</option>`).join('')}</select></label>
+  <label class="w2" style="grid-column:span 2">${t('Размеры (шт)')}<div class="szrow" data-sz="${i}">${SZ.adult.map(s=>`<label>${s}<input class="inp" name="s${i}_${s}" type="number" min="0" inputmode="numeric" value="${i===0?({S:40,M:120,L:120,XL:80,'2XL':40}[s]||''):''}"></label>`).join('')}</div></label><label>${t('Цена за 1 шт')}<input class="inp" name="n${i}" type="number" min="0" value="${i===0?95000:''}"></label></div>`;
+ modal(`<h2>${t('Новый заказ')}</h2>`,`<div class="frm"><label>${t('Клиент')}<select class="inp" name="mid">${D.mij.map(m=>`<option value="${m.id}">${esc(m.nom)} — ${m.val==='USD'?'$':t('сум')}</option>`).join('')}</select></label><label>${t('Срок сдачи клиенту')}<input class="inp" type="date" name="mud" value="${addD(21)}"></label></div>
+  <div class="sec"><h4>${t('Модели и размерная сетка')}</h4>${[0,1].map(qator).join('')}</div><div id="chk"></div>`,`<button class="btn" id="tk">${I('qidir')} ${t('Проверить')}</button><button class="btn p" id="sv">${t('Сохранить')}</button>`,true);
+ const szFor=i=>{const k=$(`#mo [name="k${i}"]`).value;const szs=k?SZ[K[k].sz]:SZ.adult;const old={};$$(`#mo [data-sz="${i}"] input`).forEach(x=>old[x.name.split('_')[1]]=x.value);$(`#mo [data-sz="${i}"]`).innerHTML=szs.map(s=>`<label>${s}<input class="inp" name="s${i}_${s}" type="number" min="0" inputmode="numeric" value="${old[s]||''}"></label>`).join('')};
+ [0,1].forEach(i=>$(`#mo [name="k${i}"]`).onchange=()=>szFor(i));
+ const yig=()=>{const f=n=>{const e=$(`#mo [name="${n}"]`);return e?e.value:''};
+  const bosh=[0,1].filter(i=>{const k=f('k'+i);return k&&!SZ[K[k].sz].some(s2=>(+f(`s${i}_${s2}`)||0)>0)});
+  const q=[0,1].map(i=>{const k=f('k'+i);if(!k)return null;const sz={};SZ[K[k].sz].forEach(s=>{const v=+f(`s${i}_${s}`)||0;if(v>0)sz[s]=v});return{k,rang:f('c'+i)||'—',lot:K[k].tur==='reg'?f('l'+i):'',sz,narx:Math.max(0,+f('n'+i)||0)}}).filter(x=>x&&Object.keys(x.sz).length);
+  const m=D.mij.find(z=>z.id===f('mid'));return{bosh,id:U.uid('o'),raqam:'CP-'+(D.seq+1),mid:m.id,val:m.val,q,bosqich:'yangi',bajar:{},muddat:f('mud'),sana:iso(T),izoh:'',tarix:[{v:new Date().toISOString(),m:'Заказ принят'}]}};
+ const tek=()=>{const o=yig();if(o.bosh&&o.bosh.length){$('#chk').innerHTML=`<div class="alert">${L('У выбранной модели не указаны размеры — заполните или уберите модель','Tanlangan modelga o‘lcham kiritilmagan — to‘ldiring yoki modelni olib tashlang')}</div>`;return null}delete o.bosh;if(!o.q.length){$('#chk').innerHTML=`<div class="alert">${t('Укажите хотя бы один размер')}</div>`;return null}
+  if(new Set(o.q.map(x=>K[x.k].tur)).size>1){$('#chk').innerHTML=`<div class="alert">${LANG==='ru'?'Вязаные и кроеные модели идут разными маршрутами — оформите отдельные заказы':'To‘qilgan va kroy modellari marshruti boshqa — alohida buyurtma qiling'}</div>`;return null}
+  if(o.q.some(x=>!x.narx)){$('#chk').innerHTML=`<div class="alert">${L('Укажите цену за 1 шт','1 dona narxini kiriting')}</div>`;return null}
+  if(o.muddat&&o.muddat<iso(T)){$('#chk').innerHTML=`<div class="alert">${L('Срок сдачи не может быть в прошлом','Muddat o‘tgan sana bo‘lmaydi')}</div>`;return null}
+  if(!o.muddat){$('#chk').innerHTML=`<div class="alert">${LANG==='ru'?'Укажите срок сдачи':'Muddatni kiriting'}</div>`;return null}
+  if(tur(o)==='reg'&&o.q.some(x=>!x.lot)){$('#chk').innerHTML=`<div class="alert">${LANG==='ru'?'Выберите партию пряжи для каждой модели':'Har model uchun ip partiyasini tanlang'}</div>`;return null}
+  D.B.push(o);plan();const p=P[o.id],ip=ipHolat().filter(x=>x.kam>0&&x.kim.includes(o.raqam));D.B.pop();plan();
+  $('#chk').innerHTML=`<div class="sec"><h4>${t('Проверка')}</h4><div class="zanjir">
+   <div class="zn ok"><i>${I('belgi')}</i><b>${t('Заказ')}</b><small>${num(jami(o))} ${t('шт')}, ${vf(summa(o),o.val)}</small></div>
+   ${tur(o)==='reg'?`<div class="zn ${ip.length?'er':'ok'}"><i>${I(ip.length?'ogoh':'belgi')}</i><b>${t('Пряжа')}</b><small>${ip.length?ip.map(x=>x.l.id+': '+num(x.kam)+' '+t('кг не хватает')).join('; '):t('Хватает на складе')+' (~'+num(ipKg(o))+' '+t('кг')+')'}</small></div>`:(()=>{const erk=D.POL.filter(r=>r.joy==='ombor'&&!r.oid).reduce((a,r)=>a+r.kg,0),kerak=polKg(o);return`<div class="zn ${kerak>erk?'wr':'ok'}"><i>${I(kerak>erk?'ogoh':'belgi')}</i><b>${t('Полотно')}</b><small>${kerak>erk?num(Math.ceil(kerak-erk))+' '+t('кг')+' '+t('не хватает свободного полотна'):t('Полотна хватает')+' (~'+num(kerak)+' '+t('кг')+')'}</small></div>`})()}
+   <div class="zn ${p.kech>0?'er':p.kech>-2?'wr':'ok'}"><i>${I(p.kech>0?'ogoh':'belgi')}</i><b>${t('Готов примерно')}</b><small>${fd(p.tayyor)}${p.kech>0?' — '+t('опоздание')+' '+p.kech+' '+t('дн.')+(p.tor?' ('+t(BOS[p.tor]).toLowerCase()+' '+t('занят')+')':''):' — '+t('успеваем в срок')}</small></div></div></div>`;return o};
+ $('#tk').onclick=tek;
+ $('#sv').onclick=()=>{const o=tek();if(!o)return;D.seq++;D.B.push(o);save();closeM();toast(o.raqam+' '+t('принят'));APP.go('buyurtmalar')}}
+
+/* ================= ЦЕХ ================= */
+let LAST=null;
+function rSex(a){plan();
+ const act=D.B.filter(o=>!['yangi','tayyor','jonatildi','polotno'].includes(o.bosqich));
+ const bugun=D.ISH.filter(e=>e.sana===iso(T));
+ const sts=['toqish','kettel','bichish','tikish','vto','otk','qadoq'];
+ const lastH=LAST?`<div class="card linked"><h3>${I('belgi')} ${L('Одна запись — и всё обновилось','Bitta yozuv — hammasi yangilandi')}<span class="sp"></span><small>${esc(LAST.ism)} · ${num(LAST.miq)} ${t('шт')}</small></h3><div class="lk">
+   <div data-o="${LAST.oid}"><small>${L('Заказ','Buyurtma')} ${LAST.raqam}</small><b>${t(BOS[LAST.st])}: ${num(LAST.baj)} / ${num(LAST.jami)}</b>${LAST.nx?`<span class="pill ok">${L('этап завершён','bosqich tugadi')} → ${t(BOS[LAST.nx])}</span>`:prog(LAST.baj,LAST.jami)}</div>
+   <div data-go="ishbay"><small>${t('Сдельная оплата')} · ${esc(LAST.ism)}</small><b>${LAST.sum?'+'+num(LAST.sum)+' '+t('сум'):t('на окладе')}</b><span class="note">${L('за месяц','oy davomida')}: ${num(LAST.oy)} ${t('сум')}</span></div>
+   ${LAST.brak?`<div data-go="brak"><small>${t('Брак')}</small><b>${num(LAST.brak)} ${t('шт')}</b><span class="note">${L('записан на работника, не оплачивается','ishchiga yozildi, to‘lanmaydi')}</span></div>`:''}
+   ${LAST.ip?`<div data-go="ombor" data-t="ip"><small>${t('Пряжа')} ${LAST.lot}</small><b>−${num(LAST.ip)} ${t('кг')}</b><span class="note">${L('остаток','qoldiq')}: ${num(LAST.ipQ)} ${t('кг')}</span></div>`:''}
+  </div><div class="lkb"><button class="btn p s" id="lhome">${I('panel')} ${L('Посмотреть на главном экране','Bosh ekranda ko‘rish')}</button><button class="btn s" data-o="${LAST.oid}">${L('Открыть заказ','Buyurtmani ochish')} ${LAST.raqam}</button></div></div>`:'';
+ const demo=SX.demo?`<div class="alert">${I('ogoh')} ${L('Пример: так начальник вязального цеха сдаёт 60 жилетов. Нажмите «Сохранить» — и посмотрите, что обновится.','Misol: to‘quv sexi boshlig‘i 60 ta jiletni shunday topshiradi. «Saqlash»ni bosing va nima yangilanishini ko‘ring.')}</div>`:'';
+ a.innerHTML=`<div class="top"><div><h1>${t('Цех')}</h1><div class="sub">${t('Начальник цеха или бригадир записывает выработку с телефона — статус заказа и сдельная оплата обновляются сами')}</div></div></div>
+ ${lastH}
+ <div class="grid k2" style="align-items:start">
+  <div class="card"><h3>${I('qalam')} ${L('Записать выработку','Ishni yozish')}<span class="sp"></span><small>${L('≈ 30 секунд','≈ 30 soniya')}</small></h3>
+   <div class="frm">
+    <label>${t('Этап')}<select class="inp" id="fst">${sts.map(s2=>`<option value="${s2}" ${s2===SX.st?'selected':''}>${t(BOS[s2])}</option>`).join('')}</select></label>
+    <label>${t('Заказ')}<select class="inp" id="foid"></select></label>
+    <label id="fqw">${t('Модель')} · ${t('Цвет')}<select class="inp" id="fq"></select></label>
+    <label>${t('Размер')}<select class="inp" id="fsz"></select></label>
+    <label>${L('Сотрудник','Xodim')}<select class="inp" id="fw"></select></label>
+    <label>${t('Сделано (шт)')}<input class="inp big" id="fmiq" type="number" min="0" inputmode="numeric" value="${SX.miq||''}"></label>
+    <label>${L('Из них брак (шт)','Shundan brak (dona)')}<input class="inp" id="fbr" type="number" min="0" value="0" inputmode="numeric"></label></div>
+   <div class="frm" id="fbrw" style="display:none;margin-top:12px">
+    <label>${t('Причина брака')}<select class="inp" id="fsb"><option value="">—</option>${SABAB.map(s2=>`<option value="${s2}">${t(s2)}</option>`).join('')}</select></label>
+    <label>${t('Решение по браку')}<select class="inp" id="fhl">${Object.keys(HOLAT).map(h=>`<option value="${h}">${t(HOLAT[h])}</option>`).join('')}</select></label></div>
+   <div id="finf" class="note" style="margin:10px 0"></div>
+   <div class="fsvw">${SX.demo?`<div class="dhint">${L('Пример: начальник вязального цеха сдаёт 60 жилетов. Нажмите «Сохранить» и посмотрите, что обновится.','Misol: to‘quv sexi boshlig‘i 60 ta jiletni topshiradi. «Saqlash»ni bosing va nima yangilanishini ko‘ring.')}</div>`:''}<button class="btn p ${SX.demo?'pulse':''}" id="fsv" style="width:100%;justify-content:center">${t('Сохранить')}</button></div></div>
+  <div class="card"><h3>${I('hujjat')} ${t('Внесено сегодня')}<span class="sp"></span><small>${bugun.length} ${PL(bugun.length,'запись','записи','записей','yozuv')}</small></h3>${sexYozuvlar(bugun.slice().reverse().slice(0,8),1)}</div>
+ </div>
+ <div class="card" style="margin-top:14px"><h3>${I('zavod')} ${t('Заказы в цехе по этапам')}</h3>
+  <div class="kan">${['polotno',...sts].map(st=>{const os=D.B.filter(o=>o.bosqich===st);return`<div class="col ${os.length?'':'bo'}"><h4><i class="dot" style="background:${BR[st]}"></i>${t(BOS[st])}<em>${os.length}</em></h4>${os.map(o=>{const x=xavf(o);const bj=st==='polotno'?`<div class="pr">${t('Отдано в красильню')}: ${fd(o.polBer)} · ${-dd(o.polBer)} ${t('дн.')}</div>`:`<div class="pr">${num(o.bajar[st]||0)} / ${num(stJami(o,st))} ${t('шт')}</div>${prog(o.bajar[st]||0,stJami(o,st))}`;return`<div class="oc ${x?(x.t==='er'?'late':'soon'):''}" data-o="${o.id}"><div class="r1"><span>${o.raqam}</span><span>${I('soat')} ${fd(o.muddat)}</span></div><b>${esc(mij(o).nom)}</b><div class="pr">${esc(K[o.q[0].k].nom.split(',')[0])}</div>${bj}${x?`<div class="pr" style="color:var(--${x.t});font-weight:700">${x.k}</div>`:''}</div>`}).join('')||`<div class="empty" style="padding:10px">${t('Пусто')}</div>`}</div>`}).join('')}</div></div>`;
+ const fst=$('#fst',a),foid=$('#foid',a),fw=$('#fw',a),fq=$('#fq',a),fsz=$('#fsz',a),fbr=$('#fbr',a);
+ const yangila=()=>{const st=fst.value;const os=act.filter(o=>o.bosqich===st).sort((x,y)=>((P[y.id]||{}).kech||-99)-((P[x.id]||{}).kech||-99)||x.muddat.localeCompare(y.muddat));
+  const sel=os.some(o=>o.id===SX.oid)?SX.oid:(os[0]||{}).id;
+  foid.innerHTML=os.map(o=>`<option value="${o.id}" ${o.id===sel?'selected':''}>${o.raqam} · ${esc(mij(o).nom)}</option>`).join('')||`<option value="">${t('На этом этапе заказов нет')}</option>`;
+  fw.innerHTML=ISHCHI.filter(w=>w.rol===st).map(w=>`<option value="${w.id}">${esc(w.ism)}</option>`).join('');qat()};
+ const qat=()=>{const o=D.B.find(x=>x.id===foid.value);fq.innerHTML=o?o.q.map((x,i)=>`<option value="${i}">${x.k} · ${esc(x.rang)}</option>`).join(''):'';$('#fqw',a).style.display=o&&o.q.length>1?'':'none';sz()};
+ const sz=()=>{const o=D.B.find(x=>x.id===foid.value);const x=o&&o.q[+fq.value||0];fsz.innerHTML=x?Object.keys(x.sz).map(s2=>`<option>${s2}</option>`).join(''):'';info()};
+ const info=()=>{const o=D.B.find(x=>x.id===foid.value),st=fst.value;const x=o&&o.q[+fq.value||0];
+  $('#finf',a).innerHTML=o?`${t(BOS[st])}: ${num(o.bajar[st]||0)} / ${num(stJami(o,st))} ${t('шт')} ${t('сделано')}. ${t('Расценка')}: ${st==='otk'?t('на окладе'):num(K[x.k].r[st]||0)+' '+t('сум')+' / '+t('шт')}`:''};
+ fbr.oninput=()=>{$('#fbrw',a).style.display=(+fbr.value||0)>0?'':'none'};
+ fst.onchange=()=>{SX={st:fst.value,oid:''};yangila()};foid.onchange=qat;fq.onchange=sz;fsz.onchange=info;yangila();
+ $('#fsv',a).onclick=()=>{const o=D.B.find(x=>x.id===foid.value),st=fst.value,miq=+$('#fmiq',a).value||0,br=+fbr.value||0;
+  if(!o){toast(t('Выберите заказ'));return}if(miq<=0){toast(t('Введите количество'));return}
+  if(miq%1||br%1){toast(L('Только целые штуки','Faqat butun dona'));return}
+  if(br>miq){toast(L('Брак не может быть больше сделанного','Brak bajarilgandan ko‘p bo‘lmaydi'));return}
+  if(br>0&&!$('#fsb',a).value){toast(t('Укажите причину брака'));return}
+  if(o.bosqich!==st){toast(L(`${o.raqam} ещё на этапе «${BOS[o.bosqich]}»`,`${o.raqam} hali ${t(BOS[o.bosqich])} bosqichida`));return}
+  const qol=stJami(o,st)-(o.bajar[st]||0);if(miq>qol*1.05+1){toast(t('Осталось')+' '+num(qol)+' '+t('шт')+' — '+t('количество больше остатка, проверьте'));return}
+  const x=o.q[+fq.value||0];
+  {const pl=x.sz[fsz.value]||0,dn=bajarSz(o,st)[x.k+'|'+x.rang+'|'+fsz.value]||0;if(dn+miq>pl*1.05+2){toast(L(`По размеру ${fsz.value} план ${num(pl)}, уже сдано ${num(dn)} — проверьте количество`,`${fsz.value} o‘lchami rejasi ${num(pl)}, topshirilgan ${num(dn)} — miqdorni tekshiring`));return}}
+  const e={id:U.uid('e'),u:1,sana:iso(T),w:fw.value,st,oid:o.id,k:x.k,rang:x.rang,size:fsz.value,miq,brak:br,sabab:br?$('#fsb',a).value:'',holat:br?$('#fhl',a).value:'',rast:K[x.k].r[st]||0};
+  D.ISH.push(e);
+  const yaroq=miq-(br&&e.holat==='chiq'?br:0);e.yaroq=yaroq;o.bajar[st]=(o.bajar[st]||0)+yaroq;SX={st,oid:o.id};
+  let ipS=0,l=null;if(st==='toqish'&&x.lot){l=D.IP.find(z=>z.id===x.lot);if(l){ipS=miq*K[x.k].sarf/1000/(1-S().yoq.toqish/100);l.kg=Math.max(0,Math.round((l.kg-ipS)*10)/10);e.ip=Math.round(ipS*10)/10;e.lot=l.id}}
+  const baj=o.bajar[st],jm=stJami(o,st);let nx=null;
+  if(baj>=jm){const rt=route(o);nx=rt[rt.indexOf(st)+1]||'tayyor';bosqichga(o,nx);e.nx=nx}
+  const oyE=D.ISH.filter(z=>z.w===e.w&&z.sana.slice(0,7)===iso(T).slice(0,7));
+  LAST={oid:o.id,raqam:o.raqam,st,baj,jami:jm,nx,ism:ism(e.w),miq,sum:ishSumma(e),oy:oyE.reduce((s2,z)=>s2+ishSumma(z),0),brak:br,ip:Math.round(ipS),lot:x.lot,ipQ:l?l.kg:0};
+  if(nx)toast(`${o.raqam}: ${t(BOS[st])} — ${t('этап завершён')} → ${t(BOS[nx])}`);
+  HL=st;SX.demo=0;save();APP.render();window.scrollTo(0,0)};
+ const lh=$('#lhome',a);if(lh)lh.onclick=()=>{HL=LAST.st;APP.go('panel');setTimeout(()=>{const h=document.querySelector('.fb.hl');if(h)h.scrollIntoView({block:'center'})},80)};
+ if(SX.demo)setTimeout(()=>{const b=$('#fsv',a);if(b)b.scrollIntoView({block:'center'})},120);
+ $$('[data-un]',a).forEach(b=>b.onclick=ev=>{ev.stopPropagation();if(b.dataset.ok!=='1'){b.dataset.ok='1';b.textContent=L('Точно отменить?','Rostdan bekor qilinsinmi?');b.classList.add('wr');return}bekor(b.dataset.un)});
+ bindCommon(a)}
+function bekor(id){const e=D.ISH.find(z=>z.id===id);if(!e)return;const o=D.B.find(z=>z.id===e.oid);D.ISH=D.ISH.filter(z=>z.id!==id);
+ if(o){o.bajar[e.st]=Math.max(0,(o.bajar[e.st]||0)-(e.yaroq!=null?e.yaroq:e.miq));if(e.nx&&o.bosqich===e.nx&&!(o.bajar[e.nx]>0)){if(e.nx!=='tayyor')delete o.bajar[e.nx];o.bosqich=e.st}o.tarix.push({v:new Date().toISOString(),m:'Запись отменена: '+BOS[e.st]+' '+e.miq+' шт'})}
+ if(e.ip&&e.lot){const l=D.IP.find(z=>z.id===e.lot);if(l)l.kg=Math.round((l.kg+e.ip)*10)/10}
+ if(LAST&&LAST.oid===e.oid)LAST=null;save();toast(L('Запись отменена','Yozuv bekor qilindi'));APP.render()}
+
+/* ================= СКЛАД ================= */
+function rOmbor(a){const ip=ipHolat();
+ const tabs=[['ip',t('Пряжа')],['pol',t('Полотно и красильня')],['tayyor',t('Готовая продукция')]];
+ let h='';
+ if(OT==='ip')h=`<div class="card"><h3>${I('ip')} ${t('Пряжа')}<span class="sp"></span><small>${num(D.IP.reduce((s,l)=>s+l.kg,0))} ${t('кг')}</small>${APP.rol!=='sex'?`<button class="btn s p" id="kir">${I('qosh')} ${t('Приход')}</button>`:''}</h3>${table([{t:t('Партия (лот)'),f:r=>`<b>${r.l.id}</b><br><small class="note">${esc(r.l.yet)}</small>`},{t:t('Пряжа'),f:r=>esc(r.l.nom)+`<br><small class="note">${esc(r.l.rang)}</small>`},{t:t('Владелец'),m:1,f:r=>r.l.egasi?pill('ac',t('давальческая')+': '+esc(D.mij.find(m=>m.id===r.l.egasi).nom)):`<span class="note">${t('своя')}</span>`},{t:t('Остаток'),n:1,f:r=>`<b style="color:${r.l.min&&r.l.kg<r.l.min?'var(--er)':''}">${num(r.l.kg)} ${t('кг')}</b>`},{t:t('Нужно на очередь'),n:1,f:r=>r.kerak?num(r.kerak)+' '+t('кг')+`<br><small class="note">${r.kim.join(', ')}</small>`:'—'},{t:t('Статус'),f:r=>r.kam?pill('er',num(r.kam)+' '+t('кг не хватает')):r.l.min&&r.l.kg<r.l.min?pill('wr',t('Ниже минимума')):pill('ok',t('Достаточно'))}],ip)}<p class="note">${t('Один заказ — одна партия пряжи, иначе детали отличаются по оттенку. «Нужно на очередь» — по норме расхода модели с потерями')} ${S().yoq.toqish}%.</p></div>`;
+ if(OT==='pol'){const J={ombor:t('На складе'),bichish:t('В раскрое'),krasil:t('В красильне')};h=`<div class="card"><h3>${I('rulon')} ${t('Полотно')}<span class="sp"></span><small>${D.POL.length} · ${num(D.POL.reduce((s,r)=>s+r.kg,0))} ${t('кг')}</small></h3>${table([{t:t('Рулон'),f:r=>`<b>${r.id}</b>`},{t:t('Полотно'),f:r=>esc(r.mato)},{t:t('кг'),n:1,f:r=>num(r.kg)},{t:t('Где'),f:r=>pill(r.joy==='ombor'?'mu':r.joy==='bichish'?'ac':'wr',J[r.joy])},{t:t('Заказ'),m:1,f:r=>{const o=D.B.find(x=>x.id===r.oid);return o?o.raqam:`<span class="note">${t('свободно')}</span>`}}],D.POL)}<p class="note">${t('Полотно учитывается в кг; после крашения вес и плотность меняются, поэтому в карточке — готовое полотно')}. ${LANG==='ru'?'Норма крашения':'Bo‘yash me’yori'}: ${S().polKun} ${t('дн.')}</p></div>`}
+ if(OT==='tayyor'){const band=D.B.filter(o=>o.bosqich==='tayyor');h=`<div class="card" style="margin-bottom:14px"><h3>${I('paket')} ${t('Готово по заказам (ждёт отгрузки)')}</h3>${table([{t:t('Заказ'),f:o=>`<b>${o.raqam}</b><br><small class="note">${esc(mij(o).nom)}</small>`},{t:t('Модель'),f:o=>qisqa(o)},{t:t('На складе'),n:1,f:o=>num(jami(o)-jonQ(o))+' '+t('шт')},{t:t('Коробок'),n:1,m:1,f:o=>num(karoblar(o,jami(o)-jonQ(o)))}],band,{click:o=>`data-o="${o.id}"`})}</div>
+  <div class="card"><h3>${I('kiyim')} ${t('Свободный остаток (на продажу)')}</h3>${table([{t:t('Модель'),f:r=>esc(K[r.k].nom)+`<br><small class="note">${esc(r.rang)}</small>`},{t:t('Сорт'),f:r=>pill(r.sort==='1-й сорт'?'ok':'wr',t(r.sort))},{t:t('Количество'),n:1,f:r=>num(r.soni)+' '+t('шт')}],D.ERK)}<p class="note">${t('2-й сорт учитывается отдельно и продаётся по своей цене')}.</p></div>`}
+ a.innerHTML=`<div class="top"><div><h1>${t('Склад')}</h1><div class="sub">${t('Пряжа, полотно и готовая продукция — в кг и штуках')}</div></div></div>
+ <div class="seg" style="margin-bottom:14px;overflow-x:auto;max-width:100%">${tabs.map(([k,tt])=>`<button class="${OT===k?'on':''}" data-ot="${k}">${tt}</button>`).join('')}</div>${h}`;
+ $$('[data-ot]',a).forEach(b=>b.onclick=()=>{OT=b.dataset.ot;rOmbor(a)});
+ const k=$('#kir',a);if(k)k.onclick=ipKirim;
+ bindCommon(a)}
+function ipKirim(){modal(`<h2>${t('Приход пряжи')}</h2>`,`<div class="frm"><label>${t('Партия (лот)')}<select class="inp" id="ki">${D.IP.filter(l=>!l.egasi).map(l=>`<option value="${l.id}">${l.id} · ${esc(l.nom)} · ${esc(l.rang)}</option>`).join('')}</select></label><label>${t('Вес нетто (кг)')}<input class="inp big" id="kk" type="number" value="500" inputmode="numeric"></label><label>${t('Цена (сум/кг)')}<input class="inp" id="kn" type="number" value="51000"></label><label>${t('Поставщик')}<input class="inp" id="ky" value="импорт, Турция"></label></div>`,`<button class="btn p" id="ks">${t('Сохранить')}</button>`);
+ $('#ks').onclick=()=>{const l=D.IP.find(x=>x.id===$('#ki').value),kg=+$('#kk').value||0;if(kg<=0){toast(t('Введите вес'));return}l.kg+=kg;l.narx=+$('#kn').value||l.narx;save();closeM();toast(l.id+': +'+num(kg)+' '+t('кг'));APP.render()}}
+
+/* ================= ОТГРУЗКА И ОПЛАТА ================= */
+function rJon(a){if(JT==='qarz'&&!narxKor())JT='tayyor';
+ const tabs=[['tayyor',t('Готово к отгрузке')],['qarz',t('Долг клиентов')],['tarix',t('Отгрузки')]];
+ let h='';
+ if(JT==='tayyor'){const L=D.B.filter(o=>o.bosqich==='tayyor');h=L.length?`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(290px,1fr))">${L.map(o=>`<div class="card"><div class="r1 note" style="display:flex;justify-content:space-between"><b>${o.raqam}</b><span>${t('Срок').toLowerCase()} ${fd(o.muddat)}</span></div><h3 style="margin:4px 0 6px">${esc(mij(o).nom)}</h3><div class="pr note">${qisqa(o)}</div><p style="margin:8px 0">${t('На складе')}: <b>${num(jami(o)-jonQ(o))} ${t('шт')}</b> · ${num(karoblar(o,jami(o)-jonQ(o)))} ${KRB(karoblar(o,jami(o)-jonQ(o)))}</p>${narxKor()?tolPill(o):''}<div style="margin-top:10px;display:flex;gap:8px"><button class="btn p s" data-jn="${o.id}">${I('yuk')} ${t('Отгрузить')}</button><button class="btn s" data-o="${o.id}">${t('Подробнее')}</button></div></div>`).join('')}</div>`:`<div class="card empty">${t('Нет заказов, готовых к отгрузке')}</div>`}
+ if(JT==='qarz'){const M=D.mij.map(m=>{const os=D.B.filter(o=>o.mid===m.id);return{m,os,jon:os.reduce((s,o)=>s+jonQiymat(o),0),tol:os.reduce((s,o)=>s+tol(o),0),qarz:os.reduce((s,o)=>s+qarz(o),0),kech:Math.max(0,...os.map(tolKech))}}).filter(x=>x.os.length).sort((x,y)=>somga(y.qarz,y.m.val)-somga(x.qarz,x.m.val));
+  const jamiV=v=>M.filter(x=>x.m.val===v).reduce((s,x)=>s+x.qarz,0);
+  h=`<div class="grid k3" style="margin-bottom:14px"><div class="card kpi"><div class="l">${L('Долг в сумах','So‘mdagi qarz')}</div><div class="v">${mln(jamiV('UZS'))}</div><div class="d">${L('по отгруженному','jo‘natilgan bo‘yicha')}</div></div><div class="card kpi"><div class="l">${t('Долг, $')}</div><div class="v">$${num(jamiV('USD'))}</div><div class="d">≈ ${mln(somga(jamiV('USD'),'USD'))} ${t('сум')}</div></div><div class="card kpi er"><div class="l">${t('Просрочено')}</div><div class="v">${mln(D.B.reduce((s,o)=>s+(tolKech(o)?somga(qarz(o),o.val):0),0))}</div><div class="d">${(()=>{const ks=D.mij.filter(m=>D.B.some(o=>o.mid===m.id&&tolKech(o)>0));const mx2=Math.max(0,...D.B.map(tolKech));return ks.length?ks.length+' '+PL(ks.length,'клиент','клиента','клиентов','mijoz')+', '+L('просрочка до','kechikish')+' '+mx2+' '+t('дн.'):L('нет','yo‘q')})()}</div></div></div>
+  ${table([{t:t('Клиент'),f:x=>`<b>${esc(x.m.nom)}</b><br><small class="note">${esc(x.m.shahar)} · ${x.m.kun?(LANG==='ru'?`оплата через ${x.m.kun} дн.`:`to‘lov muddati ${x.m.kun} kun`):(LANG==='ru'?'предоплата 100 %':'100 % oldindan to‘lov')}</small>`},{t:L('Отгружено на сумму','Jo‘natildi (summa)'),n:1,f:x=>vf(x.jon,x.m.val)},{t:L('Оплачено за отгруженное','Jo‘natilgan uchun to‘landi'),n:1,f:x=>vf(Math.max(0,x.jon-x.qarz),x.m.val)},{t:L('Аванс по неотгруженным','Jo‘natilmaganlar avansi'),n:1,f:x=>vf(Math.max(0,x.tol-(x.jon-x.qarz)),x.m.val)},{t:t('Долг'),n:1,f:x=>`<b style="color:${x.kech?'var(--er)':''}">${vf(x.qarz,x.m.val)}</b>`},{t:t('Статус'),f:x=>x.kech?pill('er',x.kech+' '+t('дн. просрочки')):x.qarz?pill('wr',t('Срок не наступил')):pill('ok',t('Долга нет'))}],M,{click:x=>`data-mj="${x.m.id}"`})}<p class="note">${L('Долг = отгружено − оплачено за отгруженное. Авансы за ещё не отгруженные заказы показаны отдельно и в долг не входят.','Qarz = jo‘natildi − jo‘natilgan uchun to‘langan. Hali jo‘natilmagan buyurtmalar avansi alohida va qarzga kirmaydi.')}</p>`}
+ if(JT==='tarix')h=table([{t:t('Дата'),f:j=>fd(j.sana)},{t:t('Заказ'),f:j=>{const o=D.B.find(x=>x.id===j.oid);return`<b>${o.raqam}</b><br><small class="note">${esc(mij(o).nom)}</small>`}},{t:t('Количество'),n:1,f:j=>num(j.miqdor)+' '+t('шт')},{t:t('Коробок'),n:1,m:1,f:j=>num(j.karob)},{t:t('Машина'),m:1,f:j=>esc(j.mashina)},{t:'',f:j=>`<button class="btn s" data-pl="${j.id}">${I('printer')} ${t('Накладная')}</button>`}],D.J.slice().sort((x,y)=>y.sana.localeCompare(x.sana)));
+ a.innerHTML=`<div class="top"><div><h1>${t('Отгрузка и оплата')}</h1><div class="sub">${t('Частичные отгрузки, накладная, долг клиентов')}</div></div><span class="sp"></span>${narxKor()?`<button class="btn p" id="tlb">${I('pul')} ${t('Внести оплату')}</button>`:''}</div>
+ <div class="seg" style="margin-bottom:14px">${tabs.filter(z=>z[0]!=='qarz'||narxKor()).map(([k,tt])=>`<button class="${JT===k?'on':''}" data-jt="${k}">${tt}</button>`).join('')}</div>${h}`;
+ $$('[data-jt]',a).forEach(b=>b.onclick=()=>{JT=b.dataset.jt;rJon(a)});
+ $$('[data-jn]',a).forEach(b=>b.onclick=()=>jonatish(b.dataset.jn));
+ $$('[data-pl]',a).forEach(b=>b.onclick=()=>nakladnoy(b.dataset.pl));
+ $$('[data-mj]',a).forEach(r=>r.onclick=()=>mijozKarta(r.dataset.mj));
+ if($('#tlb',a))$('#tlb',a).onclick=()=>tolovForma();
+ bindCommon(a)}
+function jonatish(id){const o=D.B.find(x=>x.id===id),qol=jami(o)-jonQ(o);
+ modal(`<h2>${t('Отгрузка — ')}${o.raqam}</h2>`,`<p>${esc(mij(o).nom)} · ${esc(mij(o).shahar)}</p><div class="frm"><label>${t('Количество (шт)')}<input class="inp big" id="jm" type="number" value="${qol}" max="${qol}" inputmode="numeric"></label><label>${t('Номер машины')}<input class="inp" id="jmsh" value="01 A 214 KA"></label></div><div id="ji" class="note" style="margin-top:8px"></div>`,`<button class="btn p" id="js">${t('Подтвердить отгрузку')}</button>`);
+ const inf=()=>{const n=+$('#jm').value||0;$('#ji').innerHTML=`${num(karoblar(o,n))} ${KRB(karoblar(o,n))}${n<qol?` · ${t('останется на складе')} ${num(qol-n)} ${t('шт')} (${t('частичная отгрузка')})`:''}`};$('#jm').oninput=inf;inf();
+ $('#js').onclick=()=>{const n=+$('#jm').value||0;if(n<=0||n>qol){toast(t('Количество от 1 до')+' '+num(qol));return}
+  const j={id:U.uid('j'),oid:o.id,sana:iso(T),miqdor:n,karob:karoblar(o,n),mashina:$('#jmsh').value};D.J.push(j);
+  o.tarix.push({v:new Date().toISOString(),m:`Отгружено: ${num(n)} шт, ${j.mashina}`});if(jonQ(o)>=jami(o))o.bosqich='jonatildi';save();closeM();toast(t('Отгрузка сохранена')+': '+o.raqam);nakladnoy(j.id);APP.render()}}
+function nakladnoy(jid){const j=D.J.find(x=>x.id===jid),o=D.B.find(x=>x.id===j.oid),m=mij(o);const k=j.miqdor/jami(o);const nar=narxKor();
+ modal(`<h2>${t('Накладная')}</h2>`,`<div style="font-size:13px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><div><b>ООО «CONCEPT PRO»</b><br>г. Ташкент, Паркентское шоссе</div><div style="text-align:right">№ ${o.raqam.slice(3)}-${D.J.filter(x=>x.oid===o.id).indexOf(j)+1}<br>${j.sana.slice(8,10)}.${j.sana.slice(5,7)}.${j.sana.slice(0,4)}</div></div>
+ <p><b>${t('Получатель')}:</b> ${esc(m.nom)}, ${esc(m.shahar)}<br><b>${t('Заказ')}:</b> ${o.raqam} · <b>${t('Машина')}:</b> ${esc(j.mashina)}</p>
+ ${table([{t:t('Модель'),f:r=>esc(K[r.k].nom)+`<br><small class="note">${esc(r.rang)}</small>`},{t:t('Размеры (шт)'),f:r=>{const q=taqsim(r.sz,k);return Object.keys(q).map(s=>s+': '+num(q[s])).join(', ')}},{t:t('Кол-во'),n:1,f:r=>num(Math.round(qSoni(r)*k))},{t:t('Коробок'),n:1,f:r=>num(Math.ceil(qSoni(r)*k/K[r.k].karob))},...(nar?[{t:t('Сумма'),n:1,f:r=>vf(Math.round(qSoni(r)*k)*r.narx,o.val)}]:[])],o.q,{keep:1})}
+ <p style="margin-top:10px">${t('Всего')}: ${num(j.miqdor)} ${t('шт')} · ${num(j.karob)} ${KRB(j.karob)}${nar?` · ${vf(Math.round(summa(o)*k),o.val)}`:''}</p><p class="note">${t('По этим данным заполняются ЭСФ и ЭТТН (Didox)')}.</p></div>`,`<button class="btn" onclick="window.print()">${I('printer')} ${t('Печать')}</button>`)}
+function tolovForma(oid){const os=D.B.filter(o=>(summa(o)-tol(o))>0.01);const o0=oid?D.B.find(x=>x.id===oid):os[0];
+ modal(`<h2>${t('Внести оплату')}</h2>`,`<div class="frm"><label class="w2">${t('Заказ')}<select class="inp" id="to">${os.map(o=>`<option value="${o.id}" ${o===o0?'selected':''}>${o.raqam} · ${esc(mij(o).nom)} — ${t('Остаток долга').toLowerCase()} ${vf(summa(o)-tol(o),o.val)}</option>`).join('')}</select></label><label>${t('Сумма')}<input class="inp big" id="ts" type="number" step="0.01" inputmode="decimal"></label><label>${t('Тип')}<select class="inp" id="ti"><option value="Аванс" ${o0&&jonQ(o0)?'':'selected'}>${t('Аванс')}</option><option value="Остаток" ${o0&&jonQ(o0)?'selected':''}>${t('Остаток долга')}</option><option value="Частичная оплата">${t('Частичная оплата')}</option></select></label></div><p class="note" id="tv"></p>`,`<button class="btn p" id="tsv">${t('Сохранить')}</button>`);
+ const inf=()=>{const o=D.B.find(x=>x.id===$('#to').value);if(!o)return;$('#tv').textContent=t('Валюта')+': '+(o.val==='USD'?'$':t('сум'))+(o.val!=='UZS'?' · '+t('по курсу ≈')+' '+mln(somga(+$('#ts').value||0,o.val))+' '+t('сум'):'');if(!$('#ts').value)$('#ts').value=Math.round((summa(o)-tol(o))*100)/100};$('#to').onchange=()=>{$('#ts').value='';inf()};$('#ts').oninput=inf;inf();
+ $('#tsv').onclick=()=>{const o=D.B.find(x=>x.id===$('#to').value),s=+$('#ts').value||0;if(!o||s<=0){toast(t('Введите сумму'));return}if(s>summa(o)-tol(o)+0.01){toast(L(`Больше остатка по заказу: ${vf(summa(o)-tol(o),o.val)}`,`Buyurtma qoldig‘idan ko‘p: ${vf(summa(o)-tol(o),o.val)}`));return}D.PAY.push({id:U.uid('p'),oid:o.id,mid:o.mid,sana:iso(T),summa:s,val:o.val,izoh:$('#ti').value});o.tarix.push({v:new Date().toISOString(),m:'Оплата: '+vf(s,o.val)});save();closeM();toast(t('Оплата сохранена')+': '+vf(s,o.val));APP.render()}}
+function mijozKarta(mid){const m=D.mij.find(x=>x.id===mid),os=D.B.filter(o=>o.mid===mid);
+ modal(`<h2>${esc(m.nom)}</h2>`,`<div class="dl"><div><small>${t('Город')}</small><b>${esc(m.shahar)}</b></div><div><small>${t('Валюта')}</small><b>${m.val==='USD'?'$':t('сум')}</b></div><div><small>${t('Срок оплаты, дн.')}</small><b>${m.kun}</b></div></div>
+ <div class="sec"><h4>${t('Заказы')}</h4>${table([{t:t('Заказ'),f:o=>o.raqam},{t:t('Статус'),f:bpill},{t:t('Сумма'),n:1,f:o=>vf(summa(o),o.val)},{t:t('Долг'),n:1,f:o=>vf(qarz(o),o.val)}],os,{click:o=>`data-oo="${o.id}"`})}</div>`);
+ $$('#mo [data-oo]').forEach(r=>r.onclick=()=>ochO(r.dataset.oo))}
+
+/* ================= СДЕЛЬНАЯ ОПЛАТА ================= */
+function rIsh(a){const oy=iso(T).slice(0,7);const E=D.ISH.filter(e=>e.sana.slice(0,7)===oy);
+ const R=ISHCHI.filter(w=>w.rol!=='otk').map(w=>{const es=E.filter(e=>e.w===w.id);return{w,es,miq:es.reduce((s,e)=>s+e.miq,0),brak:es.reduce((s,e)=>s+e.brak,0),sum:es.reduce((s,e)=>s+ishSumma(e),0),kun:new Set(es.map(e=>e.sana)).size}});
+ const jamiS=R.reduce((s,r)=>s+r.sum,0);
+ a.innerHTML=`<div class="top"><div><h1>${t('Сдельная оплата')}</h1><div class="sub">${U.OY[T.getMonth()]} ${T.getFullYear()} · ${t('считается из записей цеха, брак не оплачивается')}</div></div><span class="sp"></span><button class="btn" id="ex">${I('tushir')} ${t('Excel (бухгалтеру)')}</button></div>
+ <div class="grid k4" style="margin-bottom:14px"><div class="card kpi"><div class="l">${t('Сдельная за месяц')}</div><div class="v">${mln(jamiS)}</div><div class="d">${t('сум')}, ${R.filter(r=>r.sum).length} ${PL(R.filter(r=>r.sum).length,'работник','работника','работников','ishchi')}</div></div><div class="card kpi"><div class="l">${L('Связано','To‘qildi')}</div><div class="v">${num(R.filter(r=>r.w.rol==='toqish').reduce((s,r)=>s+r.miq,0))} <small>${L('компл.','kompl.')}</small></div><div class="d">${L('комплектов деталей','detal komplekti')}</div></div><div class="card kpi"><div class="l">${t('Сшито и собрано')}</div><div class="v">${num(R.filter(r=>['kettel','tikish'].includes(r.w.rol)).reduce((s,r)=>s+r.miq,0))}</div><div class="d">${t('шт')}</div></div><div class="card kpi ${R.reduce((s,r)=>s+r.brak,0)?'wr':''}"><div class="l">${t('Брак')}</div><div class="v">${num(R.reduce((s,r)=>s+r.brak,0))}</div><div class="d">${L('не оплачен; брак, найденный на ОТК, — в разделе «Брак»','to‘lanmaydi; OTKda topilgani — «Brak» bo‘limida')}</div></div></div>
+ ${table([{t:t('Работник'),f:r=>`<b>${esc(r.w.ism)}</b><br><small class="note">${t(ROLN[r.w.rol])}</small>`},{t:t('Дней'),n:1,m:1,f:r=>r.kun},{t:t('Сделано'),n:1,f:r=>num(r.miq)+' '+t('шт')},{t:t('Брак'),n:1,m:1,f:r=>r.brak?`<span style="color:var(--er)">${num(r.brak)}</span>`:'—'},{t:t('Сумма за месяц'),n:1,f:r=>`<b>${num(r.sum)} ${t('сум')}</b>`}],R,{click:r=>`data-w="${r.w.id}"`})}
+ <details class="card rd" style="margin-top:14px" ${matchMedia('(max-width:860px)').matches?'':'open'}><summary><h3 style="display:inline-flex">${I('tarozi')} ${t('Расценки по моделям (сум за 1 шт)')}</h3></summary>${table([{t:t('Модель'),f:k=>`<b>${k}</b> <small class="note">${esc(K[k].nom.split(',')[0])}</small>`},...['toqish','kettel','bichish','tikish','vto','qadoq'].map(st=>({t:t(BOS[st]),n:1,f:k=>K[k].r[st]!=null?`<input class="inp" data-rk="${k}" data-rs="${st}" type="number" value="${K[k].r[st]}" style="width:86px;text-align:right">`:'—'}))],Object.keys(K))}<p class="note">${t('При изменении расценки оплата пересчитывается сразу. ОТК — на окладе')}.</p></details>`;
+ $$('[data-w]',a).forEach(r=>r.onclick=()=>ishchiKarta(r.dataset.w));
+ $$('[data-rk]',a).forEach(i=>i.onchange=()=>{const v=Math.max(0,+i.value||0);K[i.dataset.rk].r[i.dataset.rs]=v;S().rast=S().rast||{};S().rast[i.dataset.rk+'.'+i.dataset.rs]=v;save();rIsh(a);toast(t('Сохранено'))});
+ $('#ex',a).onclick=()=>U.exportX({[t('Оплата труда')]:R.map(r=>({[t('Работник')]:r.w.ism,[t('Этап')]:t(ROLN[r.w.rol]),[t('Дней')]:r.kun,[t('Сделано')]:r.miq,[t('Брак')]:r.brak,[t('Сумма')+' ('+t('сум')+')']:Math.round(r.sum)})),[t('Цех')]:E.map(e=>({[t('Дата')]:e.sana,[t('Работник')]:ism(e.w),[t('Этап')]:t(BOS[e.st]),[t('Заказ')]:(D.B.find(o=>o.id===e.oid)||{}).raqam,[t('Модель')]:e.k,[t('Цвет')]:e.rang,[t('Размер')]:e.size,[t('Количество')]:e.miq,[t('Брак')]:e.brak,[t('Причина')]:t(e.sabab),[t('Сумма')+' ('+t('сум')+')']:Math.round(ishSumma(e))}))},'ConceptPro_'+t('Оплата труда')+'_'+oy+'.xlsx')}
+function ishchiKarta(wid){const w=ISHCHI.find(x=>x.id===wid),oy=iso(T).slice(0,7),es=D.ISH.filter(e=>e.w===wid&&e.sana.slice(0,7)===oy).sort((x,y)=>y.sana.localeCompare(x.sana));
+ modal(`<h2>${esc(w.ism)}</h2>`,`<p class="note">${t(ROLN[w.rol])} · ${U.OY[T.getMonth()]}</p>${table([{t:t('Дата'),f:e=>fd(e.sana)},{t:t('Заказ'),f:e=>((D.B.find(o=>o.id===e.oid)||{}).raqam||'')+` <small class="note">${e.k} · ${e.size}</small>`},{t:t('Сделано'),n:1,f:e=>num(e.miq)},{t:t('Брак'),n:1,f:e=>e.brak?`<span style="color:var(--er)">${num(e.brak)}</span> <small class="note">${t(e.sabab)}</small>`:'—'},{t:t('Сумма'),n:1,f:e=>num(ishSumma(e))}],es)}<p style="margin-top:10px"><b>${t('Итого')}: ${num(es.reduce((s,e)=>s+ishSumma(e),0))} ${t('сум')}</b></p><p class="note">${t('Работник видит свой расчёт в телефоне — споров в конце месяца меньше')}.</p>`)}
+
+/* ================= БРАК / ОТК ================= */
+let BR_ALL=false;
+function rBrak(a){const oy=iso(T).slice(0,7);const E=D.ISH.filter(e=>e.sana.slice(0,7)===oy),B=E.filter(e=>e.brak>0);
+ const jami=Math.max(1,...['toqish','kettel','bichish','tikish','vto','otk','qadoq'].map(st=>E.filter(e=>e.st===st).reduce((a,e)=>a+e.miq,0))),br=B.reduce((s,e)=>s+e.brak,0);
+ const grp=(f)=>{const m={};B.forEach(e=>{const k=f(e);m[k]=(m[k]||0)+e.brak});return Object.entries(m).sort((x,y)=>y[1]-x[1])};
+ const hol=h=>B.filter(e=>e.holat===h).reduce((s,e)=>s+e.brak,0);
+ const bar=rows=>`<div class="list bars2">${rows.map(([k,n],i)=>`<div class="it" style="cursor:default"><div class="m"><b style="font-weight:600">${esc(k)}</b><div class="prog" style="margin:4px 0 0"><i style="width:${Math.round(n/Math.max(1,rows[0][1])*100)}%;background:${i?'#94a3b8':'var(--er)'}"></i></div></div><b style="min-width:40px;text-align:right">${num(n)}</b></div>`).join('')||`<div class="empty">${t('Нет данных')}</div>`}</div>`;
+ a.innerHTML=`<div class="top"><div><h1>${t('Брак / ОТК')}</h1><div class="sub">${t('На каком этапе и у кого возникает брак, что с ним сделали')}</div></div></div>
+ <div class="grid k4" style="margin-bottom:14px"><div class="card kpi ${br?'wr':''}"><div class="l">${t('За месяц')}</div><div class="v">${num(br)} <small>${t('шт')}</small></div><div class="d">${(jami?br/jami*100:0).toFixed(1).replace('.',',')} % ${L('от сданного','topshirilgandan')}</div></div><div class="card kpi ok"><div class="l">${t('Исправлено')}</div><div class="v">${num(hol('fix'))}</div><div class="d">${t('шт')}</div></div><div class="card kpi"><div class="l">${t('Во 2-й сорт')}</div><div class="v">${num(hol('sort2'))}</div><div class="d">${t('шт')}</div></div><div class="card kpi er"><div class="l">${t('Списано')}</div><div class="v">${num(hol('chiq'))}</div><div class="d">${t('шт')}</div></div></div>
+ <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:14px"><div class="card"><h3>${t('По этапам')}</h3>${bar(grp(e=>t(BOS[e.st])))}</div><div class="card"><h3>${t('По причинам')}</h3>${bar(grp(e=>t(e.sabab)))}</div><div class="card"><h3>${t('По работникам')} <small class="note">${LANG==='ru'?'без ОТК':'OTKsiz'}</small></h3>${bar(grp(e=>e.st==='otk'?'—':ism(e.w)).filter(x=>x[0]!=='—').slice(0,6))}</div></div>
+ <div class="card"><h3>${I('hujjat')} ${t('Все записи с браком')}<span class="sp"></span><small>${B.length}</small></h3>${table([{t:t('Дата'),f:e=>fd(e.sana)},{t:t('Заказ'),f:e=>`<b>${(D.B.find(o=>o.id===e.oid)||{}).raqam||''}</b><br><small class="note">${e.k} · ${esc(e.rang)} · ${e.size}</small>`},{t:t('Этап'),f:e=>t(BOS[e.st])},{t:t('Работник'),m:1,f:e=>esc(ism(e.w))},{t:t('Брак'),n:1,f:e=>`<span style="color:var(--er)">${num(e.brak)}</span>`},{t:t('Причина'),f:e=>t(e.sabab)},{t:t('Что сделали'),f:e=>pill(e.holat==='fix'?'ok':e.holat==='sort2'?'wr':'er',t(HOLAT[e.holat]||'исправлен'))}],B.slice().sort((x,y)=>y.sana.localeCompare(x.sana)).slice(0,BR_ALL?999:10),{click:e=>`data-o="${e.oid}"`})}${B.length>10?`<button class="btn s" id="ball" style="margin-top:8px">${BR_ALL?L('Свернуть','Yig‘ish'):L(`Показать все (${B.length})`,`Hammasi (${B.length})`)}</button>`:''}<p class="note">${t('Брак фиксируется в цехе вместе со сдачей: партия + этап + работник. Так видно, где теряются деньги')}.</p></div>`;
+ const bb=$('#ball',a);if(bb)bb.onclick=()=>{BR_ALL=!BR_ALL;rBrak(a)};
+ bindCommon(a)}
+
+/* «Ещё» — telefon menyusining qolgan bo‘limlari va sozlamalar */
+function yana(rest){
+ modal(`<h2>${L('Ещё','Yana')}</h2>`,`<div class="more">${rest.map(k=>{const n=APP.cfg.badge?APP.cfg.badge(k):0;return`<button data-mv="${k}"><span class="ic">${APP.cfg.mod[k][0]}</span>${APP.cfg.mod[k][1]}${n?`<span class="bdg">${n}</span>`:''}</button>`}).join('')}</div>
+ <div class="frm" style="margin-top:14px"><label>${t('Смотреть как:')}<select class="inp" id="yrol">${Object.keys(APP.cfg.rollar).map(k=>`<option value="${k}" ${k===APP.rol?'selected':''}>${rolNom()[k]}</option>`).join('')}</select></label><label>${L('Язык','Til')}<select class="inp" id="ytil"><option value="ru" ${LANG==='ru'?'selected':''}>Русский</option><option value="uz" ${LANG==='uz'?'selected':''}>O‘zbekcha</option></select></label></div>
+ <button class="btn s" id="yrst" style="margin-top:12px">${t('Сбросить данные образца')}</button>`);
+ $$('#mo [data-mv]').forEach(b=>b.onclick=()=>{closeM();APP.go(b.dataset.mv)});
+ $('#yrol').onchange=e=>{closeM();const s2=$('#rolsel');s2.value=e.target.value;s2.onchange()};
+ $('#ytil').onchange=e=>{closeM();tilQoy(e.target.value)};
+ $('#yrst').onclick=()=>{closeM();$('#rst').click()}}
+
+/* ================= ПРИЛОЖЕНИЕ ================= */
+const KR0=JSON.parse(JSON.stringify(Object.fromEntries(Object.keys(K).map(k=>[k,K[k].r]))));
+load();
+/* расценки, изменённые пользователем, восстанавливаем */
+if(D.S.rast)Object.keys(D.S.rast).forEach(k=>{const [m,s]=k.split('.');if(K[m])K[m].r[s]=D.S.rast[k]});
+const mods=()=>({panel:[I('panel'),t('Сегодня'),t('Сегодня')],buyurtmalar:[I('kiyim'),t('Заказы'),t('Заказы')],sex:[I('zavod'),t('Цех'),t('Цех')],ombor:[I('baza'),t('Склад'),t('Склад')],jonatish:[I('yuk'),t('Отгрузка и оплата'),t('Отгрузка')],ishbay:[I('odamlar'),t('Сдельная оплата'),L('Сдельная','Ishbay')],brak:[I('ogoh'),t('Брак / ОТК'),t('Брак')]});
+const rolNom=()=>({direktor:t('Директор'),buxgalter:t('Бухгалтер'),sex:t('Начальник цеха'),ombor:t('Кладовщик')});
+U.OY=LANG==='ru'?OYRU:OYUZ;document.documentElement.lang=LANG;
+const CFG={nom:'CONCEPT PRO',logo:'CP',shior:LANG==='ru'?'Трикотаж · Ташкент':'Trikotaj · Toshkent',rang:['#1f4e79','#173d60','#e8eef5'],
+ bolimlar:['panel','buyurtmalar','sex','ombor','jonatish','ishbay','brak'],
+ mod:mods(),
+ rollar:{direktor:['panel','buyurtmalar','sex','ombor','jonatish','ishbay','brak'],buxgalter:['buyurtmalar','jonatish','ishbay'],sex:['sex','buyurtmalar','brak'],ombor:['ombor','jonatish']},
+ rolNom:rolNom(),
+ badge:k=>{plan();if(k==='buyurtmalar')return D.B.filter(o=>(xavf(o)||{}).t==='er').length;if(k==='jonatish')return D.B.filter(o=>o.bosqich==='tayyor').length;if(k==='ombor')return ipHolat().filter(x=>x.kam).length;return 0},
+ onGo:(v,f)=>{f=f||{};if(v==='buyurtmalar')F={st:f.st||'',q:''};if(v==='ombor'&&f.t)OT=f.t;if(v==='jonatish'&&f.t)JT=f.t},
+ mobil:['panel','buyurtmalar','sex','ombor'],moreIc:I('qatlam'),moreNom:()=>L('Ещё','Yana'),onMore:rest=>yana(rest),
+ render:{panel:rPanel,buyurtmalar:rBuy,sex:rSex,ombor:rOmbor,jonatish:rJon,ishbay:rIsh,brak:rBrak}};
+const APP=U.app(CFG);APP.cfg=CFG;
+const _rs=$('#rolsel');if(_rs){const old=_rs.onchange;_rs.onchange=()=>{APP.rol=_rs.value;old()}}
+window.APP=APP;
+$('#rst').onclick=()=>{ST.clear();seed();Object.keys(K).forEach(m=>{K[m].r=JSON.parse(JSON.stringify(KR0[m]))});toast(t('Данные образца восстановлены'));APP.render()};
+$('#til').onchange=e=>tilQoy(e.target.value);$('#til2').onchange=e=>tilQoy(e.target.value);
+tilQoy(LANG);
+})();
+</script>
+
+</body>
+</html>
