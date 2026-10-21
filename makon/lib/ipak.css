@@ -1,0 +1,91 @@
+/* MAKON — «Buyuk Ipak yo‘li» sahnasi (lib/makon3d_ipak.js). app3.css dan KEYIN ulanadi. Barcha sinflar ip- bilan boshlanadi. */
+.ip-xarita{position:absolute;inset:0;z-index:1;overflow:hidden;background:#2f6c9a;user-select:none;-webkit-user-select:none}
+.ip-svg{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.ip-svg:active{cursor:grabbing}
+.ip-xato{position:absolute;inset:0;display:grid;place-items:center;color:var(--matn2,#b4bcd8);font-size:14px;background:var(--sahna,#0a0d1c)}
+
+/* xarita qatlamlari: darslikdagi siyosiy xarita uslubi */
+.ip-dengiz{fill:#3a7caa}
+.ip-quruq{fill:#ead3a4;stroke:#2a2118;stroke-width:1.3;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.ip-davlat{stroke:#1f1610;stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linejoin:round;cursor:pointer;transition:filter .2s}
+.ip-davlat:hover{filter:brightness(1.1)}
+.ip-davlat.tanlangan{filter:brightness(1.16) saturate(1.1)}
+.ip-davlatlar.yangi{animation:ipChiq .45s ease}
+@keyframes ipChiq{from{opacity:.25}to{opacity:1}}
+.ip-kol{fill:#3a7caa;stroke:#1f3c55;stroke-width:1;vector-effect:non-scaling-stroke}
+.ip-daryo{fill:none;stroke:#3a7caa;stroke-width:1.3;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+
+/* yozuvlar */
+.ip-yozuv text{fill:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:700;text-anchor:middle;letter-spacing:.06em;paint-order:stroke;stroke:#2a1d14;stroke-width:2.6px;stroke-linejoin:round;pointer-events:none}
+.ip-hudud text{fill:#5a3b22;font:italic 700 10px Georgia,'Times New Roman',serif;text-anchor:middle;letter-spacing:.05em;paint-order:stroke;stroke:rgba(250,238,210,.85);stroke-width:2.4px;stroke-linejoin:round;pointer-events:none}
+.ip-hudud text.katta{font-size:14px;letter-spacing:.12em;fill:#6b4424}
+.ip-joy text{text-anchor:middle;pointer-events:none;paint-order:stroke;stroke-linejoin:round}
+.ip-joy text.suv{fill:#dcefff;font:italic 600 10px Georgia,serif;stroke:#285f88;stroke-width:2.2px;letter-spacing:.1em}
+.ip-joy text.quruq{fill:rgba(110,78,44,.72);font:italic 600 9.5px Georgia,serif;stroke:none;letter-spacing:.14em}
+
+/* yo‘llar */
+.ip-yol path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.ip-yol .asos{stroke:#20150e;stroke-width:5.2;opacity:.75}
+.ip-yol .nur{stroke:var(--r);stroke-width:9;opacity:0;filter:url(#ipNur);transition:opacity .3s}
+.ip-yol .chiz{stroke:var(--r);stroke-width:2.8}
+.ip-yol.dengizda .asos{stroke:#12324d;stroke-width:4.6;opacity:.6}
+.ip-yol.dengizda .chiz{stroke-dasharray:7 6;stroke-width:2.4}
+.ip-yol.faol .chiz{stroke-width:4}
+.ip-yol.faol .asos{stroke-width:7}
+.ip-yol.faol .nur{opacity:.55}
+.ip-yol.xira{opacity:.28}
+.ip-yol{transition:opacity .3s}
+.ip-k{fill:var(--r);stroke:#1b120c;stroke-width:1.1;vector-effect:non-scaling-stroke;pointer-events:none;transition:opacity .3s}
+.ip-k.kema{fill:#fff;stroke:#12324d}
+.ip-k.xira{opacity:.2}
+
+/* shaharlar */
+.ip-sh{cursor:pointer}
+.ip-sh .halqa{fill:transparent;stroke:none}
+.ip-sh .tash{fill:#fff8e8;stroke:#1b130d;stroke-width:1.8;vector-effect:non-scaling-stroke}
+.ip-sh .ich{fill:#b3261e}
+.ip-sh text{fill:#1b130d;font:700 12px Georgia,serif;paint-order:stroke;stroke:#fff3dc;stroke-width:3.4px;stroke-linejoin:round;pointer-events:none}
+.ip-sh text.chap{text-anchor:end}
+.ip-sh:hover .tash{fill:#ffcb5c}
+.ip-sh.tanlangan .halqa{stroke:#ffcb5c;stroke-width:2.6;fill:rgba(255,203,92,.25);vector-effect:non-scaling-stroke;animation:ipPuls 1.6s ease-in-out infinite}
+.ip-sh.tanlangan .tash{fill:#ffcb5c}
+@keyframes ipPuls{0%,100%{opacity:1}50%{opacity:.35}}
+.ip-yashir .ip-sh text{opacity:0;transition:opacity .25s}
+.ip-yashir .ip-sh.ochiq text{opacity:1}
+.ip-yashir .ip-sh .tash{r:6.2}
+.ip-yashir .ip-sh:hover .halqa{stroke:#fff;stroke-width:2;fill:rgba(255,255,255,.18);vector-effect:non-scaling-stroke}
+
+/* ustki karta va manba */
+.ip-karta{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:3;min-width:240px;max-width:min(420px,calc(100% - 32px));padding:9px 16px 10px;text-align:center;border-radius:14px;background:rgba(14,18,38,.8);border:1px solid rgba(255,255,255,.1);border-top:3px solid #f5c542;backdrop-filter:blur(12px);color:var(--matn,#eef1fb);box-shadow:0 14px 34px rgba(0,0,0,.35);pointer-events:none}
+.ip-ust{display:block;font:600 10.5px/1.2 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#f5c542}
+.ip-nom{display:block;font:750 19px/1.25 'Plus Jakarta Sans',Inter,sans-serif;margin-top:3px}
+.ip-s{display:block;font-size:11.5px;color:var(--matn2,#b4bcd8);margin-top:3px}
+.dars3 .xronologiya ~ * .ip-karta{top:14px}
+.ip-manba{position:absolute;right:12px;bottom:8px;z-index:2;font-size:10.5px;color:rgba(255,255,255,.78);text-shadow:0 1px 2px rgba(0,0,0,.7);pointer-events:none}
+.ip-iz-x{color:var(--xira,#7f89ad);font-size:12.5px}
+
+/* tag: davr va yo‘l tugmalari */
+.ip-tag{display:flex;flex-direction:column;gap:7px;align-items:center;width:100%}
+.ip-davrlar{display:flex;gap:3px;flex-wrap:wrap;justify-content:center}
+.ip-tag .ip-davrlar button{height:auto;min-height:40px;padding:5px 10px;display:flex;flex-direction:column;align-items:flex-start;gap:1px;border-radius:10px;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#c5cbe3}
+.ip-tag .ip-davrlar button b{font:700 11.5px 'JetBrains Mono',monospace;color:#fff;white-space:nowrap}
+.ip-tag .ip-davrlar button span{font-size:10.5px;font-weight:500;color:#9aa3c7;white-space:nowrap}
+.ip-tag .ip-davrlar button:hover{background:rgba(255,255,255,.11)}
+.ip-tag .ip-davrlar button.faol{background:rgba(245,197,66,.14);border-color:#f5c542;box-shadow:inset 0 0 0 1px rgba(245,197,66,.35)}
+.ip-tag .ip-davrlar button.faol span{color:#f3dfa6}
+.ip-yolt{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.ip-tag .ip-yolt button{height:28px;padding:0 10px;display:flex;align-items:center;gap:7px;border-radius:99px;font-size:12px;font-weight:600;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#dfe3f3}
+.ip-tag .ip-yolt button i{width:18px;height:4px;border-radius:3px;background:var(--r);box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+.ip-tag .ip-yolt button.faol{background:rgba(255,255,255,.14);border-color:var(--r);color:#fff}
+
+@media (max-width:700px){
+  .ip-karta{top:8px;padding:7px 12px;min-width:0}
+  .ip-nom{font-size:16px}
+  .ip-tag .ip-davrlar button{min-height:34px;padding:4px 7px}
+  .ip-tag .ip-davrlar button span{display:none}
+  .ip-manba{font-size:9px;left:10px;right:auto;bottom:4px}
+}
+/* v3.14 ulash: dars sahifasidagi tor sahnada panel ixcham (davr nomi — faqat sarlavhada/title) */
+.dars3 .ip-davrlar button span{display:none}
+.dars3 .ip-davrlar button{padding:5px 9px}
+@media (min-width:761px){ .dars3 .ip-davrlar{flex-wrap:nowrap} }

@@ -1,0 +1,36 @@
+/* MAKON v3.15 — «fa» guruhi sahnalari (fizika + astronomiya) uchun uslublar. Hamma klasslar fa- bilan. */
+.fa-belgilar{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.fa-bel{position:absolute;left:0;top:0;transform:translate(-50%,-50%);white-space:nowrap;font:600 11.5px/1.2 Inter,'Plus Jakarta Sans',sans-serif;color:#e8ebf7;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6);letter-spacing:.1px;will-change:transform}
+.fa-bel.kichik{font-size:10.5px;color:#aab2d4;font-weight:500}
+.fa-bel.turkum{font:700 10.5px/1 'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:#9d8cff;opacity:.9}
+.fa-bel.pill{padding:3px 8px;border-radius:8px;background:rgba(10,13,28,.78);border:1px solid rgba(255,255,255,.14);text-shadow:none;backdrop-filter:blur(4px)}
+.fa-bel.pill i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:0}
+.fa-bel.sariq{color:#ffd57f}.fa-bel.qizil{color:#ff8a7a}.fa-bel.kok{color:#8fd0ff}.fa-bel.yashil{color:#6ff0b4}
+.fa-bel.ong{transform:translate(10px,-50%)}
+.fa-bel.ust{transform:translate(-50%,-140%)}
+.fa-karta{position:absolute;right:14px;top:14px;z-index:4;width:252px;max-width:calc(100% - 28px);padding:12px 14px;border-radius:16px;background:rgba(10,14,30,.82);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);color:#dfe3f3;font-size:12.5px;line-height:1.45;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.fa-karta .ust{display:block;font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:1.6px;color:#8d95b8;text-transform:uppercase;margin-bottom:7px}
+.fa-karta .q{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;align-items:baseline}
+.fa-karta .q span{color:#8d95b8;font-size:12px}
+.fa-karta .q b{font:600 12.5px 'JetBrains Mono',monospace;color:#fff;text-align:right;white-space:nowrap}
+.fa-karta .q b.y{color:#ffc14d}.fa-karta .q b.s{color:#4ee1a0}.fa-karta .q b.k{color:#5cc8ff}.fa-karta .q b.r{color:#ff7a6b}
+.fa-karta .iz{margin:8px 0 0;color:#aab2d4;font-size:11.5px}
+.fa-karta .fx{font:600 15px/1.3 'JetBrains Mono',monospace;color:#fff;margin:2px 0 8px}
+.fa-karta canvas{display:block;width:100%;height:auto;border-radius:10px;background:#070a16;margin-top:6px}
+.fa-karta table{width:100%;border-collapse:collapse;font:500 11.5px 'JetBrains Mono',monospace;margin-top:6px}
+.fa-karta th,.fa-karta td{padding:3px 4px;text-align:right;border-bottom:1px solid rgba(255,255,255,.06)}
+.fa-karta th{color:#8d95b8;font-weight:600}
+.fa-karta th:first-child,.fa-karta td:first-child{text-align:left}
+.fa-karta tr.faol td{color:#ffd57f}
+.fa-karta .belgi{display:inline-block;padding:2px 7px;border-radius:6px;font:700 11px 'JetBrains Mono',monospace;background:rgba(255,255,255,.08)}
+.fa-karta .belgi.ok{background:rgba(78,225,160,.18);color:#6ff0b4}.fa-karta .belgi.yoq{background:rgba(255,122,107,.16);color:#ff9a8c}
+.fa-karta .belgi.sar{background:rgba(255,193,77,.18);color:#ffd57f}
+.fa-karta.chap{right:auto;left:14px;top:auto;bottom:118px;width:210px}
+.fa-uch{position:absolute;z-index:5;pointer-events:none;padding:4px 8px;border-radius:7px;background:rgba(10,13,28,.92);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:12px;font-weight:600;transform:translate(12px,-120%);white-space:nowrap;display:none}
+.boshq-panel .sahna-tag .fa-ajr{width:1px;height:22px;background:rgba(255,255,255,.12);margin:0 2px}
+.boshq-panel .sahna-tag label.fa-sl{min-width:190px;flex:1 1 190px;font-size:12.5px;gap:8px;white-space:nowrap;margin-right:8px}
+.boshq-panel .sahna-tag label.fa-sl b{min-width:52px;font:600 12px 'JetBrains Mono',monospace;color:#fff;text-align:right}
+@media (max-width:1100px){.fa-karta{width:220px;font-size:12px;padding:10px 12px}}
+@media (max-width:700px){.fa-karta{top:8px;right:8px;left:auto;bottom:auto;width:176px;padding:8px 10px;font-size:11px;border-radius:12px}.fa-karta .iz,.fa-karta table,.fa-karta .fx{display:none}.fa-karta canvas{width:90px!important;margin:0 auto 4px}.fa-karta .q b{font-size:11px}.fa-karta.chap{display:none}.fa-bel{font-size:10px}}
+.uq-sahna .fa-karta,.uq-sahna .fa-belgilar{display:none!important}
+.dars3.panel-yopiq .fa-karta{top:62px}

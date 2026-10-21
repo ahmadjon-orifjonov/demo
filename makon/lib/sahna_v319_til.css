@@ -1,0 +1,112 @@
+/* MAKON v3.19 — guruh «til» sahnalari (lib/sahna_v319_til.js). lib/sahna_v315_tr.css dan KEYIN ulanadi. Barcha sinflar til- bilan boshlanadi. */
+.til-q{position:absolute;z-index:7;color:#dfe3f3;font-size:13px;line-height:1.5}
+.til-p{right:16px;bottom:136px;width:min(300px,calc(100% - 32px));max-height:calc(100% - 220px);overflow:auto;padding:14px 15px 12px;border-radius:16px;background:rgba(12,16,34,.86);border:1px solid rgba(215,140,255,.28);backdrop-filter:blur(12px);box-shadow:0 18px 40px rgba(0,0,0,.4);scrollbar-width:thin;animation:til-chiq .22s ease}
+@keyframes til-chiq{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.til-ust{display:block;font:600 10.5px/1.2 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8d95b8;margin-bottom:6px}
+.til-p h4{margin:0;font:800 24px/1.15 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;letter-spacing:-.01em}
+.til-ipa{font:500 15px/1.3 'JetBrains Mono',monospace;color:#d78cff;margin-top:4px}
+.til-uz{font-size:14px;font-weight:650;color:#ffd57f;margin-top:6px}
+.til-misol{margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#dfe3f3;font-size:12.5px}
+.til-qosh{margin-top:7px;font-size:11.5px;color:#9aa3c7}
+.til-qator{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.til-ovoz{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:9px;font-size:12.5px;font-weight:600;background:var(--asos,#6d52ff);color:#fff;border:1px solid transparent;cursor:pointer}
+.til-ovoz:hover{filter:brightness(1.12)}
+.til-ovoz.faol{background:#36d6a0;color:#0b0f1e}
+.til-ovoz.yoq{background:rgba(255,255,255,.08);color:#9aa3c7;cursor:default}
+.til-yop{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:7px;border:0;background:rgba(255,255,255,.08);color:#dfe3f3;font-size:16px;line-height:1;cursor:pointer}
+.til-yop:hover{background:rgba(255,255,255,.16)}
+/* pastki panel ichidagi slayder */
+.boshq-panel .sahna-tag label{min-width:150px}
+/* ---------- 2D sahnalar ---------- */
+.til-2d{position:absolute;inset:0;z-index:2;overflow:auto;padding:78px 16px 150px;scrollbar-width:thin;background:radial-gradient(90% 95% at 50% 40%,#1b2250 0%,#0e1230 45%,#05070f 100%)}
+.til-2d.testda{padding:14px 12px 20px}
+.til-2d-ichi{max-width:960px;margin:0 auto;transform-origin:top center;transition:transform .25s;color:#dfe3f3;font-size:14px;line-height:1.55}
+.til-sar{margin:0 0 14px}
+.til-sar h3{margin:0;font:800 clamp(16px,2.2vw,22px)/1.25 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;letter-spacing:-.01em}
+.til-2d.testda .til-sar{display:none}
+.til-2k{position:sticky;bottom:8px;margin:14px auto 0;width:min(520px,100%);padding:12px 14px;border-radius:14px;background:rgba(12,16,34,.94);border:1px solid rgba(215,140,255,.3);box-shadow:0 14px 34px rgba(0,0,0,.45);animation:til-chiq .22s ease;z-index:3}
+.til-2k h4{margin:0;font:800 17px/1.25 'Plus Jakarta Sans',Inter,sans-serif;color:#fff}
+.til-2k p{margin:6px 0 0;font-size:13px;color:#dfe3f3}
+.til-2k .til-qosh{font-size:12px}
+.til-2k .til-yop{top:8px}
+/* gap va so‘zlar */
+.til-gap{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:flex-end;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:clamp(17px,2.4vw,24px);font-weight:700;color:#fff;line-height:1.3}
+.til-soz{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px 4px;border-radius:10px;border:1px solid transparent;background:transparent;color:#fff;font:inherit;cursor:pointer;transition:background .15s,border-color .15s;--r:#8d95b8}
+.til-soz:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)}
+.til-soz small{font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6e769a}
+.til-soz.ochiq{background:color-mix(in srgb,var(--r) 16%,transparent);border-color:color-mix(in srgb,var(--r) 55%,transparent)}
+.til-soz.ochiq span{color:var(--r)}
+.til-soz.ochiq small{color:var(--r)}
+.til-soz.faol{box-shadow:0 0 0 2px var(--r)}
+.til-tinish{font-size:inherit;color:#8d95b8;padding-bottom:16px}
+.til-legenda{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.til-chip{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 11px 0 8px;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#dfe3f3;font:600 12.5px Inter,sans-serif;cursor:pointer}
+.til-chip i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.til-chip small{font-weight:500;color:#8d95b8;font-size:11px}
+.til-chip:hover{background:rgba(255,255,255,.1)}
+.til-chip.faol{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
+/* gap bo‘laklari: tagiga chizish */
+.til-gap-b .til-soz{padding-bottom:6px}
+.til-chz{display:block;width:100%;height:10px;position:relative}
+.til-chz .c1{position:absolute;left:0;right:0;top:1px;height:2px;border-radius:2px}
+.til-chz .c2{position:absolute;left:0;right:0;top:6px;height:2px;border-radius:2px}
+.til-chz .cu{background:none!important;border-top:2px dashed}
+.til-chz .cn{background:none!important;border-top:2px dotted}
+.til-chz .cw{position:absolute;left:0;right:0;top:0;width:100%;height:8px}
+.til-daraxt{margin-top:14px;padding:10px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);overflow:hidden}
+.til-daraxt .tg.faol rect{filter:drop-shadow(0 0 6px rgba(255,255,255,.35))}
+/* qo‘shma gap yig‘ish */
+.til-yig{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.til-blok{flex:1 1 220px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:clamp(15px,2vw,19px);font-weight:700;color:#fff;min-height:70px}
+.til-blok .til-ust{margin-bottom:4px}
+.til-blok.bosh{border-color:rgba(92,200,255,.6);background:rgba(92,200,255,.08)}
+.til-blok.bosh .til-ust{color:#5cc8ff}
+.til-blok.ergash{border-color:rgba(255,179,71,.6);background:rgba(255,179,71,.08)}
+.til-blok.ergash .til-ust{color:#ffb347}
+.til-blok.teng{border-color:rgba(169,150,255,.5);background:rgba(169,150,255,.07)}
+.til-blok.bog{flex:0 1 150px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;background:color-mix(in srgb,var(--r) 18%,transparent);border-color:var(--r);color:var(--r);font-size:clamp(16px,2.4vw,22px)}
+.til-natija{margin-top:14px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--r)}
+.til-natija .til-gapn{font:700 clamp(17px,2.4vw,22px)/1.3 'Plus Jakarta Sans',Inter,sans-serif;color:#fff;margin:2px 0 8px}
+.til-natija b{color:var(--r)}
+.til-natija p{margin:8px 0 0;color:#dfe3f3;font-size:13.5px}
+/* uslublar */
+.til-uslublar{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.til-uk{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:border-color .15s,background .15s;--r:#8d95b8}
+.til-uk:hover{background:rgba(255,255,255,.07)}
+.til-uk.faol{border-color:var(--r);background:color-mix(in srgb,var(--r) 10%,transparent);grid-column:1/-1}
+.til-um{margin:0;font-size:13.5px;line-height:1.6;color:#eef1fb}
+.til-um mark{background:color-mix(in srgb,var(--r) 30%,transparent);color:#fff;border-radius:4px;padding:0 3px;box-shadow:0 0 0 1px color-mix(in srgb,var(--r) 60%,transparent)}
+.til-uk ul{margin:8px 0 0;padding-left:18px;font-size:12.5px;color:#dfe3f3}
+.til-uk small{display:block;margin-top:6px;font-size:11.5px;color:#8d95b8}
+.til-sinov{margin:0 0 14px;padding:14px 16px;border-radius:16px;background:rgba(255,210,74,.08);border:1px solid rgba(255,210,74,.4)}
+.til-sinov .til-ust{color:#ffd24a}
+/* xronologiya tasmasi */
+.til-xron{margin-top:14px}
+.til-xron-ichi{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin;scroll-snap-type:x proximity}
+.til-xv{flex:0 0 auto;width:150px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#dfe3f3;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:3px;scroll-snap-align:center}
+.til-xv b{font:800 16px 'JetBrains Mono',monospace;color:#ffd57f}
+.til-xv span{font-size:12px;line-height:1.35}
+.til-xv.otdi{opacity:.65}
+.til-xv.faol{background:rgba(215,140,255,.16);border-color:#d78cff;color:#fff}
+.til-xv:hover{background:rgba(255,255,255,.1)}
+.til-xarita{margin-top:14px}
+.til-izoh{display:block;margin-top:6px;font-size:11.5px;color:#8d95b8}
+.til-sh text{pointer-events:none}
+.til-sh:hover circle{stroke:#fff}
+.til-xamsa{margin-top:16px}
+.til-dostonlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.til-doston{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#dfe3f3;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.til-doston b{color:#fff;font-size:13.5px}
+.til-doston i{font-size:11.5px;color:#9aa3c7}
+.til-doston small{font:700 11px 'JetBrains Mono',monospace;color:#ffd57f}
+.til-doston.faol{border-color:#ffb86b;background:rgba(255,184,107,.14)}
+.til-sxema{margin-top:4px}
+.til-qn:hover rect{filter:brightness(1.3)}
+/* telefon */
+@media (max-width:760px){
+  .til-p{left:10px;right:10px;bottom:12px;width:auto;max-height:46%}
+  .til-2d{padding:78px 12px 24px}
+  .til-gap{font-size:17px;padding:10px}
+  .til-xv{width:130px}
+  .til-2k{bottom:4px}
+}

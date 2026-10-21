@@ -1,0 +1,39 @@
+/* MAKON v3.15 — guruh «im» sahnalari (lib/sahna_v315_im.js). app3.css dan KEYIN ulanadi. Barcha sinflar im- bilan boshlanadi. */
+.im-q{position:absolute;z-index:7;color:#dfe3f3;font-size:13px;line-height:1.5}
+.im-p{right:16px;bottom:78px;width:min(318px,calc(100% - 32px));max-height:calc(100% - 170px);overflow:auto;padding:14px 15px;border-radius:16px;background:rgba(12,16,34,.84);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);box-shadow:0 18px 40px rgba(0,0,0,.35);scrollbar-width:thin}
+.im-p h4{margin:0 0 2px;font:700 15px/1.3 'Plus Jakarta Sans',Inter,sans-serif;color:#fff}
+.im-ust{display:block;font:600 10.5px/1.2 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#8d95b8;margin-bottom:6px}
+.im-p .im-qator{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.im-p input[type=number],.im-p input[type=text],.im-p select{height:32px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;padding:0 9px;font:600 13px Inter,sans-serif;min-width:0}
+.im-p select option{background:#141a31;color:#fff}
+.im-p input[type=number]{width:110px}
+.im-p input[type=text]{flex:1;width:100%}
+.im-p input[type=range]{flex:1;accent-color:#8f7bff}
+.im-p button{height:30px;padding:0 11px;border-radius:9px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.08);color:#dfe3f3;border:1px solid rgba(255,255,255,.1);cursor:pointer}
+.im-p button:hover{background:rgba(255,255,255,.14)}
+.im-p button.faol,.im-p button.a{background:var(--asos,#6d52ff);border-color:transparent;color:#fff}
+.im-natija{margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font:600 14px/1.45 'JetBrains Mono',monospace;color:#fff;word-break:break-word}
+.im-natija small{display:block;font:500 11.5px/1.45 Inter,sans-serif;color:#9aa3c7;margin-top:4px}
+.im-iz{font-size:11.5px;color:#8d95b8;margin-top:8px}
+.im-ogoh{font-size:11.5px;color:#ffcf7a;margin-top:6px}
+.im-olchov{height:8px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:8px}
+.im-olchov i{display:block;height:100%;width:0;border-radius:5px;transition:width .3s,background .3s}
+/* dastur muharriri (sikl) */
+.im-dastur{display:flex;flex-direction:column;gap:3px;min-height:60px;max-height:230px;overflow:auto;padding:8px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);font:600 13px/1.35 'JetBrains Mono',monospace;margin:8px 0}
+.im-dastur .ln{display:flex;align-items:center;gap:6px;padding:3px 6px;border-radius:7px;color:#dfe3f3;cursor:pointer}
+.im-dastur .ln:hover{background:rgba(255,255,255,.06)}
+.im-dastur .ln.tanl{outline:1px dashed rgba(169,150,255,.7)}
+.im-dastur .ln.hozir{background:rgba(255,193,77,.18);color:#ffd57f}
+.im-dastur .ln .n{width:18px;color:#6e769a;font-size:11px;text-align:right}
+.im-dastur .ln.sikl{color:#a996ff}.im-dastur .ln.shart{color:#5cc8ff}.im-dastur .ln.yop{color:#a996ff}
+.im-dastur .bosh{color:#6e769a;font-weight:500;font-family:Inter,sans-serif;font-size:12px;padding:6px}
+.im-palitra{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.im-palitra button{height:auto;min-height:30px;padding:4px 6px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.25}
+.im-palitra select{height:22px;padding:0 2px;margin:0 2px;border-radius:6px;background:#141a31;color:#fff;border:1px solid rgba(255,255,255,.2);font:600 12px 'JetBrains Mono',monospace}
+.im-palitra button.s{color:#c8bcff}.im-palitra button.sh{color:#9fe0ff}
+/* ossillograf / konvertor kichik jadvallar */
+.im-jad{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-top:6px}
+.im-jad span{color:#8d95b8}.im-jad b{font:600 12.5px 'JetBrains Mono',monospace;color:#fff}
+@media (max-width:1100px){.im-p{bottom:auto;top:12px;right:12px;max-height:calc(100% - 200px)}}
+@media (max-width:640px){.im-p{left:10px;right:10px;width:auto;top:10px;max-height:44%}}
+.im-p.im-yuqori{top:16px;bottom:auto;max-height:calc(100% - 120px)}
