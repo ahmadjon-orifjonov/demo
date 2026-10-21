@@ -247,7 +247,7 @@ function yonMenyu(yol){
   const oqit = rol === 'oqituvchi';
   const havola = (h, ik, nom, qo)=>{ const [q1, q2] = nom.split('|'); return `<a href="${h}" class="${yol === h ? 'faol' : ''} ${qo||''}" title="${(q1 + (q2 || '')).trim()}">${ikon(ik)}<span>${q1}${q2 ? '<i class="mu">' + q2 + '</i>' : ''}</span></a>`; };
   const asosiy = TEL
-    ? havola('#/','uy','Bosh sahifa') + havola('#/fanlar','kitob','Fanlar') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/natijalar','grafik','Natijalarim')
+    ? havola('#/fanlar','kitob','Fanlar') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/natijalar','grafik','Natijalarim')
     : oqit
     ? havola('#/oqituvchi','foydalanuvchilar','Sinf paneli') + havola('#/fanlar','kitob','Darslar kutubxonasi') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/ishlanmalar','hujjat','Dars ishlanmalari')
     : havola('#/','uy','Bosh sahifa') + havola('#/fanlar','kitob','Fanlar') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/takror','kitobcha','Takrorlash| kartalari') + havola('#/musobaqa','olov','Musobaqa') + havola('#/natijalar','grafik','Natijalarim') + havola('#/xatolar','maqsad','Xatolar| ustida ishlash', xatoBank().length ? 'xb-bor' : '');
@@ -568,6 +568,7 @@ async function dars(id, qadam){
     }
   } else {
     await amaliyot(id, d, izoh);
+    if(TEL){ const dk = $('#dok'), mk = $('#markaz'); if(dk && mk){ mk.parentElement.insertBefore(dk, mk); $('.dars3').classList.add('tel-sina'); } } /* v3.21b: telefonda topshiriq sahnaning TEPASIDA */
   }
 }
 
@@ -1513,6 +1514,7 @@ function yonalt(){
   const yolKalit = p[0] === 'dars' ? '#/fan/'+(DARS[p[1]] ? DARS[p[1]].fan : '') : h.split('/').slice(0, p[0] === 'fan' ? 3 : 2).join('/') || '#/';
   yonMenyu(p[0] === '' ? (rol === 'oqituvchi' ? '#/oqituvchi' : '#/') : yolKalit);
   const oqit = rol === 'oqituvchi';
+  if(p[0] === '' && TEL){ location.replace(location.pathname + '#/fanlar'); return; }
   if(p[0] === ''){ yolChiz([[oqit ? 'Sinf paneli' : 'Bosh sahifa', '']]); if(oqit) return oqituvchi(); bosh(); const hq = $('.hero'); if(hq) hq.insertAdjacentHTML('afterend', labBanner() + fizlabBanner() + biolabBanner() + v319Banner()); return; }
   if(p[0] === 'fanlar'){ yolChiz([['Fanlar', '']]); return fanlar(); }
   if(p[0] === 'fan'){ const f = FAN.find(x=>x.id === p[1]); yolChiz([['Fanlar', '#/fanlar'], [f ? f.nom : '', '']]); return fanSahifa(p[1]); }
