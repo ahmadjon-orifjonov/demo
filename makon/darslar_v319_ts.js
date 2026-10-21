@@ -1417,7 +1417,7 @@ D['sn-portret'] = {
   tsUq:{korinish:'old', chiziq:false, bolim:'koz'},
   kor:{
     sarlavha:'Ko‘z — boshning o‘rtasida',
-    matn:'Portretdagi eng ko‘p xato — ko‘zni juda yuqoriga chizish. Aslida ko‘z chizig‘i bosh balandligining o‘rtasida: iyakdan bosh tepasigacha teng ikkiga bo‘linadi. Yuz (soch chizig‘idan iyakgacha) taxminan uch teng qismga bo‘linadi: soch–qosh, qosh–burun asosi, burun–iyak; og‘iz pastki qismning yuqori uchdan birida; quloq qosh va burun asosi orasida. Bosh kengligi — taxminan 5 ko‘z kengligi, ko‘zlar orasi — 1 ko‘z. Bu akademik taxminiy qoidalar (Loomis uslubi) — har bir odam yuzi farq qiladi, lekin boshlash uchun ishonchli tayanch. Sahnadagi 3D boshni aylantiring, chiziqlarni yoqing, qismlarni bosing.',
+    matn:'Portretdagi eng ko‘p xato — ko‘zni juda yuqoriga chizish. Aslida ko‘z chizig‘i bosh balandligining o‘rtasida: iyakdan bosh tepasigacha teng ikkiga bo‘linadi. Yuz (soch chizig‘idan iyakgacha) taxminan uch teng qismga bo‘linadi: soch–qosh, qosh–burun asosi, burun–iyak; og‘iz pastki qismning yuqori uchdan birida; quloq qosh va burun asosi orasida. Bosh kengligi — taxminan 5 ko‘z kengligi, ko‘zlar orasi — 1 ko‘z. Bu akademik taxminiy qoidalar (Loomis uslubi) — har bir odam yuzi farq qiladi, lekin boshlash uchun ishonchli tayanch. Chizmada uch ko‘rinishni (olddan, ¾, yondan) solishtiring, chiziqlarni yoqing, qismlarni bosing.',
     punktlar:['<b>Ko‘z chizig‘i</b> = bosh balandligining ½ (akademik taxminiy)','<b>Yuz 3 qism:</b> soch chizig‘i → qosh → burun asosi → iyak — taxminan teng','<b>Kenglik:</b> bosh ≈ 5 ko‘z; ko‘zlar orasi ≈ 1 ko‘z; burun kengligi ≈ 1 ko‘z','<b>Quloq:</b> qosh chizig‘i va burun asosi orasida; <b>og‘iz:</b> burun–iyak oralig‘ining yuqori ⅓ da']
   },
   bolimlar:[

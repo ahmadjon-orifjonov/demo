@@ -1359,6 +1359,7 @@ function mualliflar(){
     ['Harbiy yuk mashinasi', '“M939 Truck” — J-Toastie (Poly Pizza)', 'CC BY 3.0', 'poly.pizza/m/y8lBpvMlim'],
     ['Gazniqob', '“Gas mask” — stratofortress (OpenGameArt)', 'CC0', 'opengameart.org/content/gas-mask'],
     ['Kompas, dori qutisi', 'Quaternius (Poly Pizza)', 'CC0', 'poly.pizza'],
+    ['Odam figurasi (Ingliz tili · tana a’zolari) — «Animated Human»', 'Quaternius (OpenGameArt)', 'CC0', 'opengameart.org/content/animated-human-low-poly'],
     ['Tarixiy chegaralar (tarix xaritasi, Buyuk Ipak yo‘li xaritasi)', 'historical-basemaps — A. Ourednik (taxminiy chegaralar)', 'GPL-3.0', 'github.com/aourednik/historical-basemaps'],
     ['Quruqlik, ko‘llar, daryolar', 'Natural Earth', 'Jamoat mulki', 'naturalearthdata.com'],
     ['Yer va sayyora tasvirlari', 'NASA (Blue Marble, sayyora suratlari)', 'Jamoat mulki', 'nasa.gov'],

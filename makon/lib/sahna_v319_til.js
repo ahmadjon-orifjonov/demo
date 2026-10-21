@@ -776,75 +776,107 @@ SOZ.tana = {
   knee:{en:'knee', ipa:'/niː/', uz:'tizza', dard:'My knee hurts.', dardUz:'Tizzam og‘riyapti.', maslahat:'You shouldn’t run today.'},
   foot:{en:'foot', ipa:'/fʊt/', uz:'oyoq panjasi (ko‘plik: feet)', dard:'My feet hurt.', dardUz:'Oyoqlarim og‘riyapti.', maslahat:'You should wear comfortable shoes.'}
 };
-R.til_en_tana = async (sahna, {tag, izoh, yorliq})=>{
-  yorliq('English · Parts of the body · soddalashtirilgan figura');
-  const A = asos(sahna, {rx:.1, ry:.25, rxMin:-.3, rxMax:.8, zoom:1.0});
-  const {S, T, g, mat, fiz, quti, silindr, shar, soya, podium, yozuv, bosiladigan, belgila, karta} = A;
+R.til_en_tana = async (sahna, {tag, izoh, yorliq, skriptYukla})=>{
+  yorliq('English · Parts of the body · 3D model: «Animated Human» — Quaternius (CC0)');
+  const A = asos(sahna, {rx:.08, ry:.3, rxMin:-.3, rxMax:.8, zoom:1.0});
+  const {S, T, g, mat, fiz, shar, soya, podium, yozuv, bosiladigan, belgila, karta} = A;
   podium(2.2, 0, '#ff8fab');
   const TN = SOZ.tana;
-  const teri = fiz('#e8b894', {roughness:.55, clearcoat:.15}), kiyim = fiz('#3f7fc9', {roughness:.6}), shim = fiz('#2b3350', {roughness:.7}), poy = fiz('#1b1d24', {roughness:.5});
+  /* --- model yuklash (GLTFLoader + modellar/js/odam.js base64) --- */
+  const yukla = (src, bor)=>{ if(bor()) return Promise.resolve(); if(skriptYukla) return skriptYukla(src, bor); return new Promise((ok, xato)=>{ const sc = document.createElement('script'); sc.src = src; sc.onload = ()=>ok(); sc.onerror = ()=>xato(new Error(src)); document.head.append(sc); }); };
+  let gltf = null;
+  try{
+    await yukla('lib/GLTFLoader.js', ()=>!!T.GLTFLoader);
+    await yukla('modellar/js/odam.js', ()=>!!(window.MAKON_GLB && MAKON_GLB.odam));
+    const b64s = MAKON_GLB.odam, bin = atob(b64s), u8 = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    gltf = await new Promise((ok, xato)=>new T.GLTFLoader().parse(u8.buffer, '', ok, xato));
+  }catch(e){ console.warn('odam.glb yuklanmadi', e); }
   const F = new T.Group(); g.add(F);
-  const qism = (m, nom)=>{ bosiladigan(m, nom, {qism:nom}); return m; };
-  /* bosh */
-  const head = shar(.3, teri, 32); head.position.y = 2.42; head.scale.set(.92, 1.05, .92); F.add(qism(head, 'head'));
-  const hair = new T.Mesh(new T.SphereGeometry(.31, 32, 16, 0, Math.PI * 2, 0, Math.PI * .55), fiz('#3a2a1c', {roughness:.8})); hair.position.y = 2.47; hair.scale.set(.95, 1.0, .95); F.add(qism(hair, 'hair'));
-  [-.1, .1].forEach(x=>{ const e = shar(.045, fiz('#ffffff', {roughness:.3}), 12); e.position.set(x, 2.46, .26); F.add(qism(e, 'eye')); const q = shar(.022, mat('#1b1d24'), 8); q.position.set(x, 2.46, .3); F.add(qism(q, 'eye')); });
-  [-.28, .28].forEach(x=>{ const e = shar(.06, teri, 12); e.scale.set(.5, 1, .8); e.position.set(x, 2.42, .02); F.add(qism(e, 'ear')); });
-  const nose = new T.Mesh(new T.ConeGeometry(.045, .12, 10), teri); nose.rotation.x = Math.PI / 2; nose.position.set(0, 2.38, .3); F.add(qism(nose, 'nose'));
-  const mouth = new T.Mesh(new T.TorusGeometry(.07, .018, 8, 16, Math.PI), fiz('#c0392b', {roughness:.5})); mouth.rotation.z = Math.PI; mouth.position.set(0, 2.29, .27); F.add(qism(mouth, 'mouth'));
-  const neck = silindr(.1, .11, .18, teri, 20); neck.position.y = 2.1; F.add(qism(neck, 'neck'));
-  /* tana */
-  const chest = quti(.7, .55, .36, kiyim, .12); chest.position.y = 1.78; F.add(qism(chest, 'chest'));
-  const stomach = quti(.62, .36, .33, kiyim, .1); stomach.position.y = 1.34; F.add(qism(stomach, 'stomach'));
-  const back = quti(.66, .8, .06, kiyim, .02); back.position.set(0, 1.58, -.17); F.add(qism(back, 'back'));
-  [-.42, .42].forEach(x=>{ const sh = shar(.12, kiyim, 16); sh.position.set(x, 1.98, 0); F.add(qism(sh, 'shoulder')); });
-  /* qo‘llar */
-  [-1, 1].forEach(s=>{
-    const qol = new T.Group(); qol.position.set(s * .44, 1.98, 0); F.add(qol);
-    const ust = silindr(.085, .075, .5, kiyim, 16); ust.position.y = -.27; qol.add(qism(ust, 'arm'));
-    const elb = shar(.08, teri, 14); elb.position.y = -.55; qol.add(qism(elb, 'elbow'));
-    const bil = silindr(.07, .06, .48, teri, 16); bil.position.y = -.82; qol.add(qism(bil, 'arm'));
-    const hand = quti(.14, .18, .08, teri, .03); hand.position.y = -1.14; qol.add(qism(hand, 'hand'));
-    for(let i = 0; i < 4; i++){ const f = silindr(.016, .014, .12, teri, 8); f.position.set(-.05 + i * .033, -1.29, 0); qol.add(qism(f, 'finger')); }
-    const bosh2 = silindr(.018, .015, .09, teri, 8); bosh2.position.set(s * .085, -1.14, .02); bosh2.rotation.z = -s * .6; qol.add(qism(bosh2, 'finger'));
-    qol.rotation.z = s * .14; qol.userData.s = s;
+  const BONE = {};
+  let mixer = null;
+  if(gltf){
+    const model = gltf.scene; F.add(model);
+    model.traverse(o=>{ if(o.isBone) BONE[o.name] = o; if(o.isMesh){ o.frustumCulled = false; o.userData.odam = 1; if(o.material){ o.material.roughness = .72; o.material.metalness = 0; o.material.envMapIntensity = .25; o.material.userData.env = 1; if(o.material.map){ o.material.map.magFilter = T.NearestFilter; o.material.map.minFilter = T.NearestFilter; } } } });
+    /* yo‘nalish: yelkalar chizig‘idan «chap» vektori → old tomon +Z ga buriladi */
+    model.updateMatrixWorld(true);
+    const wp = b=>{ const v = new T.Vector3(); BONE[b].getWorldPosition(v); return v; };
+    /* Quaternius modeli faylda +Z ga (kameraga) qaragan — burilish 0 (sinov: ekran320	ana_rot_all.png) */
+    F.rotation.y = 0;
+    F.updateMatrixWorld(true);
+    const tepa = wp('HeadTop_End').y, poy = Math.min(wp('LeftToe_End').y, wp('RightToe_End').y, wp('LeftFoot').y - .02);
+    const kat = 2.6 / Math.max(.01, tepa - poy);
+    F.scale.setScalar(kat); F.position.y = -poy * kat; F.updateMatrixWorld(true);
+    if(gltf.animations && gltf.animations.length){ mixer = new T.AnimationMixer(model); const ak = mixer.clipAction(gltf.animations[0]); ak.play(); mixer.timeScale = .7; mixer.update(1.5); }
+  }
+  /* --- bosiladigan nuqtalar (suyak + siljish) --- */
+  const V = ()=>new T.Vector3();
+  const wpos = (b, v)=>{ const o = BONE[b]; if(!o) return v.set(0, 1, 0); o.getWorldPosition(v); return g.worldToLocal(v); };
+  const t1 = V(), t2 = V(), t3 = V();
+  const yon = V(), old = V(), yuq = new T.Vector3(0, 1, 0);
+  function yonalish(){ yon.set(1, 0, 0); old.set(0, 0, 1); } /* figura +Z ga qaragan: chap = +X, old = +Z */
+  const mid = (a, b, v)=>{ wpos(a, t2); wpos(b, t3); return v.copy(t2).add(t3).multiplyScalar(.5); };
+  /* [nom, hisoblash(v, s) — s = +1 chap / −1 o‘ng] */
+  const HS = [];
+  const KICHIK = {eye:1, ear:1, nose:1, mouth:1, finger:1};
+  const TEL = (sahna.clientWidth || 900) < 760 ? 1.35 : 1; /* telefonda nuqtalar kattaroq — barmoq bilan bosish uchun */
+  const nuqta = (nom, f, s)=>{ const m = shar((KICHIK[nom] ? .048 : .07) * TEL, mat('#d78cff', {transparent:true, opacity:.34, depthWrite:false, roughness:.3}), 18); m.renderOrder = 6; m.userData.hs = 1; bosiladigan(m, nom, {qism:nom}); g.add(m); HS.push({nom, m, f, s:s || 1}); return m; };
+  const boshR = ()=>{ wpos('Head', t2); wpos('HeadTop_End', t3); return Math.max(.12, t3.y - t2.y) * .5; };
+  const boshM = v=>{ const r = boshR(); wpos('Head', v); return v.addScaledVector(yuq, r * 1.05); };
+  nuqta('head', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(yuq, r * .55).addScaledVector(old, r * .55); });
+  nuqta('hair', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(yuq, r * 1.0).addScaledVector(old, -r * .25); });
+  [1, -1].forEach(s=>{
+    nuqta('eye', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(old, r * .92).addScaledVector(yuq, r * .12).addScaledVector(yon, s * r * .36); }, s);
+    nuqta('ear', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(yon, s * r * 1.0).addScaledVector(yuq, r * .02); }, s);
   });
-  /* oyoqlar */
-  [-1, 1].forEach(s=>{
-    const oy = new T.Group(); oy.position.set(s * .17, 1.16, 0); F.add(oy);
-    const son = silindr(.12, .1, .55, shim, 16); son.position.y = -.28; oy.add(qism(son, 'leg'));
-    const knee = shar(.1, shim, 14); knee.position.y = -.57; oy.add(qism(knee, 'knee'));
-    const bol = silindr(.095, .08, .5, shim, 16); bol.position.y = -.84; oy.add(qism(bol, 'leg'));
-    const foot = quti(.18, .1, .34, poy, .03); foot.position.set(0, -1.12, .07); oy.add(qism(foot, 'foot'));
+  nuqta('nose', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(old, r * 1.02).addScaledVector(yuq, -r * .12); });
+  nuqta('mouth', v=>{ const r = boshR(); boshM(v); return v.addScaledVector(old, r * .92).addScaledVector(yuq, -r * .48); });
+  nuqta('neck', v=>wpos('Neck', v).addScaledVector(old, .1).addScaledVector(yuq, .04));
+  nuqta('chest', v=>wpos('Spine2', v).addScaledVector(old, .17).addScaledVector(yuq, .02));
+  nuqta('stomach', v=>{ wpos('Spine', v); wpos('Spine1', t2); return v.lerp(t2, .35).addScaledVector(old, .16); });
+  nuqta('back', v=>wpos('Spine1', v).addScaledVector(old, -.15).addScaledVector(yuq, .06));
+  [1, -1].forEach(s=>{
+    nuqta('shoulder', v=>wpos(s > 0 ? 'LeftArm' : 'RightArm', v).addScaledVector(yuq, .07).addScaledVector(yon, s * .03), s);
+    nuqta('arm', v=>mid(s > 0 ? 'LeftArm' : 'RightArm', s > 0 ? 'LeftForeArm' : 'RightForeArm', v).addScaledVector(yon, s * .07), s);
+    nuqta('elbow', v=>wpos(s > 0 ? 'LeftForeArm' : 'RightForeArm', v).addScaledVector(yon, s * .05).addScaledVector(old, -.03), s);
+    nuqta('hand', v=>mid(s > 0 ? 'LeftHand' : 'RightHand', s > 0 ? 'LeftHandIndex1' : 'RightHandIndex1', v).addScaledVector(yon, s * .03), s);
+    nuqta('finger', v=>wpos(s > 0 ? (BONE.LeftHandIndex3 ? 'LeftHandIndex3' : 'LeftHandIndex2') : (BONE.RightHandIndex3 ? 'RightHandIndex3' : 'RightHandIndex2'), v), s);
+    nuqta('leg', v=>mid(s > 0 ? 'LeftUpLeg' : 'RightUpLeg', s > 0 ? 'LeftLeg' : 'RightLeg', v).addScaledVector(old, .11), s);
+    nuqta('knee', v=>wpos(s > 0 ? 'LeftLeg' : 'RightLeg', v).addScaledVector(old, .1), s);
+    nuqta('foot', v=>mid(s > 0 ? 'LeftFoot' : 'RightFoot', s > 0 ? 'LeftToe_End' : 'RightToe_End', v).addScaledVector(yuq, .05), s);
   });
-  soya(1.6, 1.0, 0, .05, 0, .6);
-  const yoz = yozuv('', {bal:.3, w:640, h:120, shrift:'700 52px Inter, sans-serif', chuqurlik:false}); yoz.position.set(1.4, 2.95, 0); yoz.visible = false; g.add(yoz);
-  const dardYoz = yozuv('', {bal:.44, w:1100, h:120, shrift:'600 50px Inter, sans-serif', rang:'#ffd57f', chuqurlik:false}); dardYoz.position.set(0, 3.35, 0); dardYoz.visible = false; g.add(dardYoz);
+  function nuqtalarYangila(){ yonalish(); HS.forEach(h=>{ h.f(h.m.position, h.s); }); }
+  nuqtalarYangila();
+  soya(1.8, 1.1, 0, .05, 0, .6);
+  /* --- yozuvlar --- */
+  const yoz = yozuv('', {bal:.3, w:640, h:120, shrift:'700 52px Inter, sans-serif', chuqurlik:false}); yoz.visible = false; g.add(yoz);
+  const dardYoz = yozuv('', {bal:.44, w:1100, h:120, shrift:'600 50px Inter, sans-serif', rang:'#ffd57f', chuqurlik:false}); dardYoz.position.set(0, 3.05, 0); dardYoz.visible = false; g.add(dardYoz);
   let yozKor = false; const yozlar = [];
-  const JOY = {head:[-.62, 2.66, .2], hair:[.0, 2.92, 0], eye:[.52, 2.52, .25], ear:[-.58, 2.34, .05], nose:[.0, 2.4, .42], mouth:[.0, 2.18, .4], neck:[.5, 2.08, .12], shoulder:[-.62, 1.98, .05], chest:[0, 1.78, .22], stomach:[0, 1.34, .2], back:[.6, 1.58, -.22], arm:[-.62, 1.6, .05], elbow:[.62, 1.43, .05], hand:[-.62, .9, .06], finger:[.62, .66, .04], leg:[-.3, 1.0, .14], knee:[.32, .62, .14], foot:[-.32, .18, .34]};
-  Object.keys(JOY).forEach(k=>{ const s = yozuv(TN[k].en, {bal:.19, w:260, h:90, shrift:'700 44px Inter, sans-serif', chuqurlik:false}); s.position.set(...JOY[k]); s.visible = false; g.add(s); yozlar.push(s); });
+  const birinchi = {}; HS.forEach(h=>{ if(!birinchi[h.nom]) birinchi[h.nom] = h; });
+  Object.keys(birinchi).forEach(k=>{ const sp = yozuv(TN[k].en, {bal:.17, w:260, h:90, shrift:'700 44px Inter, sans-serif', chuqurlik:false}); sp.visible = false; sp.userData.hs = birinchi[k]; g.add(sp); yozlar.push(sp); });
+  function yozlarJoyla(){ yozlar.forEach(sp=>{ const h = sp.userData.hs; sp.position.copy(h.m.position).addScaledVector(yuq, .13).addScaledVector(yon, h.s * .1); }); }
   let joriy = null;
   function korsat(k, bosildi, dardRejim){
     const t = TN[k]; if(!t) return; joriy = k;
-    belgila([k], '#ff6f5c', .6);
+    belgila([k], '#ff6f5c', .9);
     const dard = dardRejim && t.dard;
-    yoz.visible = true; yoz.yoz(t.en); yoz.position.set(JOY[k][0] < 0 ? -1.45 : 1.45, Math.max(.6, Math.min(2.7, JOY[k][1])), .3);
+    const h = birinchi[k];
+    yoz.visible = true; yoz.yoz(t.en); yoz.position.set(h.m.position.x < 0 ? -1.45 : 1.45, Math.max(.5, Math.min(2.75, h.m.position.y)), .3);
     dardYoz.visible = !!dard; if(dard) dardYoz.yoz(t.dard);
-    karta({ust:dard ? 'Health — salomatlik' : 'Body — tana a’zosi', en:dard ? t.dard : t.en, ipa:t.ipa, uz:dard ? t.dardUz + ' (' + t.uz + ')' : t.uz, misol:dard ? '<i>A: What’s the matter? B: ' + esc(t.dard) + '<br>A: ' + esc(t.maslahat) + '</i>' : (t.dard ? '<i>' + esc(t.dard) + '</i>' : ''), misolOqi:dard ? 'What is the matter? ' + t.dard + ' ' + t.maslahat : (t.dard || undefined), oqi:t.en});
+    karta({ust:dard ? 'Health — salomatlik' : 'Body — tana a’zosi', en:dard ? t.dard : t.en, ipa:t.ipa, uz:dard ? t.dardUz + ' (' + t.uz + ')' : t.uz, misol:dard ? '<i>A: What’s the matter? B: ' + esc(t.dard) + '<br>A: ' + esc(t.maslahat) + '</i>' : (t.dard ? '<i>' + esc(t.dard) + '</i>' : ''), misolOqi:dard ? 'What is the matter? ' + t.dard + '. ' + t.maslahat : (t.dard || ''), manba:'Cambridge Dictionary (dictionary.cambridge.org) — transkripsiya (UK)'});
     izoh.innerHTML = '<b>' + t.en + '</b> ' + t.ipa + ' — ' + t.uz + (t.dard ? '. <i>' + esc(t.dard) + '</i> — ' + esc(t.dardUz) + (dard ? ' <b>Maslahat:</b> <i>' + esc(t.maslahat) + '</i>' : '') : '.');
     detal('til_tana', k); hodisa('til-soz', {nom:k, en:t.en, uz:t.uz, sahna:'tana', dard:t.dard, bosildi:!!bosildi});
   }
-  S.bosish = ud=>{ if(ud.qism) korsat(ud.qism, true, dardRej); };
+  S.bosish = ud=>{ if(ud && ud.qism) korsat(ud.qism, true, dardRej); };
   let dardRej = false;
   S.holat = h=>{
     if(!h) return;
     if(h.yozuv !== undefined){ yozKor = !!h.yozuv; yozlar.forEach(s=>s.visible = yozKor); }
     if(h.dard !== undefined){ dardRej = !!h.dard; faolQil(tag, '[data-d]', dardRej ? tb.dard : null); }
     if(h.qism && TN[h.qism]) korsat(h.qism, false, dardRej);
-    if(h.guruh === 'bosh'){ const ns = ['head', 'hair', 'eye', 'ear', 'nose', 'mouth']; belgila(ns, '#ffb347', .45); izoh.innerHTML = '<b>Head (bosh qismlari):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
-    if(h.guruh === 'tana'){ const ns = ['neck', 'shoulder', 'chest', 'stomach', 'back']; belgila(ns, '#ffb347', .45); izoh.innerHTML = '<b>Body (tana):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
-    if(h.guruh === 'qol'){ const ns = ['arm', 'elbow', 'hand', 'finger']; belgila(ns, '#ffb347', .45); izoh.innerHTML = '<b>Arm (qo‘l):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
-    if(h.guruh === 'oyoq'){ const ns = ['leg', 'knee', 'foot']; belgila(ns, '#ffb347', .45); izoh.innerHTML = '<b>Leg (oyoq):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + ' (foot → feet).'; }
+    if(h.guruh === 'bosh'){ const ns = ['head', 'hair', 'eye', 'ear', 'nose', 'mouth']; belgila(ns, '#ffb347', .7); izoh.innerHTML = '<b>Head (bosh qismlari):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
+    if(h.guruh === 'tana'){ const ns = ['neck', 'shoulder', 'chest', 'stomach', 'back']; belgila(ns, '#ffb347', .7); izoh.innerHTML = '<b>Body (tana):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
+    if(h.guruh === 'qol'){ const ns = ['arm', 'elbow', 'hand', 'finger']; belgila(ns, '#ffb347', .7); izoh.innerHTML = '<b>Arm (qo‘l):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + '.'; }
+    if(h.guruh === 'oyoq'){ const ns = ['leg', 'knee', 'foot']; belgila(ns, '#ffb347', .7); izoh.innerHTML = '<b>Leg (oyoq):</b> ' + ns.map(k=>'<i>' + TN[k].en + '</i>').join(', ') + ' (foot → feet).'; }
   };
   const tb = tugmalar(tag, [
     {m:'Yozuvlar', f:b=>{ yozKor = !yozKor; b.classList.toggle('faol', yozKor); yozlar.forEach(s=>s.visible = yozKor); }}, '|',
@@ -852,9 +884,10 @@ R.til_en_tana = async (sahna, {tag, izoh, yorliq})=>{
     {m:'What’s the matter?', k:'dard', t:'Salomatlik rejimi: a’zoni bosganda dialog chiqadi', f:b=>{ dardRej = !dardRej; b.classList.toggle('faol', dardRej); if(joriy) korsat(joriy, false, dardRej); }}
   ]);
   tb.dard.dataset.d = 1;
-  S.kadrda = (dt, t)=>{ F.position.y = Math.sin(t * 1.4) * .012; F.children.forEach(c=>{ if(c.userData.s) c.rotation.z = c.userData.s * (.14 + Math.sin(t * 1.4) * .02); }); chest.scale.x = 1 + Math.sin(t * 1.4) * .012; };
-  S.joyla(1.85, new T.Vector3(0, 1.45, 0));
-  izoh.innerHTML = 'Tana a’zosini <b>bosing</b> — so‘z, transkripsiya, tarjima. «What’s the matter?» rejimida — «I have a headache» kabi dialog.';
+  S.kadrda = (dt, t)=>{ if(mixer) mixer.update(dt > .5 ? dt / 1000 : dt); if(gltf){ F.updateMatrixWorld(true); nuqtalarYangila(); } yozlarJoyla(); HS.forEach(h=>{ h.m.scale.setScalar(1 + Math.sin(t * 2.2 + h.m.position.y * 3) * .08); }); };
+  S.kadrda(0, 0);
+  S.joyla(2.05, new T.Vector3(0, 1.35, 0));
+  izoh.innerHTML = 'Tana a’zosidagi <b>binafsha nuqtani bosing</b> — so‘z, transkripsiya, tarjima. «What’s the matter?» rejimida — «I have a headache» kabi dialog.';
   return S;
 };
 

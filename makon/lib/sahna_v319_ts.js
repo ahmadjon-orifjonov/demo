@@ -1306,51 +1306,155 @@ reg('girih', (sahna, c)=>{
    13. PORTRET PROPORSIYALARI — 3D soddalashtirilgan bosh (akademik taxminiy)
    ===================================================================== */
 reg('portret', (sahna, c)=>{
+  /* v3.20: 2D akademik chizma (old / ¾ / yon) — canvas tekstura varaqda; protsedurali 3D bosh olib tashlandi (foydalanuvchi: «dabdala») */
   const {tag, izoh, yorliq} = c;
-  const H = uch3(sahna, c, {rx:.05, ry:0, fov:28, rxMin:-.4, rxMax:.6});
+  const H = uch3(sahna, c, {rx:.04, ry:0, fov:28, rxMin:-.25, rxMax:.35});
   const {S, T} = H;
   const s = {korinish:'old', chiziq:true, bolim:'koz', t:0};
-  H.nomlar = {bosh:'Bosh (kalla)', koz:'Ko‘z — bosh balandligining yarmida', qosh:'Qosh — yuz yuqori uchdan biri chegarasi', burun:'Burun — asosi yuzning ikkinchi uchdan birida', ogiz:'Og‘iz — burun va iyak orasining yuqori uchdan birida', quloq:'Quloq — qosh va burun asosi orasida', boyin:'Bo‘yin', soch:'Soch chizig‘i', iyak:'Iyak'};
+  H.nomlar = {bosh:'Bosh (kalla)', koz:'Ko‘z — bosh balandligining yarmida', qosh:'Qosh — yuz yuqori uchdan biri chegarasi', burun:'Burun — asosi yuzning ikkinchi uchdan birida', ogiz:'Og‘iz — burun va iyak orasining yuqori uchdan birida', quloq:'Quloq — qosh va burun asosi orasida', boyin:'Bo‘yin', soch:'Soch chizig‘i — yuqori uchdan bir boshlanadi', iyak:'Iyak — bosh balandligining pastki chegarasi'};
   const G = new T.Group(); S.g.add(G);
-  const teri = H.mat('#d9b48f', {roughness:.6}), sochM = H.mat('#2b1d16', {roughness:.8}), koM = H.mat('#f5f2ee', {roughness:.3}), irisM = H.mat('#3a5a3a', {roughness:.3}), qoraM = H.mat('#141010');
-  const nomla = (m, nom)=>{ m.traverse(o=>{ if(o.isMesh) o.userData.nom = nom; }); return m; };
-  /* o‘lchamlar: bosh balandligi 2,56 (−1,28 … 1,28), kenglik 2,0 = 5 ko‘z (ko‘z = 0,4) */
-  const kalla = H.shar(1, teri, 48); kalla.scale.set(1, 1.28, 1.05); nomla(kalla, 'bosh'); G.add(kalla);
-  const jag = H.shar(.86, teri, 40); jag.scale.set(1, .9, 1); jag.position.set(0, -.55, .05); nomla(jag, 'iyak'); G.add(jag);
-  const soch = H.shar(1.03, sochM, 40); soch.scale.set(1, 1.1, 1.05); soch.position.y = .45; nomla(soch, 'soch'); G.add(soch);
-  const sochKes = new T.Mesh(new T.BoxGeometry(3, 3, 3), teri); sochKes.visible = false; G.add(sochKes);
-  /* soch faqat yuqorida: klipping o‘rniga kalla oldini yopuvchi teri qatlami */
-  const peshona = H.shar(1.005, teri, 48); peshona.scale.set(1, 1.28, 1.05); peshona.position.z = .0; nomla(peshona, 'bosh'); G.add(peshona);
-  soch.position.z = -.12; soch.scale.set(1.0, 1.0, 1.0); soch.position.y = .62;
-  const boyin = H.sil(.42, .5, 1.1, teri, 32); boyin.position.y = -1.6; nomla(boyin, 'boyin'); G.add(boyin);
-  const yelka = H.quti(2.8, .5, 1.0, H.mat('#3b4a8a'), .15); yelka.position.y = -2.3; G.add(yelka);
-  [-.4, .4].forEach(x=>{
-    const koz = H.shar(.2, koM, 24); koz.scale.set(1, .62, .5); koz.position.set(x, 0, .94); nomla(koz, 'koz'); G.add(koz);
-    const ir = H.sil(.085, .085, .02, irisM, 24); ir.rotation.x = PI / 2; ir.position.set(x, 0, 1.035); nomla(ir, 'koz'); G.add(ir);
-    const qor = H.sil(.04, .04, .025, qoraM, 16); qor.rotation.x = PI / 2; qor.position.set(x, 0, 1.045); nomla(qor, 'koz'); G.add(qor);
-    const qovoq = new T.Mesh(new T.TorusGeometry(.19, .02, 8, 24, PI), teri); qovoq.position.set(x, .02, 1.0); qovoq.scale.set(1, .6, 1); nomla(qovoq, 'koz'); G.add(qovoq);
-    const qs = new T.Mesh(new T.TorusGeometry(.22, .03, 8, 20, PI * .8), sochM); qs.position.set(x, .12, .96); qs.rotation.z = PI * .1; nomla(qs, 'qosh'); G.add(qs);
-    const q = H.shar(.16, teri, 20); q.scale.set(.35, 1, .6); q.position.set(x * 2.55, -.18, .02); nomla(q, 'quloq'); G.add(q);
-  });
-  const burun = new T.Mesh(new T.ConeGeometry(.17, .6, 4), teri); burun.rotation.x = PI / 2 + .25; burun.rotation.y = PI / 4; burun.position.set(0, -.3, 1.0); nomla(burun, 'burun'); G.add(burun);
-  const burunUch = H.shar(.13, teri, 16); burunUch.position.set(0, -.55, 1.05); nomla(burunUch, 'burun'); G.add(burunUch);
-  const ogiz = new T.Mesh(new T.TorusGeometry(.26, .045, 8, 24, PI), H.mat('#b2605a', {roughness:.5})); ogiz.rotation.z = PI; ogiz.rotation.x = .2; ogiz.position.set(0, -.74, .93); nomla(ogiz, 'ogiz'); G.add(ogiz);
-  /* chiziqlar (yo‘l-yo‘riq) */
+  /* ---- chizma: birlik koordinatalar — bosh balandligi 2,56 (y: −1,28 … 1,28), kenglik 2,0 = 5 ko‘z ---- */
+  const W = 1120, Hh = 1440, KK = 400, OX = 560, OY = 640;
+  const px = x=>OX + x * KK, py = y=>OY - y * KK;
+  const RANG = {qogoz:'#f3eee4', chiziq:'#34241c', teri:'#ebc9a6', soya:'#d9ab85', soch:'#2a1c15', sochY:'#4a3426', lab:'#c4736a', lab2:'#b05e57', ko:'#f8f5f1', iris:'#4b6a4c', iris2:'#2f4a31', qora:'#161010', kiyim:'#3b4a8a', kiyim2:'#2c3868'};
+  function chizma(korinish){
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = Hh; const x = cv.getContext('2d');
+    /* qog‘oz */
+    const gr = x.createRadialGradient(W * .5, Hh * .42, 80, W * .5, Hh * .42, Hh * .85); gr.addColorStop(0, '#f8f4ec'); gr.addColorStop(1, '#e6dfd2'); x.fillStyle = gr; x.fillRect(0, 0, W, Hh);
+    x.strokeStyle = 'rgba(60,40,30,.07)'; x.lineWidth = 2; for(let i = 1; i < 8; i++){ x.beginPath(); x.moveTo(0, i * Hh / 8); x.lineTo(W, i * Hh / 8); x.stroke(); }
+    x.lineJoin = 'round'; x.lineCap = 'round';
+    const M = (a, b)=>x.moveTo(px(a), py(b)), L = (a, b)=>x.lineTo(px(a), py(b)), Q = (c1, c2, a, b)=>x.quadraticCurveTo(px(c1), py(c2), px(a), py(b)), B = (c1, c2, c3, c4, a, b)=>x.bezierCurveTo(px(c1), py(c2), px(c3), py(c4), px(a), py(b));
+    const chiz = (rang, kenglik)=>{ x.strokeStyle = rang || RANG.chiziq; x.lineWidth = kenglik || 3.5; x.stroke(); };
+    const tol = rang=>{ x.fillStyle = rang; x.fill(); };
+    const ellipse = (cx, cy, rx, ry, rot)=>{ x.beginPath(); x.ellipse(px(cx), py(cy), rx * KK, ry * KK, rot || 0, 0, PI * 2); };
+    const soyaTeri = (cx, cy, r, kuch)=>{ const g2 = x.createRadialGradient(px(cx), py(cy), 0, px(cx), py(cy), r * KK); g2.addColorStop(0, 'rgba(190,120,80,' + (kuch || .22) + ')'); g2.addColorStop(1, 'rgba(190,120,80,0)'); x.fillStyle = g2; x.beginPath(); x.arc(px(cx), py(cy), r * KK, 0, PI * 2); x.fill(); };
+    if(korinish === 'old'){
+      /* bo‘yin va yelka */
+      x.beginPath(); M(-.46, -1.05); L(-.5, -1.75); B(-.9, -1.78, -1.45, -1.72, -1.5, -2.05); L(1.5, -2.05); B(1.45, -1.72, .9, -1.78, .5, -1.75); L(.46, -1.05); x.closePath(); tol(RANG.kiyim); chiz(RANG.kiyim2, 3);
+      x.beginPath(); M(-.46, -1.05); L(-.5, -1.72); Q(0, -1.95, .5, -1.72); L(.46, -1.05); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 3);
+      soyaTeri(0, -1.3, .5, .35);
+      /* bosh konturi */
+      x.beginPath(); M(-1.0, .3); B(-1.02, -.35, -.8, -.95, -.32, -1.2); Q(0, -1.31, .32, -1.2); B(.8, -.95, 1.02, -.35, 1.0, .3); B(1.0, .95, .58, 1.3, 0, 1.3); B(-.58, 1.3, -1.0, .95, -1.0, .3); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 4);
+      soyaTeri(-.72, -.5, .4, .18); soyaTeri(.72, -.5, .4, .18); soyaTeri(0, .55, .5, .1);
+      /* quloqlar */
+      [-1, 1].forEach(sg=>{ ellipse(sg * 1.04, -.18, .11, .33); tol(RANG.teri); chiz(RANG.chiziq, 3); x.beginPath(); M(sg * 1.02, .05); Q(sg * 1.12, -.1, sg * 1.03, -.3); chiz(RANG.chiziq, 2.5); });
+      /* soch */
+      x.beginPath(); M(-1.0, .42); B(-1.08, 1.0, -.62, 1.44, 0, 1.43); B(.62, 1.44, 1.08, 1.0, 1.0, .42); B(.96, .7, .8, .9, .5, .95); Q(.2, .9, .02, .96); Q(-.2, .9, -.5, .95); B(-.8, .9, -.96, .7, -1.0, .42); x.closePath(); tol(RANG.soch); chiz(RANG.chiziq, 3);
+      [[-.6, 1.25, -.3, .98], [-.2, 1.33, -.05, 1.0], [.25, 1.32, .4, 1.02], [.62, 1.2, .75, .95]].forEach(([a1, b1, a2, b2])=>{ x.beginPath(); M(a1, b1); Q((a1 + a2) / 2 - .08, (b1 + b2) / 2, a2, b2); chiz(RANG.sochY, 2.5); });
+      /* qoshlar */
+      [-1, 1].forEach(sg=>{ x.beginPath(); M(sg * .13, .15); Q(sg * .42, .33, sg * .74, .21); Q(sg * .45, .24, sg * .14, .13); x.closePath(); tol(RANG.soch); });
+      /* ko‘zlar */
+      [-1, 1].forEach(sg=>{
+        const cx = sg * .4;
+        x.beginPath(); M(cx - .2, 0); Q(cx, .14, cx + .2, 0); Q(cx, -.1, cx - .2, 0); x.closePath(); tol(RANG.ko); chiz(RANG.chiziq, 3);
+        x.save(); x.beginPath(); M(cx - .2, 0); Q(cx, .14, cx + .2, 0); Q(cx, -.1, cx - .2, 0); x.closePath(); x.clip();
+        ellipse(cx + sg * .005, -.005, .095, .095); tol(RANG.iris); chiz(RANG.iris2, 2); ellipse(cx + sg * .005, -.005, .042, .042); tol(RANG.qora); ellipse(cx - .035 + sg * .005, .035, .02, .02); tol('#fff');
+        x.restore();
+        x.beginPath(); M(cx - .2, 0); Q(cx, .15, cx + .2, 0); chiz(RANG.chiziq, 5);
+        x.beginPath(); M(cx - .17, .07); Q(cx, .2, cx + .17, .07); chiz('rgba(52,36,28,.55)', 2);
+      });
+      /* burun */
+      x.beginPath(); M(-.1, .12); B(-.12, -.1, -.15, -.3, -.17, -.4); chiz('rgba(52,36,28,.5)', 2.5);
+      x.beginPath(); M(.1, .12); B(.12, -.1, .15, -.3, .17, -.4); chiz('rgba(52,36,28,.5)', 2.5);
+      x.beginPath(); x.arc(px(0), py(-.46), .13 * KK, PI * .15, PI * .85); chiz(RANG.chiziq, 3);
+      [-1, 1].forEach(sg=>{ x.beginPath(); x.arc(px(sg * .2), py(-.49), .085 * KK, sg > 0 ? -PI * .55 : PI * .45, sg > 0 ? PI * .55 : PI * 1.55); chiz(RANG.chiziq, 3); ellipse(sg * .1, -.56, .045, .022); tol('rgba(52,36,28,.75)'); });
+      soyaTeri(0, -.4, .22, .18);
+      /* og‘iz */
+      x.beginPath(); M(-.4, -.79); Q(-.2, -.68, -.07, -.7); Q(0, -.73, .07, -.7); Q(.2, -.68, .4, -.79); Q(.2, -.76, .07, -.77); Q(0, -.79, -.07, -.77); Q(-.2, -.76, -.4, -.79); x.closePath(); tol(RANG.lab2);
+      x.beginPath(); M(-.4, -.79); Q(-.2, -.77, 0, -.79); Q(.2, -.77, .4, -.79); Q(.2, -.98, 0, -.97); Q(-.2, -.98, -.4, -.79); x.closePath(); tol(RANG.lab);
+      x.beginPath(); M(-.4, -.79); Q(-.15, -.76, 0, -.785); Q(.15, -.76, .4, -.79); chiz(RANG.chiziq, 3.5);
+      x.beginPath(); M(-.14, -1.08); Q(0, -1.13, .14, -1.08); chiz('rgba(52,36,28,.4)', 2.5);
+    } else if(korinish === 'yon'){
+      /* yondan — chapga qaragan profil */
+      x.beginPath(); M(-.45, -1.12); L(-.35, -1.78); B(-.7, -1.8, -1.3, -1.75, -1.45, -2.05); L(1.45, -2.05); B(1.3, -1.75, .9, -1.78, .62, -1.72); L(.55, -1.0); x.closePath(); tol(RANG.kiyim); chiz(RANG.kiyim2, 3);
+      x.beginPath(); M(-.45, -1.12); L(-.36, -1.74); Q(.1, -1.9, .62, -1.72); L(.55, -1.0); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 3);
+      /* bosh: kalla + yuz profili */
+      x.beginPath(); M(-.86, .86); B(-.95, .6, -1.0, .35, -.96, .2); Q(-.9, .1, -.84, .02); B(-.86, -.1, -1.0, -.25, -1.17, -.42); Q(-1.2, -.5, -1.1, -.55); Q(-.98, -.58, -.92, -.6); Q(-.9, -.68, -.97, -.73); Q(-1.0, -.78, -.92, -.8); Q(-1.0, -.86, -.97, -.93); B(-.95, -1.02, -.9, -1.15, -.82, -1.22); Q(-.72, -1.3, -.55, -1.28); B(-.2, -1.22, .3, -1.1, .62, -.9); B(.9, -.7, 1.12, -.3, 1.1, .3); B(1.08, .95, .6, 1.3, .1, 1.3); B(-.4, 1.3, -.78, 1.08, -.86, .86); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 4);
+      soyaTeri(-.55, -.5, .4, .18); soyaTeri(.4, -.6, .45, .14);
+      /* soch (ensa va tepa) */
+      x.beginPath(); M(-.86, .86); B(-.75, 1.05, -.5, 1.35, .1, 1.42); B(.75, 1.4, 1.2, 1.0, 1.17, .3); B(1.16, -.1, 1.1, -.35, .95, -.5); Q(.8, -.45, .7, -.35); B(.9, -.15, 1.0, .3, .92, .6); Q(.6, .95, .1, .95); Q(-.4, .95, -.86, .86); x.closePath(); tol(RANG.soch); chiz(RANG.chiziq, 3);
+      [[-.6, 1.2, -.25, .97], [.0, 1.3, .3, 1.0], [.55, 1.2, .8, .8], [.95, .7, 1.0, .1]].forEach(([a1, b1, a2, b2])=>{ x.beginPath(); M(a1, b1); Q((a1 + a2) / 2 + .06, (b1 + b2) / 2, a2, b2); chiz(RANG.sochY, 2.5); });
+      /* quloq (markazdan biroz orqada, qosh va burun asosi orasida) */
+      ellipse(.2, -.18, .14, .34, -.12); tol(RANG.teri); chiz(RANG.chiziq, 3);
+      x.beginPath(); M(.14, .08); B(.3, .0, .3, -.25, .18, -.4); chiz(RANG.chiziq, 2.5); x.beginPath(); M(.12, -.05); Q(.22, -.15, .14, -.3); chiz('rgba(52,36,28,.5)', 2);
+      /* qosh va ko‘z */
+      x.beginPath(); M(-.95, .17); Q(-.75, .3, -.5, .24); Q(-.72, .22, -.93, .13); x.closePath(); tol(RANG.soch);
+      x.beginPath(); M(-.86, .0); Q(-.72, .12, -.56, .02); Q(-.7, -.08, -.86, .0); x.closePath(); tol(RANG.ko); chiz(RANG.chiziq, 3);
+      ellipse(-.76, .01, .035, .07); tol(RANG.iris); ellipse(-.77, .01, .016, .04); tol(RANG.qora);
+      x.beginPath(); M(-.86, .0); Q(-.72, .13, -.56, .02); chiz(RANG.chiziq, 5);
+      /* burun teshigi, lab chizig‘i, jag‘ */
+      ellipse(-.98, -.56, .05, .03); tol('rgba(52,36,28,.7)');
+      x.beginPath(); M(-.92, -.8); L(-.7, -.79); chiz(RANG.chiziq, 3.5);
+      x.beginPath(); M(-.97, -.73); Q(-.88, -.7, -.8, -.74); chiz(RANG.lab2, 4); x.beginPath(); M(-.97, -.93); Q(-.86, -.9, -.8, -.84); chiz(RANG.lab, 4);
+      x.beginPath(); M(-.3, -1.05); Q(-.55, -1.0, -.7, -1.05); chiz('rgba(52,36,28,.35)', 2.5);
+    } else {
+      /* ¾ burilish — chapga qaragan; o‘rta chiziq egri, uzoq (o‘ng) ko‘z torroq */
+      x.beginPath(); M(-.5, -1.1); L(-.55, -1.76); B(-.9, -1.8, -1.45, -1.72, -1.5, -2.05); L(1.5, -2.05); B(1.45, -1.72, .95, -1.78, .55, -1.74); L(.42, -1.05); x.closePath(); tol(RANG.kiyim); chiz(RANG.kiyim2, 3);
+      x.beginPath(); M(-.5, -1.1); L(-.55, -1.74); Q(0, -1.92, .55, -1.72); L(.42, -1.05); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 3);
+      x.beginPath(); M(-.98, .3); B(-1.02, -.3, -.9, -.9, -.55, -1.18); Q(-.3, -1.3, -.05, -1.22); B(.45, -1.05, .9, -.6, 1.0, .3); B(1.02, .95, .6, 1.3, .0, 1.3); B(-.6, 1.3, -.98, .95, -.98, .3); x.closePath(); tol(RANG.teri); chiz(RANG.chiziq, 4);
+      soyaTeri(.45, -.45, .5, .22); soyaTeri(-.75, -.4, .3, .12);
+      ellipse(1.0, -.18, .12, .33, .1); tol(RANG.teri); chiz(RANG.chiziq, 3); x.beginPath(); M(.96, .05); Q(1.08, -.1, .99, -.3); chiz(RANG.chiziq, 2.5);
+      x.beginPath(); M(-.98, .42); B(-1.06, 1.0, -.6, 1.44, .0, 1.43); B(.62, 1.44, 1.06, 1.0, 1.0, .42); B(.97, .7, .85, .9, .6, .94); Q(.3, .9, -.1, .95); Q(-.45, .92, -.7, .95); B(-.9, .9, -.96, .7, -.98, .42); x.closePath(); tol(RANG.soch); chiz(RANG.chiziq, 3);
+      [[-.5, 1.25, -.35, .98], [-.05, 1.33, .05, 1.0], [.4, 1.3, .55, 1.0], [.75, 1.15, .85, .9]].forEach(([a1, b1, a2, b2])=>{ x.beginPath(); M(a1, b1); Q((a1 + a2) / 2 - .06, (b1 + b2) / 2, a2, b2); chiz(RANG.sochY, 2.5); });
+      /* qoshlar */
+      x.beginPath(); M(-.96, .17); Q(-.7, .32, -.42, .24); Q(-.7, .24, -.95, .13); x.closePath(); tol(RANG.soch);
+      x.beginPath(); M(-.12, .22); Q(.1, .32, .32, .2); Q(.1, .25, -.12, .19); x.closePath(); tol(RANG.soch);
+      /* ko‘zlar: yaqin (chap) keng, uzoq (o‘ng) tor */
+      [[-.7, .21, 1], [.08, .15, -1]].forEach(([cx, w, sg])=>{
+        x.beginPath(); M(cx - w, 0); Q(cx, .13, cx + w, 0); Q(cx, -.09, cx - w, 0); x.closePath(); tol(RANG.ko); chiz(RANG.chiziq, 3);
+        x.save(); x.beginPath(); M(cx - w, 0); Q(cx, .13, cx + w, 0); Q(cx, -.09, cx - w, 0); x.closePath(); x.clip();
+        ellipse(cx - .02, 0, w * .42, .09); tol(RANG.iris); chiz(RANG.iris2, 2); ellipse(cx - .02, 0, w * .19, .042); tol(RANG.qora); ellipse(cx - .05, .035, .018, .018); tol('#fff');
+        x.restore(); x.beginPath(); M(cx - w, 0); Q(cx, .14, cx + w, 0); chiz(RANG.chiziq, 5);
+      });
+      /* burun (bir yonboshi ko‘rinadi) */
+      x.beginPath(); M(-.3, .12); B(-.36, -.1, -.46, -.3, -.55, -.42); chiz('rgba(52,36,28,.5)', 2.5);
+      x.beginPath(); M(-.58, -.4); Q(-.6, -.55, -.45, -.56); Q(-.3, -.57, -.2, -.5); chiz(RANG.chiziq, 3);
+      x.beginPath(); x.arc(px(-.17), py(-.49), .08 * KK, -PI * .55, PI * .55); chiz(RANG.chiziq, 3); ellipse(-.33, -.56, .045, .022); tol('rgba(52,36,28,.75)');
+      /* og‘iz (markaz −0,3) */
+      x.beginPath(); M(-.64, -.8); Q(-.5, -.68, -.37, -.71); Q(-.3, -.74, -.24, -.71); Q(-.12, -.69, .02, -.78); Q(-.12, -.76, -.24, -.78); Q(-.3, -.8, -.37, -.78); Q(-.5, -.77, -.64, -.8); x.closePath(); tol(RANG.lab2);
+      x.beginPath(); M(-.64, -.8); Q(-.45, -.78, -.3, -.8); Q(-.15, -.78, .02, -.78); Q(-.12, -.97, -.3, -.97); Q(-.5, -.98, -.64, -.8); x.closePath(); tol(RANG.lab);
+      x.beginPath(); M(-.64, -.8); Q(-.45, -.77, -.3, -.795); Q(-.15, -.77, .02, -.78); chiz(RANG.chiziq, 3.5);
+      x.beginPath(); M(-.45, -1.08); Q(-.3, -1.13, -.15, -1.08); chiz('rgba(52,36,28,.4)', 2.5);
+      /* o‘rta chiziq (egri) */
+      x.setLineDash([10, 10]); x.beginPath(); M(-.18, 1.3); B(-.42, .6, -.45, -.4, -.3, -1.3); chiz('rgba(255,120,60,.55)', 3); x.setLineDash([]);
+    }
+    return cv;
+  }
+  /* ---- varaq (tekstura) va bosiladigan hududlar ---- */
+  const VW = 2.8, VH = 3.6, VZ = 1.0, VY = -.5;
+  const taxta = new T.Mesh(new T.PlaneGeometry(VW + .16, VH + .16), H.mat('#1b2140', {roughness:.8, metalness:.1})); taxta.position.set(0, VY, VZ - .03); G.add(taxta);
+  const varaqM = new T.MeshBasicMaterial({toneMapped:false}); varaqM.userData.env = 1;
+  const varaq = new T.Mesh(new T.PlaneGeometry(VW, VH), varaqM); varaq.position.set(0, VY, VZ); varaq.userData.nom = 'bosh'; G.add(varaq);
+  const texKesh = {};
+  function teksturala(k){ if(!texKesh[k]){ const t = new T.CanvasTexture(chizma(k)); t.encoding = T.sRGBEncoding; t.anisotropy = 8; texKesh[k] = t; } varaqM.map = texKesh[k]; varaqM.needsUpdate = true; }
+  const HUD = {
+    old:[['koz', -.4, 0, .5, .3], ['koz', .4, 0, .5, .3], ['qosh', -.42, .2, .62, .17], ['qosh', .42, .2, .62, .17], ['burun', 0, -.22, .42, .62], ['ogiz', 0, -.81, .9, .32], ['quloq', -1.05, -.18, .26, .7], ['quloq', 1.05, -.18, .26, .7], ['soch', 0, 1.17, 2.14, .52], ['iyak', 0, -1.15, .95, .3]],
+    yon:[['koz', -.7, .02, .36, .26], ['qosh', -.72, .2, .48, .17], ['burun', -1.0, -.3, .42, .55], ['ogiz', -.88, -.8, .32, .3], ['quloq', .2, -.18, .34, .72], ['soch', .15, 1.15, 2.2, .55], ['soch', 1.02, .25, .34, 1.2], ['iyak', -.72, -1.15, .55, .3]],
+    yarim:[['koz', -.7, 0, .48, .3], ['koz', .08, 0, .36, .3], ['qosh', -.7, .22, .58, .17], ['qosh', .1, .24, .48, .17], ['burun', -.4, -.24, .46, .62], ['ogiz', -.31, -.81, .74, .32], ['quloq', 1.0, -.18, .26, .7], ['soch', 0, 1.17, 2.1, .52], ['iyak', -.3, -1.15, .9, .3]]
+  };
+  const hudG = new T.Group(); G.add(hudG);
+  const hudM = ()=>new T.MeshBasicMaterial({color:H.rang('#ff6b9a'), transparent:true, opacity:.25, colorWrite:false, depthWrite:false, toneMapped:false}); /* opacity > .2 — makon3d nishon() filtri; ko‘rinmasligi colorWrite bilan */
+  function hudlar(){
+    H.tozala(hudG);
+    HUD[s.korinish].forEach(([nom, cx, cy, w, h])=>{ const m = new T.Mesh(new T.PlaneGeometry(w, h), hudM()); m.position.set(cx, cy, VZ + .02); m.userData.nom = nom; m.renderOrder = 30; hudG.add(m); });
+  }
+  /* ---- yo‘l-yo‘riq chiziqlari (3D qatlam, varaq ustida) ---- */
   const CH = new T.Group(); G.add(CH);
   const chiziqM = new T.MeshBasicMaterial({color:H.rang('#ffc14d'), transparent:true, opacity:.85, depthTest:false}); chiziqM.userData.env = 1;
   const DAR = [['soch', .91, 'soch chizig‘i'], ['qosh', .18, 'qosh — 1/3'], ['koz', 0, 'ko‘z — yarmi (1/2)'], ['burun', -.55, 'burun asosi — 2/3'], ['ogiz', -.79, 'og‘iz'], ['iyak', -1.28, 'iyak']];
-  DAR.forEach(([k, y, nom])=>{ const l = new T.Mesh(new T.BoxGeometry(3.2, .012, .012), chiziqM); l.position.set(0, y, 1.15); l.renderOrder = 40; l.userData.dar = k; CH.add(l); const t = H.yozuv(nom, {k:.26}); t.position.set(2.05, y, 1.15); t.userData.dar = k; CH.add(t); });
-  const ust = new T.Mesh(new T.BoxGeometry(.012, 2.56, .012), chiziqM); ust.position.set(0, 0, 1.15); ust.renderOrder = 40; CH.add(ust);
-  const kozT = new T.Group(); CH.add(kozT); for(let i = 0; i < 5; i++){ const b = new T.Mesh(new T.BoxGeometry(.012, .3, .012), chiziqM); b.position.set(-1 + i * .4, 0, 1.15); b.renderOrder = 40; kozT.add(b); } const b5 = new T.Mesh(new T.BoxGeometry(.012, .3, .012), chiziqM); b5.position.set(1, 0, 1.15); kozT.add(b5); const kt = H.yozuv('5 ko‘z kengligi', {k:.26}); kt.position.set(0, .42, 1.2); kozT.add(kt);
-  const taxm = H.yozuv('akademik taxminiy proporsiyalar', {k:.26, chet:'rgba(255,193,77,.8)'}); taxm.position.set(0, 1.75, .6); G.add(taxm);
-  G.add(H.poydevor(1.9, -2.56, '#161a30'));
+  DAR.forEach(([k, y, nom])=>{ const l = new T.Mesh(new T.BoxGeometry(3.0, .012, .012), chiziqM); l.position.set(0, y, VZ + .05); l.renderOrder = 40; l.userData.dar = k; CH.add(l); const t = H.yozuv(nom, {k:.24}); t.position.set(1.9, y, VZ + .06); t.userData.dar = k; CH.add(t); });
+  const ust = new T.Mesh(new T.BoxGeometry(.012, 2.56, .012), chiziqM); ust.position.set(0, 0, VZ + .05); ust.renderOrder = 40; CH.add(ust);
+  const kozT = new T.Group(); CH.add(kozT); for(let i = 0; i <= 5; i++){ const b2 = new T.Mesh(new T.BoxGeometry(.012, .3, .012), chiziqM); b2.position.set(-1 + i * .4, 0, VZ + .05); b2.renderOrder = 40; kozT.add(b2); } const kt = H.yozuv('5 ko‘z kengligi', {k:.24}); kt.position.set(0, .34, VZ + .06); kozT.add(kt);
+  const taxm = H.yozuv('akademik taxminiy proporsiyalar', {k:.26, chet:'rgba(255,193,77,.8)'}); taxm.position.set(0, 1.62, VZ + .1); G.add(taxm);
+  const IZ = {koz:'Ko‘z chizig‘i bosh balandligining o‘rtasida (yuqori va pastdan teng). Eng ko‘p uchraydigan xato — ko‘zni juda yuqoriga chizish.', qosh:'Soch chizig‘idan qoshgacha, qoshdan burun asosigacha va burun asosidan iyakgacha — taxminan teng uch qism.', burun:'Burun asosi yuzning pastki uchdan biri boshlanadigan joyda; kengligi taxminan bir ko‘z.', ogiz:'Og‘iz burun asosi va iyak orasining yuqori uchdan birida; burchaklari qorachiqlar ostida.', quloq:'Quloq qosh chizig‘i va burun asosi orasida — yondan qaraganda boshning o‘rta chizig‘idan biroz orqada.', soch:'Soch chizig‘i bosh tepasidan taxminan uchdan bir pastda — peshona shu yerdan boshlanadi.', iyak:'Iyak — bosh balandligining pastki chegarasi; ¾ burilishda o‘rta chiziq egri bo‘ladi.', bosh:'Bosh balandligi ≈ 2,5 bosh kengligi emas — kengligi ≈ 5 ko‘z, balandligi ≈ 1,3 kenglik.'};
   function yangila(){
+    teksturala(s.korinish); hudlar();
     CH.visible = s.chiziq && !H.uq; taxm.visible = !H.uq;
     CH.children.forEach(o=>{ if(o.userData.dar !== undefined){ const faol = o.userData.dar === s.bolim; if(o.isSprite) o.material.opacity = faol ? 1 : .5; else o.material = faol ? new T.MeshBasicMaterial({color:H.rang('#ff6b9a'), depthTest:false}) : chiziqM; } });
     kozT.visible = s.korinish === 'old' && s.chiziq && !H.uq;
-    G.rotation.y = s.korinish === 'old' ? 0 : s.korinish === 'yon' ? PI / 2 : .6;
-    const IZ = {koz:'Ko‘z chizig‘i bosh balandligining o‘rtasida (yuqori va pastdan teng). Eng ko‘p uchraydigan xato — ko‘zni juda yuqoriga chizish.', qosh:'Soch chizig‘idan qoshgacha, qoshdan burun asosigacha va burun asosidan iyakgacha — taxminan teng uch qism.', burun:'Burun asosi yuzning pastki uchdan biri boshlanadigan joyda; kengligi taxminan bir ko‘z kengligiga teng.', ogiz:'Og‘iz chizig‘i burun asosi va iyak orasining yuqori uchdan birida; burchaklari qorachiqlar ostida.', quloq:'Quloq qosh chizig‘i va burun asosi orasida joylashadi; yon ko‘rinishda bosh markazidan orqada.', soch:'Soch chizig‘i bosh tepasidan taxminan 1/7 bosh balandligi pastda.', iyak:'Iyak — eng pastki nuqta; bo‘yin undan orqaroqdan boshlanadi.', bosh:'Bosh old ko‘rinishda tuxumsimon: yuqorisi kengroq, iyakka torayadi. Kenglik ≈ 5 ko‘z.'};
-    H.karta.yoz('San’at · portret proporsiyalari', H.nomlar[s.bolim].split(' — ')[0], '<div class="q"><span>Ko‘z chizig‘i</span><b class="y">bosh balandligining ½</b><span>Bosh kengligi</span><b>≈ 5 ko‘z</b><span>Ko‘zlar orasi</span><b>1 ko‘z</b><span>Yuz</span><b>3 teng qism (soch–qosh–burun–iyak)</b></div><div class="iz">' + IZ[s.bolim] + ' <i>Bu akademik taxminiy qoidalar — har bir odam yuzi farq qiladi.</i></div>');
+    ust.visible = s.korinish === 'old' && s.chiziq && !H.uq;
+    hudG.children.forEach(m=>{ m.material.colorWrite = m.userData.nom === s.bolim && !H.uq; m.material.opacity = m.material.colorWrite ? .14 + .11 : .25; });
+    H.karta.yoz('San’at · portret proporsiyalari', H.nomlar[s.bolim].split(' — ')[0], '<div class="q"><span>Ko‘z chizig‘i</span><b class="y">bosh balandligining ½</b><span>Bosh kengligi</span><b>≈ 5 ko‘z</b><span>Ko‘zlar orasi</span><b>1 ko‘z</b><span>Yuz</span><b>3 teng qism (soch–qosh–burun–iyak)</b></div><p>' + (IZ[s.bolim] || '') + ' <i>Bu akademik taxminiy qoidalar — har bir odam yuzi farq qiladi.</i></p>');
   }
   const tagChiz = ()=>{
     tag.innerHTML = [['old', 'Olddan'], ['yarim', '¾ burilish'], ['yon', 'Yondan']].map(([k, n])=>TG('data-k="' + k + '"', n, s.korinish === k)).join('') + TG('data-ch="1"', s.chiziq ? 'Chiziqlar: yoqiq' : 'Chiziqlar', s.chiziq) + '<span class="ts-ajr"></span>' + [['koz', 'Ko‘z'], ['qosh', 'Qosh'], ['burun', 'Burun'], ['ogiz', 'Og‘iz'], ['quloq', 'Quloq'], ['soch', 'Soch chizig‘i']].map(([k, n])=>TG('data-b="' + k + '"', n, s.bolim === k)).join('');
@@ -1362,26 +1466,13 @@ reg('portret', (sahna, c)=>{
   S.bosish = d=>{ if(!d || !d.nom) return; if(H.nomlar[d.nom] && ['koz', 'qosh', 'burun', 'ogiz', 'quloq', 'soch', 'iyak', 'bosh'].includes(d.nom)){ s.bolim = d.nom; yangila(); tagChiz(); } hodisa('ts-portret', ev({bos:d.nom})); detal('ts_portret', d.nom); };
   H.kadr = dt=>{ s.t += dt; };
   S.holat = h=>{ if(!h) return; if(h.korinish) s.korinish = h.korinish; if(h.chiziq !== undefined) s.chiziq = !!h.chiziq; if(h.bolim) s.bolim = h.bolim; yangila(); tagChiz(); };
-  H.joy(2.1, new T.Vector3(0, -.3, 0), 2.4);
-  yorliq('San’at · portret proporsiyalari (protsedurali 3D, akademik taxminiy)');
-  izoh.innerHTML = 'Sariq chiziqlar — akademik taxminiy proporsiyalar: ko‘z — yarmida, yuz — 3 teng qism. Qismlarni bosing, boshni aylantiring.';
+  H.joy(1.7, new T.Vector3(0, -.3, VZ), 2.3);
+  yorliq('San’at · portret proporsiyalari (akademik chizma, 2D — taxminiy qoidalar)');
+  izoh.innerHTML = 'Sariq chiziqlar — akademik taxminiy proporsiyalar: ko‘z — yarmida, yuz — 3 teng qism. Chizmadagi qismlarni bosing; «¾ burilish» va «Yondan» ko‘rinishlarini solishtiring.';
   yangila(); tagChiz();
   return S;
 });
 
-/* =====================================================================
-   14. KAMOLIDDIN BEHZOD VA MINIATYURA — sxematik kompozitsiya tahlili (2D)
-   ===================================================================== */
-const BBLOK = [
-  {k:'matn', nom:'Matn kartushi (yuqori)', x:1.2, y:9.2, w:5.6, h:1.0, r:'#f1ecd9'},
-  {k:'osmon', nom:'Oltin osmon', x:.6, y:7.0, w:6.8, h:2.0, r:'#d9b35a'},
-  {k:'bino', nom:'Me’moriy ayvon (peshtoq)', x:4.3, y:3.8, w:3.1, h:4.2, r:'#2aa7a0'},
-  {k:'daraxt', nom:'Gullagan daraxt', x:.7, y:4.0, w:1.6, h:3.6, r:'#5a8f3a'},
-  {k:'figuralar', nom:'Odamlar guruhi', x:1.6, y:2.2, w:3.6, h:2.4, r:'#c8453a'},
-  {k:'hovuz', nom:'Hovuz / yer', x:1.2, y:.9, w:4.0, h:1.1, r:'#1b3a8a'},
-  {k:'matn2', nom:'Matn kartushi (pastki)', x:1.2, y:-.3, w:5.6, h:1.0, r:'#f1ecd9'}
-];
-const BTAR = [['1455–1460 (taxm.)', 'Hirotda tug‘ilgan'], ['1480-yillar', 'Hirot kitobxonasi, Mirak Naqqosh shogirdi'], ['1488–1489', 'Sa’diy «Bo‘ston»iga miniatyuralar (Qohira nusxasi)'], ['1506', 'Husayn Boyqaro vafoti, Temuriylar Hiroti tugaydi'], ['1510', 'Hirot Safaviylar qo‘liga o‘tadi'], ['1522 (taxm.)', 'Tabrizga; shoh kitobxonasi boshlig‘i'], ['1535–1536', 'Vafoti']];
 reg('behzod', (sahna, c)=>{
   const {tag, izoh, yorliq} = c;
   const s = {rejim:'sxema', tanl:null};
