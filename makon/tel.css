@@ -1,0 +1,30 @@
+/* MAKON — telefon uchun sodda versiya (tel.html, v3.21). app3.css dan keyin yuklanadi. */
+.qidiruv{display:none!important}
+.tepa2{min-height:0}
+.yon-menyu .menyu-s,.yon-menyu .fanlar-m,.yon-menyu .sifat-tg,.yon-menyu .foyd{display:none!important}
+.yon-menyu .demo-karta{display:block}
+.toliq-h{display:inline-block;margin-top:6px;font-weight:700;color:#bdb8ff}
+/* bosh sahifa */
+.tel-bosh{padding:18px 16px 6px}
+.tel-bosh h1{font-size:26px;letter-spacing:-.02em}
+.tel-bosh p{color:var(--matn2);margin-top:6px;font-size:15px;line-height:1.45}
+.tel-stat{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:10px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--chiziq);font-size:14px;color:var(--matn2)}
+.tel-stat b{color:var(--matn);font-size:18px}
+.tel-stat a{display:inline-flex;align-items:center;gap:4px;color:var(--asos);font-weight:600}
+.tel-fanlar{display:grid;gap:8px;padding:0 16px}
+.tel-fan{display:grid;grid-template-columns:44px 1fr auto;grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:10px 12px;border-radius:16px;background:var(--panel);border:1px solid var(--chiziq);color:var(--matn);text-decoration:none;min-height:64px}
+.tel-fan .ik{grid-row:1 / span 2;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#0b0e1a}
+.tel-fan b{font-size:16px;font-weight:650}
+.tel-fan small{grid-column:2;font-size:12.5px;color:var(--xira)}
+.tel-fan>svg{grid-column:3;grid-row:1 / span 2;color:var(--xira)}
+.tel-fan:active{background:var(--panel2)}
+.tel-izoh{padding:14px 16px 90px;font-size:12.5px;color:var(--xira);line-height:1.45}
+.tel-izoh a{color:var(--asos)}
+/* fan sahifasi: faqat mavzular */
+.fan-banner .statlar-b,.fan-banner .rasmlar,.lab-banner,.tk-banner,.fl-banner,.bl-banner{display:none!important}
+.fan-banner p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* dars: faqat 3 qadam, sahna, boshqaruv, qisqa tavsif */
+.yord-fab,.yord-oyna,.panel-och,.dars3-tepa .ong{display:none!important}
+.dok-tab button:nth-child(n+3){display:none!important}
+.dars3-tepa .meta .belgi:nth-child(n+3){display:none}
+/* laboratoriya: yordam oynasi bir marta */

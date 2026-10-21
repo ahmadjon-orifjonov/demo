@@ -12,6 +12,7 @@ const xotira = {
   ol(k, d){ try{ const v = localStorage.getItem('makon:'+k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } },
   yoz(k, v){ try{ localStorage.setItem('makon:'+k, JSON.stringify(v)); }catch(e){} }
 };
+const TEL = !!window.MAKON_TEL; /* v3.21: telefon uchun sodda rejim (tel.html) */
 const natijalar = ()=>{ const n = xotira.ol('natija', {}); Object.keys(n).forEach(k=>{ if(!DARS[k]) delete n[k]; }); return n; };
 function natijaYoz(id, n){ const h = xotira.ol('natija', {}); h[id] = n; xotira.yoz('natija', h); }
 const esc = s=>String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -245,7 +246,9 @@ function yonMenyu(yol){
   const rol = xotira.ol('rol', null), ism = xotira.ol('ism', '');
   const oqit = rol === 'oqituvchi';
   const havola = (h, ik, nom, qo)=>{ const [q1, q2] = nom.split('|'); return `<a href="${h}" class="${yol === h ? 'faol' : ''} ${qo||''}" title="${(q1 + (q2 || '')).trim()}">${ikon(ik)}<span>${q1}${q2 ? '<i class="mu">' + q2 + '</i>' : ''}</span></a>`; };
-  const asosiy = oqit
+  const asosiy = TEL
+    ? havola('#/','uy','Bosh sahifa') + havola('#/fanlar','kitob','Fanlar') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/natijalar','grafik','Natijalarim')
+    : oqit
     ? havola('#/oqituvchi','foydalanuvchilar','Sinf paneli') + havola('#/fanlar','kitob','Darslar kutubxonasi') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/ishlanmalar','hujjat','Dars ishlanmalari')
     : havola('#/','uy','Bosh sahifa') + havola('#/fanlar','kitob','Fanlar') + havola('#/lab','kolba','Kimyo| laboratoriyasi') + havola('#/fizlab','chaqmoq','Fizika| laboratoriyasi') + havola('#/biolab','mikroskop','Biologiya| laboratoriyasi') + havola('#/takror','kitobcha','Takrorlash| kartalari') + havola('#/musobaqa','olov','Musobaqa') + havola('#/natijalar','grafik','Natijalarim') + havola('#/xatolar','maqsad','Xatolar| ustida ishlash', xatoBank().length ? 'xb-bor' : '');
   const fanlar = FAN.map(f=>{
@@ -261,7 +264,7 @@ function yonMenyu(yol){
     <nav class="menyu fanlar-m">${fanlar}</nav>
     <div class="yon-past">
       ${window.MAKON_SIFAT ? `<button class="sifat-tg ${MAKON_SIFAT.tejam ? 'yoq' : ''}" id="sifatTg" title="Zaif kompyuterda 3D ni tezlashtiradi: soyalar va shisha effektlari soddalashadi"><span class="ch"><i></i></span><span><b>Tejamkor rejim</b><small>${MAKON_SIFAT.tejam ? (MAKON_SIFAT.avto ? 'yoqilgan (avtomatik)' : 'yoqilgan') : 'zaif kompyuter uchun'}</small></span></button>` : ''}
-      <div class="demo-karta"><b>DEMO VERSIYA</b>Server va hisoblar hali yo‘q — natijalar shu kompyuterda. <a href="#/mualliflar">Mualliflar va litsenziyalar</a></div>
+      <div class="demo-karta"><b>DEMO VERSIYA</b>Server va hisoblar hali yo‘q — natijalar shu ${TEL ? 'telefonda. <a href="index.html?toliq=1" class="toliq-h">To‘liq versiya ↗</a>' : 'kompyuterda. <a href="#/mualliflar">Mualliflar va litsenziyalar</a>'}</div>
       <div class="foyd"><span class="avatar ${oqit ? 'o' : ''}">${oqit ? 'O‘' : esc((ism || 'U')[0].toUpperCase())}</span><div><b>${oqit ? 'O‘qituvchi' : esc(ism || 'O‘quvchi')}</b><span>${oqit ? NAMUNA.sinf + ' (namuna)' : 'O‘quvchi'}</span></div><button id="rolAlmash" title="Rolni almashtirish">${ikon('almash',{w:16})}</button></div>
     </div>`;
   $('#rolAlmash').onclick = ()=>{ xotira.yoz('rol', null); location.hash = '#/'; };
@@ -394,6 +397,7 @@ function fanKarta(f){
 
 /* ---------- bosh sahifa ---------- */
 function bosh(){
+  if(TEL) return boshTel();
   const ism = xotira.ol('ism', 'O‘quvchi'), n = natijalar();
   let vid = xotira.ol('vazifa', 'bio-azolar'); if(!DARS[vid]) vid = Object.keys(DARS)[0];
   const v = DARS[vid], vf = fanOf(v);
@@ -505,7 +509,7 @@ function darsTepa(id, d, qadam){
     <span class="ik" style="background:${f.rang}">${ikon(f.ik,{w:20})}</span>
     <div class="nom"><h1>${d.nom}</h1><div class="meta"><span class="belgi">${f.nom}</span>${d.ishlanma ? '<span class="belgi">'+d.ishlanma.sinf+'</span>' : ''}<span class="belgi">${ikon('savol',{w:12})} ${d.test.length} savol</span>${d.qismlar ? '<span class="belgi">'+ikon('qatlam',{w:12})+' '+d.qismlar.length+' qism</span>' : ''}</div></div>
     <div class="qadam-seg">${QADAM.map(([k, nm], i)=>(i ? ikon('oldinga',{w:14}) : '')+`<button data-q="${k}" class="${k === qadam ? 'faol' : ''} ${i < tartib ? 'bajarildi' : ''}"><i>${i < tartib ? '✓' : i+1}</i>${nm}</button>`).join('')}</div>
-    <div class="ong">${d.ishlanma ? `<a class="tg o kichik" href="#/ishlanma/${id}">${ikon('hujjat',{w:15})}<span>Ishlanma</span></a>` : ''}${oqit ? `<a class="tg o kichik" href="#/proyektor/${id}">${ikon('proyektor',{w:15})}<span>Proyektor</span></a>` : ''}</div>
+    <div class="ong">${d.ishlanma && !TEL ? `<a class="tg o kichik" href="#/ishlanma/${id}">${ikon('hujjat',{w:15})}<span>Ishlanma</span></a>` : ''}${oqit ? `<a class="tg o kichik" href="#/proyektor/${id}">${ikon('proyektor',{w:15})}<span>Proyektor</span></a>` : ''}</div>
   </div>`;
 }
 
@@ -566,6 +570,30 @@ async function dars(id, qadam){
     await amaliyot(id, d, izoh);
   }
 }
+
+/* v3.21: telefon bosh sahifasi — faqat fanlar va davom ettirish */
+function boshTel(){
+  const ism = xotira.ol('ism', 'O‘quvchi'), n = natijalar();
+  const ids = Object.keys(DARS), bajarilgan = Object.keys(n).length;
+  const davom = ids.filter(id=>!n[id]).slice(0, 2);
+  ilova.innerHTML = `
+  <section class="tel-bosh">
+    <h1>Salom, ${esc(ism)}!</h1>
+    <p>Fanni tanlang — mavzuni 3D da ko‘ring, sinab ko‘ring, tekshiring.</p>
+    <div class="tel-stat"><span><b>${bajarilgan}</b> / ${ids.length} dars tugatildi</span><a href="#/natijalar">Natijalarim ${ikon('oldinga',{w:13})}</a></div>
+  </section>
+  <div class="bolim-sar"><div><h2>Fanlar</h2></div></div>
+  <div class="tel-fanlar">${FAN.filter(f=>!f.yopiq).map(f=>{ const fi = darsIds(f), t = fi.filter(id=>n[id]).length; return `<a class="tel-fan" href="#/fan/${f.id}"><span class="ik" style="background:${f.rang}">${ikon(f.ik,{w:22})}</span><b>${f.nom}</b><small>${fi.length} dars${t ? ' · ' + t + ' tugatildi' : ''}</small>${ikon('oldinga',{w:16})}</a>`; }).join('')}</div>
+  <div class="bolim-sar"><div><h2>Laboratoriyalar</h2></div></div>
+  <div class="tel-fanlar">
+    <a class="tel-fan" href="#/lab"><span class="ik" style="background:#39d9c8">${ikon('kolba',{w:22})}</span><b>Kimyo laboratoriyasi</b><small>reaktivlar, reaksiyalar</small>${ikon('oldinga',{w:16})}</a>
+    <a class="tel-fan" href="#/fizlab"><span class="ik" style="background:#ffc94d">${ikon('chaqmoq',{w:22})}</span><b>Fizika laboratoriyasi</b><small>5 tajriba</small>${ikon('oldinga',{w:16})}</a>
+    <a class="tel-fan" href="#/biolab"><span class="ik" style="background:#ff8a7a">${ikon('mikroskop',{w:22})}</span><b>Biologiya laboratoriyasi</b><small>mikroskop, 6 preparat</small>${ikon('oldinga',{w:16})}</a>
+  </div>
+  ${davom.length ? `<div class="bolim-sar"><div><h2>Davom ettirish</h2></div></div><div class="dars-g">${davom.map(id=>darsKarta(id)).join('')}</div>` : ''}
+  <p class="tel-izoh">Bu — telefon uchun soddalashtirilgan ko‘rinish. Barcha imkoniyatlar (takrorlash, musobaqa, o‘qituvchi paneli) — <a href="index.html?toliq=1">to‘liq versiyada</a>.</p>`;
+}
+
 function boshqKorsat(){ const t = $('#tag'); if(t) $('#boshq').classList.toggle('bosh', !t.children.length); }
 /* telefonda (≤760px) boshqaruv paneli va asboblar sahna OSTIGA ko‘chadi — 3D ni yopmasin; to‘liq ekranda sahna ichiga qaytadi */
 const MOBIL = window.matchMedia('(max-width:760px)');
@@ -1480,7 +1508,7 @@ function yonalt(){
   ilova.className = '';
   window.scrollTo(0, 0);
   const qobiq = $('#qobiq');
-  if(!rol){ qobiq.classList.add('kirishda'); return kirish(); }
+  if(!rol){ if(TEL){ xotira.yoz('rol', 'oquvchi'); if(!xotira.ol('ism', '')) xotira.yoz('ism', 'O‘quvchi'); return yonalt(); } qobiq.classList.add('kirishda'); return kirish(); }
   qobiq.classList.remove('kirishda');
   const yolKalit = p[0] === 'dars' ? '#/fan/'+(DARS[p[1]] ? DARS[p[1]].fan : '') : h.split('/').slice(0, p[0] === 'fan' ? 3 : 2).join('/') || '#/';
   yonMenyu(p[0] === '' ? (rol === 'oqituvchi' ? '#/oqituvchi' : '#/') : yolKalit);
