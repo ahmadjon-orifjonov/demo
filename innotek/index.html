@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INNOTEK INVEST — boshqaruv tizimi (namuna)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="INNOTEK INVEST uchun boshqaruv tizimi namunasi: buyurtma bosqichlari, sex navbati, metall qoldig‘i, montaj brigadalari, to‘lovlar — bitta joyda, telefonda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>:root{--acc:#1E3A5F;--acc2:#152B47;--accbg:#E6EDF5;--side:#161F2B;--sidetx:#B9C3CF;--steel:#5C7089;--bg:#F2F4F6;--card:#fff;--soft:#F7F8FA;--ln:#DCE1E7;--ln2:#C5CCD5;--tx:#1B2330;--mut:#5B6673;--mut2:#7D8794;
+--ok:#1F7A3E;--okbg:#E8F3EC;--wr:#A35E07;--wrbg:#FBF2E3;--er:#B3261E;--erbg:#FBECEA;--inf:#2E5C8A;--infbg:#E7EEF6;--neu:var(--mut);--neubg:#EEF1F4;
+--r:8px;--rs:4px;--rm:6px;--rl:12px;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+b,strong{font-weight:600}h1,h2,h3,h4{font-weight:600}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.mono{font-family:var(--mono);font-weight:500;font-size:.93em;letter-spacing:0}
+.namuna{background:var(--soft);color:var(--mut);border-bottom:1px solid var(--ln);font-size:12px;text-align:center;padding:5px 12px}
+.namuna b{color:var(--wr);font-weight:600}
+.lay{display:flex;min-height:calc(100vh - 30px)}
+.side{width:232px;flex:none;background:var(--side);color:var(--sidetx);display:flex;flex-direction:column;position:sticky;top:0;height:calc(100vh - 30px)}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 14px}
+.brand b{display:block;color:#fff;font-size:16px;letter-spacing:.01em}
+.brand small{color:var(--mut2);font-size:12px}
+.logo{width:38px;height:38px;border-radius:var(--rm);border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;color:#fff;font-weight:600;font-size:13px;flex:none;font-family:var(--mono)}
+.nav{padding:6px 10px;display:flex;flex-direction:column;gap:2px;flex:1}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:var(--sidetx);padding:10px 12px;border-radius:0 var(--rm) var(--rm) 0;text-align:left;font-weight:500;transition:background-color .12s,border-color .12s}
+.nav button:hover{background:rgba(255,255,255,.05)}
+.nav button.on{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 3px 0 0 var(--accbg)}
+.nav .ic{width:20px;display:inline-flex;align-items:center;justify-content:center}
+.nav .bdg,.mnav .bdg,.more .bdg{margin-left:auto;background:var(--steel);color:#fff;border-radius:3px;font-size:12px;padding:0 5px;font-weight:500;line-height:18px}
+.sidefoot{padding:12px 16px;font-size:12px;color:var(--mut2);border-top:1px solid rgba(255,255,255,.08)}
+.sidefoot label{display:block;margin-bottom:4px}
+.sidefoot button{background:none;border:1px solid rgba(255,255,255,.18);color:var(--mut2);border-radius:var(--rm);padding:5px 9px;font-size:12px;margin-top:6px;width:100%;text-align:left}
+.rolsel{width:100%;background:rgba(255,255,255,.06);color:var(--ln);border:1px solid rgba(255,255,255,.18);border-radius:var(--rm);padding:6px 8px;font-size:12px}
+.rolsel option{color:var(--tx)}
+.rolsel.m{width:auto;background:#fff;color:var(--tx);border-color:var(--ln);margin:0;font-size:13px}
+.main{flex:1;min-width:0;padding:22px 26px 90px}
+.mhead{display:none;align-items:center;gap:10px;margin:-2px 0 14px}
+.mhead .mh{flex:1;min-width:0}.mhead b{font-size:16px;display:block}.mhead small{color:var(--mut);font-size:12px;display:block}
+.mhead .logo{border-color:var(--acc);color:var(--acc)}
+.top{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.top h1{font-size:20px;margin:0 0 2px;line-height:1.3}
+.top .sub{color:var(--mut);font-size:14px;max-width:760px}
+.top .sub b{color:var(--tx)}.top .sub b.er{color:var(--er)}.top .sub b.wr{color:var(--wr)}.top .sub b.ok{color:var(--ok)}
+.top .sp{flex:1}
+.btn{border:1px solid var(--ln);background:#fff;border-radius:var(--rm);padding:8px 13px;font-weight:500;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:background-color .12s,border-color .12s;color:var(--tx)}
+.btn:hover{border-color:var(--ln2);background:var(--soft)}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.p:hover{background:var(--acc2);border-color:var(--acc2)}
+.btn.s{padding:5px 10px;font-size:13px}
+.btn.d{color:var(--er)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.grid{display:grid;gap:12px}
+.k4{grid-template-columns:repeat(4,1fr)}.k3{grid-template-columns:repeat(3,1fr)}.k2{grid-template-columns:1.4fr 1fr}.k22{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:var(--r);padding:16px}
+.card h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:4px}
+.card h3 .sp{flex:1}.card h3 small{font-weight:400;color:var(--mut);font-size:12px}
+.card h3>svg.i{color:var(--steel)}
+.card h3 .btn svg.i{color:inherit}
+.card.p0{padding:0}.card.p0 h3{padding:14px 16px 0}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpis.c3{grid-template-columns:repeat(3,1fr)}
+.mchain{display:none}
+.mlist{display:none}
+.mlist .mg{font-size:12px;color:var(--mut);padding:10px 2px 4px}
+.mr,.mr.er,.mr.wr{color:var(--tx)}
+.mr{background:#fff;border:1px solid var(--ln);border-radius:var(--r);padding:10px 12px;margin-bottom:6px;cursor:pointer}
+.mr.er{box-shadow:inset 3px 0 0 var(--er)}.mr.wr{box-shadow:inset 3px 0 0 var(--wr)}
+.mr .m1{display:flex;align-items:center;gap:6px}.mr .m1 b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.mr .m2{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut)}.mr .m2 .chain{flex:1;margin:0}
+.mr .m3{display:flex;gap:12px;font-size:13px;color:var(--mut);flex-wrap:wrap}
+.mr .m4{font-size:12px;margin-top:2px}.mr .m4.er{color:var(--er)}.mr .m4.wr{color:var(--wr)}
+.t tr.grp td{border-top:1px solid var(--ln)}
+.kpi{cursor:pointer;position:relative;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi:hover{border-color:var(--ln2)}
+.kpi .l{color:var(--mut);font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px}
+.kpi .l svg.i{color:var(--steel)}
+.kpi .v{font-size:26px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums;line-height:1.15;letter-spacing:-.01em}
+.kpi .v small{font-size:13px;font-weight:400;color:var(--mut);margin-left:3px}
+.kpi .d{font-size:13px;color:var(--mut);margin-top:2px;line-height:1.4}
+.kpi .d b{font-weight:500}.kpi .d b.er{color:var(--er)}.kpi .d b.wr{color:var(--wr)}.kpi .d b.ok{color:var(--ok)}
+.kpi .sk{position:absolute;right:14px;top:14px;width:84px;height:28px;color:var(--steel)}
+.kpi .sk svg{width:100%;height:100%;overflow:visible}
+.kpi .sk path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
+/* badge */
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:var(--rs);padding:2px 7px;font-size:12px;font-weight:500;white-space:nowrap;line-height:1.4}
+.pill.ok{background:var(--okbg);color:var(--ok)}
+.pill.wr{background:var(--wrbg);color:var(--wr)}
+.pill.er{background:var(--erbg);color:var(--er)}
+.pill.inf{background:var(--infbg);color:var(--inf)}
+.pill.mu{background:var(--neubg);color:var(--neu)}
+.pill.ac{background:var(--accbg);color:var(--acc2)}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none;background:currentColor}
+.ral{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none;border:1px solid rgba(0,0,0,.18);vertical-align:-2px}
+.er{color:var(--er)}.wr{color:var(--wr)}.ok{color:var(--ok)}.mu{color:var(--mut)}
+/* ro‘yxat (e’tibor) */
+.list .it{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--ln);cursor:pointer;transition:background-color .12s}
+.list .it:last-child{border:0}
+.list .it:hover{background:var(--soft)}
+.list .it .m{flex:1;min-width:0}
+.list .it .m b{display:block;font-size:14px}
+.list .it .m small{color:var(--mut);font-size:13px}
+.list .it>svg.i{color:var(--mut2);flex:none}
+.att .it{padding-left:10px;align-items:flex-start}
+.att .it.er{box-shadow:inset 3px 0 0 var(--er)}.att .it.wr{box-shadow:inset 3px 0 0 var(--wr)}.att .it.inf{box-shadow:inset 3px 0 0 var(--inf)}
+.att .it{color:var(--tx)}
+.att .it .m .r{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.att .it .m small{display:block;margin-top:2px}
+.att .it .m small em{font-style:normal;color:var(--tx)}
+.att .it .btn{flex:none;margin-top:2px}
+.empty{color:var(--mut);text-align:center;padding:26px 8px;font-size:13px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.empty svg.i{width:48px;height:48px;color:var(--steel);stroke-width:1.2}
+/* bosqich zanjiri */
+.chain{display:flex;gap:3px;align-items:center;margin:6px 0 2px}
+.chain i{flex:1;height:6px;border-radius:2px;background:var(--ln);min-width:8px}
+.chain i.d{background:var(--acc)}.chain i.c{background:var(--inf)}.chain i.c.late{background:var(--er)}.chain i.c.wait{background:var(--wr)}
+.chain small{flex:none;font-size:12px;color:var(--mut);margin-left:4px;white-space:nowrap}
+.steps{display:flex;gap:4px;flex-wrap:wrap}
+.st{flex:1 1 90px;min-width:0;font-size:12px;color:var(--mut);padding:6px 8px;border-radius:var(--rs);background:var(--soft);border:1px solid var(--ln);display:flex;flex-direction:column;gap:1px}
+.st b{font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st.d{border-color:var(--ln);background:var(--soft)}.st.d b{color:var(--tx)}
+.st.c{border-color:var(--acc);background:var(--accbg)}.st.c b{color:var(--acc2)}
+.st.c.late{border-color:var(--er);background:var(--erbg)}.st.c.late b{color:var(--er)}
+.st.c.wait{border-color:var(--wr);background:var(--wrbg)}.st.c.wait b{color:var(--wr)}
+/* oqim 7 katak */
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.fb{position:relative;display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--ln);border-radius:var(--r);padding:10px 12px;min-height:88px;min-width:0;cursor:pointer;transition:border-color .12s}
+.fb:hover{border-color:var(--ln2)}
+.fb .fn{font-size:12px;color:var(--mut);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fb b{font-size:22px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}.fb b small{font-size:12px;font-weight:400;color:var(--mut)}
+.fb small{font-size:12px;color:var(--mut);line-height:1.3}
+.fb .fx{font-size:12px;font-weight:500;color:var(--er)}.fb .fx.wr{color:var(--wr)}.fb .fx.ok{color:var(--ok)}
+.fb.bo{background:var(--soft)}.fb.bo b{color:var(--mut2)}
+.fb.tor{border-color:var(--er)}
+.fb:not(:last-child):after{content:"";position:absolute;right:-9px;top:calc(50% - 4px);width:7px;height:7px;border-top:1.5px solid var(--mut2);border-right:1.5px solid var(--mut2);transform:rotate(45deg)}
+.fb .uch{display:flex;gap:2px;margin-top:4px}.fb .uch i{flex:1;height:4px;border-radius:1px;background:var(--ln)}.fb .uch i.on{background:var(--acc)}.fb .uch i.tor{background:var(--er)}
+/* kanban */
+.kan{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:start}
+.col{background:var(--soft);border:1px solid var(--ln);border-radius:var(--r);padding:10px;min-height:140px;display:flex;flex-direction:column;gap:8px}
+.col>h4{margin:0 2px;font-size:13px;display:flex;align-items:center;gap:7px;font-weight:500}
+.col>h4 em{margin-left:auto;font-style:normal;background:#fff;border:1px solid var(--ln);border-radius:var(--rs);padding:0 6px;font-size:12px;color:var(--mut)}
+.col>h4 em.er{color:var(--er);border-color:var(--erbg);background:var(--erbg)}
+.col .yk{font-size:12px;color:var(--mut);display:flex;flex-direction:column;gap:3px;margin:-2px 2px 0}
+.col .yk .bar{height:5px;background:#fff;border:1px solid var(--ln);border-radius:2px;overflow:hidden}
+.col .yk .bar i{display:block;height:100%;background:var(--steel)}
+.col .yk .bar i.er{background:var(--er)}.col .yk .bar i.wr{background:var(--wr)}
+.col .gr{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;margin:4px 2px 0}
+.oc{background:#fff;border:1px solid var(--ln);border-radius:var(--rm);padding:10px 11px;cursor:pointer;transition:border-color .12s}
+.oc:hover{border-color:var(--ln2)}
+.oc.late{box-shadow:inset 3px 0 0 var(--er)}.oc.soon{box-shadow:inset 3px 0 0 var(--wr)}.oc.wait{box-shadow:inset 3px 0 0 var(--wr);background:var(--soft)}
+.oc .r1{display:flex;justify-content:space-between;gap:6px;font-size:12px;color:var(--mut)}
+.oc .r1 .mono{color:var(--tx)}
+.oc b{display:block;margin:3px 0 2px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc .pr{font-size:13px;color:var(--mut)}
+.oc .r3{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center;font-size:12px;color:var(--mut)}
+.prog{height:6px;background:var(--neubg);border-radius:2px;overflow:hidden;margin:6px 0 3px}
+.prog i{display:block;height:100%;background:var(--inf);border-radius:2px}
+.prog i.ok{background:var(--acc)}.prog i.er{background:var(--er)}
+/* stok shkalasi */
+.lvl{position:relative;height:8px;background:var(--neubg);border-radius:2px;overflow:visible;margin:6px 0 2px;min-width:90px}
+.lvl i{display:block;height:100%;border-radius:2px;background:var(--steel)}
+.lvl i.wr{background:var(--wr)}.lvl i.er{background:var(--er)}
+.lvl u{position:absolute;top:-3px;width:2px;height:14px;background:var(--tx);border-radius:1px}
+.lvl .rz{position:absolute;top:0;height:100%;border-left:1px dashed var(--tx);opacity:.6}
+.lv{font-size:12px;color:var(--mut);display:flex;justify-content:space-between;gap:8px}
+/* brigada kalendari */
+.kal{display:grid;grid-template-columns:150px repeat(14,minmax(0,1fr));gap:3px 2px;font-size:12px;align-items:stretch}
+.kal .kh{color:var(--mut);text-align:center;padding:2px 0 4px;line-height:1.2;white-space:nowrap}
+.kal .kh b{display:block;color:var(--tx);font-weight:500}
+.kal .kh.dam{color:var(--mut2)}
+.kal .kh.bugun b{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+.kal .kb{padding:6px 8px;background:var(--soft);border:1px solid var(--ln);border-radius:var(--rs);display:flex;flex-direction:column;justify-content:center;min-height:44px;cursor:pointer}
+.kal .kb b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kal .kb small{color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kal .kb.bosh{border-color:var(--wr);background:var(--wrbg)}.kal .kb.bosh small{color:var(--wr)}
+.kal .kd{background:#fff;border:1px solid var(--ln);border-radius:var(--rs);min-height:44px}
+.kal .kd.dam{background:var(--soft);border-color:var(--soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 8L8 0' stroke='%23DCE1E7'/%3E%3C/svg%3E")}
+.kal .kd.bugun{border-color:var(--acc)}
+.kal .km{border-radius:var(--rs);padding:5px 8px;font-size:12px;color:#fff;display:flex;flex-direction:column;justify-content:center;min-width:0;overflow:hidden;cursor:pointer;min-height:44px;border:1px solid transparent}
+.kal .km b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.kal .km small{opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kal .km.reja{background:var(--infbg);color:var(--inf);border-color:var(--infbg)}.kal .km.reja b{color:var(--inf)}
+.kal .km.yolda{background:var(--wrbg);color:var(--wr);border-color:var(--wrbg)}.kal .km.yolda b{color:var(--wr)}
+.kal .km.ishda{background:var(--acc)}
+.kal .km.tugadi{background:var(--okbg);color:var(--ok);border-color:var(--okbg)}.kal .km.tugadi b{color:var(--ok)}
+.kal .km.kech{background:var(--erbg);color:var(--er);border-color:var(--erbg)}.kal .km.kech b{color:var(--er)}
+.kal .km.kech.ishda{background:var(--acc);color:#fff;box-shadow:inset 4px 0 0 var(--er)}.kal .km.kech.ishda b{color:#fff}
+.kalw{overflow-x:auto}
+.kalm{display:none}
+/* obyekt kartasi */
+.obj{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:start}
+.obj .on{font-size:16px;font-weight:600}
+.obj .oa{font-size:13px;color:var(--mut);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.obj .oa svg.i{color:var(--steel)}
+.obj .ok2{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.obj .op{grid-column:1/-1}
+/* qarz yoshi */
+.age{display:flex;height:10px;border-radius:2px;overflow:hidden;background:var(--neubg)}
+.age i{display:block;height:100%}
+.age i.a1{background:var(--wr);opacity:.5}.age i.a2{background:var(--wr)}.age i.a3{background:var(--er)}
+.leg .dot.a1{color:var(--wr);opacity:.5}.leg .dot.a2{color:var(--wr)}.leg .dot.a3,.leg .dot.er{color:var(--er)}.leg .dot.ok{color:var(--ok)}.leg .dot.wr{color:var(--wr)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px}
+.leg span{display:flex;align-items:center;gap:6px;color:var(--mut)}
+.leg .dot{width:8px;height:8px}
+/* jadval */
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+.t th{text-align:left;font-size:12px;color:var(--mut);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--ln);white-space:nowrap;background:var(--soft);position:sticky;top:0;z-index:1}
+.t td{padding:9px 10px;border-bottom:1px solid var(--ln);vertical-align:middle}
+.t tbody tr:last-child td{border-bottom:0}
+.t tfoot td{border-top:2px solid var(--ln2);font-weight:500;background:var(--soft)}
+.t tr.cl{cursor:pointer}.t tr.cl:hover td{background:var(--soft)}
+.t tr.grp td{background:var(--soft);color:var(--mut);font-size:12px;padding:5px 10px;font-weight:500}
+.t .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.t td .sm{display:block;color:var(--mut);font-size:12px;font-weight:400}
+.tw{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r);background:#fff}
+.card .tw{border:0;border-top:1px solid var(--ln);border-radius:0;margin:0 -16px -16px}
+.card.p0 .tw{margin:0;border-radius:0 0 var(--r) var(--r)}
+/* modal */
+.mod{position:fixed;inset:0;background:rgba(22,31,43,.5);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.box{background:#fff;border-radius:var(--rl);width:min(760px,100%);max-height:92vh;overflow:auto;box-shadow:0 8px 14px rgba(22,31,43,.14)}
+.box.w{width:min(980px,100%)}
+.box .hd{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--ln);position:sticky;top:0;background:#fff;z-index:2}
+.box .hd h2{margin:0;font-size:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.box .hd h2 small{font-size:13px;color:var(--mut);font-weight:400}
+.box .hd .x{margin-left:auto;border:0;background:var(--soft);border-radius:var(--rm);width:34px;height:34px;font-size:18px;flex:none}
+.box .bd{padding:16px 18px}
+.ft{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--ln);position:sticky;bottom:0;background:#fff}
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
+.dl div small{display:block;color:var(--mut);font-size:12px}
+.dl div b{font-size:14px;font-weight:500}
+.sec{margin-top:18px}
+.sec h4{margin:0 0 8px;font-size:14px;display:flex;gap:8px;align-items:center}
+.sec h4 .sp{flex:1}
+.hist{font-size:13px;border-left:2px solid var(--ln);margin-left:4px;padding-left:12px}
+.hist div{margin-bottom:7px;position:relative}
+.hist div:before{content:"";position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hist div.er:before{background:var(--er)}
+.hist small{color:var(--mut)}
+/* forma */
+.frm{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.frm.f3{grid-template-columns:repeat(3,1fr)}
+.frm label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:500;color:var(--mut)}
+.frm .w2{grid-column:span 2}.frm .wf{grid-column:1/-1}.frm .inp{width:100%}
+.inp{border:1px solid var(--ln);background:#fff;border-radius:var(--rm);padding:8px 11px;min-width:0;font-weight:400;color:var(--tx)}
+.inp:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.inp.big{font-size:18px;font-weight:600}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;flex-wrap:wrap}
+.chip{border:1px solid var(--ln);background:#fff;border-radius:var(--rm);padding:5px 11px;font-size:13px;font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:background-color .12s,border-color .12s}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.chip em{font-style:normal;opacity:.7;font-size:12px}
+.seg{max-width:100%;overflow-x:auto;display:inline-flex;border:1px solid var(--ln);border-radius:var(--rm);background:#fff}
+.seg button{border:0;background:none;padding:7px 12px;font-weight:500;font-size:13px;white-space:nowrap;transition:background-color .12s}
+.seg button.on{background:var(--accbg);color:var(--acc2)}
+.seg button em{font-style:normal;color:var(--mut);font-size:12px;margin-left:4px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--side);color:#fff;padding:11px 16px;border-radius:var(--r);font-weight:500;font-size:13px;z-index:80;box-shadow:0 6px 14px rgba(22,31,43,.2);display:flex;gap:9px;align-items:center;max-width:calc(100vw - 32px)}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:var(--rm);background:var(--wrbg);color:var(--wr);font-size:13px;margin-bottom:12px}
+.alert.er{background:var(--erbg);color:var(--er)}.alert.inf{background:var(--infbg);color:var(--inf)}.alert.ok{background:var(--okbg);color:var(--ok)}
+.alert svg.i{flex:none;margin-top:2px}
+.note{font-size:12px;color:var(--mut)}.mt{margin-top:10px}
+.intro{background:#fff;border:1px solid var(--ln);box-shadow:inset 3px 0 0 var(--acc);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:13px;color:var(--mut);display:flex;gap:10px;align-items:center}
+.intro b{color:var(--tx);font-weight:500}.intro .sp{flex:1}
+.intro button{border:0;background:none;color:var(--mut);padding:4px}
+.cta{margin-top:12px;padding:12px 14px;border:1px dashed var(--ln2);border-radius:var(--r);background:var(--accbg);font-size:13px;color:var(--mut)}
+.cta b{display:block;font-size:14px;color:var(--tx);margin-bottom:2px;font-weight:500}
+/* natija kartasi */
+.lk{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.lk>div{border:1px solid var(--ln);border-radius:var(--rm);padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:2px;transition:border-color .12s}
+.lk>div:hover{border-color:var(--ln2)}
+.lk small{color:var(--mut);font-size:12px}.lk b{font-size:16px}
+.linked{box-shadow:inset 3px 0 0 var(--ok)}
+.hl{background:var(--accbg)!important}
+/* hisobot ustunlari */
+.bars{display:flex;align-items:flex-end;gap:8px;height:160px;padding-top:8px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end;min-width:0}
+.bars .b i{display:block;width:100%;max-width:42px;background:var(--steel);border-radius:2px 2px 0 0}
+.bars .b i.acc{background:var(--acc)}
+.bars .b small{font-size:12px;color:var(--mut);white-space:nowrap}
+.bars .b em{font-style:normal;font-size:12px;font-weight:500;color:var(--tx);white-space:nowrap}
+.hbar{display:grid;grid-template-columns:180px 1fr 60px;gap:6px 10px;align-items:center;font-size:13px}
+.hbar .hb{height:10px;background:var(--neubg);border-radius:2px;overflow:hidden}.hbar .hb i{display:block;height:100%;background:var(--steel)}
+.hbar .sm{display:block}
+.hbar>span{min-width:0;overflow-wrap:anywhere}
+.bars .b em{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.hbar .hn{text-align:right;font-variant-numeric:tabular-nums;color:var(--mut)}
+/* «Yana» */
+.more{display:grid;gap:6px}
+.more button{display:flex;align-items:center;gap:10px;border:1px solid var(--ln);background:#fff;border-radius:var(--rm);padding:12px;font-weight:500;text-align:left}
+.more .ic{width:22px;display:inline-flex;color:var(--steel)}
+.rolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--infbg);color:var(--inf);border-radius:var(--rm);padding:8px 12px;font-size:13px;margin-bottom:12px}
+.rolbar .sp{flex:1}
+.tel{border:1px solid var(--ln);border-radius:var(--rl);max-width:320px;margin:0 auto 14px;overflow:hidden}
+.tel-hd{background:var(--side);color:#fff;font-size:12px;padding:6px 12px;text-align:center}
+.tel-bd{padding:14px}.tel-v{font-size:26px;font-weight:600;margin:4px 0}
+.tel-r{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px solid var(--ln);font-size:13px}
+svg.i{width:1.1em;height:1.1em;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block}
+.nav .ic svg.i,.mnav .ic svg.i{width:20px;height:20px;vertical-align:middle}
+.btn svg.i{width:16px;height:16px}
+.alert svg.i,.pill svg.i{width:14px;height:14px}
+.mnav{display:none}
+.pnl{display:flex;flex-direction:column;gap:12px}
+.ol{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mut)}
+.ol b{color:var(--tx);font-weight:500}
+details.rd summary{cursor:pointer;list-style:none}details.rd summary::-webkit-details-marker{display:none}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.k4{grid-template-columns:repeat(2,1fr)}.k3{grid-template-columns:repeat(2,1fr)}.k2{grid-template-columns:1fr}.flow{grid-template-columns:repeat(4,minmax(0,1fr))}.fb:after{display:none}.kan{grid-template-columns:repeat(3,minmax(0,1fr))}.dl{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){
+ .side{display:none}.main{padding:12px 14px 92px}.top h1{font-size:18px}.top{margin-bottom:12px}
+ .mhead{display:flex}
+ .mnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--ln);z-index:40;padding:4px 2px calc(4px + env(safe-area-inset-bottom))}
+ .mnav button{flex:1 1 0;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;color:var(--mut);padding:7px 0 6px;position:relative;white-space:nowrap}
+ .mnav button.on{color:var(--acc);box-shadow:inset 0 2px 0 var(--acc)}
+ .mnav .bdg{position:absolute;top:1px;right:calc(50% - 20px);margin:0}
+ .mnav .ic svg.i{width:22px;height:22px}
+ .kpis,.k4,.k3{grid-template-columns:repeat(2,1fr)}.k22{grid-template-columns:1fr}
+ .att .list.qisqa .it:nth-child(n+4){display:none}
+ .kpi{padding:12px}.kpi .v{font-size:22px}.kpi .sk{display:none}
+ .card{padding:14px}.card .tw{margin:0 -14px -14px}
+ .pnl .attw{order:1}.pnl .kpiw{order:2}.pnl .flw{order:3}.pnl .ow{order:4}
+ .dl{grid-template-columns:repeat(2,1fr)}
+ .frm,.frm.f3{grid-template-columns:1fr}.frm .w2{grid-column:auto}
+ .box{border-radius:var(--rl) var(--rl) 0 0;max-height:94vh;align-self:flex-end}.mod{padding:0;align-items:flex-end}
+ .box .hd .x{width:40px;height:40px}
+ .kan{display:flex;flex-direction:column;align-items:stretch}.col{min-height:0}.col.bo{display:none}
+ .inp,select.inp,.rolsel.m{font-size:16px;min-height:44px}
+ .btn{min-height:44px}.btn.s{min-height:38px}.chip,.seg button{min-height:38px}
+ .toast{bottom:calc(72px + env(safe-area-inset-bottom))}
+ .ft{justify-content:stretch}.ft .btn{flex:1;justify-content:center}
+ .flow{display:flex;flex-direction:column;gap:0;border:1px solid var(--ln);border-radius:var(--r);background:#fff;overflow:hidden}
+ .fb{display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 10px;min-height:46px;padding:8px 12px;border:0;border-bottom:1px solid var(--ln);border-radius:0}
+ .fb:last-child{border-bottom:0}
+ .fb .fn{grid-column:1;font-size:14px;color:var(--tx);font-weight:400}
+ .fb b{grid-column:2;grid-row:1;font-size:16px;text-align:right}
+ .fb small,.fb .fx{grid-column:1/-1;font-size:12px}
+ .fb .uch{grid-column:1/-1}
+ .fb.tor{background:var(--erbg)}.fb.bo{background:var(--soft)}
+ .top .sub{font-size:13px}
+ .namuna{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;padding:4px 12px}
+ .mhead .rolsel{font-size:13px;min-height:36px}.mhead small{display:none}.mhead{margin:0 0 10px}
+ .tw.cm{border:0;background:none;overflow:visible}
+ .tw.cm table,.tw.cm tbody,.tw.cm tfoot{display:block}
+ .tw.cm thead{display:none}
+ .tw.cm tr{display:block;background:#fff;border:1px solid var(--ln);border-radius:var(--r);padding:10px 12px;margin-bottom:8px}
+ .tw.cm tr.grp{background:none;border:0;padding:4px 0 2px;margin:0}
+ .tw.cm td{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:3px 0;border:0;text-align:right}
+ .tw.cm td:before{content:attr(data-l);color:var(--mut);font-size:12px;text-align:left;flex:none}
+ .tw.cm td:first-child{display:block;text-align:left;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--ln);font-weight:500}
+ .tw.cm td:first-child:before,.tw.cm td[data-l=""]:before{display:none}
+ .tw.cm td[data-l=""]{justify-content:flex-end}
+ .tw.cm td.hide-m{display:none}
+ .tw.cm td.wd{display:block;text-align:left}.tw.cm td.wd:before{display:block;margin-bottom:2px}
+ .tw.cm td .cv{min-width:0}
+ .tw.cm tr.cl:hover td{background:none}
+ .tw.cm tfoot tr{background:var(--soft)}
+ .card .tw.cm{margin:0}
+ .hide-m{display:none}
+ .steps{display:none}
+ .mlist{display:block}.mlist+.tw{display:none}.mchain{display:block;margin:4px 0 8px;font-size:13px}
+ .intro{display:none}
+ .bars .b:nth-last-child(n+7){display:none}
+ .kpis.c3{grid-template-columns:1fr 1fr}.kpis.c3 .kpi:first-child{grid-column:1/-1}
+ .seg{flex-wrap:wrap}
+ .tw.cm tr:not(.grp){display:flex;flex-wrap:wrap;gap:4px 16px}
+ .tw.cm td{display:flex;flex-direction:column;align-items:flex-start;text-align:left;justify-content:flex-start;gap:0}
+ .tw.cm td:before{font-size:12px}
+ .tw.cm td.wd:before{display:none}
+ .tw.cm td:first-child,.tw.cm td.wd{flex-basis:100%}
+ .tw.cm td[data-l=""]{flex-basis:100%;align-items:flex-end}
+ .tw.cm tr.grp td{display:block;padding:8px 2px 2px;color:var(--mut);font-size:12px;border:0}
+ .kalw{display:none}.kalm{display:block}
+ .hbar{grid-template-columns:120px 1fr 50px}
+ .bars{height:130px;gap:4px}.bars .b small{font-size:12px}
+ .obj{grid-template-columns:1fr}.obj>.pill{justify-self:start}
+ .lk{grid-template-columns:1fr 1fr}
+ .sk{display:none}
+}
+@media print{body *{visibility:hidden}.box,.box *{visibility:visible}.box{position:absolute;left:0;top:0;box-shadow:none;max-height:none;width:100%}.mod{background:none}.ft,.x{display:none!important}}
+</style>
+</head>
+<body>
+<div class="namuna"><b>NAMUNA</b> · mijozlar, raqamlar va xodimlar shartli · ishlaydigan tizimda har xodimning o‘z login va paroli bo‘ladi</div>
+<div class="lay">
+ <aside class="side">
+  <div class="brand"><div class="logo" id="lg1"></div><div><b id="bn1"></b><small id="bs1"></small></div></div>
+  <nav class="nav" id="nav"></nav>
+  <div class="sidefoot">
+   <label for="rolsel" id="rollbl">Kim ko‘ryapti</label>
+   <select id="rolsel" class="rolsel"></select>
+   <button id="rst" type="button">Namuna ma’lumotini tiklash</button>
+  </div>
+ </aside>
+ <main class="main">
+  <div class="mhead"><div class="logo" id="lg2"></div><div class="mh"><b id="bn2"></b><small id="bs2"></small></div><select id="rolsel2" class="rolsel m" aria-label="Kim ko‘ryapti"></select></div>
+  <div id="app"></div>
+ </main>
+</div>
+<nav class="mnav" id="mnav"></nav>
+<script>/* Chiziqli ikonlar (Lucide uslubi) — INNOTEK namunasi */
+(function(){
+const P={
+panel:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+paket:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/>',
+zavod:'<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/>',
+rulon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><ellipse cx="12" cy="5" rx="2.5" ry=".8"/>',
+yuk:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+jadval:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h8M12 11v8"/>',
+sozlama:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+ogoh:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/>',
+chaqmoq:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+belgi:'<path d="M20 6 9 17l-5-5"/>',
+okdoira:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+taqiq:'<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+tarozi:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+kolba:'<path d="M10 2v7.31M14 9.3V2M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>',
+soat:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+karta:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+qulf:'<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+hujjat:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/>',
+qongiroq:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+qidir:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+odam:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+zanjir:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+qalam:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>',
+yubor:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+kalendar:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+qatlam:'<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+baza:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
+xoch:'<path d="M18 6 6 18M6 6l12 12"/>',
+kitob:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+printer:'<path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/>',
+yukla:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>',
+tushir:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+telefon:'<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+samolyot:'<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+pul:'<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+nihol:'<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+termometr:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+nuqta:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+qor:'<path d="M2 12h20M12 2v20m8-6-4-4 4-4M4 8l4 4-4 4m12-12-4 4-4-4m0 16 4-4 4 4"/>',
+aylan:'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+radar:'<path d="M19.07 4.93A10 10 0 0 0 6.99 3.34M4 6h.01M2.29 9.62A10 10 0 1 0 21.31 8.35M16.24 7.76A6 6 0 1 0 8.23 16.67M12 18h.01M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/>',
+osish:'<path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/>',
+yol:'<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+qayt:'<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+kvadrat:'<rect width="18" height="18" x="3" y="3" rx="2"/>',
+qaychi:'<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
+odamlar:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+tomchi:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+qosh:'<path d="M5 12h14M12 5v14"/>',
+chap:'<path d="m15 18-6-6 6-6"/>',
+ong:'<path d="m9 18 6-6-6-6"/>',
+kiyim:'<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>',
+ip:'<path d="M4 4h16v4H4z"/><path d="M4 16h16v4H4z"/><path d="M7 8v8M12 8v8M17 8v8"/>',
+til:'<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
+stellaj:'<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+kaska:'<path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a8 8 0 0 0-16 0v2z"/><path d="M10 10V5h4v5"/><path d="M2 18h20"/>',
+xarita:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+olchov:'<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/>',
+metall:'<path d="m12.83 2.18 8.5 4.25a1 1 0 0 1 0 1.79l-8.5 4.25a2 2 0 0 1-1.66 0L2.67 8.22a1 1 0 0 1 0-1.79l8.5-4.25a2 2 0 0 1 1.66 0Z"/><path d="m2.5 11.5 9 4.5a2 2 0 0 0 1.66 0l9-4.5"/><path d="m2.5 16.5 9 4.5a2 2 0 0 0 1.66 0l9-4.5"/>',
+hamyon:'<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+ustun:'<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16v-5M12 16V7M17 16v-3"/>',
+kesish:'<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
+bolga:'<path d="m15 12-8.5 8.5a2.1 2.1 0 1 1-3-3L12 9"/><path d="M17.6 15 22 10.5l-3-3L14.5 12"/><path d="m14.5 6.5 3-3 3 3-3 3"/>',
+olov:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.04 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.3 1.2-3.1A2.5 2.5 0 0 0 8.5 14.5Z"/>',
+purk:'<path d="M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01"/><rect x="15" y="5" width="4" height="4"/><path d="m19 9 1 1v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h4"/><path d="M15 9V3h4v2"/>',
+quti:'<path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/><path d="M3 8v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8"/><path d="M3 8h18"/><path d="M10 12h4"/>',
+belgiok:'<path d="M20 6 9 17l-5-5"/>',
+nuqtalar:'<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>',
+doira:'<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>',
+tel:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+kal:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+tashqi:'<path d="M15 3h6v6M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'};
+window.I=(n,c)=>'<svg class="i'+(c?" "+c:"")+'" viewBox="0 0 24 24" aria-hidden="true">'+(P[n]||"")+'</svg>';
+})();
+</script>
+<script>/* Umumiy yordamchilar (namuna karkasi). window.U */
+(function(){
+const U={};U.t=s=>s;
+U.$=s=>document.querySelector(s);
+U.$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+U.esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T=new Date();T.setHours(0,0,0,0);U.TODAY=T;
+U.iso=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+U.addD=(n,b)=>{const d=new Date(b||T);d.setDate(d.getDate()+n);return U.iso(d)};
+U.addH=(h,b)=>new Date((b?new Date(b):new Date()).getTime()+h*36e5);
+U.dd=s=>Math.round((new Date(String(s).slice(0,10))-T)/864e5);
+U.OY=['yan','fev','mar','apr','may','iyn','iyl','avg','sen','okt','noy','dek'];
+U.OYT=['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
+U.HK=['Ya','Du','Se','Ch','Pa','Ju','Sh'];
+U.fd=s=>{if(!s)return'—';const d=new Date(s);return d.getDate()+'-'+U.OY[d.getMonth()]};
+U.fdd=s=>{if(!s)return'—';const d=new Date(s);return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear()};
+U.fdt=s=>{if(!s)return'—';const d=new Date(s);return U.fd(d)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+U.num=(n,k)=>{if(n==null||isNaN(n))return'—';const f=k?Number(n).toFixed(k):Math.round(n);return Number(f).toLocaleString('ru-RU',{minimumFractionDigits:k||0,maximumFractionDigits:k||0}).replace(/[   ]/g,' ').replace(',',k?',':'')};
+U.som=n=>U.num(n)+' so‘m';
+U.mln=n=>Math.abs(n)>=1e9?(n/1e9).toFixed(2).replace('.',',')+' mlrd':Math.abs(n)>=1e6?(n/1e6).toFixed(n>=1e8?0:1).replace('.',',')+' mln':U.num(n);
+U.t1=n=>U.num(n,1);
+U.vaqt=v=>{const d=new Date(v),m=Math.round((Date.now()-d)/6e4);return m<1?'hozir':m<60?m+' daq oldin':m<1440?Math.round(m/60)+' soat oldin':U.fd(d)};
+U.rnd=seed=>{let s=seed;return()=>{s=(s*9301+49297)%233280;return s/233280}};
+U.pick=(r,a)=>a[Math.floor(r()*a.length)];
+U.uid=p=>(p||'x')+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+U.kun=n=>n===1?'1 kun':n+' kun';
+
+/* saqlash */
+U.store=key=>({load(){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}},save(d){try{localStorage.setItem(key,JSON.stringify(d))}catch(e){}},clear(){try{localStorage.removeItem(key)}catch(e){}}});
+
+/* toast */
+U.toast=(m,tg)=>{U.$$('.toast').forEach(x=>x.remove());const t=document.createElement('div');t.className='toast';t.innerHTML=(tg?'<span class="tg">'+U.esc(tg)+'</span>':'')+U.esc(m);document.body.appendChild(t);setTimeout(()=>t.remove(),2600)};
+
+/* modal */
+U.closeM=pop=>{const m=U.$('#mo');if(m)m.remove();document.body.style.overflow='';if(m&&pop!==true&&history.state&&history.state.mo){U._skip=true;try{history.back()}catch(e){U._skip=false}}};
+window.addEventListener('popstate',()=>{if(U._skip){U._skip=false;if(U._app){try{history.replaceState(null,'','#'+U._app.view)}catch(e){}}if(U.$('#mo')){try{history.pushState({mo:1},'')}catch(e){}}return}if(U.$('#mo'))U.closeM(true)});
+U.modal=(h,b,f,wide)=>{U.closeM(true);U.$$('.toast').forEach(x=>x.remove());const m=document.createElement('div');m.className='mod';m.id='mo';m.innerHTML=`<div class="box${wide?' w':''}"><div class="hd">${h}<button class="x" aria-label="Yopish">×</button></div><div class="bd">${b}</div>${f?'<div class="ft">'+f+'</div>':''}</div>`;document.body.appendChild(m);document.body.style.overflow='hidden';try{if(!U._skip&&!(history.state&&history.state.mo))history.pushState({mo:1},'')}catch(e){}m.querySelector('.x').onclick=U.closeM;m.addEventListener('mousedown',e=>{if(e.target===m)U.closeM()});return m};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')U.closeM()});
+
+/* jadval: telefonda karta (data-l yorliq), birinchi ustun — sarlavha */
+U.table=(cols,rows,opt)=>{opt=opt||{};if(!rows.length)return'<div class="card empty">'+(opt.empty||'Ma’lumot yo‘q')+'</div>';
+let gp=null;const gh=r=>{if(!opt.grp)return'';const g=opt.grp(r);if(g===gp)return'';gp=g;return`<tr class="grp"><td colspan="${cols.length}" data-l=""><div class="cv">${g}</div></td></tr>`};
+return`<div class="tw ${opt.keep?'':'cm'}"><table class="t"><thead><tr>${cols.map(c=>`<th class="${c.n?'n':''} ${c.m?'hide-m':''}">${c.t}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>gh(r)+`<tr class="${opt.click?'cl':''} ${opt.cls?opt.cls(r):''}" ${opt.click?opt.click(r):''}>${cols.map(c=>`<td class="${c.n?'n':''} ${c.m?'hide-m':''} ${c.w?'wd':''}" data-l="${String(c.t).replace(/<[^>]*>/g,'').replace(/"/g,'')}"><div class="cv">${c.f(r)}</div></td>`).join('')}</tr>`).join('')}</tbody>${opt.foot?`<tfoot><tr>${opt.foot.map(c=>`<td class="${c.n?'n':''}" data-l="${c.t||''}"><div class="cv">${c.v}</div></td>`).join('')}</tr></tfoot>`:''}</table></div>`};
+
+/* CSV (UTF-8 BOM — Excel o‘zbek harflarini to‘g‘ri ochadi) */
+U.csv=(rs,fn)=>{const h=Object.keys(rs[0]||{});const t=[h.join(';')].concat(rs.map(r=>h.map(k=>'"'+String(r[k]==null?'':r[k]).replace(/"/g,'""')+'"').join(';'))).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+t],{type:'text/csv;charset=utf-8'}));a.download=fn;a.click();U.toast('Fayl yuklandi: '+fn)};
+U.toNum=v=>+String(v==null?'':v).replace(/\s/g,'').replace(',','.')||0;
+
+/* ilova karkasi: menyu, rollar, render */
+U.app=cfg=>{
+ const A={view:cfg.boshlang||cfg.bolimlar[0],rol:'direktor'};U._app=A;
+ const bol=()=>cfg.rollar?cfg.rollar[A.rol].filter(k=>cfg.bolimlar.includes(k)):cfg.bolimlar;
+ A.navs=()=>{const ks=bol();const b=k=>{const n=cfg.badge?cfg.badge(k):0;return n?'<span class="bdg">'+n+'</span>':''};
+  U.$('#nav').innerHTML=ks.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][1]}${b(k)}</button>`).join('');
+  let mk=ks;A.rest=[];if(cfg.mobil){mk=ks.length>5?ks.filter(k=>cfg.mobil.includes(k)).slice(0,5):ks;if(mk.length<2)mk=ks.slice(0,4);A.rest=ks.filter(k=>!mk.includes(k))}
+  const rb=A.rest.reduce((s,k)=>s+(cfg.badge?cfg.badge(k):0),0);
+  U.$('#mnav').innerHTML=mk.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][2]}${b(k)}</button>`).join('')+(cfg.onMore&&A.rest.length?`<button data-more="1" class="${A.rest.includes(A.view)?'on':''}"><span class="ic">${cfg.moreIc}</span>${cfg.moreNom()}${rb?'<span class="bdg">'+rb+'</span>':''}</button>`:'')};
+ A.render=()=>{if(!bol().includes(A.view))A.view=bol()[0];A.navs();const a=U.$('#app');cfg.render[A.view](a);try{history.replaceState(null,'','#'+A.view)}catch(e){}};
+ A.go=(v,f)=>{U.$$('.toast').forEach(x=>x.remove());A.view=v;if(cfg.onGo)cfg.onGo(v,f);A.render();window.scrollTo(0,0)};
+ document.addEventListener('click',e=>{const m=e.target.closest('#mnav [data-more]');if(m){cfg.onMore(A.rest);return}const b=e.target.closest('[data-v]');if(b&&(b.closest('#nav')||b.closest('#mnav')))A.go(b.dataset.v)});
+ U.$('#lg1').textContent=U.$('#lg2').textContent=cfg.logo;U.$('#bn1').textContent=U.$('#bn2').textContent=cfg.nom;U.$('#bs1').textContent=U.$('#bs2').textContent=cfg.shior;
+ if(cfg.rollar){const s=U.$('#rolsel');s.innerHTML=Object.keys(cfg.rollar).map(k=>`<option value="${k}">${cfg.rolNom[k]}</option>`).join('');s.onchange=()=>{A.rol=s.value;A.view=bol()[0];U.$('#rolsel2').value=s.value;U.$$('.rolnom').forEach(x=>x.textContent=cfg.rolNom[A.rol]);if(cfg.onRol)cfg.onRol(A.rol);A.render()};U.$('#rolsel2').innerHTML=s.innerHTML;U.$('#rolsel2').onchange=e=>{s.value=e.target.value;s.onchange()}}
+ const h=location.hash.slice(1);if(cfg.bolimlar.includes(h))A.view=h;
+ return A};
+window.U=U;
+})();
+</script>
+<script>/* INNOTEK INVEST — ombor stellajlari va metall shkaflar ishlab chiqaruvchi korxona uchun boshqaruv tizimi (NAMUNA) */
+(function(){
+const {$,$$,esc,iso,addD,dd,fd,fdd,fdt,num,mln,som,t1,toast,modal,closeM,table}=U;
+const T=U.TODAY,KEY='innotek_namuna_v1',ST=U.store(KEY);
+
+/* ---------- ma’lumotnomalar ---------- */
+const BOSQ=['olchov','loyiha','kutish','sex','tayyor','yolda','montaj','akt'];
+const BOSN={olchov:'O‘lchov',loyiha:'Loyiha / KP',kutish:'Avans kutilmoqda',sex:'Sexda',tayyor:'Tayyor',yolda:'Yo‘lda',montaj:'Montaj',akt:'Akt / yopildi'};
+const BOSQI={olchov:'O‘lchov',loyiha:'Loyiha',kutish:'Avans',sex:'Sex',tayyor:'Tayyor',yolda:'Yo‘lda',montaj:'Montaj',akt:'Akt'};
+const ROUTE={stellaj:['olchov','loyiha','kutish','sex','tayyor','yolda','montaj','akt'],shkaf:['loyiha','kutish','sex','tayyor','yolda','akt'],ns:['loyiha','kutish','sex','tayyor','yolda','montaj','akt']};
+const UCH=['profil','kesish','bukish','payvand','boyash','komplekt'];
+const UCHN={profil:'Profillash',kesish:'Lazer / kesish',bukish:'Bukish / shtamp',payvand:'Payvand',boyash:'Bo‘yash',komplekt:'Komplektatsiya'};
+const UCHI={profil:'stellaj',kesish:'kesish',bukish:'bolga',payvand:'olov',boyash:'purk',komplekt:'quti'};
+const STANOK={profil:'5 ta roll-forming liniya',kesish:'Fiber lazer 3 kVt + gilyotina',bukish:'Press 160 t + koordinata-perforatsiya',payvand:'Robot + 4 MIG/MAG post',boyash:'Kukunli bo‘yash liniyasi (1 smena)',komplekt:'Yig‘ish va qadoqlash'};
+const USTA={profil:'Akmal Rasulov',kesish:'Bobur Qodirov',bukish:'Sanjar Toshev',payvand:'Rustam Nazarov',boyash:'Dilmurod Xolov',komplekt:'Jasur Hamroyev'};
+const RAL={'5005':{nom:'RAL 5005 ko‘k',hex:'#154889'},'2004':{nom:'RAL 2004 to‘q sariq',hex:'#E25303'},'7035':{nom:'RAL 7035 och kulrang',hex:'#C5C7C4'},'9005':{nom:'RAL 9005 qora',hex:'#0E0E10'}};
+const RALT=['7035','2004','5005','9005'];
+const SABAB=['metall yetmadi','bo‘yash navbati','stanok to‘xtadi','odam yetmadi','loyiha o‘zgardi','mijoz (avans / tasdiq)','obyekt tayyor emas','komplekt / transport'];
+const BIRL={seksiya:'seksiya','m2':'m²',dona:'dona',t:'t'};
+/* katalog: kgB — 1 birlik kg (yarussiz), kgY — har yarus uchun qo‘shimcha kg, nB/nY — narx so‘m, pal — paletta-joy/yarus, norma — montaj birlik/kun (brigada 4 kishi), met — metall ulushlari */
+const K={
+ PF:{nom:'Palletli frontal stellaj',tur:'stellaj',b:'seksiya',kgB:62,kgY:31,nB:1250000,nY:680000,pal:2,norma:{3:20,4:15,5:9},ral:'5005',met:[['R20',.5],['R15',.35],['L30',.1],['T40',.05]]},
+ DI:{nom:'Nabivnoy (drive-in) stellaj',tur:'stellaj',b:'seksiya',kgB:140,kgY:70,nB:3200000,nY:1500000,pal:6,norma:{3:9,4:7},ral:'2004',met:[['R25',.45],['R15',.35],['L30',.12],['T40',.08]]},
+ KN:{nom:'Konsolli stellaj (2 tomonlama)',tur:'stellaj',b:'seksiya',kgB:480,kgY:0,nB:10400000,nY:0,pal:0,norma:{0:6},ral:'5005',met:[['R25',.3],['L60',.4],['T50',.3]]},
+ MZ:{nom:'Mezonin platforma',tur:'stellaj',b:'m2',kgB:48,kgY:0,nB:1450000,nY:0,pal:0,norma:{0:50},ral:'7035',met:[['L30',.45],['L60',.25],['T50',.3]]},
+ PL:{nom:'Polkali stellaj SMART',tur:'stellaj',b:'seksiya',kgB:62,kgY:0,nB:1250000,nY:0,pal:0,norma:{0:35},ral:'7035',met:[['R08',.8],['T40',.2]]},
+ AR:{nom:'Arxiv stellaji (ko‘chma)',tur:'stellaj',b:'seksiya',kgB:50,kgY:0,nB:1600000,nY:0,pal:0,norma:{0:35},ral:'7035',met:[['R08',.85],['L20',.15]]},
+ TR:{nom:'Savdo stellaji',tur:'stellaj',b:'seksiya',kgB:43,kgY:0,nB:1685000,nY:0,pal:0,norma:{0:35},ral:'7035',met:[['R08',.7],['L20',.3]]},
+ SHG:{nom:'Garderob shkafi (2 bo‘lim)',tur:'shkaf',b:'dona',kgB:32,kgY:0,nB:1690000,nY:0,pal:0,norma:{0:40},ral:'7035',met:[['R08',.9],['L20',.1]]},
+ SHA:{nom:'Arxiv shkafi (metall)',tur:'shkaf',b:'dona',kgB:46,kgY:0,nB:2150000,nY:0,pal:0,norma:{0:40},ral:'7035',met:[['R08',.9],['L20',.1]]},
+ VS:{nom:'Chilangar verstagi',tur:'shkaf',b:'dona',kgB:85,kgY:0,nB:2980000,nY:0,pal:0,norma:{0:30},ral:'9005',met:[['L30',.6],['T40',.4]]},
+ NS:{nom:'Nostandart (chizma bo‘yicha)',tur:'ns',b:'t',kgB:1000,kgY:0,nB:24000000,nY:0,pal:0,norma:{0:2},ral:'7035',met:[['L30',.35],['L60',.25],['T50',.25],['T40',.15]]}};
+/* metall turlari: kg — ombordagi, min — minimal zaxira kg, kgD — 1 dona/list kg, kgM — 1 pog. m profil kg (rulon), narx so‘m/t */
+const MET0=[
+ {id:'R20',tur:'rulon',nom:'Rulon 2,0 × 300 mm',izoh:'stoyka 90',kg:22100,min:12000,kgM:4.7,narx:12500000},
+ {id:'R18',tur:'rulon',nom:'Rulon 1,8 × 280 mm',izoh:'stoyka 70',kg:18400,min:10000,kgM:3.95,narx:12800000},
+ {id:'R25',tur:'rulon',nom:'Rulon 2,5 × 300 mm',izoh:'og‘ir stoyka',kg:2600,min:8000,kgM:5.9,narx:12500000},
+ {id:'R15',tur:'rulon',nom:'Rulon 1,5 × 290 mm',izoh:'balka',kg:14000,min:10000,kgM:3.4,narx:12800000},
+ {id:'R08',tur:'rulon',nom:'Rulon rux 0,8 × 1250 mm',izoh:'polka, shkaf',kg:9700,min:6000,kgM:7.85,narx:14200000},
+ {id:'L20',tur:'list',nom:'List 2,0 × 1250 × 2500',izoh:'sovuq prokat',kg:15700,min:8000,kgD:49,narx:13500000},
+ {id:'L30',tur:'list',nom:'List 3,0 × 1500 × 6000',izoh:'issiq prokat',kg:18000,min:9000,kgD:212,narx:11900000},
+ {id:'L60',tur:'list',nom:'List 6,0 × 1500 × 6000',izoh:'platforma, konsol',kg:12400,min:6000,kgD:424,narx:11700000},
+ {id:'T40',tur:'profil',nom:'Profil quvur 40×60×2, 6 m',izoh:'raskos, tortqich',kg:9800,min:6000,kgD:18.8,narx:13000000},
+ {id:'T50',tur:'profil',nom:'Profil quvur 50×100×2, 6 m',izoh:'konsol, mezonin',kg:11300,min:6000,kgD:28,narx:13000000}];
+const QOLDIQ0=[
+ {id:'Q-71',m:'T40',uz:1.4,dona:18,holat:'erkin'},{id:'Q-72',m:'T50',uz:2.1,dona:9,holat:'band',oid:'o9'},
+ {id:'Q-73',m:'L30',uz:.9,dona:6,holat:'erkin',izoh:'list bo‘lagi 900×1500'},{id:'Q-74',m:'R15',uz:.8,dona:40,holat:'erkin',izoh:'balka kesimi'}];
+const BUT0=[
+ {id:'K5005',tur:'kukun',nom:'Kukun RAL 5005 ko‘k',b:'kg',miq:1200,min:750,narx:95000},
+ {id:'K2004',tur:'kukun',nom:'Kukun RAL 2004 to‘q sariq',b:'kg',miq:620,min:750,narx:98000},
+ {id:'K7035',tur:'kukun',nom:'Kukun RAL 7035 kulrang',b:'kg',miq:1300,min:625,narx:92000},
+ {id:'A12',tur:'metiz',nom:'Anker bolt M12×110',b:'dona',miq:6800,min:4000,narx:2800},
+ {id:'B10',tur:'metiz',nom:'Bolt-gayka M10',b:'dona',miq:12400,min:8000,narx:900},
+ {id:'F1',tur:'metiz',nom:'Fiksator / shplint',b:'dona',miq:2100,min:3000,narx:600}];
+const BRIG0=[
+ {id:'b1',nom:'1-brigada',brigadir:'Sardor Yo‘ldoshev',soni:5,tel:'+998 90 123 45 67',ixt:'palletli, 12 m gacha'},
+ {id:'b2',nom:'2-brigada',brigadir:'Jamshid Rahimov',soni:4,tel:'+998 91 234 56 78',ixt:'mezonin, ankerlash'},
+ {id:'b3',nom:'3-brigada',brigadir:'Otabek Karimov',soni:4,tel:'+998 93 345 67 89',ixt:'savdo, arxiv'},
+ {id:'b4',nom:'4-brigada',brigadir:'Farrux Ergashev',soni:3,tel:'+998 94 456 78 90',ixt:'shkaf, kichik obyekt'}];
+const MAS=['Dilshod Karimov','Nodir Yusupov','Sevara Abdullayeva'];
+const ROLN={direktor:'Direktor',buxgalter:'Buxgalter',sex:'Sex boshlig‘i',ombor:'Omborchi',montaj:'Montaj rahbari'};
+
+let D,F={g:'',q:''},OT='rulon',MT='kal',TT='qarz',SEX_FORMA=false,DIQ_HAMMA=false,INTRO=true;
+
+/* ---------- hisob yordamchilari ---------- */
+const S=()=>D.S;
+const dam=s=>{const w=new Date(s).getDay();return w===0||w===6};
+const ishKun=(n,b)=>{let d=b||iso(T),k=0;while(k<n){d=addD(1,d);if(!dam(d))k++}return d};
+const rol=()=>U._app?U._app.rol:'direktor';
+const narxKor=()=>['direktor','buxgalter'].includes(rol());
+const kgB=(k,yarus)=>K[k].kgB+(K[k].kgY||0)*(yarus||0);
+const narxB=(k,yarus)=>K[k].nB+(K[k].nY||0)*(yarus||0);
+const tonna=o=>o.k==='NS'?o.soni:Math.round(o.soni*kgB(o.k,o.yarus))/1000;
+const paletta=o=>K[o.k].pal?o.soni*K[o.k].pal*(o.yarus||0):0;
+const summa=o=>o.summa||(o.k==='NS'?Math.round(o.soni*o.narxT):Math.round(o.soni*narxB(o.k,o.yarus)));
+const route=o=>ROUTE[K[o.k].tur];
+const bIdx=o=>route(o).indexOf(o.bosqich);
+const mij=o=>D.MIJ.find(m=>m.id===o.mid)||{};
+const obj=o=>D.OBJ.find(x=>x.id===o.obid);
+const birl=o=>BIRL[K[o.k].b];
+const m2=o=>Math.round(tonna(o)*S().m2PerT);
+const norma=o=>{const n=K[o.k].norma;return n[o.yarus]||n[Object.keys(n)[0]]};
+const uchlar=o=>K[o.k].tur==='stellaj'?UCH:UCH.filter(u=>u!=='profil');
+const uchJami=(o,u)=>uchlar(o).includes(u)?tonna(o):0;
+const uchBajar=(o,u)=>Math.min(uchJami(o,u),o.uch[u]||0);
+const uchBitdi=(o,u)=>uchBajar(o,u)>=uchJami(o,u)-.0005;
+const joriyUch=o=>o.bosqich!=='sex'?null:(uchlar(o).find(u=>!uchBitdi(o,u))||'komplekt');
+const kesilmagan=(o,m)=>{if(['kutish','loyiha','olchov'].includes(o.bosqich))return 1;if(o.bosqich!=='sex')return 0;const mt=D.MET.find(x=>x.id===m);const u=mt&&mt.tur==='rulon'&&uchlar(o).includes('profil')?'profil':'kesish';return Math.max(0,1-(o.uch[u]||0)/tonna(o))};
+const kerakKg=(o,m)=>{const e=K[o.k].met.find(x=>x[0]===m);if(!e)return 0;const mt=D.MET.find(x=>x.id===m);return tonna(o)*1000*e[1]/(1-S().yoq[mt.tur]/100)};
+const faol=()=>D.B.filter(o=>!['akt'].includes(o.bosqich));
+const metHolat=()=>D.MET.map(m=>{const rez=faol().filter(o=>['kutish','sex'].includes(o.bosqich)).reduce((s,o)=>s+kerakKg(o,m.id)*kesilmagan(o,m.id),0);
+ const sarf=D.ISH.filter(e=>['profil','kesish'].includes(e.uch)&&dd(e.sana)>=-13).reduce((s,e)=>{const o=D.B.find(x=>x.id===e.oid);if(!o)return s;const u=(K[o.k].met.find(x=>x[0]===m.id)||[0,0])[1];return s+e.miq*1000*u},0)/14;
+ const erkin=m.kg-rez;const kunga=sarf>0?erkin/sarf:99;const holat=erkin<0?'er':erkin<m.min?'wr':'ok';
+ const toxtaydi=erkin<0&&sarf>0?ishKun(Math.max(1,Math.floor(m.kg/sarf))):null;
+ return{...m,rez:Math.round(rez),erkin:Math.round(erkin),sarf:Math.round(sarf),holat,toxtaydi,kerakBuy:faol().filter(o=>o.bosqich!=='akt'&&K[o.k].met.some(x=>x[0]===m.id)&&kesilmagan(o,m.id)>0).map(o=>({o,kg:Math.round(kerakKg(o,m.id)*kesilmagan(o,m.id))}))}});
+const metYetmaydi=o=>K[o.k].met.map(x=>metHolat().find(m=>m.id===x[0])).filter(m=>m.erkin<0&&kesilmagan(o,m.id)>0);
+const navbat=()=>{const R={};UCH.forEach(u=>{let t=0,n=0,h=0;D.B.filter(o=>o.bosqich==='sex').forEach(o=>{const q=uchJami(o,u)-uchBajar(o,u);if(q>.0005){t+=q;n++;if(joriyUch(o)===u||uchBajar(o,u)>.0005)h+=q}});const cap=S().cap[u];R[u]={t:Math.round(t*10)/10,h:Math.round(h*10)/10,n,cap,kun:Math.round(t/cap*10)/10,yuk:Math.min(1.5,t/(cap*5))}});
+ const tor=UCH.reduce((a,u)=>R[u].kun>R[a].kun?u:a,UCH[0]);R.tor=tor;return R};
+const rangAlm=()=>{const rs=new Set(D.B.filter(o=>o.bosqich==='sex'&&joriyUch(o)==='boyash').map(o=>o.ral));return Math.max(0,rs.size-1)};
+const avansFoiz=o=>(o.tolovReja.find(r=>r.tur==='avans')||{foiz:0}).foiz;
+const tolangan=o=>D.PAY.filter(p=>p.oid===o.id).reduce((s,p)=>s+p.summa,0);
+const avansKeldi=o=>o.ruxsat||tolangan(o)>=summa(o)*avansFoiz(o)/100-1;
+const montProg=o=>{const ms=D.MONT.filter(m=>m.oid===o.id);if(!ms.length)return 0;const j=ms[0].jami||o.soni;return Math.min(1,ms.reduce((s,m)=>s+(m.bajar||0),0)/j)};
+const bajarUlush=o=>o.bosqich==='akt'?1:o.bosqich==='montaj'?.5+.5*montProg(o):['tayyor','yolda'].includes(o.bosqich)?.5:o.bosqich==='sex'?Math.round((.05+.4*uchlar(o).reduce((a,u)=>a+uchBajar(o,u),0)/(uchlar(o).length*tonna(o)))*100)/100:0;
+const kutilgan=o=>{const s=summa(o);return o.tolovReja.reduce((a,r)=>{const ok=r.tur==='avans'?!['olchov','loyiha','kutish'].includes(o.bosqich):r.tur==='oraliq'?['tayyor','yolda','montaj','akt'].includes(o.bosqich):(o.akt&&o.akt.imzo);return a+(ok?s*r.foiz/100:0)},0)};
+const qarz=o=>Math.max(0,Math.round(kutilgan(o)-tolangan(o)));
+const keyingi=o=>{const s=summa(o),t=tolangan(o);let acc=0;for(const r of o.tolovReja){acc+=s*r.foiz/100;if(t<acc-1)return{tur:r.tur,summa:Math.round(acc-t),sana:r.tur==='avans'?addD(5,o.sana):r.tur==='oraliq'?(o.tayyorSana||sexTugash(o)):o.akt&&o.akt.sana?addD(mij(o).kun||10,o.akt.sana):null,taxmin:r.tur==='yakuniy'&&!(o.akt&&o.akt.sana)?addD(mij(o).kun||10,montOxir(o)):null}}return null};
+const sexTugash=o=>{if(o.bosqich!=='sex')return ishKun(10,o.sana);const q=uchlar(o).reduce((a,u)=>a+uchJami(o,u)-uchBajar(o,u),0);return ishKun(Math.max(1,Math.ceil(q/8)))};
+const montOxir=o=>{const m=D.MONT.filter(x=>x.oid===o.id).sort((a,b)=>b.sana.localeCompare(a.sana))[0];if(m)return ishKun(m.kun,m.sana);return o.muddat};
+const kelishi=n=>D.B.filter(o=>!['olchov','loyiha'].includes(o.bosqich)).map(o=>({o,k:keyingi(o)})).filter(x=>x.k).map(x=>({...x,sana:x.k.sana||x.k.taxmin,taxminiy:!x.k.sana})).filter(x=>x.sana&&(dd(x.sana)>=0||(x.k.tur==='avans'&&dd(x.sana)>=-30))&&dd(x.sana)<=n).sort((a,b)=>a.sana.localeCompare(b.sana));
+const qarzMuddat=o=>{const k=keyingi(o);return k&&k.sana?k.sana:null};
+const qarzYosh=o=>{if(!qarz(o))return 0;const m=qarzMuddat(o);return m?Math.max(0,-dd(m)):0};
+const montKech=mt=>{if(mt.holat==='tugadi')return 0;const oxir=ishKun(mt.kun-1,mt.sana);return Math.max(0,-dd(oxir))};
+const brigBand=()=>{const B={};D.BRIG.forEach(b=>B[b.id]={});D.MONT.forEach(mt=>{let d=mt.sana,k=0;while(k<mt.kun){if(!dam(d)){B[mt.brig][d]=mt;k++}d=addD(1,d)}});return B};
+const brigBosh=sana=>{const B=brigBand();return D.BRIG.filter(b=>!B[b.id][sana])};
+const kech=o=>{if(['akt'].includes(o.bosqich))return 0;return Math.max(0,-dd(o.muddat))};
+const rejaKech=o=>{if(o.bosqich!=='sex'||!o.sexReja)return 0;const u=joriyUch(o);const r=o.sexReja[u];return r?Math.max(0,-dd(r)):0};
+const xavf=o=>{if(o.bosqich==='akt'){if(qarz(o)&&qarzYosh(o)>0)return{t:'er',s:'yakuniy to‘lov '+qarzYosh(o)+' kun kech'+(narxKor()?': '+mln(qarz(o))+' so‘m':'')};if(o.akt&&!o.akt.imzo&&-dd(o.akt.sana)>3)return{t:'wr',s:'akt '+(-dd(o.akt.sana))+' kundan beri imzolanmagan'};return null}if(kech(o))return{t:'er',s:kech(o)+' kun kech (shartnoma '+fdd(o.muddat)+')'};
+ if(o.bosqich==='kutish'&&!avansKeldi(o))return{t:'wr',s:'avans kelmagan — sexga tushmaydi'};
+ if(o.bosqich==='sex'&&metYetmaydi(o).length)return{t:'er',s:'metall yetmaydi: '+metYetmaydi(o).map(m=>m.nom).join(', ')};
+ if(rejaKech(o))return{t:'wr',s:UCHN[joriyUch(o)]+'da '+rejaKech(o)+' kun ortiqcha — muddat xavf ostida'};
+ if(o.bosqich==='montaj'&&D.MONT.some(m=>m.oid===o.id&&montKech(m)))return{t:'er',s:'montaj rejadan '+Math.max(...D.MONT.filter(m=>m.oid===o.id).map(montKech))+' kun kech'};
+ if(o.bosqich==='montaj'&&obj(o)&&obj(o).tayyor===false)return{t:'wr',s:'obyekt tayyor emas (mijoz tasdiqlamagan)'};
+ if(o.akt&&!o.akt.imzo&&-dd(o.akt.sana)>3)return{t:'wr',s:'akt '+(-dd(o.akt.sana))+' kundan beri imzolanmagan'};
+ if(qarz(o)&&qarzYosh(o)>0)return{t:'er',s:'to‘lov '+qarzYosh(o)+' kun kechikdi'+(narxKor()?': '+mln(qarz(o))+' so‘m':'')};
+ const mo=D.MONT.find(m=>m.oid===o.id&&m.holat!=='tugadi');if(mo&&ishKun(mo.kun-1,mo.sana)>o.muddat)return{t:'wr',s:'montaj rejasi '+fdd(ishKun(mo.kun-1,mo.sana))+' da tugaydi — shartnoma '+fdd(o.muddat)};
+ if(dd(o.muddat)<=5)return{t:'wr',s:'muddatga '+dd(o.muddat)+' kun qoldi'};return null};
+const xavfNom=o=>{const x=xavf(o);if(!x)return'';if(kech(o))return'Kech';if(/to‘lov|avans/.test(x.s))return x.t==='er'?'Qarz':'To‘lov';if(/metall/.test(x.s))return'Metall';if(/montaj|obyekt|akt/.test(x.s))return'Montaj';return x.t==='er'?'Muammo':'Diqqat'};
+const qarzdorMij=o=>D.B.some(b=>b.mid===o.mid&&b.id!==o.id&&qarzYosh(b)>0);
+const butHolat=()=>D.BUT.map(b=>{const kerak=b.id==='A12'?D.B.filter(o=>!['montaj','akt'].includes(o.bosqich)).reduce((s,o)=>s+o.komplekt.anker,0):b.id==='B10'?D.B.filter(o=>!['montaj','akt'].includes(o.bosqich)).reduce((s,o)=>s+o.komplekt.bolt,0):b.tur==='kukun'?Math.round(D.B.filter(o=>o.bosqich==='sex'&&o.ral===b.id.slice(1)).reduce((s,o)=>s+(uchJami(o,'boyash')-uchBajar(o,'boyash'))*S().m2PerT*.12,0)):0;const qol=b.miq-kerak;return{...b,kerak,qol,holat:qol<0?'er':(qol<b.min||b.miq<b.min)?'wr':'ok'}});
+const sparkISH=u=>{const R=[];for(let i=13;i>=0;i--){const d=addD(-i);R.push(D.ISH.filter(e=>e.sana===d&&(!u||e.uch===u)).reduce((s,e)=>s+e.miq,0))}return R};
+const spark=(a,c)=>{const mx=Math.max(1,...a),w=84,h=26;const p=a.map((v,i)=>(i*(w/(a.length-1))).toFixed(1)+','+(h-v/mx*(h-3)).toFixed(1)).join(' L');return`<span class="sk ${c||''}"><svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="M${p}"/></svg></span>`};
+
+/* ---------- diqqat ro‘yxati: pul → muddat → metall → odam ---------- */
+function diqqat(){const R=[];const B=D.B;
+ B.filter(o=>qarz(o)&&qarzYosh(o)>0).sort((a,b)=>qarzYosh(b)-qarzYosh(a)).forEach(o=>R.push({t:'er',g:'pul',b:`${mij(o).nom} — ${mln(qarz(o))} so‘m, ${qarzYosh(o)} kun kechikdi`,s:`${o.raqam} · ${o.akt&&o.akt.imzo?'akt '+fdd(o.akt.sana)+' da imzolangan':'yakuniy to‘lov'} · mas’ul: ${o.masul}`,o:o.id,tug:'Qo‘ng‘iroq',tel:mij(o).tel}));
+ B.filter(o=>o.bosqich==='kutish'&&!avansKeldi(o)).forEach(o=>R.push({t:'wr',g:'pul',b:`${o.raqam} ${mij(o).nom} — avans ${mln(summa(o)*avansFoiz(o)/100)} so‘m kelmagan`,s:`shartnoma ${fdd(o.sana)}, loyiha ${-dd(o.sana)} kun sexga tushmay turibdi · mas’ul: buxgalter`,o:o.id,tug:'Eslatma'}));
+ B.filter(o=>o.akt&&!o.akt.imzo&&-dd(o.akt.sana)>3).forEach(o=>R.push({t:'wr',g:'pul',b:`${o.raqam} ${mij(o).nom} — akt ${-dd(o.akt.sana)} kundan beri imzolanmagan`,s:`montaj ${fdd(o.akt.sana)} da tugagan, yakuniy to‘lov ${mln(summa(o)*(o.tolovReja.find(r=>r.tur==='yakuniy')||{foiz:0}).foiz/100)} so‘m kutmoqda · mas’ul: ${o.masul}`,o:o.id,tug:'Yozish'}));
+ B.filter(o=>kech(o)).sort((a,b)=>kech(b)-kech(a)).forEach(o=>R.push({t:'er',g:'muddat',b:`${o.raqam} ${mij(o).nom} — ${kech(o)} kun kech`,s:`hozir: ${BOSN[o.bosqich]}${o.bosqich==='sex'?' · '+UCHN[joriyUch(o)]:''} · sabab: ${(o.tarix.slice().reverse().find(h=>h.sabab)||{}).sabab||'yozilmagan'} · mas’ul: ${o.masul}`,o:o.id,tug:'Ochish'}));
+ B.filter(o=>rejaKech(o)&&!kech(o)).forEach(o=>R.push({t:'wr',g:'muddat',b:`${o.raqam} ${mij(o).nom} — ${UCHN[joriyUch(o)].toLowerCase()}da ${rejaKech(o)} kun ortiqcha`,s:`muddat ${fdd(o.muddat)} xavf ostida · sabab: ${joriyUch(o)==='boyash'?'rang navbati':'navbat'} · mas’ul: sex boshlig‘i`,o:o.id,tug:'Sexga'}));
+ metHolat().filter(m=>m.holat==='er').forEach(m=>R.push({t:'er',g:'metall',b:`${m.nom} — ${num(-m.erkin)} kg yetmaydi`,s:`${m.kerakBuy.map(x=>x.o.raqam).join(', ')} uchun · ${m.toxtaydi?'qolgan zaxira '+fdd(m.toxtaydi)+' gacha yetadi, keyin profillash to‘xtaydi':'buyurtma sexga tushmaydi'} · mas’ul: ta’minot`,v:'ombor',tug:'Sotib olish'}));
+ metHolat().filter(m=>m.holat==='wr').forEach(m=>R.push({t:'wr',g:'metall',b:`${m.nom} — tugayapti: ${num(m.erkin)} kg erkin`,s:`minimal zaxira ${num(m.min)} kg · kunlik sarf ${num(m.sarf)} kg`,v:'ombor',tug:'Ombor'}));
+ butHolat().filter(b=>b.holat!=='ok').forEach(b=>R.push({t:b.holat,g:'metall',b:b.holat==='er'?`${b.nom} — ${num(-b.qol)} ${b.b} yetmaydi`:`${b.nom} — ${num(b.miq)} ${b.b}, tugayapti`,s:b.kerak?`buyurtmalarga ${num(b.kerak)} ${b.b} kerak · omborda ${num(b.miq)} · mas’ul: ta’minot`:`minimal zaxira ${num(b.min)} ${b.b} · mas’ul: ta’minot`,v:'ombor',f:{t:'but'},tug:'Ombor'}));
+ D.MONT.filter(m=>montKech(m)).forEach(mt=>{const o=D.B.find(x=>x.id===mt.oid);R.push({t:'er',g:'odam',b:`${brig(mt.brig).nom} (${brig(mt.brig).brigadir}) — ${obj(o).nom} rejadan ${montKech(mt)} kun kech`,s:`${mt.bajar}/${mt.jami} ${birl(o)} bajarildi · ${mt.muammo||'sabab yozilmagan'}`,v:'montaj',tug:'Montaj'})});
+ B.filter(o=>o.bosqich==='montaj'&&obj(o)&&obj(o).tayyor===false).forEach(o=>R.push({t:'wr',g:'odam',b:`${obj(o).nom} — obyekt tayyor emas`,s:`${o.raqam} · ${obj(o).muammo||'mijoz tasdiqlamagan'} · mijoz vakili: ${obj(o).kontakt}`,o:o.id,tug:'Qo‘ng‘iroq',tel:obj(o).tel}));
+ const ert=ishKun(1);D.BRIG.filter(b=>!brigBand()[b.id][ert]&&brigBand()[b.id][iso(T)]).forEach(b=>{const mt=brigBand()[b.id][iso(T)],o=D.B.find(x=>x.id===mt.oid),qol=mt.jami-mt.bajar,ob=obj(o);R.push({t:qol>0?'wr':'inf',g:'odam',b:qol>0?`${b.nom} (${b.brigadir}) ertaga bekor qoladi`:`${b.nom} (${b.brigadir}) ertaga bo‘sh`,s:qol>0?`${ob.nom}: ${qol} ${birl(o)} qoldi, lekin ${ob.tayyor===false?ob.muammo||'obyekt tayyor emas':'reja tugadi'} · boshqa obyekt berish yoki muddatni uzaytirish`:`bugun ${ob.nom} da tugatadi · ${fdd(ert)} dan obyekt belgilanmagan`,v:'montaj',tug:'Obyekt berish'})});
+ B.filter(o=>o.bosqich==='tayyor'&&!o.komplekt.tayyor).forEach(o=>R.push({t:'wr',g:'odam',b:`${o.raqam} ${mij(o).nom} — tayyor, lekin komplekt tekshirilmagan`,s:`anker ${num(o.komplekt.anker)} dona, bolt ${num(o.komplekt.bolt)} · yuklashdan oldin «butlandi» belgisi kerak`,o:o.id,tug:'Tekshirish'}));
+ const G={pul:0,muddat:1,metall:2,odam:3};return R.sort((a,b)=>G[a.g]-G[b.g])}
+const brig=id=>D.BRIG.find(b=>b.id===id);
+
+/* ---------- namuna ma’lumot ---------- */
+function seed(){
+ const Sx={kurs:11965,cap:{profil:11,kesish:7,bukish:9,payvand:12,boyash:13,komplekt:20},boyashM2:500,m2PerT:38,rangAlm:45,yoq:{rulon:3,list:12,profil:3},qarzYosh:[7,30]};
+ const MIJ=[
+  {id:'m1',nom:'Toshkent Logistika MChJ',shahar:'Toshkent',tel:'+998 71 200 11 22',kontakt:'Sherzod Alimov',kun:15},
+  {id:'m2',nom:'Fayz Distribution MChJ',shahar:'Toshkent',tel:'+998 71 233 44 55',kontakt:'Dilshod Rahmatov',kun:10},
+  {id:'m3',nom:'Samarqand Avtoqism QK',shahar:'Samarqand',tel:'+998 66 231 00 10',kontakt:'Alisher To‘rayev',kun:30},
+  {id:'m4',nom:'Nur Farm MChJ',shahar:'Toshkent',tel:'+998 71 244 55 66',kontakt:'Madina Yusupova',kun:10},
+  {id:'m5',nom:'Andijon Metall Savdo MChJ',shahar:'Andijon',tel:'+998 74 223 11 00',kontakt:'Baxtiyor Qosimov',kun:15},
+  {id:'m6',nom:'Mahalliy Bank AJ',shahar:'Toshkent',tel:'+998 71 200 00 01',kontakt:'Xo‘jalik bo‘limi, Umid aka',kun:30},
+  {id:'m7',nom:'Bahor Market savdo tarmog‘i',shahar:'Toshkent',tel:'+998 71 255 66 77',kontakt:'Nilufar Saidova',kun:7},
+  {id:'m8',nom:'Qurilish Texnika Servis MChJ',shahar:'Toshkent',tel:'+998 71 266 77 88',kontakt:'Ulug‘bek Mirzayev',kun:10},
+  {id:'m9',nom:'Elektron Komponent QK',shahar:'Jizzax',tel:'+998 72 226 33 44',kontakt:'Jahongir Sobirov',kun:30},
+  {id:'m10',nom:'Oq Oltin Tekstil MChJ',shahar:'Buxoro',tel:'+998 65 224 10 20',kontakt:'Rustam Jo‘rayev',kun:15},
+  {id:'m11',nom:'Avto Zavod Komponent AJ',shahar:'Toshkent',tel:'+998 71 277 88 99',kontakt:'Tender bo‘limi, Akmal aka',kun:30},
+  {id:'m12',nom:'Chirchiq Oziq-ovqat MChJ',shahar:'Chirchiq',tel:'+998 70 712 33 22',kontakt:'Zafar Ismoilov',kun:10}];
+ const OBJ=[
+  {id:'ob1',mid:'m1',nom:'Sergeli ombori',manzil:'Sergeli t., Yangi Sergeli ko‘chasi 12',km:18,kontakt:'Sardor (ombor mudiri)',tel:'+998 90 111 22 33',tayyor:true},
+  {id:'ob2',mid:'m2',nom:'Yunusobod oziq-ovqat ombori',manzil:'Yunusobod t., Bog‘ishamol 4',km:11,kontakt:'Dilshod Rahmatov',tel:'+998 90 222 33 44',tayyor:true},
+  {id:'ob3',mid:'m3',nom:'Samarqand ehtiyot qism ombori',manzil:'Samarqand, Sanoat zonasi 7',km:300,kontakt:'Alisher To‘rayev',tel:'+998 91 333 44 55',tayyor:false,muammo:'beton pol hali qotmagan (mijoz 26.10 deydi)'},
+  {id:'ob4',mid:'m4',nom:'Chilonzor farm ombori',manzil:'Chilonzor t., Qatortol 60',km:9,kontakt:'Madina Yusupova',tel:'+998 93 444 55 66',tayyor:true},
+  {id:'ob5',mid:'m5',nom:'Andijon metall bazasi',manzil:'Andijon, Bobur shoh ko‘chasi 110',km:360,kontakt:'Baxtiyor Qosimov',tel:'+998 94 555 66 77',tayyor:true},
+  {id:'ob6',mid:'m6',nom:'Bosh ofis arxivi (podval)',manzil:'Toshkent, Amir Temur 15',km:6,kontakt:'Umid aka',tel:'+998 95 666 77 88',tayyor:true},
+  {id:'ob7',mid:'m7',nom:'Bahor Market — 3 do‘kon',manzil:'Toshkent, Chilonzor / Yakkasaroy / Mirobod',km:14,kontakt:'Nilufar Saidova',tel:'+998 97 777 88 99',tayyor:false,muammo:'3-do‘kon hali ta’mirda — mijoz 28.10 deydi'},
+  {id:'ob8',mid:'m12',nom:'Chirchiq sovutgich ombori',manzil:'Chirchiq, Sanoat ko‘chasi 2',km:32,kontakt:'Zafar Ismoilov',tel:'+998 98 888 99 00',tayyor:true},
+  {id:'ob9',mid:'m11',nom:'Avtozavod yangi korpus',manzil:'Toshkent, Sergeli sanoat zonasi',km:22,kontakt:'Akmal aka (tender)',tel:'+998 99 999 00 11',tayyor:true},
+  {id:'ob11',mid:'m9',nom:'Jizzax ishlab chiqarish ombori',manzil:'Jizzax, erkin iqtisodiy zona, 3-uchastka',km:210,kontakt:'Jahongir Sobirov',tel:'+998 91 202 30 40',tayyor:true},
+  {id:'ob10',mid:'m10',nom:'Buxoro tayyor mahsulot ombori',manzil:'Buxoro, G‘ijduvon yo‘li 5 km',km:580,kontakt:'Rustam Jo‘rayev',tel:'+998 90 101 20 30',tayyor:true}];
+ const R5050=[{tur:'avans',foiz:50},{tur:'yakuniy',foiz:50}],R504010=[{tur:'avans',foiz:50},{tur:'oraliq',foiz:40},{tur:'yakuniy',foiz:10}],RT=[{tur:'avans',foiz:30},{tur:'yakuniy',foiz:70}],R100=[{tur:'yakuniy',foiz:100}];
+ const u0={profil:0,kesish:0,bukish:0,payvand:0,boyash:0,komplekt:0};
+ const UU=(a,...v)=>{const r={...u0};v.forEach((x,i)=>r[UCH[i]]=x);return r};
+ const B=[
+  {id:'o0',raqam:'IN-2034',mid:'m5',obid:'ob5',k:'PF',soni:50,yarus:3,bal:5,ral:'5005',bosqich:'akt',uch:{...u0},sana:addD(-80),muddat:addD(-50),masul:MAS[1],loyiha:{ver:1,tasdiq:addD(-78),kim:'Jahongir (konstruktor)'},tolovReja:R5050,akt:{sana:addD(-49),imzo:true},komplekt:{tayyor:true,anker:420,bolt:1200},tayyorSana:addD(-58),tarix:[{v:addD(-49),m:'Akt imzolandi'}]},
+  {id:'o1',raqam:'IN-2038',mid:'m2',obid:'ob2',k:'DI',soni:48,yarus:4,bal:7,ral:'2004',bosqich:'akt',uch:UU(1,19.8,19.8,19.8,19.8,19.8,19.8),sana:addD(-62),muddat:addD(-9),masul:MAS[0],loyiha:{ver:2,tasdiq:addD(-58),kim:'Jahongir (konstruktor)'},tolovReja:R504010,akt:{sana:addD(-23),imzo:true},komplekt:{tayyor:true,anker:420,bolt:1100},tayyorSana:addD(-24),tarix:[]},
+  {id:'o2',raqam:'IN-2039',mid:'m7',obid:'ob7',k:'TR',soni:210,yarus:0,ral:'7035',bosqich:'montaj',uch:UU(1,9,9,9,9,9,9),sana:addD(-30),muddat:addD(-2),masul:MAS[2],loyiha:{ver:1,tasdiq:addD(-28),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:true,anker:0,bolt:2600},tayyorSana:addD(-9),tarix:[{v:addD(-6),m:'Montaj boshlandi (3-brigada)'},{v:addD(-2),m:'Muddat o‘tdi',sabab:'obyekt tayyor emas'}]},
+  {id:'o3',raqam:'IN-2040',mid:'m1',obid:'ob1',k:'PF',soni:180,yarus:5,bal:9,ral:'5005',bosqich:'montaj',uch:UU(1,34.2,34.2,34.2,34.2,34.2,34.2),sana:addD(-48),muddat:addD(24),masul:MAS[0],loyiha:{ver:3,tasdiq:addD(-42),kim:'Jahongir (konstruktor)'},tolovReja:R504010,komplekt:{tayyor:true,anker:1520,bolt:4300},tayyorSana:addD(-12),tarix:[{v:addD(-10),m:'Montaj boshlandi (1-brigada)'}]},
+  {id:'o4',raqam:'IN-2041',mid:'m5',obid:'ob5',k:'KN',soni:24,yarus:0,bal:6,ral:'5005',bosqich:'montaj',uch:UU(1,11.5,11.5,11.5,11.5,11.5,11.5),sana:addD(-35),muddat:addD(19),masul:MAS[1],loyiha:{ver:1,tasdiq:addD(-33),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:true,anker:210,bolt:380},tayyorSana:addD(-5),tarix:[{v:addD(-2),m:'Montaj boshlandi (2-brigada, Andijon)'}]},
+  {id:'o5',raqam:'IN-2042',mid:'m4',obid:'ob4',k:'PL',soni:140,yarus:0,ral:'7035',bosqich:'sex',uch:UU(1,8.7,8.7,8.7,8.7,3.1,0),sexReja:{boyash:addD(-3)},sana:addD(-21),muddat:addD(13),masul:MAS[2],loyiha:{ver:1,tasdiq:addD(-19),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:false,anker:0,bolt:1700},tarix:[{v:addD(-8),m:'Sexga tushdi'},{v:addD(-3),m:'Bo‘yash rejasi o‘tdi',sabab:'bo‘yash navbati'}]},
+  {id:'o6',raqam:'IN-2043',mid:'m3',obid:'ob3',k:'DI',soni:36,yarus:4,bal:8,ral:'2004',bosqich:'sex',uch:UU(1,4.1,2.2,0,0,0,0),sana:addD(-18),muddat:addD(38),masul:MAS[1],loyiha:{ver:2,tasdiq:addD(-14),kim:'Jahongir (konstruktor)'},tolovReja:R504010,komplekt:{tayyor:false,anker:320,bolt:900},tarix:[{v:addD(-5),m:'Sexga tushdi'},{v:addD(-1),m:'Profillash to‘xtadi',sabab:'metall yetmadi'}]},
+  {id:'o7',raqam:'IN-2044',mid:'m8',obid:null,k:'SHG',soni:60,yarus:0,ral:'7035',bosqich:'sex',uch:UU(1,0,1.92,1.92,1.92,.3,0),sana:addD(-12),muddat:addD(20),masul:MAS[2],loyiha:{ver:1,tasdiq:addD(-11),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:false,anker:0,bolt:480},tarix:[{v:addD(-6),m:'Sexga tushdi'}]},
+  {id:'o8',raqam:'IN-2045',mid:'m12',obid:'ob8',k:'PF',soni:96,yarus:4,bal:6,ral:'5005',bosqich:'sex',uch:UU(1,17.9,17.9,17.9,17.9,2,0),sana:addD(-19),muddat:addD(11),masul:MAS[0],loyiha:{ver:1,tasdiq:addD(-17),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:false,anker:800,bolt:2300},tarix:[{v:addD(-9),m:'Sexga tushdi'}]},
+  {id:'o9',raqam:'IN-2046',mid:'m11',obid:'ob9',k:'NS',soni:75,narxT:16000000,ral:'7035',bosqich:'sex',uch:UU(1,0,60,40,22,0,0),sana:addD(-20),muddat:addD(40),masul:MAS[1],loyiha:{ver:4,tasdiq:addD(-16),kim:'Jahongir (konstruktor)'},tolovReja:RT,komplekt:{tayyor:false,anker:900,bolt:6000},izoh:'Tender: maxsus aravachalar, platforma va press-forma stellajlari (chizma bo‘yicha). Avans 30 %, qolgani aktdan keyin 30 kun.',tarix:[{v:addD(-7),m:'Sexga tushdi (lazer → bukish → payvand → bo‘yash)'}]},
+  {id:'o10',raqam:'IN-2047',mid:'m9',obid:'ob11',k:'PF',soni:40,yarus:4,bal:6,ral:'5005',bosqich:'tayyor',uch:UU(1,7.4,7.4,7.4,7.4,7.4,7.4),sana:addD(-24),muddat:addD(16),masul:MAS[0],loyiha:{ver:1,tasdiq:addD(-22),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:false,anker:336,bolt:960},tayyorSana:addD(-1),tarix:[{v:addD(-1),m:'Tayyor omborga chiqdi'}]},
+  {id:'o11',raqam:'IN-2048',mid:'m10',obid:'ob10',k:'PF',soni:60,yarus:3,bal:5,ral:'5005',bosqich:'yolda',uch:UU(1,9.3,9.3,9.3,9.3,9.3,9.3),sana:addD(-27),muddat:addD(8),masul:MAS[2],loyiha:{ver:1,tasdiq:addD(-25),kim:'Jahongir (konstruktor)'},tolovReja:R504010,komplekt:{tayyor:true,anker:504,bolt:1440},tayyorSana:addD(-3),ruxsatJ:true,tarix:[{v:addD(-2),m:'Direktor ruxsati: oraliq to‘lovsiz jo‘natish (mijoz kafolat xati berdi)'},{v:addD(-1),m:'Yuklandi, Buxoroga jo‘natildi (dlinnomer)'}]},
+  {id:'o12',raqam:'IN-2049',mid:'m4',obid:'ob4',k:'AR',soni:92,yarus:0,ral:'7035',bosqich:'kutish',uch:{...u0},sana:addD(-7),muddat:addD(39),masul:MAS[2],loyiha:{ver:1,tasdiq:addD(-5),kim:'Jahongir (konstruktor)'},tolovReja:R5050,komplekt:{tayyor:false,anker:0,bolt:1100},tarix:[{v:addD(-7),m:'Shartnoma imzolandi'},{v:addD(-5),m:'Loyiha tasdiqlandi (v1)'}]},
+  {id:'o13',raqam:'IN-2050',mid:'m6',obid:'ob6',k:'AR',soni:120,yarus:0,ral:'7035',bosqich:'loyiha',uch:{...u0},sana:addD(-3),muddat:addD(45),masul:MAS[1],loyiha:{ver:1,tasdiq:null,kim:'Jahongir (konstruktor)'},tolovReja:R100,komplekt:{tayyor:false,anker:0,bolt:1400},izoh:'Bank arxivi: g‘aznachilik orqali to‘lov, akt bo‘yicha 100 %.',tarix:[{v:addD(-3),m:'Tender yutildi, o‘lchov qilindi'}]},
+  {id:'o14',raqam:'IN-2051',mid:'m1',obid:'ob1',k:'MZ',soni:420,yarus:0,ral:'7035',bosqich:'olchov',uch:{...u0},sana:addD(-1),muddat:addD(55),masul:MAS[0],loyiha:{ver:0,tasdiq:null,kim:'—'},tolovReja:R504010,komplekt:{tayyor:false,anker:0,bolt:0},tarix:[{v:addD(-1),m:'So‘rov keldi: 2-qavat mezonin 420 m²'}]}];
+ B.forEach(o=>{if(['tayyor','yolda','montaj','akt'].includes(o.bosqich))uchlar(o).forEach(u=>o.uch[u]=tonna(o));o.summa=summa(o);o.tarix.unshift({v:o.sana,m:'Buyurtma qabul qilindi'})});
+ const PAY=[];const pay=(oid,sana,summa,tur)=>PAY.push({id:'p'+(PAY.length+1),oid,sana,summa:Math.round(summa),tur});
+ const s=id=>B.find(o=>o.id===id).summa;
+ pay('o0',addD(-78),s('o0')*.5,'avans');
+ pay('o1',addD(-60),s('o1')*.5,'avans');pay('o1',addD(-22),s('o1')*.4,'oraliq');            // akt 13 kun oldin, yakuniy 10 % = 13 kun kech
+ pay('o2',addD(-29),s('o2')*.5,'avans');
+ pay('o3',addD(-46),s('o3')*.5,'avans');pay('o3',addD(-11),s('o3')*.4,'oraliq');
+ pay('o4',addD(-33),s('o4')*.5,'avans');
+ pay('o5',addD(-20),s('o5')*.5,'avans');pay('o6',addD(-16),s('o6')*.5,'avans');pay('o7',addD(-11),s('o7')*.5,'avans');pay('o8',addD(-18),s('o8')*.5,'avans');
+ pay('o9',addD(-18),s('o9')*.3,'avans');pay('o10',addD(-23),s('o10')*.5,'avans');pay('o11',addD(-26),s('o11')*.5,'avans');
+ const orqa=n=>{let d=iso(T),k=0;while(k<n){d=addD(-1,d);if(!dam(d))k++}return d};
+ const MONT=[
+  {id:'mt1',oid:'o3',brig:'b1',sana:addD(-10),kun:20,holat:'ishda',bajar:74,jami:180,muammo:''},
+  {id:'mt2',oid:'o4',brig:'b2',sana:addD(-2),kun:4,holat:'ishda',bajar:11,jami:24,muammo:''},
+  {id:'mt3',oid:'o2',brig:'b3',sana:orqa(4),kun:5,holat:'ishda',bajar:142,jami:210,muammo:''},
+  {id:'mt4',oid:'o1',brig:'b4',sana:addD(-32),kun:7,holat:'tugadi',bajar:48,jami:48,muammo:''},
+  {id:'mt5',oid:'o11',brig:'b4',sana:ishKun(2),kun:4,holat:'reja',bajar:0,jami:60,muammo:''},
+  {id:'mt6',oid:'o10',brig:'b2',sana:ishKun(5),kun:3,holat:'reja',bajar:0,jami:40,muammo:''}];
+ const ISH=[];const r=U.rnd(7);
+ const ishK=(n,b)=>{let d=b,k=0;while(k<n){d=addD(-1,d);if(!dam(d))k++}return d};
+ B.filter(o=>['sex','tayyor','yolda','montaj'].includes(o.bosqich)).forEach(o=>{const us=uchlar(o),ji=o.bosqich==='sex'?us.indexOf(joriyUch(o)):us.length;
+  us.forEach((u,ix)=>{const b=Math.min(o.uch[u]||0,tonna(o));if(b<.05)return;const cap=Sx.cap[u]*.45,n=Math.max(1,Math.min(9,Math.ceil(b/cap)));
+   const oxir=ix===ji?iso(T):ishK(Math.max(1,(ji-ix)*2+(o.bosqich==='sex'?0:3)),iso(T));let qol=b;
+   for(let k=0;k<n;k++){const d=ishK(k,oxir);if(dam(d))continue;const m=k===n-1?qol:Math.round(b/n*(0.8+r()*.4)*10)/10;const mm=Math.max(.1,Math.min(qol,m));qol=Math.round((qol-mm)*1000)/1000;if(mm<=0)break;
+    ISH.unshift({id:'e'+ISH.length+o.id+u,sana:d,uch:u,oid:o.id,miq:Math.round(mm*10)/10,q:Math.round(mm*1000/(u==='boyash'?1000/38:u==='komplekt'?kgB(o.k,o.yarus):u==='kesish'?(o.k==='NS'||o.k==='VS'?212:49):u==='payvand'?(o.k==='NS'?60:24):u==='bukish'?6:18)),brak:r()<.1?1+Math.round(r()*5):0,ust:USTA[u]});if(qol<=0)break}})});
+ ISH.forEach(e=>{if(e.brak)e.sabab=['teshik joyi xato','payvand choki','bo‘yoq oqdi / qatlam yupqa','o‘lcham xato'][Math.floor(r()*4)]});
+ const YOP=[];const SBB=SABAB;for(let i=11;i>=0;i--){const d=new Date(T.getFullYear(),T.getMonth()-i,1);const rr=U.rnd(100+i);const qism=i===0?Math.min(1,T.getDate()/30):1;const buy=Math.round((15+Math.floor(rr()*8))*qism),t=Math.round((190+rr()*70)*qism),vaqt=72+Math.round(rr()*10),kech=Math.round(buy*(100-vaqt)/100);const sab={};const w=[3,4,1,1,1,2,3,2];const ws=w.reduce((a,b)=>a+b,0);let qol=kech;SBB.forEach((k,ix)=>{const v=ix===SBB.length-1?qol:Math.min(qol,Math.round(kech*w[ix]/ws+(rr()-.5)));sab[k]=Math.max(0,v);qol-=sab[k]});YOP.push({oy:iso(d).slice(0,7),qism:i===0,buy,t,sum:Math.round(t*(19+rr()*5))*1e6,vaqt,kech,og:Math.round((2+rr()*4)*10)/10,pul:Math.round(t*(17+rr()*7))*1e6,sabab:sab})}
+ D={ver:2,kun:iso(T),qolda:false,S:Sx,MIJ,OBJ,B,PAY,MONT,ISH,MET:JSON.parse(JSON.stringify(MET0)),QOLDIQ:JSON.parse(JSON.stringify(QOLDIQ0)),BUT:JSON.parse(JSON.stringify(BUT0)),BRIG:JSON.parse(JSON.stringify(BRIG0)),YOP,J:[
+  {v:U.addH(-2).toISOString(),m:'IN-2042: Bo‘yash +0,8 t (RAL 7035)',rol:'Sex boshlig‘i'},
+  {v:U.addH(-5).toISOString(),m:'1-brigada: raport +9 seksiya (Sergeli ombori)',rol:'Montaj rahbari'},
+  {v:U.addH(-20).toISOString(),m:'IN-2048: Direktor ruxsati — oraliq to‘lovsiz jo‘natish (kafolat xati)',rol:'Direktor'},
+  {v:U.addH(-26).toISOString(),m:'Kirim: Rulon 2,0 × 300 mm +6 200 kg (Uzmetkombinat)',rol:'Omborchi'},
+  {v:U.addH(-30).toISOString(),m:'IN-2040: to‘lov 335 mln so‘m (jo‘natishdan oldin)',rol:'Buxgalter'},
+  {v:U.addH(-49).toISOString(),m:'IN-2049: loyiha tasdiqlandi (v1)',rol:'Direktor'}],seq:2052};
+ save()}
+function save(){D.qolda=true;ST.save(D)}
+/* kiritilgan ma’lumot sanalari ertasi kuni bugunga suriladi (namuna doim «bugun» ko‘rinadi) */
+function sur(){const f=D.kun;if(!f||f===iso(T))return;const n=Math.round((T-new Date(f))/864e5);if(!n)return;const sh=s=>s?addD(n,s):s;
+ D.B.forEach(o=>{o.sana=sh(o.sana);o.muddat=sh(o.muddat);o.tayyorSana=sh(o.tayyorSana);if(o.akt)o.akt.sana=sh(o.akt.sana);if(o.loyiha)o.loyiha.tasdiq=sh(o.loyiha.tasdiq);if(o.sexReja)Object.keys(o.sexReja).forEach(k=>o.sexReja[k]=sh(o.sexReja[k]));o.tarix.forEach(h=>h.v=sh(h.v))});
+ D.PAY.forEach(p=>p.sana=sh(p.sana));D.MONT.forEach(m=>m.sana=sh(m.sana));D.ISH.forEach(e=>e.sana=sh(e.sana));D.J.forEach(j=>j.v=sh(j.v));D.kun=iso(T);save()}
+function load(){const d=ST.load();if(d&&d.ver===2){D=d;sur()}else seed()}
+function jurnal(m){D.J.unshift({v:new Date().toISOString(),m,rol:ROLN[rol()]});if(D.J.length>60)D.J.length=60}
+
+/* ---------- umumiy ko‘rinish bo‘laklari ---------- */
+const bosLabel=o=>o.bosqich==='sex'?'Sex · '+UCHN[joriyUch(o)].toLowerCase():o.bosqich==='akt'?(o.akt&&o.akt.imzo?'Akt imzolangan':'Akt kutilmoqda'):BOSN[o.bosqich];
+function chain(o){const r=route(o),ix=bIdx(o),x=xavf(o);
+ return`<div class="chain" title="${esc(bosLabel(o))}">${r.map((b,i)=>`<i class="${i<ix||(o.bosqich==='akt'&&o.akt&&o.akt.imzo)?'d':i===ix?'c'+(x&&x.t==='er'?' late':x&&x.t==='wr'?' wait':''):''}"></i>`).join('')}<small>${ix+1}/${r.length}</small></div>`}
+const holatPill=o=>{const x=xavf(o);if(!x)return o.bosqich==='akt'?'<span class="pill ok">'+I('belgiok')+'Yopilgan</span>':'<span class="pill mu"><span class="dot"></span>Reja bo‘yicha</span>';return`<span class="pill ${x.t}"><span class="dot"></span>${xavfNom(o)}</span>`};
+const hajm=o=>o.k==='NS'?`${t1(o.soni)} t`:`${num(o.soni)} ${birl(o)}${paletta(o)?` · ${num(paletta(o))} paletta-joy`:''}`;
+const ralDot=r=>`<span class="ral" style="background:${RAL[r].hex}" title="${RAL[r].nom}"></span>`;
+const rolBar=a=>{if(rol()==='direktor')return;a.insertAdjacentHTML('afterbegin',`<div class="rolbar"><span>Siz hozir <b>${ROLN[rol()]}</b> ko‘rinishidasiz — u faqat o‘z bo‘limlarini ko‘radi${narxKor()?'':', narx va to‘lovlar yashirin'}</span><span class="sp"></span><button class="btn s" id="rq">Direktorga qaytish</button></div>`);$('#rq',a).onclick=()=>rolga('direktor')};
+function rolga(r){$('#rolsel').value=r;$('#rolsel').onchange()}
+
+/* ================= BUGUN ================= */
+function rPanel(a){const B=D.B,ishda=B.filter(o=>o.bosqich!=='akt'),kechN=B.filter(o=>kech(o)).length,metB=B.filter(o=>['sex','kutish'].includes(o.bosqich)&&metYetmaydi(o).length),N=navbat(),MH=metHolat();
+ const qJ=B.reduce((s,o)=>s+qarz(o),0),qO=B.filter(o=>qarzYosh(o)>0),qOs=qO.reduce((s,o)=>s+qarz(o),0),avK=B.filter(o=>o.bosqich==='kutish'&&!avansKeldi(o));
+ const ert=ishKun(1),bosh=brigBosh(ert),bandB=D.BRIG.filter(b=>brigBand()[b.id][iso(T)]),aktK=B.filter(o=>o.akt&&!o.akt.imzo);
+ const sexB=B.filter(o=>o.bosqich==='sex'),sexKech=sexB.filter(o=>xavf(o)&&['er','wr'].includes(xavf(o).t));
+ const metT=Math.round(D.MET.reduce((s,m)=>s+m.kg,0)/100)/10,metEr=MH.filter(m=>m.holat==='er'),metWr=MH.filter(m=>m.holat==='wr');
+ const kun=new Date(T),HAF=['yakshanba','dushanba','seshanba','chorshanba','payshanba','juma','shanba'];
+ const xul=[`<b>${ishda.length} buyurtma ishda</b>`];if(kechN)xul.push(`<b class="er">${kechN} tasi muddatdan kech</b>`);if(metB.length)xul.push(`<b class="er">${metB.length} tasi metall kutmoqda</b>`);
+ const xul2=[];if(qOs&&narxKor())xul2.push(`<b class="er">${mln(qOs)} so‘m</b> qarz muddati o‘tgan`);if(bosh.length)xul2.push(`<b>${bosh.map(b=>b.nom).join(', ')}</b> ertaga bo‘sh`);
+ const DQ=diqqat(),dq=DIQ_HAMMA?DQ:DQ.slice(0,5);
+ const kp=[];
+ if(narxKor())kp.push(`<div class="card kpi" data-go="tolov"><div class="l">${I('hamyon')}To‘lovlar</div><div class="v">${mln(qJ)}<small>so‘m qarz</small></div><div class="d">muddati o‘tgan: <b class="${qOs?'er':''}">${mln(qOs)}</b> (${qO.length} mijoz)<br>avans kutilmoqda: <b class="${avK.length?'wr':''}">${avK.length} buyurtma</b></div></div>`);
+ kp.push(`<div class="card kpi" data-go="sex">${spark(sparkISH())}<div class="l">${I('zavod')}Sex navbati <small class="note">· 14 kun</small></div><div class="v">${sexB.length}<small>buyurtma sexda</small></div><div class="d"><b class="${sexKech.length?'wr':''}">${sexKech.length} tasida muammo</b><br>tor joy: <b class="wr">${UCHN[N.tor].toLowerCase()}, ${t1(N[N.tor].kun)} kun navbat</b></div></div>`);
+ kp.push(`<div class="card kpi" data-go="ombor"><div class="l">${I('metall')}Metall</div><div class="v">${t1(metT)}<small>t omborda</small></div><div class="d">yetmaydi: <b class="${metEr.length?'er':''}">${metEr.length} pozitsiya</b>${metEr[0]&&metEr[0].toxtaydi?` (zaxira ${fdd(metEr[0].toxtaydi)} gacha)`:''}<br>tugayapti: <b class="${metWr.length?'wr':''}">${metWr.length}</b></div></div>`);
+ kp.push(`<div class="card kpi" data-go="montaj"><div class="l">${I('kaska')}Brigadalar</div><div class="v">${bandB.length} / ${D.BRIG.length}<small>obyektda</small></div><div class="d">ertaga bo‘sh: <b class="${bosh.length?'wr':''}">${bosh.length}</b><br>akt kutilmoqda: <b class="${aktK.length?'wr':''}">${aktK.length}</b></div></div>`);
+ const grp=bs=>B.filter(o=>bs.includes(o.bosqich));
+ const FL=[['Loyiha / KP',['olchov','loyiha'],'Loyiha'],['Avans',['kutish'],'Avans'],['Sex',['sex'],'Sex'],['Tayyor',['tayyor'],'Tayyor'],['Yo‘lda',['yolda'],'Yo‘lda'],['Montaj',['montaj'],'Montaj'],['Akt',['akt'],'Akt']];
+ const flow=FL.map(([n,bs])=>{const os=grp(bs),t=os.reduce((s,o)=>s+tonna(o),0),er=os.filter(o=>xavf(o)&&xavf(o).t==='er').length,wr=os.filter(o=>xavf(o)&&xavf(o).t==='wr').length;
+  let fx='';if(bs[0]==='sex')fx=`<span class="fx wr">tor joy: ${UCHN[N.tor].toLowerCase()}</span><div class="uch">${UCH.map(u=>`<i class="${u===N.tor?'tor':N[u].n?'on':''}" title="${UCHN[u]}: ${t1(N[u].t)} t"></i>`).join('')}</div>`;
+  else if(bs[0]==='kutish'&&os.some(o=>!avansKeldi(o)))fx=`<span class="fx wr">${os.filter(o=>!avansKeldi(o)).length} tasida avans yo‘q</span>`;
+  else if(bs[0]==='akt'){const k=os.filter(o=>o.akt&&!o.akt.imzo).length;fx=k?`<span class="fx wr">${k} ta imzo kutmoqda</span>`:os.some(o=>qarz(o))&&narxKor()?`<span class="fx er">yakuniy to‘lov kech</span>`:''}
+  else if(er)fx=`<span class="fx">${er} tasi kech</span>`;else if(wr)fx=`<span class="fx wr">${wr} tasida diqqat</span>`;
+  return`<div class="fb ${os.length?'':'bo'} ${bs[0]==='sex'?'tor':''}" data-g="${bs.join(',')}"><span class="fn">${n}</span><b>${os.length} <small>ta</small></b><small>${t1(t)} t</small>${fx}</div>`}).join('');
+ a.innerHTML=`${INTRO?`<div class="intro">${I('chaqmoq')}<span><b>Bu qanday ishlaydi:</b> usta, omborchi va brigadir telefonidan bitta yozuv kiritadi — shu ekran o‘zi yangilanadi, qo‘ng‘iroq kerak bo‘lmaydi.</span><span class="sp"></span><button id="intx" aria-label="Yopish">${I('xoch')}</button></div>`:''}
+ <div class="top"><div><h1>Bugun, ${kun.getDate()}-${U.OYT[kun.getMonth()]}, ${HAF[kun.getDay()]}</h1><div class="sub">${xul[0]}${xul.length>1?': '+xul.slice(1).join(', '):''}${xul2.length?'; '+xul2.join('; '):''}.</div></div><span class="sp"></span>${['direktor','buxgalter'].includes(rol())?`<button class="btn p" id="nb">${I('qosh')} Yangi buyurtma</button>`:''}</div>
+ <div class="pnl">
+  <div class="kpiw kpis">${kp.join('')}</div>
+  <div class="attw card att"><h3>${I('ogoh')} Bugun e’tibor <small>tartib: pul → muddat → metall → odamlar</small><span class="sp"></span><span class="pill mu">${DQ.length}</span></h3>
+   <div class="list ${DIQ_HAMMA?'':'qisqa'}">${dq.map((d,i)=>`<div class="it ${d.t}" data-dq="${i}"><div class="m"><div class="r"><b>${esc(d.b)}</b></div><small>${esc(d.s)}</small></div><button class="btn s" data-dqb="${i}">${d.tel?I('tel'):''}${esc(d.tug)}</button></div>`).join('')||'<div class="empty">'+I('okdoira')+'Bugun e’tibor talab qiladigan ish yo‘q</div>'}</div>
+   ${DQ.length>5?`<button class="btn s mt" id="dqh">${DIQ_HAMMA?'Qisqartirish':'Hammasi ('+DQ.length+')'}</button>`:''}</div>
+  <div class="flw card"><h3>${I('yol')} Buyurtmalar oqimi <small>katakni bosing — o‘sha buyurtmalar ochiladi</small></h3><div class="flow">${flow}</div></div>
+  <div class="ow grid k22">${yaqinKunlar()}${narxKor()?pulOqimi():sexBugun()}</div>
+ </div>
+ <div class="cta"><b>Bu namuna — sizning raqamlaringiz bilan 2 kunda ko‘rsataman</b>Excel’dagi buyurtmalar, metall qoldig‘i va brigadalar ro‘yxatini yuborsangiz, tizim shu ma’lumot bilan ochiladi.</div>`;
+ $$('[data-go]',a).forEach(k=>k.onclick=()=>APP.go(k.dataset.go));
+ $$('[data-g]',a).forEach(k=>k.onclick=()=>APP.go('buyurtmalar',{g:k.dataset.g}));
+ const dqAct=i=>{const d=dq[i];if(d.o)ochO(d.o);else if(d.v)APP.go(d.v,d.f)};
+ $$('[data-dq]',a).forEach(r=>r.onclick=e=>{if(e.target.closest('[data-dqb]'))return;dqAct(+r.dataset.dq)});
+ $$('[data-dqb]',a).forEach(b=>b.onclick=()=>{const d=dq[+b.dataset.dqb];if(d.tel){toast('Qo‘ng‘iroq: '+d.tel);return}if(d.tug==='Eslatma'||d.tug==='Yozish'){toast('Eslatma Telegram orqali yuborildi','Telegram');jurnal('Eslatma yuborildi: '+d.b);save();return}dqAct(+b.dataset.dqb)});
+ const dh=$('#dqh',a);if(dh)dh.onclick=()=>{DIQ_HAMMA=!DIQ_HAMMA;APP.render()};
+ const ix=$('#intx',a);if(ix)ix.onclick=()=>{INTRO=false;APP.render()};
+ const nb=$('#nb',a);if(nb)nb.onclick=yangiBuyurtma;
+ $$('[data-o]',a).forEach(r=>r.onclick=()=>ochO(r.dataset.o));rolBar(a)}
+function yaqinKunlar(){const R=[];for(let i=0;i<7;i++){const d=addD(i);if(dam(d))continue;
+  D.MONT.filter(m=>m.sana===d&&m.holat==='reja').forEach(m=>{const o=D.B.find(x=>x.id===m.oid);R.push({d,t:'Montaj boshlanadi',s:`${brig(m.brig).nom} → ${obj(o)?obj(o).nom:mij(o).nom}`,o})});
+  D.B.filter(o=>o.muddat===d&&o.bosqich!=='akt').forEach(o=>R.push({d,t:'Shartnoma muddati',s:`${o.raqam} ${mij(o).nom} · hozir: ${bosLabel(o)}`,o,w:o.bosqich!=='montaj'}))}
+ return`<div class="card"><h3>${I('kal')} Yaqin 7 kun</h3><div class="list">${R.slice(0,6).map(r=>`<div class="it" data-o="${r.o.id}"><span class="pill ${r.w?'wr':'mu'}">${fd(r.d)}</span><div class="m"><b>${r.t}</b><small>${esc(r.s)}</small></div>${I('ong')}</div>`).join('')||'<div class="empty">'+I('kal')+'Yaqin kunlarda reja yo‘q</div>'}</div></div>`}
+function pulOqimi(){const R=kelishi(14);
+ return`<div class="card"><h3>${I('hamyon')} Kutilayotgan pul <small>14 kun, muddati o‘tganlar — e’tiborda</small><span class="sp"></span><b>${mln(R.reduce((s,x)=>s+x.k.summa,0))}</b></h3><div class="list">${R.slice(0,6).map(x=>`<div class="it" data-o="${x.o.id}"><span class="pill mu">${dd(x.sana)===0?'bugun':fd(x.sana)}</span><div class="m"><b>${esc(mij(x.o).nom)}</b><small>${x.o.raqam} · ${x.k.tur==='avans'?'avans':x.k.tur==='oraliq'?'jo‘natishdan oldin':'yakuniy (akt)'}${x.taxminiy?' · taxminiy':''}</small></div><b>${mln(x.k.summa)}</b></div>`).join('')||'<div class="empty">'+I('hamyon')+'14 kun ichida to‘lov kutilmaydi</div>'}</div></div>`}
+function sexBugun(){const E=D.ISH.filter(e=>e.sana===iso(T));return`<div class="card"><h3>${I('zavod')} Sexda bugun</h3><div class="list">${UCH.map(u=>{const es=E.filter(e=>e.uch===u);return`<div class="it" data-go="sex"><span class="ic">${I(UCHI[u])}</span><div class="m"><b>${UCHN[u]}</b><small>${USTA[u]}</small></div><b>${t1(es.reduce((s,e)=>s+e.miq,0))} t</b></div>`}).join('')}</div></div>`}
+
+/* ================= BUYURTMALAR ================= */
+function rBuy(a){const q=F.q.toLowerCase(),gs=F.g?F.g.split(','):null;
+ let L=D.B.filter(o=>(!gs||gs.includes(o.bosqich))&&(!q||(o.raqam+' '+mij(o).nom+' '+K[o.k].nom+' '+(obj(o)?obj(o).nom:'')).toLowerCase().includes(q)));
+ const G=[['Kechikmoqda yoki diqqat',o=>!!xavf(o)],['Sex va loyiha',o=>!xavf(o)&&['olchov','loyiha','kutish','sex'].includes(o.bosqich)],['Tayyor, yo‘lda, montajda',o=>!xavf(o)&&['tayyor','yolda','montaj'].includes(o.bosqich)],['Yopilgan',o=>o.bosqich==='akt'&&!xavf(o)]];
+ const CH=[['','Hammasi'],['olchov,loyiha','Loyiha'],['kutish','Avans'],['sex','Sexda'],['tayyor,yolda','Tayyor / yo‘lda'],['montaj','Montaj'],['akt','Akt']];
+ const kechN=D.B.filter(o=>kech(o)).length,xN=D.B.filter(o=>xavf(o)).length;
+ const cols=[{t:'Buyurtma',f:o=>`<span class="mono">${o.raqam}</span> <b>${esc(mij(o).nom)}</b>${qarzdorMij(o)&&narxKor()?' <span class="pill wr">qarzdor mijoz</span>':''}<span class="sm">${esc(K[o.k].nom)} · ${hajm(o)} · ${esc(o.masul)}</span>`},
+  {t:'Bosqich',w:1,f:o=>`<span>${esc(bosLabel(o))}</span>${chain(o)}`},
+  {t:'Tonna',n:1,m:1,f:o=>t1(tonna(o))+' t'}];
+ if(narxKor())cols.push({t:'Summa',n:1,f:o=>mln(summa(o))+'<span class="sm">qarz: '+(qarz(o)?'<span class="er">'+mln(qarz(o))+'</span>':'—')+'</span>'});
+ cols.push({t:'Muddat',n:1,f:o=>fdd(o.muddat)+`<span class="sm">${o.bosqich==='akt'?'yopilgan':kech(o)?'<span class="er">'+kech(o)+' kun kech</span>':dd(o.muddat)+' kun qoldi'}</span>`},{t:'Holat',w:1,f:o=>{const x=xavf(o);return holatPill(o)+(x?`<span class="sm ${x.t}">${esc(x.s)}</span>`:'')}});
+ a.innerHTML=`<div class="top"><div><h1>Buyurtmalar</h1><div class="sub"><b>${D.B.filter(o=>o.bosqich!=='akt').length} ta ishda</b>, ${t1(D.B.filter(o=>o.bosqich!=='akt').reduce((s,o)=>s+tonna(o),0))} t${narxKor()?', '+mln(D.B.filter(o=>o.bosqich!=='akt').reduce((s,o)=>s+summa(o),0))+' so‘m':''}: <b class="${kechN?'er':''}">${kechN} tasi kech</b>, ${xN-kechN} tasida diqqat.</div></div><span class="sp"></span>${['direktor','buxgalter'].includes(rol())?`<button class="btn p" id="nb">${I('qosh')} Yangi buyurtma</button>`:''}</div>
+ <div class="tools"><div class="chips">${CH.map(([g,n])=>`<button class="chip ${F.g===g?'on':''}" data-ch="${g}">${n}<em>${g?D.B.filter(o=>g.split(',').includes(o.bosqich)).length:D.B.length}</em></button>`).join('')}</div><span class="sp"></span><input class="inp" id="bq" placeholder="Qidirish: raqam, mijoz, obyekt" value="${esc(F.q)}" aria-label="Qidirish"></div>
+ ${(()=>{const R=[];G.forEach(([n,fn])=>L.filter(fn).forEach(o=>{if(!R.includes(o)){o._g=n+' · '+L.filter(fn).length;R.push(o)}}));let gp=null;const ml=`<div class="mlist">${R.map(o=>{const x=xavf(o);const h=o._g!==gp?(gp=o._g,`<div class="mg">${o._g}</div>`):'';return h+`<div class="mr ${x?x.t:''}" data-o="${o.id}"><div class="m1"><span class="mono">${o.raqam}</span><b>${esc(mij(o).nom)}</b>${x?`<span class="pill ${x.t}">${xavfNom(o)}</span>`:''}</div><div class="m2"><span>${esc(bosLabel(o))}</span>${chain(o)}</div><div class="m3"><span>${hajm(o)}</span>${narxKor()?`<span>${mln(summa(o))}</span>`:''}<span class="${kech(o)?'er':''}">${o.bosqich==='akt'?'yopilgan':kech(o)?kech(o)+' kun kech':fd(o.muddat)}</span></div>${x?`<div class="m4 ${x.t}">${esc(x.s)}</div>`:''}</div>`}).join('')}</div>`;return R.length?ml+table(cols,R,{click:o=>`data-o="${o.id}"`,grp:o=>o._g}):`<div class="card empty">${I('qidir')}Hech narsa topilmadi</div>`})()}`;
+ $$('[data-ch]',a).forEach(c=>c.onclick=()=>{F.g=c.dataset.ch;APP.render()});
+ const bq=$('#bq',a);bq.oninput=()=>{F.q=bq.value;const p=bq.selectionStart;APP.render();const n=$('#bq');n.focus();n.setSelectionRange(p,p)};
+ $$('[data-o]',a).forEach(r=>r.onclick=()=>ochO(r.dataset.o));
+ const nb=$('#nb',a);if(nb)nb.onclick=yangiBuyurtma;rolBar(a)}
+
+/* ---------- buyurtma kartasi ---------- */
+function ochO(id){const o=D.B.find(x=>x.id===id);if(!o)return;const x=xavf(o),r=route(o),ix=bIdx(o),ob=obj(o),mj=mij(o);
+ const sana=b=>{const h=o.tarix.find(t=>t.m.toLowerCase().includes(BOSN[b].toLowerCase().split(' ')[0]));return h?fd(h.v):''};
+ const mchain=`<div class="mchain"><b>${esc(bosLabel(o))}</b>${chain(o)}</div>`;
+ const steps=`<div class="steps">${r.map((b,i)=>`<div class="st ${i<ix||(b==='akt'&&o.akt&&o.akt.imzo)?'d':i===ix?'c'+(x&&x.t==='er'?' late':x&&x.t==='wr'?' wait':''):''}"><b>${BOSQI[b]}</b><span>${i<ix?'bajarildi':i===ix?(b==='sex'?UCHN[joriyUch(o)].toLowerCase():'hozir'):'—'}</span></div>`).join('')}</div>`;
+ const N=navbat();
+ const sexB=['sex','tayyor','yolda','montaj','akt'].includes(o.bosqich)?`<div class="sec"><h4>${I('zavod')} Sex uchastkalari <span class="sp"></span><small class="note">${t1(tonna(o))} t · ${m2(o)} m² bo‘yash yuzasi</small></h4>${uchlar(o).map(u=>{const b=uchBajar(o,u),j=uchJami(o,u),p=j?b/j:0;return`<div class="lv"><span>${UCHN[u]}${u==='boyash'?' '+ralDot(o.ral):''}</span><span>${t1(b)} / ${t1(j)} t${o.bosqich==='sex'&&joriyUch(o)===u&&N[u].kun?` · navbat ${t1(N[u].kun)} kun`:''}</span></div><div class="prog"><i class="${p>=1?'ok':o.bosqich==='sex'&&joriyUch(o)===u&&rejaKech(o)?'er':''}" style="width:${Math.round(p*100)}%"></i></div>`}).join('')}</div>`:'';
+ const metB=['olchov','loyiha','kutish','sex'].includes(o.bosqich)?`<div class="sec"><h4>${I('metall')} Metall bu buyurtmaga</h4>${table([{t:'Metall',f:m=>`${esc(m.nom)}<span class="sm">${esc(m.izoh)}</span>`},{t:'Kerak (qolgan)',n:1,f:m=>num(kerakKg(o,m.id)*kesilmagan(o,m.id))+' kg'},{t:'Omborda erkin',n:1,f:m=>`<span class="${m.holat}">${num(m.erkin)} kg</span>`},{t:'Holat',f:m=>m.holat==='er'?'<span class="pill er">yetmaydi</span>':m.holat==='wr'?'<span class="pill wr">tugayapti</span>':'<span class="pill ok">yetadi</span>'}],K[o.k].met.map(e=>metHolat().find(m=>m.id===e[0])))}</div>`:'';
+ const ms=D.MONT.filter(m=>m.oid===o.id);
+ const montB=K[o.k].tur!=='shkaf'?`<div class="sec"><h4>${I('kaska')} Montaj</h4>${ms.length?ms.map(m=>`<div class="obj card"><div><div class="on">${brig(m.brig).nom} · ${esc(brig(m.brig).brigadir)}</div><div class="oa">${fdd(m.sana)} dan ${U.kun(m.kun)} · ${m.bajar}/${m.jami} ${birl(o)}${montKech(m)?` · <span class="er">${montKech(m)} kun kech</span>`:''}</div></div><span class="pill ${m.holat==='tugadi'?'ok':montKech(m)?'er':'inf'}">${{reja:'rejada',yolda:'yo‘lda',ishda:'ishda',tugadi:'tugadi'}[m.holat]}</span><div class="op"><div class="prog"><i class="${m.holat==='tugadi'?'ok':montKech(m)?'er':''}" style="width:${Math.round(m.bajar/m.jami*100)}%"></i></div>${m.muammo?`<small class="wr">${esc(m.muammo)}</small>`:''}</div></div>`).join(''):o.bosqich==='akt'?`<p class="note">Montaj tugagan${o.akt?', akt '+fdd(o.akt.sana):''}.</p>`:'<p class="note">Montaj hali rejalashtirilmagan — tayyor bo‘lgach bo‘sh brigada taklif qilinadi.</p>'}
+  ${ob?`<div class="ol mt"><span>${I('xarita')} ${esc(ob.manzil)}, <b>${ob.km} km</b></span><span>${I('tel')} ${esc(ob.kontakt)} · ${esc(ob.tel)}</span><span>Obyekt: ${ob.tayyor?'<b class="ok">tayyor</b>':'<b class="wr">tayyor emas</b> — '+esc(ob.muammo||'')}</span></div>`:''}
+  <div class="ol mt"><span>Komplekt: ${o.komplekt.tayyor?'<b class="ok">butlandi</b>':'<b class="wr">tekshirilmagan</b>'}</span><span>anker <b>${num(o.komplekt.anker)}</b> dona</span><span>bolt <b>${num(o.komplekt.bolt)}</b></span></div></div>`:'';
+ const s=summa(o),tl=tolangan(o),k=keyingi(o);
+ const tolB=narxKor()?`<div class="sec"><h4>${I('hamyon')} To‘lov <span class="sp"></span><small class="note">sxema: ${o.tolovReja.map(r=>r.foiz).join(' / ')}</small></h4>
+  <div class="dl"><div><small>Shartnoma summasi</small><b>${som(s)}</b></div><div><small>Bajarilgan ish qiymati</small><b>${som(Math.round(s*bajarUlush(o)))}</b></div><div><small>To‘langan</small><b>${som(tl)}</b></div><div><small>Qarz (so‘rash mumkin)</small><b class="${qarz(o)?(qarzYosh(o)?'er':'wr'):''}">${som(qarz(o))}</b></div><div><small>Keyingi to‘lov</small><b>${k?mln(k.summa)+' · '+(k.sana?fdd(k.sana):'akt imzolangach'):'—'}</b></div><div><small>Kafolat taloni</small><b>${tl>=s-1?'<span class="ok">berildi (12 oy)</span>':'100 % to‘lovdan keyin'}</b></div></div>
+  ${table([{t:'To‘lov',f:r=>({avans:'Avans',oraliq:'Jo‘natishdan oldin',yakuniy:'Yakuniy (aktdan keyin)'})[r.tur]},{t:'Foiz',n:1,f:r=>r.foiz+' %'},{t:'Summa',n:1,f:r=>mln(s*r.foiz/100)},{t:'Holat',f:r=>{const acc=o.tolovReja.slice(0,o.tolovReja.indexOf(r)+1).reduce((a,x)=>a+s*x.foiz/100,0);return tl>=acc-1?'<span class="pill ok">to‘langan</span>':'<span class="pill mu">kutilmoqda</span>'}}],o.tolovReja,{keep:1})}</div>`:'';
+ const hist=`<div class="sec"><h4>${I('soat')} Tarix</h4><div class="hist">${o.tarix.slice().reverse().map(h=>`<div class="${h.sabab?'er':''}">${esc(h.m)}${h.sabab?` · <b>sabab: ${esc(h.sabab)}</b>`:''}<br><small>${fdd(h.v)}</small></div>`).join('')}</div></div>`;
+ const btn=[];const nx=r[ix+1];
+ if(o.bosqich==='loyiha'&&!o.loyiha.tasdiq&&['direktor'].includes(rol()))btn.push(`<button class="btn" id="lt">${I('belgiok')} Loyihani tasdiqlash</button>`);
+ if(o.bosqich==='kutish'&&!avansKeldi(o)&&rol()==='direktor')btn.push(`<button class="btn" id="dr">${I('qulf')} Direktor ruxsati (avanssiz)</button>`);
+ if(o.bosqich==='tayyor'&&!o.komplekt.tayyor&&['direktor','ombor','sex'].includes(rol()))btn.push(`<button class="btn" id="kb">${I('quti')} Komplekt butlandi</button>`);
+ if(o.akt&&!o.akt.imzo&&['direktor','buxgalter','montaj'].includes(rol()))btn.push(`<button class="btn" id="ai">${I('hujjat')} Akt imzolandi</button>`);
+ if(narxKor()&&tl<s-1)btn.push(`<button class="btn" id="tk">${I('pul')} To‘lov kiritish</button>`);
+ if(nx&&(rol()==='direktor'||(rol()==='sex'&&o.bosqich==='sex')||(rol()==='montaj'&&['yolda','montaj'].includes(o.bosqich))))btn.push(`<button class="btn p" id="nx">Keyingi bosqich: ${BOSQI[nx]} ${I('ong')}</button>`);
+ modal(`<h2><span class="mono">${o.raqam}</span> ${esc(mj.nom)} <small>${esc(K[o.k].nom)}</small></h2>`,
+ `${x?`<div class="alert ${x.t}">${I('ogoh')}<span><b>${esc(x.s)}</b>${o.tarix.slice().reverse().find(h=>h.sabab)?' · sabab: '+esc(o.tarix.slice().reverse().find(h=>h.sabab).sabab):''}</span></div>`:''}
+ ${steps}${mchain}
+ <div class="dl sec"><div><small>Mijoz</small><b>${esc(mj.nom)}</b></div><div><small>Obyekt</small><b>${ob?esc(ob.nom):'yetkazib berish, montajsiz'}</b></div><div><small>Mas’ul</small><b>${esc(o.masul)}</b></div>
+ <div><small>Hajm</small><b>${hajm(o)}${o.yarus?` · ${o.yarus} yarus`:''}</b></div><div><small>Og‘irlik</small><b>${t1(tonna(o))} t</b></div><div><small>Rang</small><b>${ralDot(o.ral)} ${RAL[o.ral].nom}</b></div>
+ <div><small>Shartnoma</small><b>${fdd(o.sana)}</b></div><div><small>Muddat</small><b class="${kech(o)?'er':''}">${fdd(o.muddat)}</b></div><div><small>Loyiha</small><b>${o.loyiha.ver?'v'+o.loyiha.ver+(o.loyiha.tasdiq?' · tasdiq '+fd(o.loyiha.tasdiq):' · <span class="wr">tasdiqlanmagan</span>'):'<span class="mu">o‘lchov kutilmoqda</span>'}</b></div></div>
+ ${o.izoh?`<p class="note mt">${esc(o.izoh)}</p>`:''}${sexB}${metB}${montB}${tolB}${hist}`,
+ btn.join(''),true);
+ const on=(s,f)=>{const e=$(s);if(e)e.onclick=f};
+ on('#lt',()=>{o.loyiha.tasdiq=iso(T);if(!o.loyiha.ver)o.loyiha.ver=1;o.tarix.push({v:iso(T),m:'Loyiha tasdiqlandi (v'+o.loyiha.ver+')'});jurnal(o.raqam+': loyiha tasdiqlandi');save();toast('Loyiha tasdiqlandi — endi sexga tushishi mumkin');ochO(id);APP.render()});
+ on('#dr',()=>sababForma(o,'Avanssiz sexga tushirish — direktor ruxsati','Nega avanssiz?',['tender / korporativ mijoz','g‘aznachilik to‘lovi','doimiy mijoz, kafolat xati','boshqa'],sb=>{o.ruxsat=sb;o.tarix.push({v:iso(T),m:'Direktor ruxsati: avanssiz sexga ('+sb+')'});jurnal(o.raqam+': avanssiz ruxsat — '+sb);save();toast('Ruxsat yozildi, jurnalga tushdi');ochO(id);APP.render()}));
+ on('#kb',()=>{o.komplekt.tayyor=true;o.tarix.push({v:iso(T),m:'Komplekt tekshirildi: butlandi (anker '+o.komplekt.anker+', bolt '+o.komplekt.bolt+')'});jurnal(o.raqam+': komplekt butlandi');save();toast('Komplekt butlandi — yuklashga ruxsat');ochO(id);APP.render()});
+ on('#ai',()=>{o.akt.imzo=true;o.akt.sana=iso(T);o.tarix.push({v:iso(T),m:'Akt imzolandi — yakuniy to‘lov muddati boshlandi'});jurnal(o.raqam+': akt imzolandi');save();toast('Akt imzolandi. Yakuniy to‘lov muddati: '+fdd(addD(mj.kun||10)));ochO(id);APP.render()});
+ on('#tk',()=>tolovForma(o));
+ on('#nx',()=>bosqichga(o));}
+
+/* ---------- bosqichga o‘tkazish (qoidalar bilan) ---------- */
+function bosqichga(o){const r=route(o),nx=r[bIdx(o)+1];if(!nx)return;
+ const blok=(m,b)=>{modal('<h2>O‘tkazib bo‘lmaydi</h2>',`<div class="alert er">${I('qulf')}<span>${m}</span></div><p class="note">Bu qoida tizimda doim ishlaydi: xodim tasodifan o‘tkazib yubora olmaydi, istisno faqat direktor ruxsati bilan va jurnalga yoziladi.</p>`,b||`<button class="btn" onclick="U.closeM()">Tushunarli</button>`);const rj=$('#rj');if(rj)rj.onclick=()=>{o.ruxsatJ=true;o.tarix.push({v:iso(T),m:'Direktor ruxsati: oraliq to‘lovsiz jo‘natish'});jurnal(o.raqam+': oraliq to‘lovsiz jo‘natishga ruxsat');save();closeM();bosqichga(o)}};
+ if(o.bosqich==='olchov'&&nx==='loyiha'){o.loyiha.ver=1}
+ if(o.bosqich==='loyiha'&&!o.loyiha.tasdiq)return blok('Loyiha (chizma) tasdiqlanmagan. Tasdiqlanmagan chizma bilan sexga ish berilmaydi — teshik va o‘lcham xatosi butun partiyani buzadi.');
+ if(o.bosqich==='kutish'&&!avansKeldi(o))return blok(`Shartnoma bo‘yicha avans (${avansFoiz(o)} %${narxKor()?' — '+som(Math.round(summa(o)*avansFoiz(o)/100)):''}) kelmagan. Avanssiz buyurtma sexga tushmaydi.`);
+ if(o.bosqich==='sex'&&metYetmaydi(o).length)return blok('Metall yetmaydi: '+metYetmaydi(o).map(m=>m.nom+' ('+num(-m.erkin)+' kg)').join(', ')+'. Avval kirim qiling.');
+ if(o.bosqich==='tayyor'&&!o.komplekt.tayyor)return blok('Komplekt tekshirilmagan. Anker, bolt va fiksatorlar 100 % butlanmaguncha mashinaga yuklanmaydi — aks holda brigada obyektda bekor turadi.');
+ if(o.bosqich==='tayyor'){const or=o.tolovReja.findIndex(x=>x.tur==='oraliq');if(or>=0){const kerak=o.tolovReja.slice(0,or+1).reduce((a,x)=>a+summa(o)*x.foiz/100,0);if(tolangan(o)<kerak-1&&!o.ruxsatJ)return blok(`Jo‘natishdan oldingi to‘lov${narxKor()?' ('+som(Math.round(kerak-tolangan(o)))+')':''} kelmagan — tayyor mahsulot zavoddan chiqmaydi.`,rol()==='direktor'?`<button class="btn" id="rj">Direktor ruxsati bilan jo‘natish</button><button class="btn p" onclick="U.closeM()">Kutamiz</button>`:'')}}
+ if(o.bosqich==='montaj'&&D.MONT.some(m=>m.oid===o.id&&m.bajar<m.jami))return blok(`Montaj tugamagan: ${D.MONT.filter(m=>m.oid===o.id).map(m=>m.bajar+'/'+m.jami+' '+birl(o)).join(', ')}. Akt faqat hamma ${birl(o)} o‘rnatilgach — brigadir raporti bilan.`);
+ const sexTugamagan=o.bosqich==='sex'&&uchlar(o).some(u=>!uchBitdi(o,u));
+ const kerakSabab=kech(o)||rejaKech(o)||sexTugamagan;
+ const qil=sb=>{if(o.bosqich==='sex'){uchlar(o).forEach(u=>o.uch[u]=tonna(o));o.tayyorSana=iso(T)}
+  if(nx==='montaj'&&!D.MONT.some(m=>m.oid===o.id)){const kn=Math.ceil(o.soni/(norma(o)));let d=ishKun(1),b=null;for(let i=0;i<20&&!b;i++){b=D.BRIG.find(x=>{let dd2=d,k=0;const B=brigBand()[x.id];while(k<kn){if(!dam(dd2)){if(B[dd2])return false;k++}dd2=addD(1,dd2)}return true});if(!b)d=ishKun(1,d)}b=b||D.BRIG[0];D.MONT.push({id:U.uid('mt'),oid:o.id,brig:b.id,sana:d,kun:kn,holat:'reja',bajar:0,jami:o.soni,muammo:''})}
+  if(nx==='akt'){o.akt={sana:iso(T),imzo:false};D.MONT.filter(m=>m.oid===o.id).forEach(m=>{m.holat='tugadi';m.bajar=m.jami})}
+  const old=o.bosqich;o.bosqich=nx;o.tarix.push({v:iso(T),m:BOSN[old]+' → '+BOSN[nx],sabab:sb||undefined});jurnal(o.raqam+': '+BOSN[old]+' → '+BOSN[nx]+(sb?' (sabab: '+sb+')':''));save();
+  toast(o.raqam+' — '+BOSN[nx]+(nx==='montaj'?'. Brigada rejaga qo‘yildi':''));ochO(o.id);APP.render()};
+ if(kerakSabab)sababForma(o,sexTugamagan?'Sex ishi to‘liq yozilmagan':'Bosqich kechikdi',sexTugamagan?'Ba’zi uchastkalarda bajarilgan tonna yozilmagan. Baribir o‘tkazasizmi? Kechikish sababi:':'Muddat yoki uchastka rejasi o‘tgan. Sababni tanlang — hisobotda shu bo‘yicha ko‘rinadi:',SABAB,qil);
+ else qil();
+}
+function sababForma(o,h,m,ro,cb){modal(`<h2>${esc(h)}</h2>`,`<p>${esc(m)}</p><div class="frm"><label class="wf">Sabab<select class="inp" id="sb">${ro.map(s=>`<option>${esc(s)}</option>`).join('')}</select></label></div>`,`<button class="btn" onclick="U.closeM()">Bekor qilish</button><button class="btn p" id="sbo">Tasdiqlash</button>`);$('#sbo').onclick=()=>cb($('#sb').value)}
+
+/* ---------- yangi buyurtma ---------- */
+function yangiBuyurtma(){const ks=Object.keys(K);
+ modal('<h2>Yangi buyurtma</h2>',`<div class="frm f3">
+  <label class="w2">Mijoz<select class="inp" id="nm">${D.MIJ.map(m=>`<option value="${m.id}">${esc(m.nom)}</option>`).join('')}<option value="_">+ yangi mijoz…</option></select></label>
+  <label>Mas’ul<select class="inp" id="nms">${MAS.map(m=>`<option>${m}</option>`).join('')}</select></label>
+  <label class="wf" id="nmyw" hidden>Yangi mijoz nomi<input class="inp" id="nmy" placeholder="Masalan: Grand Logistika MChJ"></label>
+  <label class="w2">Mahsulot<select class="inp" id="nk">${ks.map(k=>`<option value="${k}">${esc(K[k].nom)}</option>`).join('')}</select></label>
+  <label id="nyw">Yarus<select class="inp" id="ny"><option>3</option><option selected>4</option><option>5</option></select></label>
+  <label>Soni (<span id="nbl">seksiya</span>)<input class="inp" id="ns" type="number" min="1" value="60"></label>
+  <label>Rang<select class="inp" id="nr">${RALT.map(r=>`<option value="${r}">${RAL[r].nom}</option>`).join('')}</select></label>
+  <label>Muddat<input class="inp" id="nd" type="date" value="${ishKun(25)}"></label>
+  <label class="w2">To‘lov sxemasi<select class="inp" id="nt"><option value="5050">Avans 50 % / akt 50 %</option><option value="504010">50 / 40 jo‘natishdan oldin / 10 akt</option><option value="3070">Tender: avans 30 % / akt 70 %</option><option value="0100">G‘aznachilik: 100 % aktdan keyin</option></select></label>
+ </div><div class="card mt" id="nh"></div>`,`<button class="btn" onclick="U.closeM()">Bekor qilish</button><button class="btn p" id="nsv">Saqlash</button>`);
+ const hisob=()=>{const k=$('#nk').value,s=Math.max(1,+$('#ns').value||1),y=K[k].kgY?+$('#ny').value:0;$('#nyw').hidden=!K[k].kgY;$('#nbl').textContent=BIRL[K[k].b];
+  const o={k,soni:s,yarus:y,narxT:24000000};const t=tonna(o),sm=summa(o),pj=paletta(o);
+  const met=K[k].met.map(e=>{const m=metHolat().find(x=>x.id===e[0]);const kr=Math.round(t*1000*e[1]/(1-S().yoq[m.tur]/100));return{m,kr,ok:m.erkin>=kr}});
+  $('#nh').innerHTML=`<div class="dl"><div><small>Og‘irlik</small><b>${t1(t)} t</b></div><div><small>Paletta-joy</small><b>${pj?num(pj):'—'}</b></div><div><small>Narx (taxminiy)</small><b>${som(sm)}</b></div><div><small>Bo‘yash yuzasi</small><b>${num(t*S().m2PerT)} m²</b></div><div><small>Sexda (navbat bilan)</small><b>${Math.ceil(t/S().cap.boyash+navbat().boyash.kun)} ish kuni</b></div><div><small>Montaj</small><b>${K[k].tur==='shkaf'?'kerak emas':Math.ceil(s/(K[k].norma[y]||K[k].norma[Object.keys(K[k].norma)[0]]))+' kun, 1 brigada'}</b></div></div>
+   <div class="sec"><h4>Metall yetadimi</h4>${met.map(x=>`<div class="lv"><span>${esc(x.m.nom)}</span><span class="${x.ok?'ok':'er'}">${num(x.kr)} kg kerak · ${x.ok?'yetadi':'yetmaydi ('+num(Math.max(0,x.m.erkin))+' kg erkin)'}</span></div>`).join('')}</div>`};
+ ['#nk','#ns','#ny'].forEach(s=>{$(s).oninput=hisob;$(s).onchange=hisob});$('#nm').onchange=()=>$('#nmyw').hidden=$('#nm').value!=='_';hisob();
+ $('#nsv').onclick=()=>{const sn=+$('#ns').value;if(!(sn>=1&&sn<=20000)){toast('Soni 1 dan 20 000 gacha bo‘lsin');$('#ns').focus();return}if(!$('#nd').value||$('#nd').value<iso(T)){toast('Muddat bugundan oldin bo‘lishi mumkin emas');$('#nd').focus();return}let mid=$('#nm').value;if(mid==='_'){const n=$('#nmy').value.trim();if(!n){toast('Mijoz nomini yozing');return}mid=U.uid('m');D.MIJ.push({id:mid,nom:n,shahar:'Toshkent',tel:'—',kontakt:'—',kun:10})}
+  const k=$('#nk').value,TS={'5050':[{tur:'avans',foiz:50},{tur:'yakuniy',foiz:50}],'504010':[{tur:'avans',foiz:50},{tur:'oraliq',foiz:40},{tur:'yakuniy',foiz:10}],'3070':[{tur:'avans',foiz:30},{tur:'yakuniy',foiz:70}],'0100':[{tur:'oraliq',foiz:0},{tur:'yakuniy',foiz:100}]};
+  const o={id:U.uid('o'),raqam:'IN-'+(D.seq++),mid,obid:null,k,soni:Math.max(1,+$('#ns').value||1),yarus:K[k].kgY?+$('#ny').value:0,narxT:24000000,ral:$('#nr').value,bosqich:K[k].tur==='stellaj'?'olchov':'loyiha',uch:{profil:0,kesish:0,bukish:0,payvand:0,boyash:0,komplekt:0},sana:iso(T),muddat:$('#nd').value||ishKun(25),masul:$('#nms').value,loyiha:{ver:0,tasdiq:null,kim:'Jahongir (konstruktor)'},tolovReja:TS[$('#nt').value],komplekt:{tayyor:false,anker:0,bolt:0},tarix:[{v:iso(T),m:'Buyurtma qabul qilindi'}]};
+  o.summa=summa(o);if(K[k].tur!=='shkaf'){o.komplekt.anker=Math.round(o.soni*4*1.05);}o.komplekt.bolt=Math.round(o.soni*(o.yarus||4)*6);
+  D.B.push(o);jurnal(o.raqam+': yangi buyurtma');save();closeM();toast(o.raqam+' qo‘shildi — konstruktorga o‘lchov va loyiha vazifasi ketdi','Telegram');APP.go('buyurtmalar',{g:''})}}
+
+/* ---------- to‘lov kiritish ---------- */
+function tolovForma(o){const s=summa(o),tl=tolangan(o),qol=s-tl,k=keyingi(o);
+ modal(`<h2>To‘lov: <span class="mono">${o.raqam}</span></h2>`,`<p class="note">${esc(mij(o).nom)} · shartnoma ${som(s)} · to‘langan ${som(tl)} · qolgan <b>${som(qol)}</b></p><div class="frm"><label>Summa, so‘m<input class="inp big" id="ts" type="number" min="1" max="${qol}" value="${k?k.summa:qol}"></label><label>Turi<select class="inp" id="tt"><option value="avans">Avans</option><option value="oraliq" ${k&&k.tur==='oraliq'?'selected':''}>Jo‘natishdan oldin</option><option value="yakuniy" ${k&&k.tur==='yakuniy'?'selected':''}>Yakuniy</option></select></label></div><div id="te" class="alert er mt" hidden></div>`,`<button class="btn" onclick="U.closeM()">Bekor qilish</button><button class="btn p" id="tsv">Saqlash</button>`);
+ $('#tsv').onclick=()=>{const v=Math.round(+$('#ts').value||0);if(v<=0){$('#te').hidden=false;$('#te').textContent='Summani kiriting';return}if(v>qol+1){$('#te').hidden=false;$('#te').textContent='Shartnomadan ortiq to‘lov kiritib bo‘lmaydi: qolgan '+som(qol);return}
+  D.PAY.push({id:U.uid('p'),oid:o.id,sana:iso(T),summa:v,tur:$('#tt').value});o.tarix.push({v:iso(T),m:'To‘lov keldi: '+som(v)});jurnal(o.raqam+': to‘lov '+som(v));save();closeM();toast('To‘lov yozildi: '+mln(v)+' so‘m');APP.render()}}
+
+/* ================= SEX NAVBATI ================= */
+const BIRU={profil:{n:'stoyka / balka, dona',kg:()=>18},kesish:{n:'list, dona',kg:o=>o.k==='NS'||o.k==='VS'?212:49},bukish:{n:'detal, dona',kg:()=>6},payvand:{n:'rama / uzel, dona',kg:o=>o.k==='NS'?60:24},boyash:{n:'m² yuza',kg:()=>1000/38},komplekt:{n:'',kg:o=>kgB(o.k,o.yarus)}};
+const birU=(u,o)=>u==='komplekt'?(o.k==='NS'?'uzel, dona':birl(o)):BIRU[u].n.split(',')[0]+(BIRU[u].n.includes(',')?'':'');
+let OXIRGI=null;
+function rSex(a){const N=navbat(),SB=D.B.filter(o=>o.bosqich==='sex'),tJ=UCH.reduce((s,u)=>s+N[u].t,0),ra=rangAlm(),E=D.ISH.slice().sort((x,y)=>y.sana.localeCompare(x.sana)||y.id.localeCompare(x.id));
+ const RALO=['7035','2004','5005','9005'];
+ const col=u=>{let os=SB.filter(o=>joriyUch(o)===u||(uchBajar(o,u)>.0005&&!uchBitdi(o,u)));const kechN=os.filter(o=>xavf(o)).length,y=N[u],cls=u===N.tor?'er':'';
+  const karta=o=>{const x=xavf(o),b=uchBajar(o,u),j=uchJami(o,u);return`<div class="oc ${x&&x.t==='er'?'late':x?'soon':''}" data-o="${o.id}"><div class="r1"><span class="mono">${o.raqam}</span><span>${kech(o)?'<span class="er">'+kech(o)+' kun kech</span>':fd(o.muddat)}</span></div><b>${esc(mij(o).nom)}</b><div class="pr">${o.k==='NS'?t1(b)+' / '+t1(j)+' t':num(b*1000/kgB(o.k,o.yarus))+' / '+num(o.soni)+' '+birl(o)+' · '+t1(b)+' t'} · ${esc(K[o.k].nom.split(' ')[0])}</div><div class="prog"><i class="${x&&x.t==='er'?'er':''}" style="width:${Math.round(b/j*100)}%"></i></div>${x?`<div class="r3"><span class="${x.t}">${esc(x.s)}</span></div>`:''}</div>`};
+  let body;if(u==='boyash'){body=RALO.map(r=>{const g=os.filter(o=>o.ral===r);return g.length?`<div class="gr">${ralDot(r)} ${RAL[r].nom} · ${t1(g.reduce((s,o)=>s+uchJami(o,u)-uchBajar(o,u),0))} t</div>`+g.map(karta).join(''):''}).join('')}else body=os.map(karta).join('');
+  return`<div class="col ${os.length?'':'bo'}"><h4>${I(UCHI[u])} ${UCHN[u]}<em class="${kechN?'wr':''}">${os.length}</em></h4>
+  <div class="yk"><span>hozir ${t1(y.h)} t · keladi ${t1(Math.max(0,y.t-y.h))} t · <b class="${cls}">${t1(y.kun)} kun yuklama</b>${u===N.tor?' · tor joy':''}</span><div class="bar"><i class="${cls}" style="width:${Math.round(Math.min(1,y.yuk)*100)}%"></i></div></div>
+  ${body||`<div class="empty">${I('okdoira')}Hozir bo‘sh${y.t>y.h?'<br>'+t1(y.t-y.h)+' t oldingi uchastkalardan keladi':''}</div>`}</div>`};
+ a.innerHTML=`<div class="top"><div><h1>Sex navbati</h1><div class="sub"><b>${SB.length} buyurtma sexda</b>, ${t1(SB.reduce((s,o)=>s+uchJami(o,'komplekt')-uchBajar(o,'komplekt'),0))} t mahsulot hali chiqmagan; tor joy: <b class="er">${UCHN[N.tor].toLowerCase()} — ${t1(N[N.tor].kun)} kun navbat</b>${ra?`; bugun rang almashtirish: <b class="wr">${ra} marta (${t1(ra*S().rangAlm/60)} soat)</b>`:''}.</div></div><span class="sp"></span>${['direktor','sex'].includes(rol())?`<button class="btn p" id="sf">${I('qalam')} Ish yozish</button>`:''}</div>
+ ${OXIRGI?natijaKarta():''}
+ ${SEX_FORMA?ustaForma():''}
+ <div class="kan">${UCH.map(col).join('')}</div>
+ <div class="grid k2 sec">
+  <div class="card"><h3>${I('ustun')} Uchastkalar yuklamasi <small>hozirgi va keladigan ish ÷ kunlik quvvat, 5 ish kuni = 100 %</small></h3><div class="hbar">${UCH.map(u=>`<span>${UCHN[u]}<span class="sm note">${STANOK[u]}</span></span><div class="hb"><i style="width:${Math.round(Math.min(1,N[u].yuk)*100)}%;background:${u===N.tor?'var(--er)':'var(--steel)'}"></i></div><span class="hn">${t1(N[u].kun)} kun</span>`).join('')}</div>
+   <p class="note mt">Bo‘yash liniyasi 1 smenada ${num(S().boyashM2)} m² (≈ ${t1(S().cap.boyash)} t) bo‘yaydi, har rang almashtirish ${S().rangAlm} daqiqa. Shuning uchun bo‘yash ustunida buyurtmalar rang bo‘yicha guruhlangan — ochiqdan to‘qqa.</p></div>
+  <div class="card"><h3>${I('soat')} Oxirgi yozuvlar <small>ustalar telefonidan</small></h3>${table([{t:'Uchastka',f:e=>`${UCHN[e.uch]}<span class="sm">${fd(e.sana)} · ${esc(e.ust)}</span>`},{t:'Buyurtma',f:e=>{const o=D.B.find(x=>x.id===e.oid);return o?`<span class="mono">${o.raqam}</span>`:''}},{t:'Bajarildi',n:1,f:e=>{const o=D.B.find(x=>x.id===e.oid);return(e.q&&o?num(e.q)+' '+birU(e.uch,o)+'<span class="sm">'+t1(e.miq)+' t</span>':t1(e.miq)+' t')+(e.brak?`<span class="sm er">brak ${e.brak} dona</span>`:'')}}],E.slice(0,7))}</div>
+ </div>`;
+ $$('[data-o]',a).forEach(c=>c.onclick=()=>ochO(c.dataset.o));
+ const sf=$('#sf',a);if(sf)sf.onclick=()=>{SEX_FORMA=!SEX_FORMA;OXIRGI=null;APP.render();if(SEX_FORMA)window.scrollTo(0,0)};
+ if(SEX_FORMA)ustaBog(a);if(OXIRGI)$$('[data-lk]',a).forEach(x=>x.onclick=()=>{const v=x.dataset.lk;OXIRGI=null;if(v==='o')ochO(x.dataset.id);else APP.go(v)});
+ const nx=$('#nkx',a);if(nx)nx.onclick=()=>{OXIRGI=null;APP.render()};rolBar(a)}
+function ustaForma(){const u0=UCH.find(u=>D.B.some(o=>o.bosqich==='sex'&&joriyUch(o)===u))||'profil';
+ return`<div class="card sec" id="usf"><h3>${I('qalam')} Ish yozish <small>usta telefonidan — 20 soniya</small></h3><div class="frm f3">
+ <label>Uchastka<select class="inp" id="fu">${UCH.map(u=>`<option value="${u}" ${u===u0?'selected':''}>${UCHN[u]}</option>`).join('')}</select></label>
+ <label class="w2">Buyurtma<select class="inp" id="fo"></select></label>
+ <label>Bajarildi (<span id="fb"></span>)<input class="inp big" id="fm" type="number" min="1" step="1" inputmode="numeric"></label>
+ <label>Brak, dona<input class="inp" id="fbr" type="number" min="0" value="0" inputmode="numeric"></label>
+ <label>Brak sababi<select class="inp" id="fbs"><option>—</option><option>teshik joyi xato</option><option>payvand choki</option><option>bo‘yoq oqdi / qatlam yupqa</option><option>o‘lcham xato</option><option>metall nuqsoni</option></select></label>
+ </div><div class="lv mt"><span id="fh" class="note"></span><span></span></div><div class="ft" style="position:static;padding:12px 0 0;border:0"><button class="btn" id="fx">Bekor qilish</button><button class="btn p" id="fs">${I('belgiok')} Saqlash</button></div></div>`}
+function ustaBog(a){const fu=$('#fu',a),fo=$('#fo',a),fm=$('#fm',a);
+ const opts=()=>{const u=fu.value;const os=D.B.filter(o=>o.bosqich==='sex'&&uchJami(o,u)-uchBajar(o,u)>.0005);fo.innerHTML=os.map(o=>`<option value="${o.id}" ${joriyUch(o)===u?'':''}>${o.raqam} · ${esc(mij(o).nom)} · qoldi ${t1(uchJami(o,u)-uchBajar(o,u))} t</option>`).join('')||'<option value="">bu uchastkada navbat yo‘q</option>';upd()};
+ const upd=()=>{const o=D.B.find(x=>x.id===fo.value),u=fu.value;if(!o){$('#fb').textContent='—';$('#fh').textContent='';return}$('#fb').textContent=birU(u,o);const kg=BIRU[u].kg(o),q=+fm.value||0,t=q*kg/1000,qol=uchJami(o,u)-uchBajar(o,u);
+  $('#fh').innerHTML=q?`= <b>${t1(t)} t</b> · ${UCHN[u].toLowerCase()}da qoladi ${t1(Math.max(0,qol-t))} t${t>qol+.05?' · <span class="er">qolgan ishdan ko‘p — qolganicha yoziladi</span>':''}`:`1 ${birU(u,o)} ≈ ${num(kg)} kg · qolgan ${t1(qol)} t ≈ ${num(qol*1000/kg)} ${birU(u,o)}`};
+ fu.onchange=opts;fo.onchange=upd;fm.oninput=upd;opts();
+ $('#fx',a).onclick=()=>{SEX_FORMA=false;APP.render()};
+ $('#fs',a).onclick=()=>{const o=D.B.find(x=>x.id===fo.value),u=fu.value,q=+fm.value||0,br=Math.max(0,Math.round(+$('#fbr',a).value||0));
+  if(!o){toast('Buyurtmani tanlang');return}if(q<=0||q>100000){toast('Bajarilgan miqdorni to‘g‘ri kiriting');fm.focus();return}if(br>q){toast('Brak bajarilgandan ko‘p bo‘lishi mumkin emas');return}
+  const N0=navbat(),qol=uchJami(o,u)-uchBajar(o,u),t=Math.min(qol,Math.round(q*BIRU[u].kg(o))/1000);
+  o.uch[u]=Math.round((uchBajar(o,u)+t)*1000)/1000;
+  const sarf=[];if(u==='profil'||u==='kesish'){K[o.k].met.forEach(([mid,ul])=>{const m=D.MET.find(x=>x.id===mid);const ok=u==='profil'?m.tur==='rulon':(m.tur!=='rulon'||!uchlar(o).includes('profil'));if(!ok)return;const kg=Math.round(t*1000*ul/(1-S().yoq[m.tur]/100));m.kg=Math.max(0,m.kg-kg);sarf.push({m,kg})})}
+  D.ISH.push({id:'e'+Date.now(),sana:iso(T),uch:u,oid:o.id,q:Math.round(q),miq:Math.round(t*10)/10,brak:br,sabab:br?$('#fbs',a).value:'',ust:USTA[u]});
+  const bitdi=uchBitdi(o,u),kel=bitdi?uchlar(o)[uchlar(o).indexOf(u)+1]:null;
+  o.tarix.push({v:iso(T),m:`${UCHN[u]}: +${t1(t)} t (${num(q)} ${birU(u,o)})${bitdi?' — uchastka tugadi':''}${br?', brak '+br+' dona — qayta tayyorlash navbatning boshida':''}`});
+  jurnal(o.raqam+': '+UCHN[u]+' +'+t1(t)+' t');save();
+  OXIRGI={o:o.id,u,t,q,br,sarf,bitdi,kel,n0:N0[u].kun,n1:navbat()[u].kun,tor:navbat().tor};SEX_FORMA=false;APP.render();window.scrollTo(0,0)}}
+function natijaKarta(){const x=OXIRGI,o=D.B.find(b=>b.id===x.o);if(!o)return'';
+ return`<div class="card linked sec"><h3>${I('okdoira')} Bitta yozuv — hammasi yangilandi <span class="sp"></span><button class="btn s" id="nkx">Yopish</button></h3><div class="lk">
+ <div data-lk="o" data-id="${o.id}"><small>Buyurtma <span class="mono">${o.raqam}</span></small><b>${UCHN[x.u]}: ${Math.round(uchBajar(o,x.u)/uchJami(o,x.u)*100)} %</b><small>${x.bitdi?(x.kel?'keyingi uchastka: '+UCHN[x.kel]:'sex ishi tugadi — «Tayyor» ga o‘tkazish mumkin'):'qoldi '+t1(uchJami(o,x.u)-uchBajar(o,x.u))+' t'}</small></div>
+ <div data-lk="ombor"><small>Metall ombori</small><b>${x.sarf.length?'−'+num(x.sarf.reduce((s,y)=>s+y.kg,0))+' kg':'o‘zgarmadi'}</b><small>${x.sarf.length?x.sarf.map(y=>esc(y.m.nom)).join(', '):'bu uchastka metall sarflamaydi'}</small></div>
+ <div data-lk="sex"><small>${UCHN[x.u]} navbati</small><b>${t1(x.n0)} → ${t1(x.n1)} kun</b><small>tor joy: ${UCHN[x.tor].toLowerCase()}</small></div>
+ <div data-lk="panel"><small>Direktor ekrani</small><b>yangilandi</b><small>${x.br?'brak '+x.br+' dona — hisobotga tushdi':'qo‘ng‘iroqsiz ko‘rinadi'}</small></div></div></div>`}
+
+/* ================= METALL OMBORI ================= */
+function rOmbor(a){const MH=metHolat(),er=MH.filter(m=>m.holat==='er'),wr=MH.filter(m=>m.holat==='wr'),BH=butHolat(),butK=BH.filter(b=>b.holat!=='ok');
+ const jamiT=D.MET.reduce((s,m)=>s+m.kg,0)/1000,pul=D.MET.reduce((s,m)=>s+m.kg/1000*m.narx,0)+D.BUT.reduce((s,b)=>s+b.miq*b.narx,0);
+ const TB=[['rulon','Rulon',MH.filter(m=>m.tur==='rulon').filter(m=>m.holat!=='ok').length],['listprofil','List, profil',MH.filter(m=>m.tur!=='rulon').filter(m=>m.holat!=='ok').length],['qoldiq','Qoldiq',0],['but','Butlovchi',butK.length]];
+ const lvl=m=>{const mx=Math.max(m.kg,m.min*2,m.rez)*1.05;return`<div class="lvl" title="omborda ${num(m.kg)} kg, minimal ${num(m.min)} kg"><i class="${m.holat==='ok'?'':m.holat}" style="width:${Math.round(m.kg/mx*100)}%"></i><u style="left:${Math.round(m.min/mx*100)}%"></u>${m.rez?`<span class="rz" style="left:${Math.round(Math.min(m.rez,mx)/mx*100)}%"></span>`:''}</div>`};
+ const metJ=list=>{const GN={er:'Yetmaydi',wr:'Tugayapti',ok:'Yetarli'};const r=['er','wr','ok'].flatMap(h=>list.filter(m=>m.holat===h));return table([
+  {t:'Metall',f:m=>`<span class="mono">${m.id}</span> <b>${esc(m.nom)}</b><span class="sm">${esc(m.izoh)}</span>`},
+  {t:'Omborda',w:1,f:m=>`<div class="lv"><span><b>${num(m.kg)} kg</b>${m.kgD?' · '+num(m.kg/m.kgD)+(m.tur==='list'?' list':' dona'):m.kgM?' · ≈ '+num(m.kg/m.kgM)+' pog. m':''}</span><span>min ${num(m.min)}</span></div>${lvl(m)}`},
+  {t:'Buyurtmalarga band',n:1,f:m=>num(m.rez)+' kg<span class="sm">'+(m.kerakBuy.length?m.kerakBuy.map(x=>x.o.raqam).join(', '):'—')+'</span>'},
+  {t:'Erkin',n:1,f:m=>`<b class="${m.holat==='ok'?'':m.holat}">${num(m.erkin)} kg</b><span class="sm">${m.sarf?'kuniga '+num(m.sarf)+' kg':'sarf yo‘q'}</span>`},
+  {t:'',w:1,f:m=>m.holat==='er'?`<span class="pill er">${num(-m.erkin+m.min)} kg sotib olish</span>${m.toxtaydi?`<span class="sm er">zaxira ${fdd(m.toxtaydi)} gacha yetadi</span>`:''}`:m.holat==='wr'?'<span class="pill wr">buyurtma berish</span>':'<span class="pill mu">yetarli</span>'}],r,{click:m=>`data-m="${m.id}"`,grp:m=>GN[m.holat]+' · '+list.filter(x=>x.holat===m.holat).length})};
+ let body='';
+ if(OT==='rulon')body=metJ(MH.filter(m=>m.tur==='rulon'));
+ else if(OT==='listprofil')body=metJ(MH.filter(m=>m.tur!=='rulon'));
+ else if(OT==='qoldiq')body=`<div class="alert inf">${I('chaqmoq')}<span>Ishbop qoldiq — 500 mm dan uzun bo‘lak. Kronshteyn, podpyatnik, kosinka kabi mayda detallar uchun tizim avval shu qoldiqni taklif qiladi, keyin yangi metallni.</span></div>${table([{t:'Qoldiq',f:q=>`<span class="mono">${q.id}</span> ${esc(D.MET.find(m=>m.id===q.m).nom)}<span class="sm">${esc(q.izoh||'')}</span>`},{t:'Uzunlik',n:1,f:q=>t1(q.uz)+' m'},{t:'Soni',n:1,f:q=>q.dona+' dona'},{t:'Og‘irlik',n:1,f:q=>{const m=D.MET.find(x=>x.id===q.m);return num(q.dona*q.uz*(m.kgM||(m.kgD||24)/6))+' kg'}},{t:'Holat',f:q=>q.holat==='erkin'?'<span class="pill ok">erkin</span>':'<span class="pill mu">band: '+(D.B.find(o=>o.id===q.oid)||{}).raqam+'</span>'}],D.QOLDIQ)}`;
+ else body=table([{t:'Butlovchi',f:b=>`<b>${esc(b.nom)}</b><span class="sm">${b.tur==='kukun'?'kukunli bo‘yoq, 25 kg qop':'montaj komplekti'}</span>`},{t:'Omborda',w:1,f:b=>`<div class="lv"><span><b>${num(b.miq)} ${b.b}</b></span><span>min ${num(b.min)}</span></div>${lvl({kg:b.miq,min:b.min,rez:b.kerak,holat:b.holat})}`},{t:'Buyurtmalarga kerak',n:1,f:b=>b.kerak?num(b.kerak)+' '+b.b:'—'},{t:'Qoladi',n:1,f:b=>`<b class="${b.holat==='ok'?'':b.holat}">${num(b.qol)} ${b.b}</b>`},{t:'',f:b=>b.holat==='er'?`<span class="pill er">${num(-b.qol+b.min)} ${b.b} sotib olish</span>`:b.holat==='wr'?'<span class="pill wr">buyurtma berish</span>':'<span class="pill mu">yetarli</span>'}],BH);
+ a.innerHTML=`<div class="top"><div><h1>Metall ombori</h1><div class="sub"><b>${t1(jamiT)} t</b> omborda${narxKor()?' ('+mln(pul)+' so‘m)':''}: <b class="${er.length?'er':''}">${er.length} metall yetmaydi</b>${er[0]?' — '+esc(er[0].nom)+', '+er[0].kerakBuy.map(x=>x.o.raqam).join(', ')+' uchun':''}; ${wr.length} metall tugayapti; butlovchi: ${butK.length?'<b class="wr">'+butK.length+' tasi kam</b>':'yetarli'}.</div></div><span class="sp"></span>${['direktor','ombor'].includes(rol())?`<button class="btn p" id="kir">${I('tushir')} Kirim</button>`:''}</div>
+ <div class="tools"><div class="seg">${TB.map(([k,n,c])=>`<button class="${OT===k?'on':''}" data-t="${k}">${n}${c?`<em class="er">${c}</em>`:''}</button>`).join('')}</div><span class="sp"></span><span class="note leg"><span><span class="dot ok"></span>omborda</span><span>│ minimal zaxira</span><span>┊ buyurtmalarga band</span></span></div>
+ ${body}`;
+ $$('[data-t]',a).forEach(b=>b.onclick=()=>{OT=b.dataset.t;APP.render()});
+ $$('[data-m]',a).forEach(r=>r.onclick=()=>metKarta(r.dataset.m));
+ const k=$('#kir',a);if(k)k.onclick=()=>kirim();rolBar(a)}
+function metKarta(id){const m=metHolat().find(x=>x.id===id);
+ modal(`<h2><span class="mono">${m.id}</span> ${esc(m.nom)}</h2>`,`<div class="dl"><div><small>Omborda</small><b>${num(m.kg)} kg</b></div><div><small>Band</small><b>${num(m.rez)} kg</b></div><div><small>Erkin</small><b class="${m.holat==='ok'?'':m.holat}">${num(m.erkin)} kg</b></div><div><small>Minimal zaxira</small><b>${num(m.min)} kg</b></div><div><small>Kunlik sarf (14 kun)</small><b>${num(m.sarf)} kg</b></div><div><small>Narx</small><b>${narxKor()?mln(m.narx)+' so‘m/t':'—'}</b></div></div>
+ <div class="sec"><h4>Qaysi buyurtmalarga kerak</h4>${table([{t:'Buyurtma',f:x=>`<span class="mono">${x.o.raqam}</span> ${esc(mij(x.o).nom)}`},{t:'Bosqich',f:x=>bosLabel(x.o)},{t:'Kerak (qolgan)',n:1,f:x=>num(x.kg)+' kg'}],m.kerakBuy,{empty:'Hozir hech bir buyurtmaga kerak emas'})}</div>`,['direktor','ombor'].includes(rol())?`<button class="btn p" id="mk">${I('tushir')} Kirim qilish</button>`:'');const b=$('#mk');if(b)b.onclick=()=>kirim(id)}
+function kirim(id){modal('<h2>Metall kirimi</h2>',`<div class="frm"><label class="wf">Metall<select class="inp" id="km">${D.MET.map(m=>`<option value="${m.id}" ${m.id===id?'selected':''}>${esc(m.nom)}</option>`).join('')}</select></label><label>Og‘irlik, kg (tarozidan)<input class="inp big" id="kk" type="number" min="1" value="5000"></label><label>Yetkazuvchi<select class="inp" id="ky"><option>Uzmetkombinat</option><option>Import (Xitoy)</option><option>Import (Rossiya)</option><option>Mahalliy diler</option></select></label></div>`,`<button class="btn" onclick="U.closeM()">Bekor qilish</button><button class="btn p" id="ks">Saqlash</button>`);
+ $('#ks').onclick=()=>{const m=D.MET.find(x=>x.id===$('#km').value),kg=Math.round(+$('#kk').value||0);if(kg<=0||kg>60000){toast('Og‘irlik 1 dan 60 000 kg gacha (bitta mashina)');return}const old=metHolat().find(x=>x.id===m.id);m.kg+=kg;const nw=metHolat().find(x=>x.id===m.id);jurnal('Kirim: '+m.nom+' +'+num(kg)+' kg ('+$('#ky').value+')');save();closeM();toast(m.nom+': +'+num(kg)+' kg'+(old.holat==='er'&&nw.holat!=='er'?' — endi '+old.kerakBuy.map(x=>x.o.raqam).join(', ')+' ga yetadi':''));APP.render()}}
+
+/* ================= MONTAJ ================= */
+const MHN={reja:'rejada',yolda:'yo‘lda',ishda:'ishda',tugadi:'tugadi'};
+function rMontaj(a){const BB=brigBand(),bug=iso(T),ert=ishKun(1),band=D.BRIG.filter(b=>BB[b.id][bug]),bosh=brigBosh(ert),aktK=D.B.filter(o=>o.akt&&!o.akt.imzo),objX=D.B.filter(o=>o.bosqich==='montaj'&&obj(o)&&obj(o).tayyor===false),kechM=D.MONT.filter(m=>montKech(m));
+ const kunlar=[];for(let i=-3;i<11;i++)kunlar.push(addD(i));
+ const qator=b=>{let h='',i=0;const B=BB[b.id];
+  while(i<kunlar.length){const d=kunlar[i],mt=B[d];
+   if(dam(d)){h+=`<div class="kd dam" title="dam olish"></div>`;i++;continue}
+   if(!mt){h+=`<div class="kd ${d===bug?'bugun':''}"></div>`;i++;continue}
+   let n=1;while(i+n<kunlar.length&&!dam(kunlar[i+n])&&B[kunlar[i+n]]===mt)n++;
+   const o=D.B.find(x=>x.id===mt.oid),ob=obj(o),k=montKech(mt)||(o.bosqich!=='akt'&&kech(o));
+   h+=`<div class="km ${mt.holat} ${k?'kech':''}" style="grid-column:span ${n}" data-mt="${mt.id}" title="${esc(ob?ob.nom:'')}"><b>${esc(ob?ob.nom:mij(o).nom)}</b><small>${o.raqam} · ${mt.bajar}/${mt.jami} ${birl(o)}</small></div>`;i+=n}
+  const bo=!B[ert]&&!dam(ert);
+  return`<div class="kb ${bo?'bosh':''}" data-br="${b.id}"><b>${b.nom}</b><small>${esc(b.brigadir)} · ${b.soni} kishi</small>${bo?'<small>ertaga bo‘sh</small>':''}</div>${h}`};
+ const kal=`<div class="card"><div class="kalw"><div class="kal"><div class="kh"></div>${kunlar.map(d=>`<div class="kh ${dam(d)?'dam':''} ${d===bug?'bugun':''}">${U.HK[new Date(d).getDay()]}<b>${new Date(d).getDate()}</b></div>`).join('')}${D.BRIG.map(qator).join('')}</div></div>
+  <div class="kalm list">${D.BRIG.map(b=>{const mt=BB[b.id][bug]||D.MONT.filter(m=>m.brig===b.id&&m.holat==='reja').sort((x,y)=>x.sana.localeCompare(y.sana))[0];const o=mt&&D.B.find(x=>x.id===mt.oid);const bo=!BB[b.id][ert];
+   return`<div class="it" ${mt?`data-mt="${mt.id}"`:`data-br="${b.id}"`}><div class="m"><b>${b.nom} · ${esc(b.brigadir)}</b><small>${mt?`${BB[b.id][bug]?'bugun':'dan '+fd(mt.sana)}: ${esc(obj(o)?obj(o).nom:mij(o).nom)} · ${mt.bajar}/${mt.jami} ${birl(o)}${montKech(mt)?' · <span class="er">'+montKech(mt)+' kun kech</span>':''}`:'obyekt belgilanmagan'}</small>${mt?`<div class="prog"><i class="${montKech(mt)?'er':''}" style="width:${Math.round(mt.bajar/mt.jami*100)}%"></i></div>`:''}</div>${bo?'<span class="pill wr">ertaga bo‘sh</span>':`<span class="pill ${mt&&montKech(mt)?'er':'inf'}">${mt?MHN[mt.holat]:''}</span>`}</div>`}).join('')}</div>
+  <div class="leg"><span><span class="dot" style="color:var(--acc)"></span>ishda</span><span><span class="dot" style="color:#C9D9EA"></span>rejada</span><span><span class="dot" style="color:var(--ok)"></span>tugadi</span><span><span class="dot er"></span>rejadan kech</span><span class="hide-m">chiziqli katak — dam olish kuni</span></div></div>`;
+ const objs=D.B.filter(o=>o.obid&&['tayyor','yolda','montaj'].includes(o.bosqich)).map(o=>{const ob=obj(o),mt=D.MONT.find(m=>m.oid===o.id&&m.holat!=='tugadi');return`<div class="card obj" data-o="${o.id}"><div><div class="on">${esc(ob.nom)}</div><div class="oa">${I('xarita')} ${esc(ob.manzil)} · <b>${ob.km} km</b></div><div class="oa">${I('tel')} ${esc(ob.kontakt)} · ${esc(ob.tel)}</div></div><span class="pill ${ob.tayyor?'ok':'wr'}">${ob.tayyor?'obyekt tayyor':'obyekt tayyor emas'}</span>
+  <div class="op"><div class="lv"><span><span class="mono">${o.raqam}</span> ${esc(K[o.k].nom)} · ${hajm(o)}</span><span>${mt?brig(mt.brig).nom+' · '+(mt.holat==='reja'?fd(mt.sana)+' dan':MHN[mt.holat]):'brigada belgilanmagan'}</span></div>${mt?`<div class="prog"><i class="${montKech(mt)?'er':''}" style="width:${Math.round(mt.bajar/mt.jami*100)}%"></i></div><div class="lv"><span>${mt.bajar} / ${mt.jami} ${birl(o)}</span><span>${montKech(mt)?'<span class="er">'+montKech(mt)+' kun kech</span>':'reja '+U.kun(mt.kun)}</span></div>`:''}</div>
+  <div class="ok2"><span class="pill ${o.komplekt.tayyor?'ok':'wr'}">${I('quti')}komplekt ${o.komplekt.tayyor?'butlangan':'tekshirilmagan'}</span>${o.komplekt.anker?`<span class="pill mu">anker ${num(o.komplekt.anker)}</span>`:''}${ob.muammo&&!ob.tayyor?`<span class="pill wr">${esc(ob.muammo)}</span>`:''}${mt&&mt.muammo?`<span class="pill wr">${esc(mt.muammo)}</span>`:''}</div></div>`}).join('');
+ const akt=table([{t:'Buyurtma',f:o=>`<span class="mono">${o.raqam}</span> <b>${esc(mij(o).nom)}</b><span class="sm">${esc(obj(o)?obj(o).nom:'')}</span>`},{t:'Montaj tugadi',n:1,f:o=>fdd(o.akt.sana)},{t:'Akt',f:o=>o.akt.imzo?'<span class="pill ok">imzolangan</span>':`<span class="pill ${-dd(o.akt.sana)>3?'er':'wr'}">${-dd(o.akt.sana)} kundan beri kutilmoqda</span>`},{t:'Yakuniy to‘lov',n:1,f:o=>narxKor()?(qarz(o)?`<span class="${qarzYosh(o)?'er':''}">${mln(qarz(o))}</span>`:tolangan(o)>=summa(o)-1?'<span class="ok">to‘langan</span>':'akt kutilmoqda'):'—'}],D.B.filter(o=>o.akt).sort((x,y)=>Number(x.akt.imzo)-Number(y.akt.imzo)),{click:o=>`data-o="${o.id}"`,empty:'Akt kutilayotgan obyekt yo‘q'});
+ const TB=[['kal','Brigadalar jadvali'],['obj','Obyektlar',objX.length],['akt','Aktlar',aktK.length]];
+ a.innerHTML=`<div class="top"><div><h1>Montaj brigadalari</h1><div class="sub"><b>${D.BRIG.length} brigada: ${band.length} tasi bugun obyektda</b>${bosh.length?`, <b class="wr">${bosh.map(b=>b.nom).join(', ')} ertaga bo‘sh</b>`:''}${kechM.length?`; <b class="er">${kechM.length} obyekt rejadan kech</b>`:''}${objX.length?`; ${objX.length} obyekt tayyor emas`:''}${aktK.length?`; ${aktK.length} akt imzo kutmoqda`:''}.</div></div><span class="sp"></span>${['direktor','montaj'].includes(rol())?`<button class="btn p" id="kr">${I('qalam')} Kunlik raport</button>`:''}</div>
+ <div class="tools"><div class="seg">${TB.map(([k,n,c])=>`<button class="${MT===k?'on':''}" data-t="${k}">${n}${c?`<em class="wr">${c}</em>`:''}</button>`).join('')}</div></div>
+ ${MT==='kal'?kal+(objs?`<div class="grid k22 sec">${objs}</div>`:''):MT==='obj'?`<div class="grid k22">${objs||'<div class="card empty">Faol obyekt yo‘q</div>'}</div>`:akt}`;
+ $$('[data-t]',a).forEach(b=>b.onclick=()=>{MT=b.dataset.t;APP.render()});
+ $$('[data-mt]',a).forEach(b=>b.onclick=()=>{const mt=D.MONT.find(m=>m.id===b.dataset.mt);ochO(mt.oid)});
+ $$('[data-o]',a).forEach(b=>b.onclick=()=>ochO(b.dataset.o));
+ $$('[data-br]',a).forEach(b=>b.onclick=()=>{if(!BB[b.dataset.br][ert]&&['direktor','montaj'].includes(rol()))obyektBer(b.dataset.br)});
+ const kr=$('#kr',a);if(kr)kr.onclick=raport;rolBar(a)}
+function obyektBer(bid){const b=brig(bid),ert=ishKun(1),os=D.B.filter(o=>['tayyor','yolda'].includes(o.bosqich)&&K[o.k].tur!=='shkaf'&&!D.MONT.some(m=>m.oid===o.id&&m.holat!=='tugadi'));
+ modal(`<h2>${b.nom} — obyekt berish</h2>`,`<p class="note">${esc(b.brigadir)}, ${b.soni} kishi · ${esc(b.ixt)} · ${fdd(ert)} dan bo‘sh</p>${os.length?`<div class="list">${os.map(o=>{const kn=Math.ceil(o.soni/norma(o)),B=brigBand()[bid];let d=ert,k=0,band=null;while(k<kn){if(!dam(d)){if(B[d]){band=d;break}k++}d=addD(1,d)}o._band=band;return o}).map(o=>o._band?`<div class="it" aria-disabled="true"><div class="m"><b><span class="mono">${o.raqam}</span> ${esc(mij(o).nom)}</b><small class="wr">${Math.ceil(o.soni/norma(o))} ish kuni kerak — brigada ${fdd(o._band)} dan boshqa obyektda band</small></div></div>`:`<div class="it" data-ob="${o.id}"><div class="m"><b><span class="mono">${o.raqam}</span> ${esc(mij(o).nom)}</b><small>${esc(K[o.k].nom)} · ${hajm(o)} · ${bosLabel(o)} · ${Math.ceil(o.soni/norma(o))} ish kuni</small>${o.komplekt.tayyor?'':'<small class="wr">komplekt hali butlanmagan — yuklashdan oldin tekshirish kerak</small>'}</div>${I('ong')}</div>`).join('')}</div>`:'<div class="empty">Montajga tayyor (sexdan chiqqan) buyurtma yo‘q — brigadani yuklashga yordamga berish mumkin.</div>'}`);
+ $$('[data-ob]').forEach(r=>r.onclick=()=>{const o=D.B.find(x=>x.id===r.dataset.ob);D.MONT.push({id:U.uid('mt'),oid:o.id,brig:bid,sana:ert,kun:Math.ceil(o.soni/norma(o)),holat:'reja',bajar:0,jami:o.soni,muammo:''});o.tarix.push({v:iso(T),m:'Montaj rejasi: '+b.nom+', '+fdd(ert)+' dan'});jurnal(b.nom+' → '+o.raqam);save();closeM();toast(b.nom+' '+fdd(ert)+' dan '+(obj(o)?obj(o).nom:mij(o).nom)+' ga. Brigadirga Telegram xabar ketdi','Telegram');APP.render()})}
+function raport(){const bug=iso(T),BB=brigBand(),bs=D.BRIG.filter(b=>BB[b.id][bug]);
+ if(!bs.length){toast('Bugun obyektda brigada yo‘q');return}
+ modal('<h2>Kunlik raport</h2>',`<p class="note">Brigadir kun oxirida telefonidan yuboradi — 3 maydon.</p><div class="frm"><label class="wf">Brigada va obyekt<select class="inp" id="rb">${bs.map(b=>{const mt=BB[b.id][bug],o=D.B.find(x=>x.id===mt.oid);return`<option value="${mt.id}">${b.nom} — ${esc(obj(o)?obj(o).nom:mij(o).nom)} (${mt.bajar}/${mt.jami} ${birl(o)})</option>`}).join('')}</select></label>
+ <label>Bugun o‘rnatildi<input class="inp big" id="rn" type="number" min="0" value="12" inputmode="numeric"></label>
+ <label>Muammo<select class="inp" id="rm"><option value="">yo‘q</option><option>obyekt tayyor emas</option><option>komplekt yetmadi (anker / bolt)</option><option>pol notekis — shim kerak</option><option>mijoz vakili yo‘q</option><option>elektr / kran yo‘q</option></select></label></div>`,`<button class="btn" onclick="U.closeM()">Bekor qilish</button><button class="btn p" id="rs">Yuborish</button>`);
+ $('#rs').onclick=()=>{const mt=D.MONT.find(m=>m.id===$('#rb').value),o=D.B.find(x=>x.id===mt.oid),rv=$('#rn').value.trim(),nr=+rv,n=Math.round(nr),mu=$('#rm').value;if(rv===''||!Number.isFinite(nr)||nr!==Math.floor(nr)||!(n>=0)||n>mt.jami-mt.bajar){toast('O‘rnatilgan soni 0 dan '+(mt.jami-mt.bajar)+' gacha bo‘lsin');return}
+  mt.bajar=Math.min(mt.jami,mt.bajar+n);mt.holat='ishda';if(mu){mt.muammo=mu;if(mu==='obyekt tayyor emas'&&obj(o)){obj(o).tayyor=false;obj(o).muammo='brigadir xabari, '+fd(iso(T))}}
+  o.tarix.push({v:iso(T),m:`Montaj raporti: +${n} ${birl(o)} (${mt.bajar}/${mt.jami})${mu?' · muammo: '+mu:''}`,sabab:mu&&mu!=='pol notekis — shim kerak'?(mu.startsWith('komplekt')?'komplekt / transport':mu==='obyekt tayyor emas'?'obyekt tayyor emas':undefined):undefined});
+  let m='Raport qabul qilindi: '+mt.bajar+'/'+mt.jami;
+  if(mt.bajar>=mt.jami){mt.holat='tugadi';o.bosqich='akt';o.akt={sana:iso(T),imzo:false};o.tarix.push({v:iso(T),m:'Montaj tugadi — akt imzoga yuborildi'});m='Montaj tugadi — akt imzoga yuborildi, yakuniy to‘lov aktdan keyin'}
+  jurnal(brig(mt.brig).nom+': raport +'+n);save();closeM();toast(m);APP.render()}}
+
+/* ================= TO‘LOVLAR ================= */
+function rTolov(a){const B=D.B,qJ=B.reduce((s,o)=>s+qarz(o),0),qO=B.filter(o=>qarzYosh(o)>0),qOs=qO.reduce((s,o)=>s+qarz(o),0);
+ const avOrt=B.reduce((s,o)=>s+Math.max(0,tolangan(o)-summa(o)*bajarUlush(o)),0),kel=kelishi(14).map(x=>({...x,k:{...x.k,sana:x.sana}})),bugK=D.PAY.filter(p=>p.sana===iso(T)).reduce((s,p)=>s+p.summa,0);
+ const yosh=[[0,7],[8,30],[31,999]].map(([a1,b1])=>B.filter(o=>qarz(o)&&qarzYosh(o)>=a1&&qarzYosh(o)<=b1).reduce((s,o)=>s+qarz(o),0));const yJ=yosh.reduce((s,v)=>s+v,0)||1;
+ const avK=B.filter(o=>o.bosqich==='kutish'&&!avansKeldi(o));
+ const qatorlar=B.filter(o=>tolangan(o)<summa(o)-1&&o.bosqich!=='olchov').sort((x,y)=>qarzYosh(y)-qarzYosh(x)||qarz(y)-qarz(x));
+ const cols=[{t:'Mijoz / buyurtma',f:o=>`<b>${esc(mij(o).nom)}</b><span class="sm"><span class="mono">${o.raqam}</span> · ${esc(bosLabel(o))} · ${o.tolovReja.map(r=>r.foiz).join('/')}</span>`},{t:'Summa',n:1,f:o=>mln(summa(o))},{t:'Bajarilgan ish',n:1,m:1,f:o=>mln(summa(o)*bajarUlush(o))},{t:'To‘langan',n:1,f:o=>mln(tolangan(o))},{t:'Qarz',n:1,f:o=>qarz(o)?`<b class="${qarzYosh(o)?'er':'wr'}">${mln(qarz(o))}</b>${qarzYosh(o)?`<span class="sm er">${qarzYosh(o)} kun kech</span>`:''}`:'—'},{t:'Keyingi to‘lov',n:1,f:o=>{const k=keyingi(o);return k?`${mln(k.summa)}<span class="sm">${k.sana?fdd(k.sana):'akt imzolangach'}</span>`:'—'}},{t:'Avans ortig‘i',n:1,m:1,f:o=>{const v=tolangan(o)-summa(o)*bajarUlush(o);return v>0?mln(v):'—'}}];
+ const body=TT==='qarz'?`<div class="card sec"><h3>${I('soat')} Qarz yoshi <small>muddatdan qancha o‘tgan</small></h3><div class="age">${yosh.map((v,i)=>`<i class="a${i+1}" style="width:${v/yJ*100}%"></i>`).join('')}</div><div class="leg"><span><span class="dot a1"></span>0–7 kun: <b>${mln(yosh[0])}</b></span><span><span class="dot a2"></span>8–30 kun: <b>${mln(yosh[1])}</b></span><span><span class="dot a3"></span>31+ kun: <b>${mln(yosh[2])}</b></span></div></div>
+  <div class="card p0 sec"><h3>Buyurtmalar bo‘yicha <small>qarz = sharti kelgan to‘lov − to‘langan; avans ortig‘i = hali bajarilmagan ish uchun olingan pul</small></h3><div style="height:12px"></div><div class="mlist">${qatorlar.map(o=>{const k=keyingi(o);return`<div class="mr ${qarzYosh(o)?'er':''}" data-o="${o.id}"><div class="m1"><span class="mono">${o.raqam}</span><b>${esc(mij(o).nom)}</b>${qarz(o)?`<span class="pill ${qarzYosh(o)?'er':'wr'}">${mln(qarz(o))}</span>`:''}</div><div class="m3"><span>summa ${mln(summa(o))}</span><span>to‘langan ${mln(tolangan(o))}</span></div><div class="m3"><span>${esc(bosLabel(o))}</span>${k?`<span>keyingi: ${mln(k.summa)} · ${k.sana?fdd(k.sana):'akt imzolangach'}</span>`:''}</div>${qarzYosh(o)?`<div class="m4 er">${qarzYosh(o)} kun kech</div>`:''}</div>`}).join('')}</div>${table(cols,qatorlar,{click:o=>`data-o="${o.id}"`,foot:[{v:'Jami'},{v:mln(qatorlar.reduce((s,o)=>s+summa(o),0)),n:1,t:'Summa'},{v:mln(qatorlar.reduce((s,o)=>s+summa(o)*bajarUlush(o),0)),n:1,t:'Bajarilgan ish'},{v:mln(qatorlar.reduce((s,o)=>s+tolangan(o),0)),n:1,t:'To‘langan'},{v:mln(qJ),n:1,t:'Qarz'},{v:'',t:''},{v:mln(avOrt),n:1,t:'Avans ortig‘i'}]})}</div>`
+ :TT==='reja'?table([{t:'Sana',f:x=>`<b>${fdd(x.k.sana)}</b><span class="sm">${dd(x.k.sana)===0?'bugun':dd(x.k.sana)<0?'<span class="er">'+(-dd(x.k.sana))+' kun o‘tdi</span>':dd(x.k.sana)+' kundan keyin'}</span>`},{t:'Mijoz',f:x=>`${esc(mij(x.o).nom)}<span class="sm"><span class="mono">${x.o.raqam}</span></span>`},{t:'Turi',f:x=>({avans:'Avans',oraliq:'Jo‘natishdan oldin',yakuniy:'Yakuniy'})[x.k.tur]+(x.taxminiy?'<span class="sm">taxminiy: montaj tugashi + mijoz muddati</span>':'')},{t:'Summa',n:1,f:x=>mln(x.k.summa)}],kel.sort((x,y)=>x.k.sana.localeCompare(y.k.sana)),{click:x=>`data-o="${x.o.id}"`,empty:'14 kun ichida kutilayotgan to‘lov yo‘q'})
+ :table([{t:'Sana',f:p=>fdd(p.sana)},{t:'Mijoz',f:p=>{const o=D.B.find(x=>x.id===p.oid);return`${esc(mij(o).nom)}<span class="sm"><span class="mono">${o.raqam}</span></span>`}},{t:'Turi',f:p=>({avans:'Avans',oraliq:'Oraliq',yakuniy:'Yakuniy'})[p.tur]},{t:'Summa',n:1,f:p=>mln(p.summa)}],D.PAY.slice().sort((x,y)=>y.sana.localeCompare(x.sana)),{click:p=>`data-o="${p.oid}"`});
+ a.innerHTML=`<div class="top"><div><h1>To‘lovlar</h1><div class="sub">Qarz <b>${mln(qJ)} so‘m</b>: <b class="${qOs?'er':''}">muddati o‘tgan ${mln(qOs)}</b> (${qO.length} buyurtma)${avK.length?`; <b class="wr">${avK.length} buyurtma avans kutmoqda</b>`:''}; 14 kunda <b>${mln(kel.reduce((s,x)=>s+x.k.summa,0))}</b> kelishi kerak.</div></div><span class="sp"></span><button class="btn hide-m" id="ex">${I('tushir')} Excel</button><button class="btn p" id="tk">${I('qosh')} To‘lov kiritish</button></div>
+ <div class="kpis c3"><div class="card kpi" data-tt="qarz"><div class="l">Muddati o‘tgan qarz</div><div class="v">${mln(qOs)}<small>so‘m</small></div><div class="d"><b class="${qOs?'er':''}">eng eskisi ${qO.length?Math.max(...qO.map(qarzYosh)):0} kun</b></div></div><div class="card kpi" data-tt="reja"><div class="l">14 kunda keladi</div><div class="v">${mln(kel.reduce((s,x)=>s+x.k.summa,0))}<small>so‘m</small></div><div class="d">${kel.length} to‘lov${kel.some(x=>x.taxminiy)?', '+kel.filter(x=>x.taxminiy).length+' tasi taxminiy':''}</div></div><div class="card kpi" data-tt="tarix"><div class="l">Bugun keldi</div><div class="v">${mln(bugK)}<small>so‘m</small></div><div class="d">${D.PAY.filter(p=>p.sana===iso(T)).length} to‘lov</div></div></div>
+ <div class="tools sec"><div class="seg">${[['qarz','Qarzlar'],['reja','Kutilayotgan'],['tarix','Kelgan to‘lovlar']].map(([k,n])=>`<button class="${TT===k?'on':''}" data-t="${k}">${n}</button>`).join('')}</div></div>${body}`;
+ $$('[data-t]',a).forEach(b=>b.onclick=()=>{TT=b.dataset.t;APP.render()});$$('[data-tt]',a).forEach(b=>b.onclick=()=>{TT=b.dataset.tt;APP.render()});
+ $$('[data-o]',a).forEach(r=>r.onclick=()=>ochO(r.dataset.o));
+ $('#tk',a).onclick=()=>{const os=D.B.filter(o=>tolangan(o)<summa(o)-1);modal('<h2>Qaysi buyurtmaga?</h2>',`<div class="list">${os.map(o=>`<div class="it" data-to="${o.id}"><div class="m"><b>${esc(mij(o).nom)}</b><small><span class="mono">${o.raqam}</span> · qolgan ${mln(summa(o)-tolangan(o))}</small></div>${I('ong')}</div>`).join('')}</div>`);$$('[data-to]').forEach(r=>r.onclick=()=>tolovForma(D.B.find(o=>o.id===r.dataset.to)))};
+ $('#ex',a).onclick=()=>U.csv(qatorlar.map(o=>({Mijoz:mij(o).nom,Buyurtma:o.raqam,Bosqich:bosLabel(o),'Summa':summa(o),'Bajarilgan ish':Math.round(summa(o)*bajarUlush(o)),'To‘langan':tolangan(o),'Qarz':qarz(o),'Kechikish, kun':qarzYosh(o)})),'INNOTEK_qarzlar_'+iso(T)+'.csv');rolBar(a)}
+
+/* ================= HISOBOT ================= */
+function rHisobot(a){const Y=D.YOP||[],mxT=Math.max(...Y.map(y=>y.t)),mxP=Math.max(...Y.map(y=>y.pul));
+ const sab={};SABAB.forEach(k=>sab[k]=0);Y.forEach(y=>Object.keys(y.sabab).forEach(k=>sab[k]=(sab[k]||0)+y.sabab[k]));
+ const sk=Object.keys(sab).sort((x,y)=>sab[y]-sab[x]),smx=Math.max(1,...sk.map(k=>sab[k]));
+ const oy=s=>U.OY[+s.slice(5,7)-1],jT=Y.reduce((s,y)=>s+y.t,0),jS=Y.reduce((s,y)=>s+y.sum,0),jV=Math.round(Y.reduce((s,y)=>s+y.vaqt,0)/Y.length),jO=Math.round(Y.reduce((s,y)=>s+y.og,0)/Y.length*10)/10;
+ a.innerHTML=`<div class="top"><div><h1>Hisobot</h1><div class="sub">Oxirgi 12 oy: <b>${num(jT)} t</b> topshirildi, <b>${mln(jS)} so‘m</b>; o‘z vaqtida — <b class="${jV<80?'wr':'ok'}">${jV} %</b>; metall rejadan ortiq sarf — <b>${String(jO).replace('.',',')} %</b>. Ta’sischiga shu ekran yoki Excel yuboriladi.</div></div><span class="sp"></span><button class="btn" id="ex">${I('tushir')} Excel</button></div>
+ <div class="grid k22">
+  <div class="card"><h3>${I('ustun')} Topshirilgan tonna <small>oy bo‘yicha · * joriy oy davom etmoqda</small></h3><div class="bars">${Y.map((y,i)=>`<div class="b"><em>${y.t}${y.qism?'*':''}</em><i class="${i===Y.length-1?'acc':''}" style="height:${Math.round(y.t/mxT*100)}%"></i><small>${oy(y.oy)}</small></div>`).join('')}</div></div>
+  ${narxKor()?`<div class="card"><h3>${I('hamyon')} Kelgan pul <small>mln so‘m</small></h3><div class="bars">${Y.map((y,i)=>`<div class="b"><em>${Math.round(y.pul/1e6)}</em><i class="${i===Y.length-1?'acc':''}" style="height:${Math.round(y.pul/mxP*100)}%"></i><small>${oy(y.oy)}</small></div>`).join('')}</div></div>`:''}
+  <div class="card"><h3>${I('soat')} O‘z vaqtida topshirish <small>% buyurtma</small></h3><div class="bars">${Y.map(y=>`<div class="b"><em>${y.vaqt}</em><i style="height:${y.vaqt}%;background:${y.vaqt<75?'var(--wr)':'var(--steel)'}"></i><small>${oy(y.oy)}</small></div>`).join('')}</div></div>
+  <div class="card"><h3>${I('ogoh')} Kechikish sabablari <small>12 oyda ${Y.reduce((s,y)=>s+y.kech,0)} ta kechikkan buyurtma</small></h3><div class="hbar">${sk.map(k=>`<span>${esc(k)}</span><div class="hb"><i style="width:${sab[k]/smx*100}%"></i></div><span class="hn">${sab[k]}</span>`).join('')}</div><p class="note mt">Eng ko‘p sabab — bo‘yash navbati va obyekt tayyor emasligi: birinchisi sexda, ikkinchisi mijoz bilan kelishuvda hal qilinadi.</p></div>
+ </div>
+ <div class="card p0 sec hide-m"><h3>${I('jadval')} Oylar bo‘yicha</h3><div style="height:12px"></div>${table([{t:'Oy',f:y=>U.OYT[+y.oy.slice(5,7)-1]+' '+y.oy.slice(0,4)},{t:'Buyurtma',n:1,f:y=>y.buy},{t:'Tonna',n:1,f:y=>y.t},{t:'Summa',n:1,f:y=>narxKor()?mln(y.sum):'—'},{t:'O‘z vaqtida',n:1,f:y=>y.vaqt+' %'},{t:'Metall ortiqcha',n:1,f:y=>String(y.og).replace('.',',')+' %'}],Y.slice().reverse(),{keep:0})}</div>
+ <div class="card sec"><h3>${I('hujjat')} Kim nima qildi <small>o‘zgarish jurnali — hech narsa izsiz o‘chmaydi</small></h3><div class="list">${D.J.slice(0,8).map(j=>`<div class="it"><div class="m"><b>${esc(j.m)}</b><small>${esc(j.rol)} · ${U.vaqt(j.v)}</small></div></div>`).join('')||'<div class="empty">'+I('hujjat')+'Bu namunada hali o‘zgarish qilinmagan. Biror ish yozing — shu yerda ko‘rinadi.</div>'}</div></div>`;
+ $('#ex',a).onclick=()=>U.csv(Y.map(y=>({Oy:y.oy,Buyurtma:y.buy,Tonna:y.t,'Summa, so‘m':y.sum,'O‘z vaqtida, %':y.vaqt,'Metall ortiqcha, %':y.og,'Kelgan pul, so‘m':y.pul})),'INNOTEK_hisobot_'+iso(T)+'.csv');rolBar(a)}
+
+/* ================= ILOVA ================= */
+function yana(rest){const M=APP.cfg.mod;modal('<h2>Boshqa bo‘limlar</h2>',`<div class="more">${rest.map(k=>`<button data-yv="${k}"><span class="ic">${M[k][0]}</span>${M[k][1]}${APP.cfg.badge(k)?'<span class="bdg">'+APP.cfg.badge(k)+'</span>':''}</button>`).join('')}</div>
+ <div class="sec"><h4>Kim ko‘ryapti</h4><select class="inp" id="yr" style="width:100%">${Object.keys(ROLN).map(r=>`<option value="${r}" ${r===rol()?'selected':''}>${ROLN[r]}</option>`).join('')}</select><p class="note">Ishlaydigan tizimda har xodim o‘z login-paroli bilan kiradi va faqat o‘z bo‘limini ko‘radi.</p></div>
+ <div class="sec"><button class="btn" id="yt" style="width:100%">${I('qayt')} Namuna ma’lumotini tiklash</button></div>`);
+ $$('[data-yv]').forEach(b=>b.onclick=()=>{closeM();APP.go(b.dataset.yv)});$('#yr').onchange=e=>{closeM();rolga(e.target.value)};$('#yt').onclick=()=>{closeM();$('#rst').click()}}
+load();
+const CFG={nom:'INNOTEK INVEST',logo:'IN',shior:'Stellaj va metall shkaf · Toshkent',
+ bolimlar:['panel','buyurtmalar','sex','ombor','montaj','tolov','hisobot'],
+ mod:{panel:[I('panel'),'Bugun','Bugun'],buyurtmalar:[I('jadval'),'Buyurtmalar','Buyurtma'],sex:[I('zavod'),'Sex navbati','Sex'],ombor:[I('metall'),'Metall ombori','Ombor'],montaj:[I('kaska'),'Montaj','Montaj'],tolov:[I('hamyon'),'To‘lovlar','To‘lov'],hisobot:[I('ustun'),'Hisobot','Hisobot']},
+ rollar:{direktor:['panel','buyurtmalar','sex','ombor','montaj','tolov','hisobot'],sex:['sex','ombor','buyurtmalar'],ombor:['ombor','buyurtmalar'],montaj:['montaj','buyurtmalar'],buxgalter:['tolov','panel','buyurtmalar','hisobot']},
+ rolNom:ROLN,
+ badge:k=>{if(k==='buyurtmalar')return D.B.filter(o=>(xavf(o)||{}).t==='er').length;if(k==='ombor')return metHolat().filter(m=>m.holat==='er').length;if(k==='montaj')return D.MONT.filter(m=>montKech(m)).length+D.B.filter(o=>o.bosqich==='montaj'&&obj(o)&&obj(o).tayyor===false).length;if(k==='tolov'&&narxKor())return D.B.filter(o=>qarzYosh(o)>0).length;if(k==='sex')return D.B.filter(o=>o.bosqich==='sex'&&xavf(o)&&xavf(o).t==='er').length;return 0},
+ onGo:(v,f)=>{f=f||{};if(v==='buyurtmalar')F={g:f.g||'',q:''};if(v==='ombor'&&f.t)OT=f.t;if(v==='montaj'&&f.t)MT=f.t;if(v==='tolov'&&f.t)TT=f.t;if(v!=='sex'){SEX_FORMA=false;OXIRGI=null}if(v!=='panel')DIQ_HAMMA=false},
+ onRol:r=>{toast(ROLN[r]+': faqat o‘z bo‘limlari ko‘rinadi')},
+ mobil:['panel','buyurtmalar','sex','montaj','tolov'],moreIc:I('nuqtalar'),moreNom:()=>'Yana',onMore:rest=>yana(rest),
+ render:{panel:rPanel,buyurtmalar:rBuy,sex:rSex,ombor:rOmbor,montaj:rMontaj,tolov:rTolov,hisobot:rHisobot}};
+const APP=U.app(CFG);APP.cfg=CFG;window.APP=APP;
+$('#rst').onclick=()=>{ST.clear();seed();OXIRGI=null;SEX_FORMA=false;INTRO=true;toast('Namuna ma’lumoti tiklandi');APP.render()};
+/* sinov uchun: ma’lumot va hisoblar (UI’siz tekshirish) */
+window.NAMUNA={get D(){return D},K,UCH,tonna,summa,qarz,qarzYosh,navbat,metHolat,xavf,kech,brigBand,diqqat,tolangan,avansKeldi,montKech,dam,uchlar,bajarUlush,keyingi};
+APP.render();
+
+})();</script>
+</body>
+</html>
