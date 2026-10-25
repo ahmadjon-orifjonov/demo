@@ -1,0 +1,55 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Shablon: Guruhga qo&#x27;shildi</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/enrolled/" hx-post="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/enrolled/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="vEqLsnKhqqU6e6DPQdUtfNMxToaCnBeZTaGeYqJyFFG93mgCn0YEA1z1qafKbjGu">
+  <div class="c-modal__body">
+    
+    
+<div class="fin-box"><span class="subtle t-12">Hozir ota-ona shunday ko'radi:</span><p class="feed-text">Assalomu alaykum! [O&#x27;quvchi ismi] «[Guruh]» guruhiga qo&#x27;shildi. Darslar: [Dars kunlari va vaqti], xona [Xona]. O&#x27;qituvchi: [O&#x27;qituvchi]. — ATLANTIS</p></div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_uz">Matn (o&#x27;zbekcha)<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="text_uz" cols="40" rows="4" maxlength="700" class="c-textarea" required id="id_text_uz">
+Assalomu alaykum! {ism} «{guruh}» guruhiga qo&#x27;shildi. Darslar: {vaqt}, xona {xona}. O&#x27;qituvchi: {oqituvchi}. — {markaz}</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_ru">Matn (ruscha, ixtiyoriy)</label>
+    <textarea name="text_ru" cols="40" rows="4" maxlength="700" class="c-textarea" id="id_text_ru">
+</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_active" id="id_is_active" checked><span>Yoqilgan (o&#x27;chirilsa — bu xabar umuman yuborilmaydi)</span></label>
+  
+  
+  
+</div>
+
+    
+<div class="stack gap-2">
+  <span class="c-field__label">Ishlatsa bo'ladigan o'rinbosarlar</span>
+  <dl class="c-dl t-13"><dt><code>{markaz}</code></dt><dd>Markaz nomi (brend faylidan)</dd><dt><code>{ism}</code></dt><dd>O&#x27;quvchi ismi</dd><dt><code>{guruh}</code></dt><dd>Guruh</dd><dt><code>{kurs}</code></dt><dd>Kurs</dd><dt><code>{vaqt}</code></dt><dd>Dars kunlari va vaqti</dd><dt><code>{xona}</code></dt><dd>Xona</dd><dt><code>{oqituvchi}</code></dt><dd>O&#x27;qituvchi</dd></dl>
+</div>
+
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

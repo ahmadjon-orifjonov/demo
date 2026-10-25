@@ -1,0 +1,89 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Boss ochish — Bolalar ingliz tili · Kids 2</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/teacher/panel/oyin/ajdar/373d9e5d-c46f-41e5-bf03-63e764a3207e/yangi/" hx-post="/demo/atlantis-4/r/teacher/panel/oyin/ajdar/373d9e5d-c46f-41e5-bf03-63e764a3207e/yangi/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="hwZZSeIdY72O3I6nlnyz5XETFstnObfjHxxX6NlpsRrX6rLdLZ0uhvhyh4hkqOBf">
+  <div class="c-modal__body">
+    
+    <p class="muted">Guruhda 7 o'quvchi. Har biri 15 tagacha savol oladi; har to'g'ri javob bossga 1 zarba. Yengilmasa — jazo yo'q, boss «yarador» qoladi.</p>
+    
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_kind">Boss<span class="req" aria-hidden="true">*</span></label>
+    <select name="kind" class="c-select" id="id_kind">
+  <option value="dragon" selected>Imtihon ajdari</option>
+
+  <option value="sphinx">Bilim sfinksi</option>
+
+  <option value="div">Tenglama devi</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_title">Nomi (ixtiyoriy)</label>
+    <input type="text" name="title" maxlength="80" class="c-input" aria-describedby="id_title-hint" id="id_title">
+  
+  <div class="c-field__hint" id="id_title-hint">Masalan: «Past Simple ajdari». Bo&#x27;sh qolsa — boss turi nomi.</div>
+  
+</div>
+
+<fieldset class="c-fieldset c-field"><legend class="c-field__label">Mavzular</legend>
+  <p class="muted t-13">Mavzular yo'q — butun bank ishlatiladi.</p>
+  <div class="c-field__hint">Belgilanmasa — guruhning butun savol banki.</div>
+  
+</fieldset>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_days">Muddat<span class="req" aria-hidden="true">*</span></label>
+    <select name="days" class="c-select" id="id_days">
+  <option value="3">3 kun</option>
+
+  <option value="5">5 kun</option>
+
+  <option value="7" selected>7 kun</option>
+
+  <option value="10">10 kun</option>
+
+  <option value="14">14 kun</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_hp_per_student">Kuchi (har o&#x27;quvchiga)<span class="req" aria-hidden="true">*</span></label>
+    <select name="hp_per_student" class="c-select" aria-describedby="id_hp_per_student-hint" id="id_hp_per_student">
+  <option value="10" selected>10 — guruh ~67% to&#x27;g&#x27;ri javob bersa yengiladi</option>
+
+  <option value="12">12 — ~80%</option>
+
+  <option value="15">15 — hamma hammasini to&#x27;g&#x27;ri</option>
+
+</select>
+  
+  <div class="c-field__hint" id="id_hp_per_student-hint">Har o&#x27;quvchi 15 tagacha savol oladi, har to&#x27;g&#x27;ri javob — 1 zarba. Xato hech kimga zarar bermaydi.</div>
+  
+</div>
+
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Bossni ochish</button>
+  </div>
+</form>
+
+</dialog>

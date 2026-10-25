@@ -1,0 +1,55 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Shablon: To&#x27;lov muddati yaqin (3 kun)</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/due_soon/" hx-post="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/due_soon/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="2ByRRluXTNQHjzuxTRUI0gB26VpQoB2vq7Oknote82CK8P7kqEYTluowDHuYcju0">
+  <div class="c-modal__body">
+    
+    
+<div class="fin-box"><span class="subtle t-12">Hozir ota-ona shunday ko'radi:</span><p class="feed-text">ATLANTIS: [O&#x27;quvchi ismi] uchun oylik to&#x27;lov muddati yaqinlashmoqda. Qarz: [Qarz summasi]. To&#x27;lash: kabinet yoki kassa.</p></div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_uz">Matn (o&#x27;zbekcha)<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="text_uz" cols="40" rows="4" maxlength="700" class="c-textarea" required id="id_text_uz">
+{markaz}: {ism} uchun oylik to&#x27;lov muddati yaqinlashmoqda. Qarz: {summa}. To&#x27;lash: kabinet yoki kassa.</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_ru">Matn (ruscha, ixtiyoriy)</label>
+    <textarea name="text_ru" cols="40" rows="4" maxlength="700" class="c-textarea" id="id_text_ru">
+</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_active" id="id_is_active" checked><span>Yoqilgan (o&#x27;chirilsa — bu xabar umuman yuborilmaydi)</span></label>
+  
+  
+  
+</div>
+
+    
+<div class="stack gap-2">
+  <span class="c-field__label">Ishlatsa bo'ladigan o'rinbosarlar</span>
+  <dl class="c-dl t-13"><dt><code>{markaz}</code></dt><dd>Markaz nomi (brend faylidan)</dd><dt><code>{ism}</code></dt><dd>O&#x27;quvchi ismi</dd><dt><code>{summa}</code></dt><dd>Qarz summasi</dd><dt><code>{muddat}</code></dt><dd>To&#x27;lov muddati (kun.oy)</dd></dl>
+</div>
+
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

@@ -1,0 +1,105 @@
+/* =====================================================================
+   MASHQ — o'quvchi ilovasi, o'qituvchi paneli. Faqat tokenlar.
+   ===================================================================== */
+.mq-load{display:flex;flex-direction:column;gap:var(--s-1);min-width:120px}
+.mq-code{font-size:var(--fs-28);font-weight:var(--fw-semibold);letter-spacing:.22em;padding:var(--s-3) var(--s-5);
+  border:1px dashed var(--border-strong);border-radius:var(--r-md);background:var(--bg-subtle);display:inline-block;user-select:all;line-height:1.2}
+.mq-code--off{text-decoration:line-through;color:var(--text-muted)}
+.mq-code-sm{font-weight:var(--fw-semibold);letter-spacing:.14em}
+.mq-ol{list-style:none;counter-reset:mq}
+.mq-ol .c-list__item{counter-increment:mq}
+.mq-ol .c-list__title::before{content:counter(mq) ". ";color:var(--text-muted)}
+
+/* ---- Savollar ro'yxati: savol matni to'liq ko'rinadi (qisqartirilmaydi), amallar o'ng ustunda */
+.mq-q{align-items:flex-start;gap:var(--s-4)}
+.mq-q .c-list__title{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+.mq-q .c-list__meta{overflow-wrap:anywhere}
+.mq-q__opts{display:flex;flex-wrap:wrap;gap:var(--s-1)}
+.mq-q__opts .c-chip{height:auto;min-height:32px;padding-block:var(--s-1);white-space:normal}
+.mq-chip--ok{border-color:var(--success-solid);color:var(--success-text, var(--text))}
+.mq-q .mq-q__acts{flex:none;display:flex;flex-direction:column;align-items:stretch;gap:var(--s-2);width:200px}
+.mq-q__acts .c-btn{justify-content:center}
+.mq-ai-reason{width:100%;height:var(--control-sm, 36px)}
+.mq-flag{display:flex;align-items:flex-start;gap:var(--s-1);font-size:var(--fs-13);color:var(--danger-text)}
+.mq-flag .icon{flex:none;margin-top:2px}
+@media (max-width:560px){
+  .mq-q{flex-direction:column;align-items:stretch}
+  .mq-q .mq-q__acts{width:100%;flex-direction:row;flex-wrap:wrap}
+  .mq-q__acts .c-btn{flex:1 1 45%;min-height:40px}
+  .mq-ai-reason{flex:1 1 100%;height:40px}
+}
+
+/* ---- Rasmdan savol (AI) */
+.mq-ai__types{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-4)}
+.mq-ai-badge{vertical-align:middle;gap:var(--s-1)}
+.mq-ai-meta{display:flex;flex-wrap:wrap;gap:var(--s-1)}
+.mq-ai-issues{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s-05)}
+.mq-ai-issue{display:flex;align-items:flex-start;gap:var(--s-1);font-size:var(--fs-13);color:var(--warning-text)}
+.mq-ai-issue--error{color:var(--danger-text)}
+.mq-ai-issue .icon{flex:none;margin-top:2px}
+.mq-ai-src{font-style:italic;color:var(--text-muted)}
+#mq-ai-wait{margin-top:var(--s-3)}
+
+/* ---- Ota-ona Telegram: telefonda ism tepada, holat + tugma pastda */
+.mq-link{width:100%;font-size:var(--fs-13);user-select:all}
+.mq-parent .c-list__item{flex-wrap:wrap}
+.mq-parent .c-list__main{flex:1 1 220px}
+.mq-parent__acts{display:flex;align-items:center;gap:var(--s-2);margin-left:auto}
+@media (max-width:560px){
+  .mq-parent .c-list__main{flex-basis:100%}
+  .mq-parent__acts{margin-left:0;width:100%;justify-content:space-between}
+}
+
+/* ---- Direktor hisoboti (ilova KPI) */
+.mq-unit{font-size:var(--fs-14);font-weight:var(--fw-regular, 400);color:var(--text-subtle)}
+.mq-sub{font-weight:var(--fw-regular, 400);color:var(--text-subtle)}
+.mq-kpi-head{flex-wrap:wrap;gap:var(--s-3)}
+.mq-kpi-filters{flex-wrap:wrap;margin-left:auto}
+.mq-sort{display:inline-flex;align-items:center;gap:var(--s-1);color:inherit;min-height:32px}
+.mq-sort:hover{color:var(--text);text-decoration:none}
+.mq-sort.is-on{color:var(--text)}
+.mq-sort--asc .icon{transform:rotate(180deg)}
+.mq-kpi-table .mq-load{min-width:110px}
+.mq-load--end{align-items:flex-end}
+.mq-bank{display:flex;flex-direction:column;align-items:flex-end;gap:var(--s-1)}
+.mq-bank__flag{display:flex;align-items:flex-start;gap:var(--s-1);font-size:var(--fs-12);line-height:1.3;color:var(--warning-text);text-align:right;max-width:150px}
+.mq-bank__flag .icon{flex:none;margin-top:1px}
+.mq-kpi-table th,.mq-kpi-table td{padding-inline:var(--s-2)}
+.mq-kpi-table th:first-child,.mq-kpi-table td:first-child{padding-left:var(--s-4);min-width:170px}
+.mq-kpi-table th:last-child,.mq-kpi-table td:last-child{padding-right:var(--s-4)}
+.mq-kpi-table th{white-space:normal;vertical-align:bottom}
+.mq-kpi-off td{color:var(--text-muted)}
+.mq-pilot td:first-child{color:var(--text)}
+.mq-kpi-how>summary{cursor:pointer;list-style:none;min-height:48px}
+.mq-kpi-how>summary::-webkit-details-marker{display:none}
+.mq-kpi-how[open]>summary .icon{transform:rotate(180deg)}
+.mq-kpi-how>summary h2{margin:0}
+@media (max-width:600px){
+  .mq-kpi-filters{margin-left:0;width:100%}
+  .mq-kpi-filters .c-select{flex:1 1 100%;min-height:40px}
+  .mq-kpi-table .mq-load{min-width:0;width:50%}
+  .mq-bank{align-items:flex-end;max-width:60%}
+  .mq-kpi-table th:first-child,.mq-kpi-table td:first-child{min-width:0}
+  .mq-pilot td.t-main{padding-bottom:var(--s-1)}
+}
+
+/* ---- Guruh sahifasi «O'yinlar» tabi */
+.mq-game-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-3)}
+.mq-game-row .c-btn{min-height:40px}
+.mq-demo-badge{vertical-align:middle;font-size:var(--fs-13)}
+
+/* ---- «Rasmdan savol»: fayl tanlash tugmasi tizim kulrangida emas, panel tugmasidek (dark rejimda ham; audit P2-5) */
+.mq-file{height:auto;min-height:var(--control-md);padding:var(--s-1) var(--s-2);display:flex;align-items:center;color:var(--text-muted);cursor:pointer}
+.mq-file::file-selector-button{font:inherit;font-weight:var(--fw-semibold);color:var(--text);background:var(--surface-2);border:1px solid var(--border-input);
+  border-radius:var(--r-sm);padding:var(--s-1) var(--s-3);margin-right:var(--s-3);min-height:32px;cursor:pointer}
+.mq-file:hover::file-selector-button{background:var(--surface-hover)}
+
+/* QR (P1-13): doimiy oq fon + qora modul — dark rejimda ham skanerlanadi */
+.qr__bg{fill:var(--text-on-solid)}
+.qr__dark{fill:var(--on-warning)}
+.mq-qr{display:flex;gap:var(--s-4);align-items:center;flex-wrap:wrap}
+.mq-qr__img{width:144px;height:144px;flex:none;border-radius:var(--s-1)}
+.mq-qr p{flex:1 1 180px;min-width:0;overflow-wrap:anywhere}
+.mq-landing{min-height:100vh;display:grid;place-items:center;padding:var(--s-4);background:var(--bg)}
+.mq-landing__card{width:100%;max-width:440px}
+.mq-landing__steps{margin:0;padding-left:1.2em}

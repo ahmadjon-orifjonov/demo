@@ -1,0 +1,55 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Shablon: Direktorga kunlik hisobot</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/director_daily/" hx-post="/demo/atlantis-4/r/owner/panel/xabarlar/shablonlar/director_daily/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="FmOs2TOEYaL6hvLems6v6qSPHpQZ2nUc3S4VyWNVdpx96Lo1TfaGrEFjebV7Q5mH">
+  <div class="c-modal__body">
+    
+    
+<div class="fin-box"><span class="subtle t-12">Hozir ota-ona shunday ko'radi:</span><p class="feed-text">ATLANTIS — kecha: tushum [Kechagi tushum], yangi lid [Yangi lidlar], davomat [Davomat %]; xarajat {xarajat}; storno {storno}; qaytarish {qaytarish}; kassa farqi {kassa_farq} kun%.</p></div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_uz">Matn (o&#x27;zbekcha)<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="text_uz" cols="40" rows="4" maxlength="700" class="c-textarea" required id="id_text_uz">
+{markaz} — kecha: tushum {tushum}, yangi lid {lid}, davomat {davomat}; xarajat {xarajat}; storno {storno}; qaytarish {qaytarish}; kassa farqi {kassa_farq} kun%.</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_ru">Matn (ruscha, ixtiyoriy)</label>
+    <textarea name="text_ru" cols="40" rows="4" maxlength="700" class="c-textarea" id="id_text_ru">
+</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_active" id="id_is_active" checked><span>Yoqilgan (o&#x27;chirilsa — bu xabar umuman yuborilmaydi)</span></label>
+  
+  
+  
+</div>
+
+    
+<div class="stack gap-2">
+  <span class="c-field__label">Ishlatsa bo'ladigan o'rinbosarlar</span>
+  <dl class="c-dl t-13"><dt><code>{markaz}</code></dt><dd>Markaz nomi (brend faylidan)</dd><dt><code>{tushum}</code></dt><dd>Kechagi tushum</dd><dt><code>{lid}</code></dt><dd>Yangi lidlar</dd><dt><code>{davomat}</code></dt><dd>Davomat %</dd><dt><code>{qarz}</code></dt><dd>Jami qarz</dd><dt><code>{sana}</code></dt><dd>Kecha sanasi</dd></dl>
+</div>
+
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

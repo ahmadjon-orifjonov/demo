@@ -1,0 +1,104 @@
+/* =====================================================================
+   OTA-ONA KABINETI — mobil-birinchi (390 px asos). Faqat tokenlar. Prefiks: .p-
+   ===================================================================== */
+body.portal{background:var(--bg)}
+.p-wrap{width:100%;max-width:640px;margin:0 auto;padding:0 var(--s-4)}
+
+/* Tepadagi panel */
+.p-top{position:sticky;top:0;z-index:var(--z-sticky);background:color-mix(in oklab,var(--surface) 90%,transparent);backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--border)}
+.p-top__in{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);height:var(--topbar-h)}
+.p-brand{display:flex;align-items:center;gap:var(--s-2);min-width:0;color:var(--text);font-family:var(--font-display);font-weight:800;font-size:var(--fs-18)}
+.p-brand:hover{text-decoration:none}
+
+/* Farzand tanlash */
+.p-kids{display:flex;gap:var(--s-2);overflow-x:auto;padding-top:var(--s-3);padding-bottom:var(--s-1);scrollbar-width:none}
+.p-kids::-webkit-scrollbar{display:none}
+.p-kid{display:inline-flex;align-items:center;gap:var(--s-2);flex:none;max-width:220px;min-height:var(--control-md);padding:0 var(--s-3) 0 var(--s-1);
+  border-radius:var(--r-full);border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:var(--fw-semibold);font-size:var(--fs-13)}
+.p-kid:hover{text-decoration:none;border-color:var(--border-hover)}
+.p-kid[aria-current="true"]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-text)}
+
+/* Asosiy qism */
+.p-main{display:flex;flex-direction:column;gap:var(--s-4);padding-top:var(--s-4);
+  padding-bottom:calc(var(--tabbar-h) + var(--s-6) + env(safe-area-inset-bottom))}
+.p-hello{display:flex;flex-direction:column;gap:var(--s-1)}
+.p-hello h1{font-size:var(--fs-24);letter-spacing:-.01em}
+.p-card{display:flex;flex-direction:column;gap:var(--s-3);padding:var(--s-4);background:var(--surface);border:1px solid var(--border-card);border-radius:var(--r-lg);box-shadow:var(--sh-sm)}
+/* Karta sarlavhalari — sayt va panel kabi Nunito */
+.p-card__title{display:flex;align-items:center;gap:var(--s-2);font-family:var(--font-display);font-size:var(--fs-16);font-weight:800;color:var(--text)}
+.p-card__title .icon{color:var(--brand-text)}
+
+/* Keyingi dars */
+.p-next__row{display:flex;align-items:center;gap:var(--s-4)}
+.p-next__when{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s-05);min-width:88px;padding:var(--s-2) var(--s-3);
+  border-radius:var(--r-md);background:var(--brand-soft);color:var(--brand-text);text-align:center}
+.p-next__day{font-size:var(--fs-12);font-weight:var(--fw-semibold)}
+.p-next__time{font-family:var(--font-display);font-size:var(--fs-24);font-weight:800;line-height:var(--lh-tight)}
+
+/* Hisob */
+.p-money--debt{border-color:var(--danger-border)}
+.p-money__row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap}
+.p-money__value{font-family:var(--font-display);font-size:var(--fs-32);font-weight:800;letter-spacing:-.01em;line-height:var(--lh-tight)}
+.p-money__actions{display:flex;gap:var(--s-2);flex-wrap:wrap}
+@media (max-width:480px){.p-money__actions{width:100%}.p-money__actions>.c-btn{flex:1}}
+
+/* Ro'yxatlar */
+.p-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.p-list__item{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) 0;border-bottom:1px solid var(--border);min-height:52px}
+.p-list__item:last-child{border-bottom:0;padding-bottom:0}
+.p-list__item--off{opacity:.7}
+.p-list__item--off .fw-600{text-decoration:line-through}
+.p-time{min-width:52px;font-weight:var(--fw-bold);color:var(--brand-text)}
+.p-amount{align-items:flex-end;text-align:right}
+.p-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-2)}
+.p-stat{display:flex;flex-direction:column;gap:var(--s-05);padding:var(--s-3);background:var(--surface);border:1px solid var(--border-card);border-radius:var(--r-md)}
+.p-stat strong{font-family:var(--font-display);font-size:var(--fs-22);font-weight:800}
+.p-msg{align-items:flex-start}
+.p-msg__icon{width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;background:var(--brand-soft);color:var(--brand-text)}
+.p-msg__text{white-space:pre-line;overflow-wrap:anywhere;font-size:var(--fs-14)}
+
+/* To'lov oynasi va chek */
+.p-gateway__sum{display:flex;flex-direction:column;align-items:center;gap:var(--s-1);padding:var(--s-5);border-radius:var(--r-md);background:var(--surface-2)}
+.p-gateway__sum strong{font-family:var(--font-display);font-size:var(--fs-32);font-weight:800}
+.p-receipt{width:100%}
+.p-receipt__head{text-align:center;padding-bottom:var(--s-3);margin-bottom:var(--s-2);border-bottom:1px dashed var(--border-strong)}
+
+/* Kirish (kod) */
+.p-code{text-align:center;letter-spacing:.4em;font-size:var(--fs-20);font-weight:var(--fw-bold)}
+.p-democode{font-size:var(--fs-18);letter-spacing:.15em}
+
+/* Pastki tab-panel — har doim (telefon ham, kompyuter ham) */
+.p-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:var(--z-sidebar);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  height:calc(var(--tabbar-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:var(--surface);border-top:1px solid var(--border)}
+.p-tabbar__item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s-05);font-size:var(--fs-12);font-weight:var(--fw-medium);
+  color:var(--text-subtle);text-decoration:none;position:relative}
+.p-tabbar__item:hover{text-decoration:none;color:var(--text)}
+.p-tabbar__item[aria-current="page"]{color:var(--brand-text)}
+.p-tabbar__item[aria-current="page"]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:3px;border-radius:0 0 var(--r-full) var(--r-full);background:var(--brand)}
+@media (min-width:700px){.p-tabbar{left:50%;right:auto;width:640px;transform:translateX(-50%);border:1px solid var(--border);border-bottom:0;border-radius:var(--r-lg) var(--r-lg) 0 0;box-shadow:var(--sh-md)}}
+body.portal .c-toasts{bottom:calc(var(--tabbar-h) + var(--s-3) + env(safe-area-inset-bottom))}
+.p-link-more{min-height:var(--control-md);display:inline-flex;align-items:center}
+
+/* Kirish sahifasi pastki qatori: sayt havolasi + UZ/RU */
+.p-auth-foot{align-items:center;justify-content:center;flex-wrap:wrap}
+.p-auth-foot>a{display:inline-flex;align-items:center;gap:var(--s-1);min-height:var(--control-md)}
+
+/* Kompyuter (≥1024px): kengroq qobiq, 2 ustun, menyu tepada. Telefon/planshet ko'rinishi o'zgarmaydi:
+   .p-cols/.p-col kichik ekranda display:contents — kartalar avvalgi tartibda bitta ustunda. */
+.p-cols,.p-col,.p-days{display:contents}
+@media (min-width:1024px){
+  .p-wrap{max-width:1080px}
+  .p-brand{max-width:240px}
+  .p-main{padding-bottom:var(--s-8)}
+  .p-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-4);align-items:start}
+  .p-col{display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
+  .p-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-4);align-items:start}
+  body.portal .p-tabbar{top:0;bottom:auto;left:50%;right:auto;width:auto;height:var(--topbar-h);padding:0;transform:translateX(-50%);
+    z-index:calc(var(--z-sticky) + 1);display:flex;gap:var(--s-1);align-items:center;background:transparent;border:0;border-radius:0;box-shadow:none}
+  body.portal .p-tabbar__item{flex-direction:row;gap:var(--s-2);height:var(--control-md);padding:0 var(--s-3);border-radius:var(--r-md);font-size:var(--fs-14)}
+  .p-tabbar__item:hover{background:var(--surface-2)}
+  .p-tabbar__item[aria-current="page"]{background:var(--brand-soft)}
+  .p-tabbar__item[aria-current="page"]::before{display:none}
+  body.portal .c-toasts{bottom:var(--s-4)}
+}

@@ -1,0 +1,35 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Xarajatni storno qilish</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/xarajatlar/97/storno/" hx-post="/demo/atlantis-4/r/owner/panel/xarajatlar/97/storno/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="eUQUAS3mDApsueNwcfo2NmPll6HncklZCq6n6V2DSPbvjuqjJ2sd8ACPSSMv02Nu">
+  <div class="c-modal__body">
+    
+    
+<div class="c-alert c-alert--warning"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-alert-triangle"></use></svg><div class="c-alert__body">
+  <strong>Nima bo'ladi</strong>
+  <span>«Xo&#x27;jalik» — 150 000 so&#x27;m (19.10.2026) bekor qilinadi: teskari yozuv qo'shiladi, asl yozuv tarixda qoladi. Naqd bo'lgani uchun pul bugungi kassaga qaytgan hisoblanadi.</span>
+</div></div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reason">Sabab<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="reason" cols="40" rows="2" placeholder="Masalan: summa noto&#x27;g&#x27;ri kiritilgan (300 000 o&#x27;rniga 30 000)" maxlength="300" minlength="5" class="c-textarea" aria-describedby="id_reason-hint" required id="id_reason">
+</textarea>
+  
+  <div class="c-field__hint" id="id_reason-hint">Kamida 5 belgi. Audit jurnalida va direktorda ko&#x27;rinadi.</div>
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--danger">Storno qilish</button>
+  </div>
+</form>
+
+</dialog>

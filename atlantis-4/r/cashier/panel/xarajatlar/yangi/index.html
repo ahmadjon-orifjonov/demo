@@ -1,0 +1,73 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Yangi xarajat</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/cashier/panel/xarajatlar/yangi/" hx-post="/demo/atlantis-4/r/cashier/panel/xarajatlar/yangi/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="tPCXBjWWC3YWtiYnoK9ci05Sw3odtI3VyTSEczTGmWYicNK2d3uT67Y4AxN7cd5G">
+  <div class="c-modal__body">
+    
+    
+<p class="muted t-13">Naqd xarajat bugungi kassadan ayiriladi. O'qituvchi maoshi bu yerda emas — «Maosh» bo'limidan to'lanadi.</p>
+    
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_category">Nimaga<span class="req" aria-hidden="true">*</span></label>
+    <select name="category" class="c-select" id="id_category">
+  <option value="1">Ijara</option>
+
+  <option value="2">Kommunal</option>
+
+  <option value="3">Reklama</option>
+
+  <option value="4">Xo&#x27;jalik</option>
+
+  <option value="5">Ofis jihozlari</option>
+
+  <option value="7">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_amount">Summa<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="amount" data-money="" inputmode="numeric" class="c-input c-input--money" autocomplete="off" required id="id_amount">
+  
+  
+  
+</div>
+</div>
+
+<fieldset class="c-fieldset c-field">
+  <legend class="c-field__label">Qanday to&#x27;landi<span class="req" aria-hidden="true">*</span></legend>
+  <div class="c-seg"><input type="radio" name="method" value="cash" id="id_method_0" required checked><label for="id_method_0"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-banknote"></use></svg><span>Naqd</span></label><input type="radio" name="method" value="card" id="id_method_1" required><label for="id_method_1"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-credit-card"></use></svg><span>Karta</span></label><input type="radio" name="method" value="click" id="id_method_2" required><label for="id_method_2"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-smartphone"></use></svg><span>Click</span></label><input type="radio" name="method" value="payme" id="id_method_3" required><label for="id_method_3"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-smartphone"></use></svg><span>Payme</span></label><input type="radio" name="method" value="transfer" id="id_method_4" required><label for="id_method_4"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-landmark"></use></svg><span>O&#x27;tkazma</span></label></div>
+  
+</fieldset>
+
+<input type="hidden" name="branch" value="1" id="id_branch">
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_note">Izoh</label>
+    <input type="text" name="note" placeholder="Masalan: oktabr ijarasi, 2-qavat" maxlength="300" class="c-input" id="id_note">
+  
+  
+  
+</div>
+
+<input type="hidden" name="key" value="ed7b15d0849f49a0b0ee253b7549fa74" class="c-input" id="id_key">
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Yozish</button>
+  </div>
+</form>
+
+</dialog>

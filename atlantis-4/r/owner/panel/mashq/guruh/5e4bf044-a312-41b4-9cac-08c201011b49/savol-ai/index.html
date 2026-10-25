@@ -1,0 +1,103 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Rasmdan savol (AI) — Arab tili · A1</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/mashq/guruh/5e4bf044-a312-41b4-9cac-08c201011b49/savol-ai/" hx-post="/demo/atlantis-4/r/owner/panel/mashq/guruh/5e4bf044-a312-41b4-9cac-08c201011b49/savol-ai/" hx-encoding="multipart/form-data" hx-swap="none" hx-indicator="#mq-ai-wait" hx-disabled-elt="find button[type=submit]" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="enHYIvow4xgIHrmlaazYtj3DtfyCF16sCTXreynNjM2LwHZ8HXD9OxQ701DKtJyX">
+  <div class="c-modal__body">
+    
+    <p class="muted">Darslik sahifasining rasmini yuklang yoki matnni qo'ying — AI shu materialdan savollar tuzadi. Savollar QORALAMA bo'lib saqlanadi: o'quvchiga chiqmaydi, siz har birini ko'rib tasdiqlaysiz yoki rad etasiz.</p>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_image">Darslik sahifasi rasmi</label>
+    <input type="file" name="image" accept="image/jpeg,image/png,image/webp" class="c-input mq-file" aria-describedby="id_image-hint" id="id_image">
+  
+  <div class="c-field__hint" id="id_image-hint">jpg, png yoki webp · 5 MB gacha · bitta sahifa, matn aniq ko&#x27;rinsin</div>
+  
+</div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text">Yoki matnni shu yerga qo&#x27;ying</label>
+    <textarea name="text" cols="40" rows="6" placeholder="Dars matni, qoida, paragraf..." maxlength="20000" class="c-textarea" id="id_text">
+</textarea>
+  
+  
+  
+</div>
+
+    <div class="grid grid--2">
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_topic">Mavzu</label>
+    <select name="topic" class="c-select" id="id_topic">
+  <option value="" selected>— mavzusiz yoki yangi (pastda) —</option>
+
+</select>
+  
+  
+  
+</div>
+
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_new_topic">Yangi mavzu nomi</label>
+    <input type="text" name="new_topic" maxlength="120" class="c-input" id="id_new_topic">
+  
+  
+  
+</div>
+
+    </div>
+    <div class="grid grid--2">
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_n">Savollar soni<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="n" value="5" inputmode="numeric" min="3" max="10" class="c-input" required id="id_n">
+  
+  
+  
+</div>
+
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_language">Savollar tili<span class="req" aria-hidden="true">*</span></label>
+    <select name="language" class="c-select" id="id_language">
+  <option value="uz" selected>O&#x27;zbekcha (lotin)</option>
+
+  <option value="uz-cyrl">O&#x27;zbek (kirill)</option>
+
+  <option value="ru">Русский</option>
+
+  <option value="en">English</option>
+
+</select>
+  
+  
+  
+</div>
+
+    </div>
+    <fieldset class="c-fieldset c-field">
+      <legend class="c-field__label">Savol turlari</legend>
+      <div class="mq-ai__types"><label class="c-check"><input type="checkbox" name="types" value="single" id="id_types_0" checked><span>Bitta to&#x27;g&#x27;ri javob</span></label><label class="c-check"><input type="checkbox" name="types" value="truefalse" id="id_types_1" checked><span>To&#x27;g&#x27;ri / noto&#x27;g&#x27;ri</span></label><label class="c-check"><input type="checkbox" name="types" value="fill" id="id_types_2" checked><span>Bo&#x27;sh joy</span></label><label class="c-check"><input type="checkbox" name="types" value="multi" id="id_types_3"><span>Bir nechta to&#x27;g&#x27;ri javob</span></label></div>
+      
+    </fieldset>
+    <div id="mq-ai-wait" class="htmx-indicator c-alert c-alert--info" role="status" aria-live="polite"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-sparkles"></use></svg><div class="c-alert__body"><span>Yuborilmoqda…</span></div></div>
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-sparkles"></use></svg> Savol tuzish</button>
+  </div>
+</form>
+
+
+</dialog>

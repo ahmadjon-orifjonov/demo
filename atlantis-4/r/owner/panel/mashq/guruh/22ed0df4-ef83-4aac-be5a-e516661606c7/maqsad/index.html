@@ -1,0 +1,72 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Haftalik maqsad (Umumiy qozon) — AutoCAD va 3Ds Max · Boshlang&#x27;ich</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/mashq/guruh/22ed0df4-ef83-4aac-be5a-e516661606c7/maqsad/" hx-post="/demo/atlantis-4/r/owner/panel/mashq/guruh/22ed0df4-ef83-4aac-be5a-e516661606c7/maqsad/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="mO41Wooq4s5DbnDxqnDOD5nnJMruEjG8KkkusrnHjHRG0DgkXaHZYjaRgywCs18D">
+  <div class="c-modal__body">
+    
+    <p class="muted">Har o'quvchining har yashil kuni (5+/7) qozonga bir cho'mich qo'shadi — hamma teng. Qozon to'lmasa jazo yo'q, keyingi hafta davom etadi. Guruhda 6 o'quvchi.</p>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_preset">Maqsad<span class="req" aria-hidden="true">*</span></label>
+    <select name="preset" class="c-select" id="id_preset">
+  <option value="days4_80">Haftada 4 kun guruhning 80% i Kunlik 7 ni bajarsin</option>
+
+  <option value="days5_60">Haftada 5 kun guruhning 60% i Kunlik 7 ni bajarsin</option>
+
+  <option value="custom">O&#x27;zim belgilayman (cho&#x27;mich soni)</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_custom">Cho&#x27;mich soni (faqat «o&#x27;zim belgilayman» uchun)</label>
+    <input type="number" name="custom" min="1" max="500" class="c-input" id="id_custom">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reward">Mukofot<span class="req" aria-hidden="true">*</span></label>
+    <select name="reward" class="c-select" id="id_reward">
+  <option value="game_lesson">Keyingi dars — o&#x27;yin darsi</option>
+
+  <option value="certificate">Guruhga sertifikat</option>
+
+  <option value="no_homework">Uy vazifasisiz kun</option>
+
+  <option value="discount">Oy oxiri chegirma (markaz qaroriga ko&#x27;ra)</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reward_text">Mukofot — o&#x27;z so&#x27;zingiz bilan (ixtiyoriy)</label>
+    <input type="text" name="reward_text" maxlength="120" class="c-input" id="id_reward_text">
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Maqsadni qo'yish</button>
+  </div>
+</form>
+
+</dialog>

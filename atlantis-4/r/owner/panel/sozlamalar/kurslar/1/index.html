@@ -1,0 +1,146 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Ingliz tili — A1 (Boshlang&#x27;ich)</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/sozlamalar/kurslar/1/" hx-post="/demo/atlantis-4/r/owner/panel/sozlamalar/kurslar/1/" hx-swap="none" novalidate>
+  <input type="hidden" name="csrfmiddlewaretoken" value="PYWTv67as9gllqeUeun7tl5jCMHjXLQNducm196rHo2oaGRHLhriOzSN9yMrLtii">
+  <div class="c-modal__body">
+    
+    <p class="muted t-13">Narx o'zgarsa — keyingi oydan qo'llanadi. Shu oy hisoblangan to'lovlar va paketlar o'zgarmaydi.</p>
+    
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_name">Nomi<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="name" value="Ingliz tili — A1 (Boshlang&#x27;ich)" maxlength="100" class="c-input" required id="id_name">
+  
+  
+  
+</div>
+
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_category">Yo&#x27;nalish</label>
+    <input type="text" name="category" value="Tillar" maxlength="60" class="c-input" aria-describedby="id_category-hint" id="id_category">
+  
+  <div class="c-field__hint" id="id_category-hint">Masalan: Chet tillari, IT, Abituriyent</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_level">Daraja</label>
+    <input type="text" name="level" value="A1" maxlength="40" class="c-input" id="id_level">
+  
+  
+  
+</div>
+</div>
+
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">Turi</legend>
+      <div class="c-seg"><input type="radio" name="kind" value="group" id="id_kind_0" required checked><label for="id_kind_0">Guruh</label><input type="radio" name="kind" value="individual" id="id_kind_1" required><label for="id_kind_1">Yakka</label></div>
+    </fieldset>
+  
+  
+  
+</div>
+
+
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">To&#x27;lov turi</legend>
+      <div class="c-seg"><input type="radio" name="billing" value="monthly" aria-describedby="id_billing-hint" id="id_billing_0" required checked><label for="id_billing_0">Oylik</label><input type="radio" name="billing" value="package" aria-describedby="id_billing-hint" id="id_billing_1" required><label for="id_billing_1">Paket (N ta dars)</label></div>
+    </fieldset>
+  
+  <div class="c-field__hint" id="-hint">Oylik — har oy hisoblanadi. Paket — N ta dars oldindan to&#x27;lanadi (yakka darslar uchun).</div>
+  
+</div>
+
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_price">Narxi<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="price" value="475000" data-money="" inputmode="numeric" class="c-input c-input--money" autocomplete="off" aria-describedby="id_price-hint" required id="id_price">
+  
+  <div class="c-field__hint" id="id_price-hint">Oylik kursda — bir oy uchun; paketda — butun paket uchun.</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_package_lessons">Paketdagi darslar</label>
+    <input type="number" name="package_lessons" min="1" max="200" class="c-input" id="id_package_lessons">
+  
+  
+  
+</div>
+</div>
+<details class="c-form-section more">
+  <summary>Qo'shimcha: davomiylik, sayt uchun tavsif</summary>
+  <div class="stack gap-4">
+    <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_lesson_minutes">Bitta dars (daqiqa)<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="lesson_minutes" value="90" min="15" max="360" class="c-input" required id="id_lesson_minutes">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_duration_months">Davomiyligi (oy)</label>
+    <input type="number" name="duration_months" value="3" min="1" max="60" class="c-input" id="id_duration_months">
+  
+  
+  
+</div>
+</div>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_description">Tavsif (saytda)</label>
+    <textarea name="description" cols="40" rows="3" maxlength="2000" class="c-textarea" id="id_description">
+Alifbo va talaffuz, o&#x27;zingiz haqida gapirish, raqamlar, oddiy savollar. Kundalik muloqot va ish uchun ingliz tili — daraja bo&#x27;yicha guruhlar, Speaking club.</textarea>
+  
+  
+  
+</div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_description_ru">Tavsif ruscha (ixtiyoriy)</label>
+    <textarea name="description_ru" cols="40" rows="3" maxlength="2000" class="c-textarea" aria-describedby="id_description_ru-hint" id="id_description_ru">
+Алфавит и произношение, рассказ о себе, числа, простые вопросы. Английский для общения и работы — группы по уровням, Speaking club.</textarea>
+  
+  <div class="c-field__hint" id="id_description_ru-hint">Saytning ruscha varianti uchun. Bo&#x27;sh qolsa — o&#x27;zbekcha tavsif ko&#x27;rsatiladi.</div>
+  
+</div>
+
+    
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_public" id="id_is_public" checked><span>Saytda ko&#x27;rinadi</span></label>
+  
+  
+  
+</div>
+
+  </div>
+</details>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

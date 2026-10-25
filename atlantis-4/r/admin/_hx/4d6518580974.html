@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="csrf-token" content="hfGO7nj7ICRUDgheMS7jDNOyfGah3hKiE6KEmW6I3C6nLvdbBjmKeUJTf95uQ2fG">
+<meta name="icons" content="/demo/atlantis-4/static/icons.svg">
+<meta name="htmx-config" content='{"allowEval":false,"allowScriptTags":false,"includeIndicatorStyles":false,"historyCacheSize":0,"defaultSwapStyle":"innerHTML","scrollIntoViewOnBoost":false}'>
+<meta name="theme-color" content="#0E8F80">
+<title>O'quvchilar — ATLANTIS</title>
+<link rel="icon" href="/demo/atlantis-4/_a/88bee1a41189.png">
+<link rel="preload" href="/demo/atlantis-4/static/fonts/f_inter_latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/demo/atlantis-4/static/fonts/f_nunito_latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/tokens.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/components.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_crm.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_academics.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_finance.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_website.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_portal.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_telephony.css">
+<link rel="stylesheet" href="/demo/atlantis-4/static/css/app_exams.css">
+
+<style nonce="y6v1AEbNb0IIjPTgEc765Q">:root{ --brand-1:#fbfdfc;--brand-2:#f4f9f8;--brand-3:#e8f3f1;--brand-4:#daede9;--brand-5:#cae5df;--brand-6:#b8dbd4;--brand-7:#9dccc3;--brand-8:#75b6ab;--brand-9:#008374;--brand-10:#007567;--brand-11:#007a6d;--brand-12:#043630;--brand-contrast:#ffffff;--site-pan:#123B3A;--site-pan2:#0C2A29;--site-m:#17302F;--site-m2:#5B6D6A;--site-m3:#5E706C;--site-fe:#16B8A6;--site-tg:#0A7568;--site-tgh:#075F55;--site-tg-text:#075F55;--site-line:#738C87;--site-leaf:#7CCB5E;--site-leaf2:#5DBB63;--site-bg:#F4F8F7;--site-alt:#EAF3F1;--site-ch:#DCE7E4;--site-ch2:#E9F1EF;--site-tint:#E4F7F3;--site-tint2:#DDF5F1;--site-glow1:#D8F3EE;--site-glow2:#EAF6DE;--site-on-dark:#DDEBE8;--site-on-dark2:#A9C4BF;--site-on-dark3:#7FE3D5;--site-on-dark4:#9FC0BA;--site-foot:#8FB0AA;--site-yuz:#FFFFFF;--site-ink:#FFFFFF;--site-ol:#C89B3C;--site-ol2:#E7C98B;--site-ol3:#EFD7A4;--site-ol-ink:#3D2C08;--site-ya:#168A5B;--site-ya-text:#0F7A52;--site-ya-soft:#E2F4EB;--site-c1:#0E8F80;--site-c2:#2878B5;--site-c3:#B88A2E;--site-c4:#6D5BD0;--site-c5:#B7791F;--site-c6:#C43D4B } :root[data-theme="dark"]{ --brand-1:#0e100f;--brand-2:#131716;--brand-3:#182321;--brand-4:#1a2c28;--brand-5:#1c3631;--brand-6:#20423c;--brand-7:#25544c;--brand-8:#2a6d63;--brand-9:#199485;--brand-10:#2ea091;--brand-11:#92d7cb;--brand-12:#ddf4f0;--brand-contrast:#14161a }</style>
+<script nonce="y6v1AEbNb0IIjPTgEc765Q">(function(){var r=document.documentElement;if(!r.dataset.theme){try{var t=localStorage.getItem("theme");}catch(e){}if(t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){r.dataset.theme="dark";}}})();</script>
+<script src="/demo/atlantis-4/static/js/htmx.min.js" defer></script>
+<script src="/demo/atlantis-4/static/js/app.js" defer></script>
+
+</head>
+<body class="staff">
+<a class="skip-link" href="#main">Asosiy qismga o'tish</a>
+
+<div class="app">
+  <aside class="sidebar" aria-label="Asosiy menyu">
+    <div class="sidebar__brand">
+      <span class="logo"><img src="/demo/atlantis-4/_a/88bee1a41189.png" alt="ATLANTIS"></span>
+
+      <div class="grow">
+        <div class="sidebar__name truncate">ATLANTIS</div>
+        <div class="sidebar__sub truncate">Shahnoza · Administrator</div>
+      </div>
+    </div>
+    <nav class="nav">
+      
+        
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-layout-dashboard"></use></svg><span class="grow truncate">Bosh sahifa</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/lidlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-kanban"></use></svg><span class="grow truncate">Lidlar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/oquvchilar/" aria-current="page">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="grow truncate">O&#x27;quvchilar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/guruhlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users-round"></use></svg><span class="grow truncate">Guruhlar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/jadval/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-calendar-days"></use></svg><span class="grow truncate">Jadval</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/mashq/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-book-open"></use></svg><span class="grow truncate">Mashq</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/oyin/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-gamepad-2"></use></svg><span class="grow truncate">O&#x27;yinlar</span>
+            
+          </a>
+        
+      
+        <div class="nav__group">Moliya</div>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/kassa/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-wallet"></use></svg><span class="grow truncate">Kassa</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/tolovlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-receipt"></use></svg><span class="grow truncate">To&#x27;lovlar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/qarzdorlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-hand-coins"></use></svg><span class="grow truncate">Qarzdorlar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/qarorlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-inbox"></use></svg><span class="grow truncate">So&#x27;rovlarim</span>
+            
+          </a>
+        
+      
+        <div class="nav__group">Tahlil</div>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/hisobotlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-chart-column"></use></svg><span class="grow truncate">Hisobotlar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/imtihonlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-graduation-cap"></use></svg><span class="grow truncate">Baholar</span>
+            
+          </a>
+        
+          <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/xabarlar/">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-message-square"></use></svg><span class="grow truncate">Xabarlar</span>
+            
+          </a>
+        
+      
+    </nav>
+    <div class="sidebar__foot">
+      <div class="usermenu usermenu--sidebar" data-popover>
+  <button type="button" class="usermenu__btn" data-popover-toggle aria-haspopup="menu" aria-expanded="false">
+    <span class="c-avatar c-avatar--sm">S</span>
+    <span class="grow truncate">Shahnoza</span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-chevron-down"></use></svg>
+  </button>
+  <div class="c-menu" role="menu" hidden>
+    <div class="px-3 stack gap-1"><span class="fw-600 truncate">Shahnoza</span><span class="c-list__meta truncate">Administrator · +998 90 000 00 02</span></div>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/hisob/profil/"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-user"></use></svg> Profil va xavfsizlik</a>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/atamalar/"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-book-open"></use></svg> Atamalar va yordam</a>
+    <button type="button" class="c-menu__item" role="menuitem" data-theme-toggle><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-moon"></use></svg> Yorug' / qorong'i</button>
+    <div class="c-menu__sep"></div>
+    <form method="post" action="/hisob/chiqish/" class="c-menu__form"><input type="hidden" name="csrfmiddlewaretoken" value="hfGO7nj7ICRUDgheMS7jDNOyfGah3hKiE6KEmW6I3C6nLvdbBjmKeUJTf95uQ2fG">
+      <button class="c-menu__item c-menu__item--danger" role="menuitem"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-log-out"></use></svg> Chiqish</button>
+    </form>
+  </div>
+</div>
+
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button type="button" class="topbar__search" data-palette-open aria-label="Qidiruv va buyruqlar (Ctrl+K)">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-search"></use></svg><span>Qidirish: o'quvchi, telefon, guruh…</span><kbd class="kbd">Ctrl K</kbd>
+      </button>
+      <div class="grow"></div>
+      
+<div class="tbt" role="group" aria-label="Ko'rinish">
+  <button type="button" class="c-btn c-btn--ghost c-btn--icon tbt__theme" data-theme-toggle
+          title="Yorug' / qorong'i" aria-label="Yorug' / qorong'i rejim">
+    <span class="tbt__moon"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-moon"></use></svg></span><span class="tbt__sun"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-sun"></use></svg></span>
+  </button>
+  
+  <div class="tbt__lang" data-popover>
+    <button type="button" class="c-btn c-btn--ghost tbt__langbtn" data-popover-toggle aria-haspopup="menu" aria-expanded="false"
+            title="Til" aria-label="Tilni tanlash">
+      <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-globe"></use></svg><span translate="no">UZ</span>
+    </button>
+    <div class="c-menu tbt__menu" role="menu" hidden>
+      <form method="post" action="/hisob/til/" class="c-menu__form"><input type="hidden" name="csrfmiddlewaretoken" value="hfGO7nj7ICRUDgheMS7jDNOyfGah3hKiE6KEmW6I3C6nLvdbBjmKeUJTf95uQ2fG">
+        <button class="c-menu__item" role="menuitemradio" aria-checked="true" name="language" value="uz" translate="no"><span class="tbt__code">UZ</span><span class="grow">O&#x27;zbekcha</span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check"></use></svg></button>
+        <button class="c-menu__item" role="menuitemradio" aria-checked="false" name="language" value="uz-cyrl" translate="no"><span class="tbt__code">ЎЗ</span><span class="grow">Ўзбекча</span></button>
+        <button class="c-menu__item" role="menuitemradio" aria-checked="false" name="language" value="ru" translate="no"><span class="tbt__code">RU</span><span class="grow">Русский</span></button>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+      <div class="quickadd alerts" data-popover>
+  <button type="button" class="c-btn c-btn--ghost c-btn--icon alerts__btn" data-popover-toggle aria-haspopup="menu" aria-expanded="false"
+          aria-label="Ogohlantirishlar: 1 ta"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-bell"></use></svg><span class="alerts__dot" aria-hidden="true">1</span></button>
+  <div class="c-menu alerts__menu" role="menu" hidden>
+    
+      <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check-check"></use></svg><span class="grow">2 ta darsda davomat belgilanmagan</span></a>
+    
+  </div>
+</div>
+
+      
+<div class="quickadd" data-popover>
+  <button type="button" class="c-btn c-btn--primary" data-popover-toggle aria-haspopup="menu" aria-expanded="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-plus"></use></svg><span class="desktop-only">Yangi</span></button>
+  <div class="c-menu" role="menu" hidden>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/kassa/tolov/" data-modal-url><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-wallet"></use></svg> To'lov qabul qilish</a>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/lidlar/yangi/" data-modal-url><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-user-plus"></use></svg> Yangi lid</a>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/oquvchilar/yangi/" data-modal-url><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-graduation-cap"></use></svg> Yangi o'quvchi</a>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/guruhlar/yangi/"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users-round"></use></svg> Yangi guruh</a>
+    
+  </div>
+</div>
+
+
+      <div class="mobile-only"><div class="usermenu usermenu--topbar" data-popover>
+  <button type="button" class="usermenu__btn" data-popover-toggle aria-haspopup="menu" aria-expanded="false">
+    <span class="c-avatar c-avatar--sm">S</span>
+    
+  </button>
+  <div class="c-menu" role="menu" hidden>
+    <div class="px-3 stack gap-1"><span class="fw-600 truncate">Shahnoza</span><span class="c-list__meta truncate">Administrator · +998 90 000 00 02</span></div>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/hisob/profil/"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-user"></use></svg> Profil va xavfsizlik</a>
+    <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/atamalar/"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-book-open"></use></svg> Atamalar va yordam</a>
+    <button type="button" class="c-menu__item" role="menuitem" data-theme-toggle><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-moon"></use></svg> Yorug' / qorong'i</button>
+    <div class="c-menu__sep"></div>
+    <form method="post" action="/hisob/chiqish/" class="c-menu__form"><input type="hidden" name="csrfmiddlewaretoken" value="hfGO7nj7ICRUDgheMS7jDNOyfGah3hKiE6KEmW6I3C6nLvdbBjmKeUJTf95uQ2fG">
+      <button class="c-menu__item c-menu__item--danger" role="menuitem"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-log-out"></use></svg> Chiqish</button>
+    </form>
+  </div>
+</div>
+</div>
+    </header>
+    
+    <main id="main" class="content" tabindex="-1">
+      
+<div class="page-head">
+  <div class="page-head__title"><h1>O'quvchilar</h1><p class="page-head__desc">201 ta topildi</p></div>
+  <div class="page-head__actions">
+    <a class="c-btn c-btn--secondary" href="#" data-demo-off="1"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-download"></use></svg><span class="desktop-only">Excel</span></a>
+    <a class="c-btn c-btn--primary" href="/demo/atlantis-4/r/admin/panel/oquvchilar/yangi/" data-modal-url><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-plus"></use></svg> Yangi o'quvchi</a>
+  </div>
+</div>
+
+<nav class="c-tabs" aria-label="Saqlangan ko'rinishlar">
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/q-st-all.html">Hammasi</a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/q-st-active.html" aria-current="page">Faol<span class="nav__count">201</span></a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/q-st-trial.html">Sinovda<span class="nav__count">5</span></a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/">Qarzdorlar<span class="nav__count">17</span></a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/">Muzlatilgan<span class="nav__count">1</span></a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/">Guruhsiz<span class="nav__count">0</span></a>
+  
+  <a class="c-tab" href="/demo/atlantis-4/r/admin/panel/oquvchilar/">Ketgan<span class="nav__count">11</span></a>
+  
+</nav>
+
+<form class="c-toolbar" method="get" hx-get="/demo/atlantis-4/r/admin/_hx/4d6518580974.html" hx-target="#student-rows" hx-select="#student-rows" hx-swap="outerHTML" hx-push-url="true" hx-trigger="input changed delay:250ms from:input[name=q], change from:select">
+  <input type="hidden" name="st" value="active">
+  <label class="sr-only" for="sq">Qidirish</label>
+  <input id="sq" class="c-input grow" type="search" name="q" value="" placeholder="Ism yoki telefonning oxirgi 4 raqami" autocomplete="off">
+  <label class="sr-only" for="sg">Guruh</label>
+  <select id="sg" class="c-select filter-select" name="g">
+    <option value="">Barcha guruhlar</option>
+    <option value="9">Arab tili · A1</option><option value="24">AutoCAD va 3Ds Max · Boshlang&#x27;ich</option><option value="21">Biologiya · OTM</option><option value="27">Bojxona deklaratsiyasi · Kasbiy</option><option value="7">Bolalar ingliz tili · Kids 1</option><option value="8">Bolalar ingliz tili · Kids 2</option><option value="22">Bolalar matematikasi · Kids</option><option value="26">Buxgalteriya 1C 8.3 · Kasbiy</option><option value="19">Fizika · OTM</option><option value="13">Fransuz tili · A1</option><option value="29">Grafik dizayn · Boshlang&#x27;ich</option><option value="6">IELTS tayyorlov · 5.5→6.5</option><option value="5">IELTS tayyorlov · 6.0→7.0</option><option value="1">Ingliz tili · A1</option><option value="2">Ingliz tili · A2</option><option value="3">Ingliz tili · B1</option><option value="4">Ingliz tili · B2</option><option value="14">Ispan tili · A1</option><option value="28">Kadrlar ish yuritishi (HR) · Kasbiy</option><option value="20">Kimyo · OTM</option><option value="23">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich</option><option value="11">Koreys tili (TOPIK) · A1</option><option value="17">Matematika (OTM) · OTM-1</option><option value="18">Matematika (OTM) · OTM-2</option><option value="12">Nemis tili · A1</option><option value="15">Rus tili · A2</option><option value="10">Turk tili · A1</option><option value="25">Web dasturlash · Boshlang&#x27;ich</option><option value="16">Xitoy tili (HSK) · HSK 1</option>
+  </select>
+</form>
+
+<section class="c-card c-card--flush" id="student-rows" aria-live="polite">
+  
+  <div class="c-table-wrap">
+    <table class="c-table c-table--cards">
+      <thead><tr>
+        <th>O'quvchi</th><th>Guruhlar</th><th>Holati</th><th class="t-right">Balans (oila)</th><th>Aloqa</th>
+      </tr></thead>
+      <tbody>
+      
+        <tr data-href="/demo/atlantis-4/r/admin/panel/oquvchilar/63b6ca98-de39-4e81-b7e9-c5773a427cc1/">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AI</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="/demo/atlantis-4/r/admin/panel/oquvchilar/63b6ca98-de39-4e81-b7e9-c5773a427cc1/">Abdulloh Ismoilov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Ingliz tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998979043099" class="num">+998 97 904 30 99</a></td>
+        </tr>
+      
+        <tr data-href="/demo/atlantis-4/r/admin/panel/oquvchilar/2fa1c0ad-fa28-48fe-b884-a97da10f5fe3/">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="/demo/atlantis-4/r/admin/panel/oquvchilar/2fa1c0ad-fa28-48fe-b884-a97da10f5fe3/">Abdulloh Salimov</a>
+                <span class="c-table__sub">10 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Bolalar ingliz tili · Kids 2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998999916084" class="num">+998 99 991 60 84</a></td>
+        </tr>
+      
+        <tr data-href="/demo/atlantis-4/r/admin/panel/oquvchilar/9e5f403f-1fb8-4cad-82ff-763156eb9446/">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AY</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="/demo/atlantis-4/r/admin/panel/oquvchilar/9e5f403f-1fb8-4cad-82ff-763156eb9446/">Abdulloh Yusupov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Bolalar ingliz tili · Kids 2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998998889923" class="num">+998 99 888 99 23</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AI</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Akmal Ismoilov</a>
+                <span class="c-table__sub">23 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Web dasturlash · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998900431916" class="num">+998 90 043 19 16</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AU</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Akmal Usmonov</a>
+                <span class="c-table__sub">26 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Bojxona deklaratsiyasi · Kasbiy</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998885723535" class="num">+998 88 572 35 35</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AE</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Amir Ergashev</a>
+                <span class="c-table__sub">21 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Grafik dizayn · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998992522075" class="num">+998 99 252 20 75</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AK</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Amir Karimov</a>
+                <span class="c-table__sub">17 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Matematika (OTM) · OTM-2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998935237951" class="num">+998 93 523 79 51</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AU</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Amir Usmonov</a>
+                <span class="c-table__sub">10 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Bolalar matematikasi · Kids</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998908568186" class="num">+998 90 856 81 86</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AV</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Amir Valiyev</a>
+                <span class="c-table__sub">26 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">IELTS tayyorlov · 5.5→6.5</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998996790486" class="num">+998 99 679 04 86</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AZ</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Amir Zokirov</a>
+                <span class="c-table__sub">14 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fransuz tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998931523081" class="num">+998 93 152 30 81</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AM</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Anvar Mirzayev</a>
+                <span class="c-table__sub">32 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Xitoy tili (HSK) · HSK 1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998883080230" class="num">+998 88 308 02 30</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AA</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asadbek Abdullayev</a>
+                <span class="c-table__sub">31 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Turk tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998978500485" class="num">+998 97 850 04 85</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AE</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asadbek Eshonov</a>
+                <span class="c-table__sub">17 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Nemis tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998912294628" class="num">+998 91 229 46 28</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AR</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asadbek Rasulov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Matematika (OTM) · OTM-1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998887752830" class="num">+998 88 775 28 30</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asadbek Salimov</a>
+                <span class="c-table__sub">16 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Rus tili · A2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998330420744" class="num">+998 33 042 07 44</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asadbek Sobirov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Matematika (OTM) · OTM-2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998905755038" class="num">+998 90 575 50 38</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AK</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asal Karimova</a>
+                <span class="c-table__sub">15 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fransuz tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998976625466" class="num">+998 97 662 54 66</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AN</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asal Nazarova</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Ingliz tili · A2</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998331230618" class="num">+998 33 123 06 18</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Asal Sultonova</a>
+                <span class="c-table__sub">15 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fransuz tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998935124740" class="num">+998 93 512 47 40</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AA</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Aziz Abdullayev</a>
+                <span class="c-table__sub">26 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Buxgalteriya 1C 8.3 · Kasbiy</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998946003836" class="num">+998 94 600 38 36</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AN</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Aziz Nazarov</a>
+                <span class="c-table__sub">30 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Arab tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998900292862" class="num">+998 90 029 28 62</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Aziz Saidov</a>
+                <span class="c-table__sub">28 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Web dasturlash · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998888483071" class="num">+998 88 848 30 71</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">AS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Aziz Sobirov</a>
+                <span class="c-table__sub">17 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Ingliz tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998973151085" class="num">+998 97 315 10 85</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BM</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Behruz Mahmudov</a>
+                <span class="c-table__sub">15 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Arab tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998919845107" class="num">+998 91 984 51 07</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BR</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Behruz Rasulov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">IELTS tayyorlov · 6.0→7.0</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998975855517" class="num">+998 97 585 55 17</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BT</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Behruz Tursunov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Turk tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998933382405" class="num">+998 93 338 24 05</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BU</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Bekzod Umarov</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Biologiya · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998331087233" class="num">+998 33 108 72 33</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BO</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Botir Olimov</a>
+                <span class="c-table__sub">29 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Buxgalteriya 1C 8.3 · Kasbiy</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998331142235" class="num">+998 33 114 22 35</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Botir Sultonov</a>
+                <span class="c-table__sub">23 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">AutoCAD va 3Ds Max · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998970027292" class="num">+998 97 002 72 92</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">BY</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Botir Yusupov</a>
+                <span class="c-table__sub">14 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Arab tili · A1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998912911475" class="num">+998 91 291 14 75</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DA</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dildora Axmedova</a>
+                <span class="c-table__sub">31 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Kadrlar ish yuritishi (HR) · Kasbiy</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998882792364" class="num">+998 88 279 23 64</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DM</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dildora Mirzayeva</a>
+                <span class="c-table__sub">31 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Grafik dizayn · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998934937370" class="num">+998 93 493 73 70</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DT</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dildora Tosheva</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fizika · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998993147723" class="num">+998 99 314 77 23</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DT</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dildora Tursunova</a>
+                <span class="c-table__sub">17 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fizika · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--debt">Qarzdor</span></td>
+          <td data-label="Balans" class="t-right num fw-600 money-neg">−500 000 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998338448062" class="num">+998 33 844 80 62</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DX</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dildora Xolmatova</a>
+                <span class="c-table__sub">29 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Ingliz tili · B1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998335418070" class="num">+998 33 541 80 70</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DK</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dilnoza Karimova</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Matematika (OTM) · OTM-1</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998930453523" class="num">+998 93 045 35 23</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dilnoza Salimova</a>
+                <span class="c-table__sub"></span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Fizika · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998940825756" class="num">+998 94 082 57 56</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DS</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Diyor Salimov</a>
+                <span class="c-table__sub">38 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998332125729" class="num">+998 33 212 57 29</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DT</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Diyor To&#x27;xtayev</a>
+                <span class="c-table__sub">18 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Biologiya · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998999457368" class="num">+998 99 945 73 68</a></td>
+        </tr>
+      
+        <tr data-href="#" data-demo-off="1">
+          <td class="t-main">
+            <div class="row row--nowrap gap-3">
+              <span class="c-avatar c-avatar--sm">DA</span>
+              <div class="stack gap-1"><a class="c-table__primary" href="#" data-demo-off="1">Dmitriy Abdullayev</a>
+                <span class="c-table__sub">17 yosh</span></div>
+            </div>
+          </td>
+          <td data-label="Guruhlar"><span class="c-badge c-badge--plain">Biologiya · OTM</span> </td>
+          <td data-label="Holati"><span class="c-badge c-badge--active">Faol</span></td>
+          <td data-label="Balans" class="t-right num fw-600 ">0 so&#x27;m</td>
+          <td data-label="Aloqa"><a href="tel:+998991664342" class="num">+998 99 166 43 42</a></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+  
+<div class="c-pager">
+  <span>1–40 / 201</span>
+  <div class="row gap-2">
+    
+    <span class="num">1 / 6</span>
+    <a class="c-btn c-btn--secondary c-btn--sm" href="/demo/atlantis-4/r/admin/panel/oquvchilar/q-page-2.html" aria-label="Keyingi"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-chevron-right"></use></svg></a>
+  </div>
+</div>
+
+
+  
+</section>
+
+
+    </main>
+  </div>
+</div>
+
+<nav class="tabbar" aria-label="Pastki menyu">
+  
+    <a class="tabbar__item" href="/demo/atlantis-4/r/admin/panel/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-layout-dashboard"></use></svg><span>Bosh sahifa</span></a>
+  
+    <a class="tabbar__item" href="/demo/atlantis-4/r/admin/panel/lidlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-kanban"></use></svg><span>Lidlar</span></a>
+  
+    <a class="tabbar__item" href="/demo/atlantis-4/r/admin/panel/oquvchilar/" aria-current="page"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span>O&#x27;quvchilar</span></a>
+  
+    <a class="tabbar__item" href="/demo/atlantis-4/r/admin/panel/jadval/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-calendar-days"></use></svg><span>Jadval</span></a>
+  
+  <button type="button" class="tabbar__item" data-modal-open="more-menu"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-menu"></use></svg><span>Yana</span></button>
+</nav>
+
+<dialog class="c-modal" id="more-menu" aria-labelledby="more-menu-t">
+  <div class="c-modal__head"><h2 id="more-menu-t">Menyu</h2><button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  <div class="c-modal__body">
+    <nav class="nav nav--flush">
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-layout-dashboard"></use></svg><span class="grow">Bosh sahifa</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/lidlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-kanban"></use></svg><span class="grow">Lidlar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/oquvchilar/" aria-current="page"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="grow">O&#x27;quvchilar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/guruhlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users-round"></use></svg><span class="grow">Guruhlar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/jadval/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-calendar-days"></use></svg><span class="grow">Jadval</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/mashq/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-book-open"></use></svg><span class="grow">Mashq</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/oyin/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-gamepad-2"></use></svg><span class="grow">O&#x27;yinlar</span></a>
+      <div class="nav__group">Moliya</div>
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/kassa/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-wallet"></use></svg><span class="grow">Kassa</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/tolovlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-receipt"></use></svg><span class="grow">To&#x27;lovlar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/qarzdorlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-hand-coins"></use></svg><span class="grow">Qarzdorlar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/qarorlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-inbox"></use></svg><span class="grow">So&#x27;rovlarim</span></a>
+      <div class="nav__group">Tahlil</div>
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/hisobotlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-chart-column"></use></svg><span class="grow">Hisobotlar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/imtihonlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-graduation-cap"></use></svg><span class="grow">Baholar</span></a>
+      
+        <a class="nav__item" href="/demo/atlantis-4/r/admin/panel/xabarlar/"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-message-square"></use></svg><span class="grow">Xabarlar</span></a>
+      
+    </nav>
+  </div>
+</dialog>
+
+<dialog class="c-palette" id="palette" aria-label="Qidiruv va buyruqlar">
+  <div class="c-palette__input">
+    <svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-search"></use></svg>
+    <input type="search" name="q" placeholder="Ism, telefon (oxirgi 4 raqam), guruh yoki amal…" autocomplete="off"
+           hx-get="/demo/atlantis-4/r/admin/_hx/2381462365ee.html" hx-trigger="input changed delay:180ms, focus once" hx-target="#palette-results"
+           aria-controls="palette-results" data-palette-input>
+    <kbd class="kbd">Esc</kbd>
+  </div>
+  <div class="c-palette__list" id="palette-results" role="listbox"></div>
+  <div class="c-palette__foot"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> tanlash</span><span><kbd class="kbd">Enter</kbd> ochish</span></div>
+</dialog>
+
+
+<div class="c-toasts" id="toasts" role="status" aria-live="polite">
+
+</div>
+<div id="modal-root"></div>
+</body>
+</html>
