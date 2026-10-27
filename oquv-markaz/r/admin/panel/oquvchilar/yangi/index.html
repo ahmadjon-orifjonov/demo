@@ -1,0 +1,235 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Yangi o'quvchi</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/admin/panel/oquvchilar/yangi/" hx-post="/demo/oquv-markaz/r/admin/panel/oquvchilar/yangi/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+    
+<div class="c-form-section">
+  
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_full_name">O&#x27;quvchining F.I.Sh.<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="full_name" autocomplete="off" autofocus="" maxlength="120" class="c-input" required id="id_full_name">
+  
+  
+  
+</div>
+
+  
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_minor" id="id_is_minor" checked><span>Voyaga yetmagan (ota-ona bilan aloqa)</span></label>
+  
+  
+  
+</div>
+
+  <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_guardian_name">Ota-ona (yoki o&#x27;zi) ismi</label>
+    <input type="text" name="guardian_name" maxlength="120" class="c-input" aria-describedby="id_guardian_name-hint" id="id_guardian_name">
+  
+  <div class="c-field__hint" id="id_guardian_name-hint">Bo&#x27;sh qolsa — o&#x27;quvchining o&#x27;zi aloqa uchun</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_guardian_phone">Aloqa telefoni<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="guardian_phone" data-phone="" inputmode="tel" placeholder="+998 90 123 45 67" autocomplete="tel" maxlength="20" class="c-input" aria-describedby="id_guardian_phone-hint" required id="id_guardian_phone">
+  
+  <div class="c-field__hint" id="id_guardian_phone-hint">Xabarlar va kabinetga kirish shu raqamga keladi</div>
+  
+</div>
+</div>
+  <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_relation">Kim bo&#x27;ladi<span class="req" aria-hidden="true">*</span></label>
+    <select name="relation" class="c-select" id="id_relation">
+  <option value="mother" selected>Onasi</option>
+
+  <option value="father">Otasi</option>
+
+  <option value="self">O&#x27;zi</option>
+
+  <option value="other">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_birth_date">Tug&#x27;ilgan sana</label>
+    <input type="date" name="birth_date" class="c-input" id="id_birth_date">
+  
+  
+  
+</div>
+</div>
+</div>
+<div class="c-form-section">
+  <div class="c-form-section__title">Guruh (ixtiyoriy)</div>
+  
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_group">Guruh (ixtiyoriy)</label>
+    <select name="group" class="c-select" id="id_group">
+  <option value="" selected>— keyin tanlayman —</option>
+
+  <option value="1">Ingliz tili · A1 — Du, Ch, Ju · 09:00–10:30</option>
+
+  <option value="2">Ingliz tili · A2 — Du, Ch, Ju · 18:00–19:30</option>
+
+  <option value="3">Ingliz tili · B1 — Se, Pa, Sh · 18:00–19:30</option>
+
+  <option value="4">Ingliz tili · B2 — Du, Ch, Ju · 19:00–20:30</option>
+
+  <option value="6">IELTS tayyorlov · 5.5→6.5 — Du, Ch, Ju · 16:00–18:00</option>
+
+  <option value="5">IELTS tayyorlov · 6.0→7.0 — Se, Pa, Sh · 16:00–18:00</option>
+
+  <option value="7">Bolalar ingliz tili · Kids 1 — Se, Pa, Sh · 14:00–15:00</option>
+
+  <option value="8">Bolalar ingliz tili · Kids 2 — Du, Ch, Ju · 14:00–15:00</option>
+
+  <option value="9">Arab tili · A1 — Du, Ch, Ju · 16:00–17:30</option>
+
+  <option value="10">Turk tili · A1 — Du, Ch, Ju · 19:00–20:30</option>
+
+  <option value="11">Koreys tili (TOPIK) · A1 — Se, Pa, Sh · 18:00–19:30</option>
+
+  <option value="16">Xitoy tili (HSK) · HSK 1 — Se, Pa, Sh · 16:00–17:30</option>
+
+  <option value="12">Nemis tili · A1 — Du, Ch, Ju · 18:00–19:30</option>
+
+  <option value="13">Fransuz tili · A1 — Se, Pa, Sh · 19:00–20:30</option>
+
+  <option value="14">Ispan tili · A1 — Se, Pa, Sh · 19:00–20:30</option>
+
+  <option value="15">Rus tili · A2 — Se, Pa, Sh · 11:00–12:30</option>
+
+  <option value="17">Matematika (OTM) · OTM-1 — Se, Pa, Sh · 16:00–17:30</option>
+
+  <option value="18">Matematika (OTM) · OTM-2 — Du, Ch, Ju · 16:00–17:30</option>
+
+  <option value="19">Fizika · OTM — Du, Ch, Ju · 14:00–15:30</option>
+
+  <option value="20">Kimyo · OTM — Du, Ch, Ju · 14:00–15:30</option>
+
+  <option value="21">Biologiya · OTM — Se, Pa, Sh · 14:00–15:30</option>
+
+  <option value="22">Bolalar matematikasi · Kids — Du, Ch, Ju · 11:00–12:00</option>
+
+  <option value="23">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich — Se, Pa, Sh · 14:00–15:30</option>
+
+  <option value="24">AutoCAD va 3Ds Max · Boshlang&#x27;ich — Du, Ch, Ju · 18:00–19:30</option>
+
+  <option value="29">Grafik dizayn · Boshlang&#x27;ich — Du, Ch, Ju · 14:00–15:30</option>
+
+  <option value="25">Web dasturlash · Boshlang&#x27;ich — Se, Pa, Sh · 18:00–19:30</option>
+
+  <option value="26">Buxgalteriya 1C 8.3 · Kasbiy — Du, Ch, Ju · 11:00–13:00</option>
+
+  <option value="27">Bojxona deklaratsiyasi · Kasbiy — Du, Ch, Ju · 19:00–21:00</option>
+
+  <option value="28">Kadrlar ish yuritishi (HR) · Kasbiy — Se, Pa, Sh · 11:00–13:00</option>
+
+</select>
+  
+  
+  
+</div>
+
+  
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">Holati</legend>
+      <div class="c-seg"><input type="radio" name="status" value="trial" id="id_status_0" required checked><label for="id_status_0">Sinov darsi (bepul)</label><input type="radio" name="status" value="active" id="id_status_1" required><label for="id_status_1">Darhol o&#x27;qiydi (to&#x27;lov hisoblanadi)</label></div>
+    </fieldset>
+  
+  
+  
+</div>
+
+</div>
+<details class="c-form-section more">
+  <summary>Qo'shimcha: filial, manba, o'quvchi telefoni</summary>
+  <div class="stack gap-4">
+    <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_branch">Filial<span class="req" aria-hidden="true">*</span></label>
+    <select name="branch" class="c-select" id="id_branch">
+  <option value="1">Namuna o&#x27;quv markazi</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_source">Qayerdan bildi<span class="req" aria-hidden="true">*</span></label>
+    <select name="source" class="c-select" id="id_source">
+  <option value="site">Sayt</option>
+
+  <option value="telegram">Telegram</option>
+
+  <option value="instagram">Instagram</option>
+
+  <option value="friend" selected>Tanish-bilish</option>
+
+  <option value="walkin">O&#x27;zi keldi</option>
+
+  <option value="banner">Banner/Reklama</option>
+
+  <option value="other">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+</div>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_student_phone">O&#x27;quvchining o&#x27;z telefoni</label>
+    <input type="text" name="student_phone" data-phone="" inputmode="tel" placeholder="+998 90 123 45 67" autocomplete="tel" maxlength="20" class="c-input" id="id_student_phone">
+  
+  
+  
+</div>
+
+  </div>
+</details>
+<div class="c-form-section">
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="consent" required id="id_consent"><span>Shaxsiy ma&#x27;lumotlarni qayta ishlashga rozilik olindi (og&#x27;zaki yoki yozma)<span class="req" aria-hidden="true">*</span></span></label>
+  
+  
+  
+</div>
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Qo'shish</button>
+  </div>
+</form>
+
+</dialog>

@@ -1,0 +1,50 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Xona «3-xona»</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/sozlamalar/xonalar/3/" hx-post="/demo/oquv-markaz/r/owner/panel/sozlamalar/xonalar/3/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    <p class="muted t-13">Sig'im guruh tuzishda maslahat uchun ishlatiladi. Bir xonada bir vaqtda ikki dars bo'lsa — tizim ogohlantiradi.</p>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_branch">Filial<span class="req" aria-hidden="true">*</span></label>
+    <select name="branch" class="c-select" id="id_branch">
+  <option value="1" selected>Namuna o&#x27;quv markazi</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_name">Nomi<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="name" value="3-xona" maxlength="60" class="c-input" aria-describedby="id_name-hint" required id="id_name">
+  
+  <div class="c-field__hint" id="id_name-hint">Masalan: 101 yoki «Ko&#x27;k xona»</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_capacity">Sig&#x27;imi (o&#x27;rin)<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="capacity" value="8" min="1" max="200" class="c-input" required id="id_capacity">
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

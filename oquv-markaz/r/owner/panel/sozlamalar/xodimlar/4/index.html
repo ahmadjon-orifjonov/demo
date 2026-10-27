@@ -1,0 +1,99 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Dilnoza</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/sozlamalar/xodimlar/4/" hx-post="/demo/oquv-markaz/r/owner/panel/sozlamalar/xodimlar/4/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+<p class="muted t-13">Rol, huquq, filial yoki telefon o'zgarsa — xodim barcha qurilmalardan chiqariladi va qayta kiradi.</p>
+
+
+    
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_full_name">F.I.Sh.<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="full_name" value="Dilnoza" maxlength="120" class="c-input" required id="id_full_name">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_phone">Telefon (kirish uchun)<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="phone" value="+998900000010" data-phone="" inputmode="tel" placeholder="+998 90 123 45 67" autocomplete="tel" maxlength="20" class="c-input" required id="id_phone">
+  
+  
+  
+</div>
+</div>
+
+<fieldset class="c-fieldset c-field">
+  <legend class="c-field__label">Rollar<span class="req" aria-hidden="true">*</span></legend>
+  <div class="c-field__hint">Bir nechta rol bo&#x27;lishi mumkin — huquqlar qo&#x27;shiladi.</div>
+  <div class="check-list">
+    <label class="c-check check-list__item"><input type="checkbox" name="roles" value="owner" aria-describedby="-hint" id="id_roles_0"><span class="stack gap-1"><span class="fw-600">Direktor</span><span class="subtle t-12">Markaz egasi yoki direktori. Hamma narsani ko&#x27;radi, qarorlarni tasdiqlaydi, oyni yopadi.</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="roles" value="admin" aria-describedby="-hint" id="id_roles_1"><span class="stack gap-1"><span class="fw-600">Administrator</span><span class="subtle t-12">Lidlar, o&#x27;quvchilar, guruhlar, jadval va davomat. To&#x27;lov/chegirma — bayroq bilan.</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="roles" value="cashier" aria-describedby="-hint" id="id_roles_2"><span class="stack gap-1"><span class="fw-600">Kassir</span><span class="subtle t-12">To&#x27;lov qabul qiladi, chek beradi, kassa kunini ochadi/yopadi, xarajat kiritadi.</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="roles" value="sales" aria-describedby="-hint" id="id_roles_3"><span class="stack gap-1"><span class="fw-600">Sotuv menejeri</span><span class="subtle t-12">Faqat lidlar: qo&#x27;ng&#x27;iroq, sinov darsiga yozish, konversiya. Moliya va guruhlar yopiq.</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="roles" value="teacher" aria-describedby="-hint" id="id_roles_4" checked><span class="stack gap-1"><span class="fw-600">O&#x27;qituvchi</span><span class="subtle t-12">Faqat o&#x27;z guruhlari: jadval, davomat, o&#x27;z maoshi. Ota-onalarga faqat shablon xabar.</span></span></label>
+  </div>
+  
+</fieldset>
+
+<div class="c-form-section">
+  
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="all_branches" id="id_all_branches"><span>Barcha filiallarni ko&#x27;radi</span></label>
+  
+  
+  
+</div>
+
+  
+<fieldset class="c-fieldset c-field">
+  <legend class="c-field__label">Filiallari</legend>
+  
+  <div class="check-list">
+    <label class="c-check check-list__item"><input type="checkbox" name="branches" value="1" id="id_branches_0" checked><span class="stack gap-1"><span class="fw-600">Namuna o&#x27;quv markazi</span></span></label>
+  </div>
+  
+</fieldset>
+
+</div>
+<details class="c-form-section more">
+  <summary>Qo'shimcha huquqlar (bayroqlar)</summary>
+  <div class="stack gap-4">
+    
+<fieldset class="c-fieldset c-field">
+  <legend class="c-field__label">Qo&#x27;shimcha huquqlar (bayroqlar)</legend>
+  <div class="c-field__hint">Xavfli amallar — faqat ishongan xodimga. Direktorda hammasi bor.</div>
+  <div class="check-list">
+    <label class="c-check check-list__item"><input type="checkbox" name="flags" value="take_payment" aria-describedby="-hint" id="id_flags_0"><span class="stack gap-1"><span class="fw-600">To&#x27;lov qabul qila oladi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="discount" aria-describedby="-hint" id="id_flags_1"><span class="stack gap-1"><span class="fw-600">Qo&#x27;lda chegirma bera oladi (limitgacha)</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="reverse" aria-describedby="-hint" id="id_flags_2"><span class="stack gap-1"><span class="fw-600">Storno / qaytarish qila oladi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="cash_day" aria-describedby="-hint" id="id_flags_3"><span class="stack gap-1"><span class="fw-600">Kassa kunini ochadi/yopadi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="backdate_attendance" aria-describedby="-hint" id="id_flags_4"><span class="stack gap-1"><span class="fw-600">O&#x27;tgan davomatni tuzata oladi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="override_conflict" aria-describedby="-hint" id="id_flags_5"><span class="stack gap-1"><span class="fw-600">Jadval ziddiyatini chetlab o&#x27;ta oladi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="see_contacts" aria-describedby="-hint" id="id_flags_6"><span class="stack gap-1"><span class="fw-600">Telefon raqamlarni ko&#x27;radi</span></span></label><label class="c-check check-list__item"><input type="checkbox" name="flags" value="website" aria-describedby="-hint" id="id_flags_7"><span class="stack gap-1"><span class="fw-600">Sayt kontentini tahrirlaydi</span></span></label>
+  </div>
+  
+</fieldset>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_discount_limit_pct">Qo&#x27;lda chegirma limiti, %<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="discount_limit_pct" value="10" min="0" max="100" class="c-input" aria-describedby="id_discount_limit_pct-hint" required id="id_discount_limit_pct">
+  
+  <div class="c-field__hint" id="id_discount_limit_pct-hint">Undan katta chegirma direktor tasdig&#x27;iga ketadi.</div>
+  
+</div>
+
+  </div>
+</details>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

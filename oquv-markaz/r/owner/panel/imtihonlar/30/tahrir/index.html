@@ -1,0 +1,108 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Testni tahrirlash</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/imtihonlar/30/tahrir/" hx-post="/demo/oquv-markaz/r/owner/panel/imtihonlar/30/tahrir/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+    
+  
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_title">Nomi<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="title" value="Oraliq nazorat №2" placeholder="Masalan: Unit 5 test yoki Mock IELTS #2" autocomplete="off" maxlength="120" class="c-input" required id="id_title">
+  
+  
+  
+</div>
+
+  <div class="c-grid-2">
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_date">Sana<span class="req" aria-hidden="true">*</span></label>
+    <input type="date" name="date" value="2026-10-16" class="c-input" required id="id_date">
+  
+  
+  
+</div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_kind">Turi<span class="req" aria-hidden="true">*</span></label>
+    <select name="kind" class="c-select" id="id_kind">
+  <option value="midterm" selected>Oraliq nazorat</option>
+
+  <option value="final">Yakuniy imtihon</option>
+
+  <option value="mock">Mock (IELTS, DTM, SAT)</option>
+
+  <option value="homework">Uy vazifasi</option>
+
+</select>
+  
+  
+  
+</div>
+
+  </div>
+  
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">Baholash</legend>
+      <div class="c-seg"><input type="radio" name="scale" value="points" id="id_scale_0" required checked><label for="id_scale_0">Ball</label><input type="radio" name="scale" value="band" id="id_scale_1" required><label for="id_scale_1">IELTS band (0–9)</label></div>
+    </fieldset>
+  
+  
+  
+</div>
+
+  <details class="more" open>
+    <summary>Ball, o'tish bali va og'irlik</summary>
+    <div class="stack gap-3">
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_max_score">Eng yuqori ball</label>
+    <input type="number" name="max_score" value="100.0" inputmode="decimal" step="0.1" min="1" max="1000" class="c-input" aria-describedby="id_max_score-hint" id="id_max_score">
+  
+  <div class="c-field__hint" id="id_max_score-hint">Ball bo&#x27;lsa — masalan 100. IELTS band&#x27;da avtomatik 9.</div>
+  
+</div>
+
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_pass_score">O&#x27;tish bali (ixtiyoriy)</label>
+    <input type="number" name="pass_score" value="60.0" inputmode="decimal" step="0.1" min="0" class="c-input" aria-describedby="id_pass_score-hint" id="id_pass_score">
+  
+  <div class="c-field__hint" id="id_pass_score-hint">Yozilsa — natijada «o&#x27;tdi / o&#x27;tmadi» ko&#x27;rinadi.</div>
+  
+</div>
+
+      
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_weight">Og&#x27;irlik (ixtiyoriy)<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="weight" value="1" inputmode="numeric" min="1" max="10" class="c-input" aria-describedby="id_weight-hint" required id="id_weight">
+  
+  <div class="c-field__hint" id="id_weight-hint">O&#x27;rtachada necha barobar hisoblanadi. Odatda 1; yakuniy imtihon uchun 2 qilsa bo&#x27;ladi.</div>
+  
+</div>
+
+    </div>
+  </details>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

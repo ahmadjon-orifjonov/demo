@@ -1,0 +1,55 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Shablon: Dars bekor qilindi</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/xabarlar/shablonlar/lesson_cancelled/" hx-post="/demo/oquv-markaz/r/owner/panel/xabarlar/shablonlar/lesson_cancelled/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+<div class="fin-box"><span class="subtle t-12">Hozir ota-ona shunday ko'radi:</span><p class="feed-text">Namuna o&#x27;quv markazi: [Sana] kungi [Dars vaqti] dagi «[Guruh]» darsi bekor qilindi. Shu dars puli balansga qaytarildi.</p></div>
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_uz">Matn (o&#x27;zbekcha)<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="text_uz" cols="40" rows="4" maxlength="700" class="c-textarea" required id="id_text_uz">
+{markaz}: {sana} kungi {vaqt} dagi «{guruh}» darsi bekor qilindi. Shu dars puli balansga qaytarildi.</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_text_ru">Matn (ruscha, ixtiyoriy)</label>
+    <textarea name="text_ru" cols="40" rows="4" maxlength="700" class="c-textarea" id="id_text_ru">
+</textarea>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_active" id="id_is_active" checked><span>Yoqilgan (o&#x27;chirilsa — bu xabar umuman yuborilmaydi)</span></label>
+  
+  
+  
+</div>
+
+    
+<div class="stack gap-2">
+  <span class="c-field__label">Ishlatsa bo'ladigan o'rinbosarlar</span>
+  <dl class="c-dl t-13"><dt><code>{markaz}</code></dt><dd>Markaz nomi (brend faylidan)</dd><dt><code>{ism}</code></dt><dd>O&#x27;quvchi ismi</dd><dt><code>{guruh}</code></dt><dd>Guruh</dd><dt><code>{sana}</code></dt><dd>Sana</dd><dt><code>{vaqt}</code></dt><dd>Dars vaqti</dd></dl>
+</div>
+
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

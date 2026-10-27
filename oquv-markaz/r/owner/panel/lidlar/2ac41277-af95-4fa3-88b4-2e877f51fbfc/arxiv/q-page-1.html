@@ -1,0 +1,55 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Arxivga o'tkazish — Malika Karimova</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/lidlar/2ac41277-af95-4fa3-88b4-2e877f51fbfc/arxiv/q-page-1.html" hx-post="/demo/oquv-markaz/r/owner/panel/lidlar/2ac41277-af95-4fa3-88b4-2e877f51fbfc/arxiv/q-page-1.html" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    <p class="muted">Lid o'chmaydi — «Arxiv» tabida saqlanadi va istalgan vaqt qayta ochiladi. Sabab hisobotda ko'rinadi: markaz nega lid yo'qotayotganini bilish uchun.</p>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reason">Nega arxivga?<span class="req" aria-hidden="true">*</span></label>
+    <select name="reason" class="c-select" required id="id_reason">
+  <option value="" selected>— tanlang —</option>
+
+  <option value="no_answer">Javob bermadi</option>
+
+  <option value="price">Narx qimmat</option>
+
+  <option value="time">Vaqt to&#x27;g&#x27;ri kelmadi</option>
+
+  <option value="other_center">Boshqa markazni tanladi</option>
+
+  <option value="not_now">Hozir emas</option>
+
+  <option value="wrong">Noto&#x27;g&#x27;ri raqam / spam</option>
+
+  <option value="other">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_comment">Izoh (ixtiyoriy)</label>
+    <input type="text" name="comment" maxlength="300" class="c-input" id="id_comment">
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--danger">Arxivga</button>
+  </div>
+</form>
+
+</dialog>

@@ -1,0 +1,23 @@
+/* =====================================================================
+   IP-TELEFONIYA (telephony) — faqat semantik tokenlar. Prefiks: .tel-
+   ===================================================================== */
+
+/* Qo'ng'iroq tugmasi (lid/o'quvchi kartasi, jurnal) — qator ichida */
+.tel-call{display:inline-flex;margin:0}
+.tel-call .c-btn{gap:var(--s-1)}
+@media (max-width:600px){.tel-call__label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+
+/* Jurnal */
+.tel-dir{display:inline-flex;align-items:center;gap:var(--s-1);color:var(--text-muted)}
+.tel-dir--in{color:var(--success-text)}
+.tel-dir--out{color:var(--brand-text)}
+.tel-actions{justify-content:flex-end}
+@media (max-width:900px){.tel-actions{justify-content:flex-start}}
+
+/* Ichki raqamlar */
+.tel-ext{flex-wrap:wrap}
+.tel-ext__form{margin-left:auto}
+.tel-ext__input{width:calc(var(--control-md) * 2.5)}
+.tel-hook{display:block;padding:var(--s-2) var(--s-3);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);
+  font-family:var(--font-mono);font-size:var(--fs-13);overflow-wrap:anywhere}
+@media (max-width:600px){.tel-ext__form{margin-left:0;width:100%}.tel-ext__input{flex:1}}

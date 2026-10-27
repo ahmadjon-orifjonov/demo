@@ -1,0 +1,336 @@
+/* =====================================================================
+   O'QUV QISMI (guruhlar, dars/davomat, jadval, jurnal). Faqat tokenlar.
+   ===================================================================== */
+
+/* ---------- Guruhlar ro'yxati: band o'rinlar ---------- */
+.load{display:flex;flex-direction:column;gap:var(--s-1);min-width:96px}
+@media (max-width:700px){.load{min-width:0;width:50%;align-items:flex-end}}
+
+/* ---------- Guruh kartasi ---------- */
+.group-facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-4);padding:var(--s-3) var(--s-5);
+  border-top:1px solid var(--border);background:var(--surface-2);border-radius:0 0 var(--r-lg) var(--r-lg)}
+.group-facts>div{display:flex;flex-direction:column;gap:var(--s-05);min-width:0}
+@media (max-width:1100px){.group-facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.group-facts{grid-template-columns:1fr 1fr;padding:var(--s-3) var(--s-4)}}
+.group-facts>div>span{overflow-wrap:break-word}
+.group-facts .num{white-space:normal}  /* jadval «Du, Ch, Ju · 09:00–10:30» telefonda karta chetiga tegmasin */
+.row-menu .c-menu{top:calc(100% + var(--s-1));right:0}
+.lessons-note{padding-top:var(--s-3);padding-bottom:var(--s-3);border-bottom:1px solid var(--border)}
+.c-table tr.is-muted td{color:var(--text-subtle)}
+.lesson-actions{justify-content:flex-end}
+.month-switch{align-items:center}
+.month-switch__label{min-width:120px;text-align:center;white-space:nowrap}
+
+/* ---------- Davomat jurnali (oylik panjara) ---------- */
+.journal{font-size:var(--fs-13)}
+.journal th,.journal td{text-align:center;white-space:nowrap}
+.journal .journal__name{text-align:left;position:sticky;left:0;z-index:1;background:var(--surface);min-width:160px;max-width:220px;
+  overflow:hidden;text-overflow:ellipsis;font-weight:var(--fw-semibold);font-size:var(--fs-13);text-transform:none;letter-spacing:0;color:var(--text)}
+.journal thead .journal__name{background:var(--surface-2);color:var(--text-subtle);font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.04em}
+.journal .journal__day{padding:var(--s-2) var(--s-1);min-width:44px}
+.journal .journal__day.is-today{color:var(--brand-text);box-shadow:inset 0 -2px 0 var(--brand)}
+.journal .journal__cell{padding:var(--s-1)}
+.jmark{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:24px;padding:0 var(--s-1);border-radius:var(--r-sm);font-weight:var(--fw-bold)}
+.jmark.c-badge{border-radius:var(--r-sm)}
+.jmark--none{color:var(--warning-text);background:var(--warning-soft)}
+.jmark--out{color:var(--text-subtle)}
+.print-only{display:none}
+@media (max-width:600px){.journal .journal__name{min-width:120px;max-width:140px}}
+
+/* ---------- Guruh formasi ---------- */
+.c-seg--days{grid-template-columns:repeat(7,minmax(0,1fr))}
+.c-seg--days label{min-height:var(--control-md);padding:0 var(--s-1)}
+.conflict-list{margin:0;padding-left:var(--s-5);display:flex;flex-direction:column;gap:var(--s-1)}
+.group-form .sticky-foot{border-radius:0 0 var(--r-lg) var(--r-lg)}
+
+/* ---------- O'quvchi tanlash (modal) ---------- */
+.pick-list{display:flex;flex-direction:column;gap:var(--s-1);max-height:280px;overflow-y:auto;padding:var(--s-05)}
+.pick-list input{position:absolute;opacity:0;pointer-events:none}
+.pick-list__item{display:flex;align-items:center;gap:var(--s-3);min-height:var(--control-lg);padding:var(--s-2) var(--s-3);border:1px solid var(--border);
+  border-radius:var(--r-md);background:var(--surface);cursor:pointer}
+.pick-list__item:hover{border-color:var(--border-hover)}
+.pick-list input:checked+.pick-list__item{border-color:var(--brand);background:var(--brand-soft);box-shadow:0 0 0 1px var(--brand) inset}
+.pick-list input:focus-visible+.pick-list__item{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+/* ---------- Dars sahifasi (davomat) ---------- */
+.lesson-head__title{font-size:var(--fs-20)}
+.att-form{gap:var(--s-4)}
+.att-hist{display:inline-flex;gap:var(--s-05)}
+.att-hist__i{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:var(--r-sm);
+  font-size:var(--fs-12);font-weight:var(--fw-bold);background:var(--bg-subtle);color:var(--text-subtle)}
+.att-hist__i--present{background:var(--st-active-bg);color:var(--st-active)}
+.att-hist__i--absent{background:var(--st-debt-bg);color:var(--st-debt)}
+.att-hist__i--excused{background:var(--warning-soft);color:var(--warning-text)}
+.att-foot{align-items:center;border-radius:var(--r-lg);box-shadow:var(--sh-md)}
+.att-foot__count{margin-right:auto}
+@media (max-width:560px){
+  .att-list .c-att{flex-wrap:wrap;padding:var(--s-3) var(--s-4)}
+  .att-list .c-att__name{flex-basis:100%}
+  .att-list .c-att__opts{width:100%}
+  .att-list .c-att__opts label{flex:1;min-width:0;height:var(--control-lg)}
+  .att-foot{flex-wrap:wrap;border-radius:0}
+  .att-foot__count{width:100%;text-align:center;margin:0}
+}
+
+/* ---------- Jadval (K10): yo'nalish ranglari, holatlar, xulosa, kun ko'rinishi ---------- */
+.cat-0{--c:var(--cat-0);--cb:var(--cat-0-bg)} .cat-1{--c:var(--cat-1);--cb:var(--cat-1-bg)} .cat-2{--c:var(--cat-2);--cb:var(--cat-2-bg)}
+.cat-3{--c:var(--cat-3);--cb:var(--cat-3-bg)} .cat-4{--c:var(--cat-4);--cb:var(--cat-4-bg)} .cat-5{--c:var(--cat-5);--cb:var(--cat-5-bg)}
+.cat-6{--c:var(--cat-6);--cb:var(--cat-6-bg)} .cat-7{--c:var(--cat-7);--cb:var(--cat-7-bg)} .cat-8{--c:var(--cat-8);--cb:var(--cat-8-bg)}
+
+/* sarlavha: ko'rinish almashtirgich + hafta + chop etish */
+.sched-actions{align-items:center}
+.week-nav{display:flex;gap:var(--s-2)}
+.sched-v{display:inline-flex;gap:var(--s-05);padding:3px;background:var(--bg-subtle);border-radius:var(--r-md)}
+.sched-v__btn{display:inline-flex;align-items:center;gap:var(--s-1);min-height:34px;padding:0 var(--s-3);border-radius:var(--r-sm);font-size:var(--fs-14);
+  font-weight:var(--fw-semibold);color:var(--text-muted);text-decoration:none;transition:background var(--dur-1) var(--ease)}
+.sched-v__btn:hover{color:var(--text);text-decoration:none}
+.sched-v__btn[aria-current="page"]{background:var(--surface);color:var(--text);box-shadow:var(--sh-xs)}
+
+/* xulosa */
+.sched-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:var(--s-3);margin-bottom:var(--s-4)}
+.sched-sum__i{display:flex;flex-direction:column;gap:var(--s-1);min-width:0;padding:var(--s-3) var(--s-4);background:var(--surface);
+  border:1px solid var(--border-card);border-radius:var(--r-lg);box-shadow:var(--sh-sm)}
+.sched-sum__k{display:flex;align-items:center;gap:var(--s-1);font-size:var(--fs-13);font-weight:var(--fw-medium);color:var(--text-muted)}
+.sched-sum__v{font-family:var(--font-display);font-size:var(--fs-22);font-weight:800;line-height:var(--lh-tight);white-space:nowrap}
+.sched-sum__s{display:block;font-size:var(--fs-12);color:var(--text-subtle);line-height:var(--lh-tight)}
+.sched-sum__bar{height:5px;margin:var(--s-05) 0}
+.sched-sum__s .live-dot{margin-right:var(--s-1)}
+.sched-sum__i.is-live{border-color:var(--success-border)}
+.sched-sum__i.is-warn{border-color:var(--warning-border)} .sched-sum__i.is-warn .sched-sum__v{color:var(--warning-text)}
+.sched-sum__i.is-danger{border-color:var(--danger-border)} .sched-sum__i.is-danger .sched-sum__v{color:var(--danger-text)}
+
+/* legenda */
+.sched-legend{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-2) var(--s-4);margin:var(--s-1) 0 var(--s-3)}
+.sched-legend__cats{display:flex;flex-wrap:wrap;gap:var(--s-2)}
+.sched-chip{display:inline-flex;align-items:center;gap:var(--s-2);min-height:32px;padding:0 var(--s-3);border:1px solid var(--border-card);border-radius:var(--r-full);
+  background:var(--surface);color:var(--text);font:inherit;font-size:var(--fs-13);font-weight:var(--fw-medium);cursor:pointer;transition:background var(--dur-1) var(--ease)}
+.sched-chip:hover{border-color:var(--c)}
+.sched-chip__sw{width:10px;height:10px;border-radius:3px;background:var(--c);flex:none}
+.sched-chip[aria-pressed="true"]{background:var(--cb);border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.sched-legend__st{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-1);margin:0}
+.sched-legend__it{display:inline-flex;align-items:center;margin-left:var(--s-2)}
+.sched-legend__it:first-child{margin-left:0}
+.sched-legend__it .icon{width:15px;height:15px}
+
+/* dars kartasi (hafta va kun ko'rinishi) */
+.c-cal__ev[data-cat]{display:flex;flex-direction:column;gap:1px;padding:var(--s-1) var(--s-2) var(--s-1) 9px;background:var(--cb);color:var(--text);
+  border-left:4px solid var(--c);border-radius:var(--r-sm);line-height:var(--lh-tight);min-width:0;transition:background var(--dur-2) var(--ease),opacity var(--dur-2) var(--ease),transform var(--dur-2) var(--ease),box-shadow var(--dur-2)}
+a.c-cal__ev[data-cat]:hover{background:color-mix(in srgb,var(--c) 20%,var(--surface));text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-sm);z-index:2}
+a.c-cal__ev[data-cat]:focus-visible{outline:2px solid var(--focus-ring);outline-offset:1px}
+.cal-ev__top{display:flex;align-items:center;justify-content:space-between;gap:var(--s-1);font-size:var(--fs-12);color:var(--text-muted)}
+.cal-ev__time{font-weight:var(--fw-semibold)}
+.cal-ev__name{font-size:var(--fs-13);font-weight:var(--fw-bold);color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-ev__meta{font-size:var(--fs-12);color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-ev__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--s-1);margin-top:1px;font-size:var(--fs-12);color:var(--text-muted)}
+.cal-ev__load{display:inline-flex;align-items:center;gap:3px}
+.cal-ev__load .icon{width:13px;height:13px}
+.cal-ev__load.is-full{color:var(--warning-text);font-weight:var(--fw-semibold)}
+.cal-ev__st{display:inline-flex;flex:none}
+.cal-ev__st .icon{width:15px;height:15px}
+.cal-ev__st--held{color:var(--success-text)} .cal-ev__st--missed{color:var(--warning-text)}
+.cal-ev__st--conflict{color:var(--danger-text)} .cal-ev__st--cancelled{color:var(--text-subtle)}
+.cal-ev__live{display:inline-flex;align-items:center;gap:var(--s-1);font-weight:var(--fw-bold);color:var(--success-text)}
+.cal-ev__off{font-weight:var(--fw-semibold);color:var(--text-subtle)}
+.c-cal__ev.is-held{opacity:.8} .c-cal__ev.is-held:hover{opacity:1}
+.c-cal__ev.is-live{box-shadow:0 0 0 2px var(--success),var(--sh-sm)}
+.c-cal__ev[data-cat].c-cal__ev--conflict{box-shadow:inset 0 0 0 2px var(--danger);border-left-color:var(--danger)}
+.c-cal__ev[data-cat].c-cal__ev--cancelled{background:var(--bg-subtle);border-left-color:var(--border-strong);color:var(--text-subtle);text-decoration:none}
+.c-cal__ev--cancelled .cal-ev__name,.c-cal__ev--cancelled .cal-ev__time{text-decoration:line-through;color:var(--text-subtle)}
+.c-cal__ev.is-dim,.day-ev.is-dim{opacity:.2}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--success);flex:none;animation:sched-pulse 1.8s var(--ease) infinite}
+@keyframes sched-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--success) 60%,transparent)}70%,100%{box-shadow:0 0 0 6px transparent}}
+@media (prefers-reduced-motion:reduce){.live-dot,.day-ev__live::before{animation:none}}
+
+/* hafta panjarasi */
+.c-cal--res{grid-template-columns:168px repeat(var(--cols,6),minmax(148px,1fr))}
+.c-cal--d6{--cols:6} .c-cal--d7{--cols:7}
+.c-cal__corner,.c-cal__res{position:sticky;left:0;z-index:2;background:var(--surface)}
+.c-cal--res .c-cal__corner{z-index:3;background:var(--surface-2);justify-content:flex-end;align-items:flex-start}
+.c-cal__res{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-05);text-align:left;padding:var(--s-3);font-size:var(--fs-13);color:var(--text)}
+.cal-res__n{font-size:var(--fs-12);margin-top:auto}
+.c-cal--res .c-cal__h{display:flex;flex-direction:column;gap:var(--s-05);padding:var(--s-2) var(--s-3)}
+.cal-h__day{font-size:var(--fs-13);font-weight:var(--fw-semibold);color:var(--text)}
+.cal-h__sub{display:flex;align-items:center;gap:var(--s-1);font-size:var(--fs-12);font-weight:var(--fw-medium);color:var(--text-subtle)}
+.cal-h__sub .icon{width:13px;height:13px}
+.cal-h__today{display:inline-flex;align-items:center;padding:0 var(--s-2);border-radius:var(--r-full);background:var(--brand);color:var(--brand-contrast);
+  font-size:var(--fs-12);font-weight:var(--fw-bold);line-height:20px;vertical-align:1px}
+.c-cal__h.is-today{background:var(--brand-soft);box-shadow:inset 0 -3px 0 var(--brand)}
+.c-cal__h.is-today .cal-h__day{color:var(--brand-text)}
+.c-cal__c{min-height:64px;padding:var(--s-2) 6px;gap:6px}
+.c-cal__c.is-today{background:color-mix(in srgb,var(--brand-soft) 65%,transparent);box-shadow:inset 1px 0 0 var(--brand-border),inset -1px 0 0 var(--brand-border)}
+.c-cal__h.is-holiday .cal-h__sub{color:var(--warning-text)}
+.c-cal__c.is-holiday{background:repeating-linear-gradient(135deg,var(--bg-subtle) 0 6px,transparent 6px 14px)}
+.cal-c__hol{padding:var(--s-2);font-size:var(--fs-12);font-weight:var(--fw-semibold);color:var(--text-muted);text-align:center}
+.sched-days{margin-bottom:var(--s-3)}
+.sched-by .icon{margin-right:var(--s-05)}
+.day-tab{flex-direction:column;gap:0;min-width:48px;justify-content:center;line-height:var(--lh-tight);padding:var(--s-1) var(--s-2)}
+.day-tab.is-today>span:first-child{color:var(--brand-text);font-weight:var(--fw-bold)}
+.day-tab.is-holiday{color:var(--text-subtle)}
+.sched-days--phone{display:none}
+.sched-day{display:none}
+
+/* kun ko'rinishi: vaqt o'qi (1 qator = 15 daqiqa) */
+.dv{--slot:18px;display:flex;align-items:stretch;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);overflow-x:auto}
+.dv:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.dv__gut{flex:0 0 62px;position:sticky;left:0;z-index:4;background:var(--surface);border-right:1px solid var(--border)}
+.dv__col{flex:1 0 176px;min-width:176px}
+.dv__col + .dv__col{border-left:1px solid var(--border)}
+.dv__head{display:flex;flex-direction:column;justify-content:center;gap:var(--s-05);height:52px;padding:0 var(--s-3);background:var(--surface-2);
+  border-bottom:1px solid var(--border);font-size:var(--fs-13);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dv__head--gut{align-items:center;color:var(--text-subtle)}
+.dv__body{display:grid;grid-auto-rows:var(--slot);grid-template-columns:minmax(0,1fr);column-gap:var(--s-1);padding:0 var(--s-1);
+  background-image:repeating-linear-gradient(to bottom,var(--border) 0 1px,transparent 1px calc(var(--slot) * 4))}
+.dv__gut .dv__body{padding:0}
+.dv__body--l2{grid-template-columns:repeat(2,minmax(0,1fr))} .dv__body--l3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.dv .lane-1{grid-column:1} .dv .lane-2{grid-column:2} .dv .lane-3{grid-column:3}
+.dv-ev{margin:2px 0 1px;overflow:hidden;min-height:0;position:relative;z-index:2}
+.dv-ev.gl-2 .cal-ev__meta,.dv-ev.gl-2 .cal-ev__foot,.dv-ev.gl-3 .cal-ev__foot{display:none}
+.dv__hour{grid-column:1;align-self:start;padding:3px var(--s-2) 0 0;text-align:right;font-size:var(--fs-12);color:var(--text-subtle)}
+.dv__now{grid-column:1/-1;align-self:start;height:2px;margin-top:-1px;background:var(--now-line);position:relative;z-index:1;pointer-events:none;
+  transform:translateY(var(--off,0px))}
+.dv__now::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--now-line)}
+.dv__nowlbl{grid-column:1;align-self:start;justify-self:end;z-index:3;margin:-10px var(--s-1) 0 0;padding:0 6px;border-radius:var(--r-full);background:var(--now-line);
+  color:var(--text-on-solid);font-size:var(--fs-12);font-weight:var(--fw-bold);line-height:20px;transform:translateY(var(--off,0px))}
+.dv__end{grid-column:1;visibility:hidden}
+.dv__free{grid-column:1/-1;align-self:start;margin-top:var(--s-3);text-align:center;font-size:var(--fs-12);color:var(--text-subtle)}
+.dv-key-now{display:inline-block;width:18px;height:2px;background:var(--now-line);vertical-align:3px;margin-right:var(--s-1)}
+.sched-hol{display:flex;align-items:center;gap:var(--s-2);margin:0 0 var(--s-3);padding:var(--s-3) var(--s-4);border-radius:var(--r-md);
+  background:var(--warning-soft);color:var(--warning-text);font-weight:var(--fw-semibold);font-size:var(--fs-14)}
+/* joylashuv klasslari (server hisoblaydi: academics.views._day_grid) — inline style yo'q (CSP) */
+.dv .gs-1{grid-row-start:1} .dv .gs-2{grid-row-start:2} .dv .gs-3{grid-row-start:3} .dv .gs-4{grid-row-start:4} .dv .gs-5{grid-row-start:5} .dv .gs-6{grid-row-start:6}
+.dv .gs-7{grid-row-start:7} .dv .gs-8{grid-row-start:8} .dv .gs-9{grid-row-start:9} .dv .gs-10{grid-row-start:10} .dv .gs-11{grid-row-start:11} .dv
+.gs-12{grid-row-start:12} .dv .gs-13{grid-row-start:13} .dv .gs-14{grid-row-start:14} .dv .gs-15{grid-row-start:15} .dv .gs-16{grid-row-start:16} .dv
+.gs-17{grid-row-start:17} .dv .gs-18{grid-row-start:18} .dv .gs-19{grid-row-start:19} .dv .gs-20{grid-row-start:20} .dv .gs-21{grid-row-start:21} .dv
+.gs-22{grid-row-start:22} .dv .gs-23{grid-row-start:23} .dv .gs-24{grid-row-start:24} .dv .gs-25{grid-row-start:25} .dv .gs-26{grid-row-start:26} .dv
+.gs-27{grid-row-start:27} .dv .gs-28{grid-row-start:28} .dv .gs-29{grid-row-start:29} .dv .gs-30{grid-row-start:30} .dv .gs-31{grid-row-start:31} .dv
+.gs-32{grid-row-start:32} .dv .gs-33{grid-row-start:33} .dv .gs-34{grid-row-start:34} .dv .gs-35{grid-row-start:35} .dv .gs-36{grid-row-start:36} .dv
+.gs-37{grid-row-start:37} .dv .gs-38{grid-row-start:38} .dv .gs-39{grid-row-start:39} .dv .gs-40{grid-row-start:40} .dv .gs-41{grid-row-start:41} .dv
+.gs-42{grid-row-start:42} .dv .gs-43{grid-row-start:43} .dv .gs-44{grid-row-start:44} .dv .gs-45{grid-row-start:45} .dv .gs-46{grid-row-start:46} .dv
+.gs-47{grid-row-start:47} .dv .gs-48{grid-row-start:48} .dv .gs-49{grid-row-start:49} .dv .gs-50{grid-row-start:50} .dv .gs-51{grid-row-start:51} .dv
+.gs-52{grid-row-start:52} .dv .gs-53{grid-row-start:53} .dv .gs-54{grid-row-start:54} .dv .gs-55{grid-row-start:55} .dv .gs-56{grid-row-start:56} .dv
+.gs-57{grid-row-start:57} .dv .gs-58{grid-row-start:58} .dv .gs-59{grid-row-start:59} .dv .gs-60{grid-row-start:60} .dv .gs-61{grid-row-start:61} .dv
+.gs-62{grid-row-start:62} .dv .gs-63{grid-row-start:63} .dv .gs-64{grid-row-start:64}
+.dv .gl-1{grid-row-end:span 1} .dv .gl-2{grid-row-end:span 2} .dv .gl-3{grid-row-end:span 3} .dv .gl-4{grid-row-end:span 4} .dv .gl-5{grid-row-end:span 5} .dv
+.gl-6{grid-row-end:span 6} .dv .gl-7{grid-row-end:span 7} .dv .gl-8{grid-row-end:span 8} .dv .gl-9{grid-row-end:span 9} .dv .gl-10{grid-row-end:span 10} .dv
+.gl-11{grid-row-end:span 11} .dv .gl-12{grid-row-end:span 12} .dv .gl-13{grid-row-end:span 13} .dv .gl-14{grid-row-end:span 14} .dv .gl-15{grid-row-end:span 15} .dv
+.gl-16{grid-row-end:span 16}
+/* telefon: kun ro'yxati */
+.day-ev{box-shadow:inset 4px 0 0 var(--c)}
+.day-ev--conflict{box-shadow:inset 4px 0 0 var(--danger)}
+.day-ev.is-live{background:var(--success-soft)}
+.day-ev--cancelled .c-list__title{text-decoration:line-through;color:var(--text-subtle)}
+.day-ev__time{display:flex;flex-direction:column;align-items:flex-start;min-width:44px;line-height:var(--lh-tight)}
+.day-ev__meta2{display:flex;align-items:center;gap:var(--s-1)}
+.day-ev__load{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.day-ev__meta2 .icon{width:13px;height:13px;display:inline-block}
+.day-ev__held::before{display:none}
+.day-ev__live::before{animation:sched-pulse 1.8s var(--ease) infinite}
+.day-ev .c-badge{flex:none;gap:var(--s-1)}
+.day-ev .c-badge .icon{width:13px;height:13px}
+@media (max-width:900px){  /* planshet ham: 7 ustunli hafta 768px ga sig'maydi — kunlik ro'yxat */
+  .sched-week,.sched-dayview,.sched-v,.sched-print,.sched-legend__st{display:none}
+  .sched-days--phone{display:flex}
+  .sched-day{display:flex;flex-direction:column;gap:var(--s-3)}
+  .day-tab{flex:1}
+  .sched-actions .week-nav{flex:1;flex-wrap:nowrap}
+  .sched-actions .week-nav>.c-btn:not(.c-btn--icon){flex:1}
+  .sched-sum{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-2)}
+  .sched-sum__i--minor,.sched-legend{display:none}
+  .sched-sum__i:first-child:nth-last-child(odd){grid-column:1/-1}
+  .sched-sum__i{padding:var(--s-2) var(--s-3)}
+  .sched-sum__v{font-size:var(--fs-18)}
+  .sched-chip{min-height:36px}
+}
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  .sched-sum,.sched-days,.sched-day,.sched-toolbar,.no-print{display:none!important}
+  .sched-chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sched-week,.sched-dayview{display:block!important}
+  .c-cal,.dv{overflow:visible;border-color:var(--border-strong)}
+  .c-cal--res{grid-template-columns:96px repeat(var(--cols,6),minmax(0,1fr))}
+  .c-cal__corner,.c-cal__res,.dv__gut{position:static}
+  .c-cal__ev[data-cat]{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .c-cal__h.is-today,.c-cal__c.is-today{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .c-cal__ev.is-held,.c-cal__ev.is-dim{opacity:1}
+  .live-dot{animation:none}
+  .dv__col{min-width:0;flex-basis:0}
+}
+
+/* ---------- Chop etish (jurnal) ---------- */
+@media print{
+  .page-group .c-tabs,.page-group .page-head__actions,.page-group .crumbs,.group-body>aside,.month-switch,.row-menu{display:none!important}
+  .group-body{display:block}
+  .print-only{display:inline}
+  .journal-wrap{overflow:visible}
+  .journal .journal__name{position:static}
+  .c-card{box-shadow:none;border-color:var(--border-strong)}
+  .jmark.c-badge{border:1px solid currentColor}
+}
+
+/* ---------- Jadval: sudrab ko'chirish (K5) ---------- */
+.c-cal__ev.is-movable{cursor:grab}
+.c-cal__ev.is-dragging{opacity:.5;cursor:grabbing}
+.c-cal.is-dnd-active .c-cal__c.is-drop-ok{box-shadow:inset 0 0 0 1px var(--brand-border)}
+.c-cal.is-dnd-active .c-cal__c.is-over{background:var(--brand-soft);box-shadow:inset 0 0 0 2px var(--brand)}
+.sched-dnd-hint{margin-top:var(--s-2)}
+.sched-dnd-hint .icon{vertical-align:-2px;margin-right:var(--s-1)}
+
+/* =====================================================================
+   K5: «Birinchi kun» kartasi, «Atamalar» sahifasi, internet yo'qligi banneri.
+   (Shu yerda, chunki layouts/base.html faqat ro'yxatdagi app_*.css larni ulaydi.)
+   ===================================================================== */
+.onb__steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.onb__step{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-5);border-top:1px solid var(--border);min-height:var(--control-lg)}
+.onb__mark{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--r-full);
+  background:var(--bg-subtle);color:var(--text-subtle);font-weight:var(--fw-bold);font-size:var(--fs-13)}
+.onb__step.is-done .onb__mark{background:var(--success-soft);color:var(--success-text)}
+.onb__step.is-done .onb__title{color:var(--text-subtle);text-decoration:line-through}
+.onb__main{display:flex;flex-direction:column;gap:var(--s-05);min-width:0;flex:1}
+.onb__title{font-weight:var(--fw-semibold);color:var(--text)}
+.onb__actions{display:flex;gap:var(--s-2);align-items:center;flex:none}
+.onb__head-actions{display:flex;gap:var(--s-2);align-items:center;flex-wrap:wrap}
+.onb__progress{width:120px}
+.onb .c-card__head{flex-wrap:wrap}
+.onb__actions form,.onb__head-actions form{display:contents}
+@media (max-width:600px){
+  .onb .c-btn--sm{min-height:var(--control-md)}
+  .onb__step{flex-wrap:wrap;padding:var(--s-3) var(--s-4)}
+  .onb__actions{width:100%;padding-left:calc(28px + var(--s-3))}
+  .onb__actions .c-btn{flex:1}
+  .onb__progress{width:80px}
+}
+.gloss{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:0}
+.gloss dt,.gloss dd{margin:0;padding:var(--s-3) var(--s-5);border-top:1px solid var(--border)}
+.gloss dt{font-weight:var(--fw-semibold);color:var(--text)}
+.gloss dd{color:var(--text-muted)}
+.gloss dt:first-of-type,.gloss dt:first-of-type+dd{border-top:0}
+@media (max-width:600px){
+  .gloss{grid-template-columns:1fr}
+  .gloss dt{padding-bottom:0}
+  .gloss dd{border-top:0;padding-top:var(--s-1)}
+}
+.net-banner{position:fixed;top:0;left:0;right:0;z-index:var(--z-palette);box-shadow:var(--sh-md);display:flex;align-items:center;gap:var(--s-2);justify-content:center;flex-wrap:wrap;
+  padding:var(--s-2) var(--s-4);background:var(--danger-solid);color:var(--text-on-solid);font-weight:var(--fw-semibold);font-size:var(--fs-13);text-align:center}
+.net-banner[hidden]{display:none}
+.net-banner .c-btn{min-height:32px}
+form.is-offline button:disabled,form.is-offline input[type=submit]:disabled{opacity:.5;cursor:not-allowed}
+/* K6: telefonda «Birinchi kun» ixcham — bajarilganlar va izohlar yashirin, har qadam bitta qator */
+@media (max-width:600px){
+  .onb__step.is-done{display:none}
+  .onb__main .subtle{display:none}
+  .onb__step{flex-wrap:nowrap;padding:var(--s-2) var(--s-4);min-height:var(--control-lg)}
+  .onb__title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3}
+  .onb__btxt{display:none}
+  .onb__actions{width:auto;padding-left:0}
+  .onb__actions .c-btn{flex:none}
+  .onb .c-card__head{padding-block:var(--s-3)}
+}
+
+/* K8: «Birinchi kun» ixcham — keyingi qadam bitta qatorda, hamma qadamlar ochiladigan ro'yxatda */
+.onb__next{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2) var(--s-3);padding:var(--s-3) var(--s-5);border-top:1px solid var(--border)}
+.onb__next-l{color:var(--text-muted)}
+.onb__next .c-btn{margin-left:auto}
+.onb__all{border-top:1px solid var(--border)}
+.onb__all>summary{cursor:pointer;padding:var(--s-3) var(--s-5);color:var(--text-muted);font-size:var(--fs-13);list-style-position:inside;min-height:var(--control-md)}
+.onb__all>summary:hover{color:var(--text)}
+@media (max-width:600px){.onb__next{padding:var(--s-3) var(--s-4)}.onb__all>summary{padding:var(--s-3) var(--s-4)}}

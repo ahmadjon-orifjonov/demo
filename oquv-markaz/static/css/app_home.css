@@ -1,0 +1,16 @@
+/* Direktor bosh sahifasi: «Bugun» ixcham qatori va «Hammasi joyida» tasmasi. Faqat tokenlar. */
+.home-today{padding:var(--s-3) var(--s-4)}
+.home-today__head{margin-bottom:var(--s-2)}
+.home-today__head h2{color:var(--text-muted);font-weight:var(--fw-semibold);text-transform:uppercase;letter-spacing:.04em}
+.home-today__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--s-2)}
+.home-today__item{display:flex;align-items:center;gap:var(--s-3);min-height:44px;padding:var(--s-2) var(--s-3);border-radius:var(--r-md);color:var(--text);text-decoration:none}
+.home-today__item:hover{background:var(--surface-hover);text-decoration:none}
+.home-today__item>.icon{color:var(--brand-text);flex:none}
+.home-today__main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.home-today__v{font-size:var(--fs-16);font-weight:var(--fw-semibold);line-height:1.2}
+.home-today__l{font-size:var(--fs-12);color:var(--text-muted)}
+.home-ok{align-items:center;min-height:44px;color:var(--success-text);text-decoration:none}
+.home-ok:hover{text-decoration:none}
+.home-ok__text{flex:1;min-width:0}
+.home-ok__links{flex:none}
+@media (max-width:600px){.home-today__row{grid-template-columns:1fr}.home-ok__links{display:none}}

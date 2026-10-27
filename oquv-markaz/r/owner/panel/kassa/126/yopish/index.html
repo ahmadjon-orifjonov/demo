@@ -1,0 +1,69 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Kunni yopish — Namuna o&#x27;quv markazi, 27-oktabr</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/kassa/126/yopish/" hx-post="/demo/oquv-markaz/r/owner/panel/kassa/126/yopish/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+<div class="fin-box">
+  <div class="kv"><span class="kv__k">Kun boshida naqd</span><span class="kv__v num">190 000 so&#x27;m</span></div>
+  <div class="kv"><span class="kv__k">Naqd kirim</span><span class="kv__v num">248 000 so&#x27;m</span></div>
+  <div class="kv"><span class="kv__k">Naqd chiqim (xarajatlar)</span><span class="kv__v num">0 so&#x27;m</span></div>
+  <div class="kv"><span class="kv__k fw-600">Kassada bo'lishi kerak</span><span class="kv__v num t-16">438 000 so&#x27;m</span></div>
+</div>
+<p class="muted t-13">Yopilgandan keyin bu kunga naqd yozuv tushmaydi. Farq bo'lsa — direktorga xabar boradi.</p>
+
+    
+<div class="c-field">
+  <label class="c-field__label" for="counted">Kassada sanalgan naqd pul<span class="req" aria-hidden="true">*</span></label>
+  <div class="row gap-2"><button type="button" class="c-btn c-btn--soft c-btn--sm" data-fill-target="counted" data-fill-value="438000">Aynan 438 000 so&#x27;m</button></div>
+  <input type="text" name="counted" data-money="" inputmode="numeric" class="c-input c-input--money" autocomplete="off" aria-describedby="id_counted-hint" id="counted" autofocus="" required>
+  <div class="c-field__hint" id="id_counted-hint">Qo&#x27;lingizdagi naqd pulni sanab, jami summani yozing.</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reason">Farq sababi</label>
+    <textarea name="reason" cols="40" rows="2" maxlength="300" class="c-textarea" aria-describedby="id_reason-hint" id="id_reason">
+</textarea>
+  
+  <div class="c-field__hint" id="id_reason-hint">Faqat sanalgan summa kutilgandan farq qilsa majburiy.</div>
+  
+</div>
+
+<div class="c-form-section">
+  <div class="c-form-section__title">Pulni topshirish (inkassatsiya)</div>
+  <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_handed">Topshirildi (direktorga yoki bankka)</label>
+    <input type="text" name="handed" data-money="" inputmode="numeric" class="c-input c-input--money" autocomplete="off" aria-describedby="id_handed-hint" id="id_handed">
+  
+  <div class="c-field__hint" id="id_handed-hint">Kun oxirida kassadan olib ketilgan naqd. Qolgani ertangi kunga o&#x27;tadi.</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_handed_to">Kimga topshirildi</label>
+    <input type="text" name="handed_to" placeholder="Masalan: Direktor yoki Bank (inkassatsiya)" maxlength="120" class="c-input" id="id_handed_to">
+  
+  
+  
+</div>
+</div>
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Kunni yopish</button>
+  </div>
+</form>
+
+</dialog>

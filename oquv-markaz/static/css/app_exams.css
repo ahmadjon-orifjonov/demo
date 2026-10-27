@@ -1,0 +1,70 @@
+/* =====================================================================
+   IMTIHONLAR VA BAHOLAR (ixtiyoriy modul). Faqat tokenlar.
+   ===================================================================== */
+
+/* ---------- Baho kiritish ---------- */
+.ex-title{font-size:var(--fs-20)}
+.ex-menu .c-menu{top:calc(100% + var(--s-1));right:0}
+.ex-form{gap:var(--s-4)}
+.ex-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2) var(--s-3);padding:var(--s-2) var(--s-4);border-bottom:1px solid var(--border);min-height:60px}
+.ex-row:last-child{border-bottom:0}
+.ex-row.is-invalid{background:var(--danger-soft)}
+.ex-row__name{flex:1;min-width:0;font-weight:var(--fw-semibold);cursor:pointer}
+.ex-row__in{display:flex;align-items:center;gap:var(--s-2);flex:none}
+.ex-row__err{flex-basis:100%}
+.ex-score{width:150px}
+.ex-score .c-input{min-width:0;height:var(--control-lg);font-size:var(--fs-16);text-align:right}
+.ex-score .c-input:disabled{background:var(--bg-subtle);color:var(--text-subtle)}
+.ex-absent__cb{position:absolute;opacity:0;pointer-events:none}
+.ex-absent{display:inline-flex;align-items:center;justify-content:center;min-width:88px;height:var(--control-lg);padding:0 var(--s-3);
+  border:1px solid var(--border-strong);border-radius:var(--r-md);background:var(--surface);color:var(--text-muted);
+  font-size:var(--fs-13);font-weight:var(--fw-semibold);cursor:pointer;user-select:none}
+.ex-absent:hover{border-color:var(--border-hover)}
+.ex-absent__cb:checked+.ex-absent{background:var(--danger-solid);border-color:var(--danger-solid);color:var(--text-on-solid)}
+.ex-absent__cb:focus-visible+.ex-absent{outline:2px solid var(--focus-ring);outline-offset:2px}
+.ex-notify{padding-left:var(--s-6)}
+.ex-foot{align-items:center;border-radius:var(--r-lg);box-shadow:var(--sh-md)}
+.ex-foot__count{margin-right:auto}
+@media (max-width:560px){
+  .ex-row{padding:var(--s-3) var(--s-4)}
+  .ex-row__name{flex-basis:100%}
+  .ex-row__in{width:100%}
+  .ex-score{flex:1;width:auto}
+  .ex-foot{flex-wrap:wrap;border-radius:0}
+  .ex-foot__count{width:100%;text-align:center;margin:0}
+  .ex-notify{padding-left:0}
+}
+
+/* ---------- Guruh: baholar jadvali ---------- */
+.ex-skel{height:20px}
+.ex-mx{font-size:var(--fs-13)}
+.ex-mx th,.ex-mx td{white-space:nowrap}
+.ex-mx .ex-mx__name{text-align:left;position:sticky;left:0;z-index:1;background:var(--surface);min-width:160px;max-width:220px;
+  overflow:hidden;text-overflow:ellipsis;font-weight:var(--fw-semibold);text-transform:none;letter-spacing:0;color:var(--text)}
+.ex-mx thead .ex-mx__name{background:var(--surface-2);color:var(--text-subtle);font-size:var(--fs-12);text-transform:uppercase;letter-spacing:.04em}
+.ex-mx .ex-mx__col{text-align:center;min-width:64px;max-width:120px;vertical-align:bottom}
+.ex-mx__col>span{display:block}
+.ex-mx__sub{max-width:112px;font-weight:var(--fw-regular);text-transform:none;letter-spacing:0;color:var(--text-subtle)}
+.ex-mx .ex-mx__cell{text-align:center}
+.ex-mx tfoot th,.ex-mx tfoot td{border-top:1px solid var(--border-strong);background:var(--surface-2)}
+.ex-mx__trend{width:28px}
+@media (max-width:600px){.ex-mx .ex-mx__name{min-width:120px;max-width:140px}}
+
+/* ---------- O'quvchi kartasi / kabinet ---------- */
+.ex-student__group{display:flex;flex-direction:column;gap:var(--s-2);padding:var(--s-3) var(--s-5);border-bottom:1px solid var(--border)}
+.ex-student__group:last-child{border-bottom:0}
+.ex-results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ex-results__i{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-2) 0;border-top:1px dashed var(--border);font-size:var(--fs-13)}
+.chart.ex-spark{width:96px;height:28px;flex:none;color:var(--brand)}
+.chart.ex-spark--up{color:var(--success)}
+.chart.ex-spark--down{color:var(--danger)}
+.ex-score-cell{align-items:flex-end;text-align:right}
+@media (max-width:600px){.ex-student__group{padding:var(--s-3) var(--s-4)}}
+
+/* ---------- Direktor sharhi ---------- */
+.ex-bar{display:flex;flex-direction:column;gap:var(--s-1);min-width:120px}
+@media (max-width:700px){.ex-bar{min-width:0;width:50%;align-items:flex-end}}
+
+/* ---------- Kabinet: 5 bandli pastki panel (Natijalar qo'shilganda) ---------- */
+.p-tabbar.p-tabbar--5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.p-tabbar--5 .p-tabbar__item{font-size:var(--fs-12);padding-left:0;padding-right:0}

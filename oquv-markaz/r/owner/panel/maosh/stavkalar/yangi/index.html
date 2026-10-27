@@ -1,0 +1,157 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Maosh stavkasi</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/owner/panel/maosh/stavkalar/yangi/" hx-post="/demo/oquv-markaz/r/owner/panel/maosh/stavkalar/yangi/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    <p class="muted t-13">Yangi stavka eskisini o'chirmaydi — eng so'nggi sanali stavka ishlaydi. Tasdiqlangan maoshlar o'zgarmaydi.</p>
+    
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_teacher">O&#x27;qituvchi<span class="req" aria-hidden="true">*</span></label>
+    <select name="teacher" class="c-select" id="id_teacher">
+  <option value="7">Aziz</option>
+
+  <option value="9">Bekzod</option>
+
+  <option value="4">Dilnoza</option>
+
+  <option value="5">Jasur</option>
+
+  <option value="15">Javlon</option>
+
+  <option value="10">Kamola</option>
+
+  <option value="6">Madina</option>
+
+  <option value="8">Nigora</option>
+
+  <option value="12">Olga</option>
+
+  <option value="11">Sherzod</option>
+
+  <option value="14">Shoira</option>
+
+  <option value="13">Ulug&#x27;bek</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_group">Guruh</label>
+    <select name="group" class="c-select" aria-describedby="id_group-hint" id="id_group">
+  <option value="" selected>— barcha guruhlari (umumiy stavka) —</option>
+
+  <option value="9">Arab tili · A1 — Madina</option>
+
+  <option value="24">AutoCAD va 3Ds Max · Boshlang&#x27;ich — Sherzod</option>
+
+  <option value="21">Biologiya · OTM — Kamola</option>
+
+  <option value="27">Bojxona deklaratsiyasi · Kasbiy — Ulug&#x27;bek</option>
+
+  <option value="7">Bolalar ingliz tili · Kids 1 — Dilnoza</option>
+
+  <option value="8">Bolalar ingliz tili · Kids 2 — Dilnoza</option>
+
+  <option value="22">Bolalar matematikasi · Kids — Bekzod</option>
+
+  <option value="26">Buxgalteriya 1C 8.3 · Kasbiy — Ulug&#x27;bek</option>
+
+  <option value="19">Fizika · OTM — Bekzod</option>
+
+  <option value="13">Fransuz tili · A1 — Nigora</option>
+
+  <option value="29">Grafik dizayn · Boshlang&#x27;ich — Javlon</option>
+
+  <option value="6">IELTS tayyorlov · 5.5→6.5 — Jasur</option>
+
+  <option value="5">IELTS tayyorlov · 6.0→7.0 — Jasur</option>
+
+  <option value="1">Ingliz tili · A1 — Dilnoza</option>
+
+  <option value="2">Ingliz tili · A2 — Dilnoza</option>
+
+  <option value="3">Ingliz tili · B1 — Jasur</option>
+
+  <option value="4">Ingliz tili · B2 — Jasur</option>
+
+  <option value="14">Ispan tili · A1 — Olga</option>
+
+  <option value="28">Kadrlar ish yuritishi (HR) · Kasbiy — Ulug&#x27;bek</option>
+
+  <option value="20">Kimyo · OTM — Kamola</option>
+
+  <option value="23">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich — Sherzod</option>
+
+  <option value="11">Koreys tili (TOPIK) · A1 — Aziz</option>
+
+  <option value="17">Matematika (OTM) · OTM-1 — Bekzod</option>
+
+  <option value="18">Matematika (OTM) · OTM-2 — Bekzod</option>
+
+  <option value="12">Nemis tili · A1 — Nigora</option>
+
+  <option value="15">Rus tili · A2 — Olga</option>
+
+  <option value="10">Turk tili · A1 — Aziz</option>
+
+  <option value="25">Web dasturlash · Boshlang&#x27;ich — Javlon</option>
+
+  <option value="16">Xitoy tili (HSK) · HSK 1 — Shoira</option>
+
+</select>
+  
+  <div class="c-field__hint" id="id_group-hint">Bitta guruh uchun alohida stavka kerak bo&#x27;lsa tanlang; aks holda umumiy.</div>
+  
+</div>
+</div>
+
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">Qanday hisoblanadi</legend>
+      <div class="c-seg"><input type="radio" name="scheme" value="percent_paid" id="id_scheme_0" required checked><label for="id_scheme_0">To&#x27;langan pulning foizi</label><input type="radio" name="scheme" value="per_lesson" id="id_scheme_1" required><label for="id_scheme_1">Har o&#x27;tilgan dars uchun</label><input type="radio" name="scheme" value="per_student" id="id_scheme_2" required><label for="id_scheme_2">Har faol o&#x27;quvchi uchun (oyiga)</label><input type="radio" name="scheme" value="fixed" id="id_scheme_3" required><label for="id_scheme_3">Oylik qat&#x27;iy</label></div>
+    </fieldset>
+  
+  
+  
+</div>
+
+<details class="more"><summary>Sxemalar nima degani?</summary><dl class="c-dl t-13"><dt>To&#x27;langan pulning foizi</dt><dd>O&#x27;quvchilar shu guruh uchun haqiqatda to&#x27;lagan pulning foizi. Kech to&#x27;langan pul keyingi oy maoshiga qo&#x27;shiladi.</dd><dt>Har o&#x27;tilgan dars uchun</dt><dd>Har o&#x27;tilgan dars uchun belgilangan summa (o&#x27;rinbosar o&#x27;tgan dars — o&#x27;rinbosarga).</dd><dt>Har faol o&#x27;quvchi uchun (oyiga)</dt><dd>Oy davomida guruhdagi har faol o&#x27;quvchi uchun summa.</dd><dt>Oylik qat&#x27;iy</dt><dd>Har oy bir xil summa, darslar sonidan qat&#x27;i nazar.</dd></dl></details>
+<div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_rate">Stavka<span class="req" aria-hidden="true">*</span></label>
+    <input type="number" name="rate" min="0" max="100000000" class="c-input" aria-describedby="id_rate-hint" required id="id_rate">
+  
+  <div class="c-field__hint" id="id_rate-hint">Foiz sxemasida — foiz (masalan 40). Boshqalarida — so&#x27;m.</div>
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_valid_from">Qaysi kundan<span class="req" aria-hidden="true">*</span></label>
+    <input type="date" name="valid_from" value="2026-10-01" class="c-input" required id="id_valid_from">
+  
+  
+  
+</div>
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Saqlash</button>
+  </div>
+</form>
+
+</dialog>

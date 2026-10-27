@@ -1,0 +1,39 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Storno — To&#x27;lov — Maftuna Abdullayeva</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/oquv-markaz/r/cashier/panel/chek/1906/storno/" hx-post="/demo/oquv-markaz/r/cashier/panel/chek/1906/storno/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+<div class="c-alert c-alert--warning"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/oquv-markaz/static/icons.svg#i-alert-triangle"></use></svg><div class="c-alert__body">
+  <strong>Nima bo'ladi</strong>
+  <span>To&#x27;lov 96 000 so&#x27;m (27.10.2026, karta) — bekor qilinadi: yozuv o'chirilmaydi, unga teskari yozuv qo'shiladi.
+  Oila balansi 96 000 so&#x27;m ga kamayadi (qarz ko'payadi).
+  </span>
+</div></div>
+<p class="muted t-13">Siz buni darhol bajara olasiz. Amal audit jurnaliga yoziladi.</p>
+
+
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reason">Sabab<span class="req" aria-hidden="true">*</span></label>
+    <textarea name="reason" cols="40" rows="2" placeholder="Masalan: summa noto&#x27;g&#x27;ri kiritilgan (300 000 o&#x27;rniga 30 000)" maxlength="300" minlength="5" class="c-textarea" aria-describedby="id_reason-hint" required id="id_reason">
+</textarea>
+  
+  <div class="c-field__hint" id="id_reason-hint">Kamida 5 belgi. Audit jurnalida va direktorda ko&#x27;rinadi.</div>
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--danger">Storno qilish</button>
+  </div>
+</form>
+
+</dialog>
