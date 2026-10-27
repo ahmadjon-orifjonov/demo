@@ -1,0 +1,57 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Guruhdan chiqarish — Abdulloh Yusupov</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/azolik/145/chiqarish/" hx-post="/demo/atlantis-4/r/owner/panel/azolik/145/chiqarish/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    <p class="muted">«Bolalar ingliz tili · Kids 2». Sabab keyin hisobotda ko'rinadi — markaz nega o'quvchi yo'qotayotganini bilish uchun.</p>
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_reason">Ketish sababi<span class="req" aria-hidden="true">*</span></label>
+    <select name="reason" class="c-select" required id="id_reason">
+  <option value="" selected>— tanlang —</option>
+
+  <option value="price">Narx qimmat</option>
+
+  <option value="time">Vaqt to&#x27;g&#x27;ri kelmadi</option>
+
+  <option value="moved">Ko&#x27;chib ketdi</option>
+
+  <option value="other_center">Boshqa markazga o&#x27;tdi</option>
+
+  <option value="finished">Kursni tugatdi</option>
+
+  <option value="quality">Sifatdan norozi</option>
+
+  <option value="personal">Shaxsiy sabab</option>
+
+  <option value="other">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_end">Oxirgi dars kuni<span class="req" aria-hidden="true">*</span></label>
+    <input type="date" name="end" value="2026-10-27" class="c-input" aria-describedby="id_end-hint" required id="id_end">
+  
+  <div class="c-field__hint" id="id_end-hint">Shu kundan keyingi darslar puli balansga avtomatik qaytadi</div>
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--danger">Chiqarish</button>
+  </div>
+</form>
+
+</dialog>

@@ -322,7 +322,7 @@
    * reduced-motion yoki webdriver (ekran tekshiruvi) — o'tkazib yuboriladi. Oxirida asl matn qaytariladi. */
   function countUp() {
     if (calm() || navigator.webdriver) return;
-    $$(".c-stat__value, .site-qad b.num, .site-jonli b.num").forEach((el) => {
+    $$(".c-stat__value, .site-qad li:not(.site-qad__price) b.num, .site-jonli b.num").forEach((el) => {
       if (el.dataset.count) return;
       el.dataset.count = "1";
       const node = Array.from(el.childNodes).find((n) => n.nodeType === 3 && /\d/.test(n.nodeValue));

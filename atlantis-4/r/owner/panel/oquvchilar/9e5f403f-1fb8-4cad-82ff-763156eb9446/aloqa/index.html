@@ -1,0 +1,64 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Aloqa qo'shish — Abdulloh Yusupov</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/oquvchilar/9e5f403f-1fb8-4cad-82ff-763156eb9446/aloqa/" hx-post="/demo/atlantis-4/r/owner/panel/oquvchilar/9e5f403f-1fb8-4cad-82ff-763156eb9446/aloqa/" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+    
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_full_name">Ismi<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="full_name" maxlength="120" class="c-input" required id="id_full_name">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_phone">Telefon<span class="req" aria-hidden="true">*</span></label>
+    <input type="text" name="phone" data-phone="" inputmode="tel" placeholder="+998 90 123 45 67" autocomplete="tel" maxlength="20" class="c-input" required id="id_phone">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_relation">Kim bo&#x27;ladi<span class="req" aria-hidden="true">*</span></label>
+    <select name="relation" class="c-select" id="id_relation">
+  <option value="mother">Onasi</option>
+
+  <option value="father" selected>Otasi</option>
+
+  <option value="self">O&#x27;zi</option>
+
+  <option value="other">Boshqa</option>
+
+</select>
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-check"><input type="checkbox" name="is_primary" id="id_is_primary"><span>Asosiy aloqa (xabarlar shu raqamga)</span></label>
+  
+  
+  
+</div>
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Qo'shish</button>
+  </div>
+</form>
+
+</dialog>
