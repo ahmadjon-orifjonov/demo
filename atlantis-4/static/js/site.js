@@ -139,6 +139,13 @@
     document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && menu.open) closeMenu(true); });
   }
 
+  // ---------- 10b) ochiladigan bloklar (til, ustoz tajribasi): tashqariga bosilganda / Esc da yopiladi
+  var dds = Array.prototype.slice.call(document.querySelectorAll("details[data-close-outside]"));
+  if (dds.length) {
+    document.addEventListener("click", function (ev) { dds.forEach(function (d) { if (d.open && !d.contains(ev.target)) d.open = false; }); });
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") dds.forEach(function (d) { if (d.open) { d.open = false; d.querySelector("summary").focus(); } }); });
+  }
+
   // ---------- 11) menyu: qaysi bo'limdasiz — pastki chiziq (scrollspy)
   var navLinks = {};
   Array.prototype.forEach.call(document.querySelectorAll(".site-nav a[href*='#']"), function (a) {
