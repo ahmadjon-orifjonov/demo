@@ -463,7 +463,7 @@ body.site [id]{scroll-margin-top:calc(var(--site-hh) + var(--s-2))}
 .site-map__label{position:absolute;left:50%;top:calc(44% + 20px);transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:8px 16px;background:var(--site-yuz);border-radius:var(--r-md);text-align:center;box-shadow:var(--site-sh2)}
 .site-map__label b{display:block;font-family:var(--site-h);font-weight:900;color:var(--site-pan);letter-spacing:.04em;text-transform:uppercase}
 .site-map__label span{display:block;font-size:var(--fs-12);color:var(--site-m2)}
-.site-map__go{position:absolute;right:14px;bottom:14px}
+.site-map .site-map__go{position:absolute;right:14px;bottom:14px}   /* .sbtn{position:relative} dan ustun */
 .site-branches{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:28px}
 .site-branch{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:1px solid color-mix(in srgb,var(--site-ink) 14%,transparent);border-radius:var(--r-lg);color:var(--site-on-dark)}
 .site-branch h3{display:flex;align-items:center;gap:6px;font-size:var(--fs-17);font-weight:800}
@@ -603,7 +603,7 @@ body.site [id]{scroll-margin-top:calc(var(--site-hh) + var(--s-2))}
   .site-phero__in{grid-template-columns:minmax(0,1fr)}
   .site-phero__cover{display:none}
   .site-footer__grid{grid-template-columns:1fr;gap:20px}
-  .site-footer{padding-bottom:110px}
+  body:has(.site-mob) .site-footer{padding-bottom:110px}   /* pastki panel bor sahifalarda */
   .site-mob{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:var(--z-sticky);
     padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--site-bg) 95%,transparent);
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--site-ch)}
@@ -674,7 +674,7 @@ body.site [id]{scroll-margin-top:calc(var(--site-hh) + var(--s-2))}
 
 /* ---------- Sarlavha «nafas»: scroll'da 72 → 60 px ---------- */
 .site-header{transition:height var(--dur-3) var(--ease-out),border-color var(--dur-3),box-shadow var(--dur-3),background var(--dur-3)}
-.site-header.is-solid{height:calc(var(--site-hh) - 12px)}
+.site-header.is-solid .site-header__in{transform:translateY(-2px)}
 .site-brand .logo{transition:transform var(--dur-3) var(--ease-out)}
 .site-header.is-solid .site-brand .logo{transform:scale(.88)}
 .site-nav a.is-active{color:var(--site-tg-text)}
@@ -730,7 +730,7 @@ body.site .site-mob{view-transition-name:site-mob}
 .site-cp-mini li{display:flex;align-items:center;gap:6px}
 .site-cp-mini a,.site-cp-mini span.site-cp-mini__lv{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:40px;padding:0 12px;border-radius:var(--r-md);border:1.5px solid var(--site-ch);background:var(--site-yuz);font-family:var(--site-h);font-weight:900;font-size:var(--fs-14);color:var(--site-m2);text-decoration:none;transition:border-color var(--dur-2),color var(--dur-2)}
 .site-cp-mini a:hover{border-color:var(--site-tg);color:var(--site-pan);text-decoration:none}
-.site-cp-mini .is-on{background:var(--site-pan);border-color:var(--site-pan);color:var(--site-ink)}
+.site-cp-mini span.site-cp-mini__lv.is-on{background:var(--site-pan);border-color:var(--site-pan);color:var(--site-ink)}
 .site-cp-mini .icon{color:var(--site-m3)}
 .site-cp-faq .site-faq__item>summary{font-size:var(--fs-16);padding:14px 36px 14px 0}
 .site-cp-faq .site-faq__item>summary::after{top:11px}
@@ -750,7 +750,6 @@ body.site.auth .auth-card{border-radius:var(--r-2xl);box-shadow:var(--site-sh2)}
   .site-trust small{display:none}
   .site-rev{grid-template-columns:1fr}
   .site-soon__bar{grid-column:1/-1}
-  .site-header.is-solid{height:calc(var(--site-hh) - 6px)}
 }
 @media (prefers-reduced-motion:reduce){
   .site-soon__bar i,.site-kk__motif,.site-phero__text>*,.site-phero__cover,.site-trust li,.sbtn__arrow{animation:none;transition:none}

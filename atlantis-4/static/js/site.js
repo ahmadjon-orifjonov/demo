@@ -148,12 +148,13 @@
   if ("IntersectionObserver" in window && Object.keys(navLinks).length) {
     var spy = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(navLinks).forEach(function (k) { navLinks[k].classList.remove("is-active"); });
         var a = navLinks[e.target.id];
-        if (!a) return;
-        if (e.isIntersecting) { Object.keys(navLinks).forEach(function (k) { navLinks[k].classList.remove("is-active"); }); a.classList.add("is-active"); }
+        if (a) a.classList.add("is-active");   // menyuda yo'q bo'lim (natijalar, nega biz) — hech biri yonmaydi
       });
     }, { rootMargin: "-40% 0px -55% 0px" });
-    Object.keys(navLinks).forEach(function (id) { var sec = document.getElementById(id); if (sec) spy.observe(sec); });
+    Array.prototype.forEach.call(document.querySelectorAll("main section[id]"), function (sec) { spy.observe(sec); });
   }
 
   // ---------- 12) ariza formasi: yuborishda tugma «yuklanmoqda» (ikki marta bosilmaydi); maydonlar bo'sh bo'lsa — to'xtatiladi
