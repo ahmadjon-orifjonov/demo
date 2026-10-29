@@ -972,3 +972,130 @@ body.site.auth .auth-card{border-radius:var(--r-2xl);box-shadow:var(--site-sh2)}
 @media (prefers-reduced-motion:reduce){
   .site-cover__words,.site-cover__down,.site-cover__line,.site-cover__lead,.site-cover__cta,.site-cover__langs{animation:none}
 }
+
+/* =====================================================================
+   29-OKT (2): «sayt xunuk» — yorqinroq: to'q ko'k (pan) + fistashka + havorang + och kulrang.
+   Ritm (sensus kabi rangli bloklar): yorug' hero + til mozaikasi → fistashka tasma (raqamlar) → oq (yo'nalishlar) →
+   to'q ko'k→havorang gradient (nima uchun) → och kulrang (narxlar) → … → havorang-och (test) → to'q ko'k (forma).
+   ===================================================================== */
+/* ---------- Sarlavha: menyu BOSH HARFDA (sensus), telefon — fistashka tugma ---------- */
+.site-nav a{text-transform:uppercase;letter-spacing:.08em;font-size:var(--fs-13);font-weight:800;color:var(--site-pan)}
+.site-tel{background:var(--site-tg);border-color:var(--site-tg);color:var(--site-on-tg)}
+.site-tel .icon{color:var(--site-on-tg)}
+.site-tel:hover{background:color-mix(in srgb,var(--site-tg) 86%,var(--site-pan));border-color:transparent;color:var(--site-on-tg)}
+
+/* ---------- Yorug' hero (rasm yo'q holat) ---------- */
+.site-cover--light{color:var(--site-pan);
+  background:radial-gradient(700px 520px at 92% 8%,color-mix(in srgb,var(--site-ol) 22%,transparent),transparent 64%),
+    radial-gradient(640px 480px at 0% 100%,color-mix(in srgb,var(--site-fe) 26%,transparent),transparent 62%),var(--site-bg)}
+.site-cover__blob{position:absolute;z-index:0;border-radius:50%;pointer-events:none}
+.site-cover__blob--1{width:520px;height:520px;right:-140px;bottom:-220px;border:70px solid color-mix(in srgb,var(--site-fe) 22%,transparent)}
+.site-cover__blob--2{width:140px;height:140px;right:4%;top:6%;background:color-mix(in srgb,var(--site-fe) 30%,transparent)}
+.site .site-cover--light .site-cover__title{color:var(--site-pan);font-size:clamp(var(--fs-36),4.4vw,var(--fs-56));line-height:1.22;letter-spacing:.01em}
+/* har satr: «marker» — matn ostida yarim balandlikda fistashka chiziq */
+/* satr o'ralsa ham marker faqat matn ostida: inline + box-decoration-break */
+.site-cover--light .site-cover__line{display:inline;padding:0 .08em;margin:0 0 0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:linear-gradient(color-mix(in srgb,var(--site-fe) 55%,transparent),color-mix(in srgb,var(--site-fe) 55%,transparent)) left 88%/100% .34em no-repeat}
+.site-cover--light .site-cover__line::after{content:"\A";white-space:pre}
+.site-cover--light .site-cover__line:nth-child(2){background-image:linear-gradient(color-mix(in srgb,var(--site-ol) 45%,transparent),color-mix(in srgb,var(--site-ol) 45%,transparent))}
+@keyframes site-line{from{background-size:0 .34em;opacity:0;transform:translateY(12px)}}
+.site-cover--light .site-cover__lead{color:var(--site-m2);font-size:var(--fs-20)}
+.site-cover--light .site-cover__cta .sbtn--2{border:2px solid var(--site-pan);background:transparent;color:var(--site-pan)}
+.site-cover--light .site-cover__cta .sbtn--2:hover{background:var(--site-pan);color:var(--site-ink)}
+.site-cover--light .site-cover__down{color:var(--site-tg-text)}
+
+/* til mozaikasi: 2 ustun, ikkinchi ustun pastga siljigan; har kafel — o'z rangida */
+.site-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.site-mosaic li:nth-child(even){transform:translateY(34px)}
+.site-mosaic a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-3);min-height:116px;padding:16px 18px;border-radius:var(--r-xl);
+  border:0;background:var(--site-yuz);color:var(--site-pan);box-shadow:var(--site-sh);text-decoration:none;
+  transition:transform var(--dur-2) var(--ease-out),box-shadow var(--dur-2)}
+.site-mosaic a:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:var(--site-sh2);text-decoration:none;color:inherit}
+.site-mosaic__hi{font-family:var(--site-h);font-weight:900;font-size:var(--fs-28);line-height:1.1;overflow-wrap:anywhere}
+.site-mosaic__nm{display:flex;align-items:center;gap:8px;font-size:var(--fs-13);font-weight:700;opacity:.85}
+.site-mosaic__nm b{padding:2px 7px;border-radius:var(--r-sm);background:color-mix(in srgb,currentColor 14%,transparent);font-size:var(--fs-12);letter-spacing:.06em}
+.site-mosaic li:nth-child(1) a,.site-mosaic li:nth-child(8) a{background:var(--site-tg);color:var(--site-on-tg)}
+.site-mosaic li:nth-child(3) a{background:var(--site-ol);color:var(--site-pan)}
+.site-mosaic li:nth-child(4) a{background:var(--site-pan);color:var(--site-ink)}
+.site-mosaic li:nth-child(6) a{background:var(--site-tint2);color:var(--site-pan)}
+.site-mosaic li:nth-child(7) a{background:var(--site-ol3);color:var(--site-pan)}
+.site-mosaic a:hover{color:inherit}
+
+/* ---------- Raqamlar: to'liq fistashka tasma, to'q ko'k raqamlar ---------- */
+.site-stats{background:var(--site-tg);border:0;padding:var(--s-10) 0}
+.site-stats__list li::before,.site-stats__list li:nth-child(even)::before{background:var(--site-pan);opacity:.85}
+.site-stats__list b{color:var(--site-pan)}
+.site-stats__list span{color:var(--site-pan);font-weight:700;opacity:.85}
+
+/* ---------- Yo'nalishlar: rangli bosh qism + katta ikonka ---------- */
+.site-dir{padding:0;overflow:hidden;gap:0;border:0;box-shadow:var(--site-sh)}
+.site-dir::before{display:none}
+.site-dir__top{position:relative;display:flex;align-items:flex-end;justify-content:space-between;height:132px;padding:var(--s-5) var(--s-6);background:var(--site-tg);color:var(--site-on-tg)}
+.site-dir--2 .site-dir__top{background:var(--site-ol);color:var(--site-pan)}
+.site-dir--3 .site-dir__top{background:var(--site-pan);color:var(--site-ink)}
+.site-dir--4 .site-dir__top{background:var(--site-ol3);color:var(--site-pan)}
+.site-dir .site-dir__ic{width:64px;height:64px;border-radius:var(--r-lg);background:color-mix(in srgb,var(--site-yuz) 28%,transparent);color:inherit}
+.site-dir .site-dir__ic .icon{width:32px;height:32px}
+.site-dir__no{font-family:var(--site-h);font-weight:900;font-size:var(--fs-56);line-height:.8;opacity:.22}
+.site-dir h3{margin:var(--s-5) var(--s-6) 0}
+.site-dir p{margin:10px var(--s-6) 0}
+.site-dir__go{margin:var(--s-3) var(--s-6) var(--s-5);color:var(--site-pan)}
+.site-dir__go:hover{color:var(--site-tg-text)}
+.site-dir:hover{transform:translateY(-6px);box-shadow:var(--site-sh2)}
+.site-dir:hover .site-dir__ic{transform:scale(1.06) rotate(-4deg)}
+.site-dir__ic{transition:transform var(--dur-3) var(--ease-out)}
+
+/* ---------- Nima uchun: to'q ko'k → havorang gradient (sensus «professional kurslar» tasmasi kabi) ---------- */
+.site-sec--why{background:linear-gradient(110deg,var(--site-pan2) 0%,var(--site-pan) 45%,color-mix(in srgb,var(--site-pan) 55%,var(--site-ol)) 100%);color:var(--site-on-dark)}
+.site-sec--why .site-h2{color:var(--site-ink)}
+.site-sec--why .site-ust{color:var(--site-on-dark3)}
+.site-sec--why .site-why li{background:color-mix(in srgb,var(--site-ink) 6%,transparent);border:1px solid color-mix(in srgb,var(--site-ink) 14%,transparent);backdrop-filter:blur(2px)}
+.site-sec--why .site-why li::before{color:var(--site-fe);font-size:var(--fs-56)}
+.site-sec--why .site-why b{color:var(--site-ink)}
+.site-sec--why .site-why span{color:var(--site-on-dark2)}
+
+/* ---------- Narxlar: och kulrang fon, to'q ko'k sarlavha qatori ---------- */
+#kurslar{background:var(--site-bg)}
+.site-pr{border:0}
+.site-pr__table thead th{background:var(--site-pan);color:var(--site-on-dark2);border:0}
+.site-pr__row:nth-child(even){background:color-mix(in srgb,var(--site-bg) 60%,var(--site-yuz))}
+.site-pr__row:hover{background:var(--site-tint)}
+.site-pr__row th i{background:var(--site-tg)}
+.site-kbar__chip.is-on{background:var(--site-pan);color:var(--site-ink);border-color:var(--site-pan)}
+
+/* ---------- Ustozlar: avatar — fistashka/havorang, yuqori chiziq olib tashlandi ---------- */
+.site-oq__card{border:0;box-shadow:var(--site-sh)}
+.site-oq__card::before{display:none}
+.site-oq__av{background:var(--site-tg);color:var(--site-on-tg);border-radius:50%}
+.site-oq__card:nth-child(even) .site-oq__av{background:var(--site-ol);color:var(--site-pan)}
+.site-oq__card:nth-child(3n) .site-oq__av{background:var(--site-pan);color:var(--site-ink)}
+.site-oq__title{color:var(--site-m2)}
+
+/* ---------- Fikrlar: och kulrang fon, qo'shtirnoq — fistashka ---------- */
+#natijalar{background:var(--site-bg)}
+.site-rev__card{border:0;border-top:4px solid var(--site-tg);box-shadow:var(--site-sh)}
+.site-rev__card:nth-child(even){border-top-color:var(--site-ol)}
+
+/* ---------- Onlayn test: havorang-och fon ---------- */
+.site-sec--sky{background:linear-gradient(180deg,var(--site-ol-soft),var(--site-bg))}
+
+/* ---------- Forma bo'limi va xarita: to'q ko'k, burchakda fistashka halqa ---------- */
+.site-sec--dark{background:radial-gradient(520px 420px at 0% 100%,color-mix(in srgb,var(--site-fe) 22%,transparent),transparent 70%),
+  radial-gradient(600px 420px at 100% 0%,color-mix(in srgb,var(--site-ol) 26%,transparent),transparent 70%),var(--site-pan)}
+.site-map{background:var(--site-pan)}
+
+@media (max-width:1060px){
+  .site-mosaic{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .site-mosaic li:nth-child(even){transform:none}
+  .site-cover__blob--2{display:none}
+}
+@media (max-width:720px){
+  .site-cover--light .site-cover__langs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:var(--s-4)}
+  .site-cover--light .site-mosaic li:nth-child(n+5){display:none}
+  .site-mosaic a{min-height:92px;padding:12px 14px}
+  .site-mosaic__hi{font-size:var(--fs-22)}
+  .site-dir__top{height:108px}
+  .site-cover__blob--1{width:320px;height:320px;border-width:44px;right:-120px;bottom:-140px}
+}
+@media (prefers-reduced-motion:reduce){
+  .site-mosaic a,.site-dir__ic{transition:none}
+}
