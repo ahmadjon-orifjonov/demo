@@ -1207,3 +1207,5 @@ body.site.auth .auth-card{border-radius:var(--r-2xl);box-shadow:var(--site-sh2)}
   .site-af__kick{padding:2px 8px;letter-spacing:.04em}
 }
 @media (prefers-reduced-motion:reduce){.site-af,.site-af__img,.site-flags a{transition:none}}
+/* telefonda bosiladigan joy ≥ 40px (yakuniy tekshiruv, 29-okt) */
+@media (max-width:720px){.site-pr__row th a{min-height:40px}.site-ariza__call a{display:inline-flex;align-items:center;min-height:40px}}
