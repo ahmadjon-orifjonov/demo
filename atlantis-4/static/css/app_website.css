@@ -1144,3 +1144,66 @@ body.site.auth .auth-card{border-radius:var(--r-2xl);box-shadow:var(--site-sh2)}
   .site-mosaic--float li,.site-cover__media{animation:none}
   .site-dir__pic{transition:none}
 }
+
+/* ---------- 29-OKT (4): fon suratlari (sensus kabi), «Yangi guruhlar» afishalari, «Til kurslari» bayroqlar bilan ---------- */
+/* fon surati: <img class="site-bgimg"> + ustida rangli parda (::after); matn z-index 1 */
+.site-pic{position:relative;overflow:hidden;isolation:isolate}
+.site-bgimg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.site-pic::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.site-sec--why.site-pic::after{background:linear-gradient(100deg,color-mix(in srgb,var(--site-pan2) 90%,transparent) 0%,color-mix(in srgb,var(--site-pan) 74%,transparent) 55%,color-mix(in srgb,var(--site-pan) 48%,transparent) 100%)}
+.site-sec--why.site-pic .site-why li{background:color-mix(in srgb,var(--site-pan2) 45%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.site-sec--dark.site-pic{background:var(--site-pan)}
+.site-sec--dark.site-pic::after{background:linear-gradient(90deg,color-mix(in srgb,var(--site-pan2) 92%,transparent) 0%,color-mix(in srgb,var(--site-pan) 80%,transparent) 60%,color-mix(in srgb,var(--site-pan) 70%,transparent) 100%)}
+
+/* Til kurslari: chapda to'q ko'k parda, o'ngda bayroqlar ko'rinadi */
+.site-langs{position:relative;padding:var(--s-20) 0;background:var(--site-pan);color:var(--site-ink)}
+.site-langs.site-pic::after{background:linear-gradient(90deg,color-mix(in srgb,var(--site-pan2) 88%,transparent) 0%,color-mix(in srgb,var(--site-pan) 55%,transparent) 50%,transparent 80%)}
+.site-langs__in{max-width:1200px}
+.site .site-langs__t{margin:0;font-family:var(--site-h);font-weight:900;font-size:clamp(var(--fs-40),5vw,var(--fs-64));line-height:1;letter-spacing:.08em;text-transform:uppercase;color:var(--site-ink)}
+.site-langs__lead{max-width:520px;margin:var(--s-4) 0 0;font-size:var(--fs-18);line-height:1.55;color:var(--site-on-dark)}
+.site-flags{list-style:none;margin:var(--s-8) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px;max-width:760px}
+.site-flags a{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:4px 18px 4px 4px;border-radius:var(--r-full);
+  background:color-mix(in srgb,var(--site-yuz) 16%,transparent);border:1px solid color-mix(in srgb,var(--site-yuz) 28%,transparent);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--site-ink);font-weight:700;font-size:var(--fs-15);text-decoration:none;
+  transition:background var(--dur-2),transform var(--dur-2) var(--ease-out)}
+.site-flags a:hover{background:color-mix(in srgb,var(--site-yuz) 30%,transparent);transform:translateY(-2px);text-decoration:none;color:var(--site-ink)}
+.site-flags img,.site-flags b{flex:none;width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px color-mix(in srgb,var(--site-yuz) 70%,transparent)}
+.site-flags b{display:grid;place-items:center;background:var(--site-tg);color:var(--site-on-tg);font-family:var(--site-h);font-weight:900;font-size:var(--fs-13);letter-spacing:.04em}
+
+/* Yangi guruhlar: kvadrat afishalar — surat, tepada katta yozuv, pastda jadval «tabletkasi» */
+.site-afhead{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-4);margin-bottom:var(--s-8)}
+.site-afhead__all{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:800;font-size:var(--fs-14);letter-spacing:.1em;text-transform:uppercase;color:var(--site-tg-text);text-decoration:none}
+.site-afhead__all:hover{text-decoration:underline;color:var(--site-tg-text)}
+.site-afs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s-5)}
+.site-af{position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1;overflow:hidden;border-radius:var(--r-xl);
+  padding:var(--s-5);isolation:isolate;color:var(--site-ink);text-decoration:none;box-shadow:var(--site-sh);transition:transform var(--dur-2) var(--site-e1),box-shadow var(--dur-2)}
+.site-af__img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform var(--dur-4) var(--ease-out)}
+.site-af::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--site-pan2) 82%,transparent) 0%,color-mix(in srgb,var(--site-pan) 30%,transparent) 42%,transparent 62%,color-mix(in srgb,var(--site-pan2) 40%,transparent) 100%)}
+.site-af:hover{transform:translateY(-6px);box-shadow:var(--site-sh2);text-decoration:none;color:var(--site-ink)}
+.site-af:hover .site-af__img{transform:scale(1.06)}
+.site-af__top{display:flex;flex-direction:column;gap:8px}
+.site-af__kick{align-self:flex-start;padding:3px 10px;border-radius:var(--r-full);background:var(--site-tg);color:var(--site-on-tg);font-size:var(--fs-12);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.site-af--2 .site-af__kick{background:var(--site-ol);color:var(--site-pan)}
+.site-af--3 .site-af__kick{background:var(--site-yuz);color:var(--site-pan)}
+.site .site-af__t{font-family:var(--site-h);font-weight:900;font-size:var(--fs-24);line-height:1.08;letter-spacing:.02em;text-transform:uppercase;color:var(--site-ink);text-wrap:balance}
+.site-af__bot{align-self:center;max-width:100%;padding:8px 14px;border-radius:var(--r-full);background:var(--site-pan);color:var(--site-ink);
+  font-size:var(--fs-12);font-weight:800;letter-spacing:.04em;text-align:center;text-transform:uppercase;box-shadow:0 6px 18px color-mix(in srgb,var(--site-pan2) 35%,transparent)}
+.site-af--1 .site-af__bot,.site-af--4 .site-af__bot{background:var(--site-tg);color:var(--site-on-tg)}
+
+@media (max-width:1060px){
+  .site-afs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .site-langs{padding:var(--s-14) 0}
+  .site-langs.site-pic::after{background:linear-gradient(180deg,color-mix(in srgb,var(--site-pan2) 88%,transparent),color-mix(in srgb,var(--site-pan) 70%,transparent))}
+  .site-flags{gap:8px}
+  .site-flags a{min-height:44px;padding-right:14px;font-size:var(--fs-14)}
+  .site-flags img,.site-flags b{width:36px;height:36px}
+  .site-afhead{flex-direction:column;align-items:flex-start;margin-bottom:var(--s-5)}
+  .site-afs{gap:var(--s-3)}
+  .site-af{padding:var(--s-3);border-radius:var(--r-lg)}
+  .site .site-af__t{font-size:var(--fs-16)}
+  .site-af__bot{align-self:stretch;padding:5px 6px;line-height:1.25;border-radius:var(--r-md);font-size:var(--fs-12);letter-spacing:0}
+  .site-af__kick{padding:2px 8px;letter-spacing:.04em}
+}
+@media (prefers-reduced-motion:reduce){.site-af,.site-af__img,.site-flags a{transition:none}}
