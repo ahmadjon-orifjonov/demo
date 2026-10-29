@@ -1,0 +1,96 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">O'quvchi qo'shish: Ingliz tili · A1</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/owner/panel/guruhlar/39d9997c-a6f2-4e26-8200-860711c09aed/oquvchi-qoshish/" hx-post="/demo/atlantis-4/_hx/53e810d650a5.html" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+<p class="muted">Guruhda band: <strong class="num">9 / 12</strong>. Sinov darsi bepul; «O'qiydi» tanlansa — tanlangan kundan to'lov avtomatik hisoblanadi.</p>
+<p class="t-13 subtle">Ro'yxatda yo'q bo'lsa — avval «O'quvchilar» bo'limida yangi o'quvchi qo'shing.</p>
+
+    
+<div class="c-field">
+  <label class="c-field__label" for="stu-q">O'quvchini qidirish</label>
+  <input id="stu-q" class="c-input" type="search" name="q" value="" placeholder="Ism yoki telefonning oxirgi 4 raqami" autocomplete="off" autofocus
+         hx-get="/demo/atlantis-4/_hx/53e810d650a5.html" hx-trigger="input changed delay:300ms, search" hx-target="#stu-results" hx-swap="outerHTML">
+</div>
+
+<fieldset class="c-fieldset c-field" id="stu-results" aria-live="polite">
+  <legend class="c-field__label">Guruhsiz va sinovdagi o'quvchilar (ATLANTIS)</legend>
+  
+  <div class="pick-list">
+    
+    <input type="radio" name="student" value="217" id="pk217">
+    <label for="pk217" class="pick-list__item">
+      <span class="c-avatar c-avatar--sm">AS</span>
+      <span class="c-list__main"><span class="c-list__title">Asal Saidova</span></span>
+      <span class="c-badge c-badge--trial">Sinovda</span>
+    </label>
+    
+    <input type="radio" name="student" value="214" id="pk214">
+    <label for="pk214" class="pick-list__item">
+      <span class="c-avatar c-avatar--sm">DA</span>
+      <span class="c-list__main"><span class="c-list__title">Doston Aliyev</span></span>
+      <span class="c-badge c-badge--trial">Sinovda</span>
+    </label>
+    
+    <input type="radio" name="student" value="211" id="pk211">
+    <label for="pk211" class="pick-list__item">
+      <span class="c-avatar c-avatar--sm">NT</span>
+      <span class="c-list__main"><span class="c-list__title">Nodira Tosheva</span></span>
+      <span class="c-badge c-badge--trial">Sinovda</span>
+    </label>
+    
+    <input type="radio" name="student" value="213" id="pk213">
+    <label for="pk213" class="pick-list__item">
+      <span class="c-avatar c-avatar--sm">SY</span>
+      <span class="c-list__main"><span class="c-list__title">Sabina Yusupova</span></span>
+      <span class="c-badge c-badge--trial">Sinovda</span>
+    </label>
+    
+    <input type="radio" name="student" value="216" id="pk216">
+    <label for="pk216" class="pick-list__item">
+      <span class="c-avatar c-avatar--sm">TN</span>
+      <span class="c-list__main"><span class="c-list__title">Timur Nazarov</span></span>
+      <span class="c-badge c-badge--trial">Sinovda</span>
+    </label>
+    
+  </div>
+  
+  
+</fieldset>
+
+
+<div class="c-field">
+  
+    <fieldset class="c-fieldset"><legend class="c-field__label">Holati</legend>
+      <div class="c-seg"><input type="radio" name="status" value="trial" id="id_status_0" required><label for="id_status_0">Sinov darsi (bepul)</label><input type="radio" name="status" value="active" id="id_status_1" required checked><label for="id_status_1">O&#x27;qiydi (to&#x27;lov hisoblanadi)</label></div>
+    </fieldset>
+  
+  
+  
+</div>
+
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_start">Qaysi kundan<span class="req" aria-hidden="true">*</span></label>
+    <input type="date" name="start" value="2026-10-29" class="c-input" required id="id_start">
+  
+  
+  
+</div>
+
+
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Qo'shish</button>
+  </div>
+</form>
+
+</dialog>

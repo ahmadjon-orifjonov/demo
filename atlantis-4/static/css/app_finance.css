@@ -69,7 +69,7 @@
 /* ---------- maosh ---------- */
 .pay-row .c-card__foot{flex-wrap:wrap}
 .pay-row__lines{padding:0 var(--s-5) var(--s-3)}
-.pay-row__lines>summary{cursor:pointer;color:var(--brand-text);font-weight:var(--fw-semibold);min-height:var(--control-md);display:flex;align-items:center}
+.pay-row__lines>summary{cursor:pointer;color:var(--link);font-weight:var(--fw-semibold);min-height:var(--control-md);display:flex;align-items:center}
 
 /* ---------- hisobotlar ---------- */
 .report-bar{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap}
@@ -89,7 +89,7 @@
 .settings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--s-3)}
 .settings-card{display:flex;align-items:flex-start;gap:var(--s-3);padding:var(--s-4);color:inherit;text-decoration:none}
 .settings-card:hover{border-color:var(--border-hover);text-decoration:none}
-.settings-card__icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:var(--r-md);background:var(--brand-soft);color:var(--brand-text)}
+.settings-card__icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:var(--r-md);background:var(--accent-soft);color:var(--accent-text)}
 @media (max-width:420px){.settings-grid{grid-template-columns:1fr}}
 .check-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--s-2)}
 .check-list__item{padding:var(--s-2) var(--s-3);border:1px solid var(--border);border-radius:var(--r-md);min-height:var(--control-md)}
@@ -102,7 +102,7 @@
 .audit-list{list-style:none;margin:0;padding:0}
 .audit-item{display:flex;flex-direction:column;gap:var(--s-2);padding:var(--s-3) var(--s-5);border-bottom:1px solid var(--border)}
 .audit-item:last-child{border-bottom:0}
-.audit-diff>summary{cursor:pointer;color:var(--brand-text)}
+.audit-diff>summary{cursor:pointer;color:var(--link)}
 .diff-old{color:var(--danger-text);overflow-wrap:anywhere}
 .diff-new{color:var(--success-text);overflow-wrap:anywhere}
 @media (max-width:600px){.audit-item{padding:var(--s-3) var(--s-4)}}
@@ -115,7 +115,7 @@
 
 /* K10: qarz eslatmalari — avtomatik eslatma bloki, qatordagi holat katagi, oldindan ko'rish oynasi */
 .rem-auto{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md)}
-.rem-auto__icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;border-radius:50%;background:var(--brand-soft);color:var(--brand-text)}
+.rem-auto__icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;border-radius:50%;background:var(--accent-soft);color:var(--accent-text)}
 .rem-auto--off .rem-auto__icon{background:var(--bg-subtle);color:var(--text-subtle)}
 .rem-auto__main{display:flex;flex-direction:column;gap:var(--s-05);flex:1;min-width:0}
 .rem-auto__title{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2);font-weight:var(--fw-semibold);font-size:var(--fs-14)}
@@ -130,7 +130,7 @@
 .rem-cell__why{font-size:var(--fs-12);color:var(--text-subtle);max-width:220px}
 .rem-cell__btn{white-space:nowrap}
 .rem-contact{display:inline-flex;align-items:center;gap:var(--s-1)}
-.rem-tg{display:inline-flex;color:var(--brand-text)}
+.rem-tg{display:inline-flex;color:var(--link)}
 .rem-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-2)}
 .rem-sum__item{display:flex;flex-direction:column;gap:var(--s-05);padding:var(--s-3);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);min-width:0}
 .rem-sum__num{font-size:var(--fs-22);font-weight:var(--fw-bold)}

@@ -115,6 +115,17 @@
       ev.preventDefault();
       applyKat(chip, true);
     });
+    // yo'nalish kartasidagi «Batafsil» — jadvalni shu yo'nalishga filtrlab, unga o'tadi (sahifa qayta yuklanmaydi)
+    Array.prototype.forEach.call(document.querySelectorAll("a[data-kat-go]"), function (a) {
+      a.addEventListener("click", function (ev) {
+        var chipGo = bar.querySelector('a[data-kat="' + esc(a.getAttribute("data-kat-go")) + '"]');
+        if (!chipGo) return;
+        ev.preventDefault();
+        applyKat(chipGo, true);
+        var sec = document.getElementById("kurslar");
+        if (sec) sec.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
+      });
+    });
     // statik nusxa / to'g'ridan-to'g'ri ?kat= havola: server filtrlamagan bo'lsa ham chip bo'yicha ko'rsatiladi
     var wantKat = q("kat");
     if (wantKat) {

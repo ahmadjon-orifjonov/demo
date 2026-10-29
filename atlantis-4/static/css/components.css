@@ -16,7 +16,7 @@ h1,h2,h3,h4,p{margin:0}
 h1{font-family:var(--font-display);font-size:var(--fs-28,1.75rem);line-height:var(--lh-tight);font-weight:var(--fw-bold);letter-spacing:-.02em}
 h2{font-family:var(--font-display);font-size:var(--fs-18);line-height:var(--lh-tight);font-weight:var(--fw-bold)}
 h3{font-size:var(--fs-16);line-height:var(--lh-tight);font-weight:var(--fw-semibold)}
-a{color:var(--brand-text);text-decoration:none}
+a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
 img,svg{display:block;max-width:100%}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -86,8 +86,8 @@ tbody.is-fresh,tr.is-fresh,.c-kanban.is-fresh{animation-name:fresh-o}
 .nav__item{display:flex;align-items:center;gap:var(--s-3);min-height:var(--control-md);padding:0 var(--s-3);border-radius:var(--r-md);
   color:var(--text-muted);font-weight:var(--fw-medium);text-decoration:none;transition:background var(--dur-2),color var(--dur-2),box-shadow var(--dur-2)}
 .nav__item:hover{background:var(--surface-hover);color:var(--text);text-decoration:none}
-.nav__item[aria-current="page"]{background:var(--brand-soft);color:var(--brand-text);box-shadow:inset 3px 0 0 var(--brand)}   /* chap aksent — «qayerdaman» */
-.nav__item[aria-current="page"] .icon{color:var(--brand)}
+.nav__item[aria-current="page"]{background:var(--primary-soft);color:var(--primary-text);box-shadow:inset 3px 0 0 var(--primary)}   /* faol: yumshoq fistashka fon + chapda 3px fistashka chiziq */
+.nav__item[aria-current="page"] .icon{color:var(--primary-dark)}
 .nav__count{margin-left:auto;font-size:var(--fs-12);font-weight:var(--fw-semibold);min-width:22px;height:22px;padding:0 var(--s-2);
   display:inline-flex;align-items:center;justify-content:center;border-radius:var(--r-full);background:var(--surface-active);color:var(--text-muted)}
 .nav__count--alert{background:var(--danger-solid);color:var(--text-on-solid)}
@@ -152,11 +152,11 @@ tbody.is-fresh,tr.is-fresh,.c-kanban.is-fresh{animation-name:fresh-o}
   transition:background var(--dur-2) var(--ease),border-color var(--dur-2),color var(--dur-2),box-shadow var(--dur-2),transform var(--dur-1) var(--ease)}
 .c-btn:hover{text-decoration:none}
 .c-btn:active{transform:translateY(1px) scale(.985)}
-.c-btn--primary{background:var(--brand);color:var(--brand-contrast);box-shadow:var(--sh-xs)}
-.c-btn--primary:hover{background:var(--brand-hover);transform:translateY(-1px);box-shadow:0 6px 16px -4px color-mix(in srgb,var(--brand) 45%,transparent)}
+.c-btn--primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--sh-xs)}
+.c-btn--primary:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 6px 16px -4px color-mix(in srgb,var(--brand) 45%,transparent)}
 .c-btn--primary:active{transform:translateY(0) scale(.985);box-shadow:var(--sh-xs)}
-.c-btn--secondary{background:var(--surface);border-color:var(--border);color:var(--text);box-shadow:var(--sh-xs)}
-.c-btn--secondary:hover{background:var(--surface-hover);border-color:var(--border-hover);box-shadow:var(--sh-sm)}
+.c-btn--secondary{background:var(--surface);border-color:var(--accent);color:var(--text);box-shadow:var(--sh-xs)}   /* ikkinchi tugma — havorang kontur */
+.c-btn--secondary:hover{background:var(--accent-soft);border-color:var(--accent);box-shadow:var(--sh-sm)}
 .c-btn--soft{background:var(--brand-soft);color:var(--brand-text)}
 .c-btn--soft:hover{background:var(--brand-soft-hover)}
 .c-btn--ghost{background:transparent;color:var(--text-muted)}
@@ -164,7 +164,7 @@ tbody.is-fresh,tr.is-fresh,.c-kanban.is-fresh{animation-name:fresh-o}
 .c-btn--danger{background:var(--danger-solid);color:var(--text-on-solid)}
 .c-btn--danger:hover{background:var(--danger-solid-hover)}
 .c-btn--danger-soft{background:var(--danger-soft);color:var(--danger-text)}
-.c-btn--success{background:var(--success-solid);color:var(--text-on-solid)}
+.c-btn--success{background:var(--success-solid);color:var(--on-success)}
 .c-btn--sm{--btn-h:var(--control-sm);padding:0 var(--s-3);font-size:var(--fs-13)}
 .c-btn--lg{--btn-h:var(--control-lg);padding:0 var(--s-6);font-size:var(--fs-16)}
 .c-btn--icon{width:var(--btn-h);padding:0}
@@ -224,10 +224,16 @@ tbody.is-fresh,tr.is-fresh,.c-kanban.is-fresh{animation-name:fresh-o}
   font-size:var(--fs-12);font-weight:var(--fw-semibold);line-height:1;padding-bottom:1px;white-space:nowrap;background:var(--neutral-soft);color:var(--neutral-text)}
 .c-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
 .c-badge--plain::before{display:none}
+/* Holat belgilari: to'langan/faol — fistashka · kutilmoqda/yangi — havorang · qarzdor/kelmagan — danger.
+   Fon yumshoq, matn to'q soya (>= 4.5:1), nuqta — asosiy rang (#7FB77E / #6FA8DC / #D9534F) */
 .c-badge--success,.c-badge--active{background:var(--st-active-bg);color:var(--st-active)}
+.c-badge--success::before,.c-badge--active::before{background:var(--success)}
 .c-badge--danger,.c-badge--debt{background:var(--st-debt-bg);color:var(--st-debt)}
+.c-badge--danger::before,.c-badge--debt::before{background:var(--danger)}
 .c-badge--warning{background:var(--warning-soft);color:var(--warning-text)}
-.c-badge--info,.c-badge--frozen{background:var(--st-frozen-bg);color:var(--st-frozen)}
+.c-badge--info,.c-badge--frozen,.c-badge--pending,.c-badge--new{background:var(--st-frozen-bg);color:var(--st-frozen)}
+.c-badge--info::before,.c-badge--frozen::before,.c-badge--pending::before,.c-badge--new::before{background:var(--info)}
+.c-badge--new{box-shadow:inset 0 0 0 1px var(--accent)}   /* «yangi ariza» — havorang kontur, «bog'lanildi» dan ajralib turadi */
 .c-badge--trial{background:var(--st-trial-bg);color:var(--st-trial)}
 .c-badge--left{background:var(--st-left-bg);color:var(--st-left);box-shadow:inset 0 0 0 1px var(--border)}
 .c-badge--brand{background:var(--brand-soft);color:var(--brand-text)}
@@ -296,8 +302,8 @@ a.c-stat:active{transform:none;transition-duration:var(--dur-1)}
   transform:scaleX(0);transition:transform var(--dur-3) var(--ease-out),background var(--dur-2)}
 .c-tab:hover{color:var(--text);text-decoration:none}
 .c-tab:hover::after{transform:scaleX(1);background:var(--border-strong)}
-.c-tab[aria-selected="true"],.c-tab[aria-current="page"]{color:var(--brand-text)}
-.c-tab[aria-selected="true"]::after,.c-tab[aria-current="page"]::after{transform:scaleX(1);background:var(--brand);animation:tab-in var(--dur-4) var(--ease-out)}
+.c-tab[aria-selected="true"],.c-tab[aria-current="page"]{color:var(--primary-text)}
+.c-tab[aria-selected="true"]::after,.c-tab[aria-current="page"]::after{transform:scaleX(1);background:var(--primary-dark);animation:tab-in var(--dur-4) var(--ease-out)}
 .c-tab .nav__count{margin-left:0}
 .c-chip{display:inline-flex;align-items:center;gap:var(--s-1);height:32px;padding:0 var(--s-2) 0 var(--s-3);border-radius:var(--r-full);
   background:var(--brand-soft);color:var(--brand-text);font-size:var(--fs-13);font-weight:var(--fw-semibold)}
@@ -307,7 +313,7 @@ a.c-stat:active{transform:none;transition-duration:var(--dur-1)}
 
 .c-table-wrap{overflow-x:auto;border-radius:inherit}
 .c-table{width:100%;border-collapse:separate;border-spacing:0;font-size:var(--fs-14)}
-.c-table th{position:sticky;top:0;background:var(--surface-2);color:var(--text-subtle);font-size:var(--fs-12);font-weight:var(--fw-semibold);
+.c-table th{position:sticky;top:0;background:var(--bg);color:var(--text-muted);font-size:var(--fs-12);font-weight:var(--fw-semibold);
   text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:var(--s-3) var(--s-4);border-bottom:1px solid var(--border);white-space:nowrap}
 .c-table td{padding:var(--s-3) var(--s-4);border-bottom:1px solid var(--border);vertical-align:middle}
 .c-table tr:last-child td{border-bottom:0}
@@ -361,12 +367,12 @@ a.c-list__title{display:block;padding-block:var(--s-1);margin-block:calc(-1 * va
    BO'SH / YUKLANISH / XATO / RUXSAT YO'Q
    ===================================================================== */
 .c-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-3);padding:var(--s-12) var(--s-6);color:var(--text-muted)}
-.c-empty__icon{width:56px;height:56px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;background:var(--bg-subtle);color:var(--text-subtle);
+.c-empty__icon{width:56px;height:56px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent-text);
   animation:page-in var(--dur-4) var(--ease-out) backwards;animation-delay:var(--dur-2)}
 .c-empty__title{font-size:var(--fs-16);font-weight:var(--fw-semibold);color:var(--text)}
 .c-empty__text{max-width:420px}
 /* bo'sh holatdagi harakat havolasi («Jadvalni ko'rish →») — tugma emas, sokin matn-havola */
-.c-empty__link{display:inline-flex;align-items:center;gap:var(--s-1);min-height:var(--control-md);margin-top:var(--s-1);font-size:var(--fs-13);font-weight:var(--fw-semibold);color:var(--brand-text);text-decoration:none}
+.c-empty__link{display:inline-flex;align-items:center;gap:var(--s-1);min-height:var(--control-md);margin-top:var(--s-1);font-size:var(--fs-13);font-weight:var(--fw-semibold);color:var(--link);text-decoration:none}
 .c-empty__link .icon{transition:transform var(--dur-2) var(--ease)}
 .c-empty__link:hover{text-decoration:underline} .c-empty__link:hover .icon{transform:translateX(2px)}
 .c-skel{border-radius:var(--r-sm);background:linear-gradient(90deg,var(--bg-subtle),var(--surface-hover),var(--bg-subtle));background-size:200% 100%;animation:skel 1.2s ease-in-out infinite}
@@ -474,7 +480,7 @@ dialog.c-palette[open]{animation:pop var(--dur-2) var(--ease-out)}
 :root[data-theme="dark"] .c-kanban__col{background:color-mix(in oklab,var(--bg) 55%,var(--surface))}   /* A3: qorong'ida ustun kartadan ajralsin */
 .c-kanban__col.is-over{box-shadow:inset 0 0 0 2px var(--brand);background:var(--brand-soft)}
 .c-kanban__head{display:flex;align-items:center;justify-content:space-between;padding:var(--s-1) var(--s-2);font-weight:var(--fw-semibold)}
-.c-kanban__card{background:var(--surface);border:1px solid var(--border-card);border-radius:var(--r-md);padding:var(--s-3);box-shadow:var(--sh-sm);
+.c-kanban__card{position:relative;background:var(--surface);border:1px solid var(--border-card);border-radius:var(--r-md);padding:var(--s-3);box-shadow:var(--sh-sm);
   display:flex;flex-direction:column;gap:var(--s-1);cursor:grab;text-decoration:none;color:inherit;
   transition:transform var(--dur-2) var(--ease),box-shadow var(--dur-2),border-color var(--dur-2),opacity var(--dur-2)}
 .c-kanban__card:hover{border-color:var(--border-hover);text-decoration:none;transform:translateY(-1px);box-shadow:var(--sh-md)}
@@ -501,7 +507,7 @@ dialog.c-palette[open]{animation:pop var(--dur-2) var(--ease-out)}
 .c-att__opts label{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 var(--s-3);border-radius:var(--r-md);
   border:1px solid var(--border);background:var(--surface);font-weight:var(--fw-semibold);font-size:var(--fs-13);cursor:pointer;color:var(--text-muted)}
 .c-att__opts input:focus-visible+label{outline:2px solid var(--focus-ring);outline-offset:2px}
-.c-att__opts input[value="present"]:checked+label{background:var(--success-solid);border-color:var(--success-solid);color:var(--text-on-solid)}
+.c-att__opts input[value="present"]:checked+label{background:var(--success-solid);border-color:var(--success-solid);color:var(--on-success)}
 .c-att__opts input[value="absent"]:checked+label{background:var(--danger-solid);border-color:var(--danger-solid);color:var(--text-on-solid)}
 .c-att__opts input[value="excused"]:checked+label{background:var(--warning);border-color:var(--warning);color:var(--on-warning)}
 @media (max-width:420px){.c-att__opts label{min-width:40px;padding:0 var(--s-2)}}
@@ -512,12 +518,12 @@ dialog.c-palette[open]{animation:pop var(--dur-2) var(--ease-out)}
 .c-dl dd{margin:0;font-weight:var(--fw-medium);min-width:0;overflow-wrap:anywhere}
 
 /* Chek (chop etish uchun) */
-.c-receipt{max-width:360px;margin:0 auto;padding:var(--s-5);background:#fff;color:#111;border:1px dashed var(--border-strong);border-radius:var(--r-md);font-size:var(--fs-13)}
+.c-receipt{max-width:360px;margin:0 auto;padding:var(--s-5);background:var(--print-paper);color:var(--print-ink);border:1px dashed var(--border-strong);border-radius:var(--r-md);font-size:var(--fs-13)}
 .c-receipt__row{display:flex;justify-content:space-between;gap:var(--s-3);padding:var(--s-1) 0}
 .c-receipt__row span:last-child{font-weight:var(--fw-semibold)}
-.c-receipt__total{border-top:1px dashed #999;margin-top:var(--s-2);padding-top:var(--s-2);font-size:var(--fs-16);font-weight:var(--fw-bold)}
+.c-receipt__total{border-top:1px dashed var(--print-rule);margin-top:var(--s-2);padding-top:var(--s-2);font-size:var(--fs-16);font-weight:var(--fw-bold)}
 @media print{
-  body{background:#fff}
+  body{background:var(--print-paper)}
   *{animation:none!important;transition:none!important}
   .sidebar,.topbar,.tabbar,.no-print,.c-toasts{display:none!important}
   .app{display:block}.content{padding:0;max-width:none}
@@ -578,6 +584,39 @@ dialog.c-palette[open]{animation:pop var(--dur-2) var(--ease-out)}
   background:radial-gradient(1200px 600px at 10% -10%,var(--brand-3),transparent 60%),radial-gradient(900px 500px at 110% 110%,var(--brand-2),transparent 60%),var(--bg)}
 .auth-card{width:min(440px,100%);animation:page-in var(--dur-4) var(--ease-out) backwards}
 .auth-wrap>a{display:inline-flex;align-items:center;gap:var(--s-1);min-height:var(--control-md)}
+/* Xodimlar kirishi (accounts/login.html): chap — fistashka gradient (--primary → --primary-dark) + logotip, o'ng — oq forma.
+   Gradient ustidagi matn TO'Q (--on-primary: #7FB77E da 7.7, #5A9459 da 5.0:1). Telefonda: gradient tepada ixcham tasma. */
+.auth-split{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--surface)}
+.auth-hero{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:var(--s-12) var(--s-8);
+  background:linear-gradient(150deg,var(--primary),var(--primary-dark));color:var(--on-primary)}
+.auth-hero::before,.auth-hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none;
+  background:color-mix(in srgb,var(--surface) 14%,transparent)}
+.auth-hero::before{width:420px;height:420px;top:-140px;right:-120px}
+.auth-hero::after{width:300px;height:300px;bottom:-110px;left:-90px;background:color-mix(in srgb,var(--primary-dark) 55%,transparent)}
+.auth-hero__in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-5);max-width:420px;
+  animation:page-in var(--dur-4) var(--ease-out) backwards}
+.auth-hero .logo--lg{width:72px;height:72px;border-radius:var(--r-xl);font-size:var(--fs-24);background:var(--surface);color:var(--primary-text);box-shadow:var(--sh-md)}
+.auth-hero__txt{display:flex;flex-direction:column;gap:var(--s-2)}
+.auth-hero__name{font-family:var(--font-display);font-size:var(--fs-40);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+.auth-hero__tag{font-size:var(--fs-17);font-weight:var(--fw-medium);line-height:var(--lh);max-width:34ch}
+.auth-pane{display:flex;align-items:center;justify-content:center;padding:var(--s-10) var(--s-6);background:var(--surface)}
+.auth-pane__in{width:min(440px,100%);animation:page-in var(--dur-4) var(--ease-out) backwards;animation-delay:var(--stagger)}
+.auth-pane .t-24{font-size:var(--fs-24)}
+.auth-demo{padding-top:var(--s-5);border-top:1px solid var(--border)}
+.auth-pane .p-auth-foot{justify-content:flex-start;padding-top:var(--s-2)}
+.auth-pane .p-auth-foot>a{display:inline-flex;align-items:center;gap:var(--s-1);min-height:var(--control-md)}
+@media (max-width:900px){
+  .auth-split{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}
+  .auth-hero{justify-content:flex-start;padding:var(--s-4) var(--s-4) var(--s-5)}
+  .auth-hero::before{width:220px;height:220px;top:-120px;right:-60px}
+  .auth-hero::after{display:none}
+  .auth-hero__in{flex-direction:row;align-items:center;gap:var(--s-3);max-width:none}
+  .auth-hero .logo--lg{width:48px;height:48px;border-radius:var(--r-lg);font-size:var(--fs-18)}
+  .auth-hero__txt{gap:0;min-width:0}
+  .auth-hero__name{font-size:var(--fs-22)}
+  .auth-hero__tag{font-size:var(--fs-13);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .auth-pane{align-items:flex-start;padding:var(--s-6) var(--s-4) var(--s-8)}
+}
 .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2)}
 .demo-grid>*{animation:page-in var(--dur-3) var(--ease-out) backwards;animation-delay:calc(var(--dur-2) + var(--stagger)*var(--i,0))}
 .demo-grid>:nth-child(2){--i:1} .demo-grid>:nth-child(3){--i:2} .demo-grid>:nth-child(4){--i:3} .demo-grid>:nth-child(5){--i:4} .demo-grid>:nth-child(n+6){--i:5}
@@ -638,7 +677,7 @@ details.more[open]>:not(summary),.onb__all[open]>:not(summary),.pay-items[open]>
 .vchart__legend{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-4);margin-bottom:var(--s-3);font-size:var(--fs-13);color:var(--text-muted)}
 .vchart__key{display:inline-flex;align-items:center;gap:var(--s-2)}
 .vchart__sw{width:12px;height:12px;border-radius:3px;flex:none}
-.vchart__sw--1{background:var(--vc-s1)} .vchart__sw--2{background:var(--vc-s2)}
+.vchart__sw--1{background:var(--vc-s1);box-shadow:inset 0 0 0 1px var(--vc-s1-edge)} .vchart__sw--2{background:var(--vc-s2);box-shadow:inset 0 0 0 1px var(--vc-s2-edge)}
 .vchart__plot{position:relative;height:var(--vc-h);margin-left:var(--vc-axis);margin-bottom:28px;border-bottom:1px solid var(--border-strong,var(--border))}
 .vchart__gl{position:absolute;left:0;right:0;height:0;border-top:1px solid var(--border)}
 .vchart__gl.vb-0{border-top:0}
@@ -658,7 +697,8 @@ details.more[open]>:not(summary),.onb__all[open]>:not(summary),.pay-items[open]>
 .vchart__col:nth-child(6) .vchart__bar{animation-delay:calc(var(--stagger)*7)}
 .vchart__col:nth-child(n+7) .vchart__bar{animation-delay:calc(var(--stagger)*8)}
 .vchart__bar.is-zero{min-height:0}
-.vchart__bar--1{background:var(--vc-s1)} .vchart__bar--2{background:var(--vc-s2)}
+/* 1-seriya fistashka, 2-seriya havorang; 1px to'qroq chet — och to'ldiruvchi oq fonda ham aniq ko'rinsin */
+.vchart__bar--1{background:var(--vc-s1);box-shadow:inset 0 0 0 1px var(--vc-s1-edge)} .vchart__bar--2{background:var(--vc-s2);box-shadow:inset 0 0 0 1px var(--vc-s2-edge)}
 .vchart__plot:hover .vchart__bar{opacity:.45}
 .vchart__plot .vchart__col:hover .vchart__bar,.vchart__col:focus-visible .vchart__bar{opacity:1;filter:brightness(1.06)}
 .vchart__cat{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:var(--fs-12);color:var(--text-subtle)}

@@ -29,78 +29,99 @@
      1 ilova foni · 2 yumshoq fon · 3/4/5 element foni (oddiy/hover/tanlangan)
      6 yumshoq chegara · 7 chegara/fokus · 8 hover chegara · 9 to'q fon
      10 to'q hover · 11 past kontrast matn · 12 yuqori kontrast matn */
-  --gray-1:#fbfbfc; --gray-2:#f6f7f9; --gray-3:#eef0f3; --gray-4:#e6e9ee; --gray-5:#dfe3e8; --gray-6:#d6dbe2;
-  --gray-7:#c8cfd8; --gray-8:#aeb7c3; --gray-9:#7d8795; --gray-10:#727c8a; --gray-11:#57606c; --gray-12:#1c2027;
+  /* 30-okt (ATLANTIS hujjati): fistashka – havorang – och kulrang. Kulrang — yashil-kulrang (sage) oila:
+     2 = --bg #F3F5F4 · 5 = --border #DCE3DF · 11 = --text-muted #5F6E66 · 12 = --text #1E2B24 */
+  --gray-1:#f8fbf9; --gray-2:#f3f5f4; --gray-3:#ebefec; --gray-4:#e4eae6; --gray-5:#dce3df; --gray-6:#d2dad5;
+  --gray-7:#c2ccc6; --gray-8:#a6b1aa; --gray-9:#808d85; --gray-10:#6f7d75; --gray-11:#5f6e66; --gray-12:#1e2b24;
 
-  --green-1:#f9fdfa; --green-2:#f1faf4; --green-3:#e2f5e8; --green-4:#d1efdb; --green-5:#bde6cb; --green-6:#a2d9b6;
-  --green-7:#7cc699; --green-8:#3fae71; --green-9:#1f9d5c; --green-10:#178f52; --green-11:#137a46; --green-12:#153d28;
+  /* fistashka: 3 = --primary-soft #E3F1E1 · 9 = --primary #7FB77E · 10 = --primary-dark #5A9459 · 11 = kichik matn #3D763C (oqda 5.4:1) */
+  --green-1:#fcfdfc; --green-2:#f6f9f6; --green-3:#e3f1e1; --green-4:#d5ead3; --green-5:#c4dfc2; --green-6:#b6d8b4;
+  --green-7:#a9d3a8; --green-8:#8eb38d; --green-9:#7fb77e; --green-10:#5a9459; --green-11:#3d763c; --green-12:#1d341d;
 
   --amber-1:#fefdf8; --amber-2:#fff8e6; --amber-3:#fff0c7; --amber-4:#ffe6a3; --amber-5:#fdd97f; --amber-6:#f3c85f;
-  --amber-7:#e2b13f; --amber-8:#d19b10; --amber-9:#f5b000; --amber-10:#eaa400; --amber-11:#9a6200; --amber-12:#4a3510;
+  --amber-7:#e2b13f; --amber-8:#d19b10; --amber-9:#f5b000; --amber-10:#eaa400; --amber-11:#905c00; --amber-12:#4a3510;
 
-  --red-1:#fffcfc; --red-2:#fff6f5; --red-3:#ffe9e7; --red-4:#ffdad6; --red-5:#ffcac5; --red-6:#fbb6b0;
-  --red-7:#f19a93; --red-8:#e67369; --red-9:#dc3b2f; --red-10:#cf3226; --red-11:#c02619; --red-12:#5c1a14;
+  /* danger: 9 = #D9534F (faqat qarzdor/kelmagan belgisi, chiziq) · 11 = matn #B33736 (oqda 6.0, yumshoq fonda 5.1) */
+  --red-1:#fffcfb; --red-2:#fdf6f5; --red-3:#fbe8e7; --red-4:#f8d9d7; --red-5:#f4c8c5; --red-6:#efb5b1;
+  --red-7:#e89a95; --red-8:#e07873; --red-9:#d9534f; --red-10:#c9463f; --red-11:#b33736; --red-12:#501817;
 
-  --blue-1:#fbfdff; --blue-2:#f4f9ff; --blue-3:#e7f1ff; --blue-4:#d8e8ff; --blue-5:#c6ddff; --blue-6:#b0cffc;
-  --blue-7:#91baf4; --blue-8:#659ceb; --blue-9:#2f7de1; --blue-10:#2670d0; --blue-11:#1f64b8; --blue-12:#15325a;
+  /* havorang: 3 = --accent-soft #E4F0FA · 9 = --accent #6FA8DC (faqat ikonka/chiziq/kontur, oqda 2.5:1) · 11 = matn #2F6699 (oqda 6.0) */
+  --blue-1:#fbfdfe; --blue-2:#f5f8fb; --blue-3:#e4f0fa; --blue-4:#d3e6f6; --blue-5:#c3dcf2; --blue-6:#b0d0ee;
+  --blue-7:#9cc3e8; --blue-8:#85b5e2; --blue-9:#6fa8dc; --blue-10:#5a93c9; --blue-11:#2f6699; --blue-12:#183045;
 
-  /* Brend (standart — firuza, brand.toml #0E8F80 shkalasi). Server brand.toml dan qayta yozadi;
-     brend yo'q bo'lsa ham ko'k-binafsha emas, firuza ko'rinadi. */
-  --brand-1:#fbfdfc; --brand-2:#f4f9f8; --brand-3:#e8f3f1; --brand-4:#daede9; --brand-5:#cae5df; --brand-6:#b8dbd4;
-  --brand-7:#9dccc3; --brand-8:#75b6ab; --brand-9:#008374; --brand-10:#007567; --brand-11:#007a6d; --brand-12:#043630;
-  --brand-contrast:#ffffff;   /* 9-bosqich ustidagi matn */
+  /* Brend — standart fistashka (brand.toml #7FB77E shkalasi, core/brand.py brand_scales). Server brand.toml dan
+     <style> ichida qayta yozadi; boshqa markaz o'z rangini beradi. */
+  --brand-1:#fcfdfc; --brand-2:#f6f9f6; --brand-3:#e3f2e2; --brand-4:#e0ece0; --brand-5:#d3e3d2; --brand-6:#c4dac3;
+  --brand-7:#aecaad; --brand-8:#8eb38d; --brand-9:#7fb77e; --brand-10:#5c935c; --brand-11:#437443; --brand-12:#1d341d;
+  --brand-contrast:#14161a;   /* 9/10-bosqich ustidagi matn: fistashkada TO'Q (7.7 / 5.0:1); oq matn 2.3:1 bo'lardi */
 
   /* ---------- 2. SEMANTIK TOKENLAR ---------- */
-  --bg:            var(--gray-2);    /* ilova foni */
+  /* Hujjatdagi nomlar (--primary/--accent): brend shkalasiga bog'langan — ATLANTIS'da aynan jadvaldagi ranglar */
+  --primary:       var(--brand-9);   /* #7FB77E — asosiy tugma, faol menyu chizig'i, «to'langan» */
+  --primary-dark:  var(--brand-10);  /* #5A9459 — tugma hover, sarlavha osti chizig'i, urg'u */
+  --primary-soft:  var(--brand-3);   /* #E3F1E1 — faol menyu foni, tanlangan qator, urg'uli karta */
+  --primary-text:  var(--brand-11);  /* ~#3D763C (shkaladan #437443) — kichik fistashka MATN (havola/raqam), oqda >= 4.5:1 */
+  --on-primary:    var(--brand-contrast);
+  --accent:        var(--blue-9);    /* #6FA8DC — ikonka, grafik chizig'i, ikkinchi tugma konturi (MATN emas) */
+  --accent-soft:   var(--blue-3);    /* #E4F0FA — ma'lumot bloki, «yangi ariza» belgisi */
+  --accent-text:   var(--blue-11);   /* #2F6699 — havolalar va havorang matn (oqda 6.0:1) */
+
+  --bg:            var(--gray-2);    /* #F3F5F4 — sahifa foni */
   --bg-subtle:     var(--gray-3);
-  --surface:       #ffffff;          /* karta, jadval, modal */
+  --surface:       #ffffff;          /* karta, jadval, forma */
   --surface-2:     var(--gray-1);    /* karta ichidagi ikkinchi daraja */
   --surface-hover: var(--gray-3);
   --surface-active:var(--gray-4);
-  --sidebar:       var(--gray-1);
-  --overlay:       rgb(16 20 27 / .45);
+  --sidebar:       var(--surface);   /* yon menyu — oq */
+  --overlay:       rgb(16 27 21 / .45);
 
-  --border:        var(--gray-5);   /* jadval/ajratgich chiziqlari — aniq */
-  --border-card:   var(--gray-4);   /* karta/KPI chegarasi — yumshoq (soya bilan birga) */
+  --border:        var(--gray-5);   /* #DCE3DF — jadval/ajratgich chiziqlari */
+  --border-card:   var(--gray-5);   /* karta/KPI chegarasi (soya bilan birga) */
   --border-strong: var(--gray-7);
   --border-hover:  var(--gray-8);
-  --border-input:  #878f9b;         /* FAQAT forma maydonlari: oq ustida 3.2:1 (WCAG 1.4.11) */
+  --border-input:  #7d8a82;         /* FAQAT forma maydonlari: oqda 3.6:1, --bg da 3.3:1 (WCAG 1.4.11) */
   --border-input-hover: var(--gray-11);
 
-  --text:          var(--gray-12);
-  --text-muted:    var(--gray-11);
-  --text-subtle:   #6b7480;          /* 4.5:1 surface ustida */
+  --text:          var(--gray-12);   /* #1E2B24 */
+  --text-muted:    var(--gray-11);   /* #5F6E66 — izoh, sana (oqda 5.4, --bg da 4.9) */
+  --text-subtle:   #65726b;          /* oqda 5.0, --bg da 4.6:1 */
   --text-on-solid: #ffffff;
+  --link:          var(--accent-text);
 
-  --brand:         var(--brand-9);
-  --brand-hover:   var(--brand-10);
-  --brand-soft:    var(--brand-3);
+  --brand:         var(--primary);
+  --brand-hover:   var(--primary-dark);
+  --brand-soft:    var(--primary-soft);
   --brand-soft-hover:var(--brand-4);
   --brand-border:  var(--brand-7);
-  --brand-text:    var(--brand-11);
-  --focus-ring:    var(--brand-8);
+  --brand-text:    var(--primary-text);
+  --focus-ring:    var(--brand-10);  /* fokus halqasi oq/--bg ustida >= 3:1 */
 
+  /* Holatlar: to'langan/faol — fistashka · kutilmoqda/ma'lumot — havorang · qarzdor/kelmagan — danger */
   --success:       var(--green-9);  --success-soft:var(--green-3);  --success-text:var(--green-11);  --success-border:var(--green-7);
   --warning:       var(--amber-9);  --warning-soft:var(--amber-3);  --warning-text:var(--amber-11);  --warning-border:var(--amber-7);
   --danger:        var(--red-9);    --danger-soft:var(--red-3);     --danger-text:var(--red-11);     --danger-border:var(--red-7);
   --danger-hover:  var(--red-10);
-  /* To'q fonli tugmalar (oq matn >= 4.5:1, ikkala rejimda bir xil) */
-  --success-solid:#137a46; --danger-solid:#cf3226; --danger-solid-hover:#b42318; --on-warning:#1c2027;
+  /* To'liq fonli belgi/tugmalar: fistashka ustida TO'Q matn (--on-success 6.3:1); danger — oq matn uchun to'qroq soya (5.3:1) */
+  --success-solid:var(--green-9); --on-success:#1e2b24;
+  --danger-solid:#bd413f; --danger-solid-hover:#a93633; --on-warning:#1e2b24;
   --info:          var(--blue-9);   --info-soft:var(--blue-3);      --info-text:var(--blue-11);      --info-border:var(--blue-7);
   --neutral-soft:  var(--gray-3);   --neutral-text:var(--gray-11);  --neutral-border:var(--gray-6);
 
   --on-dark-hover: rgb(255 255 255 / .1);
-  /* Grafik (kategorial) ranglari — brenddan mustaqil */
-  --chart-1:#4f6bed; --chart-2:#1f9d8a; --chart-3:#e0a100; --chart-4:#d9534f;
-  --vc-s1:#4f6bed; --vc-s2:#1f9d8a;   /* grafik seriyalari (dataviz validator: CVD/kontrast o'tgan) */
-  --chart-5:#8b5cf6; --chart-6:#0ea5e9; --chart-7:#6b7280; --chart-8:#ea580c;
+  /* Grafik ranglari — brenddan mustaqil: 1-seriya fistashka, 2-seriya havorang */
+  --chart-1:#7fb77e; --chart-2:#6fa8dc; --chart-3:#e0a100; --chart-4:#d9534f;
+  --vc-s1:var(--chart-1); --vc-s2:var(--chart-2);
+  --vc-s1-edge:var(--green-10); --vc-s2-edge:var(--blue-10); --chart-line:var(--blue-10);   /* ustun cheti: oq fonda 3.6 / 3.3:1 (WCAG 1.4.11) — to'ldiruvchi rang och bo'lgani uchun */
+  --chart-5:#8b7fd1; --chart-6:#4fb3b0; --chart-7:#808d85; --chart-8:#e08a4f;
+  /* Chek (chop etish) — doim oq qog'oz, qora siyoh (mavzudan qat'i nazar) */
+  --print-paper:#ffffff; --print-ink:#111111; --print-rule:#999999;
   /* Jadval: kurs yo'nalishi (kategorial) ranglari — chiziq (--cat-N) + yumshoq fon (--cat-N-bg); matn doim --text.
      Rang yolg'iz ma'no tashimaydi: kartada guruh nomi, legendada yo'nalish nomi bor. */
   --cat-0:var(--gray-8); --cat-0-bg:var(--gray-3);
   --cat-1:#3b6fe0; --cat-1-bg:#ebf1fd; --cat-2:#0f8f7e; --cat-2-bg:#e4f4f1; --cat-3:#c68400; --cat-3-bg:#fcf3dd;
   --cat-4:#7a58e0; --cat-4-bg:#f0ecfc; --cat-5:#0a8fc4; --cat-5-bg:#e2f3fa; --cat-6:#dc5f17; --cat-6-bg:#fdede3;
   --cat-7:#3a9636; --cat-7-bg:#e8f4e7; --cat-8:#d23f68; --cat-8-bg:#fcebf0;
-  --now-line:#e5484d;   /* jadval: hozirgi vaqt chizig'i */
+  --now-line:#c9463f;   /* jadval: hozirgi vaqt chizig'i (ustidagi oq yorliq 4.9:1) */
 
   /* O'quvchi holatlari (butun tizimda bir xil ma'no) */
   --st-trial:   var(--neutral-text);   --st-trial-bg: var(--neutral-soft);
@@ -152,34 +173,37 @@
 
 /* ---------- QORONG'I MAVZU ---------- */
 :root[data-theme="dark"]{
-  --vc-s1:#6f86f5; --vc-s2:#26a08d;   /* grafik seriyalari — qorong'i fon uchun alohida tekshirilgan */
+  /* Qorong'i: to'q yashil-kulrang fon, fistashka — urg'u (ustida to'q matn), havorang — ikkinchi urg'u */
+  --chart-1:#7fb77e; --chart-2:#6fa8dc;   /* to'q sirt ustida 7.9 / 7.0:1 */
   --cat-1:#7097f5; --cat-1-bg:#172036; --cat-2:#2fb8a4; --cat-2-bg:#10292a; --cat-3:#e4ae3a; --cat-3-bg:#2a2312;
   --cat-4:#a28cf6; --cat-4-bg:#221d3a; --cat-5:#40b6e4; --cat-5-bg:#0f2733; --cat-6:#f08a4c; --cat-6-bg:#2e1d12;
   --cat-7:#6cbf67; --cat-7-bg:#16291a; --cat-8:#ef7096; --cat-8-bg:#32161f; --now-line:#ff6369;
-  --gray-1:#111317; --gray-2:#16181d; --gray-3:#1d2026; --gray-4:#23272e; --gray-5:#2a2f37; --gray-6:#333942;
-  --gray-7:#414852; --gray-8:#5a626e; --gray-9:#6c7582; --gray-10:#7b8491; --gray-11:#b0b8c3; --gray-12:#eef1f5;
+  --gray-1:#0c0f0d; --gray-2:#111513; --gray-3:#161b18; --gray-4:#1c211e; --gray-5:#222825; --gray-6:#2a312d;
+  --gray-7:#373e3a; --gray-8:#4c5550; --gray-9:#646f69; --gray-10:#737d77; --gray-11:#b2beb7; --gray-12:#e8eeeb;
 
-  --green-3:#132a1d; --green-4:#173524; --green-7:#23683f; --green-9:#2fb36c; --green-11:#5fd394;
+  --green-3:#1c231c; --green-4:#212b20; --green-7:#395238; --green-9:#7fb77e; --green-10:#8fc48e; --green-11:#acd4ab;
   --amber-3:#2e2310; --amber-4:#3a2c10; --amber-7:#7a5a14; --amber-9:#f5b000; --amber-11:#f3c65a;
-  --red-3:#34160f; --red-4:#421b14; --red-7:#8a3025; --red-9:#e5493c; --red-10:#ee5a4d; --red-11:#ff9187;
-  --blue-3:#10223b; --blue-4:#132a4a; --blue-7:#2a5aa0; --blue-9:#3b8cf0; --blue-11:#8ec0ff;
+  --red-3:#2c1b1a; --red-4:#391f1d; --red-7:#733531; --red-9:#e5675f; --red-10:#ec7a72; --red-11:#feb0a9;
+  --blue-3:#1b2128; --blue-4:#1e2933; --blue-7:#334d65; --blue-9:#6fa8dc; --blue-11:#a4ccf2;
 
-  --brand-1:#0e100f; --brand-2:#131716; --brand-3:#182321; --brand-4:#1a2c28; --brand-5:#1c3631; --brand-6:#20423c;
-  --brand-7:#25544c; --brand-8:#2a6d63; --brand-9:#199485; --brand-10:#2ea091; --brand-11:#92d7cb; --brand-12:#ddf4f0; --brand-contrast:#14161a;
+  --brand-1:#0e100e; --brand-2:#141714; --brand-3:#1c231c; --brand-4:#212b20; --brand-5:#263526; --brand-6:#2e402d;
+  --brand-7:#395238; --brand-8:#486b48; --brand-9:#7db57c; --brand-10:#8ac288; --brand-11:#acd4ab; --brand-12:#e5f3e4; --brand-contrast:#14161a;
 
-  --bg: #0b0c10;                 /* sirtdan aniq to'qroq — kartalar ajralib turadi */
+  --bg: #080b09;                 /* sirtdan aniq to'qroq — kartalar ajralib turadi */
   --bg-subtle: var(--gray-2);
   --surface: var(--gray-2);
   --surface-2: var(--gray-3);
   --surface-hover: var(--gray-4);
   --surface-active: var(--gray-5);
   --sidebar: var(--gray-1);
-  --text-subtle:#98a1ad;
-  --border: var(--gray-4);       /* yumshoqroq chiziqlar */
-  --border-card: var(--gray-4);
+  --text-subtle:#9aa8a0;
+  --border: var(--gray-5);       /* yumshoqroq chiziqlar */
+  --border-card: var(--gray-5);
   --border-strong: var(--gray-6);
-  --border-input: var(--gray-9); /* #6c7582: sirt ustida 3.8:1 */
+  --border-input: var(--gray-9); /* #646f69: sirt ustida 3.5:1 */
   --border-input-hover: var(--gray-11);
+  --success-solid:var(--green-9); --on-success:#14161a; --on-warning:#14161a;
+  --danger-solid:#c4453f; --danger-solid-hover:#d2524b;
   --overlay: rgb(0 0 0 / .6);
   --sh-xs:0 0 0 1px rgb(255 255 255 / .04);
   --sh-sm:0 0 0 1px rgb(255 255 255 / .04), 0 2px 8px rgb(0 0 0 / .35);

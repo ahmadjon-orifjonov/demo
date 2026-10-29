@@ -1,0 +1,71 @@
+
+<dialog class="c-modal" data-server-modal aria-labelledby="m-title">
+  <div class="c-modal__head"><h2 id="m-title">Darsni boshqa kunga ko'chirish</h2>
+    <button type="button" class="c-btn c-btn--ghost c-btn--icon" data-modal-close aria-label="Yopish"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-x"></use></svg></button></div>
+  
+<form class="c-modal__form-wrap" method="post" action="/demo/atlantis-4/r/admin/panel/dars/358/kochirish/q-from-lesson.html" hx-post="/demo/atlantis-4/r/admin/panel/dars/358/kochirish/q-from-lesson.html" hx-swap="none" novalidate>
+  
+  <div class="c-modal__body">
+    
+    
+    
+<div class="kv"><span class="kv__k">Hozir</span><span class="kv__v">Fransuz tili · A1 · Payshanba, 29-oktabr 19:00</span></div>
+
+
+<p class="muted t-13">Dars yangi kun va vaqtga ko'chadi. Pul o'zgarmaydi (bu o'sha dars), ota-onalarga xabar ketadi.</p>
+
+
+
+
+    <div class="c-grid-2">
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_date">Yangi sana<span class="req" aria-hidden="true">*</span></label>
+    <input type="date" name="date" class="c-input" required id="id_date">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_start_time">Boshlanish vaqti<span class="req" aria-hidden="true">*</span></label>
+    <input type="time" name="start_time" value="19:00" class="c-input" required id="id_start_time">
+  
+  
+  
+</div>
+
+<div class="c-field">
+  
+    <label class="c-field__label" for="id_room">Xona</label>
+    <select name="room" class="c-select" id="id_room">
+  <option value="">— xonasiz —</option>
+
+  <option value="1">1-xona</option>
+
+  <option value="2">2-xona</option>
+
+  <option value="3">3-xona</option>
+
+  <option value="4">4-xona</option>
+
+  <option value="5">5-xona</option>
+
+  <option value="6" selected>Onlayn (Zoom)</option>
+
+</select>
+  
+  
+  
+</div>
+</div>
+    
+  </div>
+  <div class="c-modal__foot">
+    <button type="button" class="c-btn c-btn--secondary" data-modal-close>Bekor qilish</button>
+    <button type="submit" class="c-btn c-btn--primary">Ko'chirish</button>
+  </div>
+</form>
+
+</dialog>

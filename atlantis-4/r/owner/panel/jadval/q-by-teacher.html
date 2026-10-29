@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="uz">
+<html lang="uz" data-theme="light">
 <head>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="icons" content="/demo/atlantis-4/static/icons.svg">
 <meta name="htmx-config" content='{"allowEval":false,"allowScriptTags":false,"includeIndicatorStyles":false,"historyCacheSize":0,"defaultSwapStyle":"innerHTML","scrollIntoViewOnBoost":false}'>
-<meta name="theme-color" content="#0E8F80">
+<meta name="theme-color" content="#7FB77E">
 <title>Jadval — ATLANTIS</title>
 <link rel="icon" type="image/png" href="/demo/atlantis-4/_a/9ea49ee5ca1d.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/demo/atlantis-4/_a/53f4490d9947.png">
@@ -22,8 +22,8 @@
 <link rel="stylesheet" href="/demo/atlantis-4/static/css/app_telephony.css">
 <link rel="stylesheet" href="/demo/atlantis-4/static/css/app_exams.css">
 
-<style nonce="lLl--UGJDbh_xbhYQb9kmg">:root{ --brand-1:#fbfdfc;--brand-2:#f4f9f8;--brand-3:#e8f3f1;--brand-4:#daede9;--brand-5:#cae5df;--brand-6:#b8dbd4;--brand-7:#9dccc3;--brand-8:#75b6ab;--brand-9:#008374;--brand-10:#007567;--brand-11:#007a6d;--brand-12:#043630;--brand-contrast:#ffffff;--site-pan:#123B3A;--site-pan2:#0C2A29;--site-m:#17302F;--site-m2:#5B6D6A;--site-m3:#5E706C;--site-fe:#16B8A6;--site-tg:#0A7568;--site-tgh:#075F55;--site-tg-text:#075F55;--site-line:#738C87;--site-leaf:#7CCB5E;--site-leaf2:#5DBB63;--site-bg:#F4F8F7;--site-alt:#EAF3F1;--site-ch:#DCE7E4;--site-ch2:#E9F1EF;--site-tint:#E4F7F3;--site-tint2:#DDF5F1;--site-glow1:#D8F3EE;--site-glow2:#EAF6DE;--site-on-dark:#DDEBE8;--site-on-dark2:#A9C4BF;--site-on-dark3:#7FE3D5;--site-on-dark4:#9FC0BA;--site-foot:#8FB0AA;--site-yuz:#FFFFFF;--site-ink:#FFFFFF;--site-ol:#C89B3C;--site-ol2:#E7C98B;--site-ol3:#EFD7A4;--site-ol-ink:#3D2C08;--site-ya:#168A5B;--site-ya-text:#0F7A52;--site-ya-soft:#E2F4EB;--site-c1:#0E8F80;--site-c2:#2878B5;--site-c3:#B88A2E;--site-c4:#6D5BD0;--site-c5:#B7791F;--site-c6:#C43D4B } :root[data-theme="dark"]{ --brand-1:#0e100f;--brand-2:#131716;--brand-3:#182321;--brand-4:#1a2c28;--brand-5:#1c3631;--brand-6:#20423c;--brand-7:#25544c;--brand-8:#2a6d63;--brand-9:#199485;--brand-10:#2ea091;--brand-11:#92d7cb;--brand-12:#ddf4f0;--brand-contrast:#14161a }</style>
-<script nonce="lLl--UGJDbh_xbhYQb9kmg">(function(){var r=document.documentElement;if(!r.dataset.theme){try{var t=localStorage.getItem("theme");}catch(e){}if(t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){r.dataset.theme="dark";}}})();</script>
+<style nonce="YqoJ2elOvA_J0ZiFbMRn2Q">:root{ --brand-1:#fcfdfc;--brand-2:#f6f9f6;--brand-3:#e3f2e2;--brand-4:#e0ece0;--brand-5:#d3e3d2;--brand-6:#c4dac3;--brand-7:#aecaad;--brand-8:#8eb38d;--brand-9:#7fb77e;--brand-10:#5c935c;--brand-11:#437443;--brand-12:#1d341d;--brand-contrast:#14161a;--site-pan:#1E2B24;--site-pan2:#16211B;--site-m:#1E2B24;--site-m2:#5F6E66;--site-m3:#5F6E66;--site-fe:#7FB77E;--site-tg:#7FB77E;--site-tgh:#5A9459;--site-tg-text:#3D763C;--site-on-tg:#1E2B24;--site-line:#7D8C84;--site-leaf:#A9D3A8;--site-leaf2:#7FB77E;--site-bg:#F3F5F4;--site-alt:#EDF1EF;--site-ch:#DCE3DF;--site-ch2:#E8EDEA;--site-tint:#E3F1E1;--site-tint2:#D5EAD3;--site-glow1:#E3F1E1;--site-glow2:#E4F0FA;--site-on-dark:#E6EEE9;--site-on-dark2:#B8C7BE;--site-on-dark3:#A9D3A8;--site-on-dark4:#AFC0B6;--site-foot:#A3B5AA;--site-yuz:#FFFFFF;--site-ink:#FFFFFF;--site-ol:#6FA8DC;--site-ol2:#E4F0FA;--site-ol3:#D3E6F6;--site-ol-ink:#1E3A55;--site-ya:#5A9459;--site-ya-text:#3D763C;--site-ya-soft:#E3F1E1;--site-ol-soft:#E4F0FA;--site-ol-text:#2F6699;--site-xa:#D9534F;--site-xa-soft:#FBE8E7;--site-c1:#5A9459;--site-c2:#3F7FBF;--site-c3:#B07A2E;--site-c4:#6C63B5;--site-c5:#2F8584;--site-c6:#C0504B } :root[data-theme="dark"]{ --brand-1:#0e100e;--brand-2:#141714;--brand-3:#1c231c;--brand-4:#212b20;--brand-5:#263526;--brand-6:#2e402d;--brand-7:#395238;--brand-8:#486b48;--brand-9:#7db57c;--brand-10:#8ac288;--brand-11:#acd4ab;--brand-12:#e5f3e4;--brand-contrast:#14161a }</style>
+<script nonce="YqoJ2elOvA_J0ZiFbMRn2Q">(function(){var r=document.documentElement;if(!r.dataset.theme){try{var t=localStorage.getItem("theme");}catch(e){}if(t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){r.dataset.theme="dark";}}})();</script>
 <script src="/demo/atlantis-4/static/js/htmx.min.js" defer></script>
 <script src="/demo/atlantis-4/static/js/app.js" defer></script>
 <script src="/demo/atlantis-4/static/js/schedule.js" defer></script><script src="/demo/atlantis-4/static/js/schedule_dnd.js" defer></script>
@@ -203,7 +203,7 @@
     
       <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/owner/panel/qarorlar/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-shield-check"></use></svg><span class="grow">2 ta qaror kutilmoqda</span></a>
     
-      <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/owner/panel/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check-check"></use></svg><span class="grow">3 ta darsda davomat belgilanmagan</span></a>
+      <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/owner/panel/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check-check"></use></svg><span class="grow">2 ta darsda davomat belgilanmagan</span></a>
     
       <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/owner/panel/lidlar/"><span class="dot dot--brand"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-phone"></use></svg><span class="grow">5 ta lidga qo&#x27;ng&#x27;iroq vaqti keldi</span></a>
     
@@ -267,7 +267,7 @@
   <div class="sched-sum__i is-live">
     <span class="sched-sum__k"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-calendar"></use></svg> Bugun</span>
     <span class="sched-sum__v num">13 ta dars</span>
-    <span class="sched-sum__s"><span class="live-dot" aria-hidden="true"></span>hozir 3 ta ketyapti · keyingisi 16:00 — IELTS tayyorlov · 6.0→7.0</span>
+    <span class="sched-sum__s"><span class="live-dot" aria-hidden="true"></span>hozir 2 ta ketyapti</span>
   </div>
   
   <div class="sched-sum__i sched-sum__i--minor">
@@ -287,7 +287,7 @@
   
   <div class="sched-sum__i is-warn">
     <span class="sched-sum__k"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg> Davomat belgilanmagan</span>
-    <span class="sched-sum__v num">3</span>
+    <span class="sched-sum__v num">2</span>
     <span class="sched-sum__s">o'tgan, lekin belgilanmagan darslar</span>
   </div>
   
@@ -321,25 +321,25 @@
 
 
 <nav class="c-tabs sched-days sched-days--phone no-print" aria-label="Hafta kuni">
-  <a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Du</span><span class="num t-12">26</span></a><a class="c-tab day-tab is-today" href="/demo/atlantis-4/r/owner/panel/jadval/" aria-current="page"><span>Se</span><span class="num t-12">27</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Ch</span><span class="num t-12">28</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Pa</span><span class="num t-12">29</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Ju</span><span class="num t-12">30</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Sh</span><span class="num t-12">31</span></a>
+  <a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Du</span><span class="num t-12">26</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Se</span><span class="num t-12">27</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Ch</span><span class="num t-12">28</span></a><a class="c-tab day-tab is-today" href="/demo/atlantis-4/r/owner/panel/jadval/" aria-current="page"><span>Pa</span><span class="num t-12">29</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Ju</span><span class="num t-12">30</span></a><a class="c-tab day-tab" href="/demo/atlantis-4/r/owner/panel/jadval/"><span>Sh</span><span class="num t-12">31</span></a>
 </nav>
 
 
 
 <div class="sched-week">
-  <div class="c-cal c-cal--res c-cal--d6" role="table" aria-label="Haftalik jadval" data-sched-dnd data-by="teacher" data-today="2026-10-27" data-sched-grid>
+  <div class="c-cal c-cal--res c-cal--d6" role="table" aria-label="Haftalik jadval" data-sched-dnd data-by="teacher" data-today="2026-10-29" data-sched-grid>
     <div class="c-cal__h c-cal__corner" role="columnheader">O'qituvchi</div>
     <div class="c-cal__h" role="columnheader">
       <span class="cal-h__day">Dushanba <span class="num">26.10</span></span>
       <span class="cal-h__sub">16 dars</span>
-    </div><div class="c-cal__h is-today" role="columnheader">
-      <span class="cal-h__day">Seshanba <span class="num">27.10</span> <span class="cal-h__today">Bugun</span></span>
+    </div><div class="c-cal__h" role="columnheader">
+      <span class="cal-h__day">Seshanba <span class="num">27.10</span></span>
       <span class="cal-h__sub">13 dars</span>
     </div><div class="c-cal__h" role="columnheader">
       <span class="cal-h__day">Chorshanba <span class="num">28.10</span></span>
       <span class="cal-h__sub">16 dars</span>
-    </div><div class="c-cal__h" role="columnheader">
-      <span class="cal-h__day">Payshanba <span class="num">29.10</span></span>
+    </div><div class="c-cal__h is-today" role="columnheader">
+      <span class="cal-h__day">Payshanba <span class="num">29.10</span> <span class="cal-h__today">Bugun</span></span>
       <span class="cal-h__sub">13 dars</span>
     </div><div class="c-cal__h" role="columnheader">
       <span class="cal-h__day">Juma <span class="num">30.10</span></span>
@@ -352,8 +352,8 @@
       <div class="c-cal__t c-cal__res" role="rowheader"><span class="fw-600">Aziz</span><span class="cal-res__n subtle">6 dars</span></div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-26" data-drop-row="7">
-        <a class="c-cal__ev cat-5 is-missed" data-cat="5" href="/demo/atlantis-4/r/owner/panel/dars/268/" draggable="false" title="Turk tili · A1 · Turk tili&#10;19:00–20:30 · 2-xona&#10;7/8 o'quvchi · O'tdi, lekin davomat belgilanmagan">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--missed"><svg class="icon icon--sm" role="img" aria-label="O'tdi, lekin davomat belgilanmagan"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg></span></span>
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Turk tili · A1 · Turk tili&#10;19:00–20:30 · 2-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Turk tili · A1</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -362,9 +362,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="7">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/298/kochirish/" title="Koreys tili (TOPIK) · A1 · Koreys tili (TOPIK)&#10;18:00–19:30 · 4-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="7">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Koreys tili (TOPIK) · A1 · Koreys tili (TOPIK)&#10;18:00–19:30 · 4-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Koreys tili (TOPIK) · A1</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -374,8 +374,8 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="7">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/269/kochirish/" title="Turk tili · A1 · Turk tili&#10;19:00–20:30 · 2-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
+        <a class="c-cal__ev cat-5 is-missed" data-cat="5" href="/demo/atlantis-4/r/owner/panel/dars/269/" draggable="false" title="Turk tili · A1 · Turk tili&#10;19:00–20:30 · 2-xona&#10;7/8 o'quvchi · O'tdi, lekin davomat belgilanmagan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--missed"><svg class="icon icon--sm" role="img" aria-label="O'tdi, lekin davomat belgilanmagan"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg></span></span>
 <span class="cal-ev__name">Turk tili · A1</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -384,9 +384,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="7">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/299/kochirish/" title="Koreys tili (TOPIK) · A1 · Koreys tili (TOPIK)&#10;18:00–19:30 · 4-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="7">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Koreys tili (TOPIK) · A1 · Koreys tili (TOPIK)&#10;18:00–19:30 · 4-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Koreys tili (TOPIK) · A1</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -443,9 +443,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="9">
-        <a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/473/kochirish/" title="Matematika (OTM) · OTM-1 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="9">
+        <a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Matematika (OTM) · OTM-1 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Matematika (OTM) · OTM-1</span>
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>10/14</span></span>
@@ -455,20 +455,20 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="9">
-        <a class="c-cal__ev cat-1 is-planned is-movable" data-cat="1" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/622/kochirish/" title="Bolalar matematikasi · Kids · Bolalar matematikasi&#10;11:00–12:00 · 3-xona&#10;8/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">11:00–12:00</span></span>
+        <a class="c-cal__ev cat-1 is-held" data-cat="1" href="#" data-demo-off="1" draggable="false" title="Bolalar matematikasi · Kids · Bolalar matematikasi&#10;11:00–12:00 · 3-xona&#10;8/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">11:00–12:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Bolalar matematikasi · Kids</span>
 <span class="cal-ev__meta">3-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num is-full"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/8</span></span>
 </a>
-<a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/533/kochirish/" title="Fizika · OTM · Fizika&#10;14:00–15:30 · 2-xona&#10;9/12 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+<a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Fizika · OTM · Fizika&#10;14:00–15:30 · 2-xona&#10;9/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Fizika · OTM</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>9/12</span></span>
 </a>
-<a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/503/kochirish/" title="Matematika (OTM) · OTM-2 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+<a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Matematika (OTM) · OTM-2 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Matematika (OTM) · OTM-2</span>
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>10/14</span></span>
@@ -477,9 +477,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="9">
-        <a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/474/kochirish/" title="Matematika (OTM) · OTM-1 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="9">
+        <a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Matematika (OTM) · OTM-1 · Matematika (OTM)&#10;16:00–17:30 · 1-xona&#10;10/14 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Matematika (OTM) · OTM-1</span>
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>10/14</span></span>
@@ -526,6 +526,40 @@
       <div class="c-cal__t c-cal__res" role="rowheader"><span class="fw-600">Dilnoza</span><span class="cal-res__n subtle">12 dars</span></div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-26" data-drop-row="4">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="/demo/atlantis-4/r/owner/panel/dars/1/" draggable="false" title="Ingliz tili · A1 · Ingliz tili — A1 (Boshlang&#x27;ich)&#10;09:00–10:30 · 1-xona&#10;9/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">09:00–10:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
+<span class="cal-ev__name">Ingliz tili · A1</span>
+<span class="cal-ev__meta">1-xona</span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>9/12</span></span>
+</a>
+<a class="c-cal__ev cat-1 is-held" data-cat="1" href="#" data-demo-off="1" draggable="false" title="Bolalar ingliz tili · Kids 2 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
+<span class="cal-ev__name">Bolalar ingliz tili · Kids 2</span>
+<span class="cal-ev__meta">3-xona</span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
+</a>
+<a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ingliz tili · A2 · Ingliz tili — A2 (Elementar)&#10;18:00–19:30 · 1-xona&#10;6/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
+<span class="cal-ev__name">Ingliz tili · A2</span>
+<span class="cal-ev__meta">1-xona</span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/12</span></span>
+</a>
+
+        
+      </div>
+      
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="4">
+        <a class="c-cal__ev cat-1 is-held" data-cat="1" href="#" data-demo-off="1" draggable="false" title="Bolalar ingliz tili · Kids 1 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;8/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
+<span class="cal-ev__name">Bolalar ingliz tili · Kids 1</span>
+<span class="cal-ev__meta">3-xona</span>
+<span class="cal-ev__foot"><span class="cal-ev__load num is-full"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/8</span></span>
+</a>
+
+        
+      </div>
+      
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="4">
         <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ingliz tili · A1 · Ingliz tili — A1 (Boshlang&#x27;ich)&#10;09:00–10:30 · 1-xona&#10;9/12 o'quvchi · O'tildi — davomat olingan">
 <span class="cal-ev__top"><span class="cal-ev__time num">09:00–10:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Ingliz tili · A1</span>
@@ -548,43 +582,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="4">
-        <a class="c-cal__ev cat-1 is-live is-movable" data-cat="1" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/179/kochirish/" title="Bolalar ingliz tili · Kids 1 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;8/8 o'quvchi · Hozir ketyapti">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span></span>
-<span class="cal-ev__name">Bolalar ingliz tili · Kids 1</span>
-<span class="cal-ev__meta">3-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num is-full"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/8</span><span class="cal-ev__live"><span class="live-dot" aria-hidden="true"></span>Hozir</span></span>
-</a>
-
-        
-      </div>
-      
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="4">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/2/kochirish/" title="Ingliz tili · A1 · Ingliz tili — A1 (Boshlang&#x27;ich)&#10;09:00–10:30 · 1-xona&#10;9/12 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">09:00–10:30</span></span>
-<span class="cal-ev__name">Ingliz tili · A1</span>
-<span class="cal-ev__meta">1-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>9/12</span></span>
-</a>
-<a class="c-cal__ev cat-1 is-planned is-movable" data-cat="1" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/209/kochirish/" title="Bolalar ingliz tili · Kids 2 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span></span>
-<span class="cal-ev__name">Bolalar ingliz tili · Kids 2</span>
-<span class="cal-ev__meta">3-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
-</a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/32/kochirish/" title="Ingliz tili · A2 · Ingliz tili — A2 (Elementar)&#10;18:00–19:30 · 1-xona&#10;6/12 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
-<span class="cal-ev__name">Ingliz tili · A2</span>
-<span class="cal-ev__meta">1-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/12</span></span>
-</a>
-
-        
-      </div>
-      
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="4">
-        <a class="c-cal__ev cat-1 is-planned is-movable" data-cat="1" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/180/kochirish/" title="Bolalar ingliz tili · Kids 1 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;8/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="4">
+        <a class="c-cal__ev cat-1 is-held" data-cat="1" href="#" data-demo-off="1" draggable="false" title="Bolalar ingliz tili · Kids 1 · Bolalar ingliz tili&#10;14:00–15:00 · 3-xona&#10;8/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Bolalar ingliz tili · Kids 1</span>
 <span class="cal-ev__meta">3-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num is-full"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/8</span></span>
@@ -647,15 +647,15 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="5">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/120/kochirish/" title="IELTS tayyorlov · 6.0→7.0 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="5">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="IELTS tayyorlov · 6.0→7.0 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">IELTS tayyorlov · 6.0→7.0</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
 </a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/61/kochirish/" title="Ingliz tili · B1 · Ingliz tili — B1 (O&#x27;rta)&#10;18:00–19:30 · 2-xona&#10;8/10 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+<a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ingliz tili · B1 · Ingliz tili — B1 (O&#x27;rta)&#10;18:00–19:30 · 2-xona&#10;8/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Ingliz tili · B1</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/10</span></span>
@@ -665,14 +665,14 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="5">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/150/kochirish/" title="IELTS tayyorlov · 5.5→6.5 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span></span>
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="IELTS tayyorlov · 5.5→6.5 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">IELTS tayyorlov · 5.5→6.5</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
 </a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/91/kochirish/" title="Ingliz tili · B2 · Ingliz tili — B2 (O&#x27;rtadan yuqori)&#10;19:00–20:30 · Onlayn (Zoom)&#10;9/10 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
+<a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ingliz tili · B2 · Ingliz tili — B2 (O&#x27;rtadan yuqori)&#10;19:00–20:30 · Onlayn (Zoom)&#10;9/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Ingliz tili · B2</span>
 <span class="cal-ev__meta">Onlayn (Zoom)</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>9/10</span></span>
@@ -681,15 +681,15 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="5">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/121/kochirish/" title="IELTS tayyorlov · 6.0→7.0 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="5">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="IELTS tayyorlov · 6.0→7.0 · IELTS tayyorlov&#10;16:00–18:00 · 5-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–18:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">IELTS tayyorlov · 6.0→7.0</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
 </a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/62/kochirish/" title="Ingliz tili · B1 · Ingliz tili — B1 (O&#x27;rta)&#10;18:00–19:30 · 2-xona&#10;8/10 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+<a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ingliz tili · B1 · Ingliz tili — B1 (O&#x27;rta)&#10;18:00–19:30 · 2-xona&#10;8/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Ingliz tili · B1</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/10</span></span>
@@ -740,9 +740,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="17">
-        <a class="c-cal__ev cat-2 is-planned is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/710/kochirish/" title="Web dasturlash · Boshlang&#x27;ich · Web dasturlash&#10;18:00–19:30 · 5-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="17">
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="Web dasturlash · Boshlang&#x27;ich · Web dasturlash&#10;18:00–19:30 · 5-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Web dasturlash · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -752,8 +752,8 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="17">
-        <a class="c-cal__ev cat-2 is-planned is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/829/kochirish/" title="Grafik dizayn · Boshlang&#x27;ich · Grafik dizayn&#10;14:00–15:30 · 1-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="Grafik dizayn · Boshlang&#x27;ich · Grafik dizayn&#10;14:00–15:30 · 1-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Grafik dizayn · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -762,9 +762,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="17">
-        <a class="c-cal__ev cat-2 is-planned is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/711/kochirish/" title="Web dasturlash · Boshlang&#x27;ich · Web dasturlash&#10;18:00–19:30 · 5-xona&#10;7/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="17">
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="Web dasturlash · Boshlang&#x27;ich · Web dasturlash&#10;18:00–19:30 · 5-xona&#10;7/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Web dasturlash · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span>
@@ -809,20 +809,20 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="10">
-        <a class="c-cal__ev cat-4 is-live is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/592/kochirish/" title="Biologiya · OTM · Biologiya&#10;14:00–15:30 · 4-xona&#10;8/12 o'quvchi · Hozir ketyapti">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="10">
+        <a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Biologiya · OTM · Biologiya&#10;14:00–15:30 · 4-xona&#10;8/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Biologiya · OTM</span>
 <span class="cal-ev__meta">4-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/12</span><span class="cal-ev__live"><span class="live-dot" aria-hidden="true"></span>Hozir</span></span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/12</span></span>
 </a>
 
         
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="10">
-        <a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/563/kochirish/" title="Kimyo · OTM · Kimyo&#10;14:00–15:30 · 4-xona&#10;7/12 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+        <a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Kimyo · OTM · Kimyo&#10;14:00–15:30 · 4-xona&#10;7/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Kimyo · OTM</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/12</span></span>
@@ -831,9 +831,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="10">
-        <a class="c-cal__ev cat-4 is-planned is-movable" data-cat="4" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/593/kochirish/" title="Biologiya · OTM · Biologiya&#10;14:00–15:30 · 4-xona&#10;8/12 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="10">
+        <a class="c-cal__ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1" draggable="false" title="Biologiya · OTM · Biologiya&#10;14:00–15:30 · 4-xona&#10;8/12 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Biologiya · OTM</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/12</span></span>
@@ -878,14 +878,14 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="6">
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="6">
         
         
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="6">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/239/kochirish/" title="Arab tili · A1 · Arab tili&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Arab tili · A1 · Arab tili&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Arab tili · A1</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -894,7 +894,7 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="6">
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="6">
         
         
       </div>
@@ -929,9 +929,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="8">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/357/kochirish/" title="Fransuz tili · A1 · Fransuz tili&#10;19:00–20:30 · Onlayn (Zoom)&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="8">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Fransuz tili · A1 · Fransuz tili&#10;19:00–20:30 · Onlayn (Zoom)&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Fransuz tili · A1</span>
 <span class="cal-ev__meta">Onlayn (Zoom)</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -941,8 +941,8 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="8">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/328/kochirish/" title="Nemis tili · A1 · Nemis tili&#10;18:00–19:30 · 3-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Nemis tili · A1 · Nemis tili&#10;18:00–19:30 · 3-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Nemis tili · A1</span>
 <span class="cal-ev__meta">3-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -951,12 +951,12 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="8">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/358/kochirish/" title="Fransuz tili · A1 · Fransuz tili&#10;19:00–20:30 · Onlayn (Zoom)&#10;6/8 o'quvchi · Rejada">
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="8">
+        <a class="c-cal__ev cat-5 is-live is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/358/kochirish/" title="Fransuz tili · A1 · Fransuz tili&#10;19:00–20:30 · Onlayn (Zoom)&#10;6/8 o'quvchi · Hozir ketyapti">
 <span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
 <span class="cal-ev__name">Fransuz tili · A1</span>
 <span class="cal-ev__meta">Onlayn (Zoom)</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span><span class="cal-ev__live"><span class="live-dot" aria-hidden="true"></span>Hozir</span></span>
 </a>
 
         
@@ -992,15 +992,15 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="12">
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="12">
         <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Rus tili · A2 · Rus tili&#10;11:00–12:30 · 2-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
 <span class="cal-ev__top"><span class="cal-ev__time num">11:00–12:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Rus tili · A2</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
 </a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/386/kochirish/" title="Ispan tili · A1 · Ispan tili&#10;19:00–20:30 · 3-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
+<a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Ispan tili · A1 · Ispan tili&#10;19:00–20:30 · 3-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Ispan tili · A1</span>
 <span class="cal-ev__meta">3-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1014,18 +1014,18 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="12">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/416/kochirish/" title="Rus tili · A2 · Rus tili&#10;11:00–12:30 · 2-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">11:00–12:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="12">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Rus tili · A2 · Rus tili&#10;11:00–12:30 · 2-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">11:00–12:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Rus tili · A2</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
 </a>
-<a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/387/kochirish/" title="Ispan tili · A1 · Ispan tili&#10;19:00–20:30 · 3-xona&#10;6/8 o'quvchi · Rejada">
+<a class="c-cal__ev cat-5 is-live is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/387/kochirish/" title="Ispan tili · A1 · Ispan tili&#10;19:00–20:30 · 3-xona&#10;6/8 o'quvchi · Hozir ketyapti">
 <span class="cal-ev__top"><span class="cal-ev__time num">19:00–20:30</span></span>
 <span class="cal-ev__name">Ispan tili · A1</span>
 <span class="cal-ev__meta">3-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span><span class="cal-ev__live"><span class="live-dot" aria-hidden="true"></span>Hozir</span></span>
 </a>
 
         
@@ -1073,20 +1073,20 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="11">
-        <a class="c-cal__ev cat-2 is-live is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/651/kochirish/" title="Kompyuter savodxonligi va Excel · Boshlang&#x27;ich · Kompyuter savodxonligi va Excel&#10;14:00–15:30 · 2-xona&#10;7/10 o'quvchi · Hozir ketyapti">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="11">
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="Kompyuter savodxonligi va Excel · Boshlang&#x27;ich · Kompyuter savodxonligi va Excel&#10;14:00–15:30 · 2-xona&#10;7/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">2-xona</span>
-<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/10</span><span class="cal-ev__live"><span class="live-dot" aria-hidden="true"></span>Hozir</span></span>
+<span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/10</span></span>
 </a>
 
         
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="11">
-        <a class="c-cal__ev cat-2 is-planned is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/681/kochirish/" title="AutoCAD va 3Ds Max · Boshlang&#x27;ich · AutoCAD va 3Ds Max&#10;18:00–19:30 · 5-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span></span>
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="AutoCAD va 3Ds Max · Boshlang&#x27;ich · AutoCAD va 3Ds Max&#10;18:00–19:30 · 5-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">18:00–19:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">AutoCAD va 3Ds Max · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">5-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1095,9 +1095,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="11">
-        <a class="c-cal__ev cat-2 is-planned is-movable" data-cat="2" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/652/kochirish/" title="Kompyuter savodxonligi va Excel · Boshlang&#x27;ich · Kompyuter savodxonligi va Excel&#10;14:00–15:30 · 2-xona&#10;7/10 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="11">
+        <a class="c-cal__ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1" draggable="false" title="Kompyuter savodxonligi va Excel · Boshlang&#x27;ich · Kompyuter savodxonligi va Excel&#10;14:00–15:30 · 2-xona&#10;7/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">14:00–15:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich</span>
 <span class="cal-ev__meta">2-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/10</span></span>
@@ -1136,9 +1136,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="16">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/444/kochirish/" title="Xitoy tili (HSK) · HSK 1 · Xitoy tili (HSK)&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="16">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Xitoy tili (HSK) · HSK 1 · Xitoy tili (HSK)&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Xitoy tili (HSK) · HSK 1</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1152,9 +1152,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="16">
-        <a class="c-cal__ev cat-5 is-planned is-movable" data-cat="5" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/445/kochirish/" title="Xitoy tili (HSK) · HSK 1 · Xitoy tili (HSK)&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="16">
+        <a class="c-cal__ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1" draggable="false" title="Xitoy tili (HSK) · HSK 1 · Xitoy tili (HSK)&#10;16:00–17:30 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">16:00–17:30</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Xitoy tili (HSK) · HSK 1</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1189,8 +1189,8 @@
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/10</span></span>
 </a>
-<a class="c-cal__ev cat-3 is-missed" data-cat="3" href="/demo/atlantis-4/r/owner/panel/dars/769/" draggable="false" title="Bojxona deklaratsiyasi · Kasbiy · Bojxona deklaratsiyasi&#10;19:00–21:00 · 4-xona&#10;6/8 o'quvchi · O'tdi, lekin davomat belgilanmagan">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–21:00</span><span class="cal-ev__st cal-ev__st--missed"><svg class="icon icon--sm" role="img" aria-label="O'tdi, lekin davomat belgilanmagan"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg></span></span>
+<a class="c-cal__ev cat-3 is-held" data-cat="3" href="#" data-demo-off="1" draggable="false" title="Bojxona deklaratsiyasi · Kasbiy · Bojxona deklaratsiyasi&#10;19:00–21:00 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–21:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Bojxona deklaratsiyasi · Kasbiy</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1199,9 +1199,9 @@
         
       </div>
       
-      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-27" data-drop-row="13">
-        <a class="c-cal__ev cat-3 is-missed is-movable" data-cat="3" href="/demo/atlantis-4/r/owner/panel/dars/799/" draggable="true" data-move-url="/panel/dars/799/kochirish/" title="Kadrlar ish yuritishi (HR) · Kasbiy · Kadrlar ish yuritishi (HR)&#10;11:00–13:00 · 4-xona&#10;6/8 o'quvchi · O'tdi, lekin davomat belgilanmagan">
-<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span><span class="cal-ev__st cal-ev__st--missed"><svg class="icon icon--sm" role="img" aria-label="O'tdi, lekin davomat belgilanmagan"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg></span></span>
+      <div class="c-cal__c" role="cell" data-drop-date="2026-10-27" data-drop-row="13">
+        <a class="c-cal__ev cat-3 is-held" data-cat="3" href="#" data-demo-off="1" draggable="false" title="Kadrlar ish yuritishi (HR) · Kasbiy · Kadrlar ish yuritishi (HR)&#10;11:00–13:00 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Kadrlar ish yuritishi (HR) · Kasbiy</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1211,14 +1211,14 @@
       </div>
       
       <div class="c-cal__c" role="cell" data-drop-date="2026-10-28" data-drop-row="13">
-        <a class="c-cal__ev cat-3 is-planned is-movable" data-cat="3" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/740/kochirish/" title="Buxgalteriya 1C 8.3 · Kasbiy · Buxgalteriya 1C 8.3&#10;11:00–13:00 · 1-xona&#10;8/10 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span></span>
+        <a class="c-cal__ev cat-3 is-held" data-cat="3" href="#" data-demo-off="1" draggable="false" title="Buxgalteriya 1C 8.3 · Kasbiy · Buxgalteriya 1C 8.3&#10;11:00–13:00 · 1-xona&#10;8/10 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Buxgalteriya 1C 8.3 · Kasbiy</span>
 <span class="cal-ev__meta">1-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/10</span></span>
 </a>
-<a class="c-cal__ev cat-3 is-planned is-movable" data-cat="3" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/770/kochirish/" title="Bojxona deklaratsiyasi · Kasbiy · Bojxona deklaratsiyasi&#10;19:00–21:00 · 4-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">19:00–21:00</span></span>
+<a class="c-cal__ev cat-3 is-missed" data-cat="3" href="/demo/atlantis-4/r/owner/panel/dars/770/" draggable="false" title="Bojxona deklaratsiyasi · Kasbiy · Bojxona deklaratsiyasi&#10;19:00–21:00 · 4-xona&#10;6/8 o'quvchi · O'tdi, lekin davomat belgilanmagan">
+<span class="cal-ev__top"><span class="cal-ev__time num">19:00–21:00</span><span class="cal-ev__st cal-ev__st--missed"><svg class="icon icon--sm" role="img" aria-label="O'tdi, lekin davomat belgilanmagan"><use href="/demo/atlantis-4/static/icons.svg#i-clock"></use></svg></span></span>
 <span class="cal-ev__name">Bojxona deklaratsiyasi · Kasbiy</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1227,9 +1227,9 @@
         
       </div>
       
-      <div class="c-cal__c" role="cell" data-drop-date="2026-10-29" data-drop-row="13">
-        <a class="c-cal__ev cat-3 is-planned is-movable" data-cat="3" href="#" data-demo-off="1" draggable="true" data-move-url="/panel/dars/800/kochirish/" title="Kadrlar ish yuritishi (HR) · Kasbiy · Kadrlar ish yuritishi (HR)&#10;11:00–13:00 · 4-xona&#10;6/8 o'quvchi · Rejada">
-<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span></span>
+      <div class="c-cal__c is-today" role="cell" data-drop-date="2026-10-29" data-drop-row="13">
+        <a class="c-cal__ev cat-3 is-held" data-cat="3" href="#" data-demo-off="1" draggable="false" title="Kadrlar ish yuritishi (HR) · Kasbiy · Kadrlar ish yuritishi (HR)&#10;11:00–13:00 · 4-xona&#10;6/8 o'quvchi · O'tildi — davomat olingan">
+<span class="cal-ev__top"><span class="cal-ev__time num">11:00–13:00</span><span class="cal-ev__st cal-ev__st--held"><svg class="icon icon--sm" role="img" aria-label="O'tildi — davomat olingan"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg></span></span>
 <span class="cal-ev__name">Kadrlar ish yuritishi (HR) · Kasbiy</span>
 <span class="cal-ev__meta">4-xona</span>
 <span class="cal-ev__foot"><span class="cal-ev__load num"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span>
@@ -1275,16 +1275,16 @@
 
 <div class="sched-day">
   <section class="c-card c-card--flush">
-    <div class="c-card__head"><h2>Seshanba, 27-oktabr <span class="cal-h__today">Bugun</span></h2><span class="subtle t-13">13 ta dars</span></div>
+    <div class="c-card__head"><h2>Payshanba, 29-oktabr <span class="cal-h__today">Bugun</span></h2><span class="subtle t-13">13 ta dars</span></div>
     
     <ul class="c-list">
       
-      <li><a class="c-list__item day-ev cat-3 is-missed" data-cat="3" href="/demo/atlantis-4/r/owner/panel/dars/799/">
+      <li><a class="c-list__item day-ev cat-3 is-held" data-cat="3" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">11:00</span><span class="subtle t-12">13:00</span></span>
         <span class="c-list__main"><span class="c-list__title">Kadrlar ish yuritishi (HR) · Kasbiy</span>
           <span class="c-list__meta">4-xona · Ulug&#x27;bek</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Kasbiy kurslar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span></span>
-        <span class="c-badge c-badge--warning">Belgilanmagan</span>
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
       <li><a class="c-list__item day-ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1">
@@ -1295,92 +1295,92 @@
         <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-4 is-live" data-cat="4" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">14:00</span><span class="subtle t-12">15:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Biologiya · OTM</span>
           <span class="c-list__meta">4-xona · Kamola</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">OTMga tayyorlov</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/12</span></span></span>
-        <span class="c-badge c-badge--success day-ev__live">Hozir</span>
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-1 is-live" data-cat="1" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-1 is-held" data-cat="1" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">14:00</span><span class="subtle t-12">15:00</span></span>
         <span class="c-list__main"><span class="c-list__title">Bolalar ingliz tili · Kids 1</span>
           <span class="c-list__meta">3-xona · Dilnoza</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Bolalar uchun</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/8</span></span></span>
-        <span class="c-badge c-badge--success day-ev__live">Hozir</span>
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-2 is-live" data-cat="2" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">14:00</span><span class="subtle t-12">15:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Kompyuter savodxonligi va Excel · Boshlang&#x27;ich</span>
           <span class="c-list__meta">2-xona · Sherzod</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">IT va kompyuter</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/10</span></span></span>
-        <span class="c-badge c-badge--success day-ev__live">Hozir</span>
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">16:00</span><span class="subtle t-12">18:00</span></span>
         <span class="c-list__main"><span class="c-list__title">IELTS tayyorlov · 6.0→7.0</span>
           <span class="c-list__meta">5-xona · Jasur</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-4 is-planned" data-cat="4" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-4 is-held" data-cat="4" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">16:00</span><span class="subtle t-12">17:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Matematika (OTM) · OTM-1</span>
           <span class="c-list__meta">1-xona · Bekzod</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">OTMga tayyorlov</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>10/14</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">16:00</span><span class="subtle t-12">17:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Xitoy tili (HSK) · HSK 1</span>
           <span class="c-list__meta">4-xona · Shoira</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">18:00</span><span class="subtle t-12">19:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Ingliz tili · B1</span>
           <span class="c-list__meta">2-xona · Jasur</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>8/10</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-held" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">18:00</span><span class="subtle t-12">19:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Koreys tili (TOPIK) · A1</span>
           <span class="c-list__meta">4-xona · Aziz</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-2 is-planned" data-cat="2" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-2 is-held" data-cat="2" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">18:00</span><span class="subtle t-12">19:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Web dasturlash · Boshlang&#x27;ich</span>
           <span class="c-list__meta">5-xona · Javlon</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">IT va kompyuter</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>7/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__held"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-circle-check"></use></svg> O'tildi</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-live" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">19:00</span><span class="subtle t-12">20:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Fransuz tili · A1</span>
           <span class="c-list__meta">Onlayn (Zoom) · Nigora</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__live">Hozir</span>
       </a></li>
       
-      <li><a class="c-list__item day-ev cat-5 is-planned" data-cat="5" href="#" data-demo-off="1">
+      <li><a class="c-list__item day-ev cat-5 is-live" data-cat="5" href="#" data-demo-off="1">
         <span class="day-ev__time num"><span class="fw-600">19:00</span><span class="subtle t-12">20:30</span></span>
         <span class="c-list__main"><span class="c-list__title">Ispan tili · A1</span>
           <span class="c-list__meta">3-xona · Olga</span>
           <span class="c-list__meta day-ev__meta2"><span class="day-ev__cat">Tillar</span> · <span class="num day-ev__load"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-users"></use></svg><span class="sr-only">O'quvchilar: </span>6/8</span></span></span>
-        
+        <span class="c-badge c-badge--success day-ev__live">Hozir</span>
       </a></li>
       
     </ul>

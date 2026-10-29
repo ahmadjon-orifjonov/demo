@@ -55,8 +55,8 @@
 .ex-student__group:last-child{border-bottom:0}
 .ex-results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .ex-results__i{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-2) 0;border-top:1px dashed var(--border);font-size:var(--fs-13)}
-.chart.ex-spark{width:96px;height:28px;flex:none;color:var(--brand)}
-.chart.ex-spark--up{color:var(--success)}
+.chart.ex-spark{width:96px;height:28px;flex:none;color:var(--chart-line)}   /* grafik chizig'i — havorang (oq fonda >= 3:1 soyasi) */
+.chart.ex-spark--up{color:var(--vc-s1-edge)}
 .chart.ex-spark--down{color:var(--danger)}
 .ex-score-cell{align-items:flex-end;text-align:right}
 @media (max-width:600px){.ex-student__group{padding:var(--s-3) var(--s-4)}}
