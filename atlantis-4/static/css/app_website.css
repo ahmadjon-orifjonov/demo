@@ -1099,3 +1099,48 @@ body.site.auth .auth-card{border-radius:var(--r-2xl);box-shadow:var(--site-sh2)}
 @media (prefers-reduced-motion:reduce){
   .site-mosaic a,.site-dir__ic{transition:none}
 }
+
+/* ---------- 29-OKT (3): rasmlar — hero surati + suzuvchi til kafellari, yo'nalish kartalarida surat ---------- */
+.site-cover--pic .site-cover__in{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.site .site-cover--pic .site-cover__title{font-size:clamp(var(--fs-32),3.7vw,var(--fs-48))}
+.site-cover__media{position:relative;margin:var(--s-6) var(--s-6) var(--s-6) 0;animation:site-up var(--dur-4) var(--ease-out) 300ms backwards}
+.site-cover__pic{display:block;width:100%;height:auto;aspect-ratio:4/3.3;object-fit:cover;object-position:58% center;border-radius:var(--r-2xl);
+  box-shadow:var(--site-sh2);outline:8px solid var(--site-yuz)}
+.site-mosaic--float{display:block}
+.site-mosaic--float li{position:absolute;width:156px;animation:site-float 6s var(--ease) infinite alternate}
+.site-mosaic--float li:nth-child(even){transform:none}
+.site-mosaic--float li:nth-child(1){top:-26px;left:-40px}
+.site-mosaic--float li:nth-child(2){top:16%;right:-34px;animation-delay:-1.5s}
+.site-mosaic--float li:nth-child(3){bottom:-30px;right:16%;animation-delay:-3s}
+.site-mosaic--float li:nth-child(4){bottom:20%;left:-48px;animation-delay:-4.5s}
+.site-mosaic--float a{min-height:86px;padding:12px 14px;gap:6px}
+.site-mosaic--float .site-mosaic__hi{font-size:var(--fs-22)}
+@keyframes site-float{to{transform:translateY(-8px)}}
+.site-cover--pic .site-cover__blob--2{display:none}
+
+.site-dir__top--pic{height:176px;align-items:flex-end;justify-content:flex-start}
+.site-dir__pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform var(--dur-4) var(--ease-out)}
+.site-dir__top--pic .site-dir__ic{position:relative;z-index:1;background:var(--site-tg);color:var(--site-on-tg);box-shadow:var(--site-sh)}
+.site-dir--2 .site-dir__top--pic .site-dir__ic{background:var(--site-ol);color:var(--site-pan)}
+.site-dir--3 .site-dir__top--pic .site-dir__ic{background:var(--site-pan);color:var(--site-ink)}
+.site-dir--4 .site-dir__top--pic .site-dir__ic{background:var(--site-yuz);color:var(--site-pan)}
+.site-dir__top--pic .site-dir__no{display:none}
+.site-dir:hover .site-dir__pic{transform:scale(1.06)}
+
+@media (max-width:1060px){
+  .site-cover--pic .site-cover__in{grid-template-columns:minmax(0,1fr)}
+  .site-cover__media{margin:var(--s-4) 0 0}
+  .site-mosaic--float li:nth-child(1){left:-12px}
+  .site-mosaic--float li:nth-child(4){left:-12px}
+  .site-mosaic--float li:nth-child(2){right:-12px}
+}
+@media (max-width:720px){
+  .site-cover--light .site-mosaic--float{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:var(--s-4)}
+  .site-mosaic--float li{position:static;width:auto;animation:none}
+  .site-cover__pic{outline-width:5px;aspect-ratio:4/3}
+  .site-dir__top--pic{height:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  .site-mosaic--float li,.site-cover__media{animation:none}
+  .site-dir__pic{transition:none}
+}
