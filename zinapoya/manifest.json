@@ -1,0 +1,37 @@
+{
+  "id": "/demo/zinapoya/",
+  "name": "Zinapoya",
+  "short_name": "Zinapoya",
+  "description": "O’quv markazi o’quvchilari uchun kunlik mashq, o’yinlar va guruh ligasi",
+  "lang": "uz",
+  "dir": "ltr",
+  "start_url": "/demo/zinapoya/",
+  "scope": "/demo/zinapoya/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F7F8",
+  "theme_color": "#F7F7F8",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "/demo/zinapoya/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/demo/zinapoya/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/demo/zinapoya/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

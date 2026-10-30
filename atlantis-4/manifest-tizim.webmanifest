@@ -1,0 +1,34 @@
+{
+ "id": "/demo/atlantis-4/r/",
+ "name": "ATLANTIS — boshqaruv tizimi",
+ "short_name": "ATLANTIS tizim",
+ "description": "O'quvchilar, guruhlar, to'lovlar va davomat",
+ "lang": "uz",
+ "dir": "ltr",
+ "start_url": "/demo/atlantis-4/r/",
+ "scope": "/demo/atlantis-4/r/",
+ "display": "standalone",
+ "orientation": "portrait",
+ "theme_color": "#17324D",
+ "background_color": "#17324D",
+ "icons": [
+  {
+   "src": "/demo/atlantis-4/_pwa/tizim-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/demo/atlantis-4/_pwa/tizim-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/demo/atlantis-4/_pwa/tizim-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

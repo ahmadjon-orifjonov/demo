@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zinapoya — demo</title>
+    <meta name="description" content="Zinapoya o’quvchi ilovasi — kompyuterda telefon ko’rinishida" />
+    <link rel="icon" href="/demo/zinapoya/favicon.ico" />
+    <!--
+      Kompyuter / proyektor uchun telefon ramkasi (DEMO_APP.md §2). Ilovaning o'zi iframe ichida ochiladi — shu sababli
+      ichkarida oyna o'lchami 390×844 (useWindowDimensions, Modal, varaqlar, konfetti telefondagidek). Ramka oyna o'lchamiga
+      qarab kichrayadi / kattalashadi (ichki o'lcham o'zgarmaydi). Ilovani ramkasiz ochish: istalgan manzilga ?ramka=0.
+    -->
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fon: #e8ebf0;
+        --fon2: #f8f9fb;
+        --matn: #14161a;
+        --matn2: #5b6270;
+        --chiziq: rgba(20, 22, 26, 0.09);
+        --karta: rgba(255, 255, 255, 0.7);
+        --chip: #e6e8ec;
+        --ekran: #f7f7f8;
+        --brend: #2b3f8c;
+        --korpus1: #30343c;
+        --korpus2: #0d0f13;
+        --korpus-chet: rgba(0, 0, 0, 0.28);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fon: #0a0c10;
+          --fon2: #171b23;
+          --matn: #f2f3f5;
+          --matn2: #a6adba;
+          --chiziq: rgba(255, 255, 255, 0.08);
+          --karta: rgba(255, 255, 255, 0.04);
+          --chip: #262b34;
+          --ekran: #0f1115;
+          --korpus1: #3a3f49;
+          --korpus2: #15181e;
+          --korpus-chet: rgba(255, 255, 255, 0.1);
+        }
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: radial-gradient(1200px 760px at 30% 16%, var(--fon2), var(--fon) 72%) fixed var(--fon);
+        color: var(--matn);
+        font: 15px/1.45 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .sahna {
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        flex-shrink: 0;
+        transform-origin: center center;
+      }
+      .ustun {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .sarlavha {
+        display: none;
+        align-items: center;
+        gap: 10px;
+        height: 30px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .tor .sarlavha {
+        display: flex;
+      }
+      .tor .yon {
+        display: none;
+      }
+      /* — telefon korpusi — */
+      .telefon {
+        position: relative;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        width: 414px;
+        height: 868px;
+        padding: 12px;
+        border-radius: 58px;
+        background: linear-gradient(150deg, var(--korpus1), var(--korpus2) 58%);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+          0 0 0 1px var(--korpus-chet),
+          0 44px 90px -34px rgba(16, 24, 40, 0.55),
+          0 18px 36px -18px rgba(16, 24, 40, 0.32);
+      }
+      .tugma {
+        position: absolute;
+        width: 4px;
+        border-radius: 3px;
+        background: var(--korpus1);
+      }
+      .t1 {
+        left: -3px;
+        top: 176px;
+        height: 54px;
+      }
+      .t2 {
+        left: -3px;
+        top: 244px;
+        height: 54px;
+      }
+      .t3 {
+        right: -3px;
+        top: 212px;
+        height: 86px;
+      }
+      .karnay {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        width: 64px;
+        height: 4px;
+        margin-left: -32px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .ekran {
+        position: relative;
+        width: 390px;
+        height: 844px;
+        overflow: hidden;
+        border-radius: 46px;
+        background: var(--ekran);
+        isolation: isolate;
+      }
+      .ekran iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: var(--ekran);
+      }
+      /* — yon panel — */
+      .yon {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        width: 320px;
+      }
+      .brend {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .belgi {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: var(--brend);
+        flex-shrink: 0;
+      }
+      .tor .belgi {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+      }
+      .belgi svg {
+        width: 62%;
+        height: 62%;
+      }
+      .nom {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .demo {
+        padding: 3px 9px;
+        border-radius: 999px;
+        background: var(--chip);
+        color: var(--matn2);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .izoh {
+        margin: 0;
+        color: var(--matn2);
+      }
+      .karta {
+        padding: 16px;
+        border: 1px solid var(--chiziq);
+        border-radius: 16px;
+        background: var(--karta);
+      }
+      .karta h2 {
+        margin: 0 0 6px;
+        color: var(--matn2);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .kod {
+        font: 700 28px/1.2 ui-monospace, 'Cascadia Mono', Consolas, monospace;
+        letter-spacing: 0.14em;
+      }
+      .tel {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .tel img {
+        flex-shrink: 0;
+        width: 116px;
+        height: 116px;
+        padding: 6px;
+        border-radius: 12px;
+        background: #fff;
+        image-rendering: pixelated;
+      }
+      .url {
+        margin-top: 12px;
+        font: 700 18px/1.3 ui-monospace, 'Cascadia Mono', Consolas, monospace;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .kichik {
+        margin: 6px 0 0;
+        color: var(--matn2);
+        font-size: 12.5px;
+      }
+      .amallar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .amallar button {
+        padding: 7px 12px;
+        border: 1px solid var(--chiziq);
+        border-radius: 10px;
+        background: transparent;
+        color: var(--matn2);
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .amallar button:hover {
+        background: var(--karta);
+        color: var(--matn);
+      }
+      .amallar button:focus-visible {
+        outline: 2px solid #5b7cff;
+        outline-offset: 2px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sahna" id="sahna">
+      <div class="ustun">
+        <div class="sarlavha">
+          <span class="belgi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18.5h4.2v-4.2h4.2v-4.2h4.2V5.9H20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span>Zinapoya</span>
+          <span class="demo" data-demo hidden>Demo</span>
+        </div>
+        <div class="telefon">
+          <span class="tugma t1"></span><span class="tugma t2"></span><span class="tugma t3"></span><span class="karnay"></span>
+          <div class="ekran">
+            <iframe id="ilova" title="Zinapoya ilovasi — telefon ko’rinishi" allow="camera; autoplay; clipboard-write; fullscreen"></iframe>
+          </div>
+        </div>
+      </div>
+      <aside class="yon" aria-label="Demo haqida">
+        <div class="brend">
+          <span class="belgi" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18.5h4.2v-4.2h4.2v-4.2h4.2V5.9H20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span class="nom">Zinapoya</span>
+          <span class="demo" data-demo hidden>Demo</span>
+        </div>
+        <p class="izoh">O’quv markazi o’quvchilari uchun: kunlik mashq, o’yinlar va guruh ligasi.</p>
+        <section class="karta" id="kodKarta" hidden>
+          <h2>Kirish kodi</h2>
+          <div class="kod" id="kod">ATL123</div>
+          <p class="kichik">Namuna ma’lumotlar — serverga ulanmagan.</p>
+        </section>
+        <section class="karta" id="telKarta" hidden>
+          <h2>Telefoningizda oching</h2>
+          <div class="tel">
+            <img id="qr" alt="Telefonda ochish uchun QR kod" hidden />
+            <p class="kichik">Kamera bilan QR kodni skanerlang yoki brauzerga manzilni yozing. Telefon shu kompyuter bilan bitta Wi‑Fi tarmog’ida bo’lsin.</p>
+          </div>
+          <div class="url" id="url"></div>
+          <p class="kichik">Ilova kabi ochilishi uchun: brauzer menyusi → «Bosh ekranga qo’shish».</p>
+        </section>
+        <div class="amallar">
+          <button type="button" id="toliq" title="Brauzer oynasini to’liq ekranga yoyish (proyektor uchun)">To’liq ekran</button>
+          <button type="button" id="ramkasiz" title="Ilovani telefon ramkasisiz, butun oynada ochish">Ramkasiz</button>
+          <button type="button" id="boshidan" title="Demoni boshidan boshlash: shu brauzerdagi kod, natijalar va sozlamalar o’chadi">Qayta boshlash</button>
+        </div>
+      </aside>
+    </main>
+    <script>
+      (function () {
+        var W = 414; // korpus: 390 + 2 × 12
+        var H = 868; // korpus: 844 + 2 × 12
+        var sahna = document.getElementById('sahna');
+        var ilova = document.getElementById('ilova');
+
+        // Ilova manzili — # dan keyin (index.html yo'naltiradi). Faqat shu saytning yo'li; o'ziga (ramka) qaytmaydi.
+        function boshYol() {
+          var p = decodeURIComponent(location.hash.slice(1) || '/demo/zinapoya/');
+          if (!/^\/(?!\/)/.test(p) || p.indexOf('/demo/zinapoya/ramka.html') === 0) p = '/demo/zinapoya/';
+          return p;
+        }
+        ilova.src = boshYol();
+
+        // Oyna o'lchamiga moslash: sig'masa kichrayadi, katta ekranda (proyektor, «To'liq ekran») 1,25 gacha kattalashadi —
+        // faqat ko'rinish masshtabi; ichidagi ilova oynasi doim 390×844.
+        function moslash() {
+          var keng = innerWidth >= 900 && innerHeight >= 560;
+          document.body.classList.toggle('tor', !keng);
+          var w = keng ? W + 64 + 320 : W;
+          var h = keng ? H : H + 44;
+          var s = Math.min(1.25, (innerWidth - 32) / w, (innerHeight - 32) / h);
+          sahna.style.transform = 'scale(' + Math.max(0.3, s) + ')';
+        }
+        moslash();
+        addEventListener('resize', moslash);
+
+        // Ichkaridagi ekran manzilini tashqi # ga yozamiz — sahifa yangilansa ham shu ekranda qoladi.
+        var oxirgi = '';
+        setInterval(function () {
+          try {
+            var l = ilova.contentWindow.location;
+            var p = l.pathname + l.search + l.hash;
+            if (p !== oxirgi && l.origin === location.origin && p.charAt(0) === '/' && p.indexOf('/demo/zinapoya/ramka.html') !== 0) {
+              oxirgi = p;
+              history.replaceState(null, '', '#' + p);
+            }
+          } catch (e) {
+            // boshqa sayt — tegmaymiz
+          }
+        }, 500);
+        ilova.addEventListener('load', function () {
+          try {
+            ilova.focus();
+          } catch (e) {}
+        });
+
+        // Demo serveri (scripts/serve_dist.mjs --demo) bersa: kirish kodi, telefon uchun LAN manzil va QR.
+        fetch('/demo/zinapoya/__demo/info.json', { cache: 'no-store' })
+          .then(function (r) {
+            var ct = r.headers.get('content-type') || '';
+            return r.ok && ct.indexOf('json') >= 0 ? r.json() : null;
+          })
+          .then(function (info) {
+            if (!info) return;
+            if (info.demo) {
+              [].forEach.call(document.querySelectorAll('[data-demo]'), function (el) {
+                el.hidden = false;
+              });
+              if (info.code) {
+                document.getElementById('kod').textContent = info.code;
+                document.getElementById('kodKarta').hidden = false;
+              }
+            }
+            if (info.urls && info.urls.length) {
+              document.getElementById('url').textContent = info.urls[0].replace(/\/$/, '');
+              if (info.qr) {
+                var img = document.getElementById('qr');
+                img.src = info.qr;
+                img.hidden = false;
+              }
+              document.getElementById('telKarta').hidden = false;
+            }
+          })
+          .catch(function () {});
+
+        var toliq = document.getElementById('toliq');
+        function toliqMatn() {
+          toliq.textContent = document.fullscreenElement ? 'Ekrandan chiqish' : 'To’liq ekran';
+        }
+        toliq.addEventListener('click', function () {
+          var el = document.documentElement;
+          if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+          else if (el.requestFullscreen) el.requestFullscreen().catch(function () {});
+        });
+        document.addEventListener('fullscreenchange', toliqMatn);
+        if (!document.documentElement.requestFullscreen) toliq.hidden = true;
+
+        document.getElementById('ramkasiz').addEventListener('click', function () {
+          var p = boshYol();
+          try {
+            var l = ilova.contentWindow.location;
+            p = l.pathname + l.search;
+          } catch (e) {}
+          location.href = p + (p.indexOf('?') >= 0 ? '&' : '?') + 'ramka=0';
+        });
+
+        // Keyingi direktorga — toza holat: shu brauzerdagi demo ma'lumotlari (kod, natijalar, sozlamalar) o'chadi.
+        document.getElementById('boshidan').addEventListener('click', function () {
+          if (!confirm('Demo boshidan boshlansinmi? Shu brauzerdagi kiritilgan kod, natijalar va sozlamalar o’chiriladi.')) return;
+          // avval ilovani yopamiz (aks holda u xotiradagi holatini qayta yozib qo'yishi mumkin), keyin tozalab qayta ochamiz
+          function tozala() {
+            ilova.removeEventListener('load', tozala);
+            try {
+              Object.keys(localStorage).forEach(function (k) {
+                if (k.indexOf('zinapoya') === 0) localStorage.removeItem(k);
+              });
+            } catch (e) {}
+            oxirgi = '';
+            history.replaceState(null, '', '#/');
+            ilova.src = '/demo/zinapoya/';
+          }
+          ilova.addEventListener('load', tozala);
+          ilova.src = 'about:blank';
+        });
+      })();
+    </script>
+  </body>
+</html>

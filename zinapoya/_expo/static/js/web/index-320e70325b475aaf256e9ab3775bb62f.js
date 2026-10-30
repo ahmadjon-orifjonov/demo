@@ -1,0 +1,1 @@
+__d(function(g,r,i,a,m,e,d){"use strict";Object.defineProperty(e,'__esModule',{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return u}});var t=r(d[0]);r(d[1]);var n=r(d[2]),o=r(d[3]);function u(){const{token:u}=(0,n.useSession)();return(0,o.jsx)(t.Redirect,{href:u?'/home':'/enter-code'})}},765,[795,12,800,6]);

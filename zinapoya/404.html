@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Zinapoya</title>
+    <meta name="description" content="O’quv markazi o’quvchilari uchun kunlik mashq, o’yinlar va guruh ligasi" />
+    <!-- PWA: «Bosh ekranga qo'shish» — ilova kabi to'liq ekranda ochiladi (DEMO_APP.md §3). Ranglar = ilova foni (tokens.ts). -->
+    <meta name="theme-color" content="#F7F7F8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Zinapoya" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/demo/zinapoya/manifest.json" />
+    <link rel="apple-touch-icon" href="/demo/zinapoya/icons/apple-touch-icon.png" />
+    <script>
+      // Kompyuterda (keng oyna + sichqoncha) ilova telefon ramkasida ochiladi: /ramka.html → shu sahifa iframe ichida,
+      // shuning uchun Dimensions / Modal / varaqlar telefon o'lchamida ishlaydi (DEMO_APP.md §2).
+      // ?ramka=0 — ramkasiz (shu tab uchun eslab qoladi), ?ramka=1 — majburan ramkada. Telefon, planshet, o'rnatilgan PWA — ramkasiz.
+      (function () {
+        var html = document.documentElement;
+        if (window.self !== window.top) {
+          html.className += ' ramkada';
+          return;
+        }
+        var mode = null;
+        var q = new URLSearchParams(location.search);
+        try {
+          if (q.has('ramka')) sessionStorage.setItem('zinapoya.ramka', q.get('ramka') === '0' ? '0' : '1');
+          mode = sessionStorage.getItem('zinapoya.ramka');
+        } catch (e) {
+          mode = q.get('ramka');
+        }
+        var installed = window.matchMedia('(display-mode: standalone), (display-mode: fullscreen), (display-mode: minimal-ui)').matches || navigator.standalone === true;
+        var desktop = window.matchMedia('(min-width: 600px) and (hover: hover) and (pointer: fine)').matches && !navigator.webdriver;
+        if (installed || mode === '0' || (mode !== '1' && !desktop)) return;
+        q.delete('ramka');
+        var rest = q.toString();
+        location.replace('/demo/zinapoya/ramka.html#' + location.pathname + (rest ? '?' + rest : '') + location.hash);
+      })();
+      // Oflayn kesh — faqat yig'ilgan versiyada (dev serverda `.bundle?` skripti bor → ro'yxatdan o'tkazilmaydi, eskisi o'chiriladi).
+      window.addEventListener('load', function () {
+        if (!('serviceWorker' in navigator)) return;
+        var dev = [].some.call(document.scripts, function (s) {
+          return /\.bundle(\?|$)/.test(s.src);
+        });
+        if (dev) {
+          navigator.serviceWorker.getRegistrations().then(function (list) {
+            list.forEach(function (r) {
+              r.unregister();
+            });
+          }, function () {});
+          return;
+        }
+        navigator.serviceWorker.register('/demo/zinapoya/sw.js', { scope: '/demo/zinapoya/' }).catch(function () {});
+      });
+    </script>
+    <!-- react-native-web tavsiya qilgan asos (expo shabloni) + ilova foni birinchi kadrdan (oq chaqnashsiz) -->
+    <style id="expo-reset">
+      html {
+        background-color: #f7f7f8;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: #0f1115;
+        }
+      }
+      html,
+      body {
+        height: 100%;
+        overscroll-behavior: none;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* Telefon ramkasi ichida — telefondagidek aylantirish chizig'isiz (g'ildirak / sensor panel bilan aylanadi) */
+      html.ramkada,
+      html.ramkada * {
+        scrollbar-width: none;
+      }
+      html.ramkada ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  <link rel="icon" href="/demo/zinapoya/favicon.ico"/></head>
+
+  <body>
+    <noscript>Ilova ishlashi uchun brauzerda JavaScript yoqilgan bo’lishi kerak.</noscript>
+    <div id="root"></div>
+  <script src="/demo/zinapoya/_expo/static/js/web/__expo-metro-runtime-97703ae02682710149335928b974f18d.js" defer></script><script src="/demo/zinapoya/_expo/static/js/web/__common-12f5ba3b47eb0de93b7c8f395ac40434.js" defer></script><script src="/demo/zinapoya/_expo/static/js/web/entry-ff001a3e3bb5547dcfe71ffcfbdd41ca.js" defer></script>
+</body>
+</html>

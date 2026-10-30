@@ -1,15 +1,21 @@
 <!doctype html>
 <html lang="uz" data-theme="light">
 <head>
+<link rel="manifest" href="/demo/atlantis-4/manifest-tizim.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/demo/atlantis-4/_pwa/tizim-apple-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ATLANTIS tizim">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="icons" content="/demo/atlantis-4/static/icons.svg">
 <meta name="htmx-config" content='{"allowEval":false,"allowScriptTags":false,"includeIndicatorStyles":false,"historyCacheSize":0,"defaultSwapStyle":"innerHTML","scrollIntoViewOnBoost":false}'>
-<meta name="theme-color" content="#7FB77E">
+<meta name="theme-color" content="#17324D">
 <title>Davomat — Hisobotlar — ATLANTIS</title>
 <link rel="icon" type="image/png" href="/demo/atlantis-4/_a/9ea49ee5ca1d.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/demo/atlantis-4/_a/53f4490d9947.png">
 <link rel="preload" href="/demo/atlantis-4/static/fonts/f_inter_latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/demo/atlantis-4/static/fonts/f_nunito_latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/demo/atlantis-4/static/css/tokens.css">
@@ -22,8 +28,8 @@
 <link rel="stylesheet" href="/demo/atlantis-4/static/css/app_telephony.css">
 <link rel="stylesheet" href="/demo/atlantis-4/static/css/app_exams.css">
 
-<style nonce="VFWH-8onyjheO07jSudSVQ">:root{ --brand-1:#fcfdfc;--brand-2:#f6f9f6;--brand-3:#e3f2e2;--brand-4:#e0ece0;--brand-5:#d3e3d2;--brand-6:#c4dac3;--brand-7:#aecaad;--brand-8:#8eb38d;--brand-9:#7fb77e;--brand-10:#5c935c;--brand-11:#437443;--brand-12:#1d341d;--brand-contrast:#14161a;--site-pan:#17324D;--site-pan2:#0F243A;--site-m:#1C2B3A;--site-m2:#55626E;--site-m3:#55626E;--site-fe:#7FB77E;--site-tg:#7FB77E;--site-tgh:#5A9459;--site-tg-text:#3D763C;--site-on-tg:#17324D;--site-line:#7D8A95;--site-leaf:#A9D3A8;--site-leaf2:#7FB77E;--site-bg:#F3F5F4;--site-alt:#EDF1EF;--site-ch:#DCE3DF;--site-ch2:#E8EDEA;--site-tint:#E3F1E1;--site-tint2:#D5EAD3;--site-glow1:#E3F1E1;--site-glow2:#E4F0FA;--site-on-dark:#E7EEF5;--site-on-dark2:#B9C7D4;--site-on-dark3:#A9D3A8;--site-on-dark4:#AFBFCD;--site-foot:#A6B6C6;--site-yuz:#FFFFFF;--site-ink:#FFFFFF;--site-ol:#6FA8DC;--site-ol2:#E4F0FA;--site-ol3:#D3E6F6;--site-ol-ink:#1E3A55;--site-ya:#5A9459;--site-ya-text:#3D763C;--site-ya-soft:#E3F1E1;--site-ol-soft:#E4F0FA;--site-ol-text:#2F6699;--site-xa:#D9534F;--site-xa-soft:#FBE8E7;--site-c1:#5A9459;--site-c2:#3F7FBF;--site-c3:#B07A2E;--site-c4:#6C63B5;--site-c5:#2F8584;--site-c6:#C0504B } :root[data-theme="dark"]{ --brand-1:#0e100e;--brand-2:#141714;--brand-3:#1c231c;--brand-4:#212b20;--brand-5:#263526;--brand-6:#2e402d;--brand-7:#395238;--brand-8:#486b48;--brand-9:#7db57c;--brand-10:#8ac288;--brand-11:#acd4ab;--brand-12:#e5f3e4;--brand-contrast:#14161a }</style>
-<script nonce="VFWH-8onyjheO07jSudSVQ">(function(){var r=document.documentElement;if(!r.dataset.theme){try{var t=localStorage.getItem("theme");}catch(e){}if(t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){r.dataset.theme="dark";}}})();</script>
+<style nonce="SbCsXR9I5W6xWmLIKuGi8Q">:root{ --brand-1:#fcfdfc;--brand-2:#f6f9f6;--brand-3:#e3f2e2;--brand-4:#e0ece0;--brand-5:#d3e3d2;--brand-6:#c4dac3;--brand-7:#aecaad;--brand-8:#8eb38d;--brand-9:#7fb77e;--brand-10:#5c935c;--brand-11:#437443;--brand-12:#1d341d;--brand-contrast:#14161a;--site-pan:#17324D;--site-pan2:#0F243A;--site-m:#1C2B3A;--site-m2:#55626E;--site-m3:#55626E;--site-fe:#7FB77E;--site-tg:#7FB77E;--site-tgh:#5A9459;--site-tg-text:#3D763C;--site-on-tg:#17324D;--site-line:#7D8A95;--site-leaf:#A9D3A8;--site-leaf2:#7FB77E;--site-bg:#F3F5F4;--site-alt:#EDF1EF;--site-ch:#DCE3DF;--site-ch2:#E8EDEA;--site-tint:#E3F1E1;--site-tint2:#D5EAD3;--site-glow1:#E3F1E1;--site-glow2:#E4F0FA;--site-on-dark:#E7EEF5;--site-on-dark2:#B9C7D4;--site-on-dark3:#A9D3A8;--site-on-dark4:#AFBFCD;--site-foot:#A6B6C6;--site-yuz:#FFFFFF;--site-ink:#FFFFFF;--site-ol:#6FA8DC;--site-ol2:#E4F0FA;--site-ol3:#D3E6F6;--site-ol-ink:#1E3A55;--site-ya:#5A9459;--site-ya-text:#3D763C;--site-ya-soft:#E3F1E1;--site-ol-soft:#E4F0FA;--site-ol-text:#2F6699;--site-xa:#D9534F;--site-xa-soft:#FBE8E7;--site-c1:#5A9459;--site-c2:#3F7FBF;--site-c3:#B07A2E;--site-c4:#6C63B5;--site-c5:#2F8584;--site-c6:#C0504B } :root[data-theme="dark"]{ --brand-1:#0e100e;--brand-2:#141714;--brand-3:#1c231c;--brand-4:#212b20;--brand-5:#263526;--brand-6:#2e402d;--brand-7:#395238;--brand-8:#486b48;--brand-9:#7db57c;--brand-10:#8ac288;--brand-11:#acd4ab;--brand-12:#e5f3e4;--brand-contrast:#14161a }</style>
+<script nonce="SbCsXR9I5W6xWmLIKuGi8Q">(function(){var r=document.documentElement;if(!r.dataset.theme){try{var t=localStorage.getItem("theme");}catch(e){}if(t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches)){r.dataset.theme="dark";}}})();</script>
 <script src="/demo/atlantis-4/static/js/htmx.min.js" defer></script>
 <script src="/demo/atlantis-4/static/js/app.js" defer></script>
 
@@ -178,7 +184,7 @@
           aria-label="Ogohlantirishlar: 2 ta"><svg class="icon" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-bell"></use></svg><span class="alerts__dot" aria-hidden="true">2</span></button>
   <div class="c-menu alerts__menu" role="menu" hidden>
     
-      <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check-check"></use></svg><span class="grow">4 ta darsda davomat belgilanmagan</span></a>
+      <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/"><span class="dot dot--warning"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-check-check"></use></svg><span class="grow">2 ta darsda davomat belgilanmagan</span></a>
     
       <a class="c-menu__item" role="menuitem" href="/demo/atlantis-4/r/admin/panel/lidlar/"><span class="dot dot--brand"></span><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="/demo/atlantis-4/static/icons.svg#i-phone"></use></svg><span class="grow">5 ta lidga qo&#x27;ng&#x27;iroq vaqti keldi</span></a>
     
@@ -250,7 +256,7 @@
 <section class="grid grid--3 grid--kpi" aria-label="Jami">
   <div class="c-stat"><span class="c-stat__label">O'rtacha davomat</span><span class="c-stat__value">90%</span>
     <progress class="c-progress" value="90" max="100">90%</progress></div>
-  <div class="c-stat"><span class="c-stat__label">Belgilangan qatnovlar</span><span class="c-stat__value">2 341</span></div>
+  <div class="c-stat"><span class="c-stat__label">Belgilangan qatnovlar</span><span class="c-stat__value">2 448</span></div>
   <div class="c-stat"><span class="c-stat__label">Guruhlar</span><span class="c-stat__value">29</span><span class="c-stat__delta subtle">past davomatlilar tepada</span></div>
 </section>
 
@@ -261,17 +267,17 @@
 <div class="c-table-wrap"><table class="c-table c-table--cards">
   <thead><tr><th>Guruh</th><th class="t-right">Keldi</th><th class="t-right">Kelmadi</th><th class="t-right">Sababli</th><th>Davomat</th></tr></thead>
   <tbody>
+    <tr><td class="t-main"><span class="fw-600">Arab tili · A1</span></td>
+      <td data-label="Keldi" class="t-right num">62</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
+      <td data-label="Sababli" class="t-right num">7</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="79" max="100">79%</progress><span class="num fw-600">79%</span></div></td></tr>
+  
     <tr><td class="t-main"><span class="fw-600">Kadrlar ish yuritishi (HR) · Kasbiy</span></td>
       <td data-label="Keldi" class="t-right num">50</td>
       <td data-label="Kelmadi" class="t-right num text-danger">9</td>
       <td data-label="Sababli" class="t-right num">4</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="79" max="100">79%</progress><span class="num fw-600">79%</span></div></td></tr>
-  
-    <tr><td class="t-main"><span class="fw-600">Arab tili · A1</span></td>
-      <td data-label="Keldi" class="t-right num">58</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">7</td>
-      <td data-label="Sababli" class="t-right num">7</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="81" max="100">81%</progress><span class="num fw-600">81%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Xitoy tili (HSK) · HSK 1</span></td>
       <td data-label="Keldi" class="t-right num">53</td>
@@ -291,29 +297,29 @@
       <td data-label="Sababli" class="t-right num">8</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="85" max="100">85%</progress><span class="num fw-600">85%</span></div></td></tr>
   
+    <tr><td class="t-main"><span class="fw-600">Turk tili · A1</span></td>
+      <td data-label="Keldi" class="t-right num">69</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">8</td>
+      <td data-label="Sababli" class="t-right num">2</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="87" max="100">87%</progress><span class="num fw-600">87%</span></div></td></tr>
+  
+    <tr><td class="t-main"><span class="fw-600">Bojxona deklaratsiyasi · Kasbiy</span></td>
+      <td data-label="Keldi" class="t-right num">63</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">6</td>
+      <td data-label="Sababli" class="t-right num">3</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="88" max="100">88%</progress><span class="num fw-600">88%</span></div></td></tr>
+  
+    <tr><td class="t-main"><span class="fw-600">IELTS tayyorlov · 5.5→6.5</span></td>
+      <td data-label="Keldi" class="t-right num">69</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">8</td>
+      <td data-label="Sababli" class="t-right num">1</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="88" max="100">88%</progress><span class="num fw-600">88%</span></div></td></tr>
+  
     <tr><td class="t-main"><span class="fw-600">Ingliz tili · B2</span></td>
       <td data-label="Keldi" class="t-right num">96</td>
       <td data-label="Kelmadi" class="t-right num text-danger">7</td>
       <td data-label="Sababli" class="t-right num">6</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="88" max="100">88%</progress><span class="num fw-600">88%</span></div></td></tr>
-  
-    <tr><td class="t-main"><span class="fw-600">Turk tili · A1</span></td>
-      <td data-label="Keldi" class="t-right num">63</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">7</td>
-      <td data-label="Sababli" class="t-right num">2</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="88" max="100">88%</progress><span class="num fw-600">88%</span></div></td></tr>
-  
-    <tr><td class="t-main"><span class="fw-600">Bojxona deklaratsiyasi · Kasbiy</span></td>
-      <td data-label="Keldi" class="t-right num">59</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">5</td>
-      <td data-label="Sababli" class="t-right num">2</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
-  
-    <tr><td class="t-main"><span class="fw-600">IELTS tayyorlov · 5.5→6.5</span></td>
-      <td data-label="Keldi" class="t-right num">64</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">7</td>
-      <td data-label="Sababli" class="t-right num">1</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">IELTS tayyorlov · 6.0→7.0</span></td>
       <td data-label="Keldi" class="t-right num">64</td>
@@ -321,10 +327,16 @@
       <td data-label="Sababli" class="t-right num">2</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Matematika (OTM) · OTM-2</span></td>
-      <td data-label="Keldi" class="t-right num">107</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
+    <tr><td class="t-main"><span class="fw-600">Kimyo · OTM</span></td>
+      <td data-label="Keldi" class="t-right num">64</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
       <td data-label="Sababli" class="t-right num">4</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
+  
+    <tr><td class="t-main"><span class="fw-600">Matematika (OTM) · OTM-2</span></td>
+      <td data-label="Keldi" class="t-right num">116</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
+      <td data-label="Sababli" class="t-right num">5</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Web dasturlash · Boshlang&#x27;ich</span></td>
@@ -333,22 +345,28 @@
       <td data-label="Sababli" class="t-right num">2</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">AutoCAD va 3Ds Max · Boshlang&#x27;ich</span></td>
-      <td data-label="Keldi" class="t-right num">65</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">6</td>
-      <td data-label="Sababli" class="t-right num">1</td>
+    <tr><td class="t-main"><span class="fw-600">Bolalar ingliz tili · Kids 2</span></td>
+      <td data-label="Keldi" class="t-right num">73</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">5</td>
+      <td data-label="Sababli" class="t-right num">3</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="90" max="100">90%</progress><span class="num fw-600">90%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Bolalar ingliz tili · Kids 2</span></td>
-      <td data-label="Keldi" class="t-right num">67</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
-      <td data-label="Sababli" class="t-right num">3</td>
+    <tr><td class="t-main"><span class="fw-600">AutoCAD va 3Ds Max · Boshlang&#x27;ich</span></td>
+      <td data-label="Keldi" class="t-right num">71</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">6</td>
+      <td data-label="Sababli" class="t-right num">1</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Fizika · OTM</span></td>
-      <td data-label="Keldi" class="t-right num">93</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">5</td>
-      <td data-label="Sababli" class="t-right num">4</td>
+    <tr><td class="t-main"><span class="fw-600">Bolalar matematikasi · Kids</span></td>
+      <td data-label="Keldi" class="t-right num">95</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
+      <td data-label="Sababli" class="t-right num">5</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
+  
+    <tr><td class="t-main"><span class="fw-600">Grafik dizayn · Boshlang&#x27;ich</span></td>
+      <td data-label="Keldi" class="t-right num">69</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
+      <td data-label="Sababli" class="t-right num">3</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Ispan tili · A1</span></td>
@@ -357,27 +375,15 @@
       <td data-label="Sababli" class="t-right num">1</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Kimyo · OTM</span></td>
-      <td data-label="Keldi" class="t-right num">59</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">3</td>
-      <td data-label="Sababli" class="t-right num">3</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
-  
     <tr><td class="t-main"><span class="fw-600">Koreys tili (TOPIK) · A1</span></td>
       <td data-label="Keldi" class="t-right num">68</td>
       <td data-label="Kelmadi" class="t-right num text-danger">2</td>
       <td data-label="Sababli" class="t-right num">5</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Bolalar matematikasi · Kids</span></td>
-      <td data-label="Keldi" class="t-right num">88</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
-      <td data-label="Sababli" class="t-right num">4</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
-  
-    <tr><td class="t-main"><span class="fw-600">Buxgalteriya 1C 8.3 · Kasbiy</span></td>
-      <td data-label="Keldi" class="t-right num">80</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">3</td>
+    <tr><td class="t-main"><span class="fw-600">Fizika · OTM</span></td>
+      <td data-label="Keldi" class="t-right num">102</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">5</td>
       <td data-label="Sababli" class="t-right num">4</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
   
@@ -387,10 +393,10 @@
       <td data-label="Sababli" class="t-right num">4</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Grafik dizayn · Boshlang&#x27;ich</span></td>
-      <td data-label="Keldi" class="t-right num">65</td>
+    <tr><td class="t-main"><span class="fw-600">Buxgalteriya 1C 8.3 · Kasbiy</span></td>
+      <td data-label="Keldi" class="t-right num">88</td>
       <td data-label="Kelmadi" class="t-right num text-danger">3</td>
-      <td data-label="Sababli" class="t-right num">2</td>
+      <td data-label="Sababli" class="t-right num">4</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="93" max="100">93%</progress><span class="num fw-600">93%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Rus tili · A2</span></td>
@@ -412,14 +418,14 @@
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="94" max="100">94%</progress><span class="num fw-600">94%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Ingliz tili · A1</span></td>
-      <td data-label="Keldi" class="t-right num">99</td>
+      <td data-label="Keldi" class="t-right num">107</td>
       <td data-label="Kelmadi" class="t-right num text-danger">6</td>
-      <td data-label="Sababli" class="t-right num">0</td>
+      <td data-label="Sababli" class="t-right num">1</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="94" max="100">94%</progress><span class="num fw-600">94%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Nemis tili · A1</span></td>
-      <td data-label="Keldi" class="t-right num">68</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">1</td>
+      <td data-label="Keldi" class="t-right num">73</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">2</td>
       <td data-label="Sababli" class="t-right num">3</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="94" max="100">94%</progress><span class="num fw-600">94%</span></div></td></tr>
   
@@ -430,7 +436,7 @@
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="95" max="100">95%</progress><span class="num fw-600">95%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Ingliz tili · A2</span></td>
-      <td data-label="Keldi" class="t-right num">63</td>
+      <td data-label="Keldi" class="t-right num">69</td>
       <td data-label="Kelmadi" class="t-right num text-danger">2</td>
       <td data-label="Sababli" class="t-right num">0</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="97" max="100">97%</progress><span class="num fw-600">97%</span></div></td></tr>
@@ -445,51 +451,51 @@
   <thead><tr><th>O'qituvchi</th><th class="t-right">Keldi</th><th class="t-right">Kelmadi</th><th class="t-right">Sababli</th><th>Davomat</th></tr></thead>
   <tbody>
     <tr><td class="t-main"><span class="fw-600">Madina</span></td>
-      <td data-label="Keldi" class="t-right num">58</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">7</td>
+      <td data-label="Keldi" class="t-right num">62</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
       <td data-label="Sababli" class="t-right num">7</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="81" max="100">81%</progress><span class="num fw-600">81%</span></div></td></tr>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="79" max="100">79%</progress><span class="num fw-600">79%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Javlon</span></td>
-      <td data-label="Keldi" class="t-right num">17</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">3</td>
-      <td data-label="Sababli" class="t-right num">0</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="85" max="100">85%</progress><span class="num fw-600">85%</span></div></td></tr>
+      <td data-label="Keldi" class="t-right num">21</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">4</td>
+      <td data-label="Sababli" class="t-right num">1</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="81" max="100">81%</progress><span class="num fw-600">81%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Ulug&#x27;bek</span></td>
-      <td data-label="Keldi" class="t-right num">231</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">22</td>
-      <td data-label="Sababli" class="t-right num">16</td>
+      <td data-label="Keldi" class="t-right num">243</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">23</td>
+      <td data-label="Sababli" class="t-right num">17</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="86" max="100">86%</progress><span class="num fw-600">86%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Jasur</span></td>
-      <td data-label="Keldi" class="t-right num">294</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">24</td>
+      <td data-label="Keldi" class="t-right num">299</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">25</td>
       <td data-label="Sababli" class="t-right num">17</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="88" max="100">88%</progress><span class="num fw-600">88%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Aziz</span></td>
-      <td data-label="Keldi" class="t-right num">131</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
+      <td data-label="Keldi" class="t-right num">137</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">10</td>
       <td data-label="Sababli" class="t-right num">7</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Nigora</span></td>
-      <td data-label="Keldi" class="t-right num">123</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">9</td>
+      <td data-label="Keldi" class="t-right num">128</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">10</td>
       <td data-label="Sababli" class="t-right num">6</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="89" max="100">89%</progress><span class="num fw-600">89%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Sherzod</span></td>
-      <td data-label="Keldi" class="t-right num">256</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">15</td>
-      <td data-label="Sababli" class="t-right num">9</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="91" max="100">91%</progress><span class="num fw-600">91%</span></div></td></tr>
-  
     <tr><td class="t-main"><span class="fw-600">Bekzod</span></td>
-      <td data-label="Keldi" class="t-right num">394</td>
+      <td data-label="Keldi" class="t-right num">419</td>
       <td data-label="Kelmadi" class="t-right num text-danger">22</td>
-      <td data-label="Sababli" class="t-right num">13</td>
+      <td data-label="Sababli" class="t-right num">15</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
+  
+    <tr><td class="t-main"><span class="fw-600">Kamola</span></td>
+      <td data-label="Keldi" class="t-right num">154</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">6</td>
+      <td data-label="Sababli" class="t-right num">8</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
   
     <tr><td class="t-main"><span class="fw-600">Olga</span></td>
@@ -498,22 +504,22 @@
       <td data-label="Sababli" class="t-right num">4</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
   
+    <tr><td class="t-main"><span class="fw-600">Sherzod</span></td>
+      <td data-label="Keldi" class="t-right num">262</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">15</td>
+      <td data-label="Sababli" class="t-right num">9</td>
+      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
+  
     <tr><td class="t-main"><span class="fw-600">Shoira</span></td>
       <td data-label="Keldi" class="t-right num">11</td>
       <td data-label="Kelmadi" class="t-right num">0</td>
       <td data-label="Sababli" class="t-right num">1</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="92" max="100">92%</progress><span class="num fw-600">92%</span></div></td></tr>
   
-    <tr><td class="t-main"><span class="fw-600">Kamola</span></td>
-      <td data-label="Keldi" class="t-right num">149</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">5</td>
-      <td data-label="Sababli" class="t-right num">7</td>
-      <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="93" max="100">93%</progress><span class="num fw-600">93%</span></div></td></tr>
-  
     <tr><td class="t-main"><span class="fw-600">Dilnoza</span></td>
-      <td data-label="Keldi" class="t-right num">319</td>
-      <td data-label="Kelmadi" class="t-right num text-danger">15</td>
-      <td data-label="Sababli" class="t-right num">6</td>
+      <td data-label="Keldi" class="t-right num">339</td>
+      <td data-label="Kelmadi" class="t-right num text-danger">16</td>
+      <td data-label="Sababli" class="t-right num">7</td>
       <td data-label="Davomat"><div class="row row--nowrap gap-2"><progress class="c-progress" value="94" max="100">94%</progress><span class="num fw-600">94%</span></div></td></tr>
   </tbody>
 </table></div>
