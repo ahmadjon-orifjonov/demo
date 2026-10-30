@@ -3,12 +3,13 @@
  * dev serverda (`expo start`) index.html dagi skript uni ro'yxatdan o'tkazmaydi, borini o'chiradi.
  * Xavfsiz kontekst kerak: http://localhost — ishlaydi; telefonda LAN http://192.168… — brauzer SW'ni umuman bermaydi (zarari yo'q).
  *
- *  - sahifa (navigate): avval tarmoq, bo'lmasa keshdagi ilova qobig'i — server yopiq bo'lsa ham demo ochiladi;
+ *  - sahifa (navigate): avval tarmoq, bo'lmasa (yoki 404 — statik hostingdagi ichki manzil) keshdagi ilova qobig'i — server yopiq
+ *    bo'lsa ham demo ochiladi;
  *  - /_expo/static/*, /assets/* (nomida xesh — o'zgarmaydi): avval kesh;
  *  - qolgani (manifest, ikonlar): avval tarmoq, bo'lmasa kesh;  /api/*, /__demo/*, Range so'rovlar — tegilmaydi.
  * O'rnatishda qobiq + skriptlar + ularda tilga olingan bo'laklar/shriftlar/ovozlar oldindan keshlanadi (birinchi ochilishdan keyin to'liq oflayn).
  */
-const CACHE = 'zinapoya-202610302121';
+const CACHE = 'zinapoya-202610302130';
 const B = '/demo/zinapoya';
 const IMMUTABLE = /^\/demo\/zinapoya\/(_expo\/static|assets)\//;
 const REFS = /["'](\/demo\/zinapoya\/(?:_expo\/static\/[^"'\s]+\.(?:js|css)|assets\/[^"'\s]+\.(?:ttf|otf|woff2?|png|jpe?g|svg|webp|mp3|wav)))["']/g;
@@ -70,7 +71,8 @@ self.addEventListener('fetch', (event) => {
     const key = url.pathname === B + '/ramka.html' ? B + '/ramka.html' : B + '/';
     event.respondWith(
       fetch(req)
-        .then((res) => keep(key, res))
+        // ichki manzil statik hostingda 404 bo'lsa (GitHub Pages) — keshdagi ilova qobig'i, ilova o'zi to'g'ri ekranni ochadi
+        .then((res) => (res.status === 404 ? caches.match(key).then((hit) => hit || res) : keep(key, res)))
         .catch(() => caches.match(key).then((hit) => hit || caches.match(B + '/')).then((hit) => hit || Response.error())),
     );
     return;

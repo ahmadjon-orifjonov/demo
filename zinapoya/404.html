@@ -16,6 +16,19 @@
     <link rel="manifest" href="/demo/zinapoya/manifest.json" />
     <link rel="apple-touch-icon" href="/demo/zinapoya/icons/apple-touch-icon.png" />
     <script>
+      // GitHub Pages: ichki manzil (masalan /demo/zinapoya/home) yangilansa sayt ildizidagi 404.html bu yerga «?p=/home» bilan
+      // yo'naltiradi — ilova yuklanishidan oldin asl manzil tiklanadi (expo-router to'g'ri ekranni ochadi). Faqat shu sayt ichidagi yo'l.
+      (function () {
+        var m = /[?&]p=([^&]*)/.exec(location.search);
+        if (!m) return;
+        var p = decodeURIComponent(m[1]);
+        if (p.charAt(0) !== '/' || p.charAt(1) === '/' || p.indexOf('\\') !== -1) return;
+        try {
+          history.replaceState(null, '', location.pathname.replace(/\/$/, '') + p + location.hash);
+        } catch (e) {}
+      })();
+    </script>
+    <script>
       // Kompyuterda (keng oyna + sichqoncha) ilova telefon ramkasida ochiladi: /ramka.html → shu sahifa iframe ichida,
       // shuning uchun Dimensions / Modal / varaqlar telefon o'lchamida ishlaydi (DEMO_APP.md §2).
       // ?ramka=0 — ramkasiz (shu tab uchun eslab qoladi), ?ramka=1 — majburan ramkada. Telefon, planshet, o'rnatilgan PWA — ramkasiz.
