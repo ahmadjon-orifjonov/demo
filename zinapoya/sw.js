@@ -9,7 +9,7 @@
  *  - qolgani (manifest, ikonlar): avval tarmoq, bo'lmasa kesh;  /api/*, /__demo/*, Range so'rovlar — tegilmaydi.
  * O'rnatishda qobiq + skriptlar + ularda tilga olingan bo'laklar/shriftlar/ovozlar oldindan keshlanadi (birinchi ochilishdan keyin to'liq oflayn).
  */
-const CACHE = 'zinapoya-202610302302';
+const CACHE = 'zinapoya-202610302358';
 const B = '/demo/zinapoya';
 const IMMUTABLE = /^\/demo\/zinapoya\/(_expo\/static|assets)\//;
 const REFS = /["'](\/demo\/zinapoya\/(?:_expo\/static\/[^"'\s]+\.(?:js|css)|assets\/[^"'\s]+\.(?:ttf|otf|woff2?|png|jpe?g|svg|webp|mp3|wav)))["']/g;
