@@ -178,15 +178,11 @@
     const name = form.name.value.trim();
     const phone = form.phone.value.trim();
     if (!name || phone.replace(/\D/g, "").length < 9) {
-      showToast("Ism va telefon raqamini to'g'ri kiriting");
+      showToast(I18N.t("toast.err"));
       (name ? form.phone : form.name).focus();
       return;
     }
-    const text =
-      `Salom! Narx so'rovi:\n` +
-      `Ism: ${name}\nTelefon: ${phone}\n` +
-      `Mahsulot: ${form.type.value}\nMiqdor: ${form.qty.value || "-"}\n` +
-      `Izoh: ${form.msg.value || "-"}`;
+    const text = I18N.t("tg.msg", { name, phone, type: form.type.value, qty: form.qty.value || "-", msg: form.msg.value || "-" });
 
     if (CONFIG.telegramUser) {
       window.open(
@@ -195,7 +191,7 @@
         "noopener"
       );
     }
-    showToast("Rahmat, " + name + "! So'rovingiz qabul qilindi — tez orada bog'lanamiz.");
+    showToast(I18N.t("toast.ok", { name }));
     form.reset();
   });
 

@@ -42,6 +42,19 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Kirill (ru, uz-Cyrl) uchun shriftlar — Fraunces/Jakarta/DM Mono kirillni qo'llamaydi */
+html[lang="ru"], html[lang="uz-Cyrl"] {
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+html[lang="ru"] .display, html[lang="uz-Cyrl"] .display { font-weight: 600; letter-spacing: -0.01em; }
+html[lang="ru"] .display em, html[lang="uz-Cyrl"] .display em { font-weight: 500; }
+html[lang="ru"] .sec-num, html[lang="uz-Cyrl"] .sec-num,
+html[lang="ru"] .step-num, html[lang="uz-Cyrl"] .step-num { font-weight: 400; }
+html[lang="ru"] .review p, html[lang="uz-Cyrl"] .review p { font-weight: 500; font-size: 1.3rem; }
+html[lang="ru"] .hero h1, html[lang="uz-Cyrl"] .hero h1 { max-width: 14ch; }
+
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -221,6 +234,13 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
 }
 .mobile-menu a.mm-link span { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .2em; opacity: .5; }
 .mobile-menu .mm-foot { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+
+/* til tugmasi */
+.lang { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid var(--line-light); background: rgba(255,255,255,.05); }
+.lang button { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em; padding: 7px 10px; border-radius: 999px; opacity: .65; transition: .3s; line-height: 1; }
+.lang button:hover { opacity: 1; }
+.lang button.active { background: var(--cream); color: var(--ink); opacity: 1; }
+.mobile-menu a.mm-link i { font-style: normal; }
 
 /* =========================================================
    HERO
@@ -752,6 +772,7 @@ body.loaded .hero-media img { animation: none; transform: scale(1); }
   .nav, .header-phone { display: none; }
   .burger { display: block; }
   .header .btn-sm { display: none; }
+  .header .lang { display: none; }
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 230px; }
   .feature.big { grid-column: span 2; }
