@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Additive Technology — система управления (образец)</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Образец системы управления для Additive Technology: расчёт стоимости 3D-печати по STL, заказы и этапы, загрузка принтеров, склад материалов, оплаты — в одной панели.">
+<meta name="theme-color" content="#1f2328">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Additive">
+<link rel="preload" href="fonts/geologica-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geologica-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:"Geologica";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/geologica-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Geologica";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/geologica-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Geologica";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/geologica-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/jbmono-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/jbmono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:100 800;font-display:swap;src:url(fonts/jbmono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
+<style>:root{--acc:#2A6F97;--acc2:#225A7B;--accbg:#E4EEF5;--ink:#1F2328;--paper:#F4F3EF;--card:#FFFFFF;--soft:#EDECE7;--ln:#DCDAD3;--tx:var(--ink);--mut:#636B74;--mut2:#858C94;
+--st-calc:#6A7380;--st-ok:#1F7A74;--st-queue:#5D6B8A;--st-print:var(--acc);--st-post:#7A4E6B;--st-done:#237A3C;--st-out:#3C4650;--er:#B3261E;--wr:#A35E07;
+--m-black:#1A1A1A;--m-white:#F2F2F2;--m-red:#B9382B;--m-blue:#2B4F8E;--m-orange:#D9731E;--m-gray:#8A8F94;--m-clear:#CFE3EA;--m-natural:#E8DCC3;
+--sans:"Geologica",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+--r:4px;--r2:6px;--r3:8px;--shadow:0 4px 12px rgba(31,35,40,.12);--side:216px}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--tx);font-size:14px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+b,strong{font-weight:500}h1,h2,h3,h4{font-weight:500}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.num{text-align:right;white-space:nowrap}
+.er{color:var(--er)}.wr{color:var(--wr)}.ok{color:var(--st-done)}.mu{color:var(--mut)}
+.sp{flex:1}
+.namuna{background:var(--soft);color:var(--mut);border-bottom:1px solid var(--ln);font-size:12px;text-align:center;padding:4px 12px;line-height:1.4}
+.namuna b{color:var(--wr);font-weight:500}
+.offbar{background:color-mix(in srgb,var(--wr) 12%,white);color:var(--wr);border:1px solid color-mix(in srgb,var(--wr) 30%,white);border-radius:var(--r2);padding:6px 12px;font-size:13px;margin-bottom:12px}
+/* kirish */
+body.kirish .lay,body.kirish .mnav{display:none}
+.login{max-width:1040px;margin:0 auto;padding:40px 24px 60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:calc(100vh - 28px)}
+.lbrand h1{font-size:28px;line-height:1.1;margin:14px 0 8px;font-weight:500}
+.lbrand p{color:var(--mut);font-size:15px;margin:0 0 18px;max-width:420px}
+.lbrand .lg{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:13px}
+.lfeat{display:grid;gap:10px;margin-top:22px;font-size:14px}
+.lfeat div{display:flex;gap:10px;align-items:flex-start;color:var(--tx)}.lfeat svg.i{color:var(--acc);margin-top:3px}
+.lfeat small{display:block;color:var(--mut);font-size:13px}
+.lbox h2{font-size:18px;margin:0 0 10px}
+.roles,.pin-box{border:1px solid var(--ln);border-radius:var(--r3);background:var(--card);overflow:hidden}
+.role{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:10px 16px;border:0;border-top:1px solid var(--ln);background:none;text-align:left;transition:background-color .12s}
+.role:first-child{border-top:0}.role:hover{background:var(--soft)}
+.role .ti{width:36px;height:36px;border-radius:var(--r2);background:var(--soft);display:grid;place-items:center;color:var(--acc);flex:none}
+.role .x{flex:1;min-width:0}.role .n{display:block;font-weight:500}.role .d{display:block;color:var(--mut);font-size:13px}
+.role .pin-t{flex:none;font-family:var(--mono);font-size:12px;color:var(--mut2)}
+.pin-box{padding:20px}
+.pin-box .back{border:0;background:none;color:var(--mut);padding:0;font-size:13px;display:inline-flex;align-items:center;gap:4px;margin-bottom:10px}
+.pin-box .nm{font-size:16px;font-weight:500;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.pin{height:52px;font-size:24px;letter-spacing:0;text-align:center;font-family:var(--mono);width:100%;border:1px solid var(--ln);border-radius:var(--r2);background:var(--card)}
+.pin:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pad button{height:48px;border:1px solid var(--ln);border-radius:var(--r2);background:var(--card);font-family:var(--mono);font-size:18px;transition:background-color .12s}
+.pad button:hover{background:var(--soft)}
+.pin-box .err{color:var(--er);font-size:13px;min-height:20px;margin-top:8px}
+.pin-box .hint{color:var(--mut2);font-size:12px;margin:8px 0 0}
+/* qobiq */
+.lay{display:flex;min-height:calc(100vh - 28px)}
+.side{width:var(--side);flex:none;background:var(--paper);border-right:1px solid var(--ln);display:flex;flex-direction:column;position:sticky;top:0;height:calc(100vh - 28px)}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 14px}
+.brand b{display:block;font-size:15px;line-height:1.2}
+.brand small{color:var(--mut);font-size:12px}
+.logo{width:36px;height:36px;border-radius:var(--r2);background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:13px;flex:none}
+.nav{padding:6px 10px;display:flex;flex-direction:column;gap:2px;flex:1}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:var(--mut);padding:9px 12px;border-radius:var(--r2);text-align:left;font-weight:400;transition:background-color .12s,color .12s}
+.nav button:hover{background:var(--soft);color:var(--tx)}
+.nav button.on{background:var(--card);color:var(--tx);font-weight:500;box-shadow:inset 0 0 0 1px var(--ln)}
+.nav .ic{width:20px;display:inline-flex;align-items:center;justify-content:center;color:var(--mut)}
+.nav button.on .ic{color:var(--acc)}
+.nav .bdg,.mnav .bdg,.more .bdg{margin-left:auto;background:var(--ink);color:var(--paper);border-radius:3px;font-size:12px;padding:0 5px;font-weight:500;line-height:18px;font-family:var(--mono)}
+.sidefoot{padding:12px 16px 14px;font-size:12px;color:var(--mut);border-top:1px solid var(--ln);display:flex;flex-direction:column;gap:6px}
+.who{display:flex;gap:10px;align-items:center;margin-bottom:4px}
+.who .ic{width:30px;height:30px;border-radius:50%;background:var(--card);border:1px solid var(--ln);display:grid;place-items:center;color:var(--acc);flex:none}
+.who b{display:block;font-size:13px;color:var(--tx)}.who small{font-size:12px}
+.sidefoot button{background:none;border:1px solid var(--ln);color:var(--mut);border-radius:var(--r2);padding:6px 9px;font-size:12px;text-align:left;transition:background-color .12s}
+.sidefoot button:hover{background:var(--card)}
+.sidefoot .ver{font-family:var(--mono);color:var(--mut);font-size:12px;margin-top:4px}
+.main{flex:1;min-width:0;padding:22px 26px 90px;max-width:1240px}
+.mhead{display:none;align-items:center;gap:10px;margin:-2px 0 12px}
+.mhead .mh{flex:1;min-width:0}.mhead b{font-size:15px;display:block}.mhead small{color:var(--mut);font-size:12px;display:block}
+.top{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.top h1{font-size:20px;margin:0 0 2px;line-height:1.3}
+.top .sub{color:var(--mut);font-size:15px;max-width:780px;line-height:1.45}
+.top .sub b{color:var(--tx)}.top .sub b.er{color:var(--er)}.top .sub b.wr{color:var(--wr)}
+.top .dt{color:var(--mut);font-size:13px;margin-left:8px;font-weight:400}
+.btn{border:1px solid var(--ln);background:var(--card);border-radius:var(--r2);padding:8px 13px;font-weight:500;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:background-color .12s,border-color .12s;color:var(--tx);line-height:1.3}
+.btn:hover{border-color:var(--mut2);background:var(--soft)}
+.btn.p{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn.p:hover{background:#3C4650;border-color:#3C4650}
+.btn.a{background:var(--acc);border-color:var(--acc);color:#FFFFFF}.btn.a:hover{background:var(--acc2)}
+.btn.s{padding:5px 10px;font-size:13px}
+.btn.d{color:var(--er)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.grid{display:grid;gap:12px}.grid>*{min-width:0}
+.k4{grid-template-columns:repeat(4,1fr)}.k3{grid-template-columns:repeat(3,1fr)}.k2{grid-template-columns:1.4fr 1fr}.k22{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:var(--r3);padding:16px}
+.card h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:4px}
+.card h3 small{font-weight:400;color:var(--mut);font-size:13px}
+.card h3>svg.i{color:var(--mut)}
+.card.p0{padding:0}.card.p0 h3{padding:14px 16px 0}
+.pnl{display:flex;flex-direction:column;gap:12px}
+/* KPI — bitta ramka, ajratgichlar */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border:1px solid var(--ln);border-radius:var(--r3);overflow:hidden}
+.kpi{padding:14px 16px;border-left:1px solid var(--ln);cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:2px;transition:background-color .12s}
+.kpi:first-child{border-left:0}.kpi:hover{background:var(--soft)}
+.kpi .l{color:var(--mut);font-size:13px;display:flex;align-items:center;gap:6px}
+.kpi .v{font-family:var(--mono);font-size:24px;font-weight:500;line-height:1.15;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .v small{font-family:var(--sans);font-size:13px;font-weight:400;color:var(--mut);margin-left:4px}
+.kpi .v.er{color:var(--er)}.kpi .v.wr{color:var(--wr)}
+.kpi .d{font-size:13px;color:var(--mut);margin-top:2px;line-height:1.4}
+/* holat yorliqlari */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r);padding:0 8px;height:22px;font-size:12px;font-weight:500;white-space:nowrap;--st:var(--st-calc);color:var(--st);background:color-mix(in srgb,var(--st) 12%,white)}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--st);flex:none}
+.pill.nd::before{display:none}
+.pill.raschet{--st:var(--st-calc)}.pill.podtv{--st:var(--st-ok)}.pill.ochered{--st:var(--st-queue)}.pill.pechat{--st:var(--st-print)}.pill.post{--st:var(--st-post)}.pill.gotov{--st:var(--st-done)}.pill.vydan{--st:var(--st-out)}
+.pill.er{--st:var(--er)}.pill.wr{--st:var(--wr)}.pill.mu{--st:var(--mut)}.pill.ac{--st:var(--acc)}.pill.ok{--st:var(--st-done)}
+.pill svg.i{width:13px;height:13px}
+.mdot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none;border:1px solid rgba(31,35,40,.25);vertical-align:-1px}
+/* ro‘yxat */
+.list .it{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--ln);cursor:pointer;transition:background-color .12s}
+.list .it:last-child{border:0}.list .it:hover{background:var(--soft)}
+.list .it .m{flex:1;min-width:0}
+.list .it .m b{display:block;font-size:14px;font-weight:500}
+.list .it .m small{color:var(--mut);font-size:13px;display:block}
+.list .it>svg.i{color:var(--mut2);flex:none}
+.list .it .code{font-family:var(--mono);font-size:13px;color:var(--mut);flex:none;width:72px}
+.att .it{align-items:flex-start}
+.att .it .btn{flex:none;margin-top:2px}
+.empty{color:var(--mut);text-align:center;padding:26px 8px;font-size:13px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.empty svg.i{width:40px;height:40px;color:var(--mut2);stroke-width:1.2}
+/* bosqich zanjiri 7 nuqta */
+.chain{display:flex;align-items:center;gap:0;margin:4px 0}
+.chain i{width:10px;height:10px;border-radius:50%;border:1px solid var(--mut2);background:var(--card);flex:none;display:grid;place-items:center}
+.chain i.d{background:var(--ink);border-color:var(--ink)}
+.chain i.c{background:var(--st,var(--acc));border-color:var(--st,var(--acc));width:12px;height:12px}
+.chain i.c.late{background:var(--er);border-color:var(--er)}
+.chain s{flex:1;height:1px;background:var(--ln);min-width:6px;text-decoration:none}
+.chain s.d{background:var(--ink)}
+.chain small{flex:none;font-size:12px;color:var(--mut);margin-left:8px;white-space:nowrap}
+.steps{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.st{font-size:12px;color:var(--mut);padding:6px 6px;border-radius:var(--r);background:var(--soft);border:1px solid var(--ln);min-width:0;display:flex;flex-direction:column;gap:1px}
+.st b{font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st small{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st.d{background:var(--card)}.st.d b{color:var(--mut)}
+.st.c{border-color:var(--st,var(--acc));background:color-mix(in srgb,var(--st,var(--acc)) 10%,white)}.st.c b{color:var(--st,var(--acc))}
+.st.c.late{--st:var(--er)}
+/* jadval */
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+.t th{text-align:left;font-size:12px;color:var(--mut);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--ln);white-space:nowrap;background:var(--soft);position:sticky;top:0;z-index:1}
+.t td{padding:9px 10px;border-bottom:1px solid var(--ln);vertical-align:middle}
+.t tbody tr:last-child td{border-bottom:0}
+.t tfoot td{border-top:1px solid var(--ink);font-weight:500;background:var(--card)}
+.t tr.cl{cursor:pointer}.t tr.cl:hover td{background:var(--soft)}
+.t tr.grp td{background:var(--paper);color:var(--mut);font-size:12px;padding:5px 10px;font-weight:500;border-top:1px solid var(--ln)}
+.t .n{text-align:right;white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.t th.n{font-family:var(--sans)}
+.sm{display:block;color:var(--mut);font-size:12px;font-weight:400;font-family:var(--sans)}
+.t td b{font-weight:500}
+.tw{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r3);background:var(--card)}
+.card .tw{border:0;border-top:1px solid var(--ln);border-radius:0;margin:0 -16px -16px}
+.card.p0 .tw{margin:0;border-radius:0 0 var(--r3) var(--r3)}
+/* modal */
+.mod{position:fixed;inset:0;background:rgba(31,35,40,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.box{background:var(--card);border-radius:var(--r3);width:min(760px,100%);max-height:92vh;overflow:auto;box-shadow:var(--shadow)}
+.box.w{width:min(980px,100%)}
+.box .hd{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--ln);position:sticky;top:0;background:var(--card);z-index:2}
+.box .hd h2{margin:0;font-size:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.box .hd h2 small{font-size:13px;color:var(--mut);font-weight:400}
+.box .hd .x{margin-left:auto;border:0;background:var(--soft);border-radius:var(--r2);width:34px;height:34px;font-size:18px;flex:none}
+.box .bd{padding:16px 18px}
+.ft{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--ln);position:sticky;bottom:0;background:var(--card)}
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px}
+.dl div small{display:block;color:var(--mut);font-size:12px}
+.dl div b{font-size:14px;font-weight:500}
+.dl div b.num{display:block;text-align:left}
+.sec{margin-top:18px}
+.sec h4{margin:0 0 8px;font-size:14px;display:flex;gap:8px;align-items:center}
+.hist{font-size:13px;border-left:1px solid var(--ln);margin-left:4px;padding-left:14px}
+.hist div{margin-bottom:7px;position:relative}
+.hist div:before{content:"";position:absolute;left:-18px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.hist div.er:before{background:var(--er)}
+.hist small{color:var(--mut);font-family:var(--mono);font-size:12px}
+.hidden-rol{color:var(--mut2);font-size:13px;font-style:normal}
+/* forma */
+.frm{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.frm.f3{grid-template-columns:repeat(3,1fr)}
+.frm label,.fld{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:500;color:var(--mut)}
+.frm .w2{grid-column:span 2}.frm .wf{grid-column:1/-1}.frm .inp{width:100%}
+.inp{border:1px solid var(--ln);background:var(--card);border-radius:var(--r2);padding:8px 11px;min-width:0;font-weight:400;color:var(--tx);height:38px}
+textarea.inp{height:auto}
+.inp:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.inp.num{text-align:right}
+.inp[readonly]{background:var(--soft);color:var(--mut)}
+.unit{display:flex;align-items:center;gap:6px}.unit .inp{flex:1}.unit span{color:var(--mut);font-size:13px;white-space:nowrap}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--ln);background:var(--card);border-radius:var(--r2);padding:5px 11px;font-size:13px;font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:background-color .12s,border-color .12s}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip em{font-style:normal;opacity:.7;font-size:12px;font-family:var(--mono)}
+.seg{display:inline-flex;border:1px solid var(--ln);border-radius:var(--r2);background:var(--card);overflow:hidden}
+.seg button{border:0;background:none;padding:7px 12px;font-weight:500;font-size:13px;white-space:nowrap;transition:background-color .12s;border-left:1px solid var(--ln)}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--accbg);color:var(--acc2)}
+.seg button em{font-style:normal;color:var(--mut);font-size:12px;margin-left:4px;font-weight:400}
+.chk{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln);font-size:14px;font-weight:400;color:var(--tx);cursor:pointer}
+.chk:last-child{border:0}
+.chk input{width:18px;height:18px;accent-color:var(--ink);margin:0}
+.chk em{font-style:normal;color:var(--mut);font-size:12px;margin-left:auto;font-family:var(--mono)}
+.rad{display:flex;flex-direction:column;gap:6px}
+.rad label{display:flex;align-items:center;gap:10px;border:1px solid var(--ln);border-radius:var(--r2);padding:8px 12px;font-size:14px;font-weight:400;color:var(--tx);cursor:pointer}
+.rad label.on{border-color:var(--acc);background:var(--accbg)}
+.rad input{accent-color:var(--ink);margin:0}
+.rad em{font-style:normal;color:var(--mut);font-size:12px;margin-left:auto;font-family:var(--mono)}
+.qty{display:inline-flex;border:1px solid var(--ln);border-radius:var(--r2);overflow:hidden;background:var(--card)}
+.qty button{width:40px;border:0;background:none;font-size:18px;color:var(--mut)}
+.qty input{width:72px;border:0;border-left:1px solid var(--ln);border-right:1px solid var(--ln);text-align:center;font-family:var(--mono);height:38px}
+input[type=range]{width:100%;accent-color:var(--ink);height:28px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:11px 16px;border-radius:var(--r2);font-weight:500;font-size:13px;z-index:80;box-shadow:var(--shadow);display:flex;gap:9px;align-items:center;max-width:calc(100vw - 32px)}
+.toast .tg{color:var(--m-clear);font-weight:400}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:var(--r2);background:color-mix(in srgb,var(--wr) 10%,white);color:var(--wr);font-size:13px;margin-bottom:12px}
+.alert.er{background:color-mix(in srgb,var(--er) 10%,white);color:var(--er)}.alert.inf{background:var(--accbg);color:var(--acc2)}.alert.ok{background:color-mix(in srgb,var(--st-done) 10%,white);color:var(--st-done)}
+.alert svg.i{flex:none;margin-top:2px}
+.note{font-size:12px;color:var(--mut)}.mt{margin-top:10px}
+.rolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--accbg);color:var(--acc2);border-radius:var(--r2);padding:8px 12px;font-size:13px;margin-bottom:12px}
+/* kalkulyator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:16px;align-items:start}
+.calc .res{position:sticky;top:12px}
+.stl{border:1px dashed var(--mut2);border-radius:var(--r3);padding:18px;text-align:center;color:var(--mut);background:var(--card);display:flex;flex-direction:column;align-items:center;gap:10px;transition:background-color .12s,border-color .12s}
+.stl.over{border-color:var(--acc);background:var(--accbg)}
+.stl svg.i{width:28px;height:28px;color:var(--mut2);stroke-width:1.4}
+.stl .bt{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.stl input[type=file]{display:none}
+.fl{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+.fl .code{font-family:var(--mono);color:var(--tx)}
+.fl .log{color:var(--mut2);font-family:var(--mono);font-size:12px}
+.parse{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ln);border-radius:var(--r3);background:var(--card);margin-top:10px;overflow:hidden}
+.parse div{padding:10px 12px;border-left:1px solid var(--ln);min-width:0}.parse div:first-child{border-left:0}
+.parse small{display:block;color:var(--mut);font-size:12px}
+.parse b{font-family:var(--mono);font-weight:500;font-size:15px}
+.parse .ed{border:0;background:none;color:var(--acc);font-size:12px;padding:0;margin-top:2px;display:block}
+.prm{display:grid;gap:14px;margin-top:14px}
+.prm>div{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:center}
+.prm>div>span{color:var(--mut);font-size:13px}
+.prm .sl{display:flex;align-items:center;gap:12px}.prm .sl b{font-family:var(--mono);width:52px;text-align:right;font-weight:500}
+.prm .cks{display:flex;flex-direction:column}
+.chek{background:var(--card);border:1px solid var(--ln);border-radius:var(--r3);padding:16px}
+.chek .ttl{font-size:16px;font-weight:500;margin-bottom:2px}
+.chek .ttl small{display:block;color:var(--mut);font-size:13px;font-weight:400}
+.chek .big{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1.1;margin:10px 0 2px;transition:background-color .6s}
+.chek .big.fl{background:var(--accbg)}
+.chek .per{color:var(--mut);font-size:13px;margin-bottom:12px}
+.chek .row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.chek .row span{color:var(--mut)}.chek .row span em{font-style:normal;font-family:var(--mono);color:var(--mut2);font-size:12px;display:block}
+.chek .row b{font-family:var(--mono);font-weight:400;white-space:nowrap}
+.chek .row.sub b{font-weight:500}
+.chek .row.tot{border-top:1px solid var(--ink);border-bottom:0;padding-top:10px;margin-top:4px}
+.chek .row.tot b{font-size:18px;font-weight:500}
+.chek .row.wr span,.chek .row.wr b{color:var(--wr)}
+.chek .acts{display:grid;gap:8px;margin-top:14px}
+.chek .acts .r2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vars{margin-top:14px;border-top:1px solid var(--ln);padding-top:10px}.vars>small{display:block;color:var(--mut);font-size:12px;margin-bottom:8px}
+.vg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.vg button{border:1px solid var(--ln);background:var(--card);border-radius:var(--r2);padding:8px 6px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0;transition:background-color .12s,border-color .12s}.vg button:hover{background:var(--soft)}.vg button.on{border-color:var(--ink);background:var(--soft);cursor:default}.vg b{font-size:13px}.vg .num{text-align:left;font-size:13px}.vg small{color:var(--mut);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.hide-k{display:none}
+.chek .acts .btn{justify-content:center}
+.mbar{display:none}
+/* Gantt */
+.gantw{overflow-x:auto;border:1px solid var(--ln);border-radius:var(--r3);background:var(--card)}
+.gant{min-width:720px;position:relative;font-size:12px}
+.gant .gh{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--ln)}
+.gant .gh .tl{position:relative;height:40px}
+.gant .gh .tl span{position:absolute;top:4px;font-family:var(--mono);color:var(--mut2);transform:translateX(-50%);font-size:12px}
+.gant .gh .tl span.day{top:20px;color:var(--tx);transform:none;font-family:var(--sans);font-weight:500;border-left:1px solid var(--ink);padding-left:4px;line-height:16px}
+.gant .gr{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--ln);min-height:46px}
+.gant .gr:last-child{border-bottom:0}
+.gant .gn{padding:8px 12px;border-right:1px solid var(--ln);min-width:0}
+.gant .gn b{display:block;font-weight:500;font-size:13px}.gant .gn small{color:var(--mut);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gant .gl{position:relative;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='4'%3E%3Cpath d='M0 0v4' stroke='%23DCDAD3'/%3E%3C/svg%3E");background-size:calc(100% / var(--cols)) 100%}
+.gant .gb{position:absolute;top:9px;height:28px;border-radius:var(--r);padding:0 8px;font-family:var(--mono);font-size:12px;line-height:28px;color:#FFFFFF;background:var(--st-print);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-width:6px}
+.gant .gb.q{background:transparent;color:var(--tx);border:1px dashed var(--mut)}
+.gant .gb.t{background:var(--soft);color:var(--mut);border:1px solid var(--ln);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 8L8 0' stroke='%23DCDAD3'/%3E%3C/svg%3E")}
+.gant .gb.late{outline:2px solid var(--er);outline-offset:-2px}
+.gant .gb.post{background:var(--st-post)}
+.gant .now{position:absolute;top:0;bottom:0;width:1px;background:var(--ink);z-index:2}
+.gant .gh .now:after{content:"сейчас";position:absolute;top:22px;left:4px;font-size:12px;color:var(--tx);font-family:var(--sans)}
+.gant .gfree{position:absolute;left:8px;top:14px;color:var(--mut2);font-size:12px}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pcard{background:var(--card);border:1px solid var(--ln);border-radius:var(--r3);padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pcard .h{display:flex;align-items:center;gap:8px}.pcard .h b{font-size:15px}.pcard .h small{color:var(--mut);font-family:var(--mono);font-size:12px}
+.pcard .cur{font-size:14px;margin-top:4px}.pcard .cur .code{font-family:var(--mono);color:var(--mut)}
+.pcard .nx{font-size:13px;color:var(--mut)}
+.pcard .bar{height:6px;background:var(--soft);border-radius:var(--r);overflow:hidden;margin:6px 0 2px}.pcard .bar i{display:block;height:100%;background:var(--ink)}
+.pcard .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+/* ombor shkala */
+.lvl{position:relative;height:6px;background:var(--soft);border-radius:var(--r);min-width:90px;margin:4px 0}
+.lvl i{display:block;height:100%;border-radius:var(--r);background:var(--ink)}
+.lvl i.wr{background:var(--wr)}.lvl i.er{background:var(--er)}
+.lvl u{position:absolute;top:-3px;width:1px;height:12px;background:var(--mut)}
+.lv{font-size:12px;color:var(--mut);display:flex;justify-content:space-between;gap:8px;font-family:var(--mono)}
+/* moliya */
+.hbar{display:grid;grid-template-columns:90px 1fr 110px;gap:8px 12px;align-items:center;font-size:13px}
+.hbar .hb{height:12px;background:var(--soft);border-radius:var(--r);overflow:hidden}.hbar .hb i{display:block;height:100%;background:var(--ink)}
+.hbar .hb i.er{background:var(--er)}
+.hbar .hn{text-align:right;font-family:var(--mono);white-space:nowrap}
+.hbar .hn small{color:var(--mut);font-family:var(--sans);margin-left:6px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:170px;padding-top:18px}
+.bars .b{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;min-width:0}
+.bars .b .pr{display:flex;gap:3px;align-items:flex-end;width:100%;justify-content:center;flex:1}
+.bars .b i{display:block;width:40%;max-width:28px;background:var(--mut2);border-radius:2px 2px 0 0}
+.bars .b i.acc{background:var(--ink)}
+.bars .b small{font-size:12px;color:var(--mut);white-space:nowrap}
+.bars .b em{font-style:normal;font-size:12px;color:var(--tx);white-space:nowrap;font-family:var(--mono)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px}
+.leg span{display:flex;align-items:center;gap:6px;color:var(--mut)}
+.leg i{width:10px;height:10px;border-radius:2px;background:var(--mut2);display:inline-block}.leg i.acc{background:var(--ink)}
+/* sozlamalar */
+.setg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.setg .card h3{font-size:14px}
+.srow{display:grid;grid-template-columns:1fr 110px 44px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--ln);font-size:13px}
+.srow:last-child{border:0}
+.srow .inp{height:34px;font-family:var(--mono);text-align:right;padding:4px 8px}
+.srow small{color:var(--mut2);font-size:12px}
+.srow em{font-style:normal;color:var(--mut);font-size:12px}
+.saved{font-size:12px;color:var(--mut2);font-family:var(--mono)}
+/* «Ещё» */
+.more{display:grid;gap:6px}
+.more button{display:flex;align-items:center;gap:10px;border:1px solid var(--ln);background:var(--card);border-radius:var(--r2);padding:12px;font-weight:500;text-align:left;transition:background-color .12s}
+.more button:hover{background:var(--soft)}
+.more .ic{width:22px;display:inline-flex;color:var(--acc)}
+/* KP varaq */
+.kp{background:#FFFFFF;color:#000;padding:28px 32px;font-size:13px;line-height:1.45;border:1px solid var(--ln)}
+.kp .kh{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #000;padding-bottom:12px;margin-bottom:14px}
+.kp .kh b{font-size:18px;display:block}.kp .kh small{display:block;color:var(--mut);font-size:12px}
+.kp .kh .rt{text-align:right}
+.kp table{width:100%;border-collapse:collapse;margin:12px 0}
+.kp th,.kp td{padding:6px 8px;border-bottom:1px solid var(--mut2);text-align:left;vertical-align:top}
+.kp th{font-weight:500;font-size:12px;color:var(--mut)}
+.kp td.n,.kp th.n{font-family:var(--mono);text-align:right;white-space:nowrap}
+.kp td small{display:block;color:var(--mut);font-size:12px}
+.kp tr.tot td{border-top:1px solid #000;border-bottom:0;font-weight:500;font-size:15px}
+.kp .cond{margin-top:12px;color:var(--tx)}.kp .cond p{margin:4px 0}
+.kp .sign{margin-top:36px;display:flex;justify-content:space-between;gap:20px;font-size:13px}
+.kp .obr{margin-top:20px;font-size:12px;color:var(--mut2)}
+.kp .itog{display:none;justify-content:space-between;font-size:15px;border-top:1px solid #000;padding-top:8px;margin:0}.kp .itog b{font-family:var(--mono);font-size:18px}
+svg.i{width:1.1em;height:1.1em;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none;display:inline-block}
+.nav .ic svg.i,.mnav .ic svg.i{width:20px;height:20px;vertical-align:middle}
+.btn svg.i{width:16px;height:16px}
+.alert svg.i{width:14px;height:14px}
+.mnav{display:none}
+.mbar{display:none}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--ln)}.k4{grid-template-columns:repeat(2,1fr)}.k3{grid-template-columns:repeat(2,1fr)}.k2{grid-template-columns:1fr}.dl{grid-template-columns:repeat(2,1fr)}.calc{grid-template-columns:1fr}.calc .res{position:static}.pcards{grid-template-columns:repeat(2,1fr)}.setg{grid-template-columns:1fr 1fr}.parse{grid-template-columns:repeat(2,1fr)}.parse div:nth-child(3){border-left:0}.parse div:nth-child(n+3){border-top:1px solid var(--ln)}}
+@media (max-width:860px){
+ .side{display:none}.main{padding:12px 14px 96px}.top h1{font-size:18px}.top{margin-bottom:12px}.top .sub{font-size:14px}
+ .mhead{display:flex}
+ .mnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--ln);z-index:40;padding:4px 2px calc(4px + env(safe-area-inset-bottom))}
+ .mnav button{flex:1 1 0;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;color:var(--mut);padding:7px 0 6px;position:relative;white-space:nowrap}
+ .mnav button.on{color:var(--acc)}
+ .mnav .bdg{position:absolute;top:1px;right:calc(50% - 22px);margin:0}
+ .mnav .ic svg.i{width:22px;height:22px}
+ .login{grid-template-columns:1fr;padding:16px 16px 40px;gap:20px}.lbrand h1{font-size:24px}.lfeat{display:none}
+ .kpis{grid-template-columns:repeat(2,1fr)}.kpi{padding:12px}.kpi .v{font-size:20px}
+ .card{padding:14px}.card .tw{margin:0 -14px -14px}
+ .pnl .attw{order:-2}.pnl .kpiw{order:-1}
+ .hbar .hn small{display:block;margin:0}
+ .top .btn.p{width:100%;justify-content:center}
+ .dl{grid-template-columns:repeat(2,1fr)}
+ .frm,.frm.f3{grid-template-columns:1fr}.frm .w2{grid-column:auto}
+ .box{border-radius:var(--r3) var(--r3) 0 0;max-height:94vh;align-self:flex-end}.mod{padding:0;align-items:flex-end}
+ .box .hd .x{width:40px;height:40px}
+ .inp,select.inp{font-size:16px;min-height:44px}
+ .btn{min-height:44px}.btn.s{min-height:44px}.chip,.seg button{min-height:44px}.qty input,.qty button{font-size:16px;min-height:44px}input[type=range]{height:44px}.hide-k{display:inline}
+ .toast{bottom:calc(72px + env(safe-area-inset-bottom))}
+ .ft{justify-content:stretch}.ft .btn{flex:1;justify-content:center}
+ .namuna{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;padding:4px 12px}
+ .mhead small{display:none}.mhead{margin:0 0 10px}
+ .tw.cm{border:0;background:none;overflow:visible}
+ .tw.cm table,.tw.cm tbody,.tw.cm tfoot{display:block}
+ .tw.cm thead{display:none}
+ .tw.cm tr{display:flex;flex-wrap:wrap;gap:4px 16px;background:var(--card);border:1px solid var(--ln);border-radius:var(--r3);padding:10px 12px;margin-bottom:8px}
+ .tw.cm tr.grp{background:none;border:0;padding:4px 0 2px;margin:0}
+ .tw.cm td{display:flex;flex-direction:column;align-items:flex-start;text-align:left;justify-content:flex-start;gap:0;padding:3px 0;border:0}
+ .tw.cm td:before{content:attr(data-l);color:var(--mut);font-size:12px;font-family:var(--sans)}
+ .tw.cm td:first-child{flex-basis:100%;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--ln);font-weight:500}
+ .tw.cm td:first-child:before,.tw.cm td[data-l=""]:before,.tw.cm td.wd:before{display:none}
+ .tw.cm td[data-l=""]{flex-basis:100%;align-items:flex-end}
+ .tw.cm td.hide-m{display:none}
+ .tw.cm td.wd{flex-basis:100%}
+ .tw.cm td .cv{min-width:0}
+ .tw.cm tr.cl:hover td{background:none}
+ .tw.cm tr.grp td{display:block;padding:8px 2px 2px;color:var(--mut);font-size:12px;border:0}
+ .tw.cm tfoot tr{background:var(--soft)}
+ .card .tw.cm{margin:0}
+ .hide-m{display:none}
+ .steps{grid-template-columns:repeat(2,1fr)}.st b{white-space:normal}
+ .kp{overflow-x:auto}.kp table{min-width:460px}.kp .itog{display:flex}.kp .kh{flex-direction:column}.kp .kh .rt{text-align:left}
+ .bars .b:nth-last-child(n+4) em{visibility:hidden}.vg{grid-template-columns:1fr}.vg small{white-space:normal}
+ .calc{grid-template-columns:1fr}.calc .res{position:static}
+ .prm>div{grid-template-columns:1fr}.unit{flex-wrap:wrap}.unit .inp{flex-basis:100%}
+ .hbar{grid-template-columns:64px minmax(0,1fr) 80px}.hbar .hn{white-space:normal}
+ .list .it{flex-wrap:wrap}.list .it .m{flex-basis:60%}
+ .parse{grid-template-columns:1fr 1fr}
+ .chek .big{font-size:24px}
+ .mbar{display:flex;position:fixed;left:0;right:0;bottom:calc(66px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--ln);padding:8px 14px;z-index:39;align-items:center;gap:10px}
+ .mbar b{font-family:var(--mono);font-size:18px}.mbar small{display:block;color:var(--mut);font-size:12px;font-family:var(--mono)}
+ .pcards{grid-template-columns:1fr}
+ .setg{grid-template-columns:1fr}
+ .bars{height:140px;gap:4px}.bars .b:nth-last-child(n+7){display:none}
+ .gant .gh,.gant .gr{grid-template-columns:110px 1fr}
+ .kp{padding:16px}
+}
+@media print{
+ body{background:#FFFFFF}
+ body *{visibility:hidden}
+ #mo .box,#mo .box *{visibility:visible}
+ #mo{position:absolute;inset:0;background:none;padding:0}
+ #mo .box{position:absolute;left:0;top:0;width:100%;max-height:none;box-shadow:none;border-radius:0}
+ #mo .hd,#mo .ft{display:none!important}
+ #mo .bd{padding:0}
+ .kp{border:0;padding:0}
+ @page{size:A4;margin:18mm}
+}
+</style>
+</head>
+<body class="kirish">
+<div class="namuna" id="namuna"><b>Образец</b> · клиенты, цены и сотрудники условные · в рабочей системе у каждого сотрудника свой логин и пароль</div>
+<div id="login"></div>
+<div class="lay">
+ <aside class="side">
+  <div class="brand"><div class="logo" id="lg1"></div><div><b id="bn1"></b><small id="bs1"></small></div></div>
+  <nav class="nav" id="nav"></nav>
+  <div class="sidefoot">
+   <div class="who"><span class="ic" id="whoic"></span><div><b id="whonom"></b><small id="whorol"></small></div></div>
+   <select id="rolsel" class="rolsel" hidden aria-hidden="true"></select>
+   <button id="chiq" type="button">Сменить роль</button>
+   <button id="rst" type="button">Сбросить данные образца</button>
+   <small class="ver">сборка additive-2 · данные условные</small>
+  </div>
+ </aside>
+ <main class="main">
+  <div class="mhead"><div class="logo" id="lg2"></div><div class="mh"><b id="bn2"></b><small id="bs2"></small></div><select id="rolsel2" class="rolsel m" hidden aria-hidden="true"></select><button class="btn s" id="chiq2" type="button">Роль</button></div>
+  <div id="offbar" class="offbar" hidden>Нет соединения — данные сохраняются на этом устройстве</div>
+  <div id="app"></div>
+ </main>
+</div>
+<nav class="mnav" id="mnav"></nav>
+<script>/* Chiziqli ikonlar (Lucide uslubi) — INNOTEK namunasi */
+(function(){
+const P={
+panel:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+paket:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/>',
+zavod:'<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/>',
+rulon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><ellipse cx="12" cy="5" rx="2.5" ry=".8"/>',
+yuk:'<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+jadval:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h8M8 17h8M12 11v8"/>',
+sozlama:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>',
+ogoh:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/>',
+chaqmoq:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+belgi:'<path d="M20 6 9 17l-5-5"/>',
+okdoira:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+taqiq:'<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+tarozi:'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+kolba:'<path d="M10 2v7.31M14 9.3V2M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>',
+soat:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+karta:'<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/>',
+qulf:'<rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+hujjat:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/>',
+qongiroq:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+qidir:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+odam:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+zanjir:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+qalam:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>',
+yubor:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+kalendar:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+qatlam:'<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65M22 12.65l-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+baza:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
+xoch:'<path d="M18 6 6 18M6 6l12 12"/>',
+kitob:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+printer:'<path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/>',
+yukla:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5M12 3v12"/>',
+tushir:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/>',
+telefon:'<rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/>',
+samolyot:'<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+pul:'<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+nihol:'<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+termometr:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+nuqta:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+qor:'<path d="M2 12h20M12 2v20m8-6-4-4 4-4M4 8l4 4-4 4m12-12-4 4-4-4m0 16 4-4 4 4"/>',
+aylan:'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+radar:'<path d="M19.07 4.93A10 10 0 0 0 6.99 3.34M4 6h.01M2.29 9.62A10 10 0 1 0 21.31 8.35M16.24 7.76A6 6 0 1 0 8.23 16.67M12 18h.01M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/>',
+osish:'<path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/>',
+yol:'<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+qayt:'<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+kvadrat:'<rect width="18" height="18" x="3" y="3" rx="2"/>',
+qaychi:'<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
+odamlar:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+tomchi:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+qosh:'<path d="M5 12h14M12 5v14"/>',
+chap:'<path d="m15 18-6-6 6-6"/>',
+ong:'<path d="m9 18 6-6-6-6"/>',
+kiyim:'<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>',
+ip:'<path d="M4 4h16v4H4z"/><path d="M4 16h16v4H4z"/><path d="M7 8v8M12 8v8M17 8v8"/>',
+til:'<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
+stellaj:'<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+kaska:'<path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a8 8 0 0 0-16 0v2z"/><path d="M10 10V5h4v5"/><path d="M2 18h20"/>',
+xarita:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+olchov:'<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/>',
+metall:'<path d="m12.83 2.18 8.5 4.25a1 1 0 0 1 0 1.79l-8.5 4.25a2 2 0 0 1-1.66 0L2.67 8.22a1 1 0 0 1 0-1.79l8.5-4.25a2 2 0 0 1 1.66 0Z"/><path d="m2.5 11.5 9 4.5a2 2 0 0 0 1.66 0l9-4.5"/><path d="m2.5 16.5 9 4.5a2 2 0 0 0 1.66 0l9-4.5"/>',
+hamyon:'<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+ustun:'<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16v-5M12 16V7M17 16v-3"/>',
+kesish:'<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
+bolga:'<path d="m15 12-8.5 8.5a2.1 2.1 0 1 1-3-3L12 9"/><path d="M17.6 15 22 10.5l-3-3L14.5 12"/><path d="m14.5 6.5 3-3 3 3-3 3"/>',
+olov:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.04 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.3 1.2-3.1A2.5 2.5 0 0 0 8.5 14.5Z"/>',
+purk:'<path d="M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01"/><rect x="15" y="5" width="4" height="4"/><path d="m19 9 1 1v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h4"/><path d="M15 9V3h4v2"/>',
+quti:'<path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/><path d="M3 8v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8"/><path d="M3 8h18"/><path d="M10 12h4"/>',
+belgiok:'<path d="M20 6 9 17l-5-5"/>',
+nuqtalar:'<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>',
+doira:'<circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>',
+tel:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+kal:'<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+kub:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/><path d="M7.5 4.2 16.5 9.4"/>',
+katushka:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>',
+kalk:'<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/>',
+nozzle:'<path d="M7 3h10v5l-2 3H9L7 8z"/><path d="M10 11v3h4v-3"/><path d="M12 14v7"/><path d="M4 3h3M17 3h3"/>',
+pdf:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6M9 15l3 3 3-3"/>',
+shosh:'<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
+tozalash:'<path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>',
+chiq:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+kopiya:'<rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+tarix:'<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>',
+tashqi:'<path d="M15 3h6v6M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'};
+window.I=(n,c)=>'<svg class="i'+(c?" "+c:"")+'" viewBox="0 0 24 24" aria-hidden="true">'+(P[n]||"")+'</svg>';
+})();
+</script>
+<script>/* Общие помощники (каркас образца). window.U */
+(function(){
+const U={};U.t=s=>s;
+U.$=s=>document.querySelector(s);
+U.$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+U.esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const T=new Date();T.setHours(0,0,0,0);U.TODAY=T;
+U.iso=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+U.addD=(n,b)=>{const d=new Date(b||T);d.setDate(d.getDate()+n);return U.iso(d)};
+U.addH=(h,b)=>new Date((b?new Date(b):new Date()).getTime()+h*36e5);
+U.dd=s=>Math.round((new Date(String(s).slice(0,10))-T)/864e5);
+U.OY=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+U.OYT=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+U.HK=['вс','пн','вт','ср','чт','пт','сб'];U.HKT=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+U.fd=s=>{if(!s)return'—';const d=new Date(s);return d.getDate()+' '+U.OY[d.getMonth()]};
+U.fdd=s=>{if(!s)return'—';const d=new Date(s);return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear()};
+U.fdt=s=>{if(!s)return'—';const d=new Date(s);return U.fd(d)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+U.num=(n,k)=>{if(n==null||isNaN(n))return'—';const f=k?Number(n).toFixed(k):Math.round(n);return Number(f).toLocaleString('ru-RU',{minimumFractionDigits:k||0,maximumFractionDigits:k||0}).replace(/[   ]/g,' ')};
+U.som=n=>U.num(n)+' сум';
+U.mln=n=>Math.abs(n)>=1e9?(n/1e9).toFixed(2).replace('.',',')+' млрд':Math.abs(n)>=1e6?(n/1e6).toFixed(Math.abs(n)>=1e8?0:1).replace('.',',')+' млн':U.num(n);
+U.t1=n=>U.num(n,1);
+U.vaqt=v=>{const d=new Date(v),m=Math.round((Date.now()-d)/6e4);return m<1?'сейчас':m<60?m+' мин назад':m<1440?Math.round(m/60)+' ч назад':U.fd(d)};
+U.rnd=seed=>{let s=seed;return()=>{s=(s*9301+49297)%233280;return s/233280}};
+U.pick=(r,a)=>a[Math.floor(r()*a.length)];
+U.uid=p=>(p||'x')+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+U.pl=(n,a,b,c)=>{n=Math.abs(Math.round(n));const m=n%10,h=n%100;return n+' '+(m===1&&h!==11?a:m>=2&&m<=4&&(h<12||h>14)?b:c)};U.kun=n=>U.pl(n,'день','дня','дней');U.sht=n=>U.pl(n,'штука','штуки','штук');U.zak=n=>U.pl(n,'заказ','заказа','заказов');U.chas=n=>U.pl(n,'час','часа','часов');
+
+/* saqlash */
+U.store=key=>({load(){try{return JSON.parse(localStorage.getItem(key))}catch(e){return null}},save(d){try{localStorage.setItem(key,JSON.stringify(d))}catch(e){}},clear(){try{localStorage.removeItem(key)}catch(e){}}});
+
+/* toast */
+U.toast=(m,tg)=>{U.$$('.toast').forEach(x=>x.remove());const t=document.createElement('div');t.className='toast';t.innerHTML=(tg?'<span class="tg">'+U.esc(tg)+'</span>':'')+U.esc(m);document.body.appendChild(t);setTimeout(()=>t.remove(),2600)};
+
+/* modal */
+U.closeM=pop=>{const m=U.$('#mo');if(m)m.remove();document.body.style.overflow='';if(m&&pop!==true&&history.state&&history.state.mo){U._skip=true;try{history.back()}catch(e){U._skip=false}}};
+window.addEventListener('popstate',()=>{if(U._skip){U._skip=false;if(U._app){try{history.replaceState(null,'','#'+U._app.view)}catch(e){}}if(U.$('#mo')){try{history.pushState({mo:1},'')}catch(e){}}return}if(U.$('#mo'))U.closeM(true)});
+U.modal=(h,b,f,wide)=>{U.closeM(true);U.$$('.toast').forEach(x=>x.remove());const m=document.createElement('div');m.className='mod';m.id='mo';m.innerHTML=`<div class="box${wide?' w':''}"><div class="hd">${h}<button class="x" aria-label="Закрыть">×</button></div><div class="bd">${b}</div>${f?'<div class="ft">'+f+'</div>':''}</div>`;document.body.appendChild(m);document.body.style.overflow='hidden';try{if(!U._skip&&!(history.state&&history.state.mo))history.pushState({mo:1},'')}catch(e){}m.querySelector('.x').onclick=U.closeM;m.addEventListener('mousedown',e=>{if(e.target===m)U.closeM()});return m};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')U.closeM()});
+
+/* jadval: telefonda karta (data-l yorliq), birinchi ustun — sarlavha */
+U.table=(cols,rows,opt)=>{opt=opt||{};if(!rows.length)return'<div class="card empty">'+(opt.empty||'Нет данных')+'</div>';
+let gp=null;const gh=r=>{if(!opt.grp)return'';const g=opt.grp(r);if(g===gp)return'';gp=g;return`<tr class="grp"><td colspan="${cols.length}" data-l=""><div class="cv">${g}</div></td></tr>`};
+return`<div class="tw ${opt.keep?'':'cm'}"><table class="t"><thead><tr>${cols.map(c=>`<th class="${c.n?'n':''} ${c.m?'hide-m':''}">${c.t}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>gh(r)+`<tr class="${opt.click?'cl':''} ${opt.cls?opt.cls(r):''}" ${opt.click?opt.click(r):''}>${cols.map(c=>`<td class="${c.n?'n':''} ${c.m?'hide-m':''} ${c.w?'wd':''}" data-l="${String(c.t).replace(/<[^>]*>/g,'').replace(/"/g,'')}"><div class="cv">${c.f(r)}</div></td>`).join('')}</tr>`).join('')}</tbody>${opt.foot?`<tfoot><tr>${opt.foot.map(c=>`<td class="${c.n?'n':''}" data-l="${c.t||''}"><div class="cv">${c.v}</div></td>`).join('')}</tr></tfoot>`:''}</table></div>`};
+
+/* CSV (UTF-8 BOM — Excel o‘zbek harflarini to‘g‘ri ochadi) */
+U.csv=(rs,fn)=>{const h=Object.keys(rs[0]||{});const t=[h.join(';')].concat(rs.map(r=>h.map(k=>'"'+String(r[k]==null?'':r[k]).replace(/"/g,'""')+'"').join(';'))).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+t],{type:'text/csv;charset=utf-8'}));a.download=fn;a.click();U.toast('Файл скачан: '+fn)};
+U.toNum=v=>+String(v==null?'':v).replace(/\s/g,'').replace(',','.')||0;
+
+/* ilova karkasi: menyu, rollar, render */
+U.app=cfg=>{
+ const A={view:cfg.boshlang||cfg.bolimlar[0],rol:'direktor'};U._app=A;
+ const bol=()=>cfg.rollar?cfg.rollar[A.rol].filter(k=>cfg.bolimlar.includes(k)):cfg.bolimlar;
+ A.navs=()=>{const ks=bol();const b=k=>{const n=cfg.badge?cfg.badge(k):0;return n?'<span class="bdg">'+n+'</span>':''};
+  U.$('#nav').innerHTML=ks.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][1]}${b(k)}</button>`).join('');
+  let mk=ks;A.rest=[];if(cfg.mobil){mk=ks.length>5?ks.filter(k=>cfg.mobil.includes(k)).slice(0,5):ks;if(mk.length<2)mk=ks.slice(0,4);A.rest=ks.filter(k=>!mk.includes(k))}
+  const rb=A.rest.reduce((s,k)=>s+(cfg.badge?cfg.badge(k):0),0);
+  U.$('#mnav').innerHTML=mk.map(k=>`<button data-v="${k}" class="${A.view===k?'on':''}"><span class="ic">${cfg.mod[k][0]}</span>${cfg.mod[k][2]}${b(k)}</button>`).join('')+(cfg.onMore&&A.rest.length?`<button data-more="1" class="${A.rest.includes(A.view)?'on':''}"><span class="ic">${cfg.moreIc}</span>${cfg.moreNom()}${rb?'<span class="bdg">'+rb+'</span>':''}</button>`:'')};
+ A.render=()=>{if(!bol().includes(A.view))A.view=bol()[0];A.navs();const a=U.$('#app');cfg.render[A.view](a);try{history.replaceState(null,'','#'+A.view)}catch(e){}};
+ A.go=(v,f)=>{U.$$('.toast').forEach(x=>x.remove());A.view=v;if(cfg.onGo)cfg.onGo(v,f);A.render();window.scrollTo(0,0)};
+ document.addEventListener('click',e=>{const m=e.target.closest('#mnav [data-more]');if(m){cfg.onMore(A.rest);return}const b=e.target.closest('[data-v]');if(b&&(b.closest('#nav')||b.closest('#mnav')))A.go(b.dataset.v)});
+ U.$('#lg1').textContent=U.$('#lg2').textContent=cfg.logo;U.$('#bn1').textContent=U.$('#bn2').textContent=cfg.nom;U.$('#bs1').textContent=U.$('#bs2').textContent=cfg.shior;
+ if(cfg.rollar){const s=U.$('#rolsel');s.innerHTML=Object.keys(cfg.rollar).map(k=>`<option value="${k}">${cfg.rolNom[k]}</option>`).join('');s.onchange=()=>{A.rol=s.value;A.view=bol()[0];U.$('#rolsel2').value=s.value;U.$$('.rolnom').forEach(x=>x.textContent=cfg.rolNom[A.rol]);if(cfg.onRol)cfg.onRol(A.rol);A.render()};U.$('#rolsel2').innerHTML=s.innerHTML;U.$('#rolsel2').onchange=e=>{s.value=e.target.value;s.onchange()}}
+ const h=location.hash.slice(1);if(cfg.bolimlar.includes(h))A.view=h;
+ return A};
+window.U=U;
+})();
+</script>
+<script>/* Additive Technology — система управления для 3D-печати (образец) */
+(function(){
+/* ================= МАЪЛУМОТ: созламалар, seed, ҳисоблар ================= */
+const {$,$$,esc,iso,addD,dd,fd,fdd,fdt,num,som,mln,t1,toast,modal,closeM,table,rnd,pick,uid,store,kun,sht,zak,chas}=U;
+const T=U.TODAY,KEY='additive_namuna_v1',ST=store(KEY),SES=store(KEY+'.session');
+const NOW=()=>new Date();
+const BOSQ=['raschet','podtv','ochered','pechat','post','gotov','vydan'];
+const BOSN={raschet:'расчёт',podtv:'подтверждён',ochered:'в очереди',pechat:'печать',post:'постобработка',gotov:'готов',vydan:'выдан'};
+const BOSN2={raschet:'Расчёт',podtv:'Подтверждён',ochered:'В очереди',pechat:'Печать',post:'Постобработка',gotov:'Готов к выдаче',vydan:'Выдан'};
+const ROLN={direktor:'Директор',menejer:'Менеджер',operator:'Оператор печати',sklad:'Склад',buxgalter:'Бухгалтер'};
+const ROLI={direktor:'Руслан Р.',menejer:'Дильноза А.',operator:'Сардор М.',sklad:'Жасур Т.',buxgalter:'Малика Ю.'};
+const ROLD={direktor:'панель, финансы, ставки',menejer:'расчёт, КП, заказы',operator:'принтеры, этапы печати',sklad:'материалы, приход, расход',buxgalter:'оплаты, должники, отчёт'};
+const ROLIC={direktor:'panel',menejer:'kalk',operator:'printer',sklad:'katushka',buxgalter:'hamyon'};
+const PIN={direktor:'1111',menejer:'2222',operator:'3333',sklad:'4444',buxgalter:'5555'};
+const USUL={nal:'наличные',per:'перевод',karta:'карта'};
+let ROL='direktor';const rol=()=>ROL;const narxKor=()=>['direktor','menejer','buxgalter'].includes(ROL);
+const kimN=()=>ROLI[ROL]+' · '+ROLN[ROL];
+const MHEX={black:'#1A1A1A',white:'#F2F2F2',red:'#B9382B',blue:'#2B4F8E',orange:'#D9731E',gray:'#8A8F94',clear:'#CFE3EA',natural:'#E8DCC3'};
+function defS(){return{
+ mat:{PLA:{nom:'PLA',zich:1.24,narx:400,tex:'FDM'},PETG:{nom:'PETG',zich:1.27,narx:450,tex:'FDM'},ABS:{nom:'ABS',zich:1.04,narx:500,tex:'FDM'},ASA:{nom:'ASA',zich:1.07,narx:600,tex:'FDM'},
+  TPU:{nom:'TPU 95A',zich:1.21,narx:900,tex:'FDM'},PETG_CF:{nom:'PETG-CF',zich:1.30,narx:900,tex:'FDM'},PA:{nom:'PA6 (нейлон)',zich:1.14,narx:1500,tex:'FDM'},PA_CF:{nom:'PA-CF',zich:1.20,narx:2200,tex:'FDM'},RESIN:{nom:'Фотополимер',zich:1.10,narx:1200,tex:'SLA'}},
+ soat:{FDM:12000,SLA:30000},
+ post:{support:{nom:'удаление поддержек',narx:10000},shlif:{nom:'шлифовка',narx:25000},kraska:{nom:'покраска',narx:60000},rezba:{nom:'вставка резьбы',narx:8000},uv:{nom:'промывка и УФ-отверждение',narx:5000}},
+ shosh:{std:{nom:'стандарт',k:1,kun:'5–7 дн'},usk:{nom:'ускоренно',k:1.3,kun:'2–3 дн'},sroch:{nom:'срочно',k:1.7,kun:'24 ч'}},
+ ustama:35,minChek:100000,seriya:[[10,5],[50,10],[100,15]],chegMax:15,avans:50,qobiq:0.3,gSoat:15,muddat:5,ver:'3 ноя, Руслан Р.',
+ rekv:{nom:'ООО «Additive Technology»',stir:'306334379',manzil:'Ташкент, ул. Ломоносова, 50',tel:'+998 78 113 38 82',bank:'р/с и банк — указать в настройках'}}}
+const OYN=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const POST_TEX={FDM:['support','shlif','kraska','rezba'],SLA:['support','shlif','kraska','uv']};
+let D=null;
+/* ---------- ҳисоб (битта функция — калькулятор, карта, КП, финансы) ---------- */
+function hisob(det,qty,shosh,Sx){Sx=Sx||D.S;qty=Math.max(1,+qty||1);const m=Sx.mat[det.mat]||Sx.mat.PLA,sla=m.tex==='SLA';
+ let g=det.hajm*m.zich*(sla?1:(Sx.qobiq+(1-Sx.qobiq)*det.infill))*(det.support?1.15:1);if(det.g0>0)g=det.g0;
+ let ch;if(sla)ch=(det.bbox[2]/det.qatlam)*8/3600+0.3;else{const qk=det.qatlam<=0.1?1.8:det.qatlam>=0.3?0.7:1;ch=g/Sx.gSoat*qk*(det.support?1.15:1)}if(det.ch0>0)ch=det.ch0;
+ const material=g*m.narx,mashina=ch*Sx.soat[m.tex],post=(det.post||[]).reduce((s,k)=>s+(Sx.post[k]?Sx.post[k].narx:0),0);
+ const tannarx=material+mashina+post,sk=(Sx.shosh[shosh||'std']||Sx.shosh.std).k,ustama=tannarx*Sx.ustama/100,narxSht=(tannarx+ustama)*sk;
+ let cheg=0;for(const [n,p] of Sx.seriya)if(qty>=n)cheg=p;
+ const narxShtR=Math.round(narxSht/100)*100,brutto=narxShtR*qty,raw=Math.round(brutto*(1-cheg/100)),min=raw<Sx.minChek,jami=min?Sx.minChek:raw;
+ return{g,ch,material,mashina,post,tannarx,ustama,sk,narxSht:narxShtR,cheg,brutto,chegSum:brutto*cheg/100,jami,min,sht:jami/qty,qty,tex:m.tex}}
+const fmtH=h=>{if(h==null||isNaN(h))return'—';const m=Math.round(h*60);if(m<60)return m+' мин';const H=Math.floor(m/60),M=m%60;return H+' ч'+(M?' '+String(M).padStart(2,'0')+' мин':'')};
+const fmtDur=ms=>{const h=Math.floor(Math.abs(ms)/36e5);if(h<1)return Math.max(1,Math.round(Math.abs(ms)/6e4))+' мин';if(h<24)return h+' ч';const d=Math.floor(h/24),r=h%24;return d+' д'+(r?' '+r+' ч':'')};
+const hhmm=d=>{d=new Date(d);return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};
+const fdh=d=>{d=new Date(d);const k=dd(iso(d));return(k===0?'сегодня':k===1?'завтра':k===-1?'вчера':fd(d))+' '+hhmm(d)};
+/* ---------- STL ---------- */
+function stl(buf){const dv=new DataView(buf),n0=buf.byteLength>84?dv.getUint32(80,true):0;const head=new TextDecoder().decode(new Uint8Array(buf,0,Math.min(400,buf.byteLength)));
+ const bin=n0>0&&buf.byteLength>=84+50*n0&&buf.byteLength-84-50*n0<256&&!(/^\s*solid/.test(head)&&/facet/.test(head));
+ let V=0,S=0,mn=[1e9,1e9,1e9],mx=[-1e9,-1e9,-1e9],n=0;
+ const tri=(a,b,c)=>{V+=(a[0]*(b[1]*c[2]-b[2]*c[1])-a[1]*(b[0]*c[2]-b[2]*c[0])+a[2]*(b[0]*c[1]-b[1]*c[0]))/6;
+  const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],w=[c[0]-a[0],c[1]-a[1],c[2]-a[2]],x=[u[1]*w[2]-u[2]*w[1],u[2]*w[0]-u[0]*w[2],u[0]*w[1]-u[1]*w[0]];
+  S+=Math.hypot(x[0],x[1],x[2])/2;for(const p of[a,b,c])for(let i=0;i<3;i++){if(p[i]<mn[i])mn[i]=p[i];if(p[i]>mx[i])mx[i]=p[i]}n++};
+ if(bin){for(let i=0;i<n0;i++){const o=84+50*i,p=k=>[dv.getFloat32(o+12+k*12,true),dv.getFloat32(o+16+k*12,true),dv.getFloat32(o+20+k*12,true)];tri(p(0),p(1),p(2))}}
+ else{const t=new TextDecoder().decode(buf);if(!/vertex/.test(t))throw new Error('Файл не распознан как STL');const re=/vertex\s+(\S+)\s+(\S+)\s+(\S+)/g,v=[];let m;
+  while((m=re.exec(t))){const p=[+m[1],+m[2],+m[3]];if(p.some(x=>!isFinite(x))){v.length=0;continue}v.push(p);if(v.length===3){tri(v[0],v[1],v[2]);v.length=0}}}
+ if(!n||!isFinite(V)||!isFinite(S))throw new Error('Файл не распознан как STL');
+ return{tri:n,hajm:Math.abs(V)/1000,yuza:S/100,bbox:mx.map((x,i)=>+(x-mn[i]).toFixed(1))}}
+function binSTL(F){const b=new ArrayBuffer(84+50*F.length),dv=new DataView(b);dv.setUint32(80,F.length,true);F.forEach((f,i)=>{const o=84+50*i;f.forEach((v,k)=>v.forEach((c,j)=>dv.setFloat32(o+12+k*12+j*4,c,true)))});return b}
+function qutiSTL(a,b,c){const V=[[0,0,0],[a,0,0],[a,b,0],[0,b,0],[0,0,c],[a,0,c],[a,b,c],[0,b,c]];const F=[[0,2,1],[0,3,2],[4,5,6],[4,6,7],[0,1,5],[0,5,4],[1,2,6],[1,6,5],[2,3,7],[2,7,6],[3,0,4],[3,4,7]];return binSTL(F.map(f=>f.map(i=>V[i])))}
+function silSTL(r,h,seg){seg=seg||48;const F=[];for(let i=0;i<seg;i++){const a0=i/seg*2*Math.PI,a1=(i+1)/seg*2*Math.PI,p0=[r*Math.cos(a0),r*Math.sin(a0)],p1=[r*Math.cos(a1),r*Math.sin(a1)];
+ F.push([[0,0,0],[p1[0],p1[1],0],[p0[0],p0[1],0]],[[0,0,h],[p0[0],p0[1],h],[p1[0],p1[1],h]],[[p0[0],p0[1],0],[p1[0],p1[1],0],[p1[0],p1[1],h]],[[p0[0],p0[1],0],[p1[0],p1[1],h],[p0[0],p0[1],h]])}return binSTL(F)}
+const NAMUNA_FAYL=[{nom:'Куб 50 мм',fayl:'kub_50mm.stl',buf:()=>qutiSTL(50,50,50)},{nom:'Втулка Ø30×40',fayl:'vtulka_30x40.stl',buf:()=>silSTL(15,40)},{nom:'Корпус 68×44×31',fayl:'korpus_datchika_v3.stl',buf:()=>qutiSTL(68,44,31)}];
+/* ---------- seed ---------- */
+function seed(){const S=defS(),now=NOW(),r=rnd(11);const dt=h=>new Date(now.getTime()+h*36e5).toISOString();const dOff=n=>addD(n);
+ const KL=[['k1','ООО «Техносвет»','Азиз Р.','+998 90 123 45 67','юрлицо'],['k2','ИП Каримов','Бахтиёр Каримов','+998 93 456 78 90','ИП'],['k3','ЧП «Орбита»','Ильхом С.','+998 97 234 56 78','юрлицо'],
+  ['k4','ООО «Сигма Инжиниринг»','Тимур Р.','+998 71 200 10 20','юрлицо'],['k5','Кондитерская «Сладкий дом»','Наргиза Х.','+998 90 345 67 89','юрлицо'],['k6','ООО «Агротехника Плюс»','Олим Ю.','+998 95 567 89 01','юрлицо'],
+  ['k7','Клиника «Медлайн»','Севара К.','+998 78 150 30 40','юрлицо'],['k8','ООО «Пластпак»','Руслан Д.','+998 99 678 90 12','юрлицо'],['k9','Пиццерия «Форно»','Марат А.','+998 90 789 01 23','юрлицо'],
+  ['k10','Частное лицо — Дмитрий','Дмитрий','+998 91 890 12 34','физлицо'],['k11','Частное лицо — Нодира','Нодира','+998 94 901 23 45','физлицо'],['k12','ООО «Текстиль Групп»','Фаррух М.','+998 71 233 44 55','юрлицо']].map(([id,nom,kontakt,tel,turi])=>({id,nom,kontakt,tel,turi}));
+ const PR=[{id:'P1',nom:'P1',model:'FDM 256×256×256',tex:'FDM',hajm:[256,256,256],mats:['PLA','PETG','ABS','ASA','PETG_CF'],holat:'ok',nozzle:0.4},
+  {id:'P2',nom:'P2',model:'FDM 256×256×256',tex:'FDM',hajm:[256,256,256],mats:['PLA','PETG','ABS','ASA','PETG_CF'],holat:'ok',nozzle:0.4},
+  {id:'P3',nom:'P3',model:'FDM 300×300×300',tex:'FDM',hajm:[300,300,300],mats:['PA','PA_CF','ABS','ASA','PETG','PLA'],holat:'ok',nozzle:0.6},
+  {id:'P4',nom:'P4',model:'FDM 220×220×250 · TPU',tex:'FDM',hajm:[220,220,250],mats:['TPU'],holat:'ok',nozzle:0.4},
+  {id:'P5',nom:'P5',model:'SLA 192×120×245',tex:'SLA',hajm:[192,120,245],mats:['RESIN'],holat:'ok'},
+  {id:'P6',nom:'P6',model:'FDM 220×220×250',tex:'FDM',hajm:[220,220,250],mats:['PLA','PETG','ABS'],holat:'tamir',tamirGacha:dt(22),tamirIzoh:'замена сопла и калибровка стола'}];
+ const M=[['m1','PETG','чёрный','black',2460,1000,'eSUN'],['m2','PETG','белый','white',320,500,'eSUN'],['m3','PETG','натурал','natural',1480,500,'eSUN'],['m4','ABS','натурал','natural',1900,800,'eSUN'],['m5','ABS','чёрный','black',2200,800,'eSUN'],
+  ['m6','PLA','серый','gray',1820,800,'eSUN'],['m7','TPU','чёрный','black',340,500,'eSUN'],['m8','PA_CF','чёрный','black',900,500,'eSUN'],['m9','ASA','белый','white',760,500,'eSUN'],['m10','RESIN','прозрачный','clear',780,400,'Anycubic'],
+  ['m11','PETG','синий','blue',640,400,'eSUN'],['m12','PLA','оранжевый','orange',520,400,'eSUN']].map(([id,mat,rang,hex,qoldiq,min,brend])=>({id,mat,rang,hex,qoldiq,min,brend,birlik:mat==='RESIN'?'мл':'г',kirim:[{sana:dOff(-[3,9,14,20,27,31][Math.floor(r()*6)]),g:mat==='RESIN'?1000:1000,narx:0}],harakat:[]}));
+ // [raqam,kid,nom,mid,hajm,bbox,infill,qatlam,support,post,soni,shosh,bosqich,sanaOff,muddatOff,pid,qolganSoat(печать),paidFrac]
+ const ZZ=[['AT-0389','k1','Корпус распределителя','m5',95,[140,90,60],.3,.2,0,[],40,'std','vydan',-48,-42,null,0,0],
+  ['AT-0391','k4','Фланец переходной Ø80','m5',38.2,[80,80,22],.4,.2,0,[],4,'std','vydan',-28,-22,null,0,1],
+  ['AT-0392','k8','Направляющая конвейера 180 мм','m3',24.5,[180,20,15],.5,.2,0,[],30,'std','vydan',-26,-19,null,0,1],
+  ['AT-0393','k1','Корпус датчика v2','m1',42.6,[68,44,31],.3,.2,1,['support'],20,'std','vydan',-25,-18,null,0,1],
+  ['AT-0394','k7','Держатель пробирок','m4',56,[120,80,40],.25,.2,0,[],6,'std','vydan',-22,-15,null,0,1],
+  ['AT-0395','k9','Мерный стаканчик 50 мл','m6',18.3,[45,45,60],.15,.2,0,[],200,'std','vydan',-21,-12,null,0,1],
+  ['AT-0396','k10','Фигурка настольная 12 см','m12',31,[70,60,120],.15,.1,1,['support','shlif'],1,'std','vydan',-20,-14,null,0,1],
+  ['AT-0397','k12','Муфта соединительная M20','m8',12.4,[40,40,35],.6,.2,0,[],12,'std','vydan',-18,-11,null,0,1],
+  ['AT-0398','k2','Заглушка профиля 40×40','m2',6.8,[40,40,12],.3,.2,0,[],120,'std','vydan',-16,-9,null,0,.5],
+  ['AT-0405','k6','Заглушка бампера (серия)','m5',11,[80,50,20],.3,.2,0,[],60,'std','vydan',-14,-7,null,0,1],
+  ['AT-0406','k12','Крепёж вала (комплект)','m4',9.5,[50,30,25],.5,.2,0,[],30,'std','vydan',-13,-6,null,0,.7],
+  ['AT-0407','k3','Переходник резьбовой','m3',7.3,[30,30,28],.6,.2,0,['rezba'],10,'std','vydan',-12,-5,null,0,0],
+  ['AT-0408','k8','Крышка корпуса ч.1','m1',33,[140,90,12],.3,.2,0,[],15,'std','vydan',-11,-3,null,0,1],
+  ['AT-0399','k5','Насадка кондитерская','m3',9.2,[35,35,50],.3,.1,0,[],10,'std','gotov',-8,1,null,0,.5],
+  ['AT-0400','k4','Шестерня Ø48 z24','m8',14.7,[48,48,18],.8,.1,0,[],8,'std','gotov',-9,1,null,0,1],
+  ['AT-0401','k6','Крыльчатка вентилятора Ø120','m9',47,[120,120,38],.4,.2,1,['support'],2,'usk','gotov',-5,2,null,0,.5],
+  ['AT-0402','k7','Корпус тумблера','m5',21.5,[60,40,30],.3,.2,0,[],10,'std','post',-6,1,'P2',-20,.5],
+  ['AT-0409','k2','Прокладка TPU 60×40','m7',4.1,[60,40,4],1,.2,0,[],40,'std','pechat',-7,-1,'P4',3,.5],
+  ['AT-0412','k1','Корпус датчика v3','m1',42.6,[68,44,31],.3,.2,1,['support'],12,'std','pechat',-10,-1,'P1',7,.5],
+  ['AT-0410','k4','Кронштейн угловой','m6',22,[90,40,30],.3,.2,0,[],12,'std','pechat',-4,2,'P3',5,.5],
+  ['AT-0411','k8','Звёздочка конвейера z18','m3',19,[64,64,14],.5,.2,0,[],16,'std','ochered',-3,4,'P3',0,.5],
+  ['AT-0413','k6','Втулка 30×40','m4',15.2,[30,30,40],.5,.2,0,[],24,'std','ochered',-3,5,'P1',0,.5],
+  ['AT-0414','k11','Статуэтка наградная 20 см','m10',58,[70,70,200],1,.05,1,['support','uv','shlif'],3,'std','ochered',-2,6,null,0,.5],
+  ['AT-0415','k3','Кронштейн монтажный','m6',28,[110,50,35],.3,.2,0,[],6,'std','ochered',-2,5,null,0,.5],
+  ['AT-0416','k5','Форма для мармелада','m10',32,[120,80,25],1,.05,0,['uv'],2,'usk','podtv',-1,2,null,0,.5],
+  ['AT-0417','k12','Рельс-держатель 250 мм','m1',36,[250,18,16],.4,.2,0,[],20,'std','podtv',-1,6,null,0,.5],
+  ['AT-0418','k9','Мерный стаканчик 50 мл (повтор)','m6',18.3,[45,45,60],.15,.2,0,[],100,'std','podtv',0,7,null,0,.5],
+  ['AT-0419','k10','Макет здания 1:200','m2',120,[180,120,90],.15,.2,1,['support','shlif','kraska'],1,'std','raschet',-2,9,null,0,0],
+  ['AT-0420','k4','Ролик натяжной Ø40','m5',24,[40,40,30],.5,.2,0,[],8,'sroch','raschet',0,1,null,0,0]];
+ const Z=[],PAY=[],H=[],J=[];let pi=0,hi=0;
+ const mById=id=>M.find(m=>m.id===id);
+ const usul=['per','nal','karta','per','per','nal'];
+ ZZ.forEach((a,i)=>{const [raqam,kid,nom,mid,hajm,bbox,infill,qatlam,support,post,soni,shosh,bosqich,sOff,mOff,pid,remH,paid]=a;const m=mById(mid);
+  const det={nom,fayl:nom.toLowerCase().replace(/[^a-zа-я0-9]+/gi,'_').replace(/^_|_$/g,'')+'.stl',hajm,bbox,tri:800+Math.floor(r()*14000),mat:m.mat,mid,infill,qatlam,support:!!support,post,soni};
+  const h=hisob(det,soni,shosh,S);const sana=dOff(sOff),muddat=dOff(mOff);
+  const z={id:'z'+(i+1),raqam,kid,det,shosh,bosqich,sana,muddat,pid,start:null,summa:h.jami,h,tarix:[],brak:[],vydan:null,izoh:''};
+  const bi=BOSQ.indexOf(bosqich);const tt=(off,kim,msg)=>z.tarix.push({t:new Date(new Date(sana+'T09:30').getTime()+off*36e5).toISOString(),kim,m:msg});
+  tt(0,ROLI.menejer+' · Менеджер','Расчёт сохранён как заказ');
+  if(bi>=1)tt(3,ROLI.menejer+' · Менеджер','Подтверждён клиентом, материал зарезервирован');
+  if(bi>=2)tt(5,ROLI.operator+' · Оператор','Поставлен в очередь'+(pid?' на '+pid:''));
+  if(bosqich==='pechat'){z.start=dt(-(h.ch*soni-remH));z.tarix.push({t:z.start,kim:ROLI.operator+' · Оператор',m:'Печать начата на '+pid});m.qoldiq-=Math.round(h.g*soni);m.harakat.push({t:z.start,turi:'расход',g:-Math.round(h.g*soni),zid:z.id})}
+  if(bi>=4&&bosqich!=='pechat'){const st=new Date(new Date(sana+'T09:30').getTime()+8*36e5);z.start=st.toISOString();z.tarix.push({t:z.start,kim:ROLI.operator+' · Оператор',m:'Печать начата'+(pid?' на '+pid:'')});
+   const en=new Date(st.getTime()+h.ch*soni*36e5);z.tarix.push({t:en.toISOString(),kim:ROLI.operator+' · Оператор',m:'Печать завершена, передано на постобработку'});
+   if(bosqich!=='post'){m.harakat.push({t:en.toISOString(),turi:'расход',g:-Math.round(h.g*soni),zid:z.id})}else{m.qoldiq-=Math.round(h.g*soni);m.harakat.push({t:en.toISOString(),turi:'расход',g:-Math.round(h.g*soni),zid:z.id})}}
+  if(bi>=5)tt(30,ROLI.operator+' · Оператор','Готов к выдаче');
+  if(bosqich==='vydan'){z.vydan=muddat;z.tarix.push({t:new Date(muddat+'T15:00').toISOString(),kim:ROLI.menejer+' · Менеджер',m:'Выдан клиенту'+(paid<1?' (с долгом)':'')})}
+  if(raqam==='AT-0412'){z.brak.push({t:dt(-26),g:63,ch:8,sabab:'отлипание от стола, 2 шт',kim:ROLI.operator+' · Оператор'});z.tarix.push({t:dt(-26),kim:ROLI.operator+' · Оператор',m:'Брак: 2 шт, отлипание от стола — перепечатка (63 г, 8 ч)'});m.qoldiq-=63;m.harakat.push({t:dt(-26),turi:'брак',g:-63,zid:z.id})}
+  if(paid>0){const av=Math.round(h.jami*(paid>=1?S.avans/100:paid)/1000)*1000;PAY.push({id:'p'+(++pi),zid:z.id,t:sana,summa:av,usul:usul[i%6]});
+   if(paid>=1)PAY.push({id:'p'+(++pi),zid:z.id,t:z.vydan||dOff(Math.min(0,mOff)),summa:h.jami-av,usul:usul[(i+2)%6]})}
+  H.push({id:'h'+(++hi),t:new Date(sana+'T'+String(9+(i%7)).padStart(2,'0')+':'+String(10+(i*7)%50).padStart(2,'0')).toISOString(),nom,mid,soni,shosh,jami:h.jami,zid:z.id,det:{...det},kim:ROLI.menejer});
+  Z.push(z)});
+ // сохранилмаган ҳисоблар (конверсия учун)
+ const extra=[['Корпус реле','m5',18,[55,40,25],.3,.2,0,[],15,'std',-9],['Шестерня Ø32','m8',6.2,[32,32,12],.8,.1,0,[],20,'std',-6],['Крышка бака','m4',85,[160,110,20],.3,.2,0,[],2,'usk',-5],['Брелок с логотипом','m12',4,[50,30,4],.3,.2,0,[],100,'std',-4],['Втулка скольжения','m3',5.5,[25,25,30],.6,.2,0,[],40,'std',-3],['Форсунка','m10',3.1,[14,14,30],1,.05,1,['support','uv'],6,'sroch',-1],['Защёлка дверцы','m1',7.7,[48,22,10],.4,.2,0,[],24,'std',-1],['Подставка под телефон','m6',40,[90,80,100],.15,.2,1,['support'],1,'std',0]];
+ extra.forEach((a,i)=>{const [nom,mid,hajm,bbox,infill,qatlam,support,post,soni,shosh,off]=a;const m=mById(mid);const det={nom,fayl:nom.toLowerCase().replace(/[^a-zа-я0-9]+/gi,'_')+'.stl',hajm,bbox,tri:600+Math.floor(r()*9000),mat:m.mat,mid,infill,qatlam,support:!!support,post,soni};
+  const h=hisob(det,soni,shosh,S);H.push({id:'h'+(++hi),t:new Date(dOff(off)+'T'+String(10+i).padStart(2,'0')+':'+String(5+i*6).padStart(2,'0')).toISOString(),nom,mid,soni,shosh,jami:h.jami,zid:null,det,kim:ROLI.menejer})});
+ H.sort((a,b)=>a.t<b.t?1:-1);
+ // кирим ҳаракати
+ M.forEach(m=>m.kirim.forEach(k=>m.harakat.push({t:new Date(k.sana+'T10:00').toISOString(),turi:'приход',g:k.g})));
+ // харажатлар (3 ой)
+ const X=[];const oyB=k=>{const d=new Date(T.getFullYear(),T.getMonth()-k,1);return d};
+ for(let k=0;k<6;k++){const d=oyB(k);const s=iso(new Date(d.getFullYear(),d.getMonth(),Math.min(5,T.getDate())));const q=1-k*0.03;
+  [['материал',Math.round(5200000*q+r()*1400000)],['электричество',Math.round(620000*q+r()*120000)],['аренда',4000000],['зарплата',11500000],['ремонт и расходники',Math.round(300000+r()*500000)]].forEach(([turi,summa],j)=>X.push({id:'x'+k+j,sana:s,turi,summa:Math.round(summa/1000)*1000}))}
+ // ўтган ойлар тушуми (ҳисобот учун): 6 ой
+ const OYL=[];for(let k=5;k>=1;k--){const d=oyB(k);OYL.push({oy:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),nach:Math.round((21+r()*9)*1e6/1e5)*1e5,post:Math.round((18+r()*9)*1e6/1e5)*1e5,zak:14+Math.floor(r()*9)})}
+ const Dn={ver:1,kun:iso(T),S,KL,PR,M,Z,PAY,X,H,OYL,J,nextN:421};
+ D=Dn;jurnal('Данные образца созданы');save();return D}
+function save(){ST.save(D)}
+function sur(){const n=dd(D.kun);if(!n)return;const sh=-n;const sd=s=>s?addD(sh,s):s;const sdt=s=>{if(!s)return s;const d=new Date(s);d.setDate(d.getDate()+sh);return d.toISOString()};
+ D.Z.forEach(z=>{z.sana=sd(z.sana);z.muddat=sd(z.muddat);z.vydan=sd(z.vydan);z.start=sdt(z.start);z.tarix.forEach(t=>t.t=sdt(t.t));z.brak.forEach(b=>b.t=sdt(b.t))});
+ D.PAY.forEach(p=>p.t=sd(p.t));D.X.forEach(x=>x.sana=sd(x.sana));D.H.forEach(h=>h.t=sdt(h.t));D.J.forEach(j=>j.t=sdt(j.t));
+ D.M.forEach(m=>{m.kirim.forEach(k=>k.sana=sd(k.sana));m.harakat.forEach(h=>h.t=sdt(h.t))});D.PR.forEach(p=>{if(p.tamirGacha)p.tamirGacha=sdt(p.tamirGacha)});
+ D.kun=iso(T);save()}
+function load(){const d=ST.load();if(d&&d.ver===1){D=d;sur()}else seed()}
+function jurnal(m){D.J.unshift({t:NOW().toISOString(),kim:kimN(),m});if(D.J.length>80)D.J.length=80}
+/* ---------- кичик ёрдамчилар ---------- */
+const kl=id=>D.KL.find(k=>k.id===id)||{nom:'—'};
+const mS=id=>D.M.find(m=>m.id===id);
+const pr=id=>D.PR.find(p=>p.id===id);
+const matN=det=>{const m=mS(det.mid);return m?D.S.mat[m.mat].nom+' '+m.rang:D.S.mat[det.mat].nom};
+const matHex=det=>{const m=mS(det.mid);return MHEX[m?m.hex:'gray']};
+const mdot=m=>`<span class="mdot" style="background:${MHEX[m.hex]||m.hex}"></span>`;
+const tolangan=z=>D.PAY.filter(p=>p.zid===z.id).reduce((s,p)=>s+p.summa,0);
+const qarz=z=>Math.max(0,z.summa-tolangan(z));
+const avansOk=z=>tolangan(z)>=z.summa*D.S.avans/100-1;
+const zTannarx=z=>Math.round(z.h.tannarx*z.det.soni+z.brak.reduce((s,b)=>s+b.g*D.S.mat[z.det.mat].narx+b.ch*D.S.soat[z.h.tex],0));
+const zMarja=z=>z.summa?Math.round((z.summa-zTannarx(z))/z.summa*100):0;
+const kerakG=z=>Math.round(z.h.g*z.det.soni);
+const durH=z=>z.h.ch*z.det.soni;
+const muddatDT=z=>new Date(z.muddat+'T18:00');
+function kech(z){if(z.bosqich==='vydan')return null;const ms=muddatDT(z)-NOW();if(ms<0)return{t:'er',txt:'просрочен на '+fmtDur(ms),ms};if(ms<36e5*30)return{t:'wr',txt:'срок '+(dd(z.muddat)===0?'сегодня':'завтра')+' до 18:00',ms};return null}
+const qarzYosh=z=>{if(!qarz(z))return 0;const b=z.vydan||(z.bosqich==='gotov'?z.muddat:null);if(!b)return 0;return Math.max(0,-dd(b))};
+const bIdx=z=>BOSQ.indexOf(z.bosqich);
+const keyingi=z=>BOSQ[bIdx(z)+1]||null;
+/* ---------- принтерлар ---------- */
+const tugash=z=>z.start?new Date(new Date(z.start).getTime()+durH(z)*36e5):null;
+function joriy(p){return D.Z.find(z=>z.pid===p.id&&z.bosqich==='pechat')||null}
+function navbatP(p){return D.Z.filter(z=>z.pid===p.id&&z.bosqich==='ochered').sort((a,b)=>a.muddat<b.muddat?-1:1)}
+function bosh(p){const now=NOW();if(p.holat==='tamir'&&p.tamirGacha)return new Date(Math.max(now,new Date(p.tamirGacha)));const j=joriy(p);let t=j?tugash(j):now;if(t<now)t=now;return t}
+function reja(p){const R=[],now=NOW();if(p.holat==='tamir'&&p.tamirGacha)R.push({tur:'t',s:now,e:new Date(p.tamirGacha),nom:'обслуживание'});const j=joriy(p);let t=now;
+ if(j){const e=tugash(j);R.push({tur:'p',s:new Date(j.start),e,z:j});t=e>now?e:now}else if(p.holat==='tamir'&&p.tamirGacha)t=new Date(p.tamirGacha);
+ navbatP(p).forEach(z=>{const e=new Date(t.getTime()+durH(z)*36e5);R.push({tur:'q',s:new Date(t),e,z});t=e});return R}
+function mos(p,z){const m=D.S.mat[z.det.mat];return p.tex===m.tex&&p.mats.includes(z.det.mat)&&z.det.bbox.every((b,i)=>b<=p.hajm[i])}
+function taklif(z){return D.PR.filter(p=>mos(p,z)).map(p=>{const R=reja(p);const at=R.length?R[R.length-1].e:NOW();return{p,at,hozir:at-NOW()<6e4*5}}).sort((a,b)=>a.at-b.at)}
+const bandP=()=>D.PR.filter(p=>joriy(p)||p.holat==='tamir');
+/* ---------- склад ---------- */
+const rezerv=m=>D.Z.filter(z=>z.det.mid===m.id&&['podtv','ochered'].includes(z.bosqich)).reduce((s,z)=>s+kerakG(z),0);
+const erkin=m=>m.qoldiq-rezerv(m);
+const mHolat=m=>m.qoldiq<=0?'er':erkin(m)<m.min?'wr':'ok';
+function xvatit(m){let q=m.qoldiq,n=0,t=0;D.Z.filter(z=>z.det.mid===m.id&&['podtv','ochered'].includes(z.bosqich)).sort((a,b)=>a.muddat<b.muddat?-1:1).forEach(z=>{t++;if(q>=kerakG(z)){q-=kerakG(z);n++}});return{n,t}}
+const xvatitTxt=m=>{const x=xvatit(m);return x.t?(x.n>=x.t?'хватит на все '+zak(x.t)+' в очереди':x.n?'хватит на '+x.n+' из '+x.t+' в очереди':'не хватит на ближайший заказ'):'очередь пуста'};
+const rasxod30=m=>Math.abs(m.harakat.filter(h=>h.g<0&&(NOW()-new Date(h.t))<30*864e5).reduce((s,h)=>s+h.g,0));
+/* ---------- диққат ---------- */
+function diqqat(){const R=[];D.Z.filter(z=>kech(z)&&kech(z).t==='er').sort((a,b)=>a.muddat<b.muddat?-1:1).forEach(z=>R.push({t:'er',b:`${z.raqam} ${z.det.nom} ×${z.det.soni}`,s:kech(z).txt+' · '+BOSN[z.bosqich]+(z.pid?' · '+z.pid:''),tug:'К заказу',z}));
+ D.M.filter(m=>mHolat(m)!=='ok').forEach(m=>R.push({t:'wr',b:`${D.S.mat[m.mat].nom} ${m.rang}`,s:`остаток ${num(m.qoldiq)} ${m.birlik}, свободно ${num(Math.max(0,erkin(m)))}, минимум ${num(m.min)} · ${xvatitTxt(m)}`,tug:'Приход',v:'sklad',m}));
+ if(narxKor())D.Z.filter(z=>qarzYosh(z)>7).sort((a,b)=>qarzYosh(b)-qarzYosh(a)).forEach(z=>R.push({t:'er',b:kl(z.kid).nom,s:`долг ${som(qarz(z))} по ${z.raqam}, ${kun(qarzYosh(z))}`,tug:'Напомнить',z,nap:true}));
+ D.Z.filter(z=>z.bosqich==='raschet'&&dd(z.sana)<=-1).forEach(z=>R.push({t:'wr',b:`${z.raqam} ${z.det.nom}`,s:`ждёт подтверждения ${kun(-dd(z.sana))} · ${kl(z.kid).nom}`,tug:'К заказу',z}));
+ D.Z.filter(z=>z.bosqich==='gotov'&&dd(z.muddat)<=0).forEach(z=>R.push({t:'wr',b:`${z.raqam} ${z.det.nom}`,s:`готов, выдать ${dd(z.muddat)===0?'сегодня':'был срок '+fd(z.muddat)} · ${kl(z.kid).nom}`,tug:'К заказу',z}));
+ D.Z.filter(z=>z.bosqich==='ochered'&&!z.pid).forEach(z=>R.push({t:'inf',b:`${z.raqam} ${z.det.nom}`,s:'в очереди без принтера · '+(taklif(z)[0]?taklif(z)[0].hozir?taklif(z)[0].p.id+' свободен сейчас':taklif(z)[0].p.id+' освободится '+fdh(taklif(z)[0].at):'нет подходящего принтера'),tug:'Назначить',z,naz:true}));
+ if(narxKor())D.Z.filter(z=>z.bosqich==='podtv'&&!avansOk(z)).forEach(z=>R.push({t:'wr',b:`${z.raqam} ${z.det.nom}`,s:`подтверждён, предоплата ${D.S.avans} % не получена · ${kl(z.kid).nom}`,tug:'Оплата',z,opl:true}));
+ return R}
+/* ---------- КП матни ---------- */
+const kpMatn=(nom,det,h,shosh)=>`${nom}, ${matN(det)}, ${sht(det.soni)} — ${som(h.jami)} (${som(Math.round(h.sht))}/шт), срок ${D.S.shosh[shosh].kun}${h.cheg?', скидка за серию '+h.cheg+' %':''}. Предоплата ${D.S.avans} %.`;
+
+/* ================= УМУМИЙ КЎРИНИШ БЎЛАКЛАРИ ================= */
+const pillZ=z=>{const k=kech(z);return`<span class="pill ${z.bosqich}">${BOSN[z.bosqich]}</span>${k&&k.t==='er'?` <span class="pill er">${esc(k.txt)}</span>`:k&&k.t==='wr'?` <span class="pill wr">${esc(k.txt)}</span>`:''}`};
+function chain(z,small){const ix=bIdx(z),k=kech(z);return`<div class="chain" title="${BOSN[z.bosqich]}" style="--st:var(--st-${({raschet:'calc',podtv:'ok',ochered:'queue',pechat:'print',post:'post',gotov:'done',vydan:'out'})[z.bosqich]})">${BOSQ.map((b,i)=>`${i?`<s class="${i<=ix?'d':''}"></s>`:''}<i class="${i<ix?'d':i===ix?'c'+(k&&k.t==='er'?' late':''):''}"></i>`).join('')}${small?'':`<small>${ix+1}/7 · ${BOSN[z.bosqich]}</small>`}</div>`}
+function steps(z){const ix=bIdx(z),k=kech(z);return`<div class="steps">${BOSQ.map((b,i)=>{const h=z.tarix.find(t=>t.m&&(i===0&&/сохранён/.test(t.m)||i===1&&/Подтверждён/.test(t.m)||i===2&&/очередь/.test(t.m)||i===3&&/начата/.test(t.m)||i===4&&/постобработку/.test(t.m)||i===5&&/Готов/.test(t.m)||i===6&&/Выдан/.test(t.m)));return`<div class="st ${i<ix?'d':i===ix?'c'+(k&&k.t==='er'?' late':''):''}"><b>${BOSN2[b]}</b><small>${h?fdh(h.t):i===ix?'сейчас':'—'}</small></div>`}).join('')}</div>`}
+const rolBar=a=>{if(ROL==='direktor')return;a.insertAdjacentHTML('afterbegin',`<div class="rolbar"><span>Вы вошли как <b>${ROLN[ROL]}</b> — видны только свои разделы${narxKor()?'':', цены и оплаты скрыты'}.</span></div>`)};
+const yashirin=()=>`<span class="hidden-rol">скрыто для роли «${ROLN[ROL]}»</span>`;
+const kunNom=()=>{const d=T;return `${U.HKT[d.getDay()]}, ${d.getDate()} ${U.OYT[d.getMonth()]}`};
+/* ================= ПАНЕЛЬ ================= */
+let DIQ_HAMMA=false;
+function rPanel(a){const Z=D.Z,ishda=Z.filter(z=>z.bosqich!=='vydan'),pros=Z.filter(z=>kech(z)&&kech(z).t==='er'),band=bandP(),pech=D.PR.filter(p=>joriy(p)),tam=D.PR.filter(p=>p.holat==='tamir'),bosh1=D.PR.filter(p=>!joriy(p)&&p.holat!=='tamir');
+ const malo=D.M.filter(m=>mHolat(m)!=='ok'),dolgZ=Z.filter(z=>['vydan','gotov'].includes(z.bosqich)&&qarz(z)>0),dolg=dolgZ.reduce((s,z)=>s+qarz(z),0),dolgK=new Set(dolgZ.map(z=>z.kid)).size;
+ const eng=D.PR.filter(p=>p.holat!=='tamir'&&joriy(p)).map(p=>({p,t:bosh(p)})).sort((a,b)=>a.t-b.t)[0];
+ const DQ=diqqat(),dq=DIQ_HAMMA?DQ:DQ.slice(0,5);
+ const xul=[`В работе <b>${zak(ishda.length)}</b>`];if(pros.length)xul.push(`<b class="er">${pros.length} просрочен${pros.length===1?'':'ы'}</b>`);xul.push(`печатают <b>${pech.length} из ${D.PR.length}</b> принтеров${tam.length?' (на обслуживании '+tam.map(p=>p.id).join(', ')+')':''}`);
+ if(malo.length)xul.push(`<b class="wr">${malo.map(m=>D.S.mat[m.mat].nom+' '+m.rang).slice(0,2).join(', ')}</b> на исходе`);if(narxKor()&&dolg)xul.push(`не оплачено <b class="wr">${mln(dolg)} сум</b>`);
+ const kp=[`<div class="kpi" data-go="zakaz" data-f="pros"><div class="l">${I('ogoh')} Просрочено</div><div class="v ${pros.length?'er':''}">${pros.length}<small>${pros.length===1?'заказ':pros.length<5?'заказа':'заказов'}</small></div><div class="d">${pros.length?pros.map(z=>z.raqam).join(', '):'все заказы в сроке'}</div></div>`,
+  `<div class="kpi" data-go="print"><div class="l">${I('printer')} Принтеры</div><div class="v">${pech.length} / ${D.PR.length}<small>печатают</small></div><div class="d">${tam.length?'на обслуживании '+tam.map(p=>p.id).join(', ')+' · ':''}${bosh1.length?bosh1.map(p=>p.id).join(', ')+' свободн'+(bosh1.length===1?'ый':'ые'):eng?eng.p.id+' освободится '+fdh(eng.t):'все заняты'}</div></div>`,
+  `<div class="kpi" data-go="sklad"><div class="l">${I('katushka')} Мало материала</div><div class="v ${malo.length?'wr':''}">${malo.length}<small>${malo.length===1?'позиция':malo.length<5?'позиции':'позиций'}</small></div><div class="d">${malo.length?malo.map(m=>D.S.mat[m.mat].nom+' '+m.rang).join(', '):'запасы в норме'}</div></div>`,
+  narxKor()?`<div class="kpi" data-go="fin"><div class="l">${I('hamyon')} Не оплачено</div><div class="v ${dolg?'wr':''}">${mln(dolg)}<small>сум</small></div><div class="d">${dolgK?dolgK+' клиент'+(dolgK===1?'':dolgK<5?'а':'ов')+', '+zak(dolgZ.length):'долгов нет'}</div></div>`:`<div class="kpi" data-go="zakaz" data-f="gotov"><div class="l">${I('okdoira')} Готовы к выдаче</div><div class="v">${Z.filter(z=>z.bosqich==='gotov').length}</div><div class="d">${yashirin()}</div></div>`];
+ const sarf7=D.M.reduce((s,m)=>s-m.harakat.filter(h=>h.g<0&&h.turi==='расход'&&(NOW()-new Date(h.t))<7*864e5).reduce((q,h)=>q+h.g,0),0),vyd7=Z.filter(z=>z.vydan&&dd(z.vydan)>-7).length,hs=D.H.filter(h=>(NOW()-new Date(h.t))<30*864e5),konv=hs.length?Math.round(hs.filter(h=>h.zid).length/hs.length*100):0;
+ a.innerHTML=`<div class="top"><div><h1>Панель <span class="dt">${kunNom()}</span></h1><div class="sub">${xul.join(', ')}.</div></div><span class="sp"></span>${['direktor','menejer'].includes(ROL)?`<button class="btn p" data-go="kalk" data-f="new">${I('qosh')} Новый расчёт</button>`:''}</div>
+ <div class="pnl">
+  <div class="kpiw kpis">${kp.join('')}</div>
+  <div class="attw card att"><h3>${I('ogoh')} Требует внимания <small>порядок: срок → материал → деньги → ожидание</small><span class="sp"></span><span class="pill mu nd">${DQ.length}</span></h3>
+   <div class="list">${dq.map((d,i)=>`<div class="it" data-dq="${i}"><div class="m"><b>${esc(d.b)}</b><small class="${d.t==='er'?'er':''}">${esc(d.s)}</small></div><button class="btn s" data-dqb="${i}">${esc(d.tug)}</button></div>`).join('')||`<div class="empty">${I('okdoira')}Всё в порядке — внимания ничего не требует</div>`}</div>
+   ${DQ.length>5?`<button class="btn s mt" id="dqh">${DIQ_HAMMA?'Свернуть':'Все ('+DQ.length+')'}</button>`:''}</div>
+  <div class="grid k2">
+   <div class="card"><h3>${I('printer')} Принтеры сейчас <small>${hhmm(NOW())}</small><span class="sp"></span><button class="btn s" data-go="print">Открыть</button></h3>
+    <div class="list">${D.PR.map(p=>{const j=joriy(p);const pr=j?Math.min(100,Math.round((NOW()-new Date(j.start))/(durH(j)*36e5)*100)):0;const k=j&&kech(j);
+     return`<div class="it" data-go="print"><span class="code">${p.id}</span><div class="m">${p.holat==='tamir'?`<b class="mu">обслуживание</b><small>${esc(p.tamirIzoh||'')} · до ${fdh(p.tamirGacha)}</small>`:j?`<b>${j.raqam} ${esc(j.det.nom)} ×${j.det.soni}</b><div class="lvl"><i style="width:${pr}%"></i></div><small>до ${hhmm(tugash(j))}${k&&k.t==='er'?` · <span class="er">${esc(k.txt)}</span>`:''} · очередь ${navbatP(p).length}</small>`:`<b class="mu">свободен</b><small>${navbatP(p).length?'в очереди '+navbatP(p).map(z=>z.raqam).join(', '):'очередь пуста'}</small>`}</div>${I('ong')}</div>`}).join('')}</div></div>
+   <div class="card"><h3>${I('ustun')} За 7 дней</h3>
+    <div class="dl"><div><small>Выдано заказов</small><b class="num">${vyd7}</b></div><div><small>Напечатано</small><b class="num">${num(sarf7)} г</b></div><div><small>Расчётов за 30 дн</small><b class="num">${hs.length}</b></div><div><small>Стали заказами</small><b class="num">${konv} %</b></div>${narxKor()?`<div><small>Поступило за 7 дн</small><b class="num">${som(D.PAY.filter(p=>dd(p.t)>-7).reduce((s,p)=>s+p.summa,0))}</b></div><div><small>Начислено за 7 дн</small><b class="num">${som(Z.filter(z=>dd(z.sana)>-7&&z.bosqich!=='raschet').reduce((s,z)=>s+z.summa,0))}</b></div>`:''}</div>
+    <div class="sec"><h4>Последние расчёты <span class="sp"></span><button class="btn s" data-go="kalk">Все</button></h4><div class="list">${D.H.slice(0,4).map(h=>`<div class="it" data-h="${h.id}"><div class="m"><b>${esc(h.nom)} ×${h.soni}</b><small>${matN(h.det)} · ${U.vaqt(h.t)}${h.zid?' · → '+D.Z.find(z=>z.id===h.zid).raqam:' · не сохранён'}</small></div>${narxKor()?`<b class="num">${som(h.jami)}</b>`:''}</div>`).join('')}</div></div></div>
+  </div>
+ </div>`;
+ $$('[data-go]',a).forEach(k=>k.onclick=e=>{e.stopPropagation();APP.go(k.dataset.go,{f:k.dataset.f})});
+ $$('[data-dq]',a).forEach(r=>r.onclick=e=>{if(e.target.closest('[data-dqb]'))return;const d=dq[+r.dataset.dq];if(d.z)ochZ(d.z.id);else if(d.v)APP.go(d.v)});
+ $$('[data-dqb]',a).forEach(b=>b.onclick=()=>{const d=dq[+b.dataset.dqb];if(d.nap){napomnit(d.z);return}if(d.naz){naznach(d.z);return}if(d.opl){oplata(d.z);return}if(d.m){prixod(d.m);return}if(d.z)ochZ(d.z.id);else APP.go(d.v)});
+ $$('[data-h]',a).forEach(r=>r.onclick=()=>{const h=D.H.find(x=>x.id===r.dataset.h);if(h.zid)ochZ(h.zid);else{hisobdan(h);APP.go('kalk')}});
+ const dh=$('#dqh',a);if(dh)dh.onclick=()=>{DIQ_HAMMA=!DIQ_HAMMA;APP.render()};rolBar(a)}
+/* ================= РАСЧЁТ ================= */
+let CALC=null;
+function yangiCalc(){CALC={fayl:null,nom:'',mid:'m1',infill:.3,qatlam:.2,support:false,post:[],shosh:'std',qty:1,kid:D.KL[0].id,g0:null,ch0:null,flash:false,qolda:null}}
+function hisobC(det,qty,shosh){const h=hisob(det,qty,shosh);if(CALC&&CALC.qolda&&CALC.qolda.jami>0){h.qolda=CALC.qolda;h.avto=h.jami;h.jami=CALC.qolda.jami;h.sht=h.jami/h.qty;h.min=false}return h}
+function hisobdan(h){yangiCalc();Object.assign(CALC,{fayl:{nom:h.det.fayl,tri:h.det.tri,hajm:h.det.hajm,bbox:h.det.bbox,kb:Math.round(h.det.tri*0.05)},nom:h.nom,mid:h.mid,infill:h.det.infill,qatlam:h.det.qatlam,support:h.det.support,post:[...h.det.post],shosh:h.shosh,qty:h.soni})}
+function calcDet(){const m=mS(CALC.mid);return{nom:CALC.nom,fayl:CALC.fayl?CALC.fayl.nom:'',hajm:CALC.fayl?CALC.fayl.hajm:0,bbox:CALC.fayl?CALC.fayl.bbox:[0,0,0],tri:CALC.fayl?CALC.fayl.tri:0,mat:m.mat,mid:m.id,infill:CALC.infill,qatlam:CALC.qatlam,support:CALC.support,post:CALC.post.filter(k=>D.S.post[k]),soni:CALC.qty,g0:CALC.g0,ch0:CALC.ch0}}
+function faylQabul(buf,nom,kb){const t0=performance.now();let r;try{r=stl(buf)}catch(e){toast(e.message||'Файл не распознан','Ошибка');return}
+ CALC.fayl={nom,tri:r.tri,hajm:r.hajm,bbox:r.bbox,yuza:r.yuza,kb:kb||Math.round(buf.byteLength/1024),ms:Math.max(1,Math.round(performance.now()-t0))};CALC.g0=null;CALC.ch0=null;
+ if(!CALC.nom)CALC.nom=nom.replace(/\.(stl|3mf|obj)$/i,'').replace(/[_-]+/g,' ');CALC.flash=true;APP.render();
+ const p=D.PR.filter(q=>q.holat!=='tamir');if(!p.some(q=>r.bbox.every((b,i)=>b<=q.hajm[i])))toast('Деталь не помещается ни на один принтер — нужна разбивка','Внимание');else if(r.bbox.every(b=>b<2))toast('Размеры подозрительно малы — файл в дюймах?','Проверьте')}
+function rKalk(a){if(!CALC)yangiCalc();const S=D.S,det=calcDet(),m=mS(CALC.mid),mat=S.mat[m.mat],bor=!!CALC.fayl,h=bor?hisobC(det,CALC.qty,CALC.shosh):null;
+ const matOpts=D.M.map(x=>`<option value="${x.id}" ${x.id===CALC.mid?'selected':''}>${S.mat[x.mat].nom} · ${x.rang}</option>`).join('');
+ const posts=Object.entries(S.post).filter(([k])=>POST_TEX[mat.tex].includes(k));
+ const kech=S.shosh[CALC.shosh];
+ a.innerHTML=`<div class="top"><div><h1>Расчёт стоимости</h1><div class="sub">Загрузите модель — объём, вес, время и цена считаются сразу. Ставки условные, меняются в разделе «Настройки».</div></div><span class="sp"></span>
+  <button class="btn" id="hst">${I('tarix')} История (${D.H.length})</button>${ROL==='direktor'?`<button class="btn" data-go="nastr">${I('sozlama')} Ставки</button>`:''}<button class="btn p" id="nw">${I('qosh')} Новый расчёт</button></div>
+ <div class="calc">
+  <div>
+   <div class="card">
+    <h3>${I('kub')} Файл модели</h3>
+    ${bor?`<div class="fl">${I('hujjat')}<span class="code">${esc(CALC.fayl.nom)}</span><span class="mu">${CALC.fayl.kb} КБ</span><button class="btn s" id="fx" aria-label="Убрать файл">${I('xoch')}</button><span class="sp"></span><span class="log">${num(CALC.fayl.tri)} треугольников · мм${CALC.fayl.ms?' · разобран за '+(CALC.fayl.ms>=1000?(CALC.fayl.ms/1000).toFixed(1).replace('.',',')+' с':CALC.fayl.ms+' мс'):''}</span></div>
+    <div class="parse"><div><small>Объём</small><b>${num(CALC.fayl.hajm,1)} см³</b></div><div><small>Габариты</small><b>${CALC.fayl.bbox.map(x=>num(x,0)).join('×')} мм</b></div><div><small>Вес${mat.tex==='SLA'?'':' при '+Math.round(CALC.infill*100)+' %'}</small><b>${num(h.g,0)} г</b>${CALC.g0?'<small class="wr">введён вручную</small>':''}<button class="ed" id="edg">изменить вручную</button></div><div><small>Время печати</small><b>${fmtH(h.ch)}</b>${CALC.ch0?'<small class="wr">введено вручную</small>':'<small>ориентировочно</small>'}</div></div>`
+    :`<div class="stl" id="drop">${I('yukla')}<div>Перетащите STL-файл сюда<br><span class="note">бинарный или текстовый STL (экспорт из любого слайсера или CAD), размеры в мм, до 50 МБ</span></div><div class="bt"><label class="btn p">${I('yukla')} Выбрать файл<input type="file" id="fin" accept=".stl"></label><button class="btn" id="prim">${I('kub')} Пример файла</button></div></div>`}
+    <div class="prm">
+     <div><span>Название детали</span><input class="inp" id="cnom" value="${esc(CALC.nom)}" placeholder="Корпус датчика"></div>
+     <div><span>Материал</span><div class="unit">${mdot(m)}<select class="inp" id="cmat">${matOpts}</select><span>на складе <b class="num">${num(m.qoldiq)} ${m.birlik}</b>${mHolat(m)!=='ok'?' <span class="wr">· мало</span>':''}</span></div></div>
+     ${mat.tex==='SLA'?'':`<div><span>Заполнение</span><div class="sl"><input type="range" id="cinf" min="10" max="100" step="5" value="${Math.round(CALC.infill*100)}"><b>${Math.round(CALC.infill*100)} %</b></div></div>`}
+     <div><span>Слой</span><div class="seg" id="cq">${(mat.tex==='SLA'?[.025,.05,.1]:[.1,.2,.3]).map(q=>`<button data-q="${q}" class="${Math.abs(q-CALC.qatlam)<1e-6?'on':''}">${String(q).replace('.',',')} мм</button>`).join('')}</div></div>
+     <div><span>Поддержки</span><div class="seg" id="csup"><button data-s="1" class="${CALC.support?'on':''}">да<em>+15 % материала и времени</em></button><button data-s="0" class="${CALC.support?'':'on'}">нет</button></div></div>
+     <div><span>Постобработка</span><div class="cks">${posts.map(([k,p])=>`<label class="chk"><input type="checkbox" data-p="${k}" ${CALC.post.includes(k)?'checked':''}>${p.nom}<em>${num(p.narx)} сум/шт</em></label>`).join('')}</div></div>
+     <div><span>Срочность</span><div class="rad" id="csh">${Object.entries(S.shosh).map(([k,s])=>`<label class="${CALC.shosh===k?'on':''}"><input type="radio" name="sh" value="${k}" ${CALC.shosh===k?'checked':''}>${s.nom} · ${s.kun}<em>×${String(s.k).replace('.',',')}</em></label>`).join('')}</div></div>
+     <div><span>Количество</span><div class="qty"><button id="qm" aria-label="Меньше">−</button><input id="cqty" inputmode="numeric" value="${CALC.qty}"><button id="qp" aria-label="Больше">+</button></div></div>
+     <div><span>Клиент</span><div class="unit"><select class="inp" id="ckl">${D.KL.map(k=>`<option value="${k.id}" ${k.id===CALC.kid?'selected':''}>${esc(k.nom)}</option>`).join('')}</select><button class="btn s" id="ckn">${I('qosh')} Новый клиент</button></div></div>
+    </div>
+   </div>
+   </div>
+  <div class="res">${bor?chekHTML(det,h,m):`<div class="chek"><div class="ttl">Итог расчёта<small>появится после загрузки файла</small></div><div class="empty">${I('kalk')}Загрузите STL или откройте пример — цена, вес и время появятся здесь</div></div>`}</div>
+ </div>
+ <div class="card" style="margin-top:12px"><h3>${I('tarix')} История расчётов <small>последние 5 · ${D.H.filter(h=>h.zid).length} из ${D.H.length} стали заказами</small><span class="sp"></span><button class="btn s" id="hst2">Все (${D.H.length})</button></h3>
+    <div class="list">${D.H.slice(0,5).map(h=>`<div class="it" data-h="${h.id}"><span class="code">${hhmm(h.t)}</span><div class="m"><b>${esc(h.nom)} ×${h.soni}</b><small>${matN(h.det)} · ${fd(h.t)}${h.zid?' · → '+D.Z.find(z=>z.id===h.zid).raqam:''}</small></div>${narxKor()?`<b class="num">${som(h.jami)}</b>`:''}${I('ong')}</div>`).join('')}</div></div>
+ ${bor?`<div class="mbar"><div><b>${som(h.jami)}</b><small>${som(Math.round(h.sht))}/шт · ${fmtH(h.ch*CALC.qty)} печати</small></div><span class="sp"></span><button class="btn p" id="sv2">Сохранить</button><button class="btn" id="kp2">КП</button></div>`:''}`;
+ const re=()=>APP.render();
+ $$('[data-go]',a).forEach(k=>k.onclick=()=>APP.go(k.dataset.go));
+ $('#nw',a).onclick=()=>{yangiCalc();re()};$('#hst',a).onclick=tarixModal;const h2=$('#hst2',a);if(h2)h2.onclick=tarixModal;
+ const dz=$('#drop',a);if(dz){const fin=$('#fin',a);fin.onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>50*1048576){toast('Файл больше 50 МБ','Ошибка');return}f.arrayBuffer().then(b=>faylQabul(b,f.name,Math.round(f.size/1024)))};
+  ['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over')}));
+  dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)f.arrayBuffer().then(b=>faylQabul(b,f.name,Math.round(f.size/1024)))});
+  $('#prim',a).onclick=()=>{modal('<h2>Пример файла</h2>',`<div class="more">${NAMUNA_FAYL.map((f,i)=>`<button data-nf="${i}"><span class="ic">${I('kub')}</span>${f.nom}<span class="sp"></span><small class="mu mono">${f.fayl}</small></button>`).join('')}</div><p class="note mt">Файлы генерируются в браузере — можно скачать и открыть в своём слайсере.</p>`);
+   $$('[data-nf]').forEach(b=>b.onclick=()=>{const f=NAMUNA_FAYL[+b.dataset.nf];closeM();CALC.nom=f.nom;faylQabul(f.buf(),f.fayl)})}}
+ const fx=$('#fx',a);if(fx)fx.onclick=()=>{CALC.fayl=null;CALC.g0=null;CALC.ch0=null;re()};
+ const edg=$('#edg',a);if(edg)edg.onclick=()=>{modal('<h2>Данные из слайсера</h2>',`<p class="note">Если слайсер показал другой вес или время — введите их, цена пересчитается по ним.</p><div class="frm mt"><label>Вес одной детали, г<input class="inp num" id="mg" inputmode="decimal" value="${num(h.g,1)}"></label><label>Время печати одной детали, ч<input class="inp num" id="mc" inputmode="decimal" value="${num(h.ch,2)}"></label></div>`,`<button class="btn" id="mr">Сбросить к расчёту</button><button class="btn p" id="mok">Применить</button>`);
+  $('#mok').onclick=()=>{CALC.g0=U.toNum($('#mg').value)||null;CALC.ch0=U.toNum($('#mc').value)||null;closeM();CALC.flash=true;re()};$('#mr').onclick=()=>{CALC.g0=null;CALC.ch0=null;closeM();re()}};
+ $('#cnom',a).oninput=e=>{CALC.nom=e.target.value;const t=$('.chek .ttl',a);if(t)t.firstChild.textContent=(CALC.nom||'Деталь')+' · '};
+ $('#cmat',a).onchange=e=>{CALC.mid=e.target.value;const mm=mS(CALC.mid),tx=D.S.mat[mm.mat].tex;CALC.post=CALC.post.filter(k=>POST_TEX[tx].includes(k));if(tx==='SLA'){if(CALC.qatlam>.1)CALC.qatlam=.05}else if(CALC.qatlam<.1)CALC.qatlam=.2;CALC.flash=true;re()};
+ const ckn=$('#ckn',a);if(ckn)ckn.onclick=yangiKlient;
+ $$('[data-var]',a).forEach(b=>b.onclick=()=>{CALC.mid=b.dataset.var;CALC.flash=true;re()});
+ const qol=$('#qol',a);if(qol)qol.onclick=qoldaNarx;
+ const ci=$('#cinf',a);if(ci){ci.oninput=e=>{CALC.infill=+e.target.value/100;ci.nextElementSibling.textContent=e.target.value+' %';jonli(a)};ci.onchange=()=>{CALC.flash=true;re()}}
+ $$('#cq button',a).forEach(b=>b.onclick=()=>{CALC.qatlam=+b.dataset.q;CALC.flash=true;re()});
+ $$('#csup button',a).forEach(b=>b.onclick=()=>{CALC.support=b.dataset.s==='1';CALC.flash=true;re()});
+ $$('[data-p]',a).forEach(c=>c.onchange=()=>{CALC.post=c.checked?[...CALC.post,c.dataset.p]:CALC.post.filter(k=>k!==c.dataset.p);CALC.flash=true;re()});
+ $$('#csh input',a).forEach(r=>r.onchange=()=>{CALC.shosh=r.value;CALC.flash=true;re()});
+ $('#qm',a).onclick=()=>{CALC.qty=Math.max(1,CALC.qty-1);CALC.flash=true;re()};$('#qp',a).onclick=()=>{CALC.qty+=1;CALC.flash=true;re()};
+ $('#cqty',a).onchange=e=>{CALC.qty=Math.max(1,Math.round(U.toNum(e.target.value))||1);CALC.flash=true;re()};
+ $('#ckl',a).onchange=e=>CALC.kid=e.target.value;
+ $$('[data-h]',a).forEach(r=>r.onclick=()=>{const hh=D.H.find(x=>x.id===r.dataset.h);if(hh.zid)ochZ(hh.zid);else{hisobdan(hh);re();toast('Параметры расчёта восстановлены')}});
+ ['sv','sv2'].forEach(id=>{const b=$('#'+id,a);if(b)b.onclick=saqlaZakaz});['kp','kp2'].forEach(id=>{const b=$('#'+id,a);if(b)b.onclick=()=>kpModal({nom:CALC.nom||'Деталь',kid:CALC.kid,det:calcDet(),h:hisobC(calcDet(),CALC.qty,CALC.shosh),shosh:CALC.shosh})});
+ const cp=$('#cp',a);if(cp)cp.onclick=()=>kopiya(kpMatn(CALC.nom||'Деталь',calcDet(),hisobC(calcDet(),CALC.qty,CALC.shosh),CALC.shosh)+variantMatn());
+ if(CALC.flash){CALC.flash=false;const b=$('.chek .big',a);if(b){b.classList.add('fl');setTimeout(()=>b.classList.remove('fl'),700)}}
+ rolBar(a)}
+function jonli(a){const det=calcDet(),h=hisobC(det,CALC.qty,CALC.shosh);const r=$('.res',a);if(r&&CALC.fayl){r.innerHTML=chekHTML(det,h,mS(CALC.mid));const b=$('#sv',a);if(b)b.onclick=saqlaZakaz;const k=$('#kp',a);if(k)k.onclick=()=>kpModal({nom:CALC.nom||'Деталь',kid:CALC.kid,det,h,shosh:CALC.shosh});const c=$('#cp',a);if(c)c.onclick=()=>kopiya(kpMatn(CALC.nom||'Деталь',det,h,CALC.shosh)+variantMatn());$$('[data-var]',a).forEach(x=>x.onclick=()=>{CALC.mid=x.dataset.var;CALC.flash=true;APP.render()});const q=$('#qol',a);if(q)q.onclick=qoldaNarx}
+ const p=$$('.parse b',a);if(p[2])p[2].textContent=num(h.g,0)+' г';if(p[3])p[3].textContent=fmtH(h.ch)}
+function chekHTML(det,h,m){const S=D.S,mat=S.mat[m.mat];const row=(l,f,v,cls)=>`<div class="row ${cls||''}"><span>${l}${f?`<em>${f}</em>`:''}</span><b>${v}</b></div>`;
+ return`<div class="chek"><div class="ttl">${esc(CALC.nom||'Деталь')} · ${mat.nom} ${esc(m.rang)} · ×${CALC.qty}<small>расчёт ${fdd(T)} · ${S.shosh[CALC.shosh].nom}, ${S.shosh[CALC.shosh].kun}</small></div>
+ <div class="big">${som(h.jami)}</div><div class="per">за штуку ${som(Math.round(h.sht))} · ${CALC.qty} шт · печать ${fmtH(h.ch*CALC.qty)}</div>
+ ${row('Материал',`${num(h.g,0)} г × ${num(mat.narx)}`,som(Math.round(h.material)))}
+ ${row('Машинное время',`${fmtH(h.ch)} × ${num(S.soat[mat.tex])}/ч (${mat.tex})`,som(Math.round(h.mashina)))}
+ ${det.post.length?row('Постобработка',det.post.map(k=>S.post[k].nom).join(', '),som(h.post)):''}
+ ${row('Себестоимость за шт','',som(Math.round(h.tannarx)),'sub')}
+ ${row('Наценка',S.ustama+' %',som(Math.round(h.ustama)))}
+ ${h.sk!==1?row('Срочность',S.shosh[CALC.shosh].nom,'× '+String(h.sk).replace('.',',')):''}
+ ${row('Цена за шт','',som(Math.round(h.narxSht)),'sub')}
+ ${CALC.qty>1?row('Партия',`${CALC.qty} шт × ${som(Math.round(h.narxSht))}`,som(Math.round(h.brutto))):''}
+ ${h.cheg?row('Скидка за серию',`от ${S.seriya.filter(([n])=>CALC.qty>=n).pop()[0]} шт`,'− '+h.cheg+' %'+(h.cheg>S.chegMax?' · требует подтверждения директора':''),h.cheg>S.chegMax?'wr':''):''}
+ ${h.min?row('Минимальный чек','сумма ниже минимума',som(S.minChek),'wr'):''}
+ ${h.qolda?row('Договорная цена',esc(h.qolda.sabab)+' · по расчёту '+som(h.avto),som(h.jami),'wr'):''}
+ ${row('Итого','',som(h.jami),'tot')}
+ ${variantHTML(det,m)}
+ <div class="acts"><button class="btn p" id="sv">${I('quti')} Сохранить как заказ</button><div class="r2"><button class="btn" id="kp">${I('pdf')} КП (PDF)</button><button class="btn" id="cp">${I('kopiya')} Скопировать</button></div>${['direktor','menejer'].includes(ROL)?`<button class="btn s" id="qol" style="justify-self:start">${I('qalam')} ${h.qolda?'Изменить договорную цену':'Договорная цена'}</button>`:''}</div>
+ <p class="note mt">Ставки условные — для образца. Вес и время считаются по модели; данные слайсера можно ввести вручную.</p></div>`}
+function saqlaZakaz(){if(!CALC.fayl){toast('Сначала загрузите файл');return}const det=calcDet(),h=hisobC(det,CALC.qty,CALC.shosh),S=D.S;
+ if(!CALC.nom){toast('Укажите название детали');const n=$('#cnom');if(n)n.focus();return}
+ const raqam='AT-'+String(D.nextN++).padStart(4,'0'),muddat=addD(CALC.shosh==='sroch'?1:CALC.shosh==='usk'?3:S.muddat+1);
+ const z={id:uid('z'),raqam,kid:CALC.kid,det,shosh:CALC.shosh,bosqich:'raschet',sana:iso(T),muddat,pid:null,start:null,summa:h.jami,h,tarix:[{t:NOW().toISOString(),kim:kimN(),m:'Расчёт сохранён как заказ'+(h.qolda?' · договорная цена '+som(h.jami)+' ('+h.qolda.sabab+'), по расчёту '+som(h.avto):''),pul:!!h.qolda}],brak:[],vydan:null,izoh:''};
+ D.Z.unshift(z);D.H.unshift({id:uid('h'),t:NOW().toISOString(),nom:CALC.nom,mid:CALC.mid,soni:CALC.qty,shosh:CALC.shosh,jami:h.jami,zid:z.id,det:{...det},kim:ROLI[ROL]});
+ jurnal(`Новый заказ ${raqam}: ${CALC.nom} ×${CALC.qty}, ${som(h.jami)}`);save();toast(`Заказ ${raqam} создан, этап «расчёт»`);yangiCalc();APP.go('zakaz');ochZ(z.id)}
+function kopiya(t){const ok=()=>toast('Текст скопирован — вставьте в Telegram','Буфер');if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,()=>matnModal(t));else matnModal(t)}
+function matnModal(t){modal('<h2>Текст для клиента</h2>',`<textarea class="inp" style="width:100%;min-height:120px" readonly>${esc(t)}</textarea>`,'<button class="btn" onclick="U.closeM()">Закрыть</button>')}
+function tarixModal(){const rows=D.H;modal(`<h2>История расчётов <small>${rows.length} · ${rows.filter(h=>h.zid).length} стали заказами</small></h2>`,
+ table([{t:'Когда',f:h=>`<b>${fd(h.t)} ${hhmm(h.t)}</b><span class="sm">${esc(h.kim||'')}</span>`},{t:'Деталь',f:h=>`${esc(h.nom)}<span class="sm">${matN(h.det)} · слой ${String(h.det.qatlam).replace('.',',')}${h.det.support?' · поддержки':''}</span>`},{t:'Кол-во',f:h=>h.soni,n:1},{t:'Срочность',f:h=>D.S.shosh[h.shosh].nom,m:1},...(narxKor()?[{t:'Сумма',f:h=>som(h.jami),n:1}]:[]),{t:'Заказ',f:h=>h.zid?`<span class="pill ac nd">${D.Z.find(z=>z.id===h.zid).raqam}</span>`:'<span class="pill mu nd">не сохранён</span>'}],rows,{click:h=>`data-th="${h.id}"`,keep:true}),'',true);
+ $$('[data-th]').forEach(r=>r.onclick=()=>{const h=D.H.find(x=>x.id===r.dataset.th);closeM();if(h.zid)ochZ(h.zid);else{hisobdan(h);APP.go('kalk')}})}
+/* ================= КП ================= */
+function kpModal(o){const S=D.S,k=kl(o.kid),det=o.det,h=o.h,n=o.raqam?o.raqam.replace('AT','КП'):'КП-'+String(D.nextN).padStart(4,'0'),mat=S.mat[det.mat];
+ modal(`<h2>Коммерческое предложение <small>${n}</small></h2>`,`<div class="kp">
+  <div class="kh"><div><b>${esc(S.rekv.nom)}</b><small>3D-печать: пластик, TPU, фотополимер · мелкие серии и запчасти</small><small>${esc(S.rekv.manzil)} · ${esc(S.rekv.tel)} · ИНН ${esc(S.rekv.stir)}</small></div><div class="rt"><b>Коммерческое предложение</b><small>${n} от ${T.getDate()} ${U.OYT[T.getMonth()]} ${T.getFullYear()}</small><small>действительно до ${fdd(addD(7))}</small></div></div>
+  <p><b>Заказчик:</b> ${esc(k.nom)}${k.kontakt?' · '+esc(k.kontakt):''}${k.tel?' · '+esc(k.tel):''}</p>
+  <table><thead><tr><th>№</th><th>Деталь</th><th>Материал</th><th class="n">Кол-во</th><th class="n">Цена, сум</th><th class="n">Сумма, сум</th></tr></thead><tbody>
+  <tr><td>1</td><td>${esc(o.nom)}<small>${det.bbox.map(x=>num(x,0)).join('×')} мм · слой ${String(det.qatlam).replace('.',',')} мм${mat.tex==='SLA'?'':' · заполнение '+Math.round(det.infill*100)+' %'}${det.support?' · поддержки':''}${det.post.length?' · '+det.post.map(p=>S.post[p].nom).join(', '):''}</small></td><td>${esc(matN(det))}</td><td class="n">${det.soni} шт</td><td class="n">${num(Math.round(h.narxSht))}</td><td class="n">${num(Math.round(h.brutto))}</td></tr>
+  ${h.cheg?`<tr><td></td><td colspan="4">Скидка за серию ${h.cheg} %</td><td class="n">− ${num(Math.round(h.chegSum))}</td></tr>`:''}
+  ${h.min?`<tr><td></td><td colspan="4">Минимальный заказ</td><td class="n">${num(S.minChek)}</td></tr>`:''}
+  ${h.qolda?`<tr><td></td><td colspan="4">Договорная цена (${esc(h.qolda.sabab)})</td><td class="n">${num(h.jami)}</td></tr>`:''}<tr class="tot"><td colspan="5">Итого</td><td class="n">${num(h.jami)}</td></tr></tbody></table><p class="itog"><span>Итого к оплате:</span> <b>${som(h.jami)}</b></p>
+  <div class="cond"><p>Срок изготовления: ${S.shosh[o.shosh].kun} с момента предоплаты.</p><p>Предоплата ${S.avans} % (${num(Math.round(h.jami*S.avans/100/1000)*1000)} сум), остаток при выдаче.</p><p>Допуск ±0,3 мм; цвет по наличию на складе; ориентировочное время печати ${fmtH(h.ch*det.soni)}.</p></div>
+  <p class="cond">Оплата: ${esc(S.rekv.bank)}.</p><div class="sign"><span>Исполнитель: ____________ / Руслан Р. /</span><span>Заказчик: ____________</span></div>
+  <div class="obr">Образец документа — данные условные</div></div>`,
+ `<button class="btn" id="kpc">${I('kopiya')} Текст для Telegram</button><button class="btn p" id="kpp">${I('pdf')} Печать / сохранить PDF</button>`,true);
+ $('#kpp').onclick=()=>window.print();$('#kpc').onclick=()=>kopiya(kpMatn(o.nom,det,h,o.shosh))}
+
+/* ---------- варианты, договорная цена, новый клиент ---------- */
+function variantlar(det){const S=D.S,m0=mS(det.mid),tex=S.mat[m0.mat].tex;const seen=new Set([m0.mat]);const alt=D.M.filter(x=>S.mat[x.mat].tex===tex&&x.mat!==m0.mat&&x.qoldiq>0).filter(x=>{if(seen.has(x.mat))return false;seen.add(x.mat);return true}).slice(0,2);
+ return[m0,...alt].map(x=>({m:x,h:hisob({...det,mat:x.mat,mid:x.id},det.soni,CALC?CALC.shosh:'std'),cur:x.id===m0.id}))}
+function variantHTML(det,m){if(!CALC)return'';const V=variantlar(det);if(V.length<2)return'';
+ return`<div class="vars"><small>Варианты по материалу — для клиента, который спрашивает «а если дешевле?»</small><div class="vg">${V.map(v=>`<button class="${v.cur?'on':''}" ${v.cur?'disabled':`data-var="${v.m.id}"`}><b>${D.S.mat[v.m.mat].nom}</b><span class="num">${som(Math.round(v.h.sht))}/шт</span><small>${num(v.h.g,0)} г · ${fmtH(v.h.ch)} · ${som(v.h.jami)}</small></button>`).join('')}</div></div>`}
+function variantMatn(){if(!CALC||!CALC.fayl)return'';const V=variantlar(calcDet()).filter(v=>!v.cur);return V.length?' Варианты: '+V.map(v=>D.S.mat[v.m.mat].nom+' — '+som(v.h.jami)).join(', ')+'.':''}
+function qoldaNarx(){const det=calcDet(),h=hisob(det,CALC.qty,CALC.shosh);modal('<h2>Договорная цена</h2>',`<p class="note">Если с клиентом договорились о другой сумме — укажите её и причину. В заказе и КП будет договорная цена, в истории — обе суммы, маржа пересчитается.</p><div class="frm mt"><label>Итого по расчёту<input class="inp num" value="${num(h.jami)}" readonly></label><label>Договорная сумма, сум<input class="inp num" id="qs" inputmode="numeric" value="${CALC.qolda?CALC.qolda.jami:h.jami}"></label><label class="wf">Причина<input class="inp" id="qr" value="${esc(CALC.qolda?CALC.qolda.sabab:'')}" placeholder="постоянный клиент, повторный заказ"></label></div><div class="note mt" id="qe"></div>`,
+ `<button class="btn" id="qx">Убрать договорную</button><button class="btn p" id="qok">Применить</button>`);
+ $('#qx').onclick=()=>{CALC.qolda=null;closeM();CALC.flash=true;APP.render()};
+ $('#qok').onclick=()=>{const v=Math.round(U.toNum($('#qs').value)),r=$('#qr').value.trim();if(!(v>0)){$('#qe').innerHTML='<span class="er">Введите сумму</span>';return}if(!r){$('#qe').innerHTML='<span class="er">Укажите причину — она попадёт в историю заказа</span>';return}
+  const cheg=Math.round((1-v/h.jami)*100);if(cheg>D.S.chegMax&&ROL!=='direktor'){$('#qe').innerHTML=`<span class="er">Скидка ${cheg} % выше ${D.S.chegMax} % — нужно подтверждение директора</span>`;return}
+  CALC.qolda={jami:v,sabab:r};closeM();CALC.flash=true;APP.render()}}
+function yangiKlient(){modal('<h2>Новый клиент</h2>',`<div class="frm"><label class="wf">Название<input class="inp" id="kn" placeholder="ООО «Пример» или имя"></label><label>Контактное лицо<input class="inp" id="kk" placeholder="Имя"></label><label>Телефон<input class="inp" id="kt" inputmode="tel" placeholder="+998"></label><label>Тип<select class="inp" id="ktp"><option value="юрлицо">юрлицо</option><option value="ИП">ИП</option><option value="физлицо">физлицо</option></select></label></div><div class="note mt" id="ke"></div>`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="kok">Добавить</button>`);
+ $('#kok').onclick=()=>{const n=$('#kn').value.trim();if(!n){$('#ke').innerHTML='<span class="er">Введите название</span>';return}const k={id:uid('k'),nom:n,kontakt:$('#kk').value.trim(),tel:$('#kt').value.trim(),turi:$('#ktp').value};D.KL.unshift(k);CALC.kid=k.id;jurnal('Новый клиент: '+n);save();closeM();toast('Клиент добавлен: '+n);APP.render()}}
+
+/* ================= ЗАКАЗЫ ================= */
+let F={f:'all',q:'',et:'',mat:''};
+const RUXSAT={direktor:BOSQ,menejer:['raschet','gotov'],operator:['ochered','pechat','post'],sklad:[],buxgalter:[]};
+const koradi=z=>ROL==='operator'?['ochered','pechat','post','gotov'].includes(z.bosqich):ROL==='sklad'?['podtv','ochered','pechat','post','gotov'].includes(z.bosqich):true;
+function guruh(z){const k=kech(z);if(k&&k.t==='er')return'Просрочены';if(z.bosqich==='raschet')return'Ждут подтверждения';if(z.bosqich==='gotov')return'Готовы к выдаче';if(z.bosqich==='vydan')return'Выданы за 30 дней';return'В работе'}
+const GTART={'Просрочены':0,'Ждут подтверждения':1,'В работе':2,'Готовы к выдаче':3,'Выданы за 30 дней':4};
+function rZakaz(a){const Z=D.Z.filter(koradi).filter(z=>z.bosqich!=='vydan'||dd(z.vydan)>-30);
+ const fl=Z.filter(z=>F.f==='all'||F.f==='pros'&&kech(z)&&kech(z).t==='er'||F.f==='rab'&&!['raschet','vydan'].includes(z.bosqich)||F.f==='gotov'&&z.bosqich==='gotov'||F.f==='vydan'&&z.bosqich==='vydan')
+  .filter(z=>!F.et||z.bosqich===F.et).filter(z=>!F.mat||z.det.mat===F.mat)
+  .filter(z=>!F.q||(z.raqam+' '+z.det.nom+' '+kl(z.kid).nom).toLowerCase().includes(F.q.toLowerCase()))
+  .sort((a,b)=>GTART[guruh(a)]-GTART[guruh(b)]||(a.muddat<b.muddat?-1:a.muddat>b.muddat?1:0));
+ const n=k=>Z.filter(z=>k==='pros'?kech(z)&&kech(z).t==='er':k==='rab'?!['raschet','vydan'].includes(z.bosqich):z.bosqich===k).length;
+ const chips=[['all','Все',Z.length],['pros','Просрочены',n('pros')],['rab','В работе',n('rab')],['gotov','Готовы',n('gotov')],['vydan','Выданы',n('vydan')]];
+ const cols=[{t:'Номер',f:z=>`<b class="mono">${z.raqam}</b>${chain(z,true)}`},{t:'Деталь',f:z=>`${esc(z.det.nom)} <span class="mu">×${z.det.soni}</span><span class="sm">${esc(kl(z.kid).nom)}</span>`,w:1},
+  {t:'Материал',f:z=>`${mdot(mS(z.det.mid))} ${esc(matN(z.det))}<span class="sm">${num(kerakG(z))} г${z.det.support?' · поддержки':''}</span>`,m:1},{t:'Этап',f:z=>pillZ(z)+(z.pid&&['ochered','pechat'].includes(z.bosqich)?` <span class="mono mu hide-k">${z.pid}</span>`:'')},
+  {t:'Принтер',f:z=>z.pid?`<span class="mono">${z.pid}</span>${z.bosqich==='pechat'?`<span class="sm">до ${hhmm(tugash(z))}</span>`:''}`:['ochered','podtv'].includes(z.bosqich)?'<span class="wr">не назначен</span>':'—',m:1},
+  {t:'Срок',f:z=>{const k=dd(z.muddat);return`<span class="mono">${fd(z.muddat)}</span><span class="sm ${k<0&&z.bosqich!=='vydan'?'er':''}">${z.bosqich==='vydan'?'выдан '+fd(z.vydan):k===0?'сегодня':k<0?'−'+kun(-k):'через '+kun(k)}</span>`}},
+  ...(narxKor()?[{t:'Сумма',f:z=>`${som(z.summa)}${qarz(z)?`<span class="sm ${qarzYosh(z)>7?'er':'wr'}">не оплачено ${som(qarz(z))}</span>`:'<span class="sm ok">оплачен</span>'}`,n:1}]:[{t:'Печать',f:z=>fmtH(durH(z)),n:1}])];
+ a.innerHTML=`<div class="top"><div><h1>Заказы <span class="dt">${fl.length} из ${Z.length}</span></h1><div class="sub">${n('pros')?`<b class="er">${n('pros')} просрочен${n('pros')===1?'':'ы'}</b>, `:''}в работе <b>${n('rab')}</b>, готовы к выдаче <b>${n('gotov')}</b>${narxKor()?`, ждут подтверждения <b>${n('raschet')}</b>`:''}.</div></div><span class="sp"></span>${['direktor','menejer'].includes(ROL)?`<button class="btn p" data-go="kalk" data-f="new">${I('qosh')} Новый расчёт</button>`:''}</div>
+ <div class="tools"><input class="inp" id="zq" placeholder="Номер, клиент, деталь" value="${esc(F.q)}" style="width:240px"><div class="chips">${chips.map(([k,n2,c])=>`<button class="chip ${F.f===k?'on':''}" data-c="${k}">${n2}<em>${c}</em></button>`).join('')}</div>
+  <select class="inp" id="zet" style="height:36px"><option value="">Все этапы</option>${BOSQ.map(b=>`<option value="${b}" ${F.et===b?'selected':''}>${BOSN2[b]}</option>`).join('')}</select>
+  <select class="inp" id="zmat" style="height:36px"><option value="">Все материалы</option>${Object.entries(D.S.mat).map(([k,m])=>`<option value="${k}" ${F.mat===k?'selected':''}>${m.nom}</option>`).join('')}</select></div>
+ ${table(cols,fl,{grp:guruh,click:z=>`data-z="${z.id}"`,empty:'Заказов по этому фильтру нет'})}`;
+ $$('[data-go]',a).forEach(k=>k.onclick=()=>APP.go(k.dataset.go,{f:k.dataset.f}));
+ $('#zq',a).oninput=e=>{F.q=e.target.value;APP.render();const q=$('#zq');q.focus();q.setSelectionRange(q.value.length,q.value.length)};
+ $$('[data-c]',a).forEach(b=>b.onclick=()=>{F.f=b.dataset.c;APP.render()});$('#zet',a).onchange=e=>{F.et=e.target.value;APP.render()};$('#zmat',a).onchange=e=>{F.mat=e.target.value;APP.render()};
+ $$('[data-z]',a).forEach(r=>r.onclick=()=>ochZ(r.dataset.z));rolBar(a)}
+/* ---------- карта заказа ---------- */
+function ochZ(id){const z=D.Z.find(x=>x.id===id);if(!z)return;const k=kl(z.kid),m=mS(z.det.mid),S=D.S,mat=S.mat[z.det.mat],nx=keyingi(z),kk=kech(z),pul=narxKor();
+ const mozhno=RUXSAT[ROL].includes(z.bosqich)&&nx;
+ const b=[];if(mozhno)b.push(`<button class="btn p" id="nx">${I('ong')} Перевести: ${BOSN[nx]}</button>`);
+ if(['podtv','ochered'].includes(z.bosqich)&&['direktor','menejer','operator'].includes(ROL))b.push(`<button class="btn" id="nz">${I('printer')} ${z.pid?'Сменить принтер':'Назначить принтер'}</button>`);
+ if(pul)b.push(`<button class="btn" id="kpb">${I('pdf')} КП</button>`);
+ if(pul&&qarz(z)>0&&ROL!=='menejer'||ROL==='menejer'&&qarz(z)>0)b.push(`<button class="btn" id="opl">${I('hamyon')} Оплата</button>`);
+ if(pul&&qarz(z)>0&&['vydan','gotov'].includes(z.bosqich))b.push(`<button class="btn" id="nap">${I('yubor')} Напомнить</button>`);
+ if(['pechat','post'].includes(z.bosqich)&&['direktor','operator'].includes(ROL))b.push(`<button class="btn d" id="brk">${I('ogoh')} Брак / перепечатка</button>`);
+ b.push(`<button class="btn" id="kom">${I('qalam')} Комментарий</button>`);
+ modal(`<h2><span class="mono">${z.raqam}</span> ${esc(z.det.nom)} <small>×${z.det.soni} · ${esc(k.nom)}</small></h2>`,`
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">${pillZ(z)}${z.shosh!=='std'?`<span class="pill wr">${S.shosh[z.shosh].nom}</span>`:''}${z.brak.length?`<span class="pill er">брак ${z.brak.length}</span>`:''}</div>
+  ${steps(z)}
+  ${kk&&kk.t==='er'?`<div class="alert er mt">${I('ogoh')}<span>Срок ${fdd(z.muddat)} 18:00 прошёл — ${esc(kk.txt)}. ${z.bosqich==='pechat'&&z.pid?`Печать на ${z.pid} закончится ${fdh(tugash(z))}.`:z.bosqich==='ochered'?'Заказ ещё в очереди.':''}</span></div>`:''}
+  ${z.bosqich==='podtv'&&pul&&!avansOk(z)?`<div class="alert mt">${I('hamyon')}<span>Предоплата ${S.avans} % не получена: оплачено ${som(tolangan(z))} из ${som(z.summa)}.</span></div>`:''}
+  ${['podtv','ochered'].includes(z.bosqich)&&m.qoldiq<kerakG(z)?`<div class="alert mt">${I('katushka')}<span>Материала не хватает: на складе ${num(m.qoldiq)} ${m.birlik}, нужно ${num(kerakG(z))}. Оформите приход.</span></div>`:''}
+  <div class="dl mt" style="margin-top:14px">
+   <div><small>Клиент</small><b>${esc(k.nom)}</b><span class="sm mu">${esc(k.kontakt||'')} ${esc(k.tel||'')}</span></div>
+   <div><small>Материал</small><b>${mdot(m)} ${esc(matN(z.det))}</b><span class="sm mu">${num(kerakG(z))} г на заказ · на складе ${num(m.qoldiq)} ${m.birlik}</span></div>
+   <div><small>Принтер</small><b>${z.pid?z.pid+(pr(z.pid)?' · '+pr(z.pid).model:''):'не назначен'}</b>${z.bosqich==='pechat'?`<span class="sm mu">начат ${fdh(z.start)} · до ${fdh(tugash(z))}</span>`:''}</div>
+   <div><small>Параметры</small><b>слой ${String(z.det.qatlam).replace('.',',')} мм${mat.tex==='SLA'?'':' · заполнение '+Math.round(z.det.infill*100)+' %'}</b><span class="sm mu">${z.det.support?'поддержки · ':''}${z.det.post.length?z.det.post.map(p=>S.post[p].nom).join(', '):'без постобработки'}</span></div>
+   <div><small>Модель</small><b class="mono">${esc(z.det.fayl)}</b><span class="sm mu">${num(z.det.hajm,1)} см³ · ${z.det.bbox.map(x=>num(x,0)).join('×')} мм · ${num(z.det.tri)} треуг.</span></div>
+   <div><small>Срок</small><b>${fdd(z.muddat)}</b><span class="sm mu">создан ${fdd(z.sana)} · ${S.shosh[z.shosh].nom} · печать ${fmtH(durH(z))}</span></div>
+   ${pul?`<div><small>Сумма</small><b class="num">${som(z.summa)}</b><span class="sm mu">${som(Math.round(z.h.sht))}/шт${z.h.cheg?' · скидка '+z.h.cheg+' %':''}</span></div><div><small>Оплачено</small><b class="num ${qarz(z)?'':'ok'}">${som(tolangan(z))}</b><span class="sm ${qarz(z)?(qarzYosh(z)>7?'er':'wr'):'mu'}">${qarz(z)?'остаток '+som(qarz(z))+(qarzYosh(z)?' · '+kun(qarzYosh(z)):''):'оплачен полностью'}</span></div>${['direktor','buxgalter'].includes(ROL)?`<div><small>Себестоимость · маржа</small><b class="num">${som(zTannarx(z))} · ${zMarja(z)} %</b><span class="sm mu">материал ${som(Math.round(z.h.material*z.det.soni))} · машина ${som(Math.round(z.h.mashina*z.det.soni))}${z.brak.length?' · брак +'+som(zTannarx(z)-Math.round(z.h.tannarx*z.det.soni)):''}</span></div>`:''}`:`<div><small>Сумма и оплата</small>${yashirin()}</div>`}
+  </div>
+  ${z.izoh?`<div class="sec"><h4>Комментарий</h4><div class="note" style="font-size:13px;color:var(--tx)">${esc(z.izoh)}</div></div>`:''}
+  <div class="sec"><h4>История</h4><div class="hist">${[...z.tarix].reverse().map(t=>`<div class="${/Брак|долгом/.test(t.m)?'er':''}">${esc(tarixM(t))}<br><small>${fdh(t.t)} · ${esc(t.kim)}</small></div>`).join('')}</div></div>`,b.join(''),true);
+ const on=(id,f)=>{const e=$('#'+id);if(e)e.onclick=f};
+ on('nx',()=>perevesti(z));on('nz',()=>naznach(z));on('kpb',()=>kpModal({nom:z.det.nom,kid:z.kid,det:z.det,h:z.h,shosh:z.shosh,raqam:z.raqam}));on('opl',()=>oplata(z));on('nap',()=>napomnit(z));on('brk',()=>brak(z));on('kom',()=>komment(z))}
+function yoz(z,m,pul){z.tarix.push({t:NOW().toISOString(),kim:kimN(),m,pul:!!pul});jurnal(z.raqam+': '+m);save()}
+const tarixM=t=>narxKor()||!t.pul?t.m:/Оплата/.test(t.m)?'Оплата принята':/Выдан/.test(t.m)?'Выдан клиенту':/договорная/.test(t.m)?'Расчёт сохранён как заказ':'Запись по оплате';
+function qayta(z){APP.render();if(z)ochZ(z.id)}
+function tasdiq(h,b,ok,okTxt){modal(`<h2>${h}</h2>`,b,`<button class="btn" id="tn">Отмена</button><button class="btn p" id="ty">${okTxt||'Подтвердить'}</button>`);$('#tn').onclick=closeM;$('#ty').onclick=()=>{closeM();ok()}}
+function perevesti(z){const nx=keyingi(z),S=D.S,m=mS(z.det.mid);if(!nx)return;
+ const go=(m2)=>{z.bosqich=nx;if(nx==='vydan')z.vydan=iso(T);yoz(z,m2||BOSN2[nx]);toast(`${z.raqam} → ${BOSN[nx]}`);qayta(z);if(nx==='ochered'&&!z.pid)setTimeout(()=>naznach(z),150)};
+ if(nx==='podtv'){const kerak=kerakG(z);const warn=[];if(!avansOk(z))warn.push(`предоплата ${S.avans} % не получена (оплачено ${som(tolangan(z))} из ${som(z.summa)})`);if(erkin(m)<kerak)warn.push(`свободного материала ${num(Math.max(0,erkin(m)))} ${m.birlik}, нужно ${num(kerak)}`);
+  if(warn.length){if(ROL!=='direktor'){modal('<h2>Нельзя подтвердить</h2>',`<div class="alert er">${I('ogoh')}<span>${warn.join('; ')}.</span></div><p class="note">Подтвердить без предоплаты может только директор. Внесите оплату или оформите приход материала.</p>`,`<button class="btn" id="o1">Оплата</button><button class="btn p" onclick="U.closeM()">Понятно</button>`);$('#o1').onclick=()=>oplata(z);return}
+   tasdiq('Подтвердить без условий?',`<div class="alert">${I('ogoh')}<span>${warn.join('; ')}.</span></div><p class="note">Это будет записано в историю заказа как решение директора.</p>`,()=>go('Подтверждён директором без предоплаты, материал зарезервирован'),'Подтвердить всё равно');return}
+  go('Подтверждён клиентом, материал зарезервирован');return}
+ if(nx==='pechat'){if(!z.pid){toast('Сначала назначьте принтер');naznach(z);return}const p=pr(z.pid);const j=joriy(p);if(j&&j.id!==z.id){toast(`${p.id} занят: ${j.raqam} до ${hhmm(tugash(j))}`,'Нельзя');return}if(p.holat==='tamir'){toast(`${p.id} на обслуживании до ${fdh(p.tamirGacha)}`,'Нельзя');return}
+  if(!mos(p,z)){toast(`${p.id} не подходит: материал или габариты`,'Нельзя');return}if(m.qoldiq<kerakG(z)){toast(`Материала не хватает: ${num(m.qoldiq)} ${m.birlik} на складе, нужно ${num(kerakG(z))}`,'Нельзя');return}
+  z.start=NOW().toISOString();m.qoldiq-=kerakG(z);m.harakat.push({t:z.start,turi:'расход',g:-kerakG(z),zid:z.id});go(`Печать начата на ${p.id}, списано ${num(kerakG(z))} ${m.birlik}`);return}
+ if(nx==='post'){zaversh(z);return}
+ if(nx==='vydan'&&qarz(z)>0){if(!narxKor()){toast('Остаток не оплачен — выдачу подтверждает менеджер или директор','Нельзя');return}
+  tasdiq('Выдать с долгом?',`<div class="alert">${I('hamyon')}<span>Остаток ${som(qarz(z))} не оплачен. Заказ останется в списке должников.</span></div>`,()=>{z.bosqich='vydan';z.vydan=iso(T);yoz(z,'Выдан клиенту с долгом '+som(qarz(z)),true);toast(z.raqam+' → выдан');qayta(z)},'Выдать с долгом');return}
+ go(nx==='vydan'?'Выдан клиенту':nx==='gotov'?'Готов к выдаче':nx==='ochered'?'Поставлен в очередь'+(z.pid?' на '+z.pid:''):BOSN2[nx])}
+function zaversh(z){const m=mS(z.det.mid),plan=kerakG(z);modal(`<h2>Завершить печать <small>${z.raqam}</small></h2>`,`<p class="note">Факт из слайсера или с весов — разница с планом попадёт в «Движение» склада.</p><div class="frm mt"><label>Факт расхода, ${m.birlik}<input class="inp num" id="fg" inputmode="numeric" value="${plan}"></label><label>Факт времени, ч<input class="inp num" id="fc" inputmode="decimal" value="${num(durH(z),1)}"></label></div><p class="note mt">План: ${num(plan)} ${m.birlik}, ${fmtH(durH(z))}.</p>`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="fz">Завершить → постобработка</button>`);
+ $('#fz').onclick=()=>{const g=Math.round(U.toNum($('#fg').value)),c=U.toNum($('#fc').value);if(!(g>=0)||!(c>0)||!isFinite(g)||!isFinite(c)){toast('Проверьте значения: расход ≥ 0, время > 0');return}const d=g-plan;if(d){m.qoldiq-=d;m.harakat.push({t:NOW().toISOString(),turi:d>0?'перерасход':'экономия',g:-d,zid:z.id})}
+  z.fakt={g,ch:c};z.bosqich='post';closeM();yoz(z,`Печать завершена: ${num(g)} ${m.birlik}${d?` (${d>0?'+':''}${num(d)} к плану)`:''}, ${fmtH(c)} — передано на постобработку`);toast(`${z.raqam} → постобработка`);qayta(z)}}
+function naznach(z){const T2=taklif(z);modal(`<h2>Назначить принтер <small>${z.raqam} · ${esc(z.det.nom)} · ${fmtH(durH(z))}</small></h2>`,
+ T2.length?`<p class="note">Подходят по технологии (${D.S.mat[z.det.mat].tex}), материалу и габаритам ${z.det.bbox.map(x=>num(x,0)).join('×')} мм. Время — когда принтер освободится с учётом очереди.</p><div class="more mt">${T2.map(t=>`<button data-pp="${t.p.id}"><span class="ic">${I('printer')}</span><span>${t.p.id} <small class="mu">${t.p.model}</small></span><span class="sp"></span><span class="${t.hozir?'ok':'mu'}">${t.hozir?'свободен сейчас':'освободится '+fdh(t.at)}</span></button>`).join('')}</div>`:`<div class="alert er">${I('ogoh')}<span>Нет принтера под этот материал и габариты. Проверьте настройки парка.</span></div>`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button>`);
+ $$('[data-pp]').forEach(b=>b.onclick=()=>{z.pid=b.dataset.pp;const was=z.bosqich;if(z.bosqich==='podtv')z.bosqich='ochered';closeM();yoz(z,`Назначен принтер ${z.pid}`+(was==='podtv'?', поставлен в очередь':''));toast(`${z.raqam} → ${z.pid}`);qayta(z)})}
+function oplata(z){const q=qarz(z);modal(`<h2>Оплата <small>${z.raqam} · ${esc(kl(z.kid).nom)}</small></h2>`,`<div class="dl"><div><small>Сумма заказа</small><b class="num">${som(z.summa)}</b></div><div><small>Оплачено</small><b class="num">${som(tolangan(z))}</b></div><div><small>Остаток</small><b class="num ${q?'wr':'ok'}">${som(q)}</b></div></div>
+ ${q?`<div class="frm mt" style="margin-top:14px"><label>Сумма, сум<input class="inp num" id="ps" inputmode="numeric" value="${q}"></label><label>Способ<select class="inp" id="pu">${Object.entries(USUL).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label><label>Дата<input class="inp" id="pd" type="date" value="${iso(T)}"></label></div><div class="note mt" id="pe"></div>`:'<p class="note mt">Заказ оплачен полностью.</p>'}
+ ${D.PAY.filter(p=>p.zid===z.id).length?`<div class="sec"><h4>Платежи</h4>${table([{t:'Дата',f:p=>fdd(p.t)},{t:'Способ',f:p=>USUL[p.usul]},{t:'Сумма',f:p=>som(p.summa),n:1}],D.PAY.filter(p=>p.zid===z.id),{keep:true})}</div>`:''}`,
+ q?`<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="pok">Принять оплату</button>`:`<button class="btn" onclick="U.closeM()">Закрыть</button>`);
+ const ok=$('#pok');if(ok)ok.onclick=()=>{const s=Math.round(U.toNum($('#ps').value));if(s<=0){$('#pe').textContent='Введите сумму';return}if(s>q+1){$('#pe').innerHTML=`<span class="er">Сумма больше остатка ${som(q)}</span>`;return}
+  const us=$('#pu').value;D.PAY.unshift({id:uid('p'),zid:z.id,t:$('#pd').value||iso(T),summa:s,usul:us});closeM();yoz(z,`Оплата ${som(s)} (${USUL[us]})${qarz(z)?', остаток '+som(qarz(z)):' — оплачен полностью'}`,true);toast(`Принято ${som(s)}`);qayta(z)}}
+function brak(z){const m=mS(z.det.mid);modal(`<h2>Брак / перепечатка <small>${z.raqam}</small></h2>`,`<p class="note">Материал и время брака списываются на себестоимость заказа, с клиента не берутся.</p><div class="frm mt"><label>Штук в брак<input class="inp num" id="bn" inputmode="numeric" value="1"></label><label>Причина<select class="inp" id="bs"><option>отлипание от стола</option><option>обрыв прутка</option><option>смещение слоёв</option><option>засор сопла</option><option>деформация (warping)</option><option>не прошёл контроль размеров</option><option>другое</option></select></label><label>Материал, ${m.birlik}<input class="inp num" id="bg" inputmode="numeric" value="${Math.round(z.h.g)}"></label><label>Время, ч<input class="inp num" id="bc" inputmode="decimal" value="${num(z.h.ch,1)}"></label></div>`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn d" id="bok">Записать брак</button>`);
+ $('#bn').oninput=e=>{const n=Math.max(1,Math.round(U.toNum(e.target.value))||1);$('#bg').value=Math.round(z.h.g*n);$('#bc').value=num(z.h.ch*n,1)};
+ $('#bok').onclick=()=>{const n=Math.max(1,Math.round(U.toNum($('#bn').value))||1),g=Math.round(U.toNum($('#bg').value)),c=U.toNum($('#bc').value),s=$('#bs').value;if(!(g>=0)||!(c>=0)||!isFinite(g)||!isFinite(c)){toast('Проверьте значения: материал и время не могут быть отрицательными');return}
+  z.brak.push({t:NOW().toISOString(),g,ch:c,sabab:s+', '+n+' шт',kim:kimN()});m.qoldiq-=g;m.harakat.push({t:NOW().toISOString(),turi:'брак',g:-g,zid:z.id});closeM();yoz(z,`Брак: ${n} шт, ${s} — перепечатка (${num(g)} ${m.birlik}, ${fmtH(c)})`);toast('Брак записан, материал списан');qayta(z)}}
+function komment(z){modal(`<h2>Комментарий <small>${z.raqam}</small></h2>`,`<textarea class="inp" id="kt" style="width:100%;min-height:90px" placeholder="Например: клиент просил матовый чёрный, резьбу M6 проверить калибром">${esc(z.izoh)}</textarea>`,`<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="kok">Сохранить</button>`);
+ $('#kok').onclick=()=>{z.izoh=$('#kt').value.trim();closeM();yoz(z,'Комментарий обновлён');qayta(z)}}
+function napomnit(z){const k=kl(z.kid);const t=`Здравствуйте${k.kontakt?', '+k.kontakt:''}! Напоминаем об оплате по заказу ${z.raqam} (${z.det.nom}, ${z.det.soni} шт): остаток ${som(qarz(z))}${qarzYosh(z)?', срок оплаты истёк '+kun(qarzYosh(z))+' назад':''}. Оплата: ${D.S.rekv.bank}. ${D.S.rekv.nom}, ${D.S.rekv.tel}`;
+ modal(`<h2>Напоминание <small>${esc(k.nom)} · ${esc(k.tel||'')}</small></h2>`,`<textarea class="inp" id="nt" style="width:100%;min-height:120px">${esc(t)}</textarea><p class="note mt">Отправка в Telegram — из рабочей системы; в образце текст копируется.</p>`,`<button class="btn" onclick="U.closeM()">Закрыть</button><button class="btn p" id="nk">${I('kopiya')} Скопировать</button>`);
+ $('#nk').onclick=()=>{kopiya($('#nt').value);yoz(z,'Напоминание об оплате подготовлено')}}
+/* ================= ПРИНТЕРЫ ================= */
+let GH=48;
+function rPrint(a){const now=NOW(),ax0=new Date(now);ax0.setMinutes(0,0,0);ax0.setHours(ax0.getHours()-2);const ax1=new Date(ax0.getTime()+GH*36e5),W=ax1-ax0;
+ const px=t=>Math.max(0,Math.min(100,(t-ax0)/W*100));const step=GH<=24?2:GH<=48?4:6;const ticks=[];for(let h=0;h<=GH;h+=step){const t=new Date(ax0.getTime()+h*36e5);ticks.push(t)}
+ const days=[];for(let t=new Date(ax0);t<ax1;t.setHours(t.getHours()+1)){if(t.getHours()===0)days.push(new Date(t))}
+ const bez=D.Z.filter(z=>z.bosqich==='ochered'&&!z.pid).sort((a,b)=>a.muddat<b.muddat?-1:1);const band=bandP().length;
+ const rows=D.PR.map(p=>{const R=reja(p);const j=joriy(p);return`<div class="gr"><div class="gn"><b>${p.id} <span class="mu" style="font-weight:400">${p.tex}</span></b><small>${p.model}${p.nozzle?' · сопло '+String(p.nozzle).replace('.',',')+' мм':''}</small><small class="${p.holat==='tamir'?'wr':j?'':'mu'}">${p.holat==='tamir'?'обслуживание':j?'занят до '+hhmm(tugash(j)):'свободен'}</small></div>
+  <div class="gl" style="--cols:${GH/step}">${R.length?R.map(b=>{if(b.e<ax0||b.s>ax1)return'';const l=px(b.s),w=Math.max(.6,px(b.e)-l);const k=b.z&&kech(b.z);
+   return`<div class="gb ${b.tur==='q'?'q':b.tur==='t'?'t':''} ${k&&k.t==='er'?'late':''}" style="left:${l}%;width:${w}%" ${b.z?`data-z="${b.z.id}"`:''} title="${b.z?b.z.raqam+' '+esc(b.z.det.nom)+' ×'+b.z.det.soni+' · '+fdh(b.s)+' → '+fdh(b.e)+(b.tur==='q'?' · план':''):esc(p.tamirIzoh||'обслуживание')+' · до '+fdh(b.e)}">${b.z?b.z.raqam+' '+esc(b.z.det.nom):esc(b.nom||'обслуживание')}</div>`}).join(''):`<span class="gfree">свободен — очередь пуста</span>`}<div class="now" style="left:${px(now)}%"></div></div></div>`}).join('');
+ a.innerHTML=`<div class="top"><div><h1>Принтеры <span class="dt">${hhmm(now)}, ${kunNom()}</span></h1><div class="sub">Печатают <b>${D.PR.filter(p=>joriy(p)).length} из ${D.PR.length}</b>${bez.length?`, в очереди без принтера <b class="wr">${bez.length}</b>`:', очередь распределена'}. ${D.PR.filter(p=>p.holat==='tamir').length?`На обслуживании: <b>${D.PR.filter(p=>p.holat==='tamir').map(p=>p.id).join(', ')}</b>.`:''}</div></div><span class="sp"></span>
+  <div class="seg" id="gh">${[24,48,72].map(h=>`<button data-gh="${h}" class="${GH===h?'on':''}">${h} ч</button>`).join('')}</div></div>
+ <div class="card p0"><h3>${I('kal')} Загрузка принтеров <small>сплошной блок — печатается, пунктир — в очереди, штриховка — обслуживание, красная рамка — просрочен</small></h3>
+  <div class="gantw" style="margin-top:10px"><div class="gant"><div class="gh"><div></div><div class="tl"><div class="now" style="left:${px(now)}%"></div>${ticks.map(t=>`<span style="left:${px(t)}%">${hhmm(t)}</span>`).join('')}${days.map(t=>`<span class="day" style="left:${px(t)}%">${fd(t)}, ${U.HK[t.getDay()]}</span>`).join('')}</div></div>${rows}</div></div></div>
+ <div class="pcards" style="margin-top:12px">${D.PR.map(p=>{const j=joriy(p),nq=navbatP(p),prc=j?Math.min(100,Math.round((now-new Date(j.start))/(durH(j)*36e5)*100)):0;const k=j&&kech(j);const op=['direktor','operator'].includes(ROL);
+  return`<div class="pcard"><div class="h"><b>${p.id}</b><small>${p.model}</small><span class="sp"></span>${p.holat==='tamir'?'<span class="pill wr">обслуживание</span>':j?'<span class="pill pechat">печать</span>':'<span class="pill mu">свободен</span>'}</div>
+   ${p.holat==='tamir'?`<div class="cur mu">${esc(p.tamirIzoh||'')}</div><div class="nx">до ${fdh(p.tamirGacha)}</div>`:j?`<div class="cur"><span class="code">${j.raqam}</span> ${esc(j.det.nom)} ×${j.det.soni}</div><div class="bar"><i style="width:${prc}%"></i></div><div class="nx">${prc} % · начат ${fdh(j.start)} · до ${hhmm(tugash(j))}${k&&k.t==='er'?` · <span class="er">${esc(k.txt)}</span>`:''}</div>`:`<div class="cur mu">ничего не печатает</div>`}
+   <div class="nx">${nq.length?'далее: '+nq.map(z=>z.raqam+' ('+fmtH(durH(z))+')').join(', '):'очередь пуста'}</div>
+   <div class="nx mu">материалы: ${p.mats.map(k2=>D.S.mat[k2].nom).join(', ')}</div>
+   ${op?`<div class="acts">${j?`<button class="btn s" data-fin="${j.id}">Завершить</button><button class="btn s" data-oz="${j.id}">Карта</button>`:nq[0]&&p.holat!=='tamir'?`<button class="btn s p" data-start="${nq[0].id}">Начать ${nq[0].raqam}</button>`:''}${p.holat==='tamir'?`<button class="btn s" data-tam="${p.id}">Вернуть в работу</button>`:!j?`<button class="btn s" data-tam="${p.id}">Обслуживание</button>`:''}</div>`:''}</div>`}).join('')}</div>
+ <div class="card" style="margin-top:12px"><h3>${I('soat')} Очередь без принтера <small>${bez.length?'нажмите на предложение — заказ встанет в план':'все заказы в очереди распределены'}</small></h3>
+  ${bez.length?table([{t:'Заказ',f:z=>`<b class="mono">${z.raqam}</b><span class="sm">${esc(z.det.nom)} ×${z.det.soni}</span>`},{t:'Материал',f:z=>`${mdot(mS(z.det.mid))} ${esc(matN(z.det))}`,m:1},{t:'Печать',f:z=>fmtH(durH(z)),n:1},{t:'Срок',f:z=>`<span class="mono">${fd(z.muddat)}</span>`},{t:'Предложение',f:z=>{const t=taklif(z).slice(0,2);return t.length?t.map(x=>`<button class="btn s" data-tk="${z.id}" data-tp="${x.p.id}">${x.p.id} ${x.hozir?'сейчас':'после '+hhmm(x.at)}</button>`).join(' '):'<span class="er">нет подходящего принтера</span>'},w:1}],bez,{click:z=>`data-oz="${z.id}"`,keep:true}):''}</div>`;
+ $$('[data-gh]',a).forEach(b=>b.onclick=()=>{GH=+b.dataset.gh;APP.render()});
+ $$('[data-z]',a).forEach(b=>b.onclick=e=>{e.stopPropagation();ochZ(b.dataset.z)});$$('[data-oz]',a).forEach(b=>b.onclick=e=>{if(e.target.closest('[data-tk]')||e.target.closest('[data-fin]'))return;ochZ(b.dataset.oz)});
+ $$('[data-tk]',a).forEach(b=>b.onclick=e=>{e.stopPropagation();const z=D.Z.find(x=>x.id===b.dataset.tk);z.pid=b.dataset.tp;yoz(z,`Назначен принтер ${z.pid}`);toast(`${z.raqam} → ${z.pid}`);APP.render()});
+ $$('[data-start]',a).forEach(b=>b.onclick=()=>{const z=D.Z.find(x=>x.id===b.dataset.start);perevesti(z)});
+ $$('[data-fin]',a).forEach(b=>b.onclick=e=>{e.stopPropagation();zaversh(D.Z.find(x=>x.id===b.dataset.fin))});
+ $$('[data-tam]',a).forEach(b=>b.onclick=()=>{const p=pr(b.dataset.tam);if(p.holat==='tamir'){p.holat='ok';p.tamirGacha=null;jurnal(p.id+' возвращён в работу');save();toast(p.id+' в работе');APP.render();return}
+  modal(`<h2>Обслуживание ${p.id}</h2>`,`<div class="frm"><label>Что делаем<input class="inp" id="ti" value="чистка сопла и калибровка стола"></label><label>Сколько часов<input class="inp num" id="th" inputmode="numeric" value="4"></label></div>`,`<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="tok">Поставить на обслуживание</button>`);
+  $('#tok').onclick=()=>{p.holat='tamir';p.tamirIzoh=$('#ti').value;p.tamirGacha=new Date(NOW().getTime()+U.toNum($('#th').value)*36e5).toISOString();closeM();jurnal(p.id+' на обслуживании: '+p.tamirIzoh);save();toast(p.id+' на обслуживании');APP.render()}});
+ rolBar(a)}
+
+/* ================= СКЛАД ================= */
+let SF='all';
+function rSklad(a){const M=D.M.filter(m=>SF==='all'||SF==='malo'&&mHolat(m)!=='ok'||SF==='FDM'&&m.mat!=='RESIN'||SF==='SLA'&&m.mat==='RESIN').sort((x,y)=>(mHolat(x)==='ok')-(mHolat(y)==='ok')||x.mat.localeCompare(y.mat));
+ const malo=D.M.filter(m=>mHolat(m)!=='ok'),jamiG=D.M.filter(m=>m.mat!=='RESIN').reduce((s,m)=>s+m.qoldiq,0),jamiMl=D.M.filter(m=>m.mat==='RESIN').reduce((s,m)=>s+m.qoldiq,0);
+ const r30=D.M.reduce((s,m)=>s+rasxod30(m),0),zapas=r30?Math.round(jamiG/(r30/30)):0;
+ const kir=D.M.flatMap(m=>m.kirim.map(k=>({...k,m}))).sort((x,y)=>x.sana<y.sana?1:-1)[0];
+ const har=D.M.flatMap(m=>m.harakat.map(h=>({...h,m}))).filter(h=>(NOW()-new Date(h.t))<7*864e5).sort((x,y)=>x.t<y.t?1:-1);
+ const cols=[{t:'Материал',f:m=>`<b>${D.S.mat[m.mat].nom}</b> <span class="mu">${esc(m.rang)}</span><span class="sm">${esc(m.brend)} · ${D.S.mat[m.mat].tex}</span>`},{t:'Цвет',f:m=>`${mdot(m)} ${esc(m.rang)}`,m:1},
+  {t:'Остаток',f:m=>`<b>${num(m.qoldiq)} ${m.birlik}</b>`,n:1},{t:'Резерв / свободно',f:m=>`${rezerv(m)?num(rezerv(m)):'—'} / <b class="${erkin(m)<m.min?'wr':''}">${num(Math.max(0,erkin(m)))}</b>`,n:1},{t:'Минимум',f:m=>num(m.min),n:1,m:1},
+  {t:'Запас',f:m=>{const mx=Math.max(m.min*3,m.qoldiq+rezerv(m),1),w=Math.min(100,m.qoldiq/mx*100),h=mHolat(m);return`<div class="lvl"><i class="${h}" style="width:${w}%"></i><u style="left:${Math.min(100,m.min/mx*100)}%"></u></div><div class="lv"><span>${h==='er'?'нет':h==='wr'?'мало':'в норме'}</span><span>${xvatitTxt(m)}</span></div>`},w:1},
+  {t:'Расход 30 дн',f:m=>num(rasxod30(m))+' '+m.birlik,n:1,m:1},{t:'',f:m=>['direktor','sklad'].includes(ROL)?`<button class="btn s" data-pr="${m.id}">Приход</button>`:''}];
+ a.innerHTML=`<div class="top"><div><h1>Склад материалов <span class="dt">${D.M.length} позиций</span></h1><div class="sub">${malo.length?`Мало: <b class="wr">${malo.map(m=>D.S.mat[m.mat].nom+' '+m.rang+' (свободно '+num(Math.max(0,erkin(m)))+' из '+num(m.qoldiq)+' '+m.birlik+')').join(', ')}</b>. `:'Запасы в норме. '}На складе <b>${num(jamiG/1000,1)} кг</b> филамента и <b>${num(jamiMl)} мл</b> фотополимера${zapas?`, при текущем расходе хватит примерно на <b>${kun(zapas)}</b>`:''}.</div></div><span class="sp"></span>
+  ${['direktor','sklad'].includes(ROL)?`<button class="btn" id="per">${I('tarozi')} Пересчёт</button><button class="btn p" id="prx">${I('qosh')} Приход</button>`:''}</div>
+ <div class="tools"><div class="chips">${[['all','Все',D.M.length],['malo','Мало',malo.length],['FDM','Филамент',D.M.filter(m=>m.mat!=='RESIN').length],['SLA','Фотополимер',D.M.filter(m=>m.mat==='RESIN').length]].map(([k,n,c])=>`<button class="chip ${SF===k?'on':''}" data-c="${k}">${n}<em>${c}</em></button>`).join('')}</div></div>
+ ${table(cols,M,{grp:m=>mHolat(m)==='ok'?'В норме':'Мало',empty:'Нет позиций'})}
+ <div class="grid k2" style="margin-top:12px">
+  <div class="card"><h3>${I('aylan')} Движение за 7 дней <small>резерв снимается при старте печати</small></h3>
+   ${har.length?table([{t:'Когда',f:h=>`<span class="mono">${fdh(h.t)}</span>`},{t:'Материал',f:h=>`${mdot(h.m)} ${D.S.mat[h.m.mat].nom} ${esc(h.m.rang)}`},{t:'Операция',f:h=>`${h.turi}${h.zid?' <span class="mono mu">'+(D.Z.find(z=>z.id===h.zid)||{}).raqam+'</span>':''}`},{t:'г / мл',f:h=>`<span class="${h.g<0?'':'ok'}">${h.g>0?'+':''}${num(h.g)}</span>`,n:1}],har.slice(0,10),{keep:true}):'<div class="empty">За неделю движений не было</div>'}</div>
+  <div class="card"><h3>${I('katushka')} Сводка</h3><div class="dl"><div><small>Позиций</small><b class="num">${D.M.length}</b></div><div><small>Ниже минимума</small><b class="num ${malo.length?'wr':''}">${malo.length}</b></div><div><small>Зарезервировано</small><b class="num">${num(D.M.reduce((s,m)=>s+rezerv(m),0))} г</b></div><div><small>Расход за 30 дн</small><b class="num">${num(r30)} г</b></div><div><small>Последний приход</small><b>${kir?fdd(kir.sana):'—'}</b><span class="sm mu">${kir?D.S.mat[kir.m.mat].nom+' '+kir.m.rang+' · '+num(kir.g)+' '+kir.m.birlik:''}</span></div><div><small>Брак за 30 дн</small><b class="num">${num(-D.M.reduce((s,m)=>s+m.harakat.filter(h=>h.turi==='брак'&&(NOW()-new Date(h.t))<30*864e5).reduce((q,h)=>q+h.g,0),0))} г</b></div></div>
+   <p class="note mt">Расход списывается автоматически при старте печати по расчёту; оператор уточняет факт при завершении. Минимум для каждой катушки задаётся здесь.</p></div>
+ </div>`;
+ $$('[data-c]',a).forEach(b=>b.onclick=()=>{SF=b.dataset.c;APP.render()});$$('[data-pr]',a).forEach(b=>b.onclick=e=>{e.stopPropagation();prixod(mS(b.dataset.pr))});
+ const px=$('#prx',a);if(px)px.onclick=()=>prixod();const pe=$('#per',a);if(pe)pe.onclick=pereschet;rolBar(a)}
+function prixod(m){modal('<h2>Приход материала</h2>',`<div class="frm"><label>Материал<select class="inp" id="pm">${D.M.map(x=>`<option value="${x.id}" ${m&&m.id===x.id?'selected':''}>${D.S.mat[x.mat].nom} · ${x.rang}</option>`).join('')}</select></label><label>Количество, г / мл<input class="inp num" id="pg" inputmode="numeric" value="1000"></label><label>Цена закупки, сум (необязательно)<input class="inp num" id="pc" inputmode="numeric" placeholder="180 000"></label><label>Дата<input class="inp" id="pdt" type="date" value="${iso(T)}"></label><label>Минимум для этой позиции, г<input class="inp num" id="pmin" inputmode="numeric" value="${(m||D.M[0]).min}"></label></div>`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="pok">Оприходовать</button>`);
+ $('#pm').onchange=e=>{$('#pmin').value=mS(e.target.value).min};
+ $('#pok').onclick=()=>{const mm=mS($('#pm').value),g=Math.round(U.toNum($('#pg').value));if(g<=0){toast('Введите количество');return}mm.qoldiq+=g;mm.min=Math.round(U.toNum($('#pmin').value))||mm.min;mm.kirim.unshift({sana:$('#pdt').value||iso(T),g,narx:Math.round(U.toNum($('#pc').value))});mm.harakat.push({t:NOW().toISOString(),turi:'приход',g});
+  jurnal(`Приход: ${D.S.mat[mm.mat].nom} ${mm.rang} +${num(g)} ${mm.birlik}`);save();closeM();toast(`+${num(g)} ${mm.birlik} · ${D.S.mat[mm.mat].nom} ${mm.rang}`);APP.render()}}
+function pereschet(){modal('<h2>Пересчёт остатков</h2>',`<p class="note">Взвесьте катушки и введите фактический остаток — разница запишется в движение как «пересчёт».</p>${table([{t:'Материал',f:m=>`${mdot(m)} ${D.S.mat[m.mat].nom} ${esc(m.rang)}`},{t:'Учёт',f:m=>num(m.qoldiq)+' '+m.birlik,n:1},{t:'Факт',f:m=>`<input class="inp num" data-pf="${m.id}" inputmode="numeric" value="${m.qoldiq}" style="width:110px;height:34px">`,n:1}],D.M,{keep:true})}`,
+ `<button class="btn" onclick="U.closeM()">Отмена</button><button class="btn p" id="psv">Сохранить пересчёт</button>`);
+ $('#psv').onclick=()=>{let n=0;$$('[data-pf]').forEach(i=>{const m=mS(i.dataset.pf),v=Math.round(U.toNum(i.value));if(v!==m.qoldiq){m.harakat.push({t:NOW().toISOString(),turi:'пересчёт',g:v-m.qoldiq});m.qoldiq=v;n++}});if(n)jurnal(`Пересчёт склада: ${n} позиций`);save();closeM();toast(n?`Пересчёт: изменено ${n} позиций`:'Расхождений нет');APP.render()}}
+/* ================= ФИНАНСЫ ================= */
+let FP='oy';
+function davr(){const n=FP==='kun'?0:FP==='hafta'?6:T.getDate()-1;return addD(-n)}
+function rFin(a){const b=davr(),Z=D.Z,pay=D.PAY.filter(p=>p.t>=b),post=pay.reduce((s,p)=>s+p.summa,0),nachZ=Z.filter(z=>z.sana>=b&&z.bosqich!=='raschet'),nach=nachZ.reduce((s,z)=>s+z.summa,0);
+ const dolgZ=Z.filter(z=>['vydan','gotov'].includes(z.bosqich)&&qarz(z)>0).sort((x,y)=>qarzYosh(y)-qarzYosh(x)),dolg=dolgZ.reduce((s,z)=>s+qarz(z),0);
+ const vyd=Z.filter(z=>z.bosqich==='vydan'&&z.vydan>=b),vS=vyd.reduce((s,z)=>s+z.summa,0),vT=vyd.reduce((s,z)=>s+zTannarx(z),0),marja=vS?Math.round((vS-vT)/vS*100):0;
+ const age=[['0–7 дн',0,7],['8–30 дн',8,30],['31–60 дн',31,60],['> 60 дн',61,9999]].map(([n,lo,hi])=>{const zs=dolgZ.filter(z=>qarzYosh(z)>=lo&&qarzYosh(z)<=hi);return{n,s:zs.reduce((s,z)=>s+qarz(z),0),k:zs.length,er:lo>30}});const mxA=Math.max(...age.map(x=>x.s),1);
+ const X=D.X.filter(x=>x.sana>=b),xs=X.reduce((s,x)=>s+x.summa,0);const XT={};X.forEach(x=>XT[x.turi]=(XT[x.turi]||0)+x.summa);
+ const oyN=d=>{const [y,m]=d.split('-');return U.OY[+m-1]};const cur={oy:iso(T).slice(0,7),nach:Z.filter(z=>z.sana.slice(0,7)===iso(T).slice(0,7)&&z.bosqich!=='raschet').reduce((s,z)=>s+z.summa,0),post:D.PAY.filter(p=>p.t.slice(0,7)===iso(T).slice(0,7)).reduce((s,p)=>s+p.summa,0)};
+ const oyl=[...D.OYL,cur],mxO=Math.max(...oyl.map(o=>Math.max(o.nach,o.post)),1);
+ const dn={kun:'сегодня',hafta:'за 7 дней',oy:'за '+OYN[T.getMonth()]};
+ a.innerHTML=`<div class="top"><div><h1>Финансы <span class="dt">${dn[FP]}</span></h1><div class="sub">Поступило <b>${mln(post)} сум</b>, начислено <b>${mln(nach)} сум</b>; не оплачено <b class="${dolg?'wr':''}">${mln(dolg)} сум</b> у ${dolgZ.length?new Set(dolgZ.map(z=>z.kid)).size+' клиентов':'— долгов нет'}${vyd.length&&['direktor','buxgalter'].includes(ROL)?`, маржа по выданным <b class="${marja<25?'wr':''}">${marja} %</b>`:''}.</div></div><span class="sp"></span>
+  <div class="seg" id="fp">${[['kun','Сегодня'],['hafta','Неделя'],['oy','Месяц']].map(([k,n])=>`<button data-fp="${k}" class="${FP===k?'on':''}">${n}</button>`).join('')}</div>${ROL!=='menejer'?`<button class="btn" id="csv">${I('tushir')} Экспорт</button>`:''}</div>
+ <div class="pnl">
+  <div class="kpis"><div class="kpi"><div class="l">${I('hamyon')} Поступило</div><div class="v">${mln(post)}<small>сум</small></div><div class="d">${pay.length} платеж${pay.length===1?'':pay.length<5?'а':'ей'}</div></div><div class="kpi"><div class="l">${I('jadval')} Начислено</div><div class="v">${mln(nach)}<small>сум</small></div><div class="d">${zak(nachZ.length)} подтверждено</div></div><div class="kpi" data-go="fin"><div class="l">${I('ogoh')} Не оплачено</div><div class="v ${dolg?'wr':''}">${mln(dolg)}<small>сум</small></div><div class="d">${dolgZ.length?zak(dolgZ.length)+', старше 30 дн: '+mln(age[2].s+age[3].s):'долгов нет'}</div></div>${['direktor','buxgalter'].includes(ROL)?`<div class="kpi"><div class="l">${I('ustun')} Маржа по выданным</div><div class="v ${vyd.length&&marja<25?'wr':''}">${vyd.length?marja+' %':'—'}</div><div class="d">${vyd.length?zak(vyd.length)+' · себестоимость '+mln(vT):'выдач за период нет'}</div></div>`:`<div class="kpi" data-go="zakaz"><div class="l">${I('okdoira')} Выдано</div><div class="v">${vyd.length}</div><div class="d">${zak(vyd.length)} за период · ${mln(vS)} сум</div></div>`}</div>
+  <div class="grid k2">
+   <div class="card"><h3>${I('soat')} Долги по возрасту <small>от даты выдачи</small></h3><div class="hbar">${age.map(x=>`<span>${x.n}</span><div class="hb"><i class="${x.er?'er':''}" style="width:${x.s/mxA*100}%"></i></div><span class="hn ${x.er&&x.s?'er':''}">${x.s?mln(x.s):'—'}<small>${x.k?zak(x.k):''}</small></span>`).join('')}</div>
+    <div class="sec"><h4>Должники <span class="sp"></span><span class="pill mu nd">${dolgZ.length}</span></h4><div class="list">${dolgZ.slice(0,6).map(z=>`<div class="it" data-z="${z.id}"><div class="m"><b>${esc(kl(z.kid).nom)}</b><small>${z.raqam} · ${esc(z.det.nom)} · ${z.bosqich==='gotov'?'готов, не выдан':'выдан '+fd(z.vydan)}</small></div><b class="num ${qarzYosh(z)>30?'er':''}">${som(qarz(z))}</b>${qarzYosh(z)?`<span class="pill ${qarzYosh(z)>30?'er':qarzYosh(z)>7?'wr':'mu'} nd">${kun(qarzYosh(z))}</span>`:''}<button class="btn s" data-nap="${z.id}">Напомнить</button></div>`).join('')||'<div class="empty">Должников нет</div>'}</div></div></div>
+   <div class="card"><h3>${I('hamyon')} Оплаты <small>последние</small><span class="sp"></span>${ROL!=='menejer'?`<button class="btn s" id="opl">Принять оплату</button>`:''}</h3>
+    ${table([{t:'Дата',f:p=>`<span class="mono">${fdd(p.t)}</span>`},{t:'Клиент',f:p=>{const z=D.Z.find(x=>x.id===p.zid);return z?`${esc(kl(z.kid).nom)}<span class="sm">${z.raqam} · ${esc(z.det.nom)}</span>`:'—'},w:1},{t:'Способ',f:p=>USUL[p.usul],m:1},{t:'Сумма',f:p=>som(p.summa),n:1}],D.PAY.slice().sort((x,y)=>x.t<y.t?1:-1).slice(0,8),{click:p=>`data-z="${p.zid}"`,keep:true})}
+    <div class="sec"><h4>Расходы ${dn[FP]} <span class="sp"></span><b class="num">${som(xs)}</b></h4>${Object.keys(XT).length?`<div class="hbar" style="grid-template-columns:150px 1fr 110px">${Object.entries(XT).sort((p,q)=>q[1]-p[1]).map(([t,s])=>`<span>${t}</span><div class="hb"><i style="width:${s/Math.max(...Object.values(XT))*100}%"></i></div><span class="hn">${mln(s)}</span>`).join('')}</div>`:'<p class="note">За период расходов не записано — они вносятся по месяцу.</p>'}</div></div>
+  </div>
+  <div class="card"><h3>${I('ustun')} Начислено и поступило по месяцам <small>6 месяцев, млн сум</small></h3>
+   <div class="bars">${oyl.map(o=>`<div class="b"><em>${mln(o.post)}</em><div class="pr"><i style="height:${o.nach/mxO*100}%" title="начислено ${som(o.nach)}"></i><i class="acc" style="height:${o.post/mxO*100}%" title="поступило ${som(o.post)}"></i></div><small>${oyN(o.oy)}</small></div>`).join('')}</div>
+   <div class="leg"><span><i></i>начислено</span><span><i class="acc"></i>поступило</span></div></div>
+  ${['direktor','buxgalter'].includes(ROL)?`<div class="card p0"><h3>${I('jadval')} По заказам <small>выданные ${dn[FP]} · себестоимость = материал + машинное время + постобработка + брак</small></h3>
+   ${table([{t:'Заказ',f:z=>`<b class="mono">${z.raqam}</b><span class="sm">${esc(z.det.nom)} ×${z.det.soni}</span>`},{t:'Клиент',f:z=>esc(kl(z.kid).nom),m:1},{t:'Сумма',f:z=>som(z.summa),n:1},{t:'Себестоимость',f:z=>som(zTannarx(z)),n:1},{t:'Маржа',f:z=>`<span class="${zMarja(z)<25?'wr':''}">${zMarja(z)} %</span>`,n:1},{t:'Оплачено',f:z=>som(tolangan(z)),n:1},{t:'Остаток',f:z=>qarz(z)?`<span class="${qarzYosh(z)>30?'er':'wr'}">${som(qarz(z))}</span>`:'<span class="mu">—</span>',n:1}],vyd.sort((x,y)=>x.vydan<y.vydan?1:-1),{click:z=>`data-z="${z.id}"`,empty:'Выдач за период нет',foot:vyd.length?[{v:'Итого '+zak(vyd.length)},{v:'',t:''},{v:som(vS),n:1,t:'Сумма'},{v:som(vT),n:1,t:'Себестоимость'},{v:marja+' %',n:1,t:'Маржа'},{v:som(vyd.reduce((s,z)=>s+tolangan(z),0)),n:1,t:'Оплачено'},{v:som(vyd.reduce((s,z)=>s+qarz(z),0)),n:1,t:'Остаток'}]:null})}</div>`:''}
+ </div>`;
+ $$('[data-fp]',a).forEach(b=>b.onclick=()=>{FP=b.dataset.fp;APP.render()});$$('[data-z]',a).forEach(r=>r.onclick=e=>{if(e.target.closest('[data-nap]'))return;ochZ(r.dataset.z)});
+ $$('[data-nap]',a).forEach(b=>b.onclick=()=>napomnit(D.Z.find(z=>z.id===b.dataset.nap)));
+ const o=$('#opl',a);if(o)o.onclick=()=>{const zs=D.Z.filter(z=>qarz(z)>0&&z.bosqich!=='raschet').sort((x,y)=>qarzYosh(y)-qarzYosh(x));modal('<h2>Принять оплату</h2>',`<div class="more">${zs.map(z=>`<button data-oz="${z.id}"><span class="ic">${I('hamyon')}</span><span>${z.raqam} · ${esc(kl(z.kid).nom)}<br><small class="mu">${esc(z.det.nom)} · ${BOSN[z.bosqich]}</small></span><span class="sp"></span><b class="num">${som(qarz(z))}</b></button>`).join('')}</div>`);$$('[data-oz]').forEach(b=>b.onclick=()=>{closeM();oplata(D.Z.find(z=>z.id===b.dataset.oz))})};
+ const c=$('#csv',a);if(c)c.onclick=()=>U.csv(D.Z.filter(z=>z.bosqich!=='raschet').map(z=>({Заказ:z.raqam,Клиент:kl(z.kid).nom,Деталь:z.det.nom,Кол:z.det.soni,Материал:matN(z.det),Этап:BOSN[z.bosqich],Срок:z.muddat,Сумма:z.summa,Оплачено:tolangan(z),Остаток:qarz(z),Себестоимость:zTannarx(z)})),'additive_zakazy_'+iso(T)+'.csv');
+ rolBar(a)}
+/* ================= НАСТРОЙКИ ================= */
+let SAVED='';
+function rNastr(a){const S=D.S,ro=ROL!=='direktor';const inp=(path,v,st)=>`<input class="inp" data-s="${path}" value="${v}" inputmode="decimal" ${ro?'readonly':''} ${st?`step="${st}"`:''}>`;
+ const probe={nom:'Корпус датчика',hajm:42.6,bbox:[68,44,31],mat:'PETG',mid:'m1',infill:.3,qatlam:.2,support:true,post:['support'],soni:12};const h=hisob(probe,12,'std');
+ a.innerHTML=`<div class="top"><div><h1>Настройки · ставки расчёта</h1><div class="sub">${ro?`Изменяет только директор — вы видите ставки в режиме чтения.`:`Каждая цифра здесь меняет расчёт сразу. Строка «Проверка» внизу показывает, как ставки влияют на типовую деталь.`} Изменено: <b>${esc(S.ver)}</b></div></div><span class="sp"></span>${ro?'':`<span class="saved" id="svd">${SAVED}</span><button class="btn p" id="ssv">Сохранить</button>`}</div>
+ <div class="setg">
+  <div class="card"><h3>${I('katushka')} Материалы, сум/г <small>ставка за грамм с учётом износа</small></h3>${Object.entries(S.mat).map(([k,m])=>`<div class="srow"><span>${m.nom}<br><small>плотность ${String(m.zich).replace('.',',')} г/см³ · ${m.tex}</small></span>${inp('mat.'+k+'.narx',m.narx)}<em>сум</em></div>`).join('')}</div>
+  <div class="card"><h3>${I('soat')} Машинное время, сум/ч</h3>${Object.entries(S.soat).map(([k,v])=>`<div class="srow"><span>${k}</span>${inp('soat.'+k,v)}<em>сум</em></div>`).join('')}
+   <h3 style="margin-top:18px">${I('shosh')} Срочность, коэффициент</h3>${Object.entries(S.shosh).map(([k,s])=>`<div class="srow"><span>${s.nom}<br><small>${s.kun}</small></span>${inp('shosh.'+k+'.k',String(s.k).replace('.',','))}<em>×</em></div>`).join('')}
+   <h3 style="margin-top:18px">${I('kub')} Модель расчёта</h3><div class="srow"><span>Скорость печати FDM<br><small>г/ч при слое 0,2</small></span>${inp('gSoat',S.gSoat)}<em>г/ч</em></div><div class="srow"><span>Доля сплошных стенок<br><small>в объёме детали</small></span>${inp('qobiq',Math.round(S.qobiq*100))}<em>%</em></div></div>
+  <div class="card"><h3>${I('tozalash')} Постобработка, сум/шт</h3>${Object.entries(S.post).map(([k,p])=>`<div class="srow"><span>${p.nom}</span>${inp('post.'+k+'.narx',p.narx)}<em>сум</em></div>`).join('')}
+   <h3 style="margin-top:18px">${I('hamyon')} Цена и условия</h3>
+   <div class="srow"><span>Наценка</span>${inp('ustama',S.ustama)}<em>%</em></div><div class="srow"><span>Минимальный чек</span>${inp('minChek',S.minChek)}<em>сум</em></div><div class="srow"><span>Предоплата</span>${inp('avans',S.avans)}<em>%</em></div><div class="srow"><span>Стандартный срок</span>${inp('muddat',S.muddat)}<em>дн</em></div>
+   ${S.seriya.map(([n,p],i)=>`<div class="srow"><span>Скидка за серию от ${n} шт</span>${inp('seriya.'+i+'.1',p)}<em>%</em></div>`).join('')}<div class="srow"><span>Скидка выше — подтверждение директора</span>${inp('chegMax',S.chegMax)}<em>%</em></div></div>
+ </div>
+ <div class="card" style="margin-top:12px"><h3>${I('hujjat')} Реквизиты <small>попадают в КП и напоминания об оплате</small></h3><div class="frm f3">${[['nom','Название'],['stir','ИНН'],['tel','Телефон'],['manzil','Адрес'],['bank','Оплата (банк, р/с)']].map(([k,n])=>`<label class="${k==='manzil'||k==='bank'?'w2':''}">${n}<input class="inp" data-r="${k}" value="${esc(S.rekv[k])}" ${ro?'readonly':''}></label>`).join('')}</div></div>
+ <div class="card" style="margin-top:12px"><h3>${I('kalk')} Проверка <small>типовая деталь: ${probe.nom}, PETG, ${probe.bbox.join('×')} мм, слой 0,2, заполнение 30 %, поддержки, ×12</small></h3>
+  <div class="dl"><div><small>Вес / время на шт</small><b class="num">${num(h.g,0)} г · ${fmtH(h.ch)}</b></div><div><small>Себестоимость за шт</small><b class="num">${som(Math.round(h.tannarx))}</b></div><div><small>Цена за шт</small><b class="num">${som(Math.round(h.narxSht))}</b></div><div><small>Итого за 12 шт</small><b class="num">${som(h.jami)}${h.cheg?' <span class="mu">(−'+h.cheg+' %)</span>':''}</b></div></div></div>
+ <div class="card" style="margin-top:12px"><h3>${I('printer')} Парк принтеров</h3>${table([{t:'Принтер',f:p=>`<b class="mono">${p.id}</b><span class="sm">${p.model}</span>`},{t:'Технология',f:p=>p.tex},{t:'Стол, мм',f:p=>p.hajm.join('×'),n:1},{t:'Материалы',f:p=>p.mats.map(k=>S.mat[k].nom).join(', '),w:1},{t:'Состояние',f:p=>p.holat==='tamir'?'<span class="pill wr">обслуживание</span>':'<span class="pill ok">в работе</span>'}],D.PR,{keep:true})}<p class="note mt">Состав парка и материалы по принтерам в образце заданы условно; в рабочей системе редактируются здесь же.</p></div>
+ ${ro?'':`<div class="card" style="margin-top:12px"><h3>${I('qayt')} Данные образца</h3><p class="note">Вернуть исходные условные данные (заказы, склад, оплаты, ставки). Текущие изменения будут потеряны.</p><button class="btn d mt" id="rst2">Сбросить данные образца</button></div>`}`;
+ if(!ro){const live=()=>{const S2=JSON.parse(JSON.stringify(S));const bad=[];$$('[data-s]',a).forEach(i=>{let v=U.toNum(i.value);const p=i.dataset.s.split('.'),k=p[0];const lim=k==='qobiq'?[1,99]:k==='ustama'?[0,500]:k==='avans'?[0,100]:k==='seriya'||k==='chegMax'?[0,90]:k==='minChek'?[0,1e9]:k==='muddat'?[1,60]:k==='shosh'?[1,5]:[1,1e9];if(!isFinite(v)||v<lim[0]||v>lim[1]){bad.push(i);i.style.borderColor='var(--er)';v=Math.min(lim[1],Math.max(lim[0],v||lim[0]))}else i.style.borderColor='';let o=S2;for(let j=0;j<p.length-1;j++)o=o[p[j]];o[p[p.length-1]]=k==='qobiq'?v/100:v});$$('[data-r]',a).forEach(i=>S2.rekv[i.dataset.r]=i.value.trim()||S.rekv[i.dataset.r]);S2.bad=bad.length;const h2=hisob(probe,12,'std',S2);const b=$$('.dl b',a).slice(0,4);b[0].textContent=num(h2.g,0)+' г · '+fmtH(h2.ch);b[1].textContent=som(Math.round(h2.tannarx));b[2].textContent=som(Math.round(h2.narxSht));b[3].innerHTML=som(h2.jami)+(h2.cheg?' <span class="mu">(−'+h2.cheg+' %)</span>':'');return S2};
+  $$('[data-s]',a).forEach(i=>i.oninput=live);
+  $('#ssv',a).onclick=()=>{const S2=live();if(S2.bad){toast('Есть недопустимые значения — поля отмечены красным');return}delete S2.bad;S2.ver=`${T.getDate()} ${U.OYT[T.getMonth()]}, ${ROLI[ROL]}`;D.S=S2;SAVED='сохранено '+hhmm(NOW());jurnal('Ставки расчёта изменены');save();toast('Ставки сохранены — новые расчёты пойдут по ним');APP.render()};
+  $('#rst2',a).onclick=()=>tasdiq('Сбросить данные образца?','<p class="note">Все заказы, оплаты и ставки вернутся к исходным условным значениям.</p>',()=>{$('#rst').click()},'Сбросить')}
+ rolBar(a)}
+
+/* ================= ИЛОВА: кириш, каркас ================= */
+load();
+const CFG={nom:'Additive Technology',logo:'AT',shior:'3D-печать · Ташкент',
+ bolimlar:['panel','kalk','zakaz','print','sklad','fin','nastr'],
+ mod:{panel:[I('panel'),'Панель','Панель'],kalk:[I('kalk'),'Расчёт','Расчёт'],zakaz:[I('jadval'),'Заказы','Заказы'],print:[I('printer'),'Принтеры','Принтеры'],sklad:[I('katushka'),'Склад','Склад'],fin:[I('hamyon'),'Финансы','Финансы'],nastr:[I('sozlama'),'Настройки','Ставки']},
+ rollar:{direktor:['panel','kalk','zakaz','print','sklad','fin','nastr'],menejer:['kalk','zakaz','panel','print','sklad','fin'],operator:['print','zakaz','sklad'],sklad:['sklad','zakaz'],buxgalter:['fin','zakaz','kalk','panel','nastr']},
+ rolNom:ROLN,
+ badge:k=>{if(k==='zakaz')return D.Z.filter(koradi).filter(z=>kech(z)&&kech(z).t==='er').length;if(k==='sklad')return D.M.filter(m=>mHolat(m)!=='ok').length;if(k==='fin'&&narxKor())return D.Z.filter(z=>['vydan','gotov'].includes(z.bosqich)&&qarzYosh(z)>7).length;if(k==='print')return D.Z.filter(z=>z.bosqich==='ochered'&&!z.pid).length;return 0},
+ onGo:(v,f)=>{f=f||{};closeM(true);if(v==='zakaz')F={f:f.f||'all',q:'',et:'',mat:''};if(v==='kalk'&&f.f==='new')yangiCalc();if(v!=='panel')DIQ_HAMMA=false},
+ mobil:['panel','kalk','zakaz','print','fin'],moreIc:I('nuqtalar'),moreNom:()=>'Ещё',onMore:rest=>yana(rest),
+ render:{panel:rPanel,kalk:rKalk,zakaz:rZakaz,print:rPrint,sklad:rSklad,fin:rFin,nastr:rNastr}};
+const APP=U.app(CFG);APP.cfg=CFG;window.APP=APP;
+function yana(rest){const M=CFG.mod;modal('<h2>Ещё</h2>',`<div class="more">${rest.map(k=>`<button data-yv="${k}"><span class="ic">${M[k][0]}</span>${M[k][1]}${CFG.badge(k)?'<span class="bdg">'+CFG.badge(k)+'</span>':''}</button>`).join('')}</div>
+ <div class="sec"><div class="who" style="margin-bottom:10px"><span class="ic">${I(ROLIC[ROL])}</span><div><b>${ROLI[ROL]}</b><small>${ROLN[ROL]}</small></div></div><div class="more"><button id="yc"><span class="ic">${I('chiq')}</span>Сменить роль</button><button id="yo"><span class="ic">${I('kitob')}</span>Об образце</button><button id="yt"><span class="ic">${I('qayt')}</span>Сбросить данные образца</button></div></div>`);
+ $$('[data-yv]').forEach(b=>b.onclick=()=>{closeM();APP.go(b.dataset.yv)});$('#yc').onclick=()=>{closeM();chiqish()};$('#yt').onclick=()=>{closeM();$('#rst').click()};$('#yo').onclick=()=>{closeM();haqida()}}
+function haqida(){modal('<h2>Об образце</h2>',`<p>Это образец системы управления для Additive Technology: расчёт стоимости по STL, заказы и их этапы, загрузка принтеров, склад материалов и оплаты — в одной панели, на компьютере и телефоне.</p>
+ <p class="note">Клиенты, суммы, сотрудники и ставки условные. Данные хранятся на этом устройстве; в рабочей системе — на сервере, у каждого сотрудника свой логин и пароль, история изменений и права по ролям.</p>
+ <div class="sec"><h4>Роли и PIN для просмотра</h4>${table([{t:'Роль',f:r=>`<b>${ROLN[r]}</b><span class="sm">${ROLD[r]}</span>`},{t:'Сотрудник',f:r=>ROLI[r]},{t:'PIN',f:r=>`<span class="mono">${PIN[r]}</span>`,n:1}],Object.keys(ROLN),{keep:true})}</div>`,`<button class="btn p" onclick="U.closeM()">Понятно</button>`)}
+/* ---------- кириш ---------- */
+let PICK=null;
+function rLogin(){const L=$('#login');const feats=[['kalk','Расчёт стоимости','STL → объём, вес, время, цена и КП за минуту'],['printer','Загрузка принтеров','кто что печатает и когда освободится'],['katushka','Склад материалов','остаток по катушкам, резерв и расход по заказам'],['hamyon','Оплаты','предоплата, долги по срокам, маржа по заказам']];
+ L.innerHTML=`<div class="login"><div class="lbrand"><div class="lg"><span class="logo">AT</span><span>Additive Technology · Ташкент</span></div><h1>Система управления 3D-печатью</h1><p>Расчёт, заказы, принтеры, склад и оплаты — в одной панели вместо нескольких таблиц.</p>
+  <div class="lfeat">${feats.map(([i,b,s])=>`<div>${I(i)}<div>${b}<small>${s}</small></div></div>`).join('')}</div></div>
+  <div class="lbox">${PICK?`<div class="pin-box"><button class="back" id="lb">${I('chap')} Другая роль</button><div class="nm"><span class="who"><span class="ic">${I(ROLIC[PICK])}</span></span>${ROLI[PICK]} · ${ROLN[PICK]}</div>
+   <label class="fld"><span>PIN-код</span><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="pinerr"></label><div class="err" id="pinerr" role="alert"></div>
+   <div class="pad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button data-k="${n}">${n}</button>`).join('')}<button data-k="x" aria-label="Стереть">${I('chap')}</button><button data-k="0">0</button><button data-k="ok" aria-label="Войти">${I('belgiok')}</button></div>
+   <p class="hint">PIN для образца: <span class="mono">${PIN[PICK]}</span>. В рабочей системе — личный логин и пароль.</p></div>`
+  :`<h2>Кто за компьютером?</h2><div class="roles">${Object.keys(ROLN).map(r=>`<button class="role" data-r="${r}"><span class="ti">${I(ROLIC[r])}</span><span class="x"><span class="n">${ROLN[r]}</span><span class="d">${ROLI[r]} · ${ROLD[r]}</span></span><span class="pin-t">PIN ${PIN[r]}</span>${I('ong')}</button>`).join('')}</div><p class="hint note" style="margin-top:10px">Образец открывается без пароля — PIN показан рядом с ролью.</p>`}</div></div>`;
+ $$('[data-r]',L).forEach(b=>b.onclick=()=>{PICK=b.dataset.r;rLogin();const p=$('#pin');if(p&&window.innerWidth>860)p.focus()});
+ const lb=$('#lb',L);if(lb)lb.onclick=()=>{PICK=null;rLogin()};
+ const pin=$('#pin',L);if(pin){const tek=()=>{if(pin.value.length===4)kirish(pin.value)};pin.addEventListener('input',()=>{$('#pinerr').textContent='';tek()});pin.form&&pin.form.addEventListener('submit',e=>{e.preventDefault();kirish(pin.value)});
+  $$('[data-k]',L).forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k==='x')pin.value=pin.value.slice(0,-1);else if(k==='ok')kirish(pin.value);else if(pin.value.length<4){pin.value+=k;tek()}})}}
+function kirish(v){if(v===PIN[PICK]){ROL=PICK;SES.save({rol:ROL,t:Date.now()});boshla()}else{const e=$('#pinerr');if(e)e.textContent='Неверный PIN';const p=$('#pin');if(p){p.value='';p.focus()}}}
+function boshla(hashBilan){document.body.classList.remove('kirish');$('#login').innerHTML='';APP.rol=ROL;$('#whonom').textContent=ROLI[ROL];$('#whorol').textContent=ROLN[ROL];$('#whoic').innerHTML=I(ROLIC[ROL]);
+ const h=hashBilan?location.hash.slice(1):'';APP.view=CFG.rollar[ROL].includes(h)?h:CFG.rollar[ROL][0];APP.render();window.scrollTo(0,0)}
+function chiqish(){SES.clear();closeM();PICK=null;document.body.classList.add('kirish');try{history.replaceState(null,'','#')}catch(e){}rLogin();window.scrollTo(0,0)}
+$('#chiq').onclick=chiqish;$('#chiq2').onclick=chiqish;
+$('#rst').onclick=()=>{ST.clear();seed();CALC=null;F={f:'all',q:'',et:'',mat:''};toast('Данные образца восстановлены');if(!document.body.classList.contains('kirish'))APP.render()};
+/* ---------- оффлайн ва янги версия ---------- */
+const off=()=>{$('#offbar').hidden=navigator.onLine!==false};window.addEventListener('online',off);window.addEventListener('offline',off);off();
+if('serviceWorker'in navigator&&/^https?:/.test(location.protocol)){navigator.serviceWorker.register('sw.js').catch(()=>{});let first=!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(first){first=false;return}if($('#mo')||document.activeElement&&/INPUT|TEXTAREA/.test(document.activeElement.tagName))toast('Доступна новая версия — обновите страницу');else location.reload()})}
+/* ---------- синов учун ---------- */
+window.NAMUNA={get D(){return D},hisob,kech,qarz,qarzYosh,tolangan,zTannarx,zMarja,taklif,reja,joriy,bosh,rezerv,erkin,mHolat,xvatit,diqqat,stl,qutiSTL,silSTL,kerakG,durH,tugash,avansOk,mos,get ROL(){return ROL},get CALC(){return CALC},
+ ochZ,kpModal,perevesti,naznach,oplata,prixod,brak,zaversh,yangiKlient,qoldaNarx,kir(r){ROL=r;SES.save({rol:r,t:Date.now()});boshla()},chiq:chiqish,seed(){ST.clear();seed()},BOSQ,PIN};
+/* ---------- старт ---------- */
+const ses=SES.load();if(ses&&ROLN[ses.rol]){ROL=ses.rol;boshla(true)}else rLogin();
+
+})();</script>
+</body>
+</html>
