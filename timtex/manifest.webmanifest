@@ -1,0 +1,15 @@
+{
+  "id": "./index.html",
+  "name": "TIMTEX — boshqaruv tizimi (namuna)",
+  "short_name": "TIMTEX",
+  "description": "Buyurtmalar, ishlab chiqarish, ombor, tannarx, to'lov holati, ish haqi. Namuna — ma'lumotlar misol uchun.",
+  "lang": "uz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f4fa",
+  "theme_color": "#161d42",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
