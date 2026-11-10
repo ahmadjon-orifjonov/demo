@@ -1,0 +1,15 @@
+{
+  "id": "./index.html",
+  "name": "ROBI Agrotech — boshqaruv tizimi (namuna)",
+  "short_name": "ROBI Agrotech",
+  "description": "Sotuv, ombor, servis chaqiruvlari, fermalar, to'lov holati. Namuna — ma'lumotlar misol uchun.",
+  "lang": "uz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fd",
+  "theme_color": "#0a1230",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
