@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0c2b2e">
+<meta name="description" content="AIDWELL TEX uchun boshqaruv tizimi namunasi: ombor, mijozlar to'lov holati, buyurtmalar, ishlab chiqarish partiyalari. Ma'lumotlar misol uchun.">
+<title>AIDWELL TEX — boshqaruv tizimi (namuna)</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/golos-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Shrift: Golos Text (SIL OFL 1.1), fonts\ papkasidan; kirill bo'laklari faqat kirill yozuvida yuklanadi. */
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-cyrillic-ext-wght-normal.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+:root{
+	--blue:#0b6b63;--blue2:#08544e;--bluet:#e0f2ef;--sky:#58c2b4;
+	--night:#0c2b2e;--night2:#123f41;--ink:#14292b;--tx2:#445a5c;--muted:#5a7173;
+	--bg:#f2f7f6;--card:#fff;--line:#d7e5e3;--line2:#e7f0ee;
+	--grn:#17764a;--grnt:#e2f3ea;--amb:#925600;--ambt:#fcf1dc;--red:#b3261e;--redt:#fbe9e7;--vio:#5b3ea6;--viot:#eee9fa;
+	--r:10px;--r2:14px;--sh:0 1px 2px rgba(12,43,46,.06),0 1px 1px rgba(12,43,46,.04);--elev:0 12px 32px rgba(12,43,46,.22);
+	--font:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+	--yon:236px;--tepa:52px;--past:62px;--nam:26px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.45 var(--font);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* Namuna tasmasi */
+.namuna{position:fixed;top:0;left:0;right:0;height:var(--nam);z-index:60;background:var(--ambt);color:var(--amb);font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:1px solid #f0dcb4;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Kirish */
+.kirish{min-height:100vh;padding:calc(var(--nam) + 28px) 16px 32px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,var(--night) 0,var(--night2) 300px,var(--bg) 300px)}
+.kirish .belgi{color:#fff;text-align:center;margin-bottom:22px}
+.belgi b{display:block;font-size:26px;font-weight:800;letter-spacing:.02em}
+.belgi span{display:block;color:#bfe6df;font-size:14px;margin-top:2px}
+.kirish .quti{width:100%;max-width:460px;background:var(--card);border-radius:var(--r2);box-shadow:var(--elev);padding:22px 20px}
+.kirish h1{font-size:19px;font-weight:700;margin-bottom:4px}
+.kirish .izoh{color:var(--muted);font-size:14px;margin-bottom:16px}
+.rollar{display:grid;gap:10px}
+.rol{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;min-height:64px}
+.rol:hover{border-color:var(--blue);background:#f6fbfa}
+.rol .dum{width:42px;height:42px;border-radius:10px;background:var(--bluet);color:var(--blue);display:grid;place-items:center;flex:none}
+.rol .n{font-weight:650;display:block}
+.rol .d{color:var(--muted);font-size:13px;display:block}
+.rol .pin-t{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.pinq{display:grid;gap:12px}
+.pinq input{font-size:26px;letter-spacing:.5em;text-align:center;padding:10px 8px 10px calc(8px + .5em);height:56px}
+.xato{color:var(--red);font-size:13.5px;min-height:20px}
+.kirish .ost{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;max-width:460px}
+.til{display:inline-flex;border:1px solid rgba(255,255,255,.28);border-radius:999px;overflow:hidden;margin:0 auto 18px}
+.til button{background:transparent;border:0;color:#cfe9e4;padding:7px 14px;font-size:13.5px;font-weight:600;min-height:36px}
+.til button[aria-pressed=true]{background:#fff;color:var(--night)}
+
+/* Qobiq */
+.yon{position:fixed;top:var(--nam);left:0;bottom:0;width:var(--yon);background:var(--night);color:#cfe3e0;display:flex;flex-direction:column;padding:16px 12px;z-index:40}
+.yon .belgi{text-align:left;padding:4px 8px 16px}
+.yon .belgi b{font-size:19px;color:#fff}
+.yon .belgi span{font-size:12.5px}
+.yon nav{display:grid;gap:2px}
+.yon nav a{display:flex;align-items:center;gap:11px;color:#cfe3e0;padding:10px 10px;border-radius:8px;font-weight:550;font-size:14.5px}
+.yon nav a:hover{background:rgba(255,255,255,.07);text-decoration:none}
+.yon nav a[aria-current=page]{background:var(--blue);color:#fff}
+.yon nav a .son{margin-left:auto;background:#fff;color:var(--night);border-radius:999px;font-size:12px;font-weight:700;padding:1px 7px}
+.yon .oxir{margin-top:auto;display:grid;gap:10px;padding:8px}
+.yon .kim{font-size:13.5px;line-height:1.3}
+.yon .kim b{display:block;color:#fff;font-size:14.5px}
+.yon .til{margin:0;justify-self:start}
+.yon .chiq{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.2);color:#cfe3e0;border-radius:8px;padding:8px 10px;font-size:14px}
+.tepa,.past{display:none}
+.sahifa{margin-left:var(--yon);padding:calc(var(--nam) + 22px) 28px 48px;max-width:1280px}
+.bosh{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.bosh h1{font-size:24px;font-weight:750;line-height:1.2}
+.bosh .ost{color:var(--muted);font-size:14px;margin-top:2px}
+.bosh .ong{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.orqa{display:inline-flex;align-items:center;gap:4px;font-size:14px;margin-bottom:10px;min-height:32px}
+
+/* Tugma */
+.t{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 14px;min-height:40px;font-weight:600;font-size:14.5px;color:var(--ink);white-space:nowrap}
+.t:hover{border-color:#b3cdc9;text-decoration:none}
+.t.a{background:var(--blue);border-color:var(--blue);color:#fff}
+.t.a:hover{background:var(--blue2)}
+.t.x{color:var(--red)}
+.t.k{min-height:34px;padding:5px 10px;font-size:13.5px}
+.t.keng{width:100%;min-height:48px;font-size:16px}
+.t[disabled]{opacity:.5;cursor:not-allowed}
+.hav{background:none;border:0;padding:0;color:var(--blue);font-weight:600}
+
+/* Karta */
+.k{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px}
+.k>h2,.k>.kb h2{font-size:16px;font-weight:700}
+.kb{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.kb .ong{margin-left:auto;display:flex;gap:8px;align-items:center}
+.kb .ost{color:var(--muted);font-size:13px;width:100%;margin-top:-6px}
+.qator2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.qator2>.k{margin-bottom:0}
+.qator2{margin-bottom:16px}
+
+/* KPI */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.kp{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);box-shadow:var(--sh);padding:14px 16px;display:block;color:inherit}
+a.kp:hover{border-color:var(--blue);text-decoration:none}
+.kp .y{color:var(--muted);font-size:13px;font-weight:550}
+.kp .q{font-size:25px;font-weight:750;line-height:1.2;margin-top:4px;white-space:nowrap}
+.kp .q small{font-size:14px;font-weight:600;color:var(--tx2)}
+.kp .p{font-size:13px;color:var(--tx2);margin-top:4px}
+.kp .p.yom{color:var(--red);font-weight:600}
+.kp .p.yax{color:var(--grn);font-weight:600}
+
+/* Belgi (badge) */
+.b{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 9px;font-size:12.5px;font-weight:650;background:var(--line2);color:var(--tx2);white-space:nowrap}
+.b.ko{background:var(--bluet);color:var(--blue)}
+.b.ya{background:var(--grnt);color:var(--grn)}
+.b.sa{background:var(--ambt);color:var(--amb)}
+.b.qi{background:var(--redt);color:var(--red)}
+.b.bi{background:var(--viot);color:var(--vio)}
+
+/* E'tibor ro'yxati */
+.et{display:grid}
+.et a{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-top:1px solid var(--line2);color:inherit}
+.et a:first-child{border-top:0}
+.et a:hover{text-decoration:none;background:#f6fbfa}
+.et .nuq{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none;background:var(--ambt);color:var(--amb)}
+.et .nuq.qi{background:var(--redt);color:var(--red)}
+.et .nuq.ko{background:var(--bluet);color:var(--blue)}
+.et .nuq svg{width:17px;height:17px}
+.et b{display:block;font-weight:650;font-size:14.5px}
+.et span{color:var(--tx2);font-size:13.5px}
+.et .uq{margin-left:auto;color:var(--muted);align-self:center}
+
+/* Jadval */
+.jw{overflow-x:auto;margin:0 -4px}
+table.j{width:100%;border-collapse:collapse;font-size:14px}
+.j th{font-size:12.5px;font-weight:650;color:var(--muted);text-align:left;padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.j td{padding:10px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.j tr:last-child td{border-bottom:0}
+.j .r{text-align:right;white-space:nowrap}
+.j .kich{color:var(--muted);font-size:13px;display:block}
+.j td b{font-weight:650}
+.j tr.bos{cursor:pointer}
+.j tr.bos:hover td{background:#f6fbfa}
+.j tfoot td{font-weight:700;border-top:1px solid var(--line);border-bottom:0}
+.bosh-yoq{color:var(--muted);padding:18px 4px;text-align:center;font-size:14px}
+
+/* Yorliqlar (tabs) */
+.yor{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px;scrollbar-width:none}
+.yor::-webkit-scrollbar{display:none}
+.yor a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;min-height:38px;font-weight:600;font-size:14px;color:var(--tx2);white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+.yor a:hover{text-decoration:none;border-color:#b3cdc9}
+.yor a[aria-current=true]{background:var(--night);border-color:var(--night);color:#fff}
+.yor .son{background:var(--line2);color:var(--tx2);border-radius:999px;font-size:12px;padding:0 6px;font-weight:700}
+.yor a[aria-current=true] .son{background:rgba(255,255,255,.2);color:#fff}
+.yor .son.qi{background:var(--red);color:#fff}
+
+/* Ro'yxat kartalari */
+.ry{display:grid;gap:10px}
+.el{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;color:inherit;box-shadow:var(--sh)}
+a.el:hover{border-color:var(--blue);text-decoration:none}
+.el .ust{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:5px}
+.el .id{font-weight:700;font-size:13.5px;color:var(--muted)}
+.el .nom{font-weight:650;font-size:15.5px}
+.el .mat{color:var(--tx2);font-size:14px;margin-top:2px}
+.el .pas{display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:8px;font-size:13.5px;color:var(--tx2);align-items:center}
+.el .pas .ong{margin-left:auto;font-weight:700;color:var(--ink);font-size:15px}
+.el.shosh{border-left:4px solid var(--red)}
+.el .amal{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.izl{position:relative;margin-bottom:14px;max-width:420px}
+.izl input{width:100%;padding-left:38px}
+.izl svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+
+/* Maydon */
+.in,select.in,textarea.in{width:100%;border:1px solid #bfd2cf;background:#fff;border-radius:9px;padding:9px 11px;min-height:42px;font-size:16px}
+textarea.in{min-height:84px;resize:vertical}
+.in:focus{border-color:var(--blue);outline:3px solid var(--bluet)}
+.may{display:grid;gap:5px;margin-bottom:12px}
+.may>span{font-size:13.5px;font-weight:600;color:var(--tx2)}
+.may2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.yord{font-size:13px;color:var(--muted)}
+.tan{display:flex;align-items:center;gap:8px;min-height:40px}
+.tan input{width:20px;height:20px}
+
+/* Bosqichlar */
+.qadam{display:flex;gap:4px;margin:4px 0 2px;overflow-x:auto}
+.qadam span{flex:1;min-width:86px;text-align:center;font-size:12.5px;font-weight:650;padding:7px 6px;background:var(--line2);color:var(--muted);border-radius:6px;white-space:nowrap}
+.qadam span.ot{background:var(--grnt);color:var(--grn)}
+.qadam span.hoz{background:var(--blue);color:#fff}
+
+/* Ta'rif ro'yxati */
+.tr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.tr div>span{display:block;color:var(--muted);font-size:12.5px;font-weight:600}
+.tr div>b{font-weight:600;font-size:15px}
+.jami{display:grid;gap:6px;max-width:340px;margin-left:auto;margin-top:12px;font-size:14.5px}
+.jami div{display:flex;justify-content:space-between;gap:16px}
+.jami .kat{font-weight:750;font-size:16px;border-top:1px solid var(--line);padding-top:6px}
+.eslat{background:var(--ambt);color:#6b4000;border-radius:var(--r);padding:10px 12px;font-size:14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
+.eslat.qi{background:var(--redt);color:#7d1a14}
+.eslat.ko{background:var(--bluet);color:var(--blue2)}
+.eslat svg{margin-top:1px}
+.tarix{display:grid;gap:8px;font-size:13.5px;color:var(--tx2)}
+.tarix div{display:flex;gap:10px}
+.tarix time{color:var(--muted);white-space:nowrap;min-width:78px}
+
+/* Chiziqlar */
+.grafik{display:flex;align-items:flex-end;gap:10px;height:190px;padding-top:8px}
+.grafik .oy{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;min-width:0}
+.grafik .juft{flex:1;display:flex;align-items:flex-end;gap:4px;width:100%;justify-content:center}
+.grafik .juft i{display:block;width:42%;max-width:26px;border-radius:5px 5px 0 0;background:var(--blue);min-height:2px}
+.grafik .juft i.x{background:#a9c9c4}
+.grafik .oy span{font-size:12px;color:var(--muted);white-space:nowrap}
+.grafik .oy.hoz span{color:var(--ink);font-weight:700}
+.afs{display:flex;gap:16px;font-size:13px;color:var(--tx2);margin-top:10px;flex-wrap:wrap}
+.afs i{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--blue);margin-right:6px}
+.afs i.x{background:#a9c9c4}
+.gor{display:grid;gap:10px}
+.gor .q{display:grid;grid-template-columns:minmax(110px,34%) 1fr auto;gap:10px;align-items:center;font-size:14px}
+.gor .yol{height:10px;background:var(--line2);border-radius:999px;overflow:hidden}
+.gor .yol i{display:block;height:100%;background:var(--blue);border-radius:999px}
+.gor .yol i.qi{background:var(--red)}.gor .yol i.sa{background:#d9951c}.gor .yol i.ya{background:var(--grn)}
+.gor .q b{white-space:nowrap;font-weight:650}
+.qold{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.qold .yol{width:56px;height:6px;background:var(--line2);border-radius:999px;overflow:hidden}
+.qold .yol i{display:block;height:100%;background:var(--grn)}
+.qold.kam .yol i{background:#d9951c}.qold.yoq .yol i{background:var(--red)}
+.qold.kam b,.qold.yoq b{color:var(--red)}
+
+/* Oyna */
+.parda{position:fixed;inset:0;background:rgba(12,43,46,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}
+.oyna{background:#fff;border-radius:var(--r2);box-shadow:var(--elev);width:100%;max-width:520px;max-height:calc(100vh - 32px);display:flex;flex-direction:column}
+.oyna header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line2)}
+.oyna header h2{font-size:17px;font-weight:700}
+.oyna header button{margin-left:auto;background:none;border:0;width:40px;height:40px;display:grid;place-items:center;border-radius:8px;color:var(--muted)}
+.oyna .ich{padding:16px 18px;overflow-y:auto}
+.oyna footer{padding:12px 18px;border-top:1px solid var(--line2);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.xabar{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--night);color:#fff;padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:550;z-index:90;box-shadow:var(--elev);max-width:calc(100vw - 32px);text-align:center}
+.pastki{color:var(--muted);font-size:13px;margin-top:26px;display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center}
+
+.usta-sal{background:var(--night);color:#fff;border-radius:var(--r2);padding:16px 18px;margin-bottom:16px}
+.usta-sal b{font-size:19px;display:block}
+.usta-sal span{color:#bfe6df;font-size:14px}
+.yuk{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.yuk div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.yuk b{display:block;font-weight:650}
+.yuk span{font-size:13px;color:var(--tx2)}
+
+@media (max-width:1100px){.kpi{grid-template-columns:repeat(2,1fr)}.qator2{grid-template-columns:1fr}}
+@media (max-width:899px){
+	.yon{display:none}
+	.tepa{display:flex;position:fixed;top:var(--nam);left:0;right:0;height:var(--tepa);background:var(--night);color:#fff;align-items:center;gap:10px;padding:0 8px 0 14px;z-index:40}
+	.tepa b{font-size:16px;font-weight:750;white-space:nowrap}
+	.tepa .rolb{font-size:12.5px;color:#bfe6df;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+	.tepa .ong{margin-left:auto;display:flex;align-items:center;gap:2px;flex:none}
+	.tepa .tilb{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;font-size:12.5px;font-weight:650;padding:0 10px;height:32px;white-space:nowrap}
+	.tepa .chiq{background:none;border:0;color:#fff;width:44px;height:44px;display:grid;place-items:center}
+	.past{display:flex;position:fixed;bottom:0;left:0;right:0;height:calc(var(--past) + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:#fff;border-top:1px solid var(--line);z-index:40}
+	.past a,.past button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:11px;font-weight:600;background:none;border:0;position:relative;padding:0 2px}
+	.past a span,.past button span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+	.past a:hover{text-decoration:none}
+	.past a[aria-current=page]{color:var(--blue)}
+	.past .son{position:absolute;top:7px;left:calc(50% + 6px);background:var(--red);color:#fff;border-radius:999px;font-size:10.5px;font-weight:700;padding:0 5px;min-width:16px;text-align:center}
+	.sahifa{margin-left:0;padding:calc(var(--nam) + var(--tepa) + 16px) 14px calc(var(--past) + 28px)}
+	.bosh h1{font-size:21px}
+	.kpi{gap:10px}
+	.kp{padding:12px}
+	.kp .q{font-size:20px}
+	.k{padding:14px}
+	.may2{grid-template-columns:1fr}
+	.parda{align-items:flex-end;padding:0}
+	.oyna{max-width:none;border-radius:16px 16px 0 0;max-height:calc(100vh - 60px)}
+	.oyna footer .t{flex:1}
+	.xabar{bottom:calc(var(--past) + 14px)}
+	/* Jadval -> kartalar */
+	table.j.tel thead{display:none}
+	table.j.tel,table.j.tel tbody,table.j.tel tr,table.j.tel td{display:block;width:100%}
+	table.j.tel tr{padding:10px 0;border-bottom:1px solid var(--line2)}
+	table.j.tel tr:last-child{border-bottom:0}
+	table.j.tel td{border:0;padding:2px 4px;text-align:left}
+	table.j.tel td.r{text-align:left}
+	table.j.tel td[data-y]{display:flex;justify-content:space-between;gap:12px}
+	table.j.tel td[data-y]::before{content:attr(data-y);color:var(--muted);font-size:13px;flex:none}
+	table.j.tel tfoot{display:block}
+	.gor .q{grid-template-columns:1fr auto}
+	.gor .q .yol{grid-column:1/-1;order:3}
+	.grafik{gap:5px}
+}
+@media (max-width:380px){.kp .q{font-size:18px}.kp .q small{font-size:12.5px}}
+@media (prefers-reduced-motion:no-preference){.oyna{animation:kir .16s ease-out}@keyframes kir{from{transform:translateY(12px);opacity:.6}}}
+@media print{.yon,.tepa,.past,.namuna{display:none}.sahifa{margin:0;padding:0}}
+/* Telefon: bosqichlar ikki qatorda, ta'rif ikki ustunda, kichik havolalar bosishga qulay */
+@media (max-width:899px){
+	.qadam{flex-wrap:wrap;overflow:visible}
+	.qadam span{min-width:calc(33.33% - 4px);flex:1 1 auto}
+	.tr{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 14px}
+}
+.pastki .hav,.kirish .ost .hav,.pinq+p .hav{min-height:32px;display:inline-flex;align-items:center}
+.el>a:hover{text-decoration:none}
+@media (max-width:899px){.grafik .oy span{font-size:10.5px;letter-spacing:-.01em}}
+
+/* AIDWELL: ustma-ust chiziq (pul qayerda, to'lov muddati bo'yicha) */
+.stek{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--line2);margin:4px 0 12px}
+.stek i{display:block;height:100%;min-width:3px}
+.stek i+i{border-left:2px solid #fff}
+.rang-ko{background:var(--blue)}.rang-ya{background:var(--grn)}.rang-sa{background:#d9951c}.rang-qi{background:var(--red)}.rang-bi{background:var(--vio)}.rang-ku{background:#8fb5b0}
+.izohr{display:grid;gap:8px;font-size:14px}
+.izohr>div,.izohr>a{display:flex;align-items:center;gap:9px;color:inherit}
+.izohr i{width:11px;height:11px;border-radius:3px;flex:none}
+.izohr b{margin-left:auto;white-space:nowrap;font-weight:650}
+.izohr small{color:var(--muted);font-size:12.5px;display:block}
+.xat{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:14px;white-space:pre-wrap;margin-bottom:12px}
+.bosqlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin-bottom:14px}
+.bosqlar div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:9px 10px;text-align:center}
+.bosqlar b{display:block;font-size:20px;font-weight:750;line-height:1.15}
+.bosqlar span{font-size:12.5px;color:var(--tx2)}
+.bosqlar div.bor{border-color:var(--blue);background:var(--bluet)}
+.qizil{color:var(--red);font-weight:650}.sariq{color:var(--amb);font-weight:650}.yashil{color:var(--grn);font-weight:650}
+h3.kich{font-size:13.5px;font-weight:700;color:var(--tx2);margin:16px 0 8px}
+.j td .kich a{font-weight:600}
+@media (max-width:899px){.bosqlar{grid-template-columns:repeat(3,1fr)}.bosqlar b{font-size:18px}}
+.rang-qq{background:#7d1a14}
+.hol{display:inline-flex;flex-direction:column;gap:3px;align-items:flex-start}
+.hol .kich{display:block}
+@media (max-width:899px){table.j.tel td[data-y] .hol{align-items:flex-end;text-align:right}}
+@media (max-width:899px){.xabar{left:14px;right:14px;transform:none;max-width:none}}
+
+</style>
+</head>
+<body>
+<div id="ilova"></div>
+<div id="oyna"></div>
+<div id="xabar" aria-live="polite"></div>
+<noscript><p style="padding:24px">Namuna ishlashi uchun brauzerda JavaScript yoqilgan bo'lishi kerak.</p></noscript>
+<script>
+(() => {
+'use strict';
+/* ===== yozuv.js ===== */
+/* Yozuv: lotin <-> kirill (o'zbekcha). Manba matnlar lotinda, oddiy ' bilan yoziladi.
+   Yozuv.kir(s)  — lotin -> kirill;  Yozuv.lot(s) — tipografik lotin (o‘, g‘, ’);
+   Yozuv.qid(s)  — qidiruv uchun bir xil ko'rinish (kirill ham lotinga keltiriladi);
+   Yozuv.dom(el, til) — tugun ichidagi matn va yorliqlarni tanlangan yozuvga o'tkazadi. */
+const Yozuv = (() => {
+	// O'zgarmaydigan nomlar (brend, fayl turi)
+	const SAQLA = new Set(['AIDWELL', 'TEX', 'Excel', 'CSV']);
+	// Yumshatish belgili o'zlashma so'zlar: [lotin o'zak, kirill o'zak, so'z aynan shu bo'lsa qo'shiladigan oxiri]
+	const OZAK = [
+		['panel', 'панель', ''], ['rol', 'роль', ''], ['filtr', 'фильтр', ''],
+		['sentabr', 'сентябр', 'ь'], ['oktabr', 'октябр', 'ь'],
+		['noyabr', 'ноябр', 'ь'], ['dekabr', 'декабр', 'ь'], ['fevral', 'феврал', 'ь'], ['aprel', 'апрел', 'ь'],
+		['iyun', 'июн', 'ь'], ['iyul', 'июл', 'ь'], ['yanvar', 'январ', 'ь'],
+	];
+	const BIR = { a: 'а', b: 'б', d: 'д', f: 'ф', g: 'г', h: 'ҳ', i: 'и', j: 'ж', k: 'к', l: 'л', m: 'м', n: 'н', o: 'о', p: 'п', q: 'қ', r: 'р', s: 'с', t: 'т', u: 'у', v: 'в', x: 'х', y: 'й', z: 'з' };
+	const UNLI = 'aeiouAEIOU';
+	const TIRNOQ = "'‘’ʻʼ`";
+	const tq = c => c !== undefined && c !== '' && TIRNOQ.includes(c);
+	const katta = c => c !== c.toLowerCase();
+	const kat = (s, asl) => katta(asl) ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
+	function soz(w) {
+		const kich = w.toLowerCase().replace(/[‘’ʻʼ`]/g, "'");
+		for (const [l, k, oxir] of OZAK) {
+			if (kich.startsWith(l)) {
+				const qol = w.slice(l.length);
+				const bosh = kat(k, w[0]);
+				return qol ? bosh + harf(qol, true) : bosh + oxir;
+			}
+		}
+		return harf(w, false);
+	}
+	// ichkari=true: so'z o'rtasidan davom (boshidagi «e» qoidasi ishlamaydi)
+	function harf(w, ichkari) {
+		let out = '';
+		for (let i = 0; i < w.length; i++) {
+			const c = w[i], n = w[i + 1], n2 = w[i + 2], cl = c.toLowerCase(), nl = n ? n.toLowerCase() : '';
+			const oldin = i > 0 ? w[i - 1] : (ichkari ? 'x' : '');
+			if ((cl === 'o' || cl === 'g') && tq(n)) { out += kat(cl === 'o' ? 'ў' : 'ғ', c); i++; continue; }
+			if (cl === 's' && nl === 'h') { out += kat('ш', c); i++; continue; }
+			if (cl === 'c' && nl === 'h') { out += kat('ч', c); i++; continue; }
+			if (cl === 'y' && nl === 'o' && !tq(n2)) { out += kat('ё', c); i++; continue; }
+			if (cl === 'y' && nl === 'u') { out += kat('ю', c); i++; continue; }
+			if (cl === 'y' && nl === 'a') { out += kat('я', c); i++; continue; }
+			if (cl === 'y' && nl === 'e') { out += kat('е', c); i++; continue; }
+			if (cl === 'e') { out += kat(oldin === '' || UNLI.includes(oldin) ? 'э' : 'е', c); continue; }
+			if (tq(c)) { out += 'ъ'; continue; }
+			if (BIR[cl]) { out += kat(BIR[cl], c); continue; }
+			out += c;
+		}
+		return out;
+	}
+	const TOKEN = /[A-Za-z0-9'‘’ʻʼ`]+(?:-[A-Za-z0-9'‘’ʻʼ`]+)*/g;
+	// Kod va model nomlari (raqam + katta harf: TY2-PK, S-1042) o'zgarmaydi
+	const kodmi = t => /\d/.test(t) && /[A-Z]/.test(t);
+
+	function kir(s) {
+		if (!s || !/[A-Za-z]/.test(s)) return s;
+		return s.replace(TOKEN, t => {
+			if (SAQLA.has(t) || kodmi(t)) return t;
+			return t.split('-').map(b => (SAQLA.has(b) ? b : soz(b))).join('-');
+		});
+	}
+	function lot(s) {
+		if (!s || s.indexOf("'") < 0) return s;
+		return s.replace(/([oOgG])'/g, '$1‘').replace(/'/g, '’');
+	}
+	const QAYTA = { 'ў': "o'", 'ғ': "g'", 'ш': 'sh', 'ч': 'ch', 'ё': 'yo', 'ю': 'yu', 'я': 'ya', 'э': 'e', 'е': 'e', 'ҳ': 'h', 'қ': 'q', 'х': 'x', 'ж': 'j', 'й': 'y', 'ц': 'ts', 'ъ': '', 'ь': '', 'ы': 'i', 'щ': 'sh' };
+	const TESK = {}; for (const k in BIR) TESK[BIR[k]] = k;
+	function qid(s) {
+		return String(s || '').toLowerCase().replace(/[Ѐ-ӿ]/g, c => QAYTA[c] !== undefined ? QAYTA[c] : (TESK[c] || c)).replace(/['‘’ʻʼ`]/g, '');
+	}
+	const ATTR = ['placeholder', 'aria-label', 'title', 'data-y'];
+	function dom(el, til) {
+		if (!el || typeof document === 'undefined') return;
+		const f = til === 'kir' ? kir : lot;
+		const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+			acceptNode: n => (n.parentElement && n.parentElement.closest('[data-asl],script,style,textarea')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+		});
+		const tugun = []; while (w.nextNode()) tugun.push(w.currentNode);
+		for (const n of tugun) { const y = f(n.nodeValue); if (y !== n.nodeValue) n.nodeValue = y; }
+		const sel = ATTR.map(a => '[' + a + ']').join(',');
+		const els = [...el.querySelectorAll(sel)]; if (el.matches && el.matches(sel)) els.push(el);
+		for (const e of els) { if (e.closest('[data-asl]')) continue; for (const a of ATTR) { const v = e.getAttribute(a); if (v) { const y = f(v); if (y !== v) e.setAttribute(a, y); } } }
+	}
+	return { kir, lot, qid, dom };
+})();
+
+
+/* ===== malumot.js ===== */
+/* Namuna ma'lumotlari. HAMMASI O'YLAB TOPILGAN: mijozlar, ismlar, telefonlar, narxlar, miqdorlar, partiyalar.
+   Faqat kompaniya nomi haqiqiy; mahsulot turlari ochiq e'lonlardagi umumiy ta'rifga mos (TADQIQOT.md).
+   Sanalar bugungi kunga nisbatan hisoblanadi — namuna har doim «yangi» ko'rinadi. */
+const Malumot = (() => {
+	const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+	// Me'yor bo'yicha xomashyo ehtiyoji: kg — 0,1 gacha, dona — butun songa yuqoriga yaxlitlanadi
+	function sarf(m, soni, xomlar) {
+		return Object.keys(m.norma).map(x => {
+			const v = Math.round(m.norma[x] * soni * 100) / 100, kg = xomlar.find(y => y.id === x).birlik === 'kg';
+			return { m: x, soni: kg ? Math.ceil(v * 10 - 1e-9) / 10 : Math.ceil(v - 1e-9) };
+		});
+	}
+	function urug(bugun) {
+		const b0 = new Date(bugun.getFullYear(), bugun.getMonth(), bugun.getDate());
+		const k = n => { const d = new Date(b0); d.setDate(d.getDate() + n); return iso(d); };
+		const M = 1e6;
+		const xodimlar = [
+			{ id: 'r1', rol: 'rahbar', ism: 'Rahbar', pin: '1111' },
+			{ id: 's1', rol: 'sotuv', ism: 'Sardor', pin: '2222' },
+			{ id: 's2', rol: 'sotuv', ism: 'Nilufar' },
+			{ id: 'o1', rol: 'ombor', ism: 'Bahrom', pin: '3333' },
+			{ id: 'i1', rol: 'ishlab', ism: 'Rustam', pin: '4444' },
+		];
+		// muddat — to'lov uchun beriladigan kun (0 = oldindan to'lov); limit — to'lanmagan summaning yuqori chegarasi
+		const C = (id, nom, tur, joy, masul, muddat, limit, menejer) => ({ id, nom, tur, joy, masul, tel: '+998 90 000 00 ' + id.slice(1).padStart(2, '0'), muddat, limit: limit * M, menejer });
+		const mijozlar = [
+			C('c1', '«Shifo ulgurji» MChJ', 'Tibbiy ulgurji', 'Toshkent', 'Farrux aka', 30, 250, 's1'),
+			C('c2', '«Darmon dorixonalari» MChJ', 'Dorixona tarmog\'i', 'Toshkent', 'Dilshod aka', 30, 150, 's1'),
+			C('c3', '«Najot farm» MChJ', 'Dorixona tarmog\'i', 'Samarqand', 'Akmal aka', 45, 120, 's2'),
+			C('c4', '«Malham tibbiy ta\'minot» MChJ', 'Tibbiy ulgurji', 'Farg\'ona', 'Odil aka', 30, 180, 's1'),
+			C('c5', 'Tuman tibbiyot birlashmasi', 'Davlat muassasasi', 'Sirdaryo viloyati', 'Xarid bo\'limi', 60, 100, 's2'),
+			C('c6', '«Bog\'lov-tex» XK', 'Ishlab chiqaruvchi', 'Toshkent viloyati', 'Sanjar aka', 15, 200, 's1'),
+			C('c7', '«Sihat farm» MChJ', 'Dorixona tarmog\'i', 'Andijon', 'Murod aka', 30, 80, 's2'),
+			C('c8', '«Vodiy med ulgurji» MChJ', 'Tibbiy ulgurji', 'Namangan', 'Ikrom aka', 30, 150, 's2'),
+			C('c9', '«Tabib savdo» YaTT', 'Kichik ulgurji', 'Toshkent', 'Zafar aka', 0, 0, 's1'),
+			C('c10', '«Zarafshon shifoxonasi»', 'Xususiy klinika', 'Buxoro', 'Ta\'minot bo\'limi', 30, 60, 's2'),
+			C('c11', '«Shimkent tibbiy ulgurji»', 'Eksport', 'Qozog\'iston', 'Yerlan aka', 0, 0, 's1'),
+			C('c12', '«Orom dorixonalari» MChJ', 'Dorixona tarmog\'i', 'Qashqadaryo', 'Jahongir aka', 30, 70, 's2'),
+		];
+		// Xomashyo va qadoq materiallari: narx — xarid narxi (faqat rahbarga ko'rinadi)
+		const X = (id, nom, guruh, birlik, narx, min, qoldiq) => ({ id, tur: 'xom', nom, guruh, birlik, narx, min, qoldiq });
+		const xomlar = [
+			X('x1', 'Paxta ipi (to\'quv uchun)', 'Xomashyo', 'kg', 38000, 3000, 4200),
+			X('x2', 'Vodorod peroksid', 'Oqartirish kimyosi', 'kg', 9500, 400, 520),
+			X('x3', 'Kaustik soda', 'Oqartirish kimyosi', 'kg', 8200, 300, 260),
+			X('x4', 'Qadoq plyonkasi', 'Qadoq', 'kg', 42000, 150, 18),
+			X('x5', 'Karton quti', 'Qadoq', 'dona', 6500, 500, 1400),
+			X('x6', 'Yorliq (etiketka)', 'Qadoq', 'dona', 60, 20000, 46000),
+			X('x7', 'Polipropilen qop', 'Qadoq', 'dona', 4200, 300, 180),
+		];
+		// Tayyor mahsulot: norma — 1 birlik uchun xomashyo sarfi (taxminiy, namuna uchun)
+		const bintN = ip => ({ x1: ip, x2: 0.0006, x3: 0.0004, x4: 0.0008, x5: 0.002, x6: 1 });
+		const dokaN = ip => ({ x1: ip, x2: 0.0012, x3: 0.0008, x7: 0.001 });
+		const T = (id, nom, guruh, birlik, narx, min, norma, q) => Object.assign({ id, tur: 'tayyor', nom, guruh, birlik, narx, min, norma, qoldiq: 0 }, q || {});
+		const tayyorlar = [
+			T('b1', 'Bint nosteril 5 m × 10 sm', 'Bint', 'dona', 1150, 30000, bintN(0.019)),
+			T('b2', 'Bint nosteril 7 m × 14 sm', 'Bint', 'dona', 2150, 30000, bintN(0.037)),
+			T('b3', 'Bint nosteril 7 m × 10 sm', 'Bint', 'dona', 1600, 15000, bintN(0.027)),
+			T('b4', 'Bint nosteril 5 m × 7 sm', 'Bint', 'dona', 850, 10000, bintN(0.013)),
+			T('b5', 'Bint nosteril 10 m × 16 sm', 'Bint', 'dona', 3300, 8000, bintN(0.06)),
+			T('b6', 'Bint 7 m × 12 sm, 30 g/m² (maxsus o\'lcham)', 'Bint', 'dona', 1400, 0, bintN(0.026), { buyurtmaga: true }),
+			T('d1', 'Oqartirilgan doka 36 g/m², rulon 90 sm × 1000 m', 'Doka', 'm', 1450, 20000, dokaN(0.035)),
+			T('d2', 'Oqartirilgan doka 30 g/m², rulon 90 sm × 1000 m', 'Doka', 'm', 1250, 15000, dokaN(0.029)),
+			T('d3', 'Oqartirilgan doka 25 g/m², rulon 90 sm × 1000 m', 'Doka', 'm', 1100, 10000, dokaN(0.024)),
+			T('d4', 'Xom doka 36 g/m², rulon 90 sm × 1000 m', 'Doka', 'm', 1080, 20000, { x1: 0.035, x7: 0.001 }, { xomDoka: true }),
+			T('d5', 'Doka kesimi 5 m, 36 g/m² (qadoqda)', 'Doka', 'dona', 7800, 2000, { x1: 0.17, x2: 0.006, x3: 0.004, x4: 0.002, x5: 0.01, x6: 1 }),
+		];
+		const mahsulotlar = [...tayyorlar, ...xomlar];
+		const topM = id => mahsulotlar.find(m => m.id === id);
+
+		// Tugagan partiyalar: [raqam, mahsulot, chiqdi, yaroqsiz, tugagan kun]
+		const tugagan = [
+			['P-0371', 'd5', 6000, 90, -99], ['P-0372', 'b1', 120000, 1900, -98], ['P-0373', 'b2', 60000, 1100, -97], ['P-0374', 'd1', 100000, 1400, -96],
+			['P-0375', 'b3', 30000, 520, -90], ['P-0377', 'b4', 25000, 380, -80], ['P-0378', 'b1', 110000, 2300, -72], ['P-0379', 'b2', 40000, 610, -66],
+			['P-0380', 'd1', 80000, 960, -60], ['P-0381', 'b5', 12000, 240, -56], ['P-0382', 'b3', 30000, 410, -50], ['P-0383', 'b1', 100000, 1500, -42],
+			['P-0384', 'd2', 30000, 450, -33], ['P-0385', 'b2', 35000, 980, -30], ['P-0386', 'd4', 60000, 500, -26], ['P-0387', 'b1', 60000, 870, -18],
+			['P-0388', 'b5', 10000, 150, -17], ['P-0389', 'd1', 40000, 520, -12], ['P-0390', 'd3', 25000, 300, -8], ['P-0391', 'b3', 15000, 190, -6],
+		];
+		const partiyalar = tugagan.map(([id, m, chiqdi, brak, t]) => ({ id, m, reja: chiqdi + brak, bosqich: 'tayyor', ochildi: k(t - 7), boshlandi: k(t - 6), muddat: k(t), tugadi: k(t), chiqdi, brak, b: null, sarf: sarf(topM(m), chiqdi + brak, xomlar) }));
+		const lotlar = partiyalar.map(p => ({ p: p.id, m: p.m, q: p.chiqdi, sana: p.tugadi }));
+
+		// Jo'natmalar: [hujjat, mijoz, kun, [[mahsulot, miqdor], ...]] — partiyalar eng eskisidan boshlab taqsimlanadi
+		const jx = [
+			['YX-1170', 'c5', -95, [['b1', 50000], ['b2', 25000], ['d5', 3000]]],
+			['YX-1178', 'c3', -70, [['b2', 12000], ['b3', 10000]]],
+			['YX-1181', 'c1', -62, [['b1', 40000], ['b2', 20000]]],
+			['YX-1183', 'c8', -58, [['b1', 35000], ['b2', 10000]]],
+			['YX-1185', 'c2', -55, [['b1', 20000], ['b4', 10000]]],
+			['YX-1188', 'c4', -48, [['d1', 30000], ['b5', 6000]]],
+			['YX-1190', 'c6', -44, [['d1', 60000]]],
+			['YX-1192', 'c12', -41, [['b1', 12000], ['b3', 6000]]],
+			['YX-1193', 'c3', -38, [['b1', 18000]]],
+			['YX-1195', 'c7', -36, [['b1', 15000], ['b3', 8000]]],
+			['YX-1196', 'c1', -34, [['b1', 30000], ['b3', 15000]]],
+			['YX-1198', 'c10', -29, [['d5', 800], ['b1', 4000], ['b2', 2000]]],
+			['YX-1199', 'c2', -27, [['b1', 25000], ['b2', 8000]]],
+			['YX-1200', 'c11', -23, [['b1', 40000], ['b2', 22000]]],
+			['YX-1201', 'c6', -21, [['d1', 50000], ['d2', 20000]]],
+			['YX-1203', 'c8', -16, [['b3', 12000], ['b5', 4000], ['d5', 1500]]],
+			['YX-1204', 'c4', -14, [['b1', 30000]]],
+			['YX-1206', 'c7', -11, [['b2', 6000], ['b4', 8000]]],
+			['YX-1207', 'c1', -9, [['b2', 15000], ['b5', 5000]]],
+			['YX-1208', 'c9', -7, [['b1', 8000], ['b4', 3000]]],
+			['YX-1209', 'c6', -5, [['d4', 40000]]],
+		];
+		const buyurtmalar = [], jonatmalar = [];
+		jx.forEach(([id, mijoz, t, q], i) => {
+			const c = mijozlar.find(x => x.id === mijoz), sana = k(t), bid = 'B-' + (3024 + i);
+			const qatorlar = q.map(([m, soni]) => {
+				let kerak = soni; const lot = [];
+				for (const l of lotlar) { if (l.m !== m || l.q <= 0 || l.sana > sana || kerak <= 0) continue; const ol = Math.min(l.q, kerak); l.q -= ol; kerak -= ol; lot.push({ p: l.p, q: ol }); }
+				if (kerak > 0) throw new Error('Namuna ma\'lumoti: ' + id + ' uchun ' + m + ' yetmaydi');
+				return { m, soni, narx: topM(m).narx, lot };
+			});
+			jonatmalar.push({ id, b: bid, mijoz, sana, muddat: k(t + c.muddat), qatorlar });
+			buyurtmalar.push({ id: bid, mijoz, holat: 'jonatildi', sana: k(t - 2), kerak: sana, izoh: '', qatorlar: q.map(([m, soni]) => ({ m, soni, narx: topM(m).narx })) });
+		});
+		for (const m of tayyorlar) m.qoldiq = lotlar.filter(l => l.m === m.id).reduce((s, l) => s + l.q, 0);
+		const B = (id, mijoz, holat, t, kerak, q, izoh) => ({ id, mijoz, holat, sana: k(t), kerak: k(kerak), izoh: izoh || '', qatorlar: q.map(([m, soni]) => ({ m, soni, narx: topM(m).narx })) });
+		buyurtmalar.push(
+			B('B-3045', 'c7', 'tasdiq', -1, 3, [['b1', 10000], ['b3', 6000]]),
+			B('B-3046', 'c1', 'tasdiq', -1, 2, [['b1', 30000], ['b5', 3000]]),
+			B('B-3047', 'c8', 'tasdiq', -4, 6, [['b6', 20000]], 'Maxsus o\'lcham: 7 m × 12 sm, zichligi 30 g/m²'),
+			B('B-3048', 'c6', 'tasdiq', -2, 4, [['d1', 40000], ['d2', 20000]]),
+			B('B-3049', 'c3', 'tasdiq', -3, 2, [['b1', 15000], ['b2', 5000]]),
+			B('B-3050', 'c2', 'yangi', 0, 5, [['b1', 20000], ['b3', 5000]]),
+			B('B-3051', 'c11', 'yangi', -1, 10, [['b1', 50000], ['b2', 20000]], 'Oldindan to\'lov kelgach jo\'natiladi'),
+		);
+		buyurtmalar.reverse();
+
+		const tolovlar = [
+			['c5', -45, 60], ['c3', -50, 15], ['c1', -40, 50], ['c8', -35, 40], ['c4', -31, 30], ['c6', -29, 87], ['c2', -28, 31.5], ['c11', -24, 95],
+			['c1', -20, 39], ['c8', -16, 21.75], ['c12', -15, 10], ['c4', -12, 20], ['c7', -10, 30.05], ['c9', -8, 12], ['c6', -7, 60], ['c1', -6, 30],
+		].map(([mijoz, t, s], i) => ({ id: 't' + (i + 1), mijoz, sana: k(t), summa: Math.round(s * M), usul: mijoz === 'c9' ? 'Naqd' : 'Pul o\'tkazmasi' }));
+		const eslatmalar = [
+			{ mijoz: 'c5', sana: k(-30), kim: 's2', usul: 'Telefon', matn: 'Byudjetdan mablag\' ajratilishi kutilmoqda.', vada: null },
+			{ mijoz: 'c3', sana: k(-20), kim: 's2', usul: 'Telefon', matn: 'Hafta oxirigacha to\'lashini aytdi.', vada: k(-14) },
+			{ mijoz: 'c5', sana: k(-10), kim: 's2', usul: 'Xat', matn: 'To\'lov topshirig\'i g\'aznachilikka berilgan.', vada: k(5) },
+			{ mijoz: 'c3', sana: k(-8), kim: 's2', usul: 'Telegram', matn: 'Qayta eslatildi: yarmini shu hafta o\'tkazadi.', vada: k(-2) },
+			{ mijoz: 'c4', sana: k(-5), kim: 's1', usul: 'Telefon', matn: 'Hisobchisi bilan gaplashildi, qolganini yopadi.', vada: k(2) },
+			{ mijoz: 'c6', sana: k(-2), kim: 's1', usul: 'Telegram', matn: 'Qolgan summani shu hafta yopadi.', vada: k(3) },
+		];
+
+		// Jarayondagi partiyalar. Navbatdagilar uchun xomashyo hali olinmagan.
+		const J = (id, m, reja, bosqich, och, bosh, muddat, b) => ({ id, m, reja, bosqich, ochildi: k(och), boshlandi: bosh == null ? null : k(bosh), muddat: k(muddat), tugadi: null, chiqdi: 0, brak: 0, b: b || null, sarf: bosh == null ? [] : sarf(topM(m), reja, xomlar) });
+		partiyalar.push(
+			J('P-0392', 'b2', 40000, 'qadoq', -6, -5, -1),
+			J('P-0393', 'd2', 30000, 'oqartirish', -4, -3, 3),
+			J('P-0394', 'b6', 20000, 'toquv', -3, -2, 5, 'B-3047'),
+			J('P-0395', 'b4', 30000, 'navbat', -2, null, 6),
+			J('P-0396', 'd5', 5000, 'sifat', -7, -6, 0),
+			J('P-0397', 'b5', 10000, 'navbat', -1, null, 8),
+		);
+		partiyalar.reverse();
+
+		const xarajatlar = [
+			{ id: 'h1', sana: k(-24), tur: 'Xomashyo', summa: 228 * M, izoh: 'Paxta ipi — 6 000 kg' },
+			{ id: 'h2', sana: k(-5), tur: 'Ish haqi', summa: 62 * M, izoh: 'Oylik' },
+			{ id: 'h3', sana: k(-9), tur: 'Elektr va gaz', summa: 28.5 * M, izoh: 'To\'quv va oqartirish bo\'limlari' },
+			{ id: 'h4', sana: k(-13), tur: 'Kimyo va qadoq', summa: 14.6 * M, izoh: 'Peroksid, soda, yorliq' },
+			{ id: 'h5', sana: k(-17), tur: 'Soliq', summa: 18.6 * M, izoh: '' },
+			{ id: 'h6', sana: k(-3), tur: 'Transport', summa: 4.9 * M, izoh: 'Viloyatlarga yetkazish' },
+			{ id: 'h7', sana: k(-19), tur: 'Transport', summa: 4.5 * M, izoh: 'Viloyatlarga yetkazish' },
+			{ id: 'h8', sana: k(-11), tur: 'Ta\'mirlash', summa: 6.2 * M, izoh: 'To\'quv dastgohi ehtiyot qismlari' },
+			{ id: 'h9', sana: k(-7), tur: 'Boshqa', summa: 3.1 * M, izoh: '' },
+		];
+		const kirimlar = [
+			{ id: 'K-118', kim: 'Ip ta\'minotchisi (Namangan)', kutiladi: k(4), holat: 'yolda', qatorlar: [{ m: 'x1', soni: 6000 }] },
+			{ id: 'K-119', kim: 'Qadoq materiallari ta\'minotchisi (Toshkent)', kutiladi: k(2), holat: 'yolda', qatorlar: [{ m: 'x4', soni: 300 }, { m: 'x7', soni: 500 }] },
+		];
+		// Jurnal: oxirgi 30 kundagi jo'natish, partiya qabuli va xomashyo harakati
+		const harakatlar = [];
+		for (const j of jonatmalar) if (j.sana > k(-30)) for (const q of j.qatorlar) harakatlar.push({ sana: j.sana, m: q.m, soni: -q.soni, sabab: `Jo'natildi: ${j.id}, ${mijozlar.find(c => c.id === j.mijoz).nom}`, kim: 'o1' });
+		for (const p of partiyalar) {
+			if (p.bosqich === 'tayyor' && p.tugadi > k(-30)) harakatlar.push({ sana: p.tugadi, m: p.m, soni: p.chiqdi, sabab: `Partiya ${p.id} omborga qabul qilindi`, kim: 'i1' });
+			if (p.boshlandi && p.boshlandi > k(-30)) for (const s of p.sarf) harakatlar.push({ sana: p.boshlandi, m: s.m, soni: -s.soni, sabab: `Partiya ${p.id} uchun sarf`, kim: 'i1' });
+		}
+		harakatlar.push({ sana: k(-24), m: 'x1', soni: 6000, sabab: 'Kirim: K-116', kim: 'o1' }, { sana: k(-13), m: 'x6', soni: 60000, sabab: 'Kirim: K-117', kim: 'o1' }, { sana: k(-13), m: 'x2', soni: 600, sabab: 'Kirim: K-117', kim: 'o1' });
+		harakatlar.sort((a, b) => a.sana < b.sana ? 1 : a.sana > b.sana ? -1 : 0);
+		// Oldingi 5 oy (mln so'm) — grafik uchun; oxirgi ustun jonli hisoblanadi
+		const oylar = [{ t: 388, x: 331 }, { t: 412, x: 348 }, { t: 395, x: 352 }, { t: 441, x: 366 }, { t: 420, x: 357 }];
+		return { v: 1, bugun: k(0), xodimlar, mijozlar, mahsulotlar, partiyalar, lotlar: lotlar.filter(l => l.q > 0), buyurtmalar, jonatmalar, tolovlar, eslatmalar, xarajatlar, kirimlar, harakatlar, oylar, sanoq: { B: 3051, YX: 1209, P: 397, K: 119, c: 12, t: tolovlar.length, h: 9 } };
+	}
+	return { urug, iso, sarf };
+})();
+
+
+/* ===== ilova1.js ===== */
+/* AIDWELL TEX — boshqaruv tizimi namunasi. 1-qism: holat, hisob-kitob, qobiq, kirish.
+   Fayllar qurish\qurish.mjs bilan bitta index.html ga yig'iladi (umumiy doira ichida). */
+const KALIT = 'aidwell_namuna_v1';
+let db = null;
+const ui = { rol: null, kim: null, til: 'lot', tanlov: null, pinXato: false, oxirgiYol: '' };
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* ---------- Saqlash ---------- */
+function saqla() { try { localStorage.setItem(KALIT, JSON.stringify({ db, ui: { til: ui.til, rol: ui.rol, kim: ui.kim } })); } catch (e) { /* xotira yopiq bo'lsa ham ishlaydi */ } }
+function yukla() {
+	let s = null;
+	try { s = JSON.parse(localStorage.getItem(KALIT) || 'null'); } catch (e) { s = null; }
+	const bugun = Malumot.iso(new Date());
+	if (s && s.ui && (s.ui.til === 'kir' || s.ui.til === 'lot')) ui.til = s.ui.til;
+	if (s && s.db && s.db.v === 1 && s.db.bugun === bugun) { db = s.db; ui.rol = s.ui.rol || null; ui.kim = s.ui.kim || null; }
+	else db = Malumot.urug(new Date());
+}
+
+/* ---------- Sana, pul, miqdor ---------- */
+const kunMs = iso => { const p = iso.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); };
+const kunFarq = iso => Math.round((kunMs(iso) - kunMs(db.bugun)) / 864e5);
+const kunQosh = (iso, n) => { const d = new Date(kunMs(iso) + n * 864e5); return d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0') + '-' + String(d.getUTCDate()).padStart(2, '0'); };
+const sana = iso => { if (!iso) return '—'; const p = iso.split('-'); return p[2] + '.' + p[1] + '.' + p[0]; };
+function nisbiy(iso) {
+	if (!iso) return '—';
+	const f = kunFarq(iso);
+	if (f === 0) return 'bugun'; if (f === -1) return 'kecha'; if (f === 1) return 'ertaga';
+	return f < 0 ? `${-f} kun oldin` : `${f} kundan keyin`;
+}
+const guruhla = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+const pul = n => guruhla(n) + ` so'm`;
+function mln(n) { // 12 500 000 -> «12,5 mln»
+	if (Math.abs(n) < 1e6) return guruhla(n);
+	const v = Math.round(n / 1e5) / 10;
+	return String(v).replace('.', ',') + ' mln';
+}
+const qisqaPul = n => mln(n) + ` so'm`;
+// Miqdor: butun yoki bitta o'nlik xona bilan (18,5 kg)
+function miq(n, birlik) {
+	const r = Math.round(n * 10) / 10, butun = Math.trunc(Math.abs(r)), kasr = Math.round((Math.abs(r) - butun) * 10);
+	return (r < 0 ? '−' : '') + guruhla(butun) + (kasr ? ',' + kasr : '') + (birlik ? ' ' + birlik : '');
+}
+const OYLAR = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+const yig = (a, f) => a.reduce((s, x) => s + f(x), 0);
+
+/* ---------- Topish ---------- */
+const topC = id => db.mijozlar.find(x => x.id === id);
+const topM = id => db.mahsulotlar.find(x => x.id === id);
+const topX = id => db.xodimlar.find(x => x.id === id);
+const topB = id => db.buyurtmalar.find(x => x.id === id);
+const topP = id => db.partiyalar.find(x => x.id === id);
+const topJ = bid => db.jonatmalar.find(x => x.b === bid);
+const ism = id => { const x = topX(id); return x ? x.ism : '—'; };
+const yangiId = h => h + '-' + String(++db.sanoq[h]).padStart(h === 'P' ? 4 : 0, '0');
+
+/* ---------- Nomlar ---------- */
+const ROL = {
+	rahbar: { n: 'Rahbar', d: 'Hamma bo\'limlar: pul qayerda turgani, ombor, mijozlar to\'lov holati, xodimlar ishi', i: 'panel' },
+	sotuv: { n: 'Sotuv menejeri', d: 'O\'z mijozlari: buyurtmalar, to\'lov holati, eslatmalar', i: 'mijoz' },
+	ombor: { n: 'Omborchi', d: 'Qoldiq, kam qolganlar, kirim va jo\'natish — narxlarsiz', i: 'ombor' },
+	ishlab: { n: 'Ishlab chiqarish mas\'uli', d: 'Partiyalar navbati, bosqichlar, xomashyo yetarliligi', i: 'ishlab' },
+};
+const KIMLAR = { rahbar: 'r1', sotuv: 's1', ombor: 'o1', ishlab: 'i1' };
+const BHOL = { yangi: 'Yangi', tasdiq: 'Tasdiqlangan', jonatildi: 'Jo\'natilgan', bekor: 'Bekor qilingan' };
+const BHOL_T = ['yangi', 'tasdiq', 'jonatildi'];
+const BHOL_B = { yangi: 'sa', tasdiq: 'ko', jonatildi: 'ya', bekor: '' };
+const PBOS = { navbat: 'Navbatda', toquv: 'To\'quv', oqartirish: 'Oqartirish', kesish: 'Kesish va o\'rash', qadoq: 'Qadoqlash', sifat: 'Sifat nazorati', tayyor: 'Omborda' };
+const PBOS_T = ['navbat', 'toquv', 'oqartirish', 'kesish', 'qadoq', 'sifat', 'tayyor'];
+const pTartib = m => PBOS_T.filter(k => !(k === 'oqartirish' && m.xomDoka)); // xom doka oqartirilmaydi
+const MTUR = ['Tibbiy ulgurji', 'Dorixona tarmog\'i', 'Kichik ulgurji', 'Davlat muassasasi', 'Xususiy klinika', 'Ishlab chiqaruvchi', 'Eksport'];
+const XTUR = ['Xomashyo', 'Kimyo va qadoq', 'Ish haqi', 'Elektr va gaz', 'Transport', 'Ta\'mirlash', 'Soliq', 'Boshqa'];
+const KECH_CHEGARA = 14; // muddati shuncha kundan ortiq o'tgan mijozga jo'natish rahbar ruxsati bilan
+
+/* ---------- Ruxsat ---------- */
+const pulKorar = () => ui.rol === 'rahbar' || ui.rol === 'sotuv';
+const meningC = c => ui.rol !== 'sotuv' || c.menejer === ui.kim;
+const mening = b => meningC(topC(b.mijoz));
+
+/* ---------- Buyurtma va jo'natma ---------- */
+const bJami = b => yig(b.qatorlar, q => q.soni * q.narx);
+const jSumma = j => yig(j.qatorlar, q => q.soni * q.narx);
+const qatorMatn = b => b.qatorlar.map(q => { const m = topM(q.m); return `${m.nom} — ${miq(q.soni, m.birlik)}`; }).join('; ');
+
+/* ---------- Mijozning to'lov holati ----------
+   To'lovlar mijozning eng eski jo'natmasidan boshlab yopiladi. Muddati o'tib, yopilmagan qism — «muddati o'tgan». */
+const YOSH = ['Muddatida', '1–14 kun o\'tgan', '15–30 kun o\'tgan', '30 kundan ortiq'];
+const YOSH_R = ['ya', 'sa', 'qi', 'qi'];
+const yoshI = kun => kun <= 0 ? 0 : kun <= 14 ? 1 : kun <= 30 ? 2 : 3;
+function mHisob(cid) {
+	const js = db.jonatmalar.filter(j => j.mijoz === cid).sort((a, b) => a.sana < b.sana ? -1 : a.sana > b.sana ? 1 : 0);
+	const tol = yig(db.tolovlar.filter(t => t.mijoz === cid), t => t.summa);
+	let p = tol;
+	const r = { q: [], jon: 0, tol, qol: 0, kech: 0, kun: 0, yosh: [0, 0, 0, 0], avans: 0, keyingi: null };
+	for (const j of js) {
+		const s = jSumma(j), t = Math.min(p, s), qol = s - t, farq = kunFarq(j.muddat);
+		p -= t; r.jon += s;
+		if (qol >= 1) {
+			r.qol += qol; r.yosh[yoshI(-farq)] += qol;
+			if (farq < 0) { r.kech += qol; r.kun = Math.max(r.kun, -farq); } else if (!r.keyingi) r.keyingi = { j, qol, farq };
+		}
+		r.q.push({ j, summa: s, tolandi: t, qol, farq });
+	}
+	r.avans = p;
+	return r;
+}
+const oxirgiEslatma = cid => db.eslatmalar.filter(e => e.mijoz === cid).sort((a, b) => a.sana < b.sana ? 1 : -1)[0] || null;
+// Eslatish kerak: muddati o'tgan, lekin so'nggi 7 kunda eslatilmagan yoki va'da qilingan sana o'tib ketgan
+function eslatHolat(cid, h) {
+	h = h || mHisob(cid);
+	if (h.kech < 1) return { kerak: false, matn: '' };
+	const e = oxirgiEslatma(cid);
+	if (!e) return { kerak: true, matn: 'Hali eslatilmagan', sinf: 'qi' };
+	if (e.vada && kunFarq(e.vada) < 0) return { kerak: true, matn: `Va'da qilingan sana o'tdi (${sana(e.vada)})`, sinf: 'qi' };
+	if (e.vada) return { kerak: false, matn: `Va'da: ${sana(e.vada)} (${nisbiy(e.vada)})`, sinf: 'ko' };
+	if (kunFarq(e.sana) < -7) return { kerak: true, matn: `Oxirgi eslatma ${nisbiy(e.sana)}`, sinf: 'sa' };
+	return { kerak: false, matn: `Eslatilgan: ${nisbiy(e.sana)}`, sinf: '' };
+}
+function tolovBelgi(h) {
+	if (h.kech >= 1) return `<span class="b qi">Muddati ${h.kun} kun o'tgan</span>`;
+	if (h.qol >= 1) return `<span class="b ya">Muddatida</span>`;
+	if (h.avans >= 1) return `<span class="b ko">Oldindan to'langan</span>`;
+	return h.jon > 0 ? `<span class="b ya">To'liq to'langan</span>` : `<span class="b">Jo'natma yo'q</span>`;
+}
+// Jo'natishni to'xtatadigan sabab (rahbar ruxsat bermagan bo'lsa)
+function toxta(b) {
+	if (b.ruxsat) return '';
+	const c = topC(b.mijoz), h = mHisob(c.id), j = bJami(b);
+	if (c.muddat === 0) return h.avans + 0.5 < j ? `Oldindan to'lov to'liq kelmagan: kerak ${pul(j)}, kelgani ${pul(h.avans)}` : '';
+	if (h.kun > KECH_CHEGARA) return `Mijozda muddati ${h.kun} kun o'tgan to'lov bor: ${pul(h.kech)}`;
+	if (c.limit && h.qol + j > c.limit) return `Limitdan oshadi: to'lanmagan ${qisqaPul(h.qol)} + buyurtma ${qisqaPul(j)}, limit ${qisqaPul(c.limit)}`;
+	return '';
+}
+
+/* ---------- Ombor hisobi ---------- */
+const band = id => yig(db.buyurtmalar.filter(b => b.holat === 'tasdiq'), b => yig(b.qatorlar.filter(q => q.m === id), q => q.soni));
+const jarayonda = id => yig(db.partiyalar.filter(p => p.bosqich !== 'tayyor' && p.m === id), p => p.reja);
+const yolda = id => yig(db.kirimlar.filter(k => k.holat === 'yolda'), k => yig(k.qatorlar.filter(q => q.m === id), q => q.soni));
+const mHolat = m => m.buyurtmaga ? 'buyurtmaga' : m.qoldiq <= 0 ? 'yoq' : m.qoldiq < m.min ? 'kam' : 'bor';
+const kamlar = tur => db.mahsulotlar.filter(m => (!tur || m.tur === tur) && ['yoq', 'kam'].includes(mHolat(m)));
+const yetishmas = b => b.qatorlar.filter(q => topM(q.m).qoldiq < q.soni);
+const tayyormi = b => b.holat === 'tasdiq' && !yetishmas(b).length && !toxta(b);
+function harakat(m, soni, sabab) { const x = topM(m); x.qoldiq = Math.round((x.qoldiq + soni) * 10) / 10; db.harakatlar.unshift({ sana: db.bugun, m, soni, sabab, kim: ui.kim }); }
+// Tayyor mahsulotni eng eski partiyadan boshlab oladi
+function lotOl(mid, soni) {
+	const r = []; let kerak = soni;
+	for (const l of db.lotlar.filter(l => l.m === mid && l.q > 0).sort((a, b) => a.sana < b.sana ? -1 : a.sana > b.sana ? 1 : 0)) {
+		if (kerak <= 0) break;
+		const ol = Math.min(l.q, kerak); l.q -= ol; kerak -= ol; r.push({ p: l.p, q: ol });
+	}
+	db.lotlar = db.lotlar.filter(l => l.q > 0);
+	return r;
+}
+// Partiya uchun xomashyo: kerak / omborda / yetadimi
+const xomKerak = (m, soni) => Malumot.sarf(m, soni, db.mahsulotlar).map(s => { const x = topM(s.m); return { x, kerak: s.soni, bor: x.qoldiq, yetar: x.qoldiq + 1e-9 >= s.soni }; });
+const navbatKerak = xid => yig(db.partiyalar.filter(p => p.bosqich === 'navbat'), p => yig(Malumot.sarf(topM(p.m), p.reja, db.mahsulotlar).filter(s => s.m === xid), s => s.soni));
+// Nima ishlab chiqarish kerak: eng kam chegara + band − omborda − jarayonda
+function ishlabKerak() {
+	return db.mahsulotlar.filter(m => m.tur === 'tayyor').map(m => { const bn = band(m.id), jr = jarayonda(m.id); return { m, band: bn, jarayon: jr, erkin: m.qoldiq - bn, kerak: Math.max(0, m.min + bn - m.qoldiq - jr) }; }).filter(x => x.kerak > 0).sort((a, b) => (a.erkin < 0 ? 0 : 1) - (b.erkin < 0 ? 0 : 1) || b.kerak * b.m.narx - a.kerak * a.m.narx);
+}
+const pKech = p => p.bosqich !== 'tayyor' && kunFarq(p.muddat) < 0 ? -kunFarq(p.muddat) : 0;
+const pXomYoq = p => p.bosqich === 'navbat' ? xomKerak(topM(p.m), p.reja).filter(x => !x.yetar) : [];
+const pSarfS = p => yig(p.sarf, s => s.soni * topM(s.m).narx);
+
+/* ---------- Pul oqimi ---------- */
+const ich30 = iso => { const f = kunFarq(iso); return f <= 0 && f > -30; };
+const tushum30 = () => yig(db.tolovlar.filter(t => ich30(t.sana)), t => t.summa);
+const xarajat30 = () => yig(db.xarajatlar.filter(x => ich30(x.sana)), x => x.summa);
+function umumiyHolat(faqatMening) {
+	const r = { qol: 0, kech: 0, yosh: [0, 0, 0, 0], kechSoni: 0, eslat: 0 };
+	for (const c of db.mijozlar) {
+		if (faqatMening && !meningC(c)) continue;
+		const h = mHisob(c.id); r.qol += h.qol; r.kech += h.kech; h.yosh.forEach((v, i) => { r.yosh[i] += v; });
+		if (h.kech >= 1) { r.kechSoni++; if (eslatHolat(c.id, h).kerak) r.eslat++; }
+	}
+	return r;
+}
+function pulQayerda() {
+	const u = umumiyHolat(false);
+	return {
+		mijoz: u.qol, kech: u.kech,
+		tayyor: yig(db.mahsulotlar.filter(m => m.tur === 'tayyor'), m => m.qoldiq * m.narx),
+		xom: yig(db.mahsulotlar.filter(m => m.tur === 'xom'), m => m.qoldiq * m.narx),
+		jarayon: yig(db.partiyalar.filter(p => p.bosqich !== 'tayyor'), pSarfS),
+	};
+}
+function menejerStat(id) {
+	const ms = db.mijozlar.filter(c => c.menejer === id), ids = ms.map(c => c.id);
+	const r = { mijoz: ms.length, jon30: yig(db.jonatmalar.filter(j => ids.includes(j.mijoz) && ich30(j.sana)), jSumma), yig30: yig(db.tolovlar.filter(t => ids.includes(t.mijoz) && ich30(t.sana)), t => t.summa), qol: 0, kech: 0, eslat: 0, ochiq: db.buyurtmalar.filter(b => ids.includes(b.mijoz) && (b.holat === 'yangi' || b.holat === 'tasdiq')).length };
+	for (const c of ms) { const h = mHisob(c.id); r.qol += h.qol; r.kech += h.kech; if (eslatHolat(c.id, h).kerak) r.eslat++; }
+	return r;
+}
+
+/* ---------- Belgilar (ikon) ---------- */
+const IK = {
+	panel: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+	sotuv: '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/>',
+	ishlab: '<path d="M3 21V10l6 4v-4l6 4V5h4a2 2 0 0 1 2 2v14Z"/><path d="M8 17h.01M12 17h.01M16 17h.01"/>',
+	ombor: '<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
+	mijoz: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.500 6.500 0 0 1 13 0"/><path d="M16 4.600a3.500 3.500 0 0 1 0 6.800"/><path d="M18 14.500a6.500 6.500 0 0 1 3.500 5.500"/>',
+	moliya: '<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M15 15h3"/>',
+	hisobot: '<path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/>',
+	chiq: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+	qosh: '<path d="M12 5v14M5 12h14"/>', ong: '<path d="m9 6 6 6-6 6"/>', chap: '<path d="m15 6-6 6 6 6"/>',
+	ogoh: '<path d="M10.3 3.9 2.4 17.5a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/>',
+	soat: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', ha: '<path d="m5 12 5 5L20 7"/>', yop: '<path d="M6 6l12 12M18 6 6 18"/>',
+	izla: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+	yuk: '<path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
+	tush: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>',
+	yana: '<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+	eslat: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+	qulf: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+};
+const ik = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IK[n] || ''}</svg>`;
+
+/* ---------- Yo'l (hash) ---------- */
+const BOLIM = {
+	panel: { n: 'Panel', i: 'panel', h: '#/panel' }, ishim: { n: 'Mening ishim', i: 'panel', h: '#/ishim' },
+	ombor: { n: 'Ombor', i: 'ombor', h: '#/ombor' }, mijozlar: { n: 'Mijozlar', i: 'mijoz', h: '#/mijozlar' },
+	buyurtma: { n: 'Buyurtmalar', i: 'sotuv', h: '#/buyurtma' }, ishlab: { n: 'Ishlab chiqarish', i: 'ishlab', h: '#/ishlab' },
+	moliya: { n: 'Moliya', i: 'moliya', h: '#/moliya' }, hisobot: { n: 'Hisobotlar', i: 'hisobot', h: '#/hisobot' },
+	jonat: { n: 'Jo\'natish', i: 'yuk', h: '#/ombor?jonat', b: 'ombor', t: 'jonat' }, kirim: { n: 'Kirim', i: 'tush', h: '#/ombor?yolda', b: 'ombor', t: 'yolda' },
+	partiya: { n: 'Partiyalar', i: 'ishlab', h: '#/ishlab', b: 'ishlab' }, xom: { n: 'Xomashyo', i: 'ombor', h: '#/ombor?xom', b: 'ombor' },
+};
+const NAV = {
+	rahbar: ['panel', 'ombor', 'mijozlar', 'buyurtma', 'ishlab', 'moliya', 'hisobot'],
+	sotuv: ['ishim', 'mijozlar', 'buyurtma', 'ombor'],
+	ombor: ['ombor', 'jonat', 'kirim'],
+	ishlab: ['partiya', 'xom'],
+};
+const RUXSAT = { rahbar: ['panel', 'ombor', 'mijozlar', 'buyurtma', 'ishlab', 'moliya', 'hisobot'], sotuv: ['ishim', 'mijozlar', 'buyurtma', 'ombor'], ombor: ['ombor'], ishlab: ['ishlab', 'ombor'] };
+function yol() {
+	const h = (location.hash || '').replace(/^#\/?/, '');
+	const [yo, tab] = h.split('?'); const [bol, arg] = yo.split('/');
+	return { bol: bol || '', arg: arg ? decodeURIComponent(arg) : '', tab: tab || '' };
+}
+const boshSahifa = () => BOLIM[NAV[ui.rol][0]].h;
+function navSon(k) {
+	if (k === 'mijozlar') return umumiyHolat(true).kechSoni;
+	if (k === 'ombor' && ui.rol !== 'sotuv') return kamlar().length;
+	if (k === 'xom') return kamlar('xom').length;
+	if (k === 'jonat') return db.buyurtmalar.filter(tayyormi).length;
+	if (k === 'kirim') return db.kirimlar.filter(x => x.holat === 'yolda').length;
+	if (k === 'buyurtma') return db.buyurtmalar.filter(b => b.holat === 'yangi' && mening(b)).length;
+	if (k === 'ishlab' || k === 'partiya') return db.partiyalar.filter(p => p.bosqich === 'navbat').length;
+	return 0;
+}
+function navFaol(k, y) {
+	const b = BOLIM[k];
+	if (ui.rol === 'ombor') return y.bol === 'ombor' && (b.t ? y.tab === b.t && !y.arg : (y.tab !== 'jonat' && y.tab !== 'yolda') || !!y.arg);
+	return (b.b || k) === y.bol;
+}
+
+/* ---------- Qobiq ---------- */
+const tilTugma = () => `<div class="til" role="group" aria-label="Yozuv"><button type="button" data-a="til" data-t="lot" aria-pressed="${ui.til === 'lot'}" data-asl>Lotin</button><button type="button" data-a="til" data-t="kir" aria-pressed="${ui.til === 'kir'}" data-asl>Кирилл</button></div>`;
+const NAMUNA = `<div class="namuna" role="note">Namuna — ma'lumotlar misol uchun</div>`;
+function qobiq(ich, y) {
+	const nav = NAV[ui.rol], r = ROL[ui.rol];
+	const havola = k => { const b = BOLIM[k], s = navSon(k); return `<a href="${b.h}" ${navFaol(k, y) ? 'aria-current="page"' : ''}>${ik(b.i)}<span>${b.n}</span>${s ? `<span class="son">${s}</span>` : ''}</a>`; };
+	const pastN = nav.length > 5 ? nav.slice(0, 4) : nav;
+	return `${NAMUNA}
+<aside class="yon"><div class="belgi"><b data-asl>AIDWELL TEX</b><span>Boshqaruv tizimi</span></div>
+<nav aria-label="Bo'limlar">${nav.map(havola).join('')}</nav>
+<div class="oxir"><div class="kim"><b>${esc(ism(ui.kim))}</b>${ism(ui.kim) !== r.n ? r.n : 'Hamma bo\'limlar'}</div>${tilTugma()}<button class="chiq" type="button" data-a="chiqish">${ik('chiq')}Rolni almashtirish</button></div></aside>
+<header class="tepa"><b data-asl>AIDWELL TEX</b><span class="rolb">${r.n}</span><div class="ong"><button class="tilb" type="button" data-a="til" data-t="${ui.til === 'kir' ? 'lot' : 'kir'}" data-asl aria-label="${ui.til === 'kir' ? 'Lotin yozuviga o‘tish' : 'Кирилл ёзувига ўтиш'}">${ui.til === 'kir' ? 'Lotin' : 'Кирилл'}</button><button class="chiq" type="button" data-a="chiqish" aria-label="Rolni almashtirish">${ik('chiq')}</button></div></header>
+<main class="sahifa" id="asosiy">${ich}<div class="pastki"><span>Namuna — ma'lumotlar misol uchun. Barcha mijozlar, ismlar va raqamlar o'ylab topilgan.</span><button class="hav" type="button" data-a="qayta">Namunani boshidan boshlash</button></div></main>
+<nav class="past" aria-label="Bo'limlar">${pastN.map(havola).join('')}${nav.length > 5 ? `<button type="button" data-a="yana">${ik('yana')}<span>Yana</span></button>` : ''}</nav>`;
+}
+
+/* ---------- Kirish ---------- */
+function kirishHTML() {
+	let ich;
+	if (ui.tanlov) {
+		const r = ROL[ui.tanlov], x = topX(KIMLAR[ui.tanlov]);
+		ich = `<h1>${r.n}${x.ism !== r.n ? ' — ' + esc(x.ism) : ''}</h1><p class="izoh">${r.d}</p>
+<form class="pinq" data-f="pin" autocomplete="off">
+<label class="may"><span>PIN kod</span><input class="in" id="pin" name="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="pinx" required></label>
+<div class="xato" id="pinx" role="alert">${ui.pinXato ? 'PIN noto\'g\'ri. Namuna uchun PIN pastda yozilgan.' : ''}</div>
+<button class="t a keng" type="submit">Kirish</button>
+<p class="yord" style="text-align:center">Namuna uchun PIN: <b data-asl>${x.pin}</b></p>
+</form><p style="text-align:center;margin-top:14px"><button class="hav" type="button" data-a="rolOrqa">Boshqa rolni tanlash</button></p>`;
+	} else {
+		ich = `<h1>Kim sifatida kirasiz?</h1><p class="izoh">Har bir xodim faqat o'z ishiga kerakli bo'limlarni ko'radi.</p>
+<div class="rollar">${Object.keys(ROL).map(k => { const r = ROL[k], x = topX(KIMLAR[k]); return `<button class="rol" type="button" data-a="rolTanla" data-r="${k}"><span class="dum">${ik(r.i)}</span><span><span class="n">${r.n}${x.ism !== r.n ? ' — ' + esc(x.ism) : ''}</span><span class="d">${r.d}</span></span></button>`; }).join('')}</div>`;
+	}
+	return `${NAMUNA}<div class="kirish"><div class="belgi"><b data-asl>AIDWELL TEX</b><span>Boshqaruv tizimi: ombor, mijozlar to'lov holati, buyurtmalar, ishlab chiqarish</span></div>${tilTugma()}
+<div class="quti">${ich}</div>
+<p class="ost">Namuna — ma'lumotlar misol uchun. Mijozlar, ismlar va raqamlar o'ylab topilgan. <button class="hav" type="button" data-a="qayta">Boshidan boshlash</button></p></div>`;
+}
+
+/* ---------- Umumiy bo'laklar ---------- */
+const boshq = (s, ost, ong) => `<div class="bosh"><div><h1>${s}</h1>${ost ? `<div class="ost">${ost}</div>` : ''}</div>${ong ? `<div class="ong">${ong}</div>` : ''}</div>`;
+const orqa = (h, n) => `<a class="orqa" href="${h}">${ik('chap')}${n}</a>`;
+function yorliq(asos, joriy, royxat) { // royxat: [kalit, nom, son, qizil?]
+	return `<div class="yor" role="tablist">${royxat.map(([k, n, s, q]) => `<a role="tab" href="${asos}${k ? '?' + k : ''}" aria-current="${joriy === k}">${n}${s != null ? `<span class="son${q && s ? ' qi' : ''}">${s}</span>` : ''}</a>`).join('')}</div>`;
+}
+const izlash = y => `<div class="izl">${ik('izla')}<input class="in" type="search" data-q placeholder="${y}" aria-label="${y}"></div>`;
+const bosh_yoq = m => `<div class="bosh-yoq">${m}</div>`;
+const qadam = (tart, nom, hoz) => { const i = tart.indexOf(hoz); return `<div class="qadam" aria-label="Bosqich">${tart.map((k, j) => `<span class="${j < i ? 'ot' : j === i ? 'hoz' : ''}">${nom[k]}</span>`).join('')}</div>`; };
+const kpi = (y, q, birlik, p, sinf, h) => `<${h ? `a href="${h}"` : 'div'} class="kp"><div class="y">${y}</div><div class="q">${q}${birlik ? ` <small>${birlik}</small>` : ''}</div>${p ? `<div class="p ${sinf || ''}">${p}</div>` : ''}</${h ? 'a' : 'div'}>`;
+const kpiPul = (y, n, p, sinf, h) => Math.abs(n) >= 1e6 ? kpi(y, mln(n).replace(' mln', ''), `mln so'm`, p, sinf, h) : kpi(y, guruhla(n), `so'm`, p, sinf, h);
+function gor(qatorlar, shakl) { // [nom, qiymat, sinf?]
+	const eng = Math.max(1, ...qatorlar.map(q => q[1]));
+	return `<div class="gor">${qatorlar.map(q => `<div class="q"><span>${q[0]}</span><div class="yol"><i class="${q[2] || ''}" style="width:${Math.max(q[1] > 0 ? 2 : 0, Math.round(q[1] / eng * 100))}%"></i></div><b>${shakl(q[1])}</b></div>`).join('')}</div>`;
+}
+// Ustma-ust chiziq va izohi: [nom, qiymat, rang, kichik izoh?, havola?]
+function stek(qism, shakl) {
+	const j = Math.max(1, yig(qism, q => q[1]));
+	return `<div class="stek" role="img" aria-label="${qism.map(q => `${q[0]}: ${shakl(q[1])}`).join(', ')}">${qism.filter(q => q[1] > 0).map(q => `<i class="rang-${q[2]}" style="width:${q[1] / j * 100}%"></i>`).join('')}</div>
+<div class="izohr">${qism.map(q => `<${q[4] ? `a href="${q[4]}"` : 'div'}><i class="rang-${q[2]}"></i><span>${q[0]}${q[3] ? `<small>${q[3]}</small>` : ''}</span><b>${shakl(q[1])}</b></${q[4] ? 'a' : 'div'}>`).join('')}</div>`;
+}
+function qoldiqHTML(m) {
+	const h = mHolat(m);
+	if (h === 'buyurtmaga') return m.qoldiq > 0 ? `<b>${miq(m.qoldiq, m.birlik)}</b>` : `<span class="b">Buyurtma asosida</span>`;
+	const foiz = m.min ? Math.min(100, Math.round(m.qoldiq / (m.min * 2) * 100)) : 100;
+	return `<span class="qold ${h}"><b>${miq(m.qoldiq, m.birlik)}</b><span class="yol"><i style="width:${foiz}%"></i></span></span>`;
+}
+
+/* ===== ilova2.js ===== */
+/* 2-qism: sahifalar (faqat HTML qaytaradi, holatni o'zgartirmaydi). */
+
+const etHTML = r => r.length ? `<div class="et">${r.map(x => `<a href="${x.h}"><span class="nuq ${x.d}">${ik(x.i)}</span><span><b>${esc(x.s)}</b><span>${esc(x.m)}</span></span><span class="uq">${ik('ong')}</span></a>`).join('')}</div>` : bosh_yoq('Hozircha e\'tibor talab qiladigan ish yo\'q.');
+const pYol = id => ui.rol === 'rahbar' || ui.rol === 'ishlab' ? `<a href="#/ishlab/${id}">${id}</a>` : id;
+const cYol = c => ui.rol === 'rahbar' || (ui.rol === 'sotuv' && meningC(c)) ? `<a href="#/mijozlar/${c.id}"><b>${esc(c.nom)}</b></a>` : `<b>${esc(c.nom)}</b>`;
+
+/* ---------- Rahbar paneli ---------- */
+function diqqat() {
+	const r = [], u = umumiyHolat(false);
+	if (u.kechSoni) r.push({ d: 'qi', i: 'moliya', s: `${u.kechSoni} ta mijozda muddati o'tgan to'lov: ${qisqaPul(u.kech)}`, m: u.eslat ? `${u.eslat} tasiga eslatish kerak` : 'Hammasiga eslatilgan', h: '#/mijozlar?kech' });
+	for (const b of db.buyurtmalar.filter(b => b.holat === 'tasdiq')) {
+		const t = toxta(b), yt = yetishmas(b), c = topC(b.mijoz);
+		if (t) r.push({ d: 'qi', i: 'qulf', s: `${b.id}: jo'natish to'xtatilgan — ruxsat kerak`, m: `${c.nom} · ${t}`, h: '#/buyurtma/' + b.id });
+		if (yt.length) r.push({ d: 'sa', i: 'ombor', s: `${b.id}: omborda yetarli emas`, m: `${c.nom} · ` + yt.map(q => { const m = topM(q.m); return `${m.nom}: kerak ${miq(q.soni)}, bor ${miq(m.qoldiq)}, ishlab chiqarishda ${miq(jarayonda(m.id))}`; }).join('; '), h: '#/buyurtma/' + b.id });
+	}
+	const tay = db.buyurtmalar.filter(tayyormi);
+	if (tay.length) r.push({ d: 'ko', i: 'yuk', s: `${tay.length} ta buyurtma jo'natishga tayyor`, m: tay.map(b => `${b.id} — ${topC(b.mijoz).nom}`).join('; '), h: '#/ombor?jonat' });
+	const yan = db.buyurtmalar.filter(b => b.holat === 'yangi');
+	if (yan.length) r.push({ d: 'ko', i: 'sotuv', s: `${yan.length} ta yangi buyurtma tasdiqlanmagan`, m: yan.map(b => `${b.id} — ${topC(b.mijoz).nom}`).join('; '), h: '#/buyurtma' });
+	for (const p of db.partiyalar) {
+		const k = pKech(p), x = pXomYoq(p);
+		if (k) r.push({ d: 'sa', i: 'soat', s: `${p.id}: muddatidan ${k} kun kechikdi`, m: `${topM(p.m).nom} · ${PBOS[p.bosqich]}`, h: '#/ishlab/' + p.id });
+		if (x.length) r.push({ d: 'sa', i: 'ishlab', s: `${p.id}: boshlash uchun xomashyo yetmaydi`, m: x.map(q => `${q.x.nom}: kerak ${miq(q.kerak, q.x.birlik)}, bor ${miq(q.bor, q.x.birlik)}${yolda(q.x.id) ? `, yo'lda ${miq(yolda(q.x.id), q.x.birlik)}` : ''}`).join('; '), h: '#/ishlab/' + p.id });
+	}
+	const km = kamlar(), yoq = km.filter(m => m.qoldiq <= 0).length;
+	if (km.length) r.push({ d: yoq ? 'qi' : 'sa', i: 'ombor', s: `Omborda ${km.length} ta mahsulot kam qoldi${yoq ? `, shundan ${yoq} tasi tugagan` : ''}`, m: km.slice(0, 3).map(m => m.nom).join('; ') + (km.length > 3 ? '…' : ''), h: '#/ombor?kam' });
+	return r;
+}
+function oylik() { // 6 ustun: oldingi 5 oy + oxirgi 30 kun (mln so'm)
+	const d = new Date(kunMs(db.bugun)), q = [];
+	db.oylar.forEach((o, i) => { const oy = (d.getUTCMonth() - (db.oylar.length - i) + 24) % 12; q.push({ n: OYLAR[oy], t: o.t, x: o.x }); });
+	q.push({ n: '30 kun', t: Math.round(tushum30() / 1e5) / 10, x: Math.round(xarajat30() / 1e5) / 10, hoz: true });
+	return q;
+}
+function ustunHTML() {
+	const q = oylik(), eng = Math.max(...q.map(o => Math.max(o.t, o.x)));
+	return `<div class="grafik" role="img" aria-label="Oylar bo'yicha tushum va xarajat">${q.map(o => `<div class="oy${o.hoz ? ' hoz' : ''}" title="${o.n}: tushum ${o.t} mln, xarajat ${o.x} mln"><div class="juft"><i style="height:${Math.round(o.t / eng * 100)}%"></i><i class="x" style="height:${Math.round(o.x / eng * 100)}%"></i></div><span>${o.n}</span></div>`).join('')}</div>
+<div class="afs"><span><i></i>Tushum</span><span><i class="x"></i>Xarajat</span><span>mln so'm hisobida</span></div>`;
+}
+function pulQayerdaHTML() {
+	const p = pulQayerda();
+	return stek([
+		['Mijozlarda — muddati o\'tgan', p.kech, 'qi', 'Jo\'natilgan, to\'lov muddati o\'tib ketgan', '#/mijozlar?kech'],
+		['Mijozlarda — muddatida', p.mijoz - p.kech, 'sa', 'Jo\'natilgan, to\'lov muddati hali kelmagan', '#/mijozlar'],
+		['Tayyor mahsulotda', p.tayyor, 'ko', 'Ombordagi qoldiq, sotuv narxida', '#/ombor?tayyor'],
+		['Ishlab chiqarishda', p.jarayon, 'bi', 'Jarayondagi partiyalarga sarflangan xomashyo', '#/ishlab'],
+		['Xomashyoda', p.xom, 'ku', 'Ip, kimyo, qadoq — xarid narxida', '#/ombor?xom'],
+	], qisqaPul);
+}
+function menejerlarJ() {
+	return `<div class="jw"><table class="j tel"><thead><tr><th>Menejer</th><th class="r">Mijozlar</th><th class="r">Ochiq buyurtma</th><th class="r">Jo'natildi (30 kun)</th><th class="r">Yig'ildi (30 kun)</th><th class="r">To'lanmagan</th><th class="r">Muddati o'tgan</th><th class="r">Eslatish kerak</th></tr></thead><tbody>${db.xodimlar.filter(x => x.rol === 'sotuv').map(x => { const s = menejerStat(x.id); return `<tr><td><b>${esc(x.ism)}</b></td><td class="r" data-y="Mijozlar">${s.mijoz}</td><td class="r" data-y="Ochiq buyurtma">${s.ochiq}</td><td class="r" data-y="Jo'natildi (30 kun)">${qisqaPul(s.jon30)}</td><td class="r" data-y="Yig'ildi (30 kun)">${qisqaPul(s.yig30)}</td><td class="r" data-y="To'lanmagan">${qisqaPul(s.qol)}</td><td class="r" data-y="Muddati o'tgan">${s.kech ? `<span class="qizil">${qisqaPul(s.kech)}</span>` : '—'}</td><td class="r" data-y="Eslatish kerak">${s.eslat ? `<span class="qizil">${s.eslat} ta mijoz</span>` : '—'}</td></tr>`; }).join('')}</tbody></table></div>`;
+}
+function kechRoyxat(faqatMening, eng) {
+	const r = db.mijozlar.filter(c => !faqatMening || meningC(c)).map(c => ({ c, h: mHisob(c.id) })).filter(x => x.h.kech >= 1).sort((a, b) => b.h.kun - a.h.kun);
+	return r.length ? `<div class="et">${r.slice(0, eng || 99).map(({ c, h }) => { const e = eslatHolat(c.id, h); return `<a href="#/mijozlar/${c.id}"><span class="nuq ${h.kun > KECH_CHEGARA ? 'qi' : ''}">${ik('soat')}</span><span><b>${esc(c.nom)}: ${qisqaPul(h.kech)} — ${h.kun} kun o'tgan</b><span>${esc(e.matn)} · menejer ${esc(ism(c.menejer))}</span></span><span class="uq">${ik('ong')}</span></a>`; }).join('')}</div>` : bosh_yoq('Muddati o\'tgan to\'lov yo\'q.');
+}
+function bosqichlarHTML() {
+	const faol = db.partiyalar.filter(p => p.bosqich !== 'tayyor');
+	return `<div class="bosqlar">${PBOS_T.slice(0, -1).map(k => { const n = faol.filter(p => p.bosqich === k).length; return `<div class="${n ? 'bor' : ''}"><b>${n}</b><span>${PBOS[k]}</span></div>`; }).join('')}</div>`;
+}
+function vPanel() {
+	const t = tushum30(), x = xarajat30(), u = umumiyHolat(false), km = kamlar();
+	return boshq('Panel', `Bugun ${sana(db.bugun)} · oxirgi 30 kun ko'rsatkichlari`) +
+		`<div class="kpi">${kpiPul('Tushum (30 kun)', t, `Xarajatdan ${qisqaPul(Math.abs(t - x))} ${t >= x ? 'ko\'p' : 'kam'}`, t >= x ? 'yax' : 'yom', '#/moliya')}${kpiPul('Xarajat (30 kun)', x, `${db.xarajatlar.filter(e => ich30(e.sana)).length} ta yozuv`, '', '#/moliya?xarajat')}${kpiPul('To\'lanmagan summa', u.qol, u.kech ? `Muddati o'tgan: ${qisqaPul(u.kech)}` : 'Hammasi muddatida', u.kech ? 'yom' : 'yax', '#/mijozlar')}${kpi('Omborda kam qolgan', km.length, 'ta mahsulot', km.length ? `Tayyor ${kamlar('tayyor').length} ta · xomashyo ${kamlar('xom').length} ta` : 'Hammasi yetarli', km.length ? 'yom' : 'yax', '#/ombor?kam')}</div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Bugun e'tibor talab qiladi</h2></div>${etHTML(diqqat())}</div>
+<div class="k"><div class="kb"><h2>Pul qayerda turibdi</h2></div>${pulQayerdaHTML()}</div></div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Muddati o'tgan to'lovlar</h2><div class="ong"><a href="#/mijozlar?kech">Hammasi</a></div></div>${kechRoyxat(false, 6)}</div>
+<div class="k"><div class="kb"><h2>Tushum va xarajat</h2><div class="ong"><a href="#/hisobot">Hisobotlar</a></div></div>${ustunHTML()}</div></div>
+<div class="k"><div class="kb"><h2>Menejerlar ishi</h2><div class="ong"><a href="#/mijozlar">Mijozlar</a></div></div>${menejerlarJ()}</div>
+<div class="k"><div class="kb"><h2>Ishlab chiqarish</h2><div class="ong"><a href="#/ishlab">Partiyalar</a></div></div>${bosqichlarHTML()}<div class="ry">${db.partiyalar.filter(p => p.bosqich !== 'tayyor' && (pKech(p) || pXomYoq(p).length)).map(pKarta).join('') || bosh_yoq('Kechikayotgan partiya yo\'q.')}</div></div>
+<div class="k"><div class="kb"><h2>Omborda kam qolganlar</h2><div class="ong"><a href="#/ombor?kam">Ombor</a></div></div>${km.length ? omborJ(km, false) : bosh_yoq('Hamma mahsulot yetarli.')}</div>`;
+}
+
+/* ---------- Sotuv menejeri: mening ishim ---------- */
+function vIshim() {
+	const s = menejerStat(ui.kim), r = [];
+	for (const c of db.mijozlar.filter(meningC)) {
+		const h = mHisob(c.id), e = eslatHolat(c.id, h);
+		if (e.kerak) r.push({ d: 'qi', i: 'eslat', s: `${c.nom}: to'lovni eslatish — ${qisqaPul(h.kech)}`, m: `${h.kun} kun o'tgan · ${e.matn} · ${c.masul}`, h: '#/mijozlar/' + c.id });
+		else if (h.keyingi && h.keyingi.farq <= 3 && h.kech < 1) r.push({ d: 'ko', i: 'soat', s: `${c.nom}: to'lov muddati ${nisbiy(h.keyingi.j.muddat)}`, m: `${h.keyingi.j.id} · ${qisqaPul(h.keyingi.qol)}`, h: '#/mijozlar/' + c.id });
+	}
+	const m = db.buyurtmalar.filter(mening);
+	for (const b of m.filter(b => b.holat === 'yangi')) r.push({ d: 'sa', i: 'sotuv', s: `${b.id}: buyurtmani tasdiqlash`, m: `${topC(b.mijoz).nom} · ${qatorMatn(b)}`, h: '#/buyurtma/' + b.id });
+	for (const b of m.filter(b => b.holat === 'tasdiq')) {
+		const t = toxta(b), yt = yetishmas(b);
+		if (t) r.push({ d: 'qi', i: 'qulf', s: `${b.id}: jo'natish to'xtatilgan`, m: `${topC(b.mijoz).nom} · ${t}`, h: '#/buyurtma/' + b.id });
+		else if (yt.length) r.push({ d: 'sa', i: 'ombor', s: `${b.id}: omborda yetarli emas`, m: yt.map(q => { const x = topM(q.m); return `${x.nom}: kerak ${miq(q.soni)}, bor ${miq(x.qoldiq)}, ishlab chiqarishda ${miq(jarayonda(x.id))}`; }).join('; '), h: '#/buyurtma/' + b.id });
+	}
+	const ochiq = m.filter(b => b.holat === 'yangi' || b.holat === 'tasdiq');
+	return boshq(`Salom, ${esc(ism(ui.kim))}`, `Bugun ${sana(db.bugun)}`, `<button class="t a" type="button" data-a="yangiBuyurtma">${ik('qosh')}Yangi buyurtma</button>`) +
+		`<div class="kpi">${kpiPul('Mijozlarim: to\'lanmagan', s.qol, `${s.mijoz} ta mijoz`, '', '#/mijozlar')}${kpiPul('Shundan muddati o\'tgan', s.kech, s.eslat ? `${s.eslat} tasiga eslatish kerak` : (s.kech ? 'Hammasiga eslatilgan' : 'Yo\'q'), s.kech ? 'yom' : 'yax', '#/mijozlar?kech')}${kpiPul('Jo\'natildi (30 kun)', s.jon30, '', '', '#/buyurtma?jonatildi')}${kpiPul('Yig\'ildi (30 kun)', s.yig30, '', '', '#/mijozlar')}</div>
+<div class="k"><div class="kb"><h2>Bugun qilinadigan ishlar</h2></div>${etHTML(r)}</div>
+<div class="k"><div class="kb"><h2>Ochiq buyurtmalarim</h2><div class="ong"><a href="#/buyurtma">Hammasi</a></div></div><div class="ry">${ochiq.map(bKarta).join('') || bosh_yoq('Ochiq buyurtma yo\'q.')}</div></div>`;
+}
+
+/* ---------- Buyurtmalar ---------- */
+function bHolatBelgi(b) {
+	let s = `<span class="b ${BHOL_B[b.holat]}">${BHOL[b.holat]}</span>`;
+	if (b.holat === 'tasdiq') s += yetishmas(b).length ? '<span class="b sa">Omborda yetarli emas</span>' : toxta(b) ? '<span class="b qi">Jo\'natish to\'xtatilgan</span>' : '<span class="b ya">Jo\'natishga tayyor</span>';
+	return s;
+}
+function bKarta(b) {
+	const c = topC(b.mijoz), ochiq = b.holat === 'yangi' || b.holat === 'tasdiq';
+	return `<a class="el" href="#/buyurtma/${b.id}" data-s="${esc(Yozuv.qid(b.id + ' ' + c.nom + ' ' + qatorMatn(b)))}"><div class="ust"><span class="id">${b.id}</span>${bHolatBelgi(b)}</div><div class="nom">${esc(c.nom)}</div><div class="mat">${esc(qatorMatn(b))}</div><div class="pas"><span>${sana(b.sana)}</span>${ochiq ? `<span>Kerak: ${sana(b.kerak)} (${nisbiy(b.kerak)})</span>` : ''}<span>${esc(ism(c.menejer))}</span>${pulKorar() ? `<span class="ong">${qisqaPul(bJami(b))}</span>` : ''}</div></a>`;
+}
+function vBuyurtmalar(y) {
+	const m = db.buyurtmalar.filter(mening), tab = ['jonatildi', 'hammasi'].includes(y.tab) ? y.tab : '';
+	const faol = m.filter(b => b.holat === 'yangi' || b.holat === 'tasdiq'), jon = m.filter(b => b.holat === 'jonatildi');
+	const r = tab === '' ? faol : tab === 'jonatildi' ? jon : m;
+	return boshq('Buyurtmalar', `${faol.length} ta ochiq · ${qisqaPul(yig(faol, bJami))}`, `<button class="t a" type="button" data-a="yangiBuyurtma">${ik('qosh')}Yangi buyurtma</button>`) +
+		yorliq('#/buyurtma', tab, [['', 'Ochiq', faol.length], ['jonatildi', 'Jo\'natilgan', jon.length], ['hammasi', 'Hammasi', m.length]]) + izlash('Buyurtma raqami, mijoz yoki mahsulot') +
+		`<div class="ry" data-ry>${r.map(bKarta).join('') || bosh_yoq('Buyurtma yo\'q.')}</div>`;
+}
+function vBuyurtma(id) {
+	const b = topB(id);
+	if (!b || !mening(b)) return orqa('#/buyurtma', 'Buyurtmalar') + bosh_yoq('Buyurtma topilmadi.');
+	const c = topC(b.mijoz), j = topJ(b.id), h = mHisob(c.id), rahbar = ui.rol === 'rahbar', t = b.holat === 'tasdiq' ? toxta(b) : '', yt = b.holat === 'tasdiq' ? yetishmas(b) : [];
+	const qator = q => {
+		const m = topM(q.m);
+		let oxir;
+		if (j) { const jq = j.qatorlar.find(x => x.m === q.m); oxir = jq ? jq.lot.map(l => `<span>${pYol(l.p)} — ${miq(l.q, m.birlik)}</span>`).join('') : '—'; }
+		else if (b.holat === 'bekor') oxir = '—';
+		else {
+			const ps = db.partiyalar.filter(p => p.m === m.id && p.bosqich !== 'tayyor');
+			oxir = (m.qoldiq >= q.soni ? `<span class="yashil">Bor: ${miq(m.qoldiq, m.birlik)}</span>` : `<span class="qizil">Yetmaydi: bor ${miq(m.qoldiq, m.birlik)}</span>`) + (ps.length ? `<span class="kich">Ishlab chiqarishda: ${ps.map(p => `${pYol(p.id)} (${PBOS[p.bosqich]}, ${miq(p.reja)})`).join(', ')}</span>` : '');
+		}
+		return `<tr><td><b>${esc(m.nom)}</b></td><td class="r" data-y="Miqdor">${miq(q.soni, m.birlik)}</td><td class="r" data-y="Narx">${pul(q.narx)}</td><td class="r" data-y="Summa"><b>${pul(q.soni * q.narx)}</b></td><td data-y="${j ? 'Partiya' : 'Omborda'}"><span class="hol">${oxir}</span></td></tr>`;
+	};
+	let ogoh = '', amal = '';
+	if (b.holat === 'yangi') amal = `<button class="t x" type="button" data-a="bBekor" data-id="${b.id}">Bekor qilish</button><button class="t a" type="button" data-a="bTasdiq" data-id="${b.id}">${ik('ha')}Tasdiqlash</button>`;
+	if (b.holat === 'tasdiq') {
+		if (t) ogoh += `<div class="eslat qi">${ik('qulf')}<div><b>Jo'natish to'xtatilgan.</b> ${esc(t)}.${rahbar ? '' : ' Rahbar ruxsati kerak.'}${rahbar ? `<div style="margin-top:8px"><button class="t k" type="button" data-a="bRuxsat" data-id="${b.id}">Shu buyurtmani jo'natishga ruxsat berish</button></div>` : ''}</div></div>`;
+		if (b.ruxsat) ogoh += `<div class="eslat ko">${ik('ha')}<div>Rahbar shu buyurtmani jo'natishga ruxsat bergan.</div></div>`;
+		if (yt.length) ogoh += `<div class="eslat">${ik('ombor')}<div><b>Omborda yetarli emas.</b> ${yt.map(q => { const m = topM(q.m), kam = q.soni - m.qoldiq, jr = jarayonda(m.id); return `${esc(m.nom)}: ${miq(kam, m.birlik)} yetmaydi${jr ? `, ishlab chiqarishda ${miq(jr, m.birlik)}` : ''}${rahbar && jr < kam ? ` <button class="t k" type="button" data-a="yangiPartiya" data-m="${m.id}" data-n="${kam - jr}" data-b="${b.id}">Partiya ochish</button>` : ''}`; }).join('<br>')}</div></div>`;
+		amal = `<button class="t x" type="button" data-a="bBekor" data-id="${b.id}">Bekor qilish</button>` + (rahbar ? `<button class="t a" type="button" data-a="jonat" data-id="${b.id}" ${yt.length || t ? 'disabled' : ''}>${ik('yuk')}Jo'natish</button>` : '');
+	}
+	const jq = j ? h.q.find(x => x.j.id === j.id) : null;
+	return orqa('#/buyurtma', 'Buyurtmalar') + boshq(`Buyurtma ${b.id}`, `${esc(c.nom)} · ${esc(c.tur)}, ${esc(c.joy)}`, amal) +
+		`<div class="k">${qadam(BHOL_T, BHOL, b.holat)}${b.holat === 'bekor' ? '<p class="yord" style="margin-top:8px">Buyurtma bekor qilingan.</p>' : ''}</div>${ogoh}
+<div class="k"><div class="tr"><div><span>Mijoz</span>${cYol(c)}</div><div><span>Menejer</span><b>${esc(ism(c.menejer))}</b></div><div><span>Qabul qilingan</span><b>${sana(b.sana)}</b></div><div><span>${j ? 'Jo\'natilgan' : 'Kerak bo\'lgan sana'}</span><b>${j ? sana(j.sana) : `${sana(b.kerak)} (${nisbiy(b.kerak)})`}</b></div><div><span>To'lov sharti</span><b>${c.muddat ? `${c.muddat} kun muddat` : 'Oldindan to\'lov'}</b></div></div>${b.izoh ? `<p class="yord" style="margin-top:10px">${esc(b.izoh)}</p>` : ''}${b.holat === 'tasdiq' && !rahbar ? '<p class="yord" style="margin-top:10px">Jo\'natishni omborchi bajaradi; jo\'natilgach to\'lov muddati o\'zi hisoblanadi.</p>' : ''}</div>
+<div class="k"><div class="kb"><h2>Mahsulotlar</h2></div><div class="jw"><table class="j tel"><thead><tr><th>Mahsulot</th><th class="r">Miqdor</th><th class="r">Narx</th><th class="r">Summa</th><th>${j ? 'Partiya' : 'Omborda'}</th></tr></thead><tbody>${b.qatorlar.map(qator).join('')}</tbody></table></div><div class="jami"><div class="kat"><span>Jami</span><span>${pul(bJami(b))}</span></div></div></div>
+${j ? `<div class="k"><div class="kb"><h2>Jo'natma ${j.id}</h2><div class="ong">${jq.qol < 1 ? '<span class="b ya">To\'langan</span>' : jq.farq < 0 ? `<span class="b qi">Muddati ${-jq.farq} kun o'tgan</span>` : `<span class="b">To'lov muddati: ${nisbiy(j.muddat)}</span>`}</div></div><div class="tr"><div><span>Jo'natilgan</span><b>${sana(j.sana)}</b></div><div><span>To'lov muddati</span><b>${sana(j.muddat)}</b></div><div><span>Summa</span><b>${pul(jq.summa)}</b></div><div><span>To'langan</span><b>${pul(jq.tolandi)}</b></div><div><span>Qolgan</span><b>${pul(jq.qol)}</b></div></div><p class="yord" style="margin-top:10px">To'lovlar mijozning eng eski jo'natmasidan boshlab hisobga olinadi. Har bir mahsulot qaysi partiyadan ketgani saqlanadi.</p></div>` : ''}
+<div class="k"><div class="kb"><h2>Mijozning to'lov holati</h2><div class="ong">${tolovBelgi(h)}</div></div><div class="tr"><div><span>To'lanmagan summa</span><b>${pul(h.qol)}</b></div><div><span>Muddati o'tgan</span><b>${h.kech >= 1 ? `<span class="qizil">${pul(h.kech)} · ${h.kun} kun</span>` : 'Yo\'q'}</b></div>${c.limit ? `<div><span>Limit</span><b>${qisqaPul(c.limit)}</b></div>` : ''}${h.avans >= 1 ? `<div><span>Oldindan to'langan</span><b>${pul(h.avans)}</b></div>` : ''}</div></div>`;
+}
+
+/* ---------- Mijozlar va to'lov holati ---------- */
+function vMijozlar(y) {
+	const hammasi = db.mijozlar.filter(meningC).map(c => ({ c, h: mHisob(c.id) })).map(x => Object.assign(x, { e: eslatHolat(x.c.id, x.h) }));
+	const tab = ['kech', 'eslat'].includes(y.tab) ? y.tab : '';
+	const kech = hammasi.filter(x => x.h.kech >= 1), es = hammasi.filter(x => x.e.kerak);
+	const r = (tab === 'kech' ? kech : tab === 'eslat' ? es : hammasi).slice().sort((a, b) => (b.h.kun - a.h.kun) || (b.h.qol - a.h.qol));
+	const u = umumiyHolat(true), ids = hammasi.map(x => x.c.id), yg = yig(db.tolovlar.filter(t => ids.includes(t.mijoz) && ich30(t.sana)), t => t.summa);
+	const qator = ({ c, h, e }) => `<tr class="bos" data-h="#/mijozlar/${c.id}" data-s="${esc(Yozuv.qid(c.nom + ' ' + c.tur + ' ' + c.joy + ' ' + c.masul))}"><td><a href="#/mijozlar/${c.id}"><b>${esc(c.nom)}</b></a><span class="kich">${esc(c.tur)} · ${esc(c.joy)} · ${esc(ism(c.menejer))}</span></td><td class="r" data-y="Jo'natilgan">${pul(h.jon)}</td><td class="r" data-y="To'langan">${pul(h.tol)}</td><td class="r" data-y="Qolgan"><b>${pul(h.qol)}</b></td><td class="r" data-y="Muddati o'tgan">${h.kech >= 1 ? `<span class="qizil">${pul(h.kech)}</span>` : '—'}</td><td data-y="Holat"><span class="hol">${tolovBelgi(h)}${e.matn ? `<span class="kich${e.kerak ? ' qizil' : ''}">${esc(e.matn)}</span>` : ''}</span></td><td class="r"><button class="t k" type="button" data-a="tolov" data-c="${c.id}">To'lov</button>${h.kech >= 1 ? ` <button class="t k${e.kerak ? ' a' : ''}" type="button" data-a="eslatma" data-c="${c.id}">Eslatma</button>` : ''}</td></tr>`;
+	return boshq('Mijozlar', 'Har bir mijoz bo\'yicha: jo\'natilgan, to\'langan, qolgan summa va muddati o\'tgan kunlar', `<button class="t a" type="button" data-a="yangiMijoz">${ik('qosh')}Yangi mijoz</button>`) +
+		`<div class="kpi">${kpiPul('To\'lanmagan summa', u.qol, `${hammasi.filter(x => x.h.qol >= 1).length} ta mijozda`)}${kpiPul('Muddati o\'tgan', u.kech, u.kech ? `${u.kechSoni} ta mijoz` : 'Yo\'q', u.kech ? 'yom' : 'yax', '#/mijozlar?kech')}${kpiPul('Muddatida', u.qol - u.kech, 'Muddati hali kelmagan')}${kpiPul('Yig\'ildi (30 kun)', yg, '', '', ui.rol === 'rahbar' ? '#/moliya' : '')}</div>
+<div class="k"><div class="kb"><h2>To'lanmagan summa — muddat bo'yicha</h2></div>${stek(YOSH.map((n, i) => [n, u.yosh[i], ['ya', 'sa', 'qi', 'qq'][i]]), qisqaPul)}</div>` +
+		yorliq('#/mijozlar', tab, [['', 'Hammasi', hammasi.length], ['kech', 'Muddati o\'tgan', kech.length, true], ['eslat', 'Eslatish kerak', es.length, true]]) + izlash('Mijoz nomi, turi yoki shahar') +
+		`<div class="k" data-ry>${r.length ? `<div class="jw"><table class="j tel"><thead><tr><th>Mijoz</th><th class="r">Jo'natilgan</th><th class="r">To'langan</th><th class="r">Qolgan</th><th class="r">Muddati o'tgan</th><th>Holat</th><th></th></tr></thead><tbody>${r.map(qator).join('')}</tbody></table></div>` : bosh_yoq(tab === 'eslat' ? 'Eslatish kerak bo\'lgan mijoz yo\'q.' : 'Mijoz yo\'q.')}</div>`;
+}
+function vMijoz(id) {
+	const c = topC(id);
+	if (!c || !meningC(c)) return orqa('#/mijozlar', 'Mijozlar') + bosh_yoq('Mijoz topilmadi.');
+	const h = mHisob(id), e = eslatHolat(id, h), rahbar = ui.rol === 'rahbar';
+	const tl = db.tolovlar.filter(t => t.mijoz === id).sort((a, b) => a.sana < b.sana ? 1 : -1), es = db.eslatmalar.filter(x => x.mijoz === id).sort((a, b) => a.sana < b.sana ? 1 : -1);
+	const bs = db.buyurtmalar.filter(b => b.mijoz === id && (b.holat === 'yangi' || b.holat === 'tasdiq'));
+	const jHolat = q => q.qol < 1 ? '<span class="b ya">To\'langan</span>' : q.farq < 0 ? `<span class="b qi">${-q.farq} kun o'tgan</span>` : q.farq === 0 ? '<span class="b sa">Muddati bugun</span>' : `<span class="b">${q.farq} kun qoldi</span>`;
+	let ogoh = '';
+	if (h.kun > KECH_CHEGARA) ogoh += `<div class="eslat qi">${ik('qulf')}<div><b>Yangi jo'natmalar to'xtatilgan.</b> Muddati ${h.kun} kun o'tgan to'lov bor (chegara — ${KECH_CHEGARA} kun). Jo'natish faqat rahbar ruxsati bilan.</div></div>`;
+	else if (h.kech >= 1) ogoh += `<div class="eslat">${ik('soat')}<div>Muddati o'tgan to'lov: <b>${pul(h.kech)}</b>, ${h.kun} kun. ${esc(e.matn)}.</div></div>`;
+	if (c.limit && h.qol > c.limit * 0.8) ogoh += `<div class="eslat">${ik('ogoh')}<div>To'lanmagan summa limitning ${Math.round(h.qol / c.limit * 100)}% iga yetdi (${qisqaPul(h.qol)} / ${qisqaPul(c.limit)}).</div></div>`;
+	return orqa('#/mijozlar', 'Mijozlar') + boshq(esc(c.nom), `${esc(c.tur)} · ${esc(c.joy)}`, `<button class="t" type="button" data-a="yangiBuyurtma" data-c="${c.id}">${ik('qosh')}Buyurtma</button><button class="t" type="button" data-a="eslatma" data-c="${c.id}">${ik('eslat')}Eslatma</button><button class="t a" type="button" data-a="tolov" data-c="${c.id}">${ik('moliya')}To'lov qabul qilish</button>`) + ogoh +
+		`<div class="kpi">${kpiPul('Jo\'natilgan', h.jon, `${h.q.length} ta jo'natma`)}${kpiPul('To\'langan', h.tol, h.avans >= 1 ? `Shundan oldindan: ${qisqaPul(h.avans)}` : `${tl.length} ta to'lov`)}${kpiPul('Qolgan', h.qol, h.keyingi ? `Keyingi muddat: ${sana(h.keyingi.j.muddat)}` : (h.qol >= 1 ? '' : 'To\'lanmagan summa yo\'q'), h.qol >= 1 ? '' : 'yax')}${kpiPul('Muddati o\'tgan', h.kech, h.kech >= 1 ? `${h.kun} kundan beri` : 'Yo\'q', h.kech >= 1 ? 'yom' : 'yax')}</div>
+<div class="k"><div class="kb"><h2>Ma'lumot</h2>${rahbar ? `<div class="ong"><button class="t k" type="button" data-a="shart" data-c="${c.id}">Shartlarni o'zgartirish</button></div>` : ''}</div><div class="tr"><div><span>Mas'ul shaxs</span><b>${esc(c.masul)}</b></div><div><span>Telefon</span><b data-asl>${esc(c.tel)}</b></div><div><span>Menejer</span><b>${esc(ism(c.menejer))}</b></div><div><span>To'lov sharti</span><b>${c.muddat ? `${c.muddat} kun muddat` : 'Oldindan to\'lov'}</b></div><div><span>Limit</span><b>${c.limit ? qisqaPul(c.limit) : 'Belgilanmagan'}</b></div></div></div>
+<div class="k"><div class="kb"><h2>Jo'natmalar va to'lov muddati</h2><div class="ong"><button class="t k" type="button" data-a="csv" data-h="akt:${c.id}">${ik('tush')}<span>Solishtirma dalolatnoma</span></button></div></div>${h.q.length ? `<div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th>Hujjat</th><th class="r">Summa</th><th class="r">To'langan</th><th class="r">Qolgan</th><th>To'lov muddati</th><th>Holat</th></tr></thead><tbody>${h.q.slice().reverse().map(q => `<tr><td><b>${sana(q.j.sana)}</b></td><td data-y="Hujjat"><a href="#/buyurtma/${q.j.b}">${q.j.id}</a></td><td class="r" data-y="Summa">${pul(q.summa)}</td><td class="r" data-y="To'langan">${pul(q.tolandi)}</td><td class="r" data-y="Qolgan"><b>${pul(q.qol)}</b></td><td data-y="To'lov muddati">${sana(q.j.muddat)}</td><td data-y="Holat">${jHolat(q)}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="2">Jami</td><td class="r" data-y="Summa">${pul(h.jon)}</td><td class="r" data-y="To'langan">${pul(h.tol - h.avans)}</td><td class="r" data-y="Qolgan">${pul(h.qol)}</td><td colspan="2"></td></tr></tfoot></table></div>` : bosh_yoq('Hali jo\'natma bo\'lmagan.')}</div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Kelgan to'lovlar</h2></div>${tl.length ? `<div class="jw"><table class="j"><thead><tr><th>Sana</th><th>Usul</th><th class="r">Summa</th></tr></thead><tbody>${tl.map(t => `<tr><td><b>${sana(t.sana)}</b></td><td>${esc(t.usul)}</td><td class="r"><b>${pul(t.summa)}</b></td></tr>`).join('')}</tbody></table></div>` : bosh_yoq('To\'lov kelmagan.')}</div>
+<div class="k"><div class="kb"><h2>Eslatmalar tarixi</h2></div>${es.length ? `<div class="tarix">${es.map(x => `<div><time>${sana(x.sana)}</time><span><b>${esc(x.usul)}</b> · ${esc(ism(x.kim))}: ${esc(x.matn)}${x.vada ? ` <span class="b ${kunFarq(x.vada) < 0 ? 'qi' : 'ko'}">Va'da: ${sana(x.vada)}</span>` : ''}</span></div>`).join('')}</div>` : bosh_yoq('Hali eslatma yozilmagan.')}</div></div>
+<div class="k"><div class="kb"><h2>Ochiq buyurtmalar</h2></div><div class="ry">${bs.map(bKarta).join('') || bosh_yoq('Ochiq buyurtma yo\'q.')}</div></div>`;
+}
+
+/* ---------- Ombor ---------- */
+function omborJ(r, amal) {
+	const rahbar = ui.rol === 'rahbar', partiyaOcha = rahbar || ui.rol === 'ishlab', kirimQila = rahbar || ui.rol === 'ombor';
+	const narx = m => m.tur === 'tayyor' ? pulKorar() : rahbar;
+	const narxUstun = r.some(narx);
+	return `<div class="jw"><table class="j tel"><thead><tr><th>Mahsulot</th><th>Omborda</th><th class="r">Eng kam</th><th class="r">Band</th><th class="r">Kutilmoqda</th>${narxUstun ? '<th class="r">Narx</th>' : ''}${amal ? '<th></th>' : ''}</tr></thead><tbody>${r.map(m => {
+		const h = mHolat(m), tay = m.tur === 'tayyor', bn = tay ? band(m.id) : navbatKerak(m.id), kt = tay ? jarayonda(m.id) : yolda(m.id);
+		let t = '';
+		if (amal && tay && partiyaOcha && (h === 'kam' || h === 'yoq' || m.qoldiq < bn) && kt < m.min + bn - m.qoldiq) t = `<button class="t k a" type="button" data-a="yangiPartiya" data-m="${m.id}" data-n="${Math.max(1, m.min + bn - m.qoldiq - kt)}">Partiya ochish</button>`;
+		if (amal && !tay && kirimQila) t = `<button class="t k" type="button" data-a="kirim" data-m="${m.id}">Kirim</button>${(h === 'kam' || h === 'yoq') && !kt ? ` <button class="t k a" type="button" data-a="yBuy" data-m="${m.id}">Buyurtma berish</button>` : ''}`;
+		return `<tr data-s="${esc(Yozuv.qid(m.nom + ' ' + m.guruh))}"><td><a href="#/ombor/${m.id}"><b>${esc(m.nom)}</b></a><span class="kich">${esc(m.guruh)}${h === 'yoq' ? ' · <span class="qizil">Tugagan</span>' : h === 'kam' ? ' · <span class="sariq">Kam qoldi</span>' : ''}${tay && m.qoldiq < bn ? ' · <span class="qizil">Buyurtmalarga yetmaydi</span>' : ''}${!tay && m.qoldiq < bn ? ' · <span class="qizil">Navbatdagi partiyalarga yetmaydi</span>' : ''}</span></td><td data-y="Omborda">${qoldiqHTML(m)}</td><td class="r" data-y="Eng kam">${m.buyurtmaga ? '—' : miq(m.min, m.birlik)}</td><td class="r" data-y="${tay ? 'Buyurtmalarga band' : 'Navbatdagi partiyalarga'}">${bn ? miq(bn, m.birlik) : '—'}</td><td class="r" data-y="${tay ? 'Ishlab chiqarishda' : 'Yo\'lda'}">${kt ? miq(kt, m.birlik) : '—'}</td>${narxUstun ? `<td class="r" data-y="Narx">${narx(m) ? pul(m.narx) : '—'}</td>` : ''}${amal ? `<td class="r">${t}</td>` : ''}</tr>`;
+	}).join('')}</tbody></table></div><p class="yord" style="margin-top:8px">«Band» — tayyor mahsulotda tasdiqlangan buyurtmalar, xomashyoda navbatdagi partiyalar ehtiyoji. «Kutilmoqda» — tayyor mahsulotda ishlab chiqarishdagi, xomashyoda yo'ldagi miqdor.</p>`;
+}
+function vOmbor(y) {
+	if (y.arg) return vMahsulot(y.arg);
+	const amal = ui.rol !== 'sotuv';
+	const tablar = ui.rol === 'sotuv' ? ['tayyor'] : ui.rol === 'ishlab' ? ['xom', 'tayyor', 'yolda'] : ['kam', 'tayyor', 'xom', 'yolda', 'jonat', 'jurnal'];
+	const tab = tablar.includes(y.tab) ? y.tab : tablar[0];
+	const km = kamlar(), jon = db.buyurtmalar.filter(b => b.holat === 'tasdiq').sort((a, b) => (tayyormi(b) ? 1 : 0) - (tayyormi(a) ? 1 : 0) || (a.kerak < b.kerak ? -1 : 1)), yl = db.kirimlar.filter(k => k.holat === 'yolda');
+	const tay = db.mahsulotlar.filter(m => m.tur === 'tayyor'), xom = db.mahsulotlar.filter(m => m.tur === 'xom');
+	const NOM = { kam: ['Kam qolganlar', km.length, true], tayyor: ['Tayyor mahsulot', tay.length], xom: ['Xomashyo va qadoq', xom.length], yolda: ['Yo\'lda', yl.length], jonat: ['Jo\'natish', jon.filter(tayyormi).length, true], jurnal: ['Jurnal', null] };
+	const kirimQila = ui.rol === 'rahbar' || ui.rol === 'ombor';
+	let ich;
+	if (tab === 'kam') ich = km.length ? `<div class="k">${omborJ(km, amal)}</div>` : bosh_yoq('Hamma mahsulot yetarli.');
+	else if (tab === 'tayyor' || tab === 'xom') ich = izlash('Mahsulot nomi') + `<div class="k" data-ry>${omborJ(tab === 'tayyor' ? tay : xom, amal)}</div>`;
+	else if (tab === 'yolda') ich = `<div class="ry">${yl.map(k => `<div class="el"><div class="ust"><span class="id">${k.id}</span><span class="b ko">Yo'lda</span><span class="b">${kunFarq(k.kutiladi) < 0 ? `${-kunFarq(k.kutiladi)} kun kechikdi` : 'Kutilmoqda: ' + nisbiy(k.kutiladi)}</span></div><div class="nom">${esc(k.kim)}</div><div class="mat">${k.qatorlar.map(q => `${esc(topM(q.m).nom)} — ${miq(q.soni, topM(q.m).birlik)}`).join('; ')}</div>${kirimQila ? `<div class="amal"><button class="t k a" type="button" data-a="kQabul" data-id="${k.id}">${ik('tush')}Omborga qabul qilish</button></div>` : ''}</div>`).join('') || bosh_yoq('Yo\'lda xomashyo yo\'q.')}</div>`;
+	else if (tab === 'jonat') ich = `<div class="ry">${jon.map(b => { const yt = yetishmas(b), t = toxta(b), c = topC(b.mijoz); return `<div class="el"><div class="ust">${ui.rol === 'ombor' ? `<span class="id">${b.id}</span>` : `<a class="id" href="#/buyurtma/${b.id}">${b.id}</a>`}${yt.length ? '<span class="b sa">Omborda yetarli emas</span>' : t ? '<span class="b qi">To\'xtatilgan — rahbar ruxsati kerak</span>' : '<span class="b ya">Jo\'natishga tayyor</span>'}<span class="b">Kerak: ${nisbiy(b.kerak)}</span></div><div class="nom">${esc(c.nom)}</div><div class="mat">${esc(c.joy)} · ${esc(c.masul)}</div><div class="mat">${b.qatorlar.map(q => { const m = topM(q.m); return `${esc(m.nom)} — ${miq(q.soni, m.birlik)} (omborda ${miq(m.qoldiq)})`; }).join('; ')}</div><div class="amal"><button class="t k a" type="button" data-a="jonat" data-id="${b.id}" ${yt.length || t ? 'disabled' : ''}>${ik('yuk')}Jo'natish</button></div></div>`; }).join('') || bosh_yoq('Jo\'natiladigan buyurtma yo\'q.')}</div>`;
+	else ich = `<div class="k">${harakatJ(db.harakatlar.slice(0, 60), true)}</div>`;
+	const jamiT = yig(tay, m => m.qoldiq * m.narx);
+	return boshq(ui.rol === 'ishlab' ? 'Xomashyo va ombor' : 'Ombor', ui.rol === 'rahbar' ? `Tayyor mahsulot: ${qisqaPul(jamiT)} (sotuv narxida) · kam qolgan ${km.length} ta` : ui.rol === 'sotuv' ? 'Tayyor mahsulot qoldig\'i: omborda, buyurtmalarga band va ishlab chiqarishdagi miqdor' : 'Qoldiq, kam qolganlar, yo\'ldagi xomashyo, jo\'natish', kirimQila ? `<button class="t" type="button" data-a="yBuy">${ik('qosh')}Xomashyo buyurtmasi</button>` : '') +
+		(tablar.length > 1 ? yorliq('#/ombor', tab, tablar.map(k => [k, NOM[k][0], NOM[k][1], NOM[k][2]])) : '') + ich;
+}
+function harakatJ(r, nomli) {
+	return r.length ? `<div class="jw"><table class="j tel"><thead><tr><th>Sana</th>${nomli ? '<th>Mahsulot</th>' : ''}<th class="r">Miqdor</th><th>Sabab</th><th>Kim</th></tr></thead><tbody>${r.map(h => { const m = topM(h.m); return `<tr><td><b>${sana(h.sana)}</b></td>${nomli ? `<td data-y="Mahsulot">${esc(m.nom)}</td>` : ''}<td class="r" data-y="Miqdor"><b class="${h.soni > 0 ? 'yashil' : ''}">${h.soni > 0 ? '+' : '−'}${miq(Math.abs(h.soni), m.birlik)}</b></td><td data-y="Sabab">${esc(h.sabab)}</td><td data-y="Kim">${esc(ism(h.kim))}</td></tr>`; }).join('')}</tbody></table></div>` : bosh_yoq('Harakat yo\'q.');
+}
+function vMahsulot(id) {
+	const m = topM(id);
+	if (!m || (ui.rol === 'sotuv' && m.tur !== 'tayyor')) return orqa('#/ombor', 'Ombor') + bosh_yoq('Mahsulot topilmadi.');
+	const tay = m.tur === 'tayyor', h = mHolat(m), rahbar = ui.rol === 'rahbar';
+	const hr = db.harakatlar.filter(x => x.m === id).slice(0, 20);
+	const holat = h === 'yoq' ? '<span class="b qi">Tugagan</span>' : h === 'kam' ? '<span class="b sa">Kam qoldi</span>' : h === 'buyurtmaga' ? '<span class="b">Buyurtma asosida</span>' : '<span class="b ya">Yetarli</span>';
+	let ich;
+	if (tay) {
+		const bn = band(id), jr = jarayonda(id), lots = db.lotlar.filter(l => l.m === id).sort((a, b) => a.sana < b.sana ? -1 : 1);
+		const bs = db.buyurtmalar.filter(b => b.holat === 'tasdiq' && b.qatorlar.some(q => q.m === id)), ps = db.partiyalar.filter(p => p.m === id && p.bosqich !== 'tayyor');
+		ich = `<div class="kpi">${kpi('Omborda', miq(m.qoldiq), m.birlik, `Eng kam: ${miq(m.min, m.birlik)}`, h === 'kam' || h === 'yoq' ? 'yom' : '')}${kpi('Buyurtmalarga band', miq(bn), m.birlik, `${bs.length} ta buyurtma`)}${kpi('Erkin qoldiq', miq(m.qoldiq - bn), m.birlik, m.qoldiq < bn ? 'Buyurtmalarga yetmaydi' : 'Yangi buyurtmaga berish mumkin', m.qoldiq < bn ? 'yom' : 'yax')}${kpi('Ishlab chiqarishda', miq(jr), m.birlik, `${ps.length} ta partiya`)}</div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Partiyalar bo'yicha qoldiq</h2></div>${lots.length ? `<div class="jw"><table class="j"><thead><tr><th>Partiya</th><th>Omborga kelgan</th><th class="r">Qoldiq</th></tr></thead><tbody>${lots.map(l => `<tr><td><b>${pYol(l.p)}</b></td><td>${sana(l.sana)}</td><td class="r"><b>${miq(l.q, m.birlik)}</b></td></tr>`).join('')}</tbody></table></div><p class="yord" style="margin-top:8px">Jo'natishda eng eski partiya birinchi ketadi.</p>` : bosh_yoq('Omborda qoldiq yo\'q.')}</div>
+<div class="k"><div class="kb"><h2>Band qilgan buyurtmalar</h2></div>${bs.length ? `<div class="tarix">${bs.map(b => `<div><time>${ui.rol === 'rahbar' || (ui.rol === 'sotuv' && mening(b)) ? `<a href="#/buyurtma/${b.id}">${b.id}</a>` : b.id}</time><span>${esc(topC(b.mijoz).nom)} — <b>${miq(yig(b.qatorlar.filter(q => q.m === id), q => q.soni), m.birlik)}</b>, kerak ${nisbiy(b.kerak)}</span></div>`).join('')}</div>` : bosh_yoq('Band qilingan miqdor yo\'q.')}
+<h3 class="kich">Ishlab chiqarishda</h3>${ps.length ? `<div class="tarix">${ps.map(p => `<div><time>${pYol(p.id)}</time><span>${PBOS[p.bosqich]} — <b>${miq(p.reja, m.birlik)}</b>, muddat ${sana(p.muddat)}</span></div>`).join('')}</div>` : '<p class="yord">Jarayonda partiya yo\'q.</p>'}</div></div>`;
+	} else {
+		const nk = navbatKerak(id), yl = yolda(id);
+		ich = `<div class="kpi">${kpi('Omborda', miq(m.qoldiq), m.birlik, `Eng kam: ${miq(m.min, m.birlik)}`, h === 'kam' || h === 'yoq' ? 'yom' : '')}${kpi('Navbatdagi partiyalarga', miq(nk), m.birlik, m.qoldiq < nk ? 'Yetmaydi' : 'Yetadi', m.qoldiq < nk ? 'yom' : 'yax')}${kpi('Yo\'lda', miq(yl), m.birlik, yl ? db.kirimlar.filter(k => k.holat === 'yolda' && k.qatorlar.some(q => q.m === id)).map(k => `${k.id}: ${nisbiy(k.kutiladi)}`).join(', ') : 'Buyurtma berilmagan')}${rahbar ? kpiPul('Qoldiq qiymati', m.qoldiq * m.narx, `${pul(m.narx)} / ${m.birlik}`) : kpi('Guruh', esc(m.guruh), '', '')}</div>`;
+	}
+	return orqa(tay ? '#/ombor?tayyor' : '#/ombor?xom', 'Ombor') + boshq(esc(m.nom), `${esc(m.guruh)}${tay && pulKorar() ? ` · narxi ${pul(m.narx)} / ${m.birlik}` : ''}`, holat) + ich +
+		`<div class="k"><div class="kb"><h2>Oxirgi harakatlar</h2></div>${harakatJ(hr, false)}</div>`;
+}
+
+/* ---------- Ishlab chiqarish ---------- */
+function pBelgi(p) {
+	if (p.bosqich === 'tayyor') return `<span class="b ya">Tugagan: ${sana(p.tugadi)}</span>`;
+	const k = pKech(p), x = pXomYoq(p);
+	return `<span class="b ${p.bosqich === 'navbat' ? 'sa' : 'ko'}">${PBOS[p.bosqich]}</span>${k ? `<span class="b qi">${k} kun kechikdi</span>` : `<span class="b">Muddat: ${nisbiy(p.muddat)}</span>`}${x.length ? '<span class="b qi">Xomashyo yetmaydi</span>' : ''}`;
+}
+function pKarta(p) {
+	const m = topM(p.m), b = p.b ? topB(p.b) : null;
+	return `<a class="el" href="#/ishlab/${p.id}"><div class="ust"><span class="id">${p.id}</span>${pBelgi(p)}</div><div class="nom">${esc(m.nom)}</div><div class="pas"><span>Reja: <b>${miq(p.reja, m.birlik)}</b></span>${p.bosqich === 'tayyor' ? `<span>Chiqdi: <b>${miq(p.chiqdi, m.birlik)}</b></span><span>Yaroqsiz: ${String(Math.round(p.brak / (p.chiqdi + p.brak) * 1000) / 10).replace('.', ',')}%</span>` : `<span>Muddat: ${sana(p.muddat)}</span>`}${b ? `<span>Buyurtma ${b.id} — ${esc(topC(b.mijoz).nom)}</span>` : '<span>Ombor uchun</span>'}</div></a>`;
+}
+function vIshlab(y) {
+	const tab = ['kerak', 'tayyor'].includes(y.tab) ? y.tab : '';
+	const faol = db.partiyalar.filter(p => p.bosqich !== 'tayyor'), tug = db.partiyalar.filter(p => p.bosqich === 'tayyor'), kr = ishlabKerak();
+	let ich;
+	if (tab === 'kerak') ich = `<div class="k"><div class="kb"><h2>Nima ishlab chiqarish kerak</h2><div class="ost">Hisob: eng kam chegara + tasdiqlangan buyurtmalar − ombordagi − jarayondagi miqdor</div></div>${kr.length ? `<div class="jw"><table class="j tel"><thead><tr><th>Mahsulot</th><th class="r">Omborda</th><th class="r">Buyurtmalarga band</th><th class="r">Jarayonda</th><th class="r">Eng kam</th><th class="r">Yetishmaydi</th><th></th></tr></thead><tbody>${kr.map(x => `<tr><td><b>${esc(x.m.nom)}</b>${x.erkin < 0 ? '<span class="kich qizil">Buyurtmalarga yetmaydi</span>' : ''}</td><td class="r" data-y="Omborda">${miq(x.m.qoldiq, x.m.birlik)}</td><td class="r" data-y="Buyurtmalarga band">${miq(x.band, x.m.birlik)}</td><td class="r" data-y="Jarayonda">${miq(x.jarayon, x.m.birlik)}</td><td class="r" data-y="Eng kam">${miq(x.m.min, x.m.birlik)}</td><td class="r" data-y="Yetishmaydi"><b class="qizil">${miq(x.kerak, x.m.birlik)}</b></td><td class="r"><button class="t k a" type="button" data-a="yangiPartiya" data-m="${x.m.id}" data-n="${x.kerak}">Partiya ochish</button></td></tr>`).join('')}</tbody></table></div>` : bosh_yoq('Hozircha qo\'shimcha partiya kerak emas: ombor va jarayondagi miqdor yetarli.')}</div>`;
+	else if (tab === 'tayyor') ich = `<div class="ry">${tug.slice(0, 20).map(pKarta).join('')}</div>`;
+	else ich = bosqichlarHTML() + PBOS_T.slice(0, -1).reverse().map(k => { const r = faol.filter(p => p.bosqich === k); return r.length ? `<h3 class="kich">${PBOS[k]} — ${r.length} ta</h3><div class="ry">${r.map(pKarta).join('')}</div>` : ''; }).join('');
+	return boshq(ui.rol === 'ishlab' ? 'Partiyalar' : 'Ishlab chiqarish', `${faol.length} ta partiya jarayonda · ${faol.filter(pKech).length} tasi kechikmoqda`, `<button class="t a" type="button" data-a="yangiPartiya">${ik('qosh')}Yangi partiya</button>`) +
+		yorliq('#/ishlab', tab, [['', 'Jarayonda', faol.length], ['kerak', 'Nima kerak', kr.length, true], ['tayyor', 'Tugaganlar', tug.length]]) + ich;
+}
+function vPartiya(id) {
+	const p = topP(id);
+	if (!p) return orqa('#/ishlab', 'Partiyalar') + bosh_yoq('Partiya topilmadi.');
+	const m = topM(p.m), tart = pTartib(m), i = tart.indexOf(p.bosqich), b = p.b ? topB(p.b) : null, rahbar = ui.rol === 'rahbar';
+	const xk = p.bosqich === 'navbat' ? xomKerak(m, p.reja) : null, yoq = xk ? xk.filter(x => !x.yetar) : [];
+	let amal = '';
+	if (p.bosqich === 'navbat') amal = `<button class="t a" type="button" data-a="pBoshla" data-id="${p.id}" ${yoq.length ? 'disabled' : ''}>${ik('ha')}Boshlash: xomashyoni olish</button>`;
+	else if (p.bosqich === 'sifat') amal = `<button class="t a" type="button" data-a="pQabul" data-id="${p.id}">${ik('tush')}Omborga topshirish</button>`;
+	else if (p.bosqich !== 'tayyor') amal = `<button class="t a" type="button" data-a="pKeyingi" data-id="${p.id}">${ik('ong')}Keyingi bosqich: ${PBOS[tart[i + 1]]}</button>`;
+	const xomJ = xk
+		? `<div class="jw"><table class="j tel"><thead><tr><th>Xomashyo</th><th class="r">Kerak</th><th class="r">Omborda</th><th>Holat</th></tr></thead><tbody>${xk.map(x => `<tr><td><b>${esc(x.x.nom)}</b></td><td class="r" data-y="Kerak">${miq(x.kerak, x.x.birlik)}</td><td class="r" data-y="Omborda">${miq(x.bor, x.x.birlik)}</td><td data-y="Holat"><span class="hol">${x.yetar ? '<span class="b ya">Yetadi</span>' : `<span class="b qi">${miq(x.kerak - x.bor, x.x.birlik)} yetmaydi</span>${yolda(x.x.id) ? ` <span class="b ko">Yo'lda: ${miq(yolda(x.x.id), x.x.birlik)}</span>` : ''}`}</span></td></tr>`).join('')}</tbody></table></div>`
+		: `<div class="jw"><table class="j tel"><thead><tr><th>Xomashyo</th><th class="r">Sarflangan</th>${rahbar ? '<th class="r">Qiymati</th>' : ''}</tr></thead><tbody>${p.sarf.map(s => { const x = topM(s.m); return `<tr><td><b>${esc(x.nom)}</b></td><td class="r" data-y="Sarflangan">${miq(s.soni, x.birlik)}</td>${rahbar ? `<td class="r" data-y="Qiymati">${pul(s.soni * x.narx)}</td>` : ''}</tr>`; }).join('')}</tbody>${rahbar ? `<tfoot><tr><td>Jami</td><td></td><td class="r">${pul(pSarfS(p))}</td></tr></tfoot>` : ''}</table></div>`;
+	let iz = '';
+	if (p.bosqich === 'tayyor') {
+		const ket = [];
+		for (const j of db.jonatmalar) for (const q of j.qatorlar) for (const l of q.lot) if (l.p === p.id) ket.push({ j, q: l.q });
+		const lot = db.lotlar.find(l => l.p === p.id), mk = ui.rol === 'rahbar';
+		iz = `<div class="k"><div class="kb"><h2>Partiya izi: qayerga ketdi</h2><div class="ong"><span class="b">Omborda qoldi: ${miq(lot ? lot.q : 0, m.birlik)}</span></div></div>${ket.length ? `<div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th>Jo'natma</th><th>Mijoz</th><th class="r">Miqdor</th></tr></thead><tbody>${ket.map(x => `<tr><td><b>${sana(x.j.sana)}</b></td><td data-y="Jo'natma">${mk ? `<a href="#/buyurtma/${x.j.b}">${x.j.id}</a>` : x.j.id}</td><td data-y="Mijoz">${esc(topC(x.j.mijoz).nom)}</td><td class="r" data-y="Miqdor"><b>${miq(x.q, m.birlik)}</b></td></tr>`).join('')}</tbody></table></div>` : bosh_yoq('Bu partiyadan hali jo\'natilmagan.')}<p class="yord" style="margin-top:8px">Shikoyat yoki qaytarish bo'lsa, partiya raqami bo'yicha qaysi mijozlarga ketgani shu yerdan topiladi.</p></div>`;
+	}
+	return orqa('#/ishlab', 'Partiyalar') + boshq(`Partiya ${p.id}`, esc(m.nom), amal) +
+		`<div class="k">${qadam(tart, PBOS, p.bosqich)}</div>${yoq.length ? `<div class="eslat qi">${ik('ogoh')}<div><b>Boshlab bo'lmaydi — xomashyo yetmaydi.</b> ${yoq.map(x => `${esc(x.x.nom)}: kerak ${miq(x.kerak, x.x.birlik)}, omborda ${miq(x.bor, x.x.birlik)}`).join('; ')}.</div></div>` : ''}${pKech(p) ? `<div class="eslat">${ik('soat')}<div>Partiya muddatidan <b>${pKech(p)} kun</b> kechikmoqda.</div></div>` : ''}
+<div class="k"><div class="tr"><div><span>Reja</span><b>${miq(p.reja, m.birlik)}</b></div><div><span>Ochilgan</span><b>${sana(p.ochildi)}</b></div><div><span>Boshlangan</span><b>${sana(p.boshlandi)}</b></div><div><span>${p.tugadi ? 'Tugagan' : 'Muddat'}</span><b>${p.tugadi ? sana(p.tugadi) : `${sana(p.muddat)} (${nisbiy(p.muddat)})`}</b></div><div><span>Nima uchun</span><b>${b ? `${rahbar ? `<a href="#/buyurtma/${b.id}">${b.id}</a>` : b.id} — ${esc(topC(b.mijoz).nom)}` : 'Ombor zaxirasi uchun'}</b></div>${p.bosqich === 'tayyor' ? `<div><span>Chiqdi</span><b>${miq(p.chiqdi, m.birlik)}</b></div><div><span>Yaroqsiz</span><b>${miq(p.brak, m.birlik)} (${String(Math.round(p.brak / Math.max(1, p.chiqdi + p.brak) * 1000) / 10).replace('.', ',')}%)</b></div>` : ''}</div></div>
+<div class="k"><div class="kb"><h2>${xk ? 'Xomashyo ehtiyoji' : 'Sarflangan xomashyo'}</h2><div class="ost">Me'yor bo'yicha hisoblanadi; partiya boshlanganda ombordan o'zi kamayadi</div></div>${xomJ}</div>${iz}`;
+}
+
+/* ---------- Moliya ---------- */
+function vMoliya(y) {
+	const tab = y.tab === 'xarajat' ? 'xarajat' : '';
+	const t = tushum30(), x = xarajat30(), u = umumiyHolat(false);
+	let ich;
+	if (tab === 'xarajat') {
+		const r = db.xarajatlar.slice().sort((a, b) => a.sana < b.sana ? 1 : -1), tur = {};
+		r.filter(e => ich30(e.sana)).forEach(e => { tur[e.tur] = (tur[e.tur] || 0) + e.summa; });
+		ich = `<div class="qator2"><div class="k"><div class="kb"><h2>Xarajatlar</h2><div class="ong"><button class="t k a" type="button" data-a="xarajat">${ik('qosh')}Xarajat</button></div></div><div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th>Turi</th><th>Izoh</th><th class="r">Summa</th></tr></thead><tbody>${r.map(e => `<tr><td><b>${sana(e.sana)}</b></td><td data-y="Turi">${esc(e.tur)}</td><td data-y="Izoh">${esc(e.izoh) || '—'}</td><td class="r" data-y="Summa"><b>${pul(e.summa)}</b></td></tr>`).join('')}</tbody></table></div></div>
+<div class="k"><div class="kb"><h2>Turlar bo'yicha (30 kun)</h2><div class="ong"><b>${qisqaPul(x)}</b></div></div>${gor(Object.entries(tur).sort((a, b) => b[1] - a[1]), qisqaPul)}</div></div>`;
+	} else {
+		const r = db.tolovlar.slice().sort((a, b) => a.sana < b.sana ? 1 : -1).slice(0, 40);
+		ich = `<div class="qator2"><div class="k"><div class="kb"><h2>Kelgan to'lovlar</h2><div class="ong"><b>30 kunda: ${qisqaPul(t)}</b></div></div><div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th>Mijoz</th><th>Usul</th><th class="r">Summa</th></tr></thead><tbody>${r.map(e => `<tr><td><b>${sana(e.sana)}</b></td><td data-y="Mijoz"><a href="#/mijozlar/${e.mijoz}">${esc(topC(e.mijoz).nom)}</a></td><td data-y="Usul">${esc(e.usul)}</td><td class="r" data-y="Summa"><b>${pul(e.summa)}</b></td></tr>`).join('')}</tbody></table></div></div>
+<div class="k"><div class="kb"><h2>Pul qayerda turibdi</h2></div>${pulQayerdaHTML()}</div></div>`;
+	}
+	return boshq('Moliya', 'Kelgan to\'lovlar, xarajatlar va pul qayerda turgani') +
+		`<div class="kpi">${kpiPul('Tushum (30 kun)', t, `${db.tolovlar.filter(e => ich30(e.sana)).length} ta to'lov`)}${kpiPul('Xarajat (30 kun)', x, `${db.xarajatlar.filter(e => ich30(e.sana)).length} ta yozuv`, '', '#/moliya?xarajat')}${kpiPul('Farq', t - x, t >= x ? 'Tushum ko\'p' : 'Xarajat ko\'p', t >= x ? 'yax' : 'yom')}${kpiPul('To\'lanmagan summa', u.qol, u.kech ? `Muddati o'tgan: ${qisqaPul(u.kech)}` : 'Hammasi muddatida', u.kech ? 'yom' : 'yax', '#/mijozlar')}</div>` +
+		yorliq('#/moliya', tab, [['', 'Kelgan to\'lovlar'], ['xarajat', 'Xarajatlar']]) + ich;
+}
+
+/* ---------- Hisobotlar ---------- */
+function hisobMalumot() {
+	const mah = {}, tur = {};
+	for (const j of db.jonatmalar) {
+		const c = topC(j.mijoz), t = tur[c.tur] || (tur[c.tur] = { soni: new Set(), jon: 0, qol: 0, kech: 0 });
+		t.soni.add(c.id); t.jon += jSumma(j);
+		for (const q of j.qatorlar) { const x = mah[q.m] || (mah[q.m] = { soni: 0, summa: 0 }); x.soni += q.soni; x.summa += q.soni * q.narx; }
+	}
+	for (const c of db.mijozlar) { const h = mHisob(c.id); if (tur[c.tur]) { tur[c.tur].qol += h.qol; tur[c.tur].kech += h.kech; } }
+	const tug = db.partiyalar.filter(p => p.bosqich === 'tayyor'), guruh = {};
+	for (const p of tug) { const g = guruh[p.m] || (guruh[p.m] = { soni: 0, chiqdi: 0, brak: 0 }); g.soni++; g.chiqdi += p.chiqdi; g.brak += p.brak; }
+	return { mah: Object.entries(mah).sort((a, b) => b[1].summa - a[1].summa), tur: Object.entries(tur).sort((a, b) => b[1].jon - a[1].jon), partiya: Object.entries(guruh).sort((a, b) => b[1].chiqdi * topM(b[0]).narx - a[1].chiqdi * topM(a[0]).narx) };
+}
+const foiz = (a, b) => String(Math.round(a / Math.max(1, b) * 1000) / 10).replace('.', ',') + '%';
+function tolovJadval() {
+	return db.mijozlar.map(c => ({ c, h: mHisob(c.id) })).filter(x => x.h.jon > 0).sort((a, b) => (b.h.kun - a.h.kun) || (b.h.qol - a.h.qol));
+}
+function vHisobot() {
+	const h = hisobMalumot();
+	const csv = k => `<div class="ong"><button class="t k" type="button" data-a="csv" data-h="${k}">${ik('tush')}<span data-asl>Excel (CSV)</span></button></div>`;
+	return boshq('Hisobotlar', 'Har bir jadvalni Excel uchun yuklab olish mumkin') +
+		`<div class="qator2"><div class="k"><div class="kb"><h2>Oylar bo'yicha tushum va xarajat</h2>${csv('oylik')}</div>${ustunHTML()}</div>
+<div class="k"><div class="kb"><h2>Mahsulotlar bo'yicha sotuv</h2>${csv('mahsulot')}</div>${gor(h.mah.map(([id, v]) => [esc(topM(id).nom.split(',')[0]), v.summa]), qisqaPul)}<p class="yord" style="margin-top:10px">Namunadagi barcha jo'natmalar bo'yicha (so'nggi 100 kun).</p></div></div>
+<div class="k"><div class="kb"><h2>To'lov holati — mijozlar bo'yicha</h2>${csv('tolov')}</div><div class="jw"><table class="j tel"><thead><tr><th>Mijoz</th><th class="r">Jo'natilgan</th><th class="r">To'langan</th><th class="r">Qolgan</th>${YOSH.map(n => `<th class="r">${n}</th>`).join('')}<th class="r">Eng eski (kun)</th></tr></thead><tbody>${tolovJadval().map(({ c, h: x }) => `<tr><td><a href="#/mijozlar/${c.id}"><b>${esc(c.nom)}</b></a></td><td class="r" data-y="Jo'natilgan">${qisqaPul(x.jon)}</td><td class="r" data-y="To'langan">${qisqaPul(x.tol)}</td><td class="r" data-y="Qolgan"><b>${qisqaPul(x.qol)}</b></td>${x.yosh.map((v, i) => `<td class="r" data-y="${YOSH[i]}">${v >= 1 ? (i ? `<span class="qizil">${qisqaPul(v)}</span>` : qisqaPul(v)) : '—'}</td>`).join('')}<td class="r" data-y="Eng eski (kun)">${x.kun || '—'}</td></tr>`).join('')}</tbody></table></div></div>
+<div class="k"><div class="kb"><h2>Mijoz turlari bo'yicha</h2>${csv('tur')}</div><div class="jw"><table class="j tel"><thead><tr><th>Mijoz turi</th><th class="r">Mijozlar</th><th class="r">Jo'natilgan</th><th class="r">To'lanmagan</th><th class="r">Muddati o'tgan</th></tr></thead><tbody>${h.tur.map(([n, v]) => `<tr><td><b>${esc(n)}</b></td><td class="r" data-y="Mijozlar">${v.soni.size}</td><td class="r" data-y="Jo'natilgan">${qisqaPul(v.jon)}</td><td class="r" data-y="To'lanmagan">${v.qol >= 1 ? qisqaPul(v.qol) : '—'}</td><td class="r" data-y="Muddati o'tgan">${v.kech >= 1 ? `<span class="qizil">${qisqaPul(v.kech)}</span>` : '—'}</td></tr>`).join('')}</tbody></table></div></div>
+<div class="k"><div class="kb"><h2>Menejerlar</h2>${csv('menejer')}</div>${menejerlarJ()}</div>
+<div class="k"><div class="kb"><h2>Ishlab chiqarish: tugagan partiyalar</h2>${csv('partiya')}</div><div class="jw"><table class="j tel"><thead><tr><th>Mahsulot</th><th class="r">Partiyalar</th><th class="r">Chiqdi</th><th class="r">Yaroqsiz</th><th class="r">Yaroqsiz ulushi</th></tr></thead><tbody>${h.partiya.map(([id, v]) => { const m = topM(id); return `<tr><td><b>${esc(m.nom)}</b></td><td class="r" data-y="Partiyalar">${v.soni}</td><td class="r" data-y="Chiqdi">${miq(v.chiqdi, m.birlik)}</td><td class="r" data-y="Yaroqsiz">${miq(v.brak, m.birlik)}</td><td class="r" data-y="Yaroqsiz ulushi">${foiz(v.brak, v.chiqdi + v.brak)}</td></tr>`; }).join('')}</tbody></table></div></div>`;
+}
+function csvQatorlar(k) {
+	const h = hisobMalumot();
+	if (k === 'oylik') return [['Davr', 'Tushum (mln so\'m)', 'Xarajat (mln so\'m)'], ...oylik().map(o => [o.n, o.t, o.x])];
+	if (k === 'mahsulot') return [['Mahsulot', 'Birlik', 'Miqdor', 'Summa (so\'m)'], ...h.mah.map(([id, v]) => [topM(id).nom, topM(id).birlik, v.soni, v.summa])];
+	if (k === 'tolov') return [['Mijoz', 'Turi', 'Menejer', 'Jo\'natilgan', 'To\'langan', 'Qolgan', ...YOSH, 'Eng eski (kun)'], ...tolovJadval().map(({ c, h: x }) => [c.nom, c.tur, ism(c.menejer), x.jon, x.tol, x.qol, ...x.yosh, x.kun])];
+	if (k === 'tur') return [['Mijoz turi', 'Mijozlar', 'Jo\'natilgan', 'To\'lanmagan', 'Muddati o\'tgan'], ...h.tur.map(([n, v]) => [n, v.soni.size, v.jon, v.qol, v.kech])];
+	if (k === 'menejer') return [['Menejer', 'Mijozlar', 'Ochiq buyurtma', 'Jo\'natildi (30 kun)', 'Yig\'ildi (30 kun)', 'To\'lanmagan', 'Muddati o\'tgan', 'Eslatish kerak'], ...db.xodimlar.filter(x => x.rol === 'sotuv').map(x => { const s = menejerStat(x.id); return [x.ism, s.mijoz, s.ochiq, s.jon30, s.yig30, s.qol, s.kech, s.eslat]; })];
+	if (k === 'partiya') return [['Mahsulot', 'Partiyalar', 'Chiqdi', 'Yaroqsiz', 'Yaroqsiz ulushi'], ...h.partiya.map(([id, v]) => [topM(id).nom, v.soni, v.chiqdi, v.brak, foiz(v.brak, v.chiqdi + v.brak)])];
+	if (k.startsWith('akt:')) { // solishtirma dalolatnoma: jo'natma va to'lovlar sana tartibida, qoldiq bilan
+		const cid = k.slice(4), c = topC(cid), q = [];
+		for (const j of db.jonatmalar.filter(j => j.mijoz === cid)) q.push({ s: j.sana, n: `Jo'natma ${j.id}`, j: jSumma(j), t: 0 });
+		for (const t of db.tolovlar.filter(t => t.mijoz === cid)) q.push({ s: t.sana, n: `To'lov (${t.usul})`, j: 0, t: t.summa });
+		q.sort((a, b) => a.s < b.s ? -1 : a.s > b.s ? 1 : b.j - a.j);
+		let qol = 0;
+		return [[`Solishtirma dalolatnoma: ${c.nom}`, '', '', '', ''], ['Sana', 'Hujjat', 'Jo\'natilgan', 'To\'langan', 'Qoldiq'], ...q.map(x => { qol += x.j - x.t; return [sana(x.s), x.n, x.j, x.t, qol]; })];
+	}
+	return [];
+}
+
+/* ===== ilova3.js ===== */
+/* 3-qism: oynalar, amallar (holatni o'zgartiradi), chizish va ishga tushirish. */
+
+function xabar(m) {
+	const el = $('#xabar'); el.innerHTML = `<div class="xabar" role="status">${esc(m)}</div>`; Yozuv.dom(el, ui.til);
+	clearTimeout(xabar.t); xabar.t = setTimeout(() => { el.innerHTML = ''; }, 3600);
+}
+function oyna(sarlavha, ich, o) {
+	o = o || {};
+	const el = $('#oyna');
+	el.innerHTML = `<div class="parda"><form class="oyna" role="dialog" aria-modal="true" aria-label="${esc(sarlavha)}" ${o.forma ? `data-f="${o.forma}"` : 'data-bosh'}><header><h2>${esc(sarlavha)}</h2><button type="button" data-a="yop" aria-label="Yopish">${ik('yop')}</button></header><div class="ich">${ich}</div>${o.forma ? `<footer><button type="button" class="t" data-a="yop">Bekor qilish</button><button class="t a" type="submit">${o.tugma || 'Saqlash'}</button></footer>` : ''}</form></div>`;
+	Yozuv.dom(el, ui.til);
+	const b = el.querySelector('.ich input:not([type=hidden]),.ich select,.ich textarea,.ich a'); if (b) b.focus();
+}
+const yop = () => { $('#oyna').innerHTML = ''; };
+function yangila(m) { saqla(); yop(); chiz(); if (m) xabar(m); }
+const borish = h => { if (location.hash === h) chiz(); else location.hash = h; };
+const son = v => { const n = parseInt(String(v || '').replace(/[^\d]/g, ''), 10); return isNaN(n) ? 0 : n; };
+const may = (yorliq, ich, yord) => `<label class="may"><span>${yorliq}</span>${ich}${yord ? `<span class="yord">${yord}</span>` : ''}</label>`;
+const tanla = (nom, opt, joriy, qosh) => `<select class="in" name="${nom}" ${qosh || ''}>${opt.map(([v, n]) => `<option value="${esc(v)}" ${String(v) === String(joriy) ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>`;
+const tayyorOpt = () => db.mahsulotlar.filter(m => m.tur === 'tayyor').map(m => [m.id, `${m.nom} — omborda ${miq(m.qoldiq, m.birlik)}`]);
+// Eslatma uchun tayyor matn: muddati o'tgan jo'natmalar ro'yxati bilan
+function eslatmaMatni(c, h) {
+	const q = h.q.filter(x => x.qol >= 1 && x.farq < 0);
+	return `Assalomu alaykum, ${c.masul}. AIDWELL TEX'dan eslatma: ${q.map(x => `${x.j.id} (${sana(x.j.sana)}) bo'yicha ${pul(x.qol)}, muddati ${sana(x.j.muddat)} da o'tgan`).join('; ')}. Jami: ${pul(h.kech)}. Iltimos, to'lov sanasini ma'lum qiling.`;
+}
+
+/* ---------- Tugma amallari ---------- */
+const AMAL = {
+	til(d) { ui.til = d.t; saqla(); yop(); chiz(); },
+	rolTanla(d) { ui.tanlov = d.r; ui.pinXato = false; chiz(); },
+	rolOrqa() { ui.tanlov = null; ui.pinXato = false; chiz(); },
+	chiqish() { ui.rol = null; ui.kim = null; ui.tanlov = null; ui.oxirgiYol = ''; saqla(); try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* fayldan ochilganda */ } yop(); chiz(); window.scrollTo(0, 0); },
+	qayta() { oyna('Namunani boshidan boshlash', `<p>Namunada kiritilgan o'zgarishlar o'chadi va hammasi dastlabki holatiga qaytadi.</p>`, { forma: 'qayta', tugma: 'Boshidan boshlash' }); },
+	yop() { yop(); },
+	yana() { oyna('Bo\'limlar', `<nav class="et">${NAV[ui.rol].slice(4).map(k => { const b = BOLIM[k]; return `<a href="${b.h}"><span class="nuq ko">${ik(b.i)}</span><span><b>${b.n}</b></span><span class="uq">${ik('ong')}</span></a>`; }).join('')}</nav>`); },
+
+	/* Buyurtma */
+	yangiBuyurtma(d) {
+		const ms = db.mijozlar.filter(meningC).map(c => [c.id, `${c.nom} — ${c.joy}`]), opt = [['', '— tanlang —'], ...tayyorOpt()];
+		let q = '';
+		for (let i = 0; i < 4; i++) q += `<div class="may2" style="grid-template-columns:1fr 104px;margin-bottom:8px">${tanla('m' + i, opt, '', `aria-label="${i + 1}-mahsulot"`)}<input class="in" name="n${i}" type="text" inputmode="numeric" placeholder="Miqdor" aria-label="${i + 1}-mahsulot miqdori"></div>`;
+		oyna('Yangi buyurtma', may('Mijoz', tanla('mijoz', ms, d.c || ms[0][0])) + `<div class="may"><span>Mahsulotlar</span></div>${q}<p class="yord" style="margin-bottom:12px">Narx katalogdan olinadi. Bo'sh qatorlar hisobga olinmaydi.</p>` +
+			`<div class="may2">${may('Qachonga kerak', `<input class="in" name="kerak" type="date" min="${db.bugun}" value="${kunQosh(db.bugun, 5)}" required>`)}${may('Izoh', `<input class="in" name="izoh" type="text" placeholder="Masalan: maxsus o'lcham">`)}</div>`, { forma: 'buyurtma', tugma: 'Buyurtmani saqlash' });
+	},
+	bTasdiq(d) { const b = topB(d.id); b.holat = 'tasdiq'; const yt = yetishmas(b), t = toxta(b); yangila(`${b.id} tasdiqlandi. ${yt.length ? 'Omborda yetarli emas — ishlab chiqarish mas\'uliga ko\'rinadi.' : t ? 'Jo\'natish uchun rahbar ruxsati kerak.' : 'Omborchiga jo\'natish uchun ko\'rinadi.'}`); },
+	bBekor(d) { const b = topB(d.id); b.holat = 'bekor'; saqla(); xabar(`${b.id} bekor qilindi.`); borish('#/buyurtma'); },
+	bRuxsat(d) { if (ui.rol !== 'rahbar') return; const b = topB(d.id); b.ruxsat = true; yangila(`${b.id}: jo'natishga ruxsat berildi.`); },
+	jonat(d) {
+		const b = topB(d.id), c = topC(b.mijoz);
+		if (b.holat !== 'tasdiq' || (ui.rol !== 'rahbar' && ui.rol !== 'ombor')) return;
+		if (yetishmas(b).length) { xabar('Omborda yetarli emas — jo\'natib bo\'lmaydi.'); return; }
+		if (toxta(b)) { xabar('Jo\'natish to\'xtatilgan — rahbar ruxsati kerak.'); return; }
+		const j = { id: yangiId('YX'), b: b.id, mijoz: c.id, sana: db.bugun, muddat: kunQosh(db.bugun, c.muddat), qatorlar: [] };
+		for (const q of b.qatorlar) { const lot = lotOl(q.m, q.soni); harakat(q.m, -q.soni, `Jo'natildi: ${j.id}, ${c.nom}`); j.qatorlar.push({ m: q.m, soni: q.soni, narx: q.narx, lot }); }
+		db.jonatmalar.push(j); b.holat = 'jonatildi';
+		yangila(`${b.id} jo'natildi (${j.id}). Qoldiq kamaydi, ${c.muddat ? `to'lov muddati — ${sana(j.muddat)}` : 'oldindan to\'lov hisobidan yopildi'}.`);
+	},
+
+	/* Mijoz */
+	tolov(d) {
+		const c = topC(d.c), h = mHisob(c.id), taklif = h.kech >= 1 ? h.kech : h.keyingi ? h.keyingi.qol : 0;
+		oyna('To\'lov qabul qilish', `<input type="hidden" name="c" value="${c.id}"><div class="eslat ko">${ik('moliya')}<div>${esc(c.nom)} · to'lanmagan <b>${pul(h.qol)}</b>${h.kech >= 1 ? ` · shundan ${pul(h.kech)} muddati o'tgan` : ''}</div></div>` +
+			may('Summa (so\'m)', `<input class="in" name="summa" type="text" inputmode="numeric" value="${taklif ? guruhla(taklif) : ''}" required>`, 'To\'lov eng eski jo\'natmadan boshlab hisobga olinadi. Ortig\'i oldindan to\'lov bo\'lib turadi.') +
+			may('To\'lov usuli', tanla('usul', [['Pul o\'tkazmasi', 'Pul o\'tkazmasi'], ['Naqd', 'Naqd'], ['Karta', 'Karta']], 'Pul o\'tkazmasi')), { forma: 'tolov', tugma: 'To\'lovni saqlash' });
+	},
+	eslatma(d) {
+		const c = topC(d.c), h = mHisob(c.id);
+		oyna(`Eslatma: ${c.nom}`, `<input type="hidden" name="c" value="${c.id}">` + (h.kech >= 1 ? `<div class="may"><span>Yuboriladigan matn</span></div><div class="xat">${esc(eslatmaMatni(c, h))}</div>` : `<div class="eslat ko">${ik('ha')}<div>Bu mijozda muddati o'tgan to'lov yo'q.</div></div>`) +
+			`<div class="may2">${may('Qanday eslatildi', tanla('usul', [['Telefon', 'Telefon'], ['Telegram', 'Telegram'], ['Xat', 'Xat']], 'Telefon'))}${may('To\'lashga va\'da qilingan sana', `<input class="in" name="vada" type="date" min="${db.bugun}">`)}</div>` +
+			may('Mijoz javobi', `<textarea class="in" name="matn" required placeholder="Masalan: juma kuni yarmini o'tkazadi"></textarea>`, 'Eslatma mijoz tarixida saqlanadi. Va\'da qilingan sana o\'tsa, tizim qayta eslatadi.'), { forma: 'eslatma', tugma: 'Eslatmani saqlash' });
+	},
+	shart(d) {
+		const c = topC(d.c);
+		oyna(`Shartlar: ${c.nom}`, `<input type="hidden" name="c" value="${c.id}"><div class="may2">${may('To\'lov muddati (kun)', `<input class="in" name="muddat" type="number" min="0" max="180" value="${c.muddat}" inputmode="numeric" required>`, '0 — oldindan to\'lov')}${may('Limit (mln so\'m)', `<input class="in" name="limit" type="number" min="0" max="100000" value="${Math.round(c.limit / 1e6)}" inputmode="numeric" required>`, '0 — limit belgilanmagan')}</div><p class="yord">Yangi muddat keyingi jo'natmalarga qo'llanadi. To'lanmagan summa limitdan oshsa, jo'natish rahbar ruxsatigacha to'xtaydi.</p>`, { forma: 'shart' });
+	},
+	yangiMijoz() {
+		oyna('Yangi mijoz', may('Nomi', `<input class="in" name="nom" type="text" required placeholder="Masalan: «Namuna farm» MChJ">`) +
+			`<div class="may2">${may('Turi', tanla('tur', MTUR.map(x => [x, x]), MTUR[0]))}${may('Shahar yoki viloyat', `<input class="in" name="joy" type="text" required>`)}</div><div class="may2">${may('Mas\'ul shaxs', `<input class="in" name="masul" type="text" required>`)}${may('To\'lov muddati (kun)', `<input class="in" name="muddat" type="number" min="0" max="180" value="30" inputmode="numeric" required>`, '0 — oldindan to\'lov')}</div>`, { forma: 'mijoz', tugma: 'Mijozni saqlash' });
+	},
+
+	/* Ishlab chiqarish */
+	yangiPartiya(d) {
+		const opt = db.mahsulotlar.filter(m => m.tur === 'tayyor').map(m => [m.id, m.nom]);
+		oyna('Yangi partiya', (d.b ? `<input type="hidden" name="b" value="${d.b}"><div class="eslat ko">${ik('sotuv')}<div>Buyurtma ${d.b} uchun — ${esc(topC(topB(d.b).mijoz).nom)}</div></div>` : '') +
+			may('Mahsulot', tanla('m', opt, d.m || opt[0][0])) +
+			`<div class="may2">${may('Reja miqdori', `<input class="in" name="reja" type="text" inputmode="numeric" value="${d.n ? guruhla(d.n) : ''}" required>`)}${may('Muddat', `<input class="in" name="muddat" type="date" min="${db.bugun}" value="${kunQosh(db.bugun, 7)}" required>`)}</div><p class="yord">Saqlangach partiya navbatga tushadi; xomashyo yetarliligi partiya sahifasida ko'rinadi.</p>`, { forma: 'partiya', tugma: 'Navbatga qo\'shish' });
+	},
+	pBoshla(d) {
+		const p = topP(d.id), m = topM(p.m);
+		if (p.bosqich !== 'navbat') return;
+		const xk = xomKerak(m, p.reja);
+		if (xk.some(x => !x.yetar)) { xabar('Xomashyo yetmaydi — partiyani boshlab bo\'lmaydi.'); return; }
+		p.sarf = xk.map(x => ({ m: x.x.id, soni: x.kerak }));
+		for (const s of p.sarf) harakat(s.m, -s.soni, `Partiya ${p.id} uchun sarf`);
+		p.bosqich = pTartib(m)[1]; p.boshlandi = db.bugun;
+		const kam = p.sarf.map(s => topM(s.m)).filter(x => x.qoldiq < x.min);
+		yangila(`${p.id} boshlandi: xomashyo ombordan olindi.${kam.length ? ` Kam qoldi: ${kam.map(x => x.nom).join(', ')}.` : ''}`);
+	},
+	pKeyingi(d) {
+		const p = topP(d.id), t = pTartib(topM(p.m)), i = t.indexOf(p.bosqich);
+		if (i < 1 || t[i + 1] === 'tayyor' || !t[i + 1]) return;
+		p.bosqich = t[i + 1]; yangila(`${p.id}: ${PBOS[p.bosqich]} bosqichiga o'tdi.`);
+	},
+	pQabul(d) {
+		const p = topP(d.id), m = topM(p.m);
+		oyna(`Omborga topshirish: ${p.id}`, `<input type="hidden" name="id" value="${p.id}"><p style="margin-bottom:10px"><b>${esc(m.nom)}</b><br><span class="yord">Reja: ${miq(p.reja, m.birlik)}</span></p><div class="may2">${may(`Yaroqli chiqdi (${m.birlik})`, `<input class="in" name="chiqdi" type="text" inputmode="numeric" value="${guruhla(p.reja)}" required>`)}${may(`Yaroqsiz (${m.birlik})`, `<input class="in" name="brak" type="text" inputmode="numeric" value="0">`)}</div><p class="yord">Yaroqli miqdor shu partiya raqami bilan ombor qoldig'iga qo'shiladi.</p>`, { forma: 'qabul', tugma: 'Omborga qabul qilish' });
+	},
+
+	/* Ombor */
+	kirim(d) {
+		const m = topM(d.m);
+		oyna('Kirim', `<input type="hidden" name="m" value="${m.id}"><p style="margin-bottom:10px"><b>${esc(m.nom)}</b><br><span class="yord">Hozir omborda ${miq(m.qoldiq, m.birlik)}</span></p>` + may(`Miqdor (${m.birlik})`, `<input class="in" name="soni" type="text" inputmode="numeric" required>`) + may('Izoh', `<input class="in" name="izoh" type="text" placeholder="Masalan: yuk xati raqami">`), { forma: 'kirim', tugma: 'Kirim qilish' });
+	},
+	kQabul(d) {
+		const k = db.kirimlar.find(x => x.id === d.id);
+		for (const q of k.qatorlar) harakat(q.m, q.soni, `Kirim: ${k.id}`);
+		k.holat = 'qabul'; yangila(`${k.id} omborga qabul qilindi, qoldiq yangilandi.`);
+	},
+	yBuy(d) {
+		const xom = db.mahsulotlar.filter(m => m.tur === 'xom'), m = d.m ? topM(d.m) : xom[0];
+		oyna('Xomashyo buyurtmasi', may('Yetkazib beruvchi', `<input class="in" name="kim" type="text" required placeholder="Masalan: ip ta'minotchisi">`) +
+			may('Xomashyo', tanla('m', xom.map(x => [x.id, `${x.nom} — omborda ${miq(x.qoldiq, x.birlik)}`]), m.id)) +
+			`<div class="may2">${may('Miqdor', `<input class="in" name="soni" type="text" inputmode="numeric" value="${guruhla(Math.max(1, Math.ceil(m.min * 2 + navbatKerak(m.id) - m.qoldiq)))}" required>`)}${may('Necha kunda keladi', `<input class="in" name="kun" type="number" min="1" max="120" value="5" inputmode="numeric" required>`)}</div>`, { forma: 'ybuy', tugma: 'Buyurtmani saqlash' });
+	},
+	xarajat() {
+		oyna('Xarajat', may('Turi', tanla('tur', XTUR.map(x => [x, x]), XTUR[0])) + may('Summa (so\'m)', `<input class="in" name="summa" type="text" inputmode="numeric" required>`) + may('Izoh', `<input class="in" name="izoh" type="text">`), { forma: 'xarajat', tugma: 'Xarajatni saqlash' });
+	},
+	csv(d) {
+		const f = ui.til === 'kir' ? Yozuv.kir : Yozuv.lot;
+		const q = csvQatorlar(d.h).map(r => r.map(c => { const s = typeof c === 'number' ? String(Math.round(c * 10) / 10).replace('.', ',') : f(String(c)); return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(';')).join('\r\n');
+		try {
+			const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\uFEFF' + q], { type: 'text/csv;charset=utf-8' })); a.download = 'aidwell-' + d.h.replace(':', '-') + '.csv';
+			document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+			xabar('Jadval Excel uchun yuklab olindi.');
+		} catch (e) { xabar('Bu brauzerda yuklab olish ishlamadi.'); }
+	},
+};
+
+/* ---------- Forma saqlash ---------- */
+const FORMA = {
+	pin(d) {
+		const x = topX(KIMLAR[ui.tanlov]);
+		if (d.pin !== x.pin) { ui.pinXato = true; chiz(); return; }
+		ui.rol = ui.tanlov; ui.kim = x.id; ui.tanlov = null; ui.pinXato = false; ui.oxirgiYol = ''; saqla(); borish(boshSahifa());
+	},
+	qayta() { db = Malumot.urug(new Date()); saqla(); yop(); if (ui.rol) borish(boshSahifa()); else chiz(); xabar('Namuna dastlabki holatiga qaytdi.'); },
+	buyurtma(d) {
+		const q = [];
+		for (let i = 0; i < 4; i++) { const m = d['m' + i], n = son(d['n' + i]); if (!m || n < 1) continue; const bor = q.find(x => x.m === m); if (bor) bor.soni += n; else q.push({ m, soni: n, narx: topM(m).narx }); }
+		if (!q.length) { xabar('Kamida bitta mahsulot va miqdorini kiriting.'); return; }
+		const c = topC(d.mijoz);
+		if (!c || !meningC(c)) { xabar('Mijozni tanlang.'); return; }
+		const b = { id: yangiId('B'), mijoz: c.id, holat: 'yangi', sana: db.bugun, kerak: d.kerak || kunQosh(db.bugun, 5), izoh: (d.izoh || '').trim(), qatorlar: q };
+		db.buyurtmalar.unshift(b); saqla(); yop(); xabar(`Buyurtma saqlandi: ${b.id}, ${qisqaPul(bJami(b))}.`); borish('#/buyurtma/' + b.id);
+	},
+	tolov(d) {
+		const c = topC(d.c), s = son(d.summa);
+		if (s < 1) { xabar('Summani kiriting.'); return; }
+		db.tolovlar.push({ id: 't' + (++db.sanoq.t), mijoz: c.id, sana: db.bugun, summa: s, usul: d.usul });
+		const h = mHisob(c.id);
+		yangila(`${pul(s)} qabul qilindi. ${h.qol >= 1 ? `Qoldi: ${pul(h.qol)}${h.kech >= 1 ? `, shundan muddati o'tgani ${pul(h.kech)}` : ''}.` : h.avans >= 1 ? `To'lanmagan summa yo'q, oldindan to'lov: ${pul(h.avans)}.` : 'To\'lanmagan summa qolmadi.'}`);
+	},
+	eslatma(d) {
+		const c = topC(d.c), matn = (d.matn || '').trim();
+		if (!matn) { xabar('Mijoz javobini yozing.'); return; }
+		db.eslatmalar.push({ mijoz: c.id, sana: db.bugun, kim: ui.kim, usul: d.usul, matn, vada: d.vada || null });
+		yangila(`Eslatma saqlandi.${d.vada ? ` Va'da qilingan sana: ${sana(d.vada)}.` : ''}`);
+	},
+	shart(d) {
+		if (ui.rol !== 'rahbar') return;
+		const c = topC(d.c); c.muddat = Math.min(180, son(d.muddat)); c.limit = son(d.limit) * 1e6;
+		yangila(`Shartlar saqlandi: ${c.muddat ? c.muddat + ' kun muddat' : 'oldindan to\'lov'}, limit ${c.limit ? qisqaPul(c.limit) : 'belgilanmagan'}.`);
+	},
+	mijoz(d) {
+		const c = { id: 'c' + (++db.sanoq.c), nom: d.nom.trim(), tur: d.tur, joy: d.joy.trim(), masul: d.masul.trim(), tel: '—', muddat: Math.min(180, son(d.muddat)), limit: 0, menejer: ui.rol === 'sotuv' ? ui.kim : 's1' };
+		db.mijozlar.push(c); saqla(); yop(); xabar('Mijoz qo\'shildi.'); borish('#/mijozlar/' + c.id);
+	},
+	partiya(d) {
+		const n = son(d.reja), m = topM(d.m);
+		if (n < 1) { xabar('Reja miqdorini kiriting.'); return; }
+		const p = { id: yangiId('P'), m: m.id, reja: n, bosqich: 'navbat', ochildi: db.bugun, boshlandi: null, muddat: d.muddat || kunQosh(db.bugun, 7), tugadi: null, chiqdi: 0, brak: 0, b: d.b || null, sarf: [] };
+		db.partiyalar.unshift(p); saqla(); yop();
+		xabar(`${p.id} navbatga qo'shildi.${pXomYoq(p).length ? ' Diqqat: xomashyo yetmaydi.' : ''}`); borish('#/ishlab/' + p.id);
+	},
+	qabul(d) {
+		const p = topP(d.id), m = topM(p.m), n = son(d.chiqdi), br = son(d.brak);
+		if (p.bosqich !== 'sifat') return;
+		if (n < 1) { xabar('Chiqqan miqdorni kiriting.'); return; }
+		p.chiqdi = n; p.brak = br; p.bosqich = 'tayyor'; p.tugadi = db.bugun;
+		db.lotlar.push({ p: p.id, m: m.id, q: n, sana: db.bugun });
+		harakat(m.id, n, `Partiya ${p.id} omborga qabul qilindi`);
+		const och = db.buyurtmalar.filter(b => b.holat === 'tasdiq' && b.qatorlar.some(q => q.m === m.id) && !yetishmas(b).length);
+		yangila(`${p.id} omborga qabul qilindi: +${miq(n, m.birlik)}.${och.length ? ` Endi jo'natish mumkin: ${och.map(b => b.id).join(', ')}.` : ''}`);
+	},
+	kirim(d) {
+		const m = topM(d.m), n = son(d.soni);
+		if (n < 1) { xabar('Miqdorni kiriting.'); return; }
+		harakat(m.id, n, 'Kirim' + (d.izoh && d.izoh.trim() ? ': ' + d.izoh.trim() : ''));
+		yangila(`${m.nom}: +${miq(n, m.birlik)}. Omborda ${miq(m.qoldiq, m.birlik)}.`);
+	},
+	ybuy(d) {
+		const n = son(d.soni), kun = Math.max(1, son(d.kun) || 5);
+		if (n < 1) { xabar('Miqdorni kiriting.'); return; }
+		const k = { id: yangiId('K'), kim: d.kim.trim(), kutiladi: kunQosh(db.bugun, kun), holat: 'yolda', qatorlar: [{ m: d.m, soni: n }] };
+		db.kirimlar.push(k); saqla(); yop(); xabar(`Buyurtma saqlandi: ${k.id}. «Yo'lda» ro'yxatida ko'rinadi.`); borish('#/ombor?yolda');
+	},
+	xarajat(d) {
+		const s = son(d.summa); if (s < 1) { xabar('Summani kiriting.'); return; }
+		db.xarajatlar.push({ id: 'h' + (++db.sanoq.h), sana: db.bugun, tur: d.tur, summa: s, izoh: (d.izoh || '').trim() });
+		yangila(`Xarajat saqlandi: ${pul(s)}.`);
+	},
+};
+
+/* ---------- Chizish ---------- */
+function chiz() {
+	const root = $('#ilova');
+	document.documentElement.lang = ui.til === 'kir' ? 'uz-Cyrl' : 'uz';
+	const nomla = s => { document.title = (ui.til === 'kir' ? Yozuv.kir : Yozuv.lot)('AIDWELL TEX — ' + s); };
+	if (!ui.rol) { root.innerHTML = kirishHTML(); Yozuv.dom(root, ui.til); nomla('boshqaruv tizimi (namuna)'); const p = $('#pin'); if (p) p.focus(); return; }
+	const y = yol();
+	if (!RUXSAT[ui.rol].includes(y.bol)) { if (location.hash !== boshSahifa()) { location.replace(boshSahifa()); return; } }
+	let ich = '';
+	switch (y.bol) {
+		case 'panel': ich = vPanel(); break;
+		case 'ishim': ich = vIshim(); break;
+		case 'buyurtma': ich = y.arg ? vBuyurtma(y.arg) : vBuyurtmalar(y); break;
+		case 'mijozlar': ich = y.arg ? vMijoz(y.arg) : vMijozlar(y); break;
+		case 'ombor': ich = vOmbor(y); break;
+		case 'ishlab': ich = y.arg ? vPartiya(y.arg) : vIshlab(y); break;
+		case 'moliya': ich = vMoliya(y); break;
+		case 'hisobot': ich = vHisobot(); break;
+		default: ich = bosh_yoq('Sahifa topilmadi.');
+	}
+	root.innerHTML = qobiq(ich, y); Yozuv.dom(root, ui.til);
+	nomla((BOLIM[y.bol] ? BOLIM[y.bol].n : 'namuna') + ' (namuna)');
+	if (location.hash !== ui.oxirgiYol) { window.scrollTo(0, 0); ui.oxirgiYol = location.hash; }
+	// Telefonda tanlangan yorliq ko'rinadigan joyga suriladi
+	const yr = root.querySelector('.yor'), fy = yr && yr.querySelector('[aria-current=true]');
+	if (fy && fy.getBoundingClientRect) yr.scrollLeft += fy.getBoundingClientRect().left - yr.getBoundingClientRect().left - 12;
+}
+
+/* ---------- Hodisalar ---------- */
+document.addEventListener('click', e => {
+	const t = e.target.closest('[data-a]');
+	if (t) { if (t.disabled) return; const f = AMAL[t.dataset.a]; if (f) { e.preventDefault(); f(t.dataset, t); } return; }
+	if (e.target.classList && e.target.classList.contains('parda')) { yop(); return; }
+	const tr = e.target.closest('tr[data-h]');
+	if (tr && !e.target.closest('a,button,input,select')) location.hash = tr.dataset.h;
+});
+document.addEventListener('submit', e => {
+	const f = e.target.closest('form');
+	if (!f) return; e.preventDefault();
+	if (!f.dataset.f) return;
+	const d = {}; new FormData(f).forEach((v, k) => { d[k] = v; });
+	const fn = FORMA[f.dataset.f]; if (fn) fn(d, f);
+});
+document.addEventListener('input', e => {
+	const t = e.target;
+	if (t.id === 'pin' && /^\d{4}$/.test(t.value) && t.form) { if (t.form.requestSubmit) t.form.requestSubmit(); return; }
+	if (!t.matches || !t.matches('[data-q]')) return;
+	const q = Yozuv.qid(t.value.trim()), ry = document.querySelector('[data-ry]'); if (!ry) return;
+	let bor = 0;
+	ry.querySelectorAll('[data-s]').forEach(el => { const k = !q || el.dataset.s.includes(q); el.hidden = !k; if (k) bor++; });
+	let yoq = ry.querySelector('[data-yoq]');
+	if (!bor && !yoq) { yoq = document.createElement('div'); yoq.className = 'bosh-yoq'; yoq.dataset.yoq = '1'; yoq.textContent = 'Hech narsa topilmadi.'; ry.appendChild(yoq); Yozuv.dom(yoq, ui.til); }
+	if (yoq) yoq.hidden = bor > 0;
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#oyna').firstChild) yop(); });
+window.addEventListener('hashchange', () => { yop(); chiz(); });
+yukla();
+chiz();
+
+})();
+</script>
+</body>
+</html>
