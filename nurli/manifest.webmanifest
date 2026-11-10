@@ -1,0 +1,15 @@
+{
+  "id": "./index.html",
+  "name": "Nurli Diyor Agro — boshqaruv tizimi (namuna)",
+  "short_name": "Nurli Diyor",
+  "description": "Dalalar, ferma, ombor, sotuv va to'lov holati, xodimlar. Namuna — ma'lumotlar misol uchun.",
+  "lang": "uz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f1",
+  "theme_color": "#17301c",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
