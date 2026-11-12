@@ -1,0 +1,2945 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RADIKS — Farmatsevtika Boshqaruv Tizimi</title>
+  <meta name="description" content="RADIKS farmatsevtika zavodi uchun tezkor rahbar va boshqaruv paneli">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <style>
+/* RADIKS Boshqaruv Tizimi - Dizayn Tizimi (Golos Text / Professional Pharma UI) */
+
+/* GOLOS TEXT FONTS (Latin, Latin-ext, Cyrillic, Cyrillic-ext) */
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2018-2019, U+201C-201D;
+}
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-cyrillic-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+2DE0-2DFF, U+A640-A69F;
+}
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-text: #0369a1;
+  --success: #059669;
+  --success-light: #ecfdf5;
+  --warning: #d97706;
+  --warning-light: #fffbeb;
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+  --karantin: #7c3aed;
+  --karantin-light: #f5f3ff;
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #cbd5e1;
+  --sidebar-hover: #1e293b;
+  --sidebar-active: #0284c7;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* APP SHELL */
+#app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* DESKTOP SIDEBAR */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid #1e293b;
+}
+
+.sidebar-header {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.brand-badge {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.brand-info h1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.brand-info p {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-color: var(--sidebar-hover);
+  color: #fff;
+}
+
+.nav-item.active {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.nav-item .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.nav-badge.danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.nav-badge.karantin {
+  background: var(--karantin);
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid #1e293b;
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role-switcher-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+}
+
+.role-switcher-btn:hover {
+  background: #334155;
+  color: #fff;
+}
+
+/* MAIN CONTENT */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.top-header {
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sample-tag {
+  font-size: 11px;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lang-toggle-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+}
+
+.lang-toggle-btn:hover {
+  border-color: var(--border-strong);
+  background: #e2e8f0;
+}
+
+.active-role-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-light);
+  color: var(--primary-text);
+  border: 1px solid #bae6fd;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+/* CONTENT CONTAINER */
+.content-area {
+  flex: 1;
+  padding: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* CARDS & GRIDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card.alert-karantin {
+  border-left: 4px solid var(--karantin);
+}
+
+.stat-card.alert-danger {
+  border-left: 4px solid var(--danger);
+}
+
+.stat-card.alert-success {
+  border-left: 4px solid var(--success);
+}
+
+.stat-card.alert-primary {
+  border-left: 4px solid var(--primary);
+}
+
+.stat-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ALERTS & NOTIFICATIONS */
+.alert-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.alert-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.alert-box-title {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  margin-bottom: 8px;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.alert-item:last-child {
+  margin-bottom: 0;
+}
+
+.alert-item.danger {
+  background: var(--danger-light);
+  border-left: 3px solid var(--danger);
+}
+
+.alert-item.karantin {
+  background: var(--karantin-light);
+  border-left: 3px solid var(--karantin);
+}
+
+.alert-item.warning {
+  background: var(--warning-light);
+  border-left: 3px solid var(--warning);
+}
+
+.alert-action-btn {
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  min-height: 36px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.alert-action-btn:hover {
+  background: var(--surface-alt);
+}
+
+/* TABLES (Horizontal Scroll on Mobile) */
+.table-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+.table-header-bar {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.table-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.table-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-size: 13px;
+  outline: none;
+  background: var(--bg);
+  min-height: 38px;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+  min-width: 600px; /* Jadval ustunlari torayib ketmasligi uchun */
+}
+
+.data-table th {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover td {
+  background: #f8fafc;
+}
+
+/* BADGES & CHIPS */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chip.karantin {
+  background: var(--karantin-light);
+  color: var(--karantin);
+  border: 1px solid #ddd6fe;
+}
+
+.chip.ruxsat {
+  background: var(--success-light);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.chip.rad {
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+.chip.blok {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.chip.jarayonda {
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid #bae6fd;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: #fff;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-alt);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-success {
+  background: var(--success);
+  color: #fff;
+}
+
+.btn-success:hover {
+  background: #047857;
+}
+
+/* CASH FLOW / PUL XARITASI */
+.cash-flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.cash-flow-bar {
+  display: flex;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: 10px 0 14px 0;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.cash-flow-segment {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.cash-flow-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* STEP PROGRESS */
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.step-node {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.step-node.done {
+  background: var(--success);
+  color: #fff;
+}
+
+.step-node.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  min-width: 8px;
+}
+
+.step-line.done {
+  background: var(--success);
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-dialog {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  background: var(--surface-alt);
+}
+
+/* FORM CONTROLS */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  outline: none;
+  background: #fff;
+  min-height: 40px;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* LOGIN SCREEN */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  padding: 16px;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  max-width: 440px;
+  width: 100%;
+  padding: 28px 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.login-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.login-header p {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.role-select-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.role-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  min-height: 52px;
+}
+
+.role-btn:hover {
+  border-color: var(--primary);
+  background: var(--surface-alt);
+}
+
+.role-btn.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.role-btn-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.role-btn-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.role-pin-hint {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  background: #f0f9ff;
+  padding: 3px 7px;
+  border-radius: 4px;
+  border: 1px solid #bae6fd;
+}
+
+/* MOBILE BOTTOM NAVIGATION BAR (FIXED AT BOTTOM FOR PHONES) */
+.bottom-nav {
+  display: none;
+}
+
+/* ============================================================
+   TELEFON FORMATI (MOBILE PHONE VIEWPORTS: 360px - 820px)
+   ============================================================ */
+@media (max-width: 820px) {
+  #app {
+    flex-direction: column;
+  }
+
+  /* Desktop sidebar telefon ekranida yashiriladi */
+  .sidebar {
+    display: none;
+  }
+
+  /* Telefon tepasi: ixcham, qulay sticky header */
+  .top-header {
+    height: 52px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .header-title {
+    font-size: 14px;
+  }
+
+  .sample-tag {
+    display: none; /* Telefonda joy tejash */
+  }
+
+  /* Kontent maydoni: pastki navigatsiya uchun bo'sh joy qoldiriladi */
+  .content-area {
+    padding: 12px 12px calc(76px + env(safe-area-inset-bottom)) 12px;
+  }
+
+  /* Mobil 4 raqamli indikator: 2 ustunli toza to'r */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .stat-card {
+    padding: 10px 12px;
+  }
+
+  .stat-card-label {
+    font-size: 11px;
+  }
+
+  .stat-card-value {
+    font-size: 16px;
+  }
+
+  .stat-card-sub {
+    font-size: 10px;
+  }
+
+  /* Diqqat signallari telefonda ustma-ust tushishi */
+  .alert-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .alert-item > div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .alert-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* TELEFON PASTKI NAVIGATSIYASI (BOTTOM NAVIGATION BAR) */
+  .bottom-nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    height: 60px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    padding: 0 2px env(safe-area-inset-bottom) 2px;
+  }
+
+  .bnav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 6px 1px;
+    position: relative;
+    min-height: 48px;
+  }
+
+  .bnav-item.active {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .bnav-item .icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .bnav-badge {
+    position: absolute;
+    top: 4px;
+    right: calc(50% - 16px);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 8px;
+    background: var(--danger);
+    color: #fff;
+    line-height: 12px;
+  }
+
+  .bnav-badge.karantin {
+    background: var(--karantin);
+  }
+
+  /* Modallar telefonda to'liq kenglikda */
+  .modal-overlay {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .modal-dialog {
+    max-height: 85vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="modal-container"></div>
+  <script>
+
+/* --- a.js --- */
+// RADIKS Boshqaruv Tizimi - a.js (Konstantalar, Baza, Calc va Ruxsatlar)
+(function(window) {
+  'use strict';
+
+  // 1. ROLLAR VA RUXSATLAR MATRITSASI (CAN)
+  const ROLES = {
+    rahbar: { id: 'rahbar', nom: 'Rahbar (Abdurasul aka)', unvon: 'Bosh direktor', pin: '1111' },
+    sotuv: { id: 'sotuv', nom: 'Sotuv menejeri', unvon: 'Tijorat bo\'limi', pin: '2222' },
+    ishlab: { id: 'ishlab', nom: 'Ishlab chiqarish mas\'uli', unvon: 'Bosh texnolog / Tsex', pin: '3333' },
+    okk: { id: 'okk', nom: 'Sifat nazorati (OKK)', unvon: 'Laboratoriya boshlig\'i', pin: '4444' },
+    ombor: { id: 'ombor', nom: 'Bosh omborchi', unvon: 'Moddiy javobgar shaxs', pin: '5555' }
+  };
+
+  const CAN = {
+    rahbar: ['bugun', 'xomashyo', 'ishlab', 'okk', 'ombor', 'sotuv', 'moliya', 'izi', 'direktor_ruxsat', 'narx_tahrir'],
+    sotuv: ['sotuv', 'ombor_erkin', 'izi'],
+    ishlab: ['ishlab', 'xomashyo_korish', 'izi'],
+    okk: ['okk', 'xomashyo_korish', 'izi', 'okk_qaror'],
+    ombor: ['ombor', 'xomashyo_kirim', 'jonatish_tasdiq', 'izi']
+  };
+
+  const SEXLAR = [
+    { id: 'ampula', nom: 'Ampula tsexi (Liniya 1)', joy: 'Chilonzor', shakl: 'Ampula' },
+    { id: 'infuziya', nom: 'Infuziya tsexi (Liniya 3)', joy: 'Yuqori Chirchiq', shakl: 'Infuziya flakoni' },
+    { id: 'antibiotik', nom: 'Steril antibiotik tsexi (Liniya 2)', joy: 'Chilonzor', shakl: 'Flakon' },
+    { id: 'tabletka', nom: 'Tabletka tsexi #1', joy: 'Cho\'pon ota', shakl: 'Tabletka' },
+    { id: 'kapsula', nom: 'Kapsula tsexi', joy: 'Chilonzor', shakl: 'Kapsula' }
+  ];
+
+  const BOSQICHLAR = [
+    { bosqich: 1, nom: 'Xomashyo qorish / Reaktor' },
+    { bosqich: 2, nom: 'Quyish / Shakllantirish' },
+    { bosqich: 3, nom: 'Sterillash (Avtoklav)' },
+    { bosqich: 4, nom: 'Qadoqlash va Markirovka' }
+  ];
+
+  // 2. DETERMINISTIK STANDART MA'LUMOTLAR (SEED DATA)
+  function getBoshlangichBaza() {
+    return {
+      clock: '2026-11-12T12:00:00Z',
+      moliya: {
+        kassa_bank: 842500000, // 842.5 mln so'm
+        tushum_bugun: 148000000,
+        xarajat_bugun: 92400000
+      },
+      // 8 ta asosiy preparat
+      preparatlar: [
+        { id: 'P-01', nom: 'Paratsetamol 500 mg', shakl: 'Tabletka', birlik: 'qadoq (10 dona)', narx_sotuv: 4200, narx_referent: 4500, tsex: 'tabletka', rentabel: true },
+        { id: 'P-02', nom: 'Seftriakson 1.0 g', shakl: 'Steril flakon', birlik: 'flakon', narx_sotuv: 9800, narx_referent: 11000, tsex: 'antibiotik', rentabel: true },
+        { id: 'P-03', nom: 'Novokain 0.5% 5 ml', shakl: 'Ampula', birlik: 'qadoq (10 amp)', narx_sotuv: 12500, narx_referent: 13500, tsex: 'ampula', rentabel: true },
+        { id: 'P-04', nom: 'Glyukoza 5% 400 ml', shakl: 'Infuziya flakoni', birlik: 'flakon', narx_sotuv: 7100, narx_referent: 7200, tsex: 'infuziya', rentabel: false }, // Ataylab marja past
+        { id: 'P-05', nom: 'Tsiprofloksatsin 500 mg', shakl: 'Tabletka', birlik: 'qadoq (10 tab)', narx_sotuv: 14000, narx_referent: 16500, tsex: 'tabletka', rentabel: true },
+        { id: 'P-06', nom: 'Natriy xlorid 0.9% 200 ml', shakl: 'Infuziya flakoni', birlik: 'flakon', narx_sotuv: 6200, narx_referent: 6500, tsex: 'infuziya', rentabel: true },
+        { id: 'P-07', nom: 'Askorbin kislotasi 5% 2 ml', shakl: 'Ampula', birlik: 'qadoq (10 amp)', narx_sotuv: 11200, narx_referent: 12000, tsex: 'ampula', rentabel: true },
+        { id: 'P-08', nom: 'Ampitsillin 0.5 g', shakl: 'Steril flakon', birlik: 'flakon', narx_sotuv: 8500, narx_referent: 9000, tsex: 'antibiotik', rentabel: true }
+      ],
+      // Xomashyolar (Substansiya, yordamchi moddalar va qadoq)
+      xomashyo: [
+        { id: 'X-01', nom: 'Paratsetamol substansiya (BP/USP)', tur: 'Substansiya', qoldiq_ruxsat: 2400, qoldiq_karantin: 1000, min_chegara: 800, birlik: 'kg', narx_kg: 95000 },
+        { id: 'X-02', nom: 'Seftriakson natriy steril substansiya', tur: 'Substansiya', qoldiq_ruxsat: 450, qoldiq_karantin: 200, min_chegara: 200, birlik: 'kg', narx_kg: 520000 },
+        { id: 'X-03', nom: 'Novokain gidroxlorid substansiya', tur: 'Substansiya', qoldiq_ruxsat: 320, qoldiq_karantin: 0, min_chegara: 100, birlik: 'kg', narx_kg: 240000 },
+        { id: 'X-04', nom: 'Glyukoza suvsiz substansiya (Dextrose)', tur: 'Substansiya', qoldiq_ruxsat: 3800, qoldiq_karantin: 0, min_chegara: 1500, birlik: 'kg', narx_kg: 32000 },
+        { id: 'X-05', nom: 'Tibbiy ampula shisha naychasi 5 ml', tur: 'Birlamchi qadoq', qoldiq_ruxsat: 450000, qoldiq_karantin: 120000, min_chegara: 100000, birlik: 'dona', narx_kg: 420 },
+        { id: 'X-06', nom: 'Polipropilen granula (Infuziya flakoni)', tur: 'Birlamchi qadoq', qoldiq_ruxsat: 5400, qoldiq_karantin: 0, min_chegara: 2000, birlik: 'kg', narx_kg: 26000 },
+        { id: 'X-07', nom: 'Rezina tiqin va alyuminiy qalpoqcha', tur: 'Birlamchi qadoq', qoldiq_ruxsat: 85000, qoldiq_karantin: 0, min_chegara: 30000, birlik: 'dona', narx_kg: 180 },
+        { id: 'X-08', nom: 'Karton quticha va yo\'riqnoma (Paratsetamol)', tur: 'Ikkilamchi qadoq', qoldiq_ruxsat: 64000, qoldiq_karantin: 0, min_chegara: 20000, birlik: 'dona', narx_kg: 280 }
+      ],
+      // Ishlab chiqarishdagi seriyalar (Partiyalar)
+      seriyalar: [
+        {
+          id: 'S-0431', prep_id: 'P-03', nom: 'Novokain 0.5% 5 ml', tsex: 'ampula', miqdor: 45000,
+          boshlangan_sana: '2026-11-08', reja_tayyor: '2026-11-14', bosqich: 3, holat: 'ishlab_chiqarishda',
+          xomashyo_seriya: 'K-0518', sterillik_kuni: 0, tahlil_holati: 'kutilmoqda'
+        },
+        {
+          id: 'S-0432', prep_id: 'P-02', nom: 'Seftriakson 1.0 g', tsex: 'antibiotik', miqdor: 30000,
+          boshlangan_sana: '2026-11-09', reja_tayyor: '2026-11-13', bosqich: 4, holat: 'ishlab_chiqarishda',
+          xomashyo_seriya: 'K-0602', sterillik_kuni: 0, tahlil_holati: 'kutilmoqda'
+        },
+        {
+          id: 'S-0428', prep_id: 'P-02', nom: 'Seftriakson 1.0 g', tsex: 'antibiotik', miqdor: 50000,
+          boshlangan_sana: '2026-10-29', reja_tayyor: '2026-11-02', bosqich: 4, holat: 'karantinda',
+          xomashyo_seriya: 'K-0590', sterillik_kuni: 11, meyor_kuni: 14, tahlil_holati: 'inkubatsiyada' // 14 kundan 11-kuni
+        },
+        {
+          id: 'S-0425', prep_id: 'P-04', nom: 'Glyukoza 5% 400 ml', tsex: 'infuziya', miqdor: 40000,
+          boshlangan_sana: '2026-10-25', reja_tayyor: '2026-10-28', bosqich: 4, holat: 'karantinda',
+          xomashyo_seriya: 'K-0544', sterillik_kuni: 15, meyor_kuni: 14, tahlil_holati: 'tayyor' // Muddat yetgan, OKK qarori kutilmoqda!
+        },
+        {
+          id: 'S-0420', prep_id: 'P-01', nom: 'Paratsetamol 500 mg', tsex: 'tabletka', miqdor: 120000,
+          boshlangan_sana: '2026-10-20', reja_tayyor: '2026-10-23', bosqich: 4, holat: 'ruxsat_berilgan',
+          xomashyo_seriya: 'K-0512', sterillik_kuni: 0, tahlil_holati: 'sertifikat_berildi'
+        }
+      ],
+      // Ombordagi tayyor mahsulot seriyalari (FEFO va Karantin)
+      tayyor_ombor: [
+        { seriya: 'S-0420', prep_id: 'P-01', qoldiq: 42000, ruxsat: true, yaroqlilik: '2028-10-15', narx: 4200 },
+        { seriya: 'S-0414', prep_id: 'P-01', qoldiq: 12000, ruxsat: true, yaroqlilik: '2026-12-20', narx: 4200, xavfli_90kun: true }, // FEFO bo'yicha eng yaqin!
+        { seriya: 'S-0418', prep_id: 'P-02', qoldiq: 35000, ruxsat: true, yaroqlilik: '2028-09-01', narx: 9800 },
+        { seriya: 'S-0428', prep_id: 'P-02', qoldiq: 50000, ruxsat: false, yaroqlilik: '2028-11-01', narx: 9800, karantinda: true },
+        { seriya: 'S-0410', prep_id: 'P-03', qoldiq: 28000, ruxsat: true, yaroqlilik: '2028-08-10', narx: 12500 },
+        { seriya: 'S-0425', prep_id: 'P-04', qoldiq: 40000, ruxsat: false, yaroqlilik: '2028-10-28', narx: 7100, karantinda: true },
+        { seriya: 'S-0412', prep_id: 'P-06', qoldiq: 32000, ruxsat: true, yaroqlilik: '2028-07-20', narx: 6200 }
+      ],
+      // Mijozlar (Distribyutorlar, Dorixonalar, Tenderlar)
+      mijozlar: [
+        { id: 'M-01', nom: '«Grand Pharm Trade» MChJ', tur: 'Distribyutor', tel: '+998 71 200 44 22', qarz: 684000000, kechikish_kuni: 38, limit: 500000000, bloklangan: true }, // Bloklangan!
+        { id: 'M-02', nom: '«Dori-Darmon» AK Toshkent filiali', tur: 'Dorixona tarmog\'i', tel: '+998 71 228 15 15', qarz: 420000000, kechikish_kuni: 12, limit: 800000000, bloklangan: false },
+        { id: 'M-03', nom: '«OxyMed» dorixonalar tarmog\'i', tur: 'Dorixona tarmog\'i', tel: '+998 78 140 00 00', qarz: 195000000, kechikish_kuni: 0, limit: 300000000, bloklangan: false },
+        { id: 'M-04', nom: '«Respublika Shoshilinch Tibbiy Yordam Markazi»', tur: 'Davlat tenderi', tel: '+998 71 277 95 10', qarz: 890000000, kechikish_kuni: 19, limit: 1500000000, bloklangan: false, tender_shartnoma: 'T-2026/84' },
+        { id: 'M-05', nom: '«Asia Pharm Distribution» MChJ', tur: 'Distribyutor', tel: '+998 90 911 32 40', qarz: 750000000, kechikish_kuni: 45, limit: 600000000, bloklangan: true } // Bloklangan!
+      ],
+      // Buyurtmalar
+      buyurtmalar: [
+        { id: 'B-1082', mijoz_id: 'M-01', mijoz_nom: '«Grand Pharm Trade» MChJ', prep_id: 'P-02', miqdor: 20000, summa: 196000000, sana: '2026-11-11', holat: 'bloklangan_qarz', izoh: 'Mijoz qarzi 38 kunga kechikkan' },
+        { id: 'B-1081', mijoz_id: 'M-02', mijoz_nom: '«Dori-Darmon» AK', prep_id: 'P-01', miqdor: 25000, summa: 105000000, sana: '2026-11-12', holat: 'tayyorlanmoqda', izoh: 'FEFO bo\'yicha S-0414 seriyadan' },
+        { id: 'B-1080', mijoz_id: 'M-04', mijoz_nom: 'Respublika Shoshilinch Markazi', prep_id: 'P-03', miqdor: 15000, summa: 187500000, sana: '2026-11-10', holat: 'jonatildi', izoh: 'Tender buyurtmasi' }
+      ],
+      // Xomashyo kirish nazorati (OKK da)
+      xomashyo_kirish: [
+        { seriya: 'K-0618', xom_id: 'X-01', xom_nom: 'Paratsetamol substansiya', miqdor: 1000, kelgan_sana: '2026-11-10', yetkazuvchi: 'Anhui Huasun (Xitoy)', holat: 'karantinda_tahlil' },
+        { seriya: 'K-0619', xom_id: 'X-02', xom_nom: 'Seftriakson natriy steril', miqdor: 200, kelgan_sana: '2026-11-11', yetkazuvchi: 'Aurobindo Pharma (Hindiston)', holat: 'karantinda_tahlil' },
+        { seriya: 'K-0612', xom_id: 'X-05', xom_nom: 'Tibbiy ampula shishasi 5 ml', miqdor: 120000, kelgan_sana: '2026-11-07', yetkazuvchi: 'Med Standard Glass', holat: 'ruxsat_berildi' }
+      ]
+    };
+  }
+
+  // 3. CALC: SOF FORMULALAR VA HISOB-KITOBLAR
+  const Calc = {
+    // Karantindagi tayyor tovarlar summasi (Muzlagan pul)
+    karantinSumma: function(db) {
+      let sum = 0;
+      db.tayyor_ombor.forEach(item => {
+        if (!item.ruxsat || item.karantinda) {
+          sum += (item.qoldiq * item.narx);
+        }
+      });
+      return sum;
+    },
+
+    // Sotuvga ruxsat etilgan erkin tovarlar summasi
+    erkinOmborSumma: function(db) {
+      let sum = 0;
+      db.tayyor_ombor.forEach(item => {
+        if (item.ruxsat && !item.karantinda) {
+          sum += (item.qoldiq * item.narx);
+        }
+      });
+      return sum;
+    },
+
+    // Xomashyo omboridagi qiymat
+    xomashyoSumma: function(db) {
+      let sum = 0;
+      db.xomashyo.forEach(item => {
+        sum += ((item.qoldiq_ruxsat + item.qoldiq_karantin) * item.narx_kg);
+      });
+      return sum;
+    },
+
+    // Jami debitorlik qarzlari
+    jamiQarz: function(db) {
+      return db.mijozlar.reduce((acc, m) => acc + (m.qarz || 0), 0);
+    },
+
+    // Muddati o'tgan debitorlik qarzi (>30 kun)
+    muddatiOtganQarz: function(db) {
+      return db.mijozlar
+        .filter(m => m.kechikish_kuni > 30)
+        .reduce((acc, m) => acc + m.qarz, 0);
+    },
+
+    // 5 bo'lakli Pul xaritasi (Cash Flow breakdown)
+    pulXaritasi: function(db) {
+      const kassa = db.moliya.kassa_bank;
+      const xomashyo = this.xomashyoSumma(db);
+      const karantin = this.karantinSumma(db);
+      const erkin_ombor = this.erkinOmborSumma(db);
+      const qarzlar = this.jamiQarz(db);
+      const jami = kassa + xomashyo + karantin + erkin_ombor + qarzlar;
+
+      return {
+        jami: jami,
+        kassa: { summa: kassa, foiz: ((kassa / jami) * 100).toFixed(1) },
+        xomashyo: { summa: xomashyo, foiz: ((xomashyo / jami) * 100).toFixed(1) },
+        karantin: { summa: karantin, foiz: ((karantin / jami) * 100).toFixed(1) },
+        erkin_ombor: { summa: erkin_ombor, foiz: ((erkin_ombor / jami) * 100).toFixed(1) },
+        qarzlar: { summa: qarzlar, foiz: ((qarzlar / jami) * 100).toFixed(1) }
+      };
+    },
+
+    // Dori tannarxi va sof marjasi
+    tannarx: function(prepId, db) {
+      const p = db.preparatlar.find(x => x.id === prepId);
+      if (!p) return null;
+      // Taxminiy xomashyo ulushi 60%, qadoq 15%, ish haqi va elektr 25%
+      let xomashyo_tannarx = p.narx_sotuv * 0.58;
+      let qadoq_tannarx = p.narx_sotuv * 0.14;
+      let operatsion_tannarx = p.narx_sotuv * 0.16;
+      if (p.id === 'P-04') {
+        // Glyukoza ataylab zararda / minimal foydada
+        xomashyo_tannarx = p.narx_sotuv * 0.65;
+        qadoq_tannarx = p.narx_sotuv * 0.22;
+        operatsion_tannarx = p.narx_sotuv * 0.15;
+      }
+      const jami_tannarx = Math.round(xomashyo_tannarx + qadoq_tannarx + operatsion_tannarx);
+      const marja_som = p.narx_sotuv - jami_tannarx;
+      const marja_foiz = ((marja_som / p.narx_sotuv) * 100).toFixed(1);
+
+      return {
+        preparat: p,
+        tannarx: jami_tannarx,
+        marja_som: marja_som,
+        marja_foiz: parseFloat(marja_foiz),
+        rentabel: marja_som > 0 && parseFloat(marja_foiz) > 5.0
+      };
+    },
+
+    // FEFO qoidasi bo'yicha saralangan seriyalar (faqat ruxsat berilganlar)
+    fefoSeriyalar: function(prepId, db) {
+      return db.tayyor_ombor
+        .filter(x => x.prep_id === prepId && x.ruxsat && !x.karantinda)
+        .sort((a, b) => new Date(a.yaroqlilik) - new Date(b.yaroqlilik));
+    }
+  };
+
+  // 4. STORAGE MENEJERI
+  const STORAGE_KEY = 'radiks_gemini_db_v1';
+
+  const Storage = {
+    load: function() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {
+        console.error('Baza yuklashda xato:', e);
+      }
+      const initial = getBoshlangichBaza();
+      this.save(initial);
+      return initial;
+    },
+
+    save: function(db) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      } catch (e) {
+        console.error('Baza saqlashda xato:', e);
+      }
+    },
+
+    reset: function() {
+      const initial = getBoshlangichBaza();
+      this.save(initial);
+      return initial;
+    }
+  };
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.ROLES = ROLES;
+  window.RadiksApp.CAN = CAN;
+  window.RadiksApp.SEXLAR = SEXLAR;
+  window.RadiksApp.BOSQICHLAR = BOSQICHLAR;
+  window.RadiksApp.Calc = Calc;
+  window.RadiksApp.Storage = Storage;
+
+})(window);
+
+/* --- b.js --- */
+// RADIKS Boshqaruv Tizimi - b.js (Formatlash, Ikonlar, UI komponentlari va Yozuv)
+(function(window) {
+  'use strict';
+
+  // 1. FORMATLASH FUNKSIYALARI (F)
+  const F = {
+    som: function(n) {
+      if (typeof n !== 'number' || isNaN(n)) return '0 so\'m';
+      if (Math.abs(n) >= 1000000000) {
+        return (n / 1000000000).toFixed(2).replace('.', ',') + ' mlrd so\'m';
+      }
+      if (Math.abs(n) >= 1000000) {
+        return (n / 1000000).toFixed(1).replace('.', ',') + ' mln so\'m';
+      }
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' so\'m';
+    },
+
+    son: function(n) {
+      if (typeof n !== 'number' || isNaN(n)) return '0';
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    },
+
+    sana: function(str) {
+      if (!str) return '—';
+      const parts = str.split('T')[0].split('-');
+      if (parts.length === 3) {
+        return parts[2] + '.' + parts[1] + '.' + parts[0];
+      }
+      return str;
+    },
+
+    seriya: function(kod) {
+      return '<span class="tabular" style="font-family:monospace;font-weight:700;background:#f1f5f9;padding:2px 6px;border-radius:3px;border:1px solid #cbd5e1;">' + (kod || '—') + '</span>';
+    }
+  };
+
+  // 2. SVG IKONLAR (Lucide uslubida, 1.5px stroke, no-AI look, emoji mutlaqo yo'q)
+  const ICONS = {
+    box: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>',
+    flask: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31L4.1 20.3a2 2 0 0 0 1.74 2.7h12.32a2 2 0 0 0 1.74-2.7L14 9.31V2"></path><line x1="8.5" y1="2" x2="15.5" y2="2"></line><line x1="6.8" y1="15" x2="17.2" y2="15"></line></svg>',
+    activity: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+    shieldAlert: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>',
+    clock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+    truck: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>',
+    wallet: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>',
+    search: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+    check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+    alert: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>',
+    phone: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+    layers: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>',
+    lock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
+    x: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
+    refresh: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>'
+  };
+
+  function icon(name) {
+    return ICONS[name] || '';
+  }
+
+  // 3. LOTIN <-> KIRILL TRANSLITERATSIYASI (FARMATSEVTIKA QOIDALARI BILAN)
+  let JORIY_YOZUV = 'lotin'; // 'lotin' yoki 'kirill'
+
+  const LOTIN_TO_KIRILL_MAP = {
+    'sh': 'ш', 'Sh': 'Ш', 'SH': 'Ш',
+    'ch': 'ч', 'Ch': 'Ч', 'CH': 'Ч',
+    'yo': 'ё', 'Yo': 'Ё', 'YO': 'Ё',
+    'yu': 'ю', 'Yu': 'Ю', 'YU': 'Ю',
+    'ya': 'я', 'Ya': 'Я', 'YA': 'Я',
+    'ye': 'е', 'Ye': 'Е', 'YE': 'Е',
+    'o‘': 'ў', 'O‘': 'Ў', 'g‘': 'ғ', 'G‘': 'Ғ',
+    'o\'': 'ў', 'O\'': 'Ў', 'g\'': 'ғ', 'G\'': 'Ғ',
+    'a': 'а', 'A': 'А', 'b': 'б', 'B': 'Б', 'd': 'д', 'D': 'Д',
+    'e': 'е', 'E': 'Е', 'f': 'ф', 'F': 'Ф', 'g': 'г', 'G': 'Г',
+    'h': 'ҳ', 'H': 'Ҳ', 'i': 'и', 'I': 'И', 'j': 'ж', 'J': 'Ж',
+    'k': 'к', 'K': 'К', 'l': 'л', 'L': 'Л', 'm': 'м', 'M': 'М',
+    'n': 'н', 'N': 'Н', 'o': 'о', 'O': 'О', 'p': 'п', 'P': 'П',
+    'q': 'қ', 'Q': 'Қ', 'r': 'р', 'R': 'Р', 's': 'с', 'S': 'С',
+    't': 'т', 'T': 'Т', 'u': 'у', 'U': 'У', 'v': 'в', 'V': 'В',
+    'x': 'х', 'X': 'Х', 'y': 'й', 'Y': 'Й', 'z': 'з', 'Z': 'З',
+    'ts': 'ц', 'Ts': 'Ц', 'TS': 'Ц'
+  };
+
+  // Maxsus farmatsevtika atamalari
+  const FARMA_SOZLAR = [
+    { lotin: 'tsex', kirill: 'цех' },
+    { lotin: 'Tsex', kirill: 'Цех' },
+    { lotin: 'substansiya', kirill: 'субстанция' },
+    { lotin: 'Substansiya', kirill: 'Субстанция' },
+    { lotin: 'distribyutor', kirill: 'дистрибьютор' },
+    { lotin: 'Distribyutor', kirill: 'Дистрибьютор' },
+    { lotin: 'seriya', kirill: 'серия' },
+    { lotin: 'Seriya', kirill: 'Серия' },
+    { lotin: 'karantin', kirill: 'карантин' },
+    { lotin: 'Karantin', kirill: 'Карантин' },
+    { lotin: 'dori', kirill: 'дори' },
+    { lotin: 'Dori', kirill: 'Дори' },
+    { lotin: 'dorixona', kirill: 'дорихона' },
+    { lotin: 'Dorixona', kirill: 'Дорихона' }
+  ];
+
+  function T(matn) {
+    if (!matn || typeof matn !== 'string') return matn;
+    if (JORIY_YOZUV === 'lotin') return matn;
+
+    let res = matn;
+    // Maxsus atamalarni almashtirish
+    FARMA_SOZLAR.forEach(item => {
+      res = res.split(item.lotin).join(item.kirill);
+    });
+
+    // Ikki harfli birikmalar
+    const ikkitalik = ['sh', 'Sh', 'SH', 'ch', 'Ch', 'CH', 'yo', 'Yo', 'YO', 'yu', 'Yu', 'YU', 'ya', 'Ya', 'YA', 'ye', 'Ye', 'YE', 'o‘', 'O‘', 'g‘', 'G‘', 'o\'', 'O\'', 'g\'', 'G\'', 'ts', 'Ts', 'TS'];
+    ikkitalik.forEach(k => {
+      const v = LOTIN_TO_KIRILL_MAP[k];
+      res = res.split(k).join(v);
+    });
+
+    // Bittalik harflar
+    let out = '';
+    for (let i = 0; i < res.length; i++) {
+      const ch = res[i];
+      out += LOTIN_TO_KIRILL_MAP[ch] || ch;
+    }
+    return out;
+  }
+
+  function setYozuv(yozuv) {
+    JORIY_YOZUV = yozuv;
+  }
+
+  function getYozuv() {
+    return JORIY_YOZUV;
+  }
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.F = F;
+  window.RadiksApp.icon = icon;
+  window.RadiksApp.T = T;
+  window.RadiksApp.setYozuv = setYozuv;
+  window.RadiksApp.getYozuv = getYozuv;
+
+})(window);
+
+/* --- c.js --- */
+// RADIKS Boshqaruv Tizimi - c.js (Asosiy Ko'rinishlar: Kirish, Shell va Bugun Paneli)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, Calc, ROLES, CAN, getYozuv } = window.RadiksApp;
+
+  // 1. KIRISH OYNASI (LOGIN SCREEN)
+  function viewKirish(db) {
+    const yozuv = getYozuv();
+    let rollarHtml = '';
+
+    Object.values(ROLES).forEach(r => {
+      rollarHtml += `
+        <div class="role-btn" onclick="RadiksApp.Actions.login('${r.id}', '${r.pin}')">
+          <div>
+            <div class="role-btn-title">${T(r.nom)}</div>
+            <div class="role-btn-desc">${T(r.unvon)}</div>
+          </div>
+          <div class="role-pin-hint">PIN: ${r.pin}</div>
+        </div>
+      `;
+    });
+
+    return `
+      <div class="login-screen">
+        <div class="login-card">
+          <div class="login-header">
+            <span class="brand-badge" style="font-size:15px;padding:6px 14px;">RADIKS</span>
+            <h2 style="margin-top:12px;">${T('Boshqaruv Tizimi')}</h2>
+            <p>${T('Toshkent farmatsevtika zavodi · Mobil va rahbar paneli')}</p>
+          </div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#64748b;">${T('Kim sifatida kirasiz?')}:</div>
+          <div class="role-select-grid">
+            ${rollarHtml}
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #e2e8f0;">
+            <button class="lang-toggle-btn" onclick="RadiksApp.Actions.toggleYozuv()">
+              ${icon('refresh')} ${yozuv === 'lotin' ? 'Кириллча' : 'Lotincha'}
+            </button>
+            <span style="font-size:11px;color:#94a3b8;">GMP O'zDSt 2766:2018</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. SHELL QOBIG'I (SIDEBAR + HEADER + ASOSIY MAYDON + TELEFON PASTKI NAVIGATSIYASI)
+  function viewShell(contentHtml, activeNav, db, joriyRolId) {
+    const rol = ROLES[joriyRolId] || ROLES.rahbar;
+    const ruxsatlar = CAN[joriyRolId] || CAN.rahbar;
+    const yozuv = getYozuv();
+
+    // Navigatsiya menyulari
+    const navlar = [
+      { id: 'bugun', nom: 'Bugun (Signal)', qisqa: 'Bugun', icon: 'activity' },
+      { id: 'xomashyo', nom: 'Xomashyo va Ta\'minot', qisqa: 'Xomashyo', icon: 'box', badge: db.xomashyo_kirish.filter(x => x.holat === 'karantinda_tahlil').length, badgeCls: 'karantin' },
+      { id: 'ishlab', nom: 'Ishlab chiqarish', qisqa: 'Tsexlar', icon: 'layers' },
+      { id: 'okk', nom: 'Sifat nazorati (OKK)', qisqa: 'OKK', icon: 'shieldAlert', badge: db.seriyalar.filter(x => x.holat === 'karantinda').length, badgeCls: 'karantin' },
+      { id: 'ombor', nom: 'Ombor va FEFO', qisqa: 'Ombor', icon: 'truck', badge: db.tayyor_ombor.filter(x => x.xavfli_90kun).length, badgeCls: 'danger' },
+      { id: 'sotuv', nom: 'Sotuv va Buyurtmalar', qisqa: 'Sotuv', icon: 'wallet', badge: db.buyurtmalar.filter(x => x.holat === 'bloklangan_qarz').length, badgeCls: 'danger' },
+      { id: 'moliya', nom: 'Pullar va Rentabellik', qisqa: 'Moliya', icon: 'wallet' },
+      { id: 'izi', nom: 'Seriya izi (Recall)', qisqa: 'Seriya izi', icon: 'search' }
+    ];
+
+    // Desktop yon panel
+    let navHtml = '';
+    // Telefon pastki menyu
+    let bnavHtml = '';
+
+    navlar.forEach(n => {
+      if (ruxsatlar.includes(n.id) || ruxsatlar.includes('hammasi')) {
+        const isActive = activeNav === n.id ? 'active' : '';
+        let bHtml = '';
+        let bbHtml = '';
+        if (n.badge && n.badge > 0) {
+          bHtml = `<span class="nav-badge ${n.badgeCls || ''}">${n.badge}</span>`;
+          bbHtml = `<span class="bnav-badge ${n.badgeCls || ''}">${n.badge}</span>`;
+        }
+        navHtml += `
+          <a class="nav-item ${isActive}" href="#${n.id}">
+            <span class="icon">${icon(n.icon)}</span>
+            <span>${T(n.nom)}</span>
+            ${bHtml}
+          </a>
+        `;
+
+        bnavHtml += `
+          <a class="bnav-item ${isActive}" href="#${n.id}">
+            <span class="icon">${icon(n.icon)}</span>
+            <span>${T(n.qisqa)}</span>
+            ${bbHtml}
+          </a>
+        `;
+      }
+    });
+
+    const activeNavObj = navlar.find(x => x.id === activeNav);
+
+    return `
+      <div id="app">
+        <!-- DESKTOP SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <span class="brand-badge">RADIKS</span>
+            <div class="brand-info">
+              <h1>${T('RADIKS Zavodi')}</h1>
+              <p>${T('Farmatsevtika ERP')}</p>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            ${navHtml}
+          </nav>
+          <div class="sidebar-footer">
+            <button class="role-switcher-btn" onclick="RadiksApp.Actions.logout()">
+              <span>${T(rol.nom)}</span>
+              <span>${icon('lock')}</span>
+            </button>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span>${T('Namuna rejimi')}</span>
+              <a href="javascript:void(0)" onclick="RadiksApp.Actions.resetData()" style="color:#0284c7;text-decoration:none;">${T('Tiklash')}</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ASOSIY MAYDON -->
+        <div class="main-wrapper">
+          <header class="top-header">
+            <div class="header-title-wrap">
+              <span class="brand-badge" style="display:inline-block;padding:2px 6px;font-size:11px;">RAD</span>
+              <span class="header-title">${T(activeNavObj?.nom || 'Boshqaruv')}</span>
+              <span class="sample-tag">${T('1C ustidagi nazorat')}</span>
+            </div>
+            <div class="header-controls">
+              <button class="lang-toggle-btn" onclick="RadiksApp.Actions.toggleYozuv()" title="${T('Yozuvni almashtirish')}">
+                ${icon('refresh')} <span>${yozuv === 'lotin' ? 'Кирилл' : 'Lotin'}</span>
+              </button>
+              <div class="active-role-pill" onclick="RadiksApp.Actions.logout()" title="${T('Rolni almashtirish')}">
+                ${icon('lock')} <span style="max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${T(rol.nom.split(' ')[0])}</span>
+              </div>
+            </div>
+          </header>
+
+          <main class="content-area">
+            ${contentHtml}
+          </main>
+        </div>
+
+        <!-- TELEFON UCHUN PASTKI NAVIGATSIYA (FIXED BOTTOM BAR) -->
+        <nav class="bottom-nav">
+          ${bnavHtml}
+        </nav>
+      </div>
+    `;
+  }
+
+  // 3. BUGUN EKRANI (RAHBAR / EXECUTIVE COCKPIT)
+  function viewBugun(db) {
+    const karantinSum = Calc.karantinSumma(db);
+    const qarzSum = Calc.muddatiOtganQarz(db);
+    const pulMap = Calc.pulXaritasi(db);
+    const faolSeriyalar = db.seriyalar.filter(x => x.holat === 'ishlab_chiqarishda').length;
+
+    // Diqqat talab qiluvchi bloklar
+    let alertlarHtml = '';
+
+    // 1. Karantinda muddati yetgan seriyalar
+    const tayyorKarantin = db.seriyalar.filter(x => x.tahlil_holati === 'tayyor' && x.holat === 'karantinda');
+    tayyorKarantin.forEach(s => {
+      alertlarHtml += `
+        <div class="alert-item karantin">
+          <div>
+            <strong>${T('OKK qarori kutilmoqda')}:</strong> ${T(s.nom)} (${F.seriya(s.id)}) — ${s.miqdor} ${T('dona')}. 14 kunlik tahlil tugagan.
+          </div>
+          <div>
+            <button class="alert-action-btn" onclick="location.hash='#okk'">
+              ${T('OKK ga o\'tish')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    // 2. Bloklangan qarzdor mijozlar
+    const blokMijozlar = db.mijozlar.filter(m => m.bloklangan);
+    blokMijozlar.forEach(m => {
+      alertlarHtml += `
+        <div class="alert-item danger">
+          <div>
+            <strong>${T('Jo\'natish to\'xtatilgan')}:</strong> ${m.nom} — ${F.som(m.qarz)} (${m.kechikish_kuni} ${T('kun kechikkan')}).
+          </div>
+          <div style="display:flex;gap:6px;width:100%;justify-content:flex-end;">
+            <a href="tel:${m.tel}" class="alert-action-btn">${icon('phone')} ${T('Tel')}</a>
+            <button class="alert-action-btn" onclick="RadiksApp.Actions.ruxsatBerish('${m.id}')" style="color:var(--primary);font-weight:700;">
+              ${T('Ruxsat')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    // 3. 90 kundan kam qolgan dorilar (FEFO xavfi)
+    const xavfliDorilar = db.tayyor_ombor.filter(x => x.xavfli_90kun);
+    xavfliDorilar.forEach(d => {
+      const p = db.preparatlar.find(x => x.id === d.prep_id);
+      alertlarHtml += `
+        <div class="alert-item warning">
+          <div>
+            <strong>${T('FEFO 90 kun xavfi')}:</strong> ${T(p?.nom || '')} (${F.seriya(d.seriya)}) — ${F.son(d.qoldiq)} qadoq.
+          </div>
+          <div>
+            <button class="alert-action-btn" onclick="location.hash='#ombor'">
+              ${T('Ombor')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    return `
+      <!-- ASOSIY 4 RAQAM (TELEFONDA 2x2 GRID) -->
+      <div class="stats-grid">
+        <div class="stat-card alert-primary">
+          <div class="stat-card-label">
+            <span>${T('Bugungi Tushum')}</span>
+            ${icon('wallet')}
+          </div>
+          <div class="stat-card-value tabular">${F.som(db.moliya.tushum_bugun)}</div>
+          <div class="stat-card-sub">${T('Bank va kassa')}</div>
+        </div>
+
+        <div class="stat-card alert-karantin">
+          <div class="stat-card-label">
+            <span>${T('Karantindagi Pul')}</span>
+            ${icon('shieldAlert')}
+          </div>
+          <div class="stat-card-value tabular" style="color:var(--karantin);">${F.som(karantinSum)}</div>
+          <div class="stat-card-sub">${T('Laboratoriya sinovida')}</div>
+        </div>
+
+        <div class="stat-card alert-danger">
+          <div class="stat-card-label">
+            <span>${T('Kechikkan Qarzlar')}</span>
+            ${icon('alert')}
+          </div>
+          <div class="stat-card-value tabular" style="color:var(--danger);">${F.som(qarzSum)}</div>
+          <div class="stat-card-sub">${T('30 kundan ortiq')}</div>
+        </div>
+
+        <div class="stat-card alert-success">
+          <div class="stat-card-label">
+            <span>${T('Tsexlar Quvvati')}</span>
+            ${icon('layers')}
+          </div>
+          <div class="stat-card-value tabular">${faolSeriyalar} ${T('seriya')}</div>
+          <div class="stat-card-sub">${T('11 ta liniyada')}</div>
+        </div>
+      </div>
+
+      <!-- DIQQAT TALAB QILADI -->
+      <div class="alert-box">
+        <div class="alert-box-header">
+          <div class="alert-box-title" style="color:var(--danger);">
+            ${icon('alert')} ${T('Diqqat Talab Qiluvchi Signallar')}
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">${T('Zudlik bilan qaror qabul qilinishi lozim')}</span>
+        </div>
+        ${alertlarHtml}
+      </div>
+
+      <!-- PUL XARITASI (CASH FLOW BREAKDOWN) -->
+      <div class="cash-flow-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:4px;">
+          <h3 style="font-size:13.5px;font-weight:600;margin:0;">${T('Pul Qayerda Turibdi? (Aktivlar Xaritasi)')}</h3>
+          <span class="tabular" style="font-weight:700;font-size:14px;color:var(--primary);">${T('Jami')}: ${F.som(pulMap.jami)}</span>
+        </div>
+        <p style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px;">${T('Korxona aylanma mablag\'larining real vaqtdagi taqsimoti')}</p>
+
+        <!-- Rangli chiziq -->
+        <div class="cash-flow-bar">
+          <div class="cash-flow-segment" style="width:${pulMap.kassa.foiz}%;background:#0284c7;" title="${T('Kassa/Bank')}: ${pulMap.kassa.foiz}%"></div>
+          <div class="cash-flow-segment" style="width:${pulMap.xomashyo.foiz}%;background:#f59e0b;" title="${T('Xomashyo')}: ${pulMap.xomashyo.foiz}%"></div>
+          <div class="cash-flow-segment" style="width:${pulMap.karantin.foiz}%;background:#7c3aed;" title="${T('Karantin')}: ${pulMap.karantin.foiz}%"></div>
+          <div class="cash-flow-segment" style="width:${pulMap.erkin_ombor.foiz}%;background:#10b981;" title="${T('Erkin ombor')}: ${pulMap.erkin_ombor.foiz}%"></div>
+          <div class="cash-flow-segment" style="width:${pulMap.qarzlar.foiz}%;background:#ef4444;" title="${T('Qarzlar')}: ${pulMap.qarzlar.foiz}%"></div>
+        </div>
+
+        <!-- Izohlar -->
+        <div class="cash-flow-legend">
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#0284c7;"></span>
+            <div>
+              <div style="font-weight:600;">${T('Kassa va Bank')} (${pulMap.kassa.foiz}%)</div>
+              <div class="tabular" style="color:var(--text-muted);">${F.som(pulMap.kassa.summa)}</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#f59e0b;"></span>
+            <div>
+              <div style="font-weight:600;">${T('Xomashyo')} (${pulMap.xomashyo.foiz}%)</div>
+              <div class="tabular" style="color:var(--text-muted);">${F.som(pulMap.xomashyo.summa)}</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#7c3aed;"></span>
+            <div>
+              <div style="font-weight:600;">${T('Karantin')} (${pulMap.karantin.foiz}%)</div>
+              <div class="tabular" style="color:var(--text-muted);">${F.som(pulMap.karantin.summa)}</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#10b981;"></span>
+            <div>
+              <div style="font-weight:600;">${T('Erkin Ombor')} (${pulMap.erkin_ombor.foiz}%)</div>
+              <div class="tabular" style="color:var(--text-muted);">${F.som(pulMap.erkin_ombor.summa)}</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background:#ef4444;"></span>
+            <div>
+              <div style="font-weight:600;">${T('Qarzlar')} (${pulMap.qarzlar.foiz}%)</div>
+              <div class="tabular" style="color:var(--text-muted);">${F.som(pulMap.qarzlar.summa)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.viewKirish = viewKirish;
+  window.RadiksApp.viewShell = viewShell;
+  window.RadiksApp.viewBugun = viewBugun;
+
+})(window);
+
+/* --- c2.js --- */
+// RADIKS Boshqaruv Tizimi - c2.js (Operatsion Ko'rinishlar: Xomashyo, Ishlab chiqarish va OKK)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, Calc, SEXLAR, BOSQICHLAR } = window.RadiksApp;
+
+  // 1. XOMASHYO VA TA'MINOT EKRANI («Сырье закази - келиши»)
+  function viewXomashyo(db) {
+    let rowsHtml = '';
+    db.xomashyo.forEach(x => {
+      const xavf = x.qoldiq_ruxsat < x.min_chegara;
+      rowsHtml += `
+        <tr>
+          <td>
+            <div style="font-weight:600;">${T(x.nom)}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${T(x.tur)}</div>
+          </td>
+          <td class="tabular" style="font-weight:600;color:${xavf ? 'var(--danger)' : 'var(--text)'};">
+            ${F.son(x.qoldiq_ruxsat)} ${x.birlik}
+            ${xavf ? '<span class="chip rad" style="margin-left:6px;">' + T('KAM QOLGAN') + '</span>' : ''}
+          </td>
+          <td class="tabular">
+            ${x.qoldiq_karantin > 0 
+              ? '<span class="chip karantin">' + F.son(x.qoldiq_karantin) + ' ' + x.birlik + ' ' + T('karantinda') + '</span>'
+              : '—'}
+          </td>
+          <td class="tabular" style="color:var(--text-muted);">${F.son(x.min_chegara)} ${x.birlik}</td>
+          <td class="tabular">${F.som(x.narx_kg)}</td>
+        </tr>
+      `;
+    });
+
+    // Kirish nazorati laboratoriya jurnali
+    let kirishRows = '';
+    db.xomashyo_kirish.forEach(k => {
+      kirishRows += `
+        <tr>
+          <td>${F.seriya(k.seriya)}</td>
+          <td><strong>${T(k.xom_nom)}</strong></td>
+          <td class="tabular">${F.son(k.miqdor)}</td>
+          <td>${k.yetkazuvchi}</td>
+          <td>${F.sana(k.kelgan_sana)}</td>
+          <td>
+            ${k.holat === 'karantinda_tahlil'
+              ? '<span class="chip karantin">' + T('Karantinda (OKK tahlili)') + '</span>'
+              : '<span class="chip ruxsat">' + T('Ruxsat berilgan') + '</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:16px;font-weight:700;">${T('Xomashyo va Qadoq Materiallari Ta\'minoti')}</h2>
+          <p style="font-size:12px;color:var(--text-muted);">${T('Substansiyalar, yordamchi moddalar va qadoq zaxirasi nazorati')}</p>
+        </div>
+        <button class="btn btn-primary" onclick="RadiksApp.Actions.modalKirimOch()">
+          ${icon('box')} ${T('Yangi Xomashyo Kirimi')}
+        </button>
+      </div>
+
+      <!-- ASOSIY QOLDIQLAR JADVALI -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Ombordagi Xomashyo va Qadoqlar Holati')}</span>
+          <span style="font-size:12px;color:var(--text-muted);">${T('Faqat OKK ruxsat bergan zaxiradan ishlab chiqarishga olinadi')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Nomi')}</th>
+              <th>${T('Ruxsatli Qoldiq')}</th>
+              <th>${T('Karantindagi Qoldiq')}</th>
+              <th>${T('Minimal Chegara')}</th>
+              <th>${T('Narxi (birlik)')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KIRISH NAZORATI (LABORATORIYA) -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Kelgan Xomashyo Kirish Nazorati (OKK Jurnali)')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Seriya')}</th>
+              <th>${T('Xomashyo')}</th>
+              <th>${T('Miqdor')}</th>
+              <th>${T('Yetkazib Beruvchi')}</th>
+              <th>${T('Kelgan Sana')}</th>
+              <th>${T('Holat')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${kirishRows}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 2. ISHLAB CHIQARISH EKRANI («Товар ишлаб чикариш»)
+  function viewIshlab(db) {
+    let seriyalarHtml = '';
+
+    db.seriyalar.forEach(s => {
+      const p = db.preparatlar.find(x => x.id === s.prep_id);
+      const tsexObj = SEXLAR.find(x => x.id === s.tsex);
+
+      // Bosqichlar progressi
+      let stepsHtml = '';
+      BOSQICHLAR.forEach(b => {
+        const isDone = s.bosqich > b.bosqich;
+        const isActive = s.bosqich === b.bosqich;
+        stepsHtml += `
+          <div class="step-node ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}" title="${b.nom}">
+            ${isDone ? icon('check') : b.bosqich}
+          </div>
+          ${b.bosqich < 4 ? '<div class="step-line ' + (isDone ? 'done' : '') + '"></div>' : ''}
+        `;
+      });
+
+      seriyalarHtml += `
+        <tr>
+          <td>
+            <div style="font-weight:700;">${F.seriya(s.id)}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${s.boshlangan_sana}</div>
+          </td>
+          <td>
+            <div style="font-weight:600;">${T(s.nom)}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${tsexObj?.nom || s.tsex}</div>
+          </td>
+          <td class="tabular" style="font-weight:600;">${F.son(s.miqdor)} ${p?.birlik || 'dona'}</td>
+          <td>
+            <div class="step-progress" style="max-width:180px;">
+              ${stepsHtml}
+            </div>
+            <div style="font-size:11px;color:var(--primary);margin-top:4px;">
+              ${T(BOSQICHLAR.find(b => b.bosqich === s.bosqich)?.nom || '')}
+            </div>
+          </td>
+          <td>
+            ${s.holat === 'karantinda' 
+              ? '<span class="chip karantin">' + T('Karantinda (14 kun)') + '</span>'
+              : s.holat === 'ruxsat_berilgan'
+                ? '<span class="chip ruxsat">' + T('Ruxsat berilgan') + '</span>'
+                : '<span class="chip jarayonda">' + T('Ishlab chiqarilmoqda') + '</span>'}
+          </td>
+          <td>
+            ${s.bosqich < 4 && s.holat === 'ishlab_chiqarishda'
+              ? `<button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.bosqichOtkazish('${s.id}')">
+                   ${T('Keyingi bosqich')}
+                 </button>`
+              : s.bosqich === 4 && s.holat === 'ishlab_chiqarishda'
+                ? `<button class="btn btn-primary" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.karantingaTopshirish('${s.id}')">
+                     ${icon('shieldAlert')} ${T('Karantinga topshirish')}
+                   </button>`
+                : '<span style="font-size:11px;color:var(--text-muted);">' + T('Tsex ishi tugagan') + '</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:16px;font-weight:700;">${T('Ishlab Chiqarish Tsexlari va Seriyalar Dosyesi')}</h2>
+          <p style="font-size:12px;color:var(--text-muted);">${T('11 ta tsex bo\'yicha faol partiyalar va texnologik reglament bosqichlari')}</p>
+        </div>
+        <button class="btn btn-primary" onclick="RadiksApp.Actions.modalYangiSeriyaOch()">
+          ${icon('layers')} ${T('Yangi Seriya Ochish')}
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Tsexlarda Jarayondagi Seriyalar')}</span>
+          <span style="font-size:12px;color:var(--text-muted);">${T('Barcha tsexlar GMP O\'zDSt 2766:2018 reglamentida')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Seriya')}</th>
+              <th>${T('Dori Preparati')}</th>
+              <th>${T('Partiya Hajmi')}</th>
+              <th>${T('Texnologik Bosqich')}</th>
+              <th>${T('Holat')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${seriyalarHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 3. SIFAT NAZORATI EKRANI (OKK / OOK / GMP LABORATORIYA)
+  function viewOkk(db) {
+    let karantinRows = '';
+    const karantinSeriyalar = db.seriyalar.filter(x => x.holat === 'karantinda');
+
+    karantinSeriyalar.forEach(s => {
+      const p = db.preparatlar.find(x => x.id === s.prep_id);
+      const foiz = Math.min(100, Math.round((s.sterillik_kuni / (s.meyor_kuni || 14)) * 100));
+
+      karantinRows += `
+        <tr>
+          <td>${F.seriya(s.id)}</td>
+          <td>
+            <div style="font-weight:600;">${T(s.nom)}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${T(p?.shakl || '')}</div>
+          </td>
+          <td class="tabular" style="font-weight:600;">${F.son(s.miqdor)} ${p?.birlik || 'dona'}</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="flex:1;background:#e2e8f0;height:6px;border-radius:3px;overflow:hidden;min-width:80px;">
+                <div style="width:${foiz}%;background:var(--karantin);height:100%;"></div>
+              </div>
+              <span class="tabular" style="font-weight:600;font-size:11px;">${s.sterillik_kuni}/${s.meyor_kuni || 14} ${T('kun')}</span>
+            </div>
+          </td>
+          <td>
+            ${s.tahlil_holati === 'tayyor'
+              ? '<span class="chip ruxsat">' + T('Tahlil yakunlangan') + '</span>'
+              : '<span class="chip karantin">' + T('Inkubatsiyada') + '</span>'}
+          </td>
+          <td>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-success" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.okkQaror('${s.id}', 'ruxsat')">
+                ${icon('check')} ${T('Chiqarishga ruxsat')}
+              </button>
+              <button class="btn btn-danger" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.okkQaror('${s.id}', 'rad')">
+                ${icon('x')} ${T('Rad etish')}
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Sifat Nazorati Bo\'limi (OKK / OOK Karantin Markazi)')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('GMP talabi: OKK ruxsat bermagan mahsulotni sotuvga chiqarish qat\'iyan taqiqlanadi')}</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Karantindagi Tayyor Seriyalar (Mikrobiologik Sterillik Nazorati)')}</span>
+          <span style="font-size:12px;color:var(--karantin);font-weight:600;">
+            ${T('Jami muzlagan mablag\'')}: ${F.som(Calc.karantinSumma(db))}
+          </span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Seriya')}</th>
+              <th>${T('Preparat')}</th>
+              <th>${T('Hajm')}</th>
+              <th>${T('Inkubatsiya muddati')}</th>
+              <th>${T('Laboratoriya Xulosasi')}</th>
+              <th>${T('OKK Qarori')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${karantinRows || '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">' + T('Hozirda karantinda seriyalar yo\'q') + '</td></tr>'}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.viewXomashyo = viewXomashyo;
+  window.RadiksApp.viewIshlab = viewIshlab;
+  window.RadiksApp.viewOkk = viewOkk;
+
+})(window);
+
+/* --- c3.js --- */
+// RADIKS Boshqaruv Tizimi - c3.js (Tijoriy va Analitik Ko'rinishlar: Ombor, Sotuv, Moliya va Seriya Izi)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, Calc } = window.RadiksApp;
+
+  // 1. OMBOR VA FEFO EKRANI («Складдиги сони»)
+  function viewOmbor(db) {
+    let rowsHtml = '';
+    db.tayyor_ombor.forEach(item => {
+      const p = db.preparatlar.find(x => x.id === item.prep_id);
+      rowsHtml += `
+        <tr>
+          <td>${F.seriya(item.seriya)}</td>
+          <td>
+            <div style="font-weight:600;">${T(p?.nom || '')}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${T(p?.shakl || '')}</div>
+          </td>
+          <td class="tabular" style="font-weight:700;">${F.son(item.qoldiq)}</td>
+          <td class="tabular" style="font-weight:600;color:${item.xavfli_90kun ? 'var(--danger)' : 'var(--text)'};">
+            ${F.sana(item.yaroqlilik)}
+            ${item.xavfli_90kun ? '<span class="chip rad" style="margin-left:6px;">' + T('FEFO 90 KUN!') + '</span>' : ''}
+          </td>
+          <td>
+            ${item.ruxsat && !item.karantinda
+              ? '<span class="chip ruxsat">' + T('Sotuvga erkin') + '</span>'
+              : '<span class="chip karantin">' + T('Karantinda (Ta\'qiqlangan)') + '</span>'}
+          </td>
+          <td class="tabular">${F.som(item.qoldiq * item.narx)}</td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:16px;font-weight:700;">${T('Tayyor Mahsulot Ombori va FEFO Nazorati')}</h2>
+          <p style="font-size:12px;color:var(--text-muted);">${T('Erkin sotuvdagi qoldiq vs Karantindagi qoldiq; FEFO: muddati yaqini birinchi sotiladi')}</p>
+        </div>
+        <button class="btn btn-primary" onclick="RadiksApp.Actions.modalJonatishOch()">
+          ${icon('truck')} ${T('Jo\'natish (FEFO bo\'yicha)')}
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Ombordagi Barcha Tayyor Seriyalar')}</span>
+          <span style="font-size:12px;color:var(--text-muted);">${T('Qizil belgilangan seriyalar FEFO bo\'yicha birinchi navbatda jo\'natilishi shart')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Seriya')}</th>
+              <th>${T('Dori Preparati')}</th>
+              <th>${T('Qoldiq (dona)')}</th>
+              <th>${T('Yaroqlilik Muddati')}</th>
+              <th>${T('Maqom')}</th>
+              <th>${T('Qiymati')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 2. SOTUV VA BUYURTMALAR EKRANI («Сотув»)
+  function viewSotuv(db) {
+    let buyurtmalarHtml = '';
+    db.buyurtmalar.forEach(b => {
+      const p = db.preparatlar.find(x => x.id === b.prep_id);
+      buyurtmalarHtml += `
+        <tr>
+          <td><strong>${b.id}</strong></td>
+          <td>
+            <div style="font-weight:600;">${b.mijoz_nom}</div>
+            <div style="font-size:11px;color:var(--danger);">${b.izoh || ''}</div>
+          </td>
+          <td>${T(p?.nom || '')}</td>
+          <td class="tabular">${F.son(b.miqdor)}</td>
+          <td class="tabular" style="font-weight:700;">${F.som(b.summa)}</td>
+          <td>
+            ${b.holat === 'bloklangan_qarz'
+              ? '<span class="chip blok">' + T('Qarz sababli bloklangan') + '</span>'
+              : b.holat === 'tayyorlanmoqda'
+                ? '<span class="chip jarayonda">' + T('Omborda yig\'ilmoqda') + '</span>'
+                : '<span class="chip ruxsat">' + T('Jo\'natildi') + '</span>'}
+          </td>
+          <td>
+            ${b.holat === 'bloklangan_qarz'
+              ? `<button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;color:var(--primary);font-weight:700;" onclick="RadiksApp.Actions.ruxsatBerishMijoz('${b.mijoz_id}')">
+                   ${T('Direktor Ruxsati')}
+                 </button>`
+              : b.holat === 'tayyorlanmoqda'
+                ? `<button class="btn btn-success" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.buyurtmaJonatish('${b.id}')">
+                     ${icon('check')} ${T('Jo\'natildi')}
+                   </button>`
+                : '<span style="font-size:11px;color:var(--text-muted);">' + T('Bajarilgan') + '</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    let mijozlarHtml = '';
+    db.mijozlar.forEach(m => {
+      mijozlarHtml += `
+        <tr>
+          <td>
+            <div style="font-weight:600;">${m.nom}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${m.tur} · ${m.tel}</div>
+          </td>
+          <td class="tabular" style="font-weight:700;color:${m.qarz > m.limit ? 'var(--danger)' : 'var(--text)'};">
+            ${F.som(m.qarz)}
+          </td>
+          <td class="tabular">${F.som(m.limit)}</td>
+          <td class="tabular" style="font-weight:600;color:${m.kechikish_kuni > 30 ? 'var(--danger)' : 'var(--text)'};">
+            ${m.kechikish_kuni} ${T('kun')}
+          </td>
+          <td>
+            ${m.bloklangan 
+              ? '<span class="chip blok">' + T('Bloklangan') + '</span>'
+              : '<span class="chip ruxsat">' + T('Faol') + '</span>'}
+          </td>
+          <td>
+            <button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;" onclick="RadiksApp.Actions.nusxaSverka('${m.id}')">
+              ${icon('phone')} ${T('Sverka matni')}
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Sotuv Buyurtmalari va Mijozlar Nazorati')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Distribyutorlar, dorixona tarmoqlari va davlat shartnomalari balansi')}</p>
+      </div>
+
+      <!-- BUYURTMALAR -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Joriy Buyurtmalar')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('ID')}</th>
+              <th>${T('Mijoz')}</th>
+              <th>${T('Preparat')}</th>
+              <th>${T('Miqdor')}</th>
+              <th>${T('Summa')}</th>
+              <th>${T('Holat')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${buyurtmalarHtml}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MIJOZLAR VA QARZLAR -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Mijozlar Balansi va Kredit Limitlari')}</span>
+          <span style="font-size:12px;color:var(--text-muted);">${T('30 kundan oshgan mijozlarga avtomatik jo\'natish to\'xtatiladi')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Mijoz')}</th>
+              <th>${T('Qarz Summasi')}</th>
+              <th>${T('Kredit Limiti')}</th>
+              <th>${T('Kechikish')}</th>
+              <th>${T('Maqom')}</th>
+              <th>${T('Aloqa')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${mijozlarHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 3. MOLIYA VA RENTABELLIK EKRANI («Ва пуллар»)
+  function viewMoliya(db) {
+    let prepRentHtml = '';
+    db.preparatlar.forEach(p => {
+      const t = Calc.tannarx(p.id, db);
+      prepRentHtml += `
+        <tr>
+          <td>
+            <div style="font-weight:600;">${T(p.nom)}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${T(p.shakl)}</div>
+          </td>
+          <td class="tabular">${F.som(p.narx_sotuv)}</td>
+          <td class="tabular" style="color:var(--text-muted);">${F.som(p.narx_referent)}</td>
+          <td class="tabular" style="font-weight:600;">${F.som(t.tannarx)}</td>
+          <td class="tabular" style="font-weight:700;color:${t.rentabel ? 'var(--success)' : 'var(--danger)'};">
+            ${t.marja_foiz}% (${F.som(t.marja_som)})
+          </td>
+          <td>
+            ${t.rentabel 
+              ? '<span class="chip ruxsat">' + T('Rentabel') + '</span>'
+              : '<span class="chip rad">' + T('DIQQAT: Zararda / Past marja') + '</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Moliyaviy Tahlil va Dori Preparatlari Rentabelligi')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Davlat referent narxi cheklovi sharoitida har bir preparatning haqiqiy tannarxi va sof marjasi')}</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Preparatlar Rentabelligi va Marja Tahlili')}</span>
+          <span style="font-size:12px;color:var(--danger);font-weight:600;">
+            ${T('Qizil zonadagi preparatlar zudlik bilan qayta ko\'rilishi kerak')}
+          </span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Dori Preparati')}</th>
+              <th>${T('Bizning Narx')}</th>
+              <th>${T('Referent Cheklov')}</th>
+              <th>${T('Haqiqiy Tannarx')}</th>
+              <th>${T('Sof Marja')}</th>
+              <th>${T('Xulosa')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${prepRentHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 4. 10 SONIYALIK SERIYA IZI (TRACEABILITY / RECALL)
+  function viewIzi(db) {
+    const defaultSeriya = db.seriyalar[0];
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('10 Soniyalik Seriya Izi (GMP Traceability & Recall)')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Istalgan seriya bo\'yicha to\'liq dosye: xomashyodan tortib sotilgan dorixonagacha')}</p>
+      </div>
+
+      <div class="table-card" style="padding:20px;">
+        <div style="display:flex;gap:12px;margin-bottom:20px;max-width:500px;">
+          <input type="text" id="seriya-qidiruv-input" class="search-input" style="flex:1;font-size:14px;padding:8px 12px;" value="${defaultSeriya.id}" placeholder="${T('Seriya raqamini kiriting (masalan, S-0431)...')}">
+          <button class="btn btn-primary" onclick="RadiksApp.Actions.seriyaIzla()">
+            ${icon('search')} ${T('Tekshirish')}
+          </button>
+        </div>
+
+        <div id="seriya-natija-box">
+          <div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:12px;">
+              <div>
+                <span style="font-size:12px;color:var(--text-muted);">${T('Tekshirilayotgan seriya')}:</span>
+                <span style="font-size:18px;font-weight:700;margin-left:6px;">${F.seriya(defaultSeriya.id)}</span>
+                <span style="font-size:16px;font-weight:600;margin-left:8px;">${T(defaultSeriya.nom)}</span>
+              </div>
+              <button class="btn btn-danger" onclick="RadiksApp.Actions.chaqiribOlish('${defaultSeriya.id}')">
+                ${icon('shieldAlert')} ${T('Seriyani To\'xtatish (Recall)')}
+              </button>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;font-size:13px;">
+              <div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Ishlatilgan Xomashyo')}</div>
+                <div style="font-weight:600;">${F.seriya(defaultSeriya.xomashyo_seriya)} (Paratsetamol / Novokain)</div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Kirish nazorati sertifikati tasdiqlangan')}</div>
+              </div>
+
+              <div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Ishlab chiqarish Tsex')}</div>
+                <div style="font-weight:600;">${T('Ampula tsexi (Liniya 1, Chilonzor)')}</div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Smena ustasi: R. Karimov')}</div>
+              </div>
+
+              <div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('OKK Tahlil Bayonnomasi')}</div>
+                <div style="font-weight:600;">№ 1492/OKK (Mikrobiologiya toza)</div>
+                <div style="font-size:11px;color:var(--success);font-weight:600;">GMP Annex 16 ruxsati bor</div>
+              </div>
+
+              <div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Tarqatilgan Mijozlar')}</div>
+                <div style="font-weight:600;">«Grand Pharm» (15 000), «OxyMed» (10 000)</div>
+                <div style="font-size:11px;color:var(--text-muted);">${T('Zavod omborida qoldiq')}: 20 000 dona</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.viewOmbor = viewOmbor;
+  window.RadiksApp.viewSotuv = viewSotuv;
+  window.RadiksApp.viewMoliya = viewMoliya;
+  window.RadiksApp.viewIzi = viewIzi;
+
+})(window);
+
+/* --- d.js --- */
+// RADIKS Boshqaruv Tizimi - d.js (Amallar, Router, Modallar va Ishga Tushirish)
+(function(window) {
+  'use strict';
+
+  const {
+    ROLES, CAN, Storage, Calc, T, getYozuv, setYozuv,
+    viewKirish, viewShell, viewBugun, viewXomashyo, viewIshlab, viewOkk, viewOmbor, viewSotuv, viewMoliya, viewIzi
+  } = window.RadiksApp;
+
+  let db = Storage.load();
+  let joriyRol = localStorage.getItem('radiks_joriy_rol') || null;
+
+  // 1. ACTIONS (HARAKATLAR)
+  const Actions = {
+    login: function(rolId, pin) {
+      const r = ROLES[rolId];
+      if (!r) return;
+      joriyRol = rolId;
+      localStorage.setItem('radiks_joriy_rol', rolId);
+      location.hash = '#bugun';
+      render();
+    },
+
+    logout: function() {
+      joriyRol = null;
+      localStorage.removeItem('radiks_joriy_rol');
+      render();
+    },
+
+    toggleYozuv: function() {
+      const hozirgi = getYozuv();
+      setYozuv(hozirgi === 'lotin' ? 'kirill' : 'lotin');
+      render();
+    },
+
+    resetData: function() {
+      if (confirm(T('Namuna ma\'lumotlarini asl holatiga qaytarishni xohlaysizmi?'))) {
+        db = Storage.reset();
+        render();
+      }
+    },
+
+    ruxsatBerish: function(mijozId) {
+      if (joriyRol !== 'rahbar') {
+        alert(T('Faqat Rahbar (Abdurasul aka) ruxsat bera oladi!'));
+        return;
+      }
+      const m = db.mijozlar.find(x => x.id === mijozId);
+      if (m) {
+        m.bloklangan = false;
+        // Bog'liq buyurtmalarni ham ochish
+        db.buyurtmalar.forEach(b => {
+          if (b.mijoz_id === mijozId && b.holat === 'bloklangan_qarz') {
+            b.holat = 'tayyorlanmoqda';
+            b.izoh = T('Direktor shaxsiy ruxsati berildi');
+          }
+        });
+        Storage.save(db);
+        alert(T(m.nom + ' uchun jo\'natishga ruxsat berildi!'));
+        render();
+      }
+    },
+
+    ruxsatBerishMijoz: function(mijozId) {
+      this.ruxsatBerish(mijozId);
+    },
+
+    bosqichOtkazish: function(seriyaId) {
+      const s = db.seriyalar.find(x => x.id === seriyaId);
+      if (s && s.bosqich < 4) {
+        s.bosqich += 1;
+        Storage.save(db);
+        render();
+      }
+    },
+
+    karantingaTopshirish: function(seriyaId) {
+      const s = db.seriyalar.find(x => x.id === seriyaId);
+      if (s) {
+        s.holat = 'karantinda';
+        s.sterillik_kuni = 0;
+        s.meyor_kuni = (s.tsex === 'ampula' || s.tsex === 'infuziya' || s.tsex === 'antibiotik') ? 14 : 5;
+        s.tahlil_holati = 'inkubatsiyada';
+
+        // Omborda ham karantin sifatida qayd qilish
+        const p = db.preparatlar.find(x => x.id === s.prep_id);
+        db.tayyor_ombor.push({
+          seriya: s.id,
+          prep_id: s.prep_id,
+          qoldiq: s.miqdor,
+          ruxsat: false,
+          karantinda: true,
+          yaroqlilik: '2028-11-12',
+          narx: p ? p.narx_sotuv : 5000
+        });
+
+        Storage.save(db);
+        alert(T(s.id + ' seriyasi OKK karantiniga muvaffaqiyatli topshirildi!'));
+        render();
+      }
+    },
+
+    okkQaror: function(seriyaId, qaror) {
+      if (joriyRol !== 'okk' && joriyRol !== 'rahbar') {
+        alert(T('Faqat Sifat nazorati (OKK) xodimi qaror qabul qilishi mumkin!'));
+        return;
+      }
+      const s = db.seriyalar.find(x => x.id === seriyaId);
+      const omborItem = db.tayyor_ombor.find(x => x.seriya === seriyaId);
+
+      if (qaror === 'ruxsat') {
+        if (s) {
+          s.holat = 'ruxsat_berilgan';
+          s.tahlil_holati = 'sertifikat_berildi';
+        }
+        if (omborItem) {
+          omborItem.ruxsat = true;
+          omborItem.karantinda = false;
+        }
+        alert(T(seriyaId + ' seriyasiga Chiqarishga ruxsat sertifikati berildi! Endi uni sotish mumkin.'));
+      } else {
+        if (s) s.holat = 'rad_etilgan';
+        if (omborItem) {
+          omborItem.ruxsat = false;
+          omborItem.rad = true;
+        }
+        alert(T(seriyaId + ' seriyasi sifatsiz deb topildi va hisobdan chiqarildi!'));
+      }
+      Storage.save(db);
+      render();
+    },
+
+    buyurtmaJonatish: function(buyurtmaId) {
+      const b = db.buyurtmalar.find(x => x.id === buyurtmaId);
+      if (b) {
+        b.holat = 'jonatildi';
+        Storage.save(db);
+        alert(T(buyurtmaId + ' buyurtmasi yuklandi va jo\'natildi!'));
+        render();
+      }
+    },
+
+    nusxaSverka: function(mijozId) {
+      const m = db.mijozlar.find(x => x.id === mijozId);
+      if (!m) return;
+      const matn = `Hurmatli ${m.nom} rahbariyati! «RADIKS» MChJ hisob-kitoblariga ko'ra sizning ayni paytdagi debitorlik qarzingiz ${window.RadiksApp.F.som(m.qarz)} ni tashkil etadi. Kechikish muddati: ${m.kechikish_kuni} kun. Shartnomaga muvofiq to'lovni zudlik bilan amalga oshirishingizni so'raymiz.`;
+      navigator.clipboard?.writeText(matn).then(() => {
+        alert(T('Telegram uchun solishtirma dalolatnoma (sverka) matni nusxalandi!'));
+      }).catch(() => {
+        alert(matn);
+      });
+    },
+
+    chaqiribOlish: function(seriyaId) {
+      if (confirm(T('DIQQAT! ' + seriyaId + ' seriyasini butun respublika bo\'yicha to\'xtatish (Recall) va qaytarib olish xabarini berishni tasdiqlaysizmi?'))) {
+        alert(T(seriyaId + ' seriyasi favqulodda to\'xtatildi! Barcha distribyutorlarga ogohlantirish xati shakllantirildi.'));
+      }
+    },
+
+    seriyaIzla: function() {
+      const val = document.getElementById('seriya-qidiruv-input')?.value.trim();
+      if (!val) return;
+      const s = db.seriyalar.find(x => x.id.toLowerCase() === val.toLowerCase());
+      const box = document.getElementById('seriya-natija-box');
+      if (!box) return;
+
+      if (!s) {
+        box.innerHTML = `<div style="padding:16px;background:#fef2f2;color:#dc2626;border-radius:6px;">${T('Bunday seriya raqami topilmadi!')}</div>`;
+        return;
+      }
+
+      box.innerHTML = `
+        <div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:12px;">
+            <div>
+              <span style="font-size:12px;color:var(--text-muted);">${T('Tekshirilayotgan seriya')}:</span>
+              <span style="font-size:18px;font-weight:700;margin-left:6px;">${window.RadiksApp.F.seriya(s.id)}</span>
+              <span style="font-size:16px;font-weight:600;margin-left:8px;">${T(s.nom)}</span>
+            </div>
+            <button class="btn btn-danger" onclick="RadiksApp.Actions.chaqiribOlish('${s.id}')">
+              ${window.RadiksApp.icon('shieldAlert')} ${T('Seriyani To\'xtatish (Recall)')}
+            </button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;font-size:13px;">
+            <div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Ishlatilgan Xomashyo')}</div>
+              <div style="font-weight:600;">${window.RadiksApp.F.seriya(s.xomashyo_seriya || 'K-0518')}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Kirish nazorati sertifikati tasdiqlangan')}</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Tsex va Liniya')}</div>
+              <div style="font-weight:600;">${s.tsex}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Boshlangan sana')}: ${s.boshlangan_sana}</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Sifat Holati')}</div>
+              <div style="font-weight:600;">${s.tahlil_holati}</div>
+              <div style="font-size:11px;color:var(--success);font-weight:600;">GMP O'zDSt 2766:2018</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Partiya miqdori')}</div>
+              <div style="font-weight:600;">${window.RadiksApp.F.son(s.miqdor)} dona</div>
+              <div style="font-size:11px;color:var(--text-muted);">${T('Holat')}: ${s.holat}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    modalKirimOch: function() {
+      const modal = document.getElementById('modal-container');
+      if (!modal) return;
+      modal.innerHTML = `
+        <div class="modal-overlay" onclick="if(event.target===this)RadiksApp.Actions.modalYop()">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <span class="modal-title">${T('Yangi Xomashyo Kirimi (Karantin qabuli)')}</span>
+              <button class="btn btn-secondary" style="padding:4px;" onclick="RadiksApp.Actions.modalYop()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label">${T('Xomashyoni tanlang')}</label>
+                <select id="kirim-xom-id" class="form-select">
+                  ${db.xomashyo.map(x => `<option value="${x.id}">${x.nom} (${x.tur})</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Kelgan miqdor')}</label>
+                <input type="number" id="kirim-miqdor" class="form-input" placeholder="Masalan: 500">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Yetkazib beruvchi zavod va mamlakat')}</label>
+                <input type="text" id="kirim-yetkazuvchi" class="form-input" placeholder="Masalan: Aurobindo Pharma (Hindiston)">
+              </div>
+              <div style="font-size:11px;color:var(--karantin);background:var(--karantin-light);padding:8px;border-radius:4px;">
+                ${T('Qoida: Yangi kelgan xomashyo avtomatik ravishda Karantinga tushadi. OKK kirish nazorati tahlilidan o\'tmaguncha uni tsexga berib bo\'lmaydi.')}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" onclick="RadiksApp.Actions.modalYop()">${T('Bekor qilish')}</button>
+              <button class="btn btn-primary" onclick="RadiksApp.Actions.saqlashKirim()">${T('Karantinga qabul qilish')}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    saqlashKirim: function() {
+      const xomId = document.getElementById('kirim-xom-id')?.value;
+      const miqdor = parseFloat(document.getElementById('kirim-miqdor')?.value);
+      const yetkazuvchi = document.getElementById('kirim-yetkazuvchi')?.value.trim();
+
+      if (!miqdor || miqdor <= 0 || !yetkazuvchi) {
+        alert(T('Iltimos, barcha maydonlarni to\'g\'ri to\'ldiring!'));
+        return;
+      }
+
+      const x = db.xomashyo.find(item => item.id === xomId);
+      if (x) {
+        x.qoldiq_karantin += miqdor;
+        const yangiSeriyaKod = 'K-06' + Math.floor(20 + Math.random() * 50);
+        db.xomashyo_kirish.unshift({
+          seriya: yangiSeriyaKod,
+          xom_id: x.id,
+          xom_nom: x.nom,
+          miqdor: miqdor,
+          kelgan_sana: '2026-11-12',
+          yetkazuvchi: yetkazuvchi,
+          holat: 'karantinda_tahlil'
+        });
+        Storage.save(db);
+        alert(T('Xomashyo karantinga qabul qilindi. OKK seriya raqami: ' + yangiSeriyaKod));
+        this.modalYop();
+        render();
+      }
+    },
+
+    modalYangiSeriyaOch: function() {
+      const modal = document.getElementById('modal-container');
+      if (!modal) return;
+      modal.innerHTML = `
+        <div class="modal-overlay" onclick="if(event.target===this)RadiksApp.Actions.modalYop()">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <span class="modal-title">${T('Yangi Ishlab Chiqarish Seriyasini Boshlash')}</span>
+              <button class="btn btn-secondary" style="padding:4px;" onclick="RadiksApp.Actions.modalYop()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label">${T('Preparatni tanlang')}</label>
+                <select id="seriya-prep-id" class="form-select">
+                  ${db.preparatlar.map(p => `<option value="${p.id}">${p.nom} (${p.shakl})</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Rejadagi partiya hajmi (dona)')}</label>
+                <input type="number" id="seriya-miqdor" class="form-input" placeholder="Masalan: 40000">
+              </div>
+              <div style="font-size:11px;color:var(--text-muted);background:var(--surface-alt);padding:8px;border-radius:4px;">
+                ${T('Tizim retsept bo\'yicha ruxsat etilgan xomashyo yetarliligini tekshiradi va seriya dosyesini ochadi.')}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" onclick="RadiksApp.Actions.modalYop()">${T('Bekor qilish')}</button>
+              <button class="btn btn-primary" onclick="RadiksApp.Actions.saqlashYangiSeriya()">${T('Seriyani boshlash')}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    saqlashYangiSeriya: function() {
+      const prepId = document.getElementById('seriya-prep-id')?.value;
+      const miqdor = parseFloat(document.getElementById('seriya-miqdor')?.value);
+
+      if (!miqdor || miqdor <= 0) {
+        alert(T('Iltimos, partiya hajmini kiriting!'));
+        return;
+      }
+
+      const p = db.preparatlar.find(item => item.id === prepId);
+      if (p) {
+        const seriyaRaqam = 'S-04' + Math.floor(40 + Math.random() * 50);
+        db.seriyalar.unshift({
+          id: seriyaRaqam,
+          prep_id: p.id,
+          nom: p.nom,
+          tsex: p.tsex,
+          miqdor: miqdor,
+          boshlangan_sana: '2026-11-12',
+          reja_tayyor: '2026-11-18',
+          bosqich: 1,
+          holat: 'ishlab_chiqarishda',
+          xomashyo_seriya: 'K-0612',
+          sterillik_kuni: 0,
+          tahlil_holati: 'kutilmoqda'
+        });
+        Storage.save(db);
+        alert(T('Yangi seriya ' + seriyaRaqam + ' 1-bosqichda (Xomashyo qorish) muvaffaqiyatli boshlandi!'));
+        this.modalYop();
+        render();
+      }
+    },
+
+    modalJonatishOch: function() {
+      const modal = document.getElementById('modal-container');
+      if (!modal) return;
+      modal.innerHTML = `
+        <div class="modal-overlay" onclick="if(event.target===this)RadiksApp.Actions.modalYop()">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <span class="modal-title">${T('Mijozga Tovar Jo\'natish (FEFO bo\'yicha)')}</span>
+              <button class="btn btn-secondary" style="padding:4px;" onclick="RadiksApp.Actions.modalYop()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label">${T('Mijozni tanlang')}</label>
+                <select id="jonatish-mijoz-id" class="form-select">
+                  ${db.mijozlar.map(m => `<option value="${m.id}">${m.nom} ${m.bloklangan ? '(' + T('BLOKLANGAN') + ')' : ''}</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Preparat')}</label>
+                <select id="jonatish-prep-id" class="form-select">
+                  ${db.preparatlar.map(p => `<option value="${p.id}">${p.nom}</option>`).join('')}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Miqdor (dona)')}</label>
+                <input type="number" id="jonatish-miqdor" class="form-input" placeholder="Masalan: 10000">
+              </div>
+              <div style="font-size:11px;color:var(--success);background:var(--success-light);padding:8px;border-radius:4px;">
+                ${T('FEFO Kafolati: Tizim faqat OKK ruxsat bergan va yaroqlilik muddati eng yaqin bo\'lgan seriyadan yuklaydi.')}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" onclick="RadiksApp.Actions.modalYop()">${T('Bekor qilish')}</button>
+              <button class="btn btn-primary" onclick="RadiksApp.Actions.saqlashJonatish()">${T('Yuklash va Jo\'natish')}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    saqlashJonatish: function() {
+      const mijozId = document.getElementById('jonatish-mijoz-id')?.value;
+      const prepId = document.getElementById('jonatish-prep-id')?.value;
+      const miqdor = parseFloat(document.getElementById('jonatish-miqdor')?.value);
+
+      const m = db.mijozlar.find(x => x.id === mijozId);
+      if (m && m.bloklangan) {
+        alert(T('DIQQAT! ' + m.nom + ' da muddati o\'tgan qarzdorlik bor! Jo\'natish qat\'iyan bloklangan. Faqat Bosh direktor (Abdurasul aka) ruxsat bera oladi.'));
+        return;
+      }
+
+      const fefoSeriyalar = Calc.fefoSeriyalar(prepId, db);
+      if (!fefoSeriyalar || fefoSeriyalar.length === 0) {
+        alert(T('Ushbu preparat bo\'yicha omborda sotuvga ruxsat berilgan erkin zaxira mavjud emas! (Karantindagi tovarlarni sotish taqiqlanadi).'));
+        return;
+      }
+
+      const engYaqinSeriya = fefoSeriyalar[0];
+      if (engYaqinSeriya.qoldiq < miqdor) {
+        alert(T('FEFO bo\'yicha birinchi seriyada (' + engYaqinSeriya.seriya + ') faqat ' + engYaqinSeriya.qoldiq + ' dona bor!'));
+        return;
+      }
+
+      engYaqinSeriya.qoldiq -= miqdor;
+      const p = db.preparatlar.find(x => x.id === prepId);
+      const summa = miqdor * (p ? p.narx_sotuv : 5000);
+
+      db.buyurtmalar.unshift({
+        id: 'B-' + Math.floor(1085 + Math.random() * 50),
+        mijoz_id: m.id,
+        mijoz_nom: m.nom,
+        prep_id: prepId,
+        miqdor: miqdor,
+        summa: summa,
+        sana: '2026-11-12',
+        holat: 'jonatildi',
+        izoh: 'FEFO: ' + engYaqinSeriya.seriya + ' seriyadan yuklandi'
+      });
+
+      m.qarz += summa;
+      Storage.save(db);
+      alert(T('Tovar muvaffaqiyatli yuklandi! FEFO seriyasi: ' + engYaqinSeriya.seriya));
+      this.modalYop();
+      render();
+    },
+
+    modalYop: function() {
+      const modal = document.getElementById('modal-container');
+      if (modal) modal.innerHTML = '';
+    }
+  };
+
+  // 2. ROUTER VA RENDER
+  function render() {
+    const root = document.getElementById('root');
+    if (!root) return;
+
+    if (!joriyRol) {
+      root.innerHTML = viewKirish(db);
+      return;
+    }
+
+    let hash = location.hash.replace('#', '') || 'bugun';
+    const ruxsatlar = CAN[joriyRol] || CAN.rahbar;
+
+    // Ruxsatni tekshirish
+    if (!ruxsatlar.includes(hash) && !ruxsatlar.includes('hammasi')) {
+      hash = ruxsatlar[0] || 'bugun';
+    }
+
+    let contentHtml = '';
+    switch (hash) {
+      case 'bugun':
+        contentHtml = viewBugun(db);
+        break;
+      case 'xomashyo':
+        contentHtml = viewXomashyo(db);
+        break;
+      case 'ishlab':
+        contentHtml = viewIshlab(db);
+        break;
+      case 'okk':
+        contentHtml = viewOkk(db);
+        break;
+      case 'ombor':
+        contentHtml = viewOmbor(db);
+        break;
+      case 'sotuv':
+        contentHtml = viewSotuv(db);
+        break;
+      case 'moliya':
+        contentHtml = viewMoliya(db);
+        break;
+      case 'izi':
+        contentHtml = viewIzi(db);
+        break;
+      default:
+        contentHtml = viewBugun(db);
+    }
+
+    root.innerHTML = viewShell(contentHtml, hash, db, joriyRol);
+  }
+
+  // Hash o'zgarganda qayta render qilish
+  window.addEventListener('hashchange', render);
+
+  // Dastlabki ishga tushirish
+  document.addEventListener('DOMContentLoaded', function() {
+    render();
+  });
+
+  // Eksport
+  window.RadiksApp = window.RadiksApp || {};
+  window.RadiksApp.Actions = Actions;
+  window.RadiksApp.render = render;
+  window.RadiksApp.getDb = () => db;
+
+})(window);
+
+  </script>
+</body>
+</html>
