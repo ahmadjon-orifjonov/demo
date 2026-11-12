@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WETRADE — Xalqaro Savdo va Import-Eksport ERP</title>
+  <meta name="description" content="Wetrade MChJ xalqaro savdo, import-eksport, logistika va TIF konsalting boshqaruvi">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0b192c">
+  <style>
+/* WETRADE Boshqaruv Tizimi - Dizayn Tizimi (Golos Text / Import-Export Trade UI) */
+
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2018-2019, U+201C-201D;
+}
+@font-face {
+  font-family: "Golos Text";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/golos-text-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-text: #0369a1;
+  --success: #059669;
+  --success-light: #ecfdf5;
+  --warning: #d97706;
+  --warning-light: #fffbeb;
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+  --tranzit: #7c3aed;
+  --tranzit-light: #f5f3ff;
+  --bojxona: #ea580c;
+  --bojxona-light: #fff7ed;
+  --sidebar-bg: #0b192c;
+  --sidebar-text: #cbd5e1;
+  --sidebar-hover: #1e3a8a;
+  --sidebar-active: #0284c7;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+#app {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid #1e293b;
+}
+
+.sidebar-header {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.brand-badge {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.brand-info h1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.brand-info p {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-color: var(--sidebar-hover);
+  color: #fff;
+}
+
+.nav-item.active {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.nav-item .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.nav-badge.danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.nav-badge.tranzit {
+  background: var(--tranzit);
+  color: #fff;
+}
+
+.sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid #1e293b;
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role-switcher-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+}
+
+.role-switcher-btn:hover {
+  background: #334155;
+  color: #fff;
+}
+
+/* MAIN CONTENT */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.top-header {
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.header-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sample-tag {
+  font-size: 11px;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lang-toggle-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+}
+
+.lang-toggle-btn:hover {
+  border-color: var(--border-strong);
+  background: #e2e8f0;
+}
+
+.active-role-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-light);
+  color: var(--primary-text);
+  border: 1px solid #bae6fd;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+/* CONTENT CONTAINER */
+.content-area {
+  flex: 1;
+  padding: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card.alert-tranzit { border-left: 4px solid var(--tranzit); }
+.stat-card.alert-danger { border-left: 4px solid var(--danger); }
+.stat-card.alert-success { border-left: 4px solid var(--success); }
+.stat-card.alert-primary { border-left: 4px solid var(--primary); }
+.stat-card.alert-bojxona { border-left: 4px solid var(--bojxona); }
+
+.stat-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ALERTS */
+.alert-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.alert-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.alert-box-title {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  margin-bottom: 8px;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.alert-item:last-child { margin-bottom: 0; }
+.alert-item.danger { background: var(--danger-light); border-left: 3px solid var(--danger); }
+.alert-item.tranzit { background: var(--tranzit-light); border-left: 3px solid var(--tranzit); }
+.alert-item.bojxona { background: var(--bojxona-light); border-left: 3px solid var(--bojxona); }
+.alert-item.warning { background: var(--warning-light); border-left: 3px solid var(--warning); }
+
+.alert-action-btn {
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  min-height: 36px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.alert-action-btn:hover { background: var(--surface-alt); }
+
+/* TABLES */
+.table-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+}
+
+.table-header-bar {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.table-title { font-size: 14px; font-weight: 600; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+  min-width: 650px;
+}
+
+.data-table th {
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #f8fafc; }
+
+/* CHIPS */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chip.tranzit { background: var(--tranzit-light); color: var(--tranzit); border: 1px solid #ddd6fe; }
+.chip.bojxona { background: var(--bojxona-light); color: var(--bojxona); border: 1px solid #fed7aa; }
+.chip.ruxsat { background: var(--success-light); color: var(--success); border: 1px solid #a7f3d0; }
+.chip.blok { background: var(--danger-light); color: var(--danger); border: 1px solid #fecaca; }
+.chip.avans { background: var(--primary-light); color: var(--primary); border: 1px solid #bae6fd; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  min-height: 40px;
+  white-space: nowrap;
+}
+
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-secondary { background: #fff; border-color: var(--border-strong); color: var(--text); }
+.btn-secondary:hover { background: var(--surface-alt); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-success { background: var(--success); color: #fff; }
+
+/* STEP PROGRESS (6 BOSQICH) */
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.step-node {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.step-node.done { background: var(--success); color: #fff; }
+.step-node.active { background: var(--primary); color: #fff; box-shadow: 0 0 0 2px var(--primary-light); }
+.step-line { flex: 1; height: 2px; background: var(--border); min-width: 6px; }
+.step-line.done { background: var(--success); }
+
+/* MODALS */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 16px;
+}
+
+.modal-dialog {
+  background: #fff; border-radius: var(--radius-lg);
+  max-width: 520px; width: 100%; box-shadow: var(--shadow-md);
+  overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;
+}
+
+.modal-header {
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-title { font-size: 15px; font-weight: 600; }
+.modal-body { padding: 18px; overflow-y: auto; }
+.modal-footer {
+  padding: 12px 18px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: flex-end; gap: 8px; background: var(--surface-alt);
+}
+
+.form-group { margin-bottom: 14px; }
+.form-label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.form-input, .form-select {
+  width: 100%; padding: 8px 12px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 13.5px; outline: none; background: #fff; min-height: 40px;
+}
+.form-input:focus, .form-select:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-light); }
+
+/* LOGIN SCREEN */
+.login-screen {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: #0b192c; padding: 16px;
+}
+.login-card {
+  background: #fff; border-radius: var(--radius-lg);
+  max-width: 440px; width: 100%; padding: 28px 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+.login-header { text-align: center; margin-bottom: 22px; }
+.login-header h2 { font-size: 19px; font-weight: 700; color: #0b192c; }
+.login-header p { font-size: 12px; color: #64748b; margin-top: 4px; }
+.role-select-grid { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.role-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-md);
+  background: #fff; cursor: pointer; transition: all 0.15s; text-align: left; min-height: 52px;
+}
+.role-btn:hover { border-color: var(--primary); background: var(--surface-alt); }
+.role-btn-title { font-size: 13.5px; font-weight: 600; color: #0f172a; }
+.role-btn-desc { font-size: 11px; color: #64748b; }
+.role-pin-hint {
+  font-size: 12px; font-weight: 700; color: var(--primary); background: #f0f9ff;
+  padding: 3px 7px; border-radius: 4px; border: 1px solid #bae6fd;
+}
+
+/* MOBILE BOTTOM NAV */
+.bottom-nav { display: none; }
+
+@media (max-width: 820px) {
+  #app { flex-direction: column; }
+  .sidebar { display: none; }
+  .top-header { height: 52px; padding: 0 12px; gap: 8px; }
+  .sample-tag { display: none; }
+  .content-area { padding: 12px 12px calc(76px + env(safe-area-inset-bottom)) 12px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .stat-card { padding: 10px 12px; }
+  .stat-card-value { font-size: 16px; }
+
+  .bottom-nav {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; height: 60px;
+    background: var(--surface); border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); padding: 0 2px env(safe-area-inset-bottom) 2px;
+  }
+  .bnav-item {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 3px; color: var(--text-muted); text-decoration: none; font-size: 10px;
+    font-weight: 500; padding: 6px 1px; position: relative; min-height: 48px;
+  }
+  .bnav-item.active { color: var(--primary); font-weight: 700; }
+  .bnav-item .icon svg { width: 19px; height: 19px; }
+  .bnav-badge {
+    position: absolute; top: 4px; right: calc(50% - 16px); font-size: 9px;
+    font-weight: 700; padding: 1px 4px; border-radius: 8px; background: var(--danger);
+    color: #fff; line-height: 12px;
+  }
+  .modal-overlay { padding: 8px; align-items: flex-end; }
+  .modal-dialog { max-height: 85vh; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+}
+
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="modal-container"></div>
+  <script>
+
+/* --- a.js --- */
+// WETRADE Boshqaruv Tizimi - a.js (Konstantalar, Baza, Calc va Ruxsatlar)
+(function(window) {
+  'use strict';
+
+  // 1. ROLLAR VA RUXSATLAR MATRITSASI (CAN)
+  const ROLES = {
+    rahbar: { id: 'rahbar', nom: 'Rahbar (Sherzod aka)', unvon: 'Bosh direktor', pin: '1111' },
+    menejer: { id: 'menejer', nom: 'Import/Eksport menejeri', unvon: 'Tashqi savdo bo\'limi', pin: '2222' },
+    logistika: { id: 'logistika', nom: 'Logistika va Kargo', unvon: 'Ekspeditor / Tranzit', pin: '3333' },
+    moliya: { id: 'moliya', nom: 'Moliya va Bojxona', unvon: 'Valyuta hisobchisi', pin: '4444' }
+  };
+
+  const CAN = {
+    rahbar: ['bugun', 'kontraktlar', 'logistika', 'bojxona', 'moliya', 'kalkulyator', 'hamkorlar'],
+    menejer: ['kontraktlar', 'hamkorlar', 'kalkulyator'],
+    logistika: ['logistika', 'kontraktlar'],
+    moliya: ['moliya', 'bojxona', 'kalkulyator', 'kontraktlar']
+  };
+
+  const BOSQICHLAR = [
+    { bosqich: 1, nom: 'Shartnoma va Spetsifikatsiya' },
+    { bosqich: 2, nom: 'Valyuta to\'lovi / Avans' },
+    { bosqich: 3, nom: 'Zavodda yuklash' },
+    { bosqich: 4, nom: 'Xalqaro Tranzit / Kargo' },
+    { bosqich: 5, nom: 'Bojxona rasmiylashtiruvi' },
+    { bosqich: 6, nom: 'Xaridorga yetkazildi' }
+  ];
+
+  // 2. DETERMINISTIK STANDART MA'LUMOTLAR
+  function getBoshlangichBaza() {
+    return {
+      clock: '2026-11-12T12:00:00Z',
+      kurslar: {
+        USD: 12820,
+        RUB: 132,
+        EUR: 13850
+      },
+      moliya: {
+        bank_valyuta_usd: 184500, // $ 184,500
+        bank_som: 940000000,       // 940 mln so'm
+        tushum_oylik_usd: 620000,
+        sof_foyda_oylik_usd: 48500
+      },
+      // 5 ta faol kontrakt
+      kontraktlar: [
+        {
+          id: 'CON-812',
+          nom: 'Polipropilen granula (PP T30S)',
+          hajm: '120 tonna',
+          zavod: 'Sinopec Chemical Corp (Xitoy)',
+          xaridor: '«Polimer Plast Zavodi» MChJ',
+          incoterms: 'CIF Toshkent',
+          summa_usd: 138000,
+          avans_foiz: 30,
+          avans_tolandi: true,
+          bosqich: 4, // Tranzitda
+          transport_turi: 'Temir yo\'l vagonlari',
+          transport_id: 'Vagon № 54219082, 54219090',
+          tranzit_joy: 'Sariagash / Keles chegarasi',
+          kun_yolda: 14,
+          prostoy_xavfi: false,
+          menejer: 'Alisher Qodirov',
+          sof_marja_usd: 12400
+        },
+        {
+          id: 'CON-814',
+          nom: 'Sanoat gidravlik moyi (HVLP 46)',
+          hajm: '45 tonna (220 bochka)',
+          zavod: 'Lukoil Lubricants (Rossiya)',
+          xaridor: '«O\'zbekgidro Mashinasozlik» AJ',
+          incoterms: 'DAP Toshkent',
+          summa_usd: 62000,
+          avans_foiz: 100,
+          avans_tolandi: true,
+          bosqich: 5, // Bojxonada
+          transport_turi: 'Avtofura',
+          transport_id: 'Fura 01 742 AAA / 01 928 BA',
+          tranzit_joy: 'Ark-Buloq TIF Bojxona posti',
+          kun_yolda: 8,
+          prostoy_xavfi: true, // 3 kundan beri turibdi!
+          prostoy_kuni: 3,
+          menejer: 'Javlon Bekmirzayev',
+          sof_marja_usd: 6800
+        },
+        {
+          id: 'CON-816',
+          nom: 'Polietilen granulalari (LDPE 15803)',
+          hajm: '60 tonna',
+          zavod: 'Petkim Petrokimya (Turkiya)',
+          xaridor: '«Mega Qadoq Sanoat» XK',
+          incoterms: 'FOB Izmir',
+          summa_usd: 78000,
+          avans_foiz: 20,
+          avans_tolandi: true,
+          bosqich: 3, // Zavodda yuklanmoqda
+          transport_turi: 'Konteyner (Dengiz + T/Y)',
+          transport_id: 'Konteyner MSCU 7842109',
+          tranzit_joy: 'Izmir porti',
+          kun_yolda: 2,
+          prostoy_xavfi: false,
+          menejer: 'Alisher Qodirov',
+          sof_marja_usd: 7200
+        },
+        {
+          id: 'CON-820',
+          nom: 'Sanoat katalizatorlari va reagentlar',
+          hajm: '18 tonna',
+          zavod: 'BASF SE (Germaniya)',
+          xaridor: '«Chirchiq Kimyo Sanoat» AJ',
+          incoterms: 'CIP Toshkent',
+          summa_usd: 94000,
+          avans_foiz: 30,
+          avans_tolandi: false, // Avans kutilmoqda!
+          bosqich: 1, // Shartnoma imzolandi
+          transport_turi: 'Avtotransport',
+          transport_id: 'Belgilanmagan',
+          tranzit_joy: 'Lyudvigshafen (Germaniya)',
+          kun_yolda: 0,
+          prostoy_xavfi: false,
+          menejer: 'Sardor Nazarov',
+          sof_marja_usd: 9500
+        },
+        {
+          id: 'CON-809',
+          nom: 'Mosh va loviya eksporti (Oliy nav)',
+          hajm: '80 tonna',
+          zavod: 'Wetrade Agro (O\'zbekiston)',
+          xaridor: 'Xinjiang Agrolink Trading (Xitoy)',
+          incoterms: 'DAP Xorgos',
+          summa_usd: 88000,
+          avans_foiz: 100,
+          avans_tolandi: true,
+          bosqich: 6, // Yetkazildi, to'lov yopildi
+          transport_turi: 'Fura',
+          transport_id: '01 554 BBA',
+          tranzit_joy: 'Xorgos terminali',
+          kun_yolda: 6,
+          prostoy_xavfi: false,
+          menejer: 'Sardor Nazarov',
+          sof_marja_usd: 8400
+        }
+      ],
+      // Xaridorlar qarzdorligi (O'zbekistondagi zavodlar)
+      mijozlar: [
+        { id: 'W-01', nom: '«Polimer Plast Zavodi» MChJ', shahar: 'Toshkent', qarz_usd: 42000, muddati_kun: 14, limit_usd: 50000, bloklangan: false },
+        { id: 'W-02', nom: '«O\'zbekgidro Mashinasozlik» AJ', shahar: 'Toshkent', qarz_usd: 0, muddati_kun: 0, limit_usd: 100000, bloklangan: false },
+        { id: 'W-03', nom: '«Mega Qadoq Sanoat» XK', shahar: 'Samarqand', qarz_usd: 31500, muddati_kun: 34, limit_usd: 30000, bloklangan: true }, // Bloklangan!
+        { id: 'W-04', nom: '«Chirchiq Kimyo Sanoat» AJ', shahar: 'Chirchiq', qarz_usd: 0, muddati_kun: 0, limit_usd: 150000, bloklangan: false }
+      ]
+    };
+  }
+
+  // 3. CALC: SOF FORMULALAR
+  const Calc = {
+    jamiAylanmaUSD: function(db) {
+      return db.kontraktlar
+        .filter(c => c.bosqich < 6)
+        .reduce((sum, c) => sum + c.summa_usd, 0);
+    },
+
+    yoldagiYuklarUSD: function(db) {
+      return db.kontraktlar
+        .filter(c => c.bosqich === 4)
+        .reduce((sum, c) => sum + c.summa_usd, 0);
+    },
+
+    bojxonadaTurganUSD: function(db) {
+      return db.kontraktlar
+        .filter(c => c.bosqich === 5)
+        .reduce((sum, c) => sum + c.summa_usd, 0);
+    },
+
+    jamiDebitorlikUSD: function(db) {
+      return db.mijozlar.reduce((sum, m) => sum + m.qarz_usd, 0);
+    },
+
+    kutilayotganSofFoydaUSD: function(db) {
+      return db.kontraktlar
+        .filter(c => c.bosqich < 6)
+        .reduce((sum, c) => sum + c.sof_marja_usd, 0);
+    },
+
+    // Landed Cost & Marja kalkulyatori
+    hisoblaTannarx: function(fobNarxUsd, transportUsd, bojxonaFoiz, qqsFoiz, ustamaFoiz, kursUsd) {
+      const bojxonaQiymati = fobNarxUsd + transportUsd;
+      const bojxonaBojiUsd = bojxonaQiymati * (bojxonaFoiz / 100);
+      const qqsUsd = (bojxonaQiymati + bojxonaBojiUsd) * (qqsFoiz / 100);
+      const jamiTannarxUsd = bojxonaQiymati + bojxonaBojiUsd + qqsUsd;
+      const sotuvNarxiUsd = jamiTannarxUsd * (1 + ustamaFoiz / 100);
+      const sofMarjaUsd = sotuvNarxiUsd - jamiTannarxUsd;
+
+      return {
+        bojxonaQiymatiUsd: Math.round(bojxonaQiymati),
+        bojxonaBojiUsd: Math.round(bojxonaBojiUsd),
+        qqsUsd: Math.round(qqsUsd),
+        jamiTannarxUsd: Math.round(jamiTannarxUsd),
+        sotuvNarxiUsd: Math.round(sotuvNarxiUsd),
+        sofMarjaUsd: Math.round(sofMarjaUsd),
+        jamiTannarxSom: Math.round(jamiTannarxUsd * kursUsd),
+        sofMarjaSom: Math.round(sofMarjaUsd * kursUsd)
+      };
+    }
+  };
+
+  // 4. STORAGE
+  const STORAGE_KEY = 'wetrade_gemini_db_v1';
+
+  const Storage = {
+    load: function() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      const init = getBoshlangichBaza();
+      this.save(init);
+      return init;
+    },
+    save: function(db) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      } catch (e) {}
+    },
+    reset: function() {
+      const init = getBoshlangichBaza();
+      this.save(init);
+      return init;
+    }
+  };
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.ROLES = ROLES;
+  window.WetradeApp.CAN = CAN;
+  window.WetradeApp.BOSQICHLAR = BOSQICHLAR;
+  window.WetradeApp.Calc = Calc;
+  window.WetradeApp.Storage = Storage;
+
+})(window);
+
+/* --- b.js --- */
+// WETRADE Boshqaruv Tizimi - b.js (Formatlash, Ikonlar, UI va Yozuv)
+(function(window) {
+  'use strict';
+
+  const F = {
+    usd: function(n) {
+      if (typeof n !== 'number' || isNaN(n)) return '$ 0';
+      return '$ ' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+
+    som: function(n) {
+      if (typeof n !== 'number' || isNaN(n)) return '0 so\'m';
+      if (Math.abs(n) >= 1000000000) {
+        return (n / 1000000000).toFixed(2).replace('.', ',') + ' mlrd so\'m';
+      }
+      if (Math.abs(n) >= 1000000) {
+        return (n / 1000000).toFixed(1).replace('.', ',') + ' mln so\'m';
+      }
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' so\'m';
+    },
+
+    son: function(n) {
+      if (typeof n !== 'number' || isNaN(n)) return '0';
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    },
+
+    kod: function(str) {
+      return '<span class="tabular" style="font-family:monospace;font-weight:700;background:#f1f5f9;padding:2px 6px;border-radius:3px;border:1px solid #cbd5e1;">' + (str || '—') + '</span>';
+    }
+  };
+
+  const ICONS = {
+    globe: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+    truck: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>',
+    container: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>',
+    fileText: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>',
+    wallet: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>',
+    shield: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+    alert: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>',
+    clock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+    check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+    lock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
+    refresh: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>',
+    calculator: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01"></path><path d="M12 10h.01"></path><path d="M16 10h.01"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path></svg>'
+  };
+
+  function icon(name) {
+    return ICONS[name] || '';
+  }
+
+  // LOTIN <-> KIRILL
+  let JORIY_YOZUV = 'lotin';
+
+  const TRADE_SOZLAR = [
+    { lotin: 'tranzit', kirill: 'транзит' },
+    { lotin: 'Tranzit', kirill: 'Транзит' },
+    { lotin: 'bojxona', kirill: 'божхона' },
+    { lotin: 'Bojxona', kirill: 'Божхона' },
+    { lotin: 'shartnoma', kirill: 'шартнома' },
+    { lotin: 'Shartnoma', kirill: 'Шартнома' },
+    { lotin: 'kontrakt', kirill: 'контракт' },
+    { lotin: 'Kontrakt', kirill: 'Контракт' },
+    { lotin: 'vagon', kirill: 'вагон' },
+    { lotin: 'Vagon', kirill: 'Вагон' },
+    { lotin: 'fura', kirill: 'фура' },
+    { lotin: 'Fura', kirill: 'Фура' },
+    { lotin: 'konteyner', kirill: 'контейнер' },
+    { lotin: 'Konteyner', kirill: 'Контейнер' }
+  ];
+
+  const LOTIN_TO_KIRILL_MAP = {
+    'sh': 'ш', 'Sh': 'Ш', 'SH': 'Ш',
+    'ch': 'ч', 'Ch': 'Ч', 'CH': 'Ч',
+    'yo': 'ё', 'Yo': 'Ё', 'YO': 'Ё',
+    'yu': 'ю', 'Yu': 'Ю', 'YU': 'Ю',
+    'ya': 'я', 'Ya': 'Я', 'YA': 'Я',
+    'ye': 'е', 'Ye': 'Е', 'YE': 'Е',
+    'o‘': 'ў', 'O‘': 'Ў', 'g‘': 'ғ', 'G‘': 'Ғ',
+    'o\'': 'ў', 'O\'': 'Ў', 'g\'': 'ғ', 'G\'': 'Ғ',
+    'a': 'а', 'A': 'А', 'b': 'б', 'B': 'Б', 'd': 'д', 'D': 'Д',
+    'e': 'е', 'E': 'Е', 'f': 'ф', 'F': 'Ф', 'g': 'г', 'G': 'Г',
+    'h': 'ҳ', 'H': 'Ҳ', 'i': 'и', 'I': 'И', 'j': 'ж', 'J': 'Ж',
+    'k': 'к', 'K': 'К', 'l': 'л', 'L': 'Л', 'm': 'м', 'M': 'М',
+    'n': 'н', 'N': 'Н', 'o': 'о', 'O': 'О', 'p': 'п', 'P': 'П',
+    'q': 'қ', 'Q': 'Қ', 'r': 'р', 'R': 'Р', 's': 'с', 'S': 'С',
+    't': 'т', 'T': 'Т', 'u': 'у', 'U': 'У', 'v': 'в', 'V': 'В',
+    'x': 'х', 'X': 'Х', 'y': 'й', 'Y': 'Й', 'z': 'з', 'Z': 'З'
+  };
+
+  function T(matn) {
+    if (!matn || typeof matn !== 'string') return matn;
+    if (JORIY_YOZUV === 'lotin') return matn;
+
+    let res = matn;
+    TRADE_SOZLAR.forEach(item => {
+      res = res.split(item.lotin).join(item.kirill);
+    });
+
+    const ikkitalik = ['sh', 'Sh', 'SH', 'ch', 'Ch', 'CH', 'yo', 'Yo', 'YO', 'yu', 'Yu', 'YU', 'ya', 'Ya', 'YA', 'ye', 'Ye', 'YE', 'o‘', 'O‘', 'g‘', 'G‘', 'o\'', 'O\'', 'g\'', 'G\''];
+    ikkitalik.forEach(k => {
+      res = res.split(k).join(LOTIN_TO_KIRILL_MAP[k]);
+    });
+
+    let out = '';
+    for (let i = 0; i < res.length; i++) {
+      const ch = res[i];
+      out += LOTIN_TO_KIRILL_MAP[ch] || ch;
+    }
+    return out;
+  }
+
+  function setYozuv(y) { JORIY_YOZUV = y; }
+  function getYozuv() { return JORIY_YOZUV; }
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.F = F;
+  window.WetradeApp.icon = icon;
+  window.WetradeApp.T = T;
+  window.WetradeApp.setYozuv = setYozuv;
+  window.WetradeApp.getYozuv = getYozuv;
+
+})(window);
+
+/* --- c.js --- */
+// WETRADE Boshqaruv Tizimi - c.js (Kirish, Shell va Bugun Rahbar Paneli)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, Calc, ROLES, CAN, getYozuv } = window.WetradeApp;
+
+  // 1. KIRISH OYNASI
+  function viewKirish(db) {
+    const yozuv = getYozuv();
+    let rollarHtml = '';
+
+    Object.values(ROLES).forEach(r => {
+      rollarHtml += `
+        <div class="role-btn" onclick="WetradeApp.Actions.login('${r.id}', '${r.pin}')">
+          <div>
+            <div class="role-btn-title">${T(r.nom)}</div>
+            <div class="role-btn-desc">${T(r.unvon)}</div>
+          </div>
+          <div class="role-pin-hint">PIN: ${r.pin}</div>
+        </div>
+      `;
+    });
+
+    return `
+      <div class="login-screen">
+        <div class="login-card">
+          <div class="login-header">
+            <span class="brand-badge" style="font-size:15px;padding:6px 14px;background:#0284c7;">WETRADE</span>
+            <h2 style="margin-top:12px;">${T('Boshqaruv Tizimi')}</h2>
+            <p>${T('Xalqaro savdo, Import-Eksport va Logistika boshqaruvi')}</p>
+          </div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#64748b;">${T('Kim sifatida kirasiz?')}:</div>
+          <div class="role-select-grid">
+            ${rollarHtml}
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #e2e8f0;">
+            <button class="lang-toggle-btn" onclick="WetradeApp.Actions.toggleYozuv()">
+              ${icon('refresh')} ${yozuv === 'lotin' ? 'Кириллча' : 'Lotincha'}
+            </button>
+            <span style="font-size:11px;color:#94a3b8;">Wetrade LLC · Toshkent</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. SHELL QOBIG'I
+  function viewShell(contentHtml, activeNav, db, joriyRolId) {
+    const rol = ROLES[joriyRolId] || ROLES.rahbar;
+    const ruxsatlar = CAN[joriyRolId] || CAN.rahbar;
+    const yozuv = getYozuv();
+
+    const navlar = [
+      { id: 'bugun', nom: 'Bugun (Signal)', qisqa: 'Bugun', icon: 'globe' },
+      { id: 'kontraktlar', nom: 'Kontraktlar Pipeline', qisqa: 'Bitimlar', icon: 'fileText', badge: db.kontraktlar.filter(c => c.bosqich < 6).length, badgeCls: 'primary' },
+      { id: 'logistika', nom: 'Tranzit va Kargo', qisqa: 'Tranzit', icon: 'truck', badge: db.kontraktlar.filter(c => c.prostoy_xavfi).length, badgeCls: 'danger' },
+      { id: 'bojxona', nom: 'Bojxona nazorati', qisqa: 'Bojxona', icon: 'shield', badge: db.kontraktlar.filter(c => c.bosqich === 5).length, badgeCls: 'bojxona' },
+      { id: 'moliya', nom: 'Valyuta va Marja', qisqa: 'Moliya', icon: 'wallet' },
+      { id: 'kalkulyator', nom: 'Tannarx Kalkulyatori', qisqa: 'Hisob', icon: 'calculator' },
+      { id: 'hamkorlar', nom: 'Mijozlar va Zavodlar', qisqa: 'Hamkorlar', icon: 'globe' }
+    ];
+
+    let navHtml = '';
+    let bnavHtml = '';
+
+    navlar.forEach(n => {
+      if (ruxsatlar.includes(n.id) || ruxsatlar.includes('hammasi')) {
+        const isActive = activeNav === n.id ? 'active' : '';
+        let bHtml = '';
+        let bbHtml = '';
+        if (n.badge && n.badge > 0) {
+          bHtml = `<span class="nav-badge ${n.badgeCls || ''}">${n.badge}</span>`;
+          bbHtml = `<span class="bnav-badge ${n.badgeCls || ''}">${n.badge}</span>`;
+        }
+        navHtml += `
+          <a class="nav-item ${isActive}" href="#${n.id}">
+            <span class="icon">${icon(n.icon)}</span>
+            <span>${T(n.nom)}</span>
+            ${bHtml}
+          </a>
+        `;
+        bnavHtml += `
+          <a class="bnav-item ${isActive}" href="#${n.id}">
+            <span class="icon">${icon(n.icon)}</span>
+            <span>${T(n.qisqa)}</span>
+            ${bbHtml}
+          </a>
+        `;
+      }
+    });
+
+    const activeNavObj = navlar.find(x => x.id === activeNav);
+
+    return `
+      <div id="app">
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <span class="brand-badge">WETRADE</span>
+            <div class="brand-info">
+              <h1>${T('Wetrade Impex')}</h1>
+              <p>${T('Xalqaro savdo ERP')}</p>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            ${navHtml}
+          </nav>
+          <div class="sidebar-footer">
+            <button class="role-switcher-btn" onclick="WetradeApp.Actions.logout()">
+              <span>${T(rol.nom)}</span>
+              <span>${icon('lock')}</span>
+            </button>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span>${T('Namuna rejimi')}</span>
+              <a href="javascript:void(0)" onclick="WetradeApp.Actions.resetData()" style="color:#0284c7;text-decoration:none;">${T('Tiklash')}</a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="main-wrapper">
+          <header class="top-header">
+            <div class="header-title-wrap">
+              <span class="brand-badge" style="padding:2px 6px;font-size:11px;">WET</span>
+              <span class="header-title">${T(activeNavObj?.nom || 'Boshqaruv')}</span>
+              <span class="sample-tag">${T('Import-Eksport boshqaruvi')}</span>
+            </div>
+            <div class="header-controls">
+              <button class="lang-toggle-btn" onclick="WetradeApp.Actions.toggleYozuv()" title="${T('Yozuvni almashtirish')}">
+                ${icon('refresh')} <span>${yozuv === 'lotin' ? 'Кирилл' : 'Lotin'}</span>
+              </button>
+              <div class="active-role-pill" onclick="WetradeApp.Actions.logout()" title="${T('Rolni almashtirish')}">
+                ${icon('lock')} <span>${T(rol.nom.split(' ')[0])}</span>
+              </div>
+            </div>
+          </header>
+
+          <main class="content-area">
+            ${contentHtml}
+          </main>
+        </div>
+
+        <nav class="bottom-nav">
+          ${bnavHtml}
+        </nav>
+      </div>
+    `;
+  }
+
+  // 3. BUGUN EKRANI (RAHBAR COCKPIT)
+  function viewBugun(db) {
+    const aylanmaUsd = Calc.jamiAylanmaUSD(db);
+    const yoldagiUsd = Calc.yoldagiYuklarUSD(db);
+    const bojxonaUsd = Calc.bojxonadaTurganUSD(db);
+    const sofFoydaUsd = Calc.kutilayotganSofFoydaUSD(db);
+
+    let alertlarHtml = '';
+
+    // 1. Bojxona prostoy xavfi
+    const prostoylar = db.kontraktlar.filter(c => c.prostoy_xavfi);
+    prostoylar.forEach(c => {
+      alertlarHtml += `
+        <div class="alert-item danger">
+          <div>
+            <strong>${T('Prostoy / Jarima xavfi')}:</strong> ${c.id} (${c.nom}) — ${c.transport_id}. ${c.tranzit_joy}da ${c.prostoy_kuni} ${T('kundan beri turibdi!')}
+          </div>
+          <div>
+            <button class="alert-action-btn" onclick="location.hash='#bojxona'">
+              ${T('Bojxonani tezlatish')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    // 2. Bloklangan qarzdor xaridorlar
+    const qarzdorlar = db.mijozlar.filter(m => m.bloklangan);
+    qarzdorlar.forEach(m => {
+      alertlarHtml += `
+        <div class="alert-item warning">
+          <div>
+            <strong>${T('Jo\'natish to\'xtatilgan')}:</strong> ${m.nom} — ${F.usd(m.qarz_usd)} ${T('qarz')} (${m.muddati_kun} ${T('kun kechikkan')}).
+          </div>
+          <div>
+            <button class="alert-action-btn" onclick="location.hash='#hamkorlar'">
+              ${T('Mijoz balansi')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    // 3. Yaqinlashib kelayotgan vagonlar
+    const vagonlar = db.kontraktlar.filter(c => c.bosqich === 4);
+    vagonlar.forEach(c => {
+      alertlarHtml += `
+        <div class="alert-item tranzit">
+          <div>
+            <strong>${T('Tranzitdagi yuk')}:</strong> ${c.id} (${c.nom}) — ${c.tranzit_joy}da. Yetib kelishiga taxminan 2 kun qoldi.
+          </div>
+          <div>
+            <button class="alert-action-btn" onclick="location.hash='#logistika'">
+              ${T('Kuzatish')}
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    return `
+      <!-- ASOSIY 4 KO'RSATKICH (USD) -->
+      <div class="stats-grid">
+        <div class="stat-card alert-primary">
+          <div class="stat-card-label">
+            <span>${T('Faol Kontraktlar Aylanmasi')}</span>
+            ${icon('fileText')}
+          </div>
+          <div class="stat-card-value tabular">${F.usd(aylanmaUsd)}</div>
+          <div class="stat-card-sub">${F.som(aylanmaUsd * db.kurslar.USD)}</div>
+        </div>
+
+        <div class="stat-card alert-tranzit">
+          <div class="stat-card-label">
+            <span>${T('Yo\'ldagi Yuklar (Kargo)')}</span>
+            ${icon('truck')}
+          </div>
+          <div class="stat-card-value tabular" style="color:var(--tranzit);">${F.usd(yoldagiUsd)}</div>
+          <div class="stat-card-sub">${T('Xalqaro tranzitdagi vagon va furalar')}</div>
+        </div>
+
+        <div class="stat-card alert-bojxona">
+          <div class="stat-card-label">
+            <span>${T('Bojxona Postidagi Yuklar')}</span>
+            ${icon('shield')}
+          </div>
+          <div class="stat-card-value tabular" style="color:var(--bojxona);">${F.usd(bojxonaUsd)}</div>
+          <div class="stat-card-sub">${T('Rastamojka kutilayotgan partiyalar')}</div>
+        </div>
+
+        <div class="stat-card alert-success">
+          <div class="stat-card-label">
+            <span>${T('Kutilayotgan Sof Marja')}</span>
+            ${icon('wallet')}
+          </div>
+          <div class="stat-card-value tabular" style="color:var(--success);">${F.usd(sofFoydaUsd)}</div>
+          <div class="stat-card-sub">${F.som(sofFoydaUsd * db.kurslar.USD)} (${T('sof foyda')})</div>
+        </div>
+      </div>
+
+      <!-- DIQQAT TALAB QILUVCHI HODISALAR -->
+      <div class="alert-box">
+        <div class="alert-box-header">
+          <div class="alert-box-title" style="color:var(--danger);">
+            ${icon('alert')} ${T('Tezkor Signallar va Nazorat')}
+          </div>
+          <span style="font-size:11px;color:var(--text-muted);">${T('Bojxona prostoyi va tranzit kechikishlari nazorati')}</span>
+        </div>
+        ${alertlarHtml}
+      </div>
+
+      <!-- KONTRAKTLAR QISQA HOLATI -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Aylanmadagi Import va Eksport Bitimlari')}</span>
+          <button class="btn btn-primary" onclick="location.hash='#kontraktlar'">
+            ${T('Barcha bitimlarni ko\'rish')}
+          </button>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Kontrakt')}</th>
+              <th>${T('Mahsulot va Hajm')}</th>
+              <th>${T('Xorijiy Zavod')}</th>
+              <th>${T('Summa')}</th>
+              <th>${T('Bosqich')}</th>
+              <th>${T('Tranzit / Post')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${db.kontraktlar.slice(0, 4).map(c => `
+              <tr>
+                <td><strong>${c.id}</strong></td>
+                <td>
+                  <div style="font-weight:600;">${c.nom}</div>
+                  <div style="font-size:11px;color:var(--text-muted);">${c.hajm} · ${c.incoterms}</div>
+                </td>
+                <td>${c.zavod}</td>
+                <td class="tabular" style="font-weight:700;">${F.usd(c.summa_usd)}</td>
+                <td>
+                  <span class="chip ${c.bosqich === 4 ? 'tranzit' : c.bosqich === 5 ? 'bojxona' : 'ruxsat'}">
+                    ${T(BOSQICHLAR.find(b => b.bosqich === c.bosqich)?.nom || '')}
+                  </span>
+                </td>
+                <td>${c.tranzit_joy}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.viewKirish = viewKirish;
+  window.WetradeApp.viewShell = viewShell;
+  window.WetradeApp.viewBugun = viewBugun;
+
+})(window);
+
+/* --- c2.js --- */
+// WETRADE Boshqaruv Tizimi - c2.js (Kontraktlar, Logistika va Bojxona)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, BOSQICHLAR } = window.WetradeApp;
+
+  // 1. KONTRAKTLAR PIPELINE
+  function viewKontraktlar(db) {
+    let rowsHtml = '';
+
+    db.kontraktlar.forEach(c => {
+      let stepsHtml = '';
+      BOSQICHLAR.forEach(b => {
+        const isDone = c.bosqich > b.bosqich;
+        const isActive = c.bosqich === b.bosqich;
+        stepsHtml += `
+          <div class="step-node ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}" title="${b.nom}">
+            ${isDone ? icon('check') : b.bosqich}
+          </div>
+          ${b.bosqich < 6 ? '<div class="step-line ' + (isDone ? 'done' : '') + '"></div>' : ''}
+        `;
+      });
+
+      rowsHtml += `
+        <tr>
+          <td>
+            <div style="font-weight:700;">${c.id}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.incoterms}</div>
+          </td>
+          <td>
+            <div style="font-weight:600;">${c.nom}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.zavod} → ${c.xaridor}</div>
+          </td>
+          <td class="tabular" style="font-weight:700;">${F.usd(c.summa_usd)}</td>
+          <td>
+            <div class="step-progress" style="max-width:180px;">
+              ${stepsHtml}
+            </div>
+            <div style="font-size:11px;color:var(--primary);margin-top:4px;">
+              ${T(BOSQICHLAR.find(b => b.bosqich === c.bosqich)?.nom || '')}
+            </div>
+          </td>
+          <td>
+            <div style="font-size:12px;font-weight:600;">${c.transport_id}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.tranzit_joy} (${c.kun_yolda} ${T('kun')})</div>
+          </td>
+          <td class="tabular" style="color:var(--success);font-weight:700;">+${F.usd(c.sof_marja_usd)}</td>
+          <td>
+            ${c.bosqich < 6
+              ? `<button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;" onclick="WetradeApp.Actions.bosqichOtkazish('${c.id}')">
+                   ${T('Bosqichni o\'tkazish')}
+                 </button>`
+              : '<span class="chip ruxsat">' + T('Yakunlangan') + '</span>'}
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:16px;font-weight:700;">${T('Xalqaro Kontraktlar va Bitimlar Voronkasi')}</h2>
+          <p style="font-size:12px;color:var(--text-muted);">${T('Shartnomadan tortib bojxona va mijoz omboriga yetkazishgacha bo\'lgan 6 bosqichli monitoring')}</p>
+        </div>
+        <button class="btn btn-primary" onclick="WetradeApp.Actions.modalYangiKontrakt()">
+          ${icon('fileText')} ${T('Yangi Kontrakt Ochish')}
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Barcha Bitimlar Ro\'yxati')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('ID')}</th>
+              <th>${T('Mahsulot / Zanjir')}</th>
+              <th>${T('Summa ($)')}</th>
+              <th>${T('Bitim Bosqichi')}</th>
+              <th>${T('Transport va Tranzit')}</th>
+              <th>${T('Sof Foyda')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 2. LOGISTIKA VA TRANZIT EKRANI
+  function viewLogistika(db) {
+    let rowsHtml = '';
+    const yoldagi = db.kontraktlar.filter(c => c.bosqich >= 3 && c.bosqich <= 5);
+
+    yoldagi.forEach(c => {
+      rowsHtml += `
+        <tr>
+          <td><strong>${c.id}</strong></td>
+          <td>
+            <div style="font-weight:600;">${c.transport_id}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.transport_turi}</div>
+          </td>
+          <td>${c.nom} (${c.hajm})</td>
+          <td>
+            <div style="font-weight:600;color:var(--primary);">${c.tranzit_joy}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.kun_yolda} ${T('kundan beri yo\'lda')}</div>
+          </td>
+          <td>
+            ${c.prostoy_xavfi
+              ? '<span class="chip blok">' + T('PROSTOY: ') + c.prostoy_kuni + ' ' + T('KUN!') + '</span>'
+              : '<span class="chip ruxsat">' + T('Jadval bo\'yicha') + '</span>'}
+          </td>
+          <td>
+            <button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;" onclick="WetradeApp.Actions.tranzitYangilash('${c.id}')">
+              ${icon('truck')} ${T('Joylashuvni yangilash')}
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Xalqaro Kargo va Tranzit Monitoringi')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Temir yo\'l vagonlari, furalar va dengiz konteynerlarining real vaqtdagi koordinatsiyasi')}</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Yo\'ldagi Transport Vositalari (Vagon, Fura, Konteyner)')}</span>
+          <span style="font-size:12px;color:var(--danger);font-weight:600;">
+            ${T('Prostoy jarimalarining oldini olish uchun kunlik dispetcherlik nazorati')}
+          </span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Kontrakt')}</th>
+              <th>${T('Transport ID')}</th>
+              <th>${T('Yuk va Hajm')}</th>
+              <th>${T('Ayni damdagi stansiya / Post')}</th>
+              <th>${T('Holat')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 3. BOJXONA NAZORATI
+  function viewBojxona(db) {
+    const bojxonaYuklari = db.kontraktlar.filter(c => c.bosqich === 5);
+
+    let rowsHtml = '';
+    bojxonaYuklari.forEach(c => {
+      const bojxonaBoji = Math.round(c.summa_usd * 0.05); // 5% boj
+      const qqs = Math.round((c.summa_usd + bojxonaBoji) * 0.12); // 12% QQS
+
+      rowsHtml += `
+        <tr>
+          <td><strong>${c.id}</strong></td>
+          <td>
+            <div style="font-weight:600;">${c.nom}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${c.transport_id}</div>
+          </td>
+          <td class="tabular">${F.usd(c.summa_usd)}</td>
+          <td class="tabular" style="color:var(--bojxona);font-weight:600;">
+            ${F.usd(bojxonaBoji + qqs)} (${F.som((bojxonaBoji + qqs) * db.kurslar.USD)})
+          </td>
+          <td>${c.tranzit_joy}</td>
+          <td>
+            <button class="btn btn-success" style="padding:4px 8px;font-size:11px;" onclick="WetradeApp.Actions.bojxonaChiqarish('${c.id}')">
+              ${icon('check')} ${T('Rastamojkadan chiqarish')}
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Bojxona Rasmiylashtiruvi va Postlar Nazorati')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Ark-Buloq, Chuqursoy va Sergeli TIF bojxona postlaridagi tovarlar va to\'lovlar')}</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Bojxona Postida Turgan Partiyalar')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Kontrakt')}</th>
+              <th>${T('Tovar')}</th>
+              <th>${T('Bojxona Qiymati ($)')}</th>
+              <th>${T('Bojxona Boji + QQS (12%)')}</th>
+              <th>${T('Bojxona Posti')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml || '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">' + T('Hozirda bojxonada turgan yuklar yo\'q') + '</td></tr>'}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.viewKontraktlar = viewKontraktlar;
+  window.WetradeApp.viewLogistika = viewLogistika;
+  window.WetradeApp.viewBojxona = viewBojxona;
+
+})(window);
+
+/* --- c3.js --- */
+// WETRADE Boshqaruv Tizimi - c3.js (Moliya, Kalkulyator va Hamkorlar)
+(function(window) {
+  'use strict';
+
+  const { F, icon, T, Calc } = window.WetradeApp;
+
+  // 1. MOLIYA VA VALYUTA EKRANI
+  function viewMoliya(db) {
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Valyuta Oqimi va Bitimlar Rentabelligi')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Xalqaro savdoda valyuta kurslari (USD/RUB/EUR) va har bir kontrakt bo\'yicha sof marja')}</p>
+      </div>
+
+      <!-- KURS DOSKASI -->
+      <div class="stats-grid">
+        <div class="stat-card alert-primary">
+          <div class="stat-card-label"><span>USD / UZS (Markaziy Bank)</span>${icon('wallet')}</div>
+          <div class="stat-card-value tabular">12 820 so'm</div>
+          <div class="stat-card-sub">${T('Asosiy hisob-kitob valyutasi')}</div>
+        </div>
+        <div class="stat-card alert-success">
+          <div class="stat-card-label"><span>EUR / UZS</span>${icon('wallet')}</div>
+          <div class="stat-card-value tabular">13 850 so'm</div>
+          <div class="stat-card-sub">${T('Yevropa yetkazib beruvchilari')}</div>
+        </div>
+        <div class="stat-card alert-tranzit">
+          <div class="stat-card-label"><span>RUB / UZS</span>${icon('wallet')}</div>
+          <div class="stat-card-value tabular">132.0 so'm</div>
+          <div class="stat-card-sub">${T('Rossiya neft-kimyo zavodlari')}</div>
+        </div>
+        <div class="stat-card alert-warning">
+          <div class="stat-card-label"><span>${T('Kutilayotgan Sof Marja')}</span>${icon('wallet')}</div>
+          <div class="stat-card-value tabular" style="color:var(--success);">${F.usd(Calc.kutilayotganSofFoydaUSD(db))}</div>
+          <div class="stat-card-sub">${F.som(Calc.kutilayotganSofFoydaUSD(db) * db.kurslar.USD)}</div>
+        </div>
+      </div>
+
+      <!-- HAR BIR KONTRAKT FOYDASI -->
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('Kontraktlar Rentabelligi va Sof Foyda Taqsimoti')}</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Kontrakt')}</th>
+              <th>${T('Tovar')}</th>
+              <th>${T('Xarid Qiymati ($)')}</th>
+              <th>${T('Transport + Bojxona')}</th>
+              <th>${T('Sotuv Summasi ($)')}</th>
+              <th>${T('Sof Marja ($)')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${db.kontraktlar.map(c => `
+              <tr>
+                <td><strong>${c.id}</strong></td>
+                <td>${c.nom}</td>
+                <td class="tabular">${F.usd(c.summa_usd)}</td>
+                <td class="tabular" style="color:var(--text-muted);">${F.usd(Math.round(c.summa_usd * 0.17))}</td>
+                <td class="tabular" style="font-weight:600;">${F.usd(c.summa_usd + c.sof_marja_usd)}</td>
+                <td class="tabular" style="color:var(--success);font-weight:700;">+${F.usd(c.sof_marja_usd)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 2. LANDED COST & TANNARX KALKULYATORI
+  function viewKalkulyator(db) {
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Tezkor Tannarx va Marja Kalkulyatori (Landed Cost)')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Xorijiy zavod narxi (FOB), kargo va bojxonani kiritib, 1 soniyada yakuniy sotuv narxi va sof foydani hisoblash')}</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;">
+        <div class="table-card" style="padding:20px;">
+          <h3 style="font-size:14px;margin-bottom:14px;color:var(--primary);">${T('Boshlang\'ich Xarajatlar Parametrlari')}</h3>
+          <div class="form-group">
+            <label class="form-label">${T('FOB Zavod Narxi ($)')}</label>
+            <input type="number" id="calc-fob" class="form-input" value="100000" oninput="WetradeApp.Actions.qaytaHisobla()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">${T('Xalqaro Kargo / Transport ($)')}</label>
+            <input type="number" id="calc-kargo" class="form-input" value="8500" oninput="WetradeApp.Actions.qaytaHisobla()">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="form-group">
+              <label class="form-label">${T('Bojxona Boji (%)')}</label>
+              <input type="number" id="calc-boj" class="form-input" value="5" oninput="WetradeApp.Actions.qaytaHisobla()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">${T('QQS (%)')}</label>
+              <input type="number" id="calc-qqs" class="form-input" value="12" disabled style="background:#f1f5f9;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">${T('Bizning Sof Marjamiz (%)')}</label>
+            <input type="number" id="calc-marja" class="form-input" value="10" oninput="WetradeApp.Actions.qaytaHisobla()">
+          </div>
+        </div>
+
+        <div class="table-card" style="padding:20px;background:#f8fafc;border-color:#cbd5e1;">
+          <h3 style="font-size:14px;margin-bottom:14px;color:var(--text);">${T('Yakuniy Hisob-Kitob Natijasi')}</h3>
+          <div id="calc-natija-box">
+            <!-- Natija JS orqali to'ldiriladi -->
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e2e8f0;">
+              <span>${T('Bojxona Qiymati')}:</span>
+              <strong class="tabular" id="res-boj-qiymat">$ 108,500</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e2e8f0;">
+              <span>${T('Bojxona Boji')}:</span>
+              <strong class="tabular" id="res-boj-boj">$ 5,425</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e2e8f0;">
+              <span>${T('QQS (12%)')}:</span>
+              <strong class="tabular" id="res-qqs">$ 13,671</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:2px solid #cbd5e1;font-size:15px;">
+              <strong>${T('Jami Tan Narx')}:</strong>
+              <strong class="tabular" id="res-tannarx" style="color:var(--text);">$ 127,596</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;margin-top:8px;background:#ecfdf5;border-radius:6px;padding:12px;">
+              <div>
+                <div style="font-size:12px;color:var(--success);font-weight:600;">${T('Tavsiya etilgan sotuv narxi')}</div>
+                <div class="tabular" id="res-sotuv" style="font-size:18px;font-weight:700;color:#065f46;">$ 140,356</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:12px;color:var(--success);font-weight:600;">${T('Sof Marjamiz')}</div>
+                <div class="tabular" id="res-marja" style="font-size:18px;font-weight:700;color:var(--success);">+$ 12,760</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 3. HAMKORLAR VA MIJOZLAR
+  function viewHamkorlar(db) {
+    let mijozlarRows = '';
+    db.mijozlar.forEach(m => {
+      mijozlarRows += `
+        <tr>
+          <td>
+            <div style="font-weight:600;">${m.nom}</div>
+            <div style="font-size:11px;color:var(--text-muted);">${m.shahar}</div>
+          </td>
+          <td class="tabular" style="font-weight:700;color:${m.qarz_usd > 0 ? 'var(--danger)' : 'var(--text)'};">
+            ${F.usd(m.qarz_usd)}
+          </td>
+          <td class="tabular">${F.usd(m.limit_usd)}</td>
+          <td class="tabular" style="font-weight:600;color:${m.muddati_kun > 30 ? 'var(--danger)' : 'var(--text)'};">
+            ${m.muddati_kun} ${T('kun')}
+          </td>
+          <td>
+            ${m.bloklangan
+              ? '<span class="chip blok">' + T('Bloklangan (30+ kun)') + '</span>'
+              : '<span class="chip ruxsat">' + T('Faol') + '</span>'}
+          </td>
+          <td>
+            <button class="btn btn-secondary" style="padding:4px 8px;font-size:11px;" onclick="WetradeApp.Actions.nusxaSverka('${m.id}')">
+              ${icon('phone')} ${T('Sverka matni')}
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    return `
+      <div style="margin-bottom:16px;">
+        <h2 style="font-size:16px;font-weight:700;">${T('Mahalliy Xaridorlar va Xorijiy Zavodlar')}</h2>
+        <p style="font-size:12px;color:var(--text-muted);">${T('Xaridorlar debitorlik qarzi va xorijiy ishlab chiqaruvchilar bilan shartnomalar holati')}</p>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header-bar">
+          <span class="table-title">${T('O\'zbekistondagi Xaridorlar Balansi')}</span>
+          <span style="font-size:12px;color:var(--danger);font-weight:600;">
+            ${T('30 kundan oshgan mijozlarga yangi partiya yetkazish to\'xtatiladi')}
+          </span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>${T('Xaridor')}</th>
+              <th>${T('Qarz Summasi ($)')}</th>
+              <th>${T('Kredit Limiti ($)')}</th>
+              <th>${T('Kechikish')}</th>
+              <th>${T('Holat')}</th>
+              <th>${T('Amal')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${mijozlarRows}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.viewMoliya = viewMoliya;
+  window.WetradeApp.viewKalkulyator = viewKalkulyator;
+  window.WetradeApp.viewHamkorlar = viewHamkorlar;
+
+})(window);
+
+/* --- d.js --- */
+// WETRADE Boshqaruv Tizimi - d.js (Amallar, Router, Modallar va Ishga Tushirish)
+(function(window) {
+  'use strict';
+
+  const {
+    ROLES, CAN, Storage, Calc, T, getYozuv, setYozuv, F,
+    viewKirish, viewShell, viewBugun, viewKontraktlar, viewLogistika, viewBojxona, viewMoliya, viewKalkulyator, viewHamkorlar
+  } = window.WetradeApp;
+
+  let db = Storage.load();
+  let joriyRol = localStorage.getItem('wetrade_joriy_rol') || null;
+
+  const Actions = {
+    login: function(rolId, pin) {
+      const r = ROLES[rolId];
+      if (!r) return;
+      joriyRol = rolId;
+      localStorage.setItem('wetrade_joriy_rol', rolId);
+      location.hash = '#bugun';
+      render();
+    },
+
+    logout: function() {
+      joriyRol = null;
+      localStorage.removeItem('wetrade_joriy_rol');
+      render();
+    },
+
+    toggleYozuv: function() {
+      const hozirgi = getYozuv();
+      setYozuv(hozirgi === 'lotin' ? 'kirill' : 'lotin');
+      render();
+    },
+
+    resetData: function() {
+      if (confirm(T('Namuna ma\'lumotlarini asl holatiga qaytarishni xohlaysizmi?'))) {
+        db = Storage.reset();
+        render();
+      }
+    },
+
+    bosqichOtkazish: function(contractId) {
+      const c = db.kontraktlar.find(x => x.id === contractId);
+      if (c && c.bosqich < 6) {
+        c.bosqich += 1;
+        if (c.bosqich === 5) {
+          c.tranzit_joy = 'Ark-Buloq TIF Bojxona posti';
+        } else if (c.bosqich === 6) {
+          c.tranzit_joy = 'Xaridor omborida';
+          c.prostoy_xavfi = false;
+        }
+        Storage.save(db);
+        alert(T(c.id + ' bitimi keyingi bosqichga o\'tkazildi!'));
+        render();
+      }
+    },
+
+    bojxonaChiqarish: function(contractId) {
+      const c = db.kontraktlar.find(x => x.id === contractId);
+      if (c) {
+        c.bosqich = 6;
+        c.tranzit_joy = 'Xaridor omborida (Yetkazildi)';
+        c.prostoy_xavfi = false;
+        Storage.save(db);
+        alert(T(c.id + ' tovari bojxonadan muvaffaqiyatli chiqarildi va xaridorga yetkazildi!'));
+        render();
+      }
+    },
+
+    tranzitYangilash: function(contractId) {
+      const c = db.kontraktlar.find(x => x.id === contractId);
+      if (!c) return;
+      const yangiJoy = prompt(T('Ayni damdagi yangi stansiya yoki manzilni kiriting:'), c.tranzit_joy);
+      if (yangiJoy && yangiJoy.trim()) {
+        c.tranzit_joy = yangiJoy.trim();
+        c.prostoy_xavfi = false;
+        Storage.save(db);
+        alert(T('Transport joylashuvi yangilandi!'));
+        render();
+      }
+    },
+
+    nusxaSverka: function(mijozId) {
+      const m = db.mijozlar.find(x => x.id === mijozId);
+      if (!m) return;
+      const matn = `Hurmatli ${m.nom} rahbariyati! «Wetrade» MChJ xalqaro savdo hisob-kitoblariga muvofiq, ayni damda yetkazib berilgan tovarlar bo'yicha debitorlik qarzingiz ${F.usd(m.qarz_usd)} (${F.som(m.qarz_usd * db.kurslar.USD)}) ni tashkil qiladi. Kechikish: ${m.muddati_kun} kun. Shartnomaga binoan to'lovni zudlik bilan amalga oshirishingizni so'raymiz.`;
+      navigator.clipboard?.writeText(matn).then(() => {
+        alert(T('Telegram uchun solishtirma dalolatnoma (sverka) matni nusxalandi!'));
+      }).catch(() => {
+        alert(matn);
+      });
+    },
+
+    qaytaHisobla: function() {
+      const fob = parseFloat(document.getElementById('calc-fob')?.value) || 0;
+      const kargo = parseFloat(document.getElementById('calc-kargo')?.value) || 0;
+      const boj = parseFloat(document.getElementById('calc-boj')?.value) || 0;
+      const qqs = 12;
+      const marja = parseFloat(document.getElementById('calc-marja')?.value) || 0;
+
+      const res = Calc.hisoblaTannarx(fob, kargo, boj, qqs, marja, db.kurslar.USD);
+
+      const elBojQ = document.getElementById('res-boj-qiymat');
+      const elBojB = document.getElementById('res-boj-boj');
+      const elQqs = document.getElementById('res-qqs');
+      const elTan = document.getElementById('res-tannarx');
+      const elSot = document.getElementById('res-sotuv');
+      const elMar = document.getElementById('res-marja');
+
+      if (elBojQ) elBojQ.innerText = F.usd(res.bojxonaQiymatiUsd);
+      if (elBojB) elBojB.innerText = F.usd(res.bojxonaBojiUsd);
+      if (elQqs) elQqs.innerText = F.usd(res.qqsUsd);
+      if (elTan) elTan.innerText = F.usd(res.jamiTannarxUsd);
+      if (elSot) elSot.innerText = F.usd(res.sotuvNarxiUsd);
+      if (elMar) elMar.innerText = '+' + F.usd(res.sofMarjaUsd);
+    },
+
+    modalYangiKontrakt: function() {
+      const modal = document.getElementById('modal-container');
+      if (!modal) return;
+      modal.innerHTML = `
+        <div class="modal-overlay" onclick="if(event.target===this)WetradeApp.Actions.modalYop()">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <span class="modal-title">${T('Yangi Import/Eksport Kontrakti Ochish')}</span>
+              <button class="btn btn-secondary" style="padding:4px;" onclick="WetradeApp.Actions.modalYop()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label">${T('Mahsulot nomi')}</label>
+                <input type="text" id="kontrakt-nom" class="form-input" placeholder="Masalan: Polimer granula PP H350">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('Xorijiy ishlab chiqaruvchi zavod va mamlakat')}</label>
+                <input type="text" id="kontrakt-zavod" class="form-input" placeholder="Masalan: Sinopec Chemical (Xitoy)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">${T('O\'zbekistondagi xaridor zavod')}</label>
+                <input type="text" id="kontrakt-xaridor" class="form-input" placeholder="Masalan: «Polimer Plast Zavodi» MChJ">
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div class="form-group">
+                  <label class="form-label">${T('Summa ($)')}</label>
+                  <input type="number" id="kontrakt-summa" class="form-input" placeholder="Masalan: 120000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">${T('Incoterms')}</label>
+                  <select id="kontrakt-incoterms" class="form-select">
+                    <option value="CIF Toshkent">CIF Toshkent</option>
+                    <option value="DAP Toshkent">DAP Toshkent</option>
+                    <option value="FOB Izmir">FOB Izmir</option>
+                    <option value="DDP Toshkent">DDP Toshkent</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" onclick="WetradeApp.Actions.modalYop()">${T('Bekor qilish')}</button>
+              <button class="btn btn-primary" onclick="WetradeApp.Actions.saqlashKontrakt()">${T('Bitimni ochish')}</button>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    saqlashKontrakt: function() {
+      const nom = document.getElementById('kontrakt-nom')?.value.trim();
+      const zavod = document.getElementById('kontrakt-zavod')?.value.trim();
+      const xaridor = document.getElementById('kontrakt-xaridor')?.value.trim();
+      const summa = parseFloat(document.getElementById('kontrakt-summa')?.value);
+      const incoterms = document.getElementById('kontrakt-incoterms')?.value;
+
+      if (!nom || !zavod || !summa || summa <= 0) {
+        alert(T('Iltimos, barcha maydonlarni to\'g\'ri to\'ldiring!'));
+        return;
+      }
+
+      const id = 'CON-' + Math.floor(825 + Math.random() * 50);
+      db.kontraktlar.unshift({
+        id: id,
+        nom: nom,
+        hajm: 'Belgilanmoqda',
+        zavod: zavod,
+        xaridor: xaridor || 'Ichki bozor',
+        incoterms: incoterms,
+        summa_usd: summa,
+        avans_foiz: 30,
+        avans_tolandi: false,
+        bosqich: 1,
+        transport_turi: 'Belgilanmoqda',
+        transport_id: 'Buyurtma berilmoqda',
+        tranzit_joy: 'Shartnoma imzolanmoqda',
+        kun_yolda: 0,
+        prostoy_xavfi: false,
+        menejer: 'Alisher Qodirov',
+        sof_marja_usd: Math.round(summa * 0.09)
+      });
+
+      Storage.save(db);
+      alert(T('Yangi xalqaro kontrakt ' + id + ' muvaffaqiyatli ochildi!'));
+      this.modalYop();
+      render();
+    },
+
+    modalYop: function() {
+      const modal = document.getElementById('modal-container');
+      if (modal) modal.innerHTML = '';
+    }
+  };
+
+  function render() {
+    const root = document.getElementById('root');
+    if (!root) return;
+
+    if (!joriyRol) {
+      root.innerHTML = viewKirish(db);
+      return;
+    }
+
+    let hash = location.hash.replace('#', '') || 'bugun';
+    const ruxsatlar = CAN[joriyRol] || CAN.rahbar;
+
+    if (!ruxsatlar.includes(hash) && !ruxsatlar.includes('hammasi')) {
+      hash = ruxsatlar[0] || 'bugun';
+    }
+
+    let contentHtml = '';
+    switch (hash) {
+      case 'bugun': contentHtml = viewBugun(db); break;
+      case 'kontraktlar': contentHtml = viewKontraktlar(db); break;
+      case 'logistika': contentHtml = viewLogistika(db); break;
+      case 'bojxona': contentHtml = viewBojxona(db); break;
+      case 'moliya': contentHtml = viewMoliya(db); break;
+      case 'kalkulyator': contentHtml = viewKalkulyator(db); break;
+      case 'hamkorlar': contentHtml = viewHamkorlar(db); break;
+      default: contentHtml = viewBugun(db);
+    }
+
+    root.innerHTML = viewShell(contentHtml, hash, db, joriyRol);
+  }
+
+  window.addEventListener('hashchange', render);
+  document.addEventListener('DOMContentLoaded', render);
+
+  window.WetradeApp = window.WetradeApp || {};
+  window.WetradeApp.Actions = Actions;
+  window.WetradeApp.render = render;
+  window.WetradeApp.getDb = () => db;
+
+})(window);
+
+  </script>
+</body>
+</html>

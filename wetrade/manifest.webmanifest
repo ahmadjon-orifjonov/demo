@@ -1,0 +1,15 @@
+{
+  "name": "WETRADE — Xalqaro Savdo va Import-Eksport ERP",
+  "short_name": "WETRADE",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b192c",
+  "theme_color": "#0b192c",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
