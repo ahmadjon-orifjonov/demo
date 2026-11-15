@@ -1698,7 +1698,7 @@ const AMAL = {
 		const b = topB(d.b); if (!b || !amalIshlab() || b.bos !== 'ishlab' || hol(b).j.tikuv) return;
 		oyna(`Liniyani almashtirish: ${b.id}`, yashirin('b', b.id) + may('Tikuv liniyasi', tanla('lin', linTanlov(b), b.lin), `Hozir: ${topL(b.lin).nom}`), { forma: 'lin', tugma: 'O\'tkazish' });
 	},
-	linOtkaz(d) { const b = topB(d.b), l = topL(d.l); if (!b || !l || !amalIshlab() || hol(b).j.tikuv) return; b.lin = l.id; voqea(b.id, `${l.nom}ga o'tkazildi`); kesh = {}; const p = bashorat(b); yangila(`${b.id} ${l.nom}ga o'tkazildi. Bashorat: ${sana(p.sana)}${p.kech ? '' : ' — muddatga ulguradi'}.`); },
+	linOtkaz(d) { const b = topB(d.b), l = topL(d.l); if (!b || !l || !amalIshlab() || hol(b).j.tikuv) return; b.lin = l.id; voqea(b.id, `${l.nom}ga o'tkazildi`); kesh = {}; const p = bashorat(b); yangila(`${b.id} ${l.nom}ga o'tkazildi. Bashorat: ${sana(p.sana)}${p.kech ? `, muddatdan ${p.kech} kun kech` : ' — muddatga ulguradi'}.`); },
 	kamYop(d) { const b = topB(d.b); if (!b || !amalIshlab() || !kamYopish(b)) return; b.kam = bSoni(b) - hol(b).j.qadoq; b.bos = 'tayyor'; voqea(b.id, `Buyurtma ${b.kam} dona kam bilan yopildi (brak)`); yangila(`${b.id} jo'natishga tayyor: ${dona(hol(b).j.qadoq)}.`); },
 
 	/* Mato partiyasi */
