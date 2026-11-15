@@ -1,15 +1,15 @@
 {
-  "name": "WETRADE — Xalqaro Savdo va Import-Eksport ERP",
-  "short_name": "WETRADE",
+  "id": "./index.html",
+  "name": "Wetrade — boshqaruv tizimi (namuna)",
+  "short_name": "Wetrade",
+  "description": "Import-eksport kontraktlari, yuklar va demurraj, bojxona, valyuta, tannarx va sof foyda, akt sverka. Namuna — ma'lumotlar misol uchun.",
+  "lang": "uz",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b192c",
-  "theme_color": "#0b192c",
+  "background_color": "#f2f6f6",
+  "theme_color": "#061f26",
   "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }
