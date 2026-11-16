@@ -708,6 +708,11 @@ form[data-form=drv]{padding-bottom:16px}
 	.tor .bnav button[aria-current=page]{color:var(--br);font-weight:500}
 	.tor .bnav .bdg{position:absolute;top:4px;left:50%;margin-left:6px;min-width:16px;height:16px;line-height:16px}
 }
+/* Til tugmasi (O‘zbekcha / Русский): kirish oynasida o‘ngda, profil menyusida to‘liq enida */
+.til-l{display:flex;justify-content:flex-end;margin-bottom:24px}
+.til-m{padding:4px 4px 8px;margin-bottom:4px;border-bottom:1px solid var(--line2)}
+.menu .til{display:grid;grid-template-columns:1fr 1fr;width:100%}
+.menu .til button{height:28px;justify-content:center;padding:0 12px}
 @media print{
 	body.print-akt #app,body.print-akt #layer,body.print-akt .ovl,body.print-akt .mh,body.print-akt .mf{display:none}
 	body.print-akt .mwrap{position:static;padding:0}
@@ -777,6 +782,7 @@ form[data-form=drv]{padding-bottom:16px}
 		 c2.js — partiyalar, partiya kartasi, ombor
 		 c3.js — buyurtmalar, yangi buyurtma, xaridorlar, qarzlar
 		 c4.js — hisobot, sozlamalar, omborchi va haydovchi ekranlari, oynalar
+		 til_ru.js, til.js — ruscha lug‘at va tarjima qatlami (ilova o‘zbekcha chizadi, «Русский» tanlansa ekrandagi matn o‘giriladi)
 		 d.js  — Steps, Actions, Fields, hodisalar, Router, ishga tushirish
 	 Hammasi bitta yopiq doira ichida: tashqariga global nom chiqmaydi. */
 (function () {
@@ -1561,6 +1567,7 @@ const Views = {
 		const extra = mobile && role.mob ? role.menu.filter(p => !role.mob.includes(p)) : [];
 		const menu = !ui.menu ? '' : `<div class="scrim" data-act="toggleMenu"></div><div class="menu" role="menu">
 			<div class="hd"><div class="strong">${UI.esc(user.ism)}</div><div class="muted sm">${role.nom}</div></div>
+			<div class="til-m">${Til.tugma()}</div>
 			${extra.map(p => `<button role="menuitem" data-act="go" data-p="${p}">${UI.icon(PAGES[p].icon)}${PAGES[p].t}</button>`).join('')}
 			${installed ? '' : `<button role="menuitem" data-act="install">${UI.icon('phone')}Telefonga o‘rnatish</button>`}
 			<button role="menuitem" data-act="logout">${UI.icon('refresh')}Rolni almashtirish</button></div>`;
@@ -1731,7 +1738,7 @@ const Views = {
 			<div class="lbrand"><div class="logo">${LOGO}<span>ALFIRDAVS TM<small>Import va ulgurji · Toshkent</small></span></div>
 				<div class="lcov"><ul>${covers.map(([icon, text]) => `<li>${UI.icon(icon)}${text}</li>`).join('')}</ul></div>
 				<div class="demo-tag">Namuna — ma’lumotlar misol uchun. Hamma rol bitta qurilmada.</div></div>
-			<div class="lmain"><div class="lbox">${main}</div></div>
+			<div class="lmain"><div class="lbox"><div class="til-l">${Til.tugma()}</div>${main}</div></div>
 		</div>`;
 	},
 
@@ -1772,7 +1779,7 @@ const Views = {
 		const row = e => `<div class="ev"><span class="ev-t">${Time.dayOf(e.t) === Time.today ? Time.hm(e.t) : F.day(e.t)}</span><span class="x"><span class="t">${UI.esc(e.m)}</span><span class="m">${UI.esc(Views.actor(e))}</span></span></div>`;
 		const body = `<div class="rows">${list.map(row).join('')}</div>
 			<div class="more-row"><button class="link sm" data-act="showFeed">${ui.feedAll ? 'Qisqartirish' : 'Ko‘proq'}</button></div>`;
-		return UI.mobile() ? UI.acc('Hodisalar', all.length ? `oxirgi: ${Time.hm(all[0].t)} ${all[0].m.slice(0, 36)}${all[0].m.length > 36 ? '…' : ''}` : 'hali yo‘q', body, 'feed') : UI.card('Hodisalar', body, { id: 'feed' });
+		return UI.mobile() ? UI.acc('Hodisalar', all.length ? `oxirgi: ${Time.hm(all[0].t)} ${(m => m.slice(0, 36) + (m.length > 36 ? '…' : ''))(Til.tr(all[0].m))}` : 'hali yo‘q', body, 'feed') : UI.card('Hodisalar', body, { id: 'feed' });
 	},
 	// Raqam kartasi bosilganda: izoh + tegishli ekranga o‘tish
 	kpiBody(k) {
@@ -2404,6 +2411,366 @@ Object.assign(Views, {
 	},
 	actForm: () => Views.actBody(Data.client(ui.f.act.cid))
 });
+/* ===== RU — o‘zbekcha → ruscha lug‘at (manba: til_ru.js) =====
+	 Kalit — ekrandagi o‘zbekcha matn (sana {d}, o‘lchovli son {q}, yalang son {n}, erkin matn {*} bilan); qiymat — ruschasi.
+	 {1|заказ|заказа|заказов} — 1-sonning kelishigi. 'Chegara@client' — faqat shu joyda (sahifa yoki karta turi).
+	 Oxiridagi nuqta/ikki nuqta kalitga yozilmaydi (o‘zi qo‘shiladi). Qoidalar til.js boshida.
+	 Atoqli nomlar (xodim, xaridor, yetkazib beruvchi) tarjima qilinmaydi — ular ma’lumot. */
+const RU_SAQLA = new Set(['ALFIRDAVS TM', 'FEFO', 'CSV', 'USD', 'EUR', 'RUB', 'PIN', 'Telegram']);
+const RU = {
+	// --- qisqa so‘zlar, o‘lchov, vaqt ---
+	't': 'т', 'kg': 'кг', 'Kg': 'Кг', 'so‘m': 'сум', 'so‘m/kg': 'сум/кг', '$/kg': '$/кг', '{q}/kg': '{q}/кг', 'mln': 'млн', 'mln so‘m': 'млн сум', 'kun': 'дн.', '{n}+ kun': '{n}+ дн.',
+	'va': 'и', 'bor': 'есть', 'yo‘q': 'нет', 'Yo‘q': 'Нет', 'Ha': 'Да', '{n} ta': '{n} шт.', 'PIN {n}': 'PIN {n}',
+	'bugun': 'сегодня', 'Bugun': 'Сегодня', 'ertaga': 'завтра', 'Ertaga': 'Завтра', 'kecha': 'вчера', 'hozir': 'сейчас', 'hozirgacha': 'на сегодня', 'Hozirgacha': 'На сегодня',
+	'{q} oldin': '{q} назад', '{d} gacha': 'до {d}', 'Kecha va bugun': 'Вчера и сегодня',
+	'yan': 'янв', 'fev': 'фев', 'mar': 'мар', 'apr': 'апр', 'may': 'май', 'iyn': 'июн', 'iyl': 'июл', 'avg': 'авг', 'sen': 'сен', 'okt': 'окт', 'noy': 'ноя', 'dek': 'дек',
+	'Yanvar': 'Январь', 'Fevral': 'Февраль', 'Mart': 'Март', 'Aprel': 'Апрель', 'May': 'Май', 'Iyun': 'Июнь', 'Iyul': 'Июль', 'Avgust': 'Август', 'Sentabr': 'Сентябрь', 'Oktabr': 'Октябрь', 'Noyabr': 'Ноябрь', 'Dekabr': 'Декабрь',
+	'Polsha': 'Польша', 'Rossiya': 'Россия', 'Polshadan': 'из Польши', 'Rossiyadan': 'из России', 'Toshkent': 'Ташкент',
+
+	// --- kirish oynasi ---
+	'Kim sifatida kirasiz?': 'В какой роли войти?', 'Har xodim faqat o‘z ishini ko‘radi': 'Каждый сотрудник видит только свою работу',
+	'{*} · Holat, pul, partiyalar, qarzlar': '{*} · Общая картина, деньги, партии, долги',
+	'{*} · Partiya bosqichlari, hujjat, tannarx': '{*} · Этапы партии, документы, себестоимость',
+	'{*} · Buyurtma, xaridor, qarz': '{*} · Заказы, покупатели, долги',
+	'{*} · Qabul, yig‘ish — telefonda': '{*} · Приёмка, сборка — с телефона',
+	'{*} · Bugungi yetkazishlar — telefonda': '{*} · Доставки на сегодня — с телефона',
+	'PIN kod': 'PIN-код', 'Kirish': 'Войти', 'Namuna uchun PIN: {n}': 'PIN для демо: {n}', 'Boshqa rolni tanlash': 'Выбрать другую роль', 'PIN noto‘g‘ri': 'Неверный PIN',
+	'Namuna — ma’lumotlar misol uchun': 'Демо — данные для примера', 'Hamma rol bitta qurilmada': 'Все роли на одном устройстве',
+	'Namuna — ma’lumotlar misol uchun. Hamma rol bitta qurilmada': 'Демо — данные для примера. Все роли на одном устройстве',
+	'Boshidan boshlash': 'Начать сначала', 'Namuna': 'Демо', 'namuna': 'демо', 'Import va ulgurji · Toshkent': 'Импорт и опт · Ташкент',
+	'Partiya qayerda: chegara, bojxona, laboratoriya': 'Где партия: граница, таможня, лаборатория', 'Har partiyaning {q} tannarxi': 'Себестоимость {q} по каждой партии',
+	'Sovutgich: qoldiq, bron, muddat (FEFO)': 'Холодильник: остаток, бронь, срок годности (FEFO)', 'Xaridorlar qarzi va muddati': 'Долги покупателей и сроки',
+	'Namunani boshidan boshlash': 'Начать демо сначала', 'Namuna qayta yaratilgan': 'Демо создано заново',
+	'Barcha o‘zgarishlar o‘chadi, namuna bugungi {n}:{n} holatiga qaytadi': 'Все изменения будут удалены, демо вернётся к состоянию на сегодня, {n}:{n}',
+
+	// --- qobiq: menyu, qidiruv, bildirishnoma ---
+	'Bo‘limlar': 'Разделы', 'Qidirish': 'Поиск', 'Xaridor, partiya yoki buyurtma': 'Покупатель, партия или заказ', 'Bildirishnomalar': 'Уведомления',
+	'Bildirishnomalar: {n} ta yangi': 'Уведомления: {n} {1|новое|новых|новых}', '{n} ta yangi': '{n} {1|новое|новых|новых}', 'Profil: {*}': 'Профиль: {*}',
+	'Telefonga o‘rnatish': 'Установить на телефон', 'Rolni almashtirish': 'Сменить роль', 'Internet yo‘q — ma’lumot shu qurilmada saqlanmoqda': 'Нет интернета — данные сохраняются на этом устройстве',
+	'Topilmadi. Xaridor nomi, telefon, partiya (P-{n}) yoki buyurtma raqamini yozing': 'Не найдено. Введите название покупателя, телефон, партию (P-{n}) или номер заказа',
+	'Partiyalar': 'Партии', 'Ombor': 'Склад', 'Buyurtmalar': 'Заказы', 'Xaridorlar': 'Покупатели', 'Qarzlar': 'Долги', 'Hisobot': 'Отчёт', 'Sozlamalar': 'Настройки',
+	'Qabul': 'Приёмка', 'Yig‘ish': 'Сборка', 'Qoldiq': 'Остаток', 'Yetkazish': 'Доставка',
+	'Direktor': 'Директор', 'direktor': 'директор', 'Import menejeri': 'Менеджер по импорту', 'import menejeri': 'менеджер по импорту', 'Savdo menejeri': 'Менеджер по продажам', 'savdo menejeri': 'менеджер по продажам',
+	'Omborchi': 'Кладовщик', 'omborchi': 'кладовщик', 'Haydovchi': 'Водитель', 'haydovchi': 'водитель', 'Hisobchi': 'Бухгалтер', 'hisobchi': 'бухгалтер',
+	'Ma’lumot {n}:{n} da yangilangan': 'Данные обновлены в {n}:{n}', 'internetsiz ham ishlaydi': 'работает и без интернета',
+	'Diqqat': 'Внимание', 'Hodisalar': 'События', 'oxirgi': 'последнее', 'hali yo‘q': 'пока нет', 'Ko‘proq': 'Ещё', 'Ko‘rish': 'Открыть', 'Ochish': 'Открыть', 'Orqaga': 'Назад',
+	'Yopish': 'Закрыть', 'Saqlash': 'Сохранить', 'Bekor qilish': 'Отменить', 'Tushunarli': 'Понятно', 'O‘zgartirish': 'Изменить', 'Chop etish': 'Печать', 'Nusxa olish': 'Скопировать',
+	'Tasdiqlash': 'Подтвердить', 'Tasdiqlang': 'Подтвердите', 'Filtr': 'Фильтр', 'Hammasi': 'Все', 'Ixtiyoriy': 'Необязательно', 'Izoh': 'Комментарий', 'Sabab': 'Причина', 'Masalan': 'Например',
+	'Sana': 'Дата', 'Vaqt': 'Время', 'Summa': 'Сумма', 'Jami': 'Итого', 'Farq': 'Разница', 'Foiz': 'Процент', 'Davr': 'Период', 'Tarix': 'История', 'Holat': 'Статус', 'Ism': 'Имя',
+	'Telefon': 'Телефон', 'Manzil': 'Адрес', 'Aloqa': 'Контакты', 'Mamlakat': 'Страна', 'Valyuta': 'Валюта', 'Usul': 'Способ', 'Boshqa': 'Прочее', 'Ro‘yxat': 'Список',
+	'Jurnalga yoziladi': 'Записывается в журнал', 'Qo‘lda kiritiladi': 'Вводится вручную', 'Rol o‘zgarmaydi': 'Роль не меняется', 'Holatni almashtirish': 'Изменить статус',
+
+	// --- mahsulot, xaridor turi, manzil (namuna ma’lumoti) ---
+	'MMO farsh (Polsha)': 'Фарш ММО (Польша)', 'MMO farsh (Rossiya)': 'Фарш ММО (Россия)', 'MMO farsh': 'Фарш ММО', 'MMO Polsha': 'ММО Польша', 'MMO Rossiya': 'ММО Россия', 'Tovuq terisi': 'Куриная кожа',
+	'MMO Polsha {q}': 'ММО Польша {q}', 'MMO Rossiya {q}': 'ММО Россия {q}', 'Tovuq terisi {q}': 'Куриная кожа {q}',
+	'Kolbasa zavodi': 'Колбасный завод', 'Chuchvara sexi': 'Пельменный цех', 'Katering': 'Кейтеринг', 'Yarim tayyor mahsulot': 'Полуфабрикаты',
+	'Yirik zavod': 'Крупный завод', 'Sex': 'Цех', 'yirik zavod': 'крупный завод', 'sex': 'цех', 'katering': 'кейтеринг', 'narx': 'цена',
+	'Yangiyo‘l tumani': 'Янгиюльский район', 'sanoat zonasi': 'промзона', 'Chilonzor tumani': 'Чиланзарский район', 'Bunyodkor ko‘chasi': 'ул. Бунёдкор', 'Do‘mbirobod': 'Домбрабад',
+	'Mirzo Ulug‘bek tumani': 'Мирзо-Улугбекский район', 'Qorasu': 'Карасу', 'Qibray tumani': 'Кибрайский район', 'markaz': 'центр', 'Sergeli tumani': 'Сергелийский район', '{n}-mavze': '{n}-й квартал',
+	'Zangiota tumani': 'Зангиатинский район', 'Eshonguzar': 'Эшонгузар',
+
+	// --- partiya: bosqich, hujjat, tannarx ---
+	'Partiya': 'Партия', 'partiya': 'партия', 'Yangi partiya': 'Новая партия', 'Partiya topilmadi': 'Партия не найдена', 'Kelgan partiya': 'Прибывшая партия', 'Yo‘ldagi partiyalar': 'Партии в пути',
+	'{n} partiya': '{n} {1|партия|партии|партий}', '{n} tasi kechikmoqda': '{n} {1|опаздывает|опаздывают|опаздывают}', 'Yo‘lda va bojxonada': 'В пути и на таможне',
+	'Bosqich': 'Этап', 'Bosqichlar': 'Этапы', 'Keyingi bosqich': 'Следующий этап', 'Buyurtma': 'Заказ', 'buyurtma': 'заказ', 'Yuklandi': 'Отгружена', 'yuklandi': 'отгружена',
+	'Chegara': 'Граница', 'chegara': 'граница', 'Bojxona': 'Таможня', 'bojxona': 'таможня', 'Laboratoriya': 'Лаборатория', 'laboratoriya': 'лаборатория',
+	'Chegara@xaridorlar': 'Лимит', 'Chegara@qarzlar': 'Лимит', 'Chegara@client': 'Лимит',
+	'Buyurtma berilgan': 'Заказана', 'buyurtma berilgan': 'заказана', 'Yo‘lda': 'В пути', 'yo‘lda': 'в пути', 'Chegarada': 'На границе', 'Bojxonada': 'На таможне', 'Laboratoriyada': 'В лаборатории',
+	'Omborda': 'На складе', 'omborda': 'на складе', 'Yopilgan': 'Закрыта', 'yopilgan': 'закрыта', 'Yopiq': 'Закрытые', 'Faol': 'Активные',
+	'Chegaraga yetdi': 'Прибыла на границу', 'Bojxonaga kirdi': 'Прибыла на таможню', 'Laboratoriyaga': 'В лабораторию', 'Laboratoriyaga partiya': 'Партия в лабораторию', 'Omborga o‘tish': 'Перейти на склад',
+	'Laboratoriya bosqichi': 'Этап лаборатории', 'kelishi': 'прибытие', 'kelishi {d}': 'прибытие {d}', 'Kelish': 'Прибытие', 'kelgan {d}': 'прибыла {d}', 'kelmagan': 'не прибыла', 'Kelmagan': 'Не прибыла',
+	'reja {d}': 'план {d}', 'amalda': 'факт', 'Amalda sana': 'Фактическая дата', 'laboratoriya rejasi {d}': 'план лаборатории {d}', 'kutilmoqda': 'ожидается', 'kutilmoqda {d}': 'ожидается {d}',
+	'{q} kechikmoqda': 'задержка {q}', 'Bojxonada {q} kechikmoqda': 'Задержка на таможне {q}', 'bojxonada {q} kechikmoqda': 'задержка на таможне {q}',
+	'Bojxonadan chiqdi, {d} omborga keladi — omborchi tarozida qabul qiladi': 'Вышла с таможни, {d} прибудет на склад — кладовщик примет на весах',
+	'Tarozidan o‘tdi, namuna olindi — laboratoriya xulosasi kutilmoqda': 'Взвешена, проба взята — ожидается заключение лаборатории',
+	'Karantinda': 'В карантине', 'laboratoriya xulosasi ertaga': 'заключение лаборатории завтра', 'Namuna olindi': 'Проба взята', 'xulosa ertaga': 'заключение завтра',
+	'Xulosa olindi': 'Заключение получено', 'sotuvga': 'в продажу', 'Baribir o‘tkazish': 'Всё равно провести',
+	'Chegaradan oldin kerak hujjatlar tayyor emas': 'Документы, нужные до границы, не готовы', 'Fura chegarada to‘xtab qolishi mumkin': 'Фуру могут остановить на границе',
+	'Hujjatsiz o‘tkazilmoqda': 'Проводится без документов', 'hujjatsiz o‘tkazildi': 'проведена без документов',
+	'Bojxona deklaratsiyasi «bor» deb belgilangach, partiya omborchining «Qabul» ekranida paydo bo‘ladi': 'Когда таможенная декларация отмечена «есть», партия появляется у кладовщика на экране «Приёмка»',
+	'Laboratoriya xulosasi «bor» deb belgilanadi, tovar sotuvga ochiladi': 'Заключение лаборатории отмечается «есть», товар открывается для продажи',
+	'Hujjat': 'Документ', 'Hujjatlar': 'Документы', 'Shartnoma': 'Контракт', 'Invoys': 'Инвойс', 'Qadoq varaqasi': 'Упаковочный лист', 'CMR yuk xati': 'CMR-накладная',
+	'Veterinariya sertifikati': 'Ветеринарный сертификат', 'Kelib chiqish sertifikati': 'Сертификат происхождения', 'Import ruxsatnomasi': 'Разрешение на импорт',
+	'Bojxona deklaratsiyasi': 'Таможенная декларация', 'bojxona deklaratsiyasi': 'таможенная декларация', 'Laboratoriya xulosasi': 'Заключение лаборатории', 'yuborilmagan': 'не отправлена',
+	'Yetkazib beruvchi': 'Поставщик', 'Yetkazib beruvchilar': 'Поставщики', '{n} yetkazib beruvchi': '{n} {1|поставщик|поставщика|поставщиков}', 'Mahsulot': 'Товар', '{n} mahsulot': '{n} {1|товар|товара|товаров}',
+	'Xarid': 'Закупка', 'Xarid summasi': 'Сумма закупки', 'Xarid, {q} (t)': 'Закупки за {q} (т)', '{n} oylik xarid, t · oxirgi oy {n}': 'Закупки за {n} мес., т · последний месяц {n}',
+	'Yo‘l (fura)': 'Дорога (фура)', 'Boj': 'Пошлина', 'Boj {n} %': 'Пошлина {n} %', 'boj {n} %': 'пошлина {n} %', 'QQS': 'НДС', 'QQS {n} %': 'НДС {n} %', 'Bojxona brokeri': 'Таможенный брокер',
+	'Saqlash (terminal)': 'Хранение (терминал)', 'Bojxona terminali': 'Таможенный терминал', 'Terminalda kutish': 'Простой на терминале', 'Veterinariya laboratoriyasi': 'Ветеринарная лаборатория',
+	'Xarajat': 'Расход', 'xarajat': 'расход', 'Jami xarajat': 'Всего расходов', 'boshqa {q}': 'прочее {q}', 'Xarajatlar va {q} tannarx': 'Расходы и себестоимость {q}',
+	'{q} tannarx': 'себестоимость {q}', '{q} tannarx {n}': 'себестоимость {q}: {n}', '{q} tannarx (taxminiy)': 'себестоимость {q} (оценочно)', 'taxminiy': 'оценочно', 'taxmin': 'оценка', 'yakuniy': 'итоговая',
+	'taxminiy (invoys kg)': 'оценка (кг инвойса)', 'yakuniy (tarozi kg)': 'итог (кг по весам)', 'Tannarxni qotirish': 'Зафиксировать себестоимость',
+	'Tannarx so‘mda, «~» — taxminiy (qabulgacha invoys kg bo‘yicha)': 'Себестоимость в сумах, «~» — оценочная (до приёмки — по кг инвойса)',
+	'Tannarx bu yerda ko‘rsatilmaydi — u har partiyada alohida': 'Себестоимость здесь не показывается — она у каждой партии своя',
+	'xarid + yo‘l': 'закупка + дорога', 'invoys kg': 'кг по инвойсу', 'Invoys bo‘yicha': 'По инвойсу', 'qabul qilingan kg': 'принято, кг', 'Qabul qilingan kg': 'Принято, кг', 'Qabul qilingan': 'Принято',
+	'{q} × {n} $ × kurs {n}': '{q} × {n} $ × курс {n}', '{q} × {n} € × kurs {n}': '{q} × {n} € × курс {n}', '{q} × {n} ₽ × kurs {n}': '{q} × {n} ₽ × курс {n}', '{d} to‘lov kuni': 'день оплаты — {d}',
+	'partiya kursi {n} = {q}': 'курс партии {n} = {q}', 'Partiya kursi': 'Курс партии', 'oldindan to‘lov kunida qotgan': 'зафиксирован в день предоплаты', 'Kurs': 'Курс', 'shu kun': 'на этот день',
+	'Partiya kursi oldindan {n} % to‘lov kunida qotadi': 'Курс партии фиксируется в день предоплаты {n} %',
+	'Bosqichlar rejasi: yuklash +{n}, chegara +{n}, bojxona +{n}, ombor +{q}': 'План этапов: отгрузка +{n}, граница +{n}, таможня +{n}, склад +{q}',
+	'Oldindan to‘lov': 'Предоплата', 'Oldindan to‘lov sanasi': 'Дата предоплаты', 'oldindan to‘langan {n} ₽': 'предоплата {n} ₽', 'oldindan to‘langan {n} €': 'предоплата {n} €', 'oldindan to‘langan {n} $': 'предоплата {n} $',
+	'Yetkazib beruvchiga to‘lov': 'Оплата поставщику', 'Yetkazib beruvchilarga majburiyat': 'Обязательства перед поставщиками', 'To‘landi {d}': 'Оплачено {d}', 'pul chiqimi QQS bilan': 'отток денег с НДС',
+	'Import QQS {n} %': 'Импортный НДС {n} %', 'hisobga olinadi': 'принимается к зачёту', 'tannarxga kirmaydi': 'в себестоимость не входит', 'Import QQS hisobga olinadi': 'Импортный НДС принимается к зачёту',
+	'QQS tannarxga kirmaydi': 'НДС не входит в себестоимость', 'Import QQS stavkasi': 'Ставка импортного НДС', 'Rossiyadan ST-{n} bilan {n} %': 'из России с СТ-{n} — {n} %',
+	'Yetkazib beruvchiga da’vo': 'Претензия поставщику', 'Da’vo': 'Претензия', 'Da’vo yuborildi': 'Претензия отправлена', 'da’vo yuborildi': 'претензия отправлена', 'da’vo qoplandi': 'претензия возмещена', 'Qoplandi': 'Возмещено',
+	'Veterinariya sertifikatida partiya raqami xato': 'В ветеринарном сертификате ошибка в номере партии', 'tuzatilgan nusxa so‘raldi {d}': 'исправленная копия запрошена {d}', 'mas’ul {*}': 'ответственный — {*}',
+	'Mas’ul': 'Ответственный', '{q} muzlagan': 'заморожено {q}', 'Muzlagan pul': 'Замороженные деньги', 'keyingi partiyada qoplanadi': 'возместят в следующей партии',
+	'Partiya bo‘yicha foyda': 'Прибыль по партии', 'Partiya tannarxi': 'Себестоимость партии', 'sotuv paytida': 'на момент продажи', 'Partiya tannarxi va marja': 'Себестоимость партии и маржа',
+	'Kutilgan': 'Ожидается', 'qolgan {q} × o‘rtacha {q}': 'остаток {q} × средняя {q}', 'sotilgan {q}': 'продано {q}', 'Sotilgan': 'Продано', 'yig‘ilgan': 'собрано', 'Sotilgan {n} %': 'Продано {n} %',
+	'{n} % sotildi': 'продано {n} %', '{n} % bron': 'бронь {n} %', 'bron {n} %': 'бронь {n} %', 'Bron va sotuvlar': 'Брони и продажи', 'Hali bron va sotuv yo‘q': 'Броней и продаж пока нет',
+	'Ishlab chiqarilgan': 'Произведено', 'Yaroqli': 'Годен до', 'Yaroqlilik': 'Срок годности', 'yaroqli {d} gacha': 'годен до {d}', 'Ishlab chiqarilgan {d}, yaroqli {d} gacha — {q} qoldi': 'Произведено {d}, годен до {d} — осталось {q}',
+
+	// --- ombor, qabul, yig‘ish ---
+	'bron': 'бронь', 'yo‘lda {n}': 'в пути {n}', 'bojxona {n}': 'таможня {n}', 'Sotilgan / bron': 'Продано / бронь',
+	'Kamera': 'Камера', 'Karantin': 'Карантин', 'karantin': 'карантин', 'karantin {n}': 'карантин {n}', 'Bron': 'Бронь', 'bron {n}': 'бронь {n}', 'bron mumkin': 'можно бронировать', 'bron qilinmagan': 'без брони',
+	'dastlabki bron': 'предварительная бронь', 'Dastlabki bron': 'Предварительная бронь', '{q} qoldi': 'осталось {q}', 'qolgan': 'осталось', 'Qolgan kun': 'Осталось дней', 'Jami omborda': 'Всего на складе',
+	'jami {n}': 'всего {n}', 'jami {q}': 'всего {q}', 'Qoldiq {q}': 'Остаток {q}', 'Sotish mumkin': 'Можно продать', 'sotish mumkin': 'можно продать', 'sotish mumkin {q}': 'можно продать {q}',
+	'Sotish mumkin — omborda, bron qilinmagan, laboratoriyadan o‘tgan va muddati o‘tmagan tovar': 'Можно продать — товар на складе, без брони, прошедший лабораторию и с неистёкшим сроком',
+	'Partiyalar FEFO tartibida — muddati eng yaqini tepada': 'Партии в порядке FEFO — с ближайшим сроком сверху', 'Qolgan kun: {n}–{n} sariq, {n} va kam — qizil': 'Осталось дней: {n}–{n} — жёлтый, {n} и меньше — красный',
+	'{q} bron qilinmagan': '{q} без брони', 'muddati {n} kundan kam': 'срок менее {n} {1|дня|дней|дней}', 'shundan tashqari bron {n}': 'кроме того, бронь {n}', 'muddati yaqin': 'срок истекает',
+	'muddati yaqin tovar': 'товар с истекающим сроком', 'qabul kamomadi': 'недостача при приёмке', 'Yana {n} ta': 'Ещё {n}', 'bugun {q} yetkaziladi': 'сегодня доставляется {q}',
+	'Harakat': 'Движение', 'Harakatlar': 'Движения', 'Kirim': 'Приход', 'Chiqim': 'Расход', 'Hisobdan chiqarish': 'Списание', 'chiqarish': 'списание', 'hisobdan chiqarildi {q}': 'списано {q}', 'Qadoq': 'Упаковка',
+	'quti yirtilgan': 'коробка порвана', '{q} quti': 'коробка {q}', 'Quti': 'Коробки', 'Quti soni': 'Количество коробок', 'Yetishmagan quti': 'Недостающие коробки',
+	'Bugun qabul qilinadigan partiya yo‘q': 'Сегодня нет партий к приёмке', 'Partiya bojxonadan chiqqanda shu yerda paydo bo‘ladi': 'Партия появится здесь, когда выйдет с таможни',
+	'Quti sonini sanab, fura tarozidan o‘tgan kg ni kiriting': 'Пересчитайте коробки и введите вес фуры по весам, кг', 'Haqiqiy kg (tarozi)': 'Фактический вес, кг (весы)', 'Tarozi': 'Весы', 'tarozi': 'весы',
+	'Qabul natijasi': 'Результат приёмки', 'Qabul qildim': 'Принял', 'Jami farq (invoys − tarozi)': 'Общая разница (инвойс − весы)', 'Tarozi farqi {q}, usushka me’yori {n} % = {q}': 'Разница по весам {q}, норма усушки {n} % = {q}',
+	'Usushka me’yori': 'Норма усушки', 'Usushka me’yorida': 'В пределах нормы усушки', 'me’yorda': 'в норме', 'Kamomad: {q} kam': 'Недостача: {q}', '{q} kam': '−{q}', '{n} % kam': '−{n} %',
+	'Yetkazib beruvchi kamomadi': 'Недостача поставщика', 'Direktorga darhol xabar boradi, yetkazib beruvchiga da’vo ochiladi': 'Директор сразу получит уведомление, поставщику будет открыта претензия',
+	'Omborchi kutmoqda': 'Ждёт кладовщика', 'omborchi tarozida qabul qilganda': 'когда кладовщик примет на весах', 'omborimizda, karantinda — tarozidan o‘tgach': 'на нашем складе, в карантине — после взвешивания',
+	'o‘tadi: quti va kg sanaladi, tovar karantin kamerasiga qo‘yiladi, namuna olinadi': 'проходит так: считаются коробки и кг, товар ставится в карантинную камеру, берётся проба',
+	'Bugun yig‘ish': 'Сборка сегодня', '{n} tayyor': '{n} готово', 'yig‘ildi {q}': 'собрано {q}', 'K-{n} ga qaytadi': 'вернётся в K-{n}', 'omborchi tekshiradi': 'кладовщик проверит',
+
+	// --- buyurtma, yetkazish ---
+	'Yangi buyurtma': 'Новый заказ', 'Buyurtma topilmadi': 'Заказ не найден', '{n} buyurtma': '{n} {1|заказ|заказа|заказов}', '{n} ta buyurtma tasdiq kutmoqda': '{n} {1|заказ ждёт|заказа ждут|заказов ждут} подтверждения',
+	'Tasdiq kutmoqda': 'Ждёт подтверждения', 'Tasdiqlandi': 'Подтверждён', 'Yig‘ildi': 'Собран', 'Topshirildi': 'Доставлен', 'topshirildi': 'доставлен', 'Bekor qilindi': 'Отменён', 'Topshirilgan': 'Доставленные',
+	'Tasdiqqa yuborish': 'Отправить на подтверждение', 'Direktor tasdig‘ida': 'На подтверждении у директора', 'Direktor tasdig‘iga': 'На подтверждение директору', 'direktor tasdig‘ida': 'на подтверждении у директора',
+	'Buyurtma saqlanadi, direktor tasdiqlagach yig‘iladi': 'Заказ будет сохранён и собран после подтверждения директора', 'Menejer bekor qildi': 'Отменил менеджер',
+	'qarz chegarasidan oshadi': 'превышает лимит долга', 'narx minimaldan past': 'цена ниже минимальной', 'muddati o‘tgan qarzi bor': 'есть просроченный долг',
+	'Qarz chegarasi {q} ga oshadi': 'Лимит долга будет превышен на {q}', 'Muddati o‘tgan qarz bor': 'Есть просроченный долг', 'Narx minimal {n} dan past': 'Цена ниже минимальной {n}',
+	'Xaridor': 'Покупатель', 'Boshqa xaridor': 'Другой покупатель', 'Xaridor yoki raqam': 'Покупатель или номер', 'Mahsulot / partiya': 'Товар / партия', 'Partiya — FEFO bo‘yicha taklif': 'Партия — предложение по FEFO',
+	'FEFO bo‘yicha taklif': 'предложение по FEFO', 'Nega FEFO emas?': 'Почему не по FEFO?', 'FEFO emas': 'Не по FEFO', 'Xaridor shu partiyani so‘radi': 'Покупатель попросил эту партию',
+	'xaridor shu partiyani so‘radi': 'покупатель попросил эту партию', 'Xaridor yangi partiyani so‘radi': 'Покупатель попросил новую партию', 'Partiya FEFO bo‘yicha savdo menejeri tomonidan tanlangan': 'Партия выбрана менеджером по продажам по FEFO',
+	'Narx': 'Цена', 'Sotuv narxi': 'Цена продажи', 'Narx turi': 'Тип цены', 'Narx ro‘yxati': 'Прайс-лист', 'ro‘yxat {n}': 'прайс {n}', 'minimal {n}': 'мин. {n}', 'Minimal': 'Минимальная', 'narxlar {n}–{n}': 'цены {n}–{n}',
+	'Minimal narx (menejer o‘zi tushira oladi)': 'Минимальная цена (менеджер может снизить сам)', 'Mahsulotlar va narxlar': 'Товары и цены', 'Sozlamada': 'В настройках',
+	'To‘lov sharti': 'Условие оплаты', 'Yetkazganda, naqd': 'При доставке, наличными', 'naqd, yetkazganda': 'наличными при доставке', 'Yetkazganda': 'При доставке', 'yetkazganda': 'при доставке', 'naqd': 'наличные',
+	'Bugun yetkazish': 'Доставка сегодня', 'Bugungi yetkazishlar': 'Доставки на сегодня', '{n} yo‘lda': '{n} в пути', '{n} topshirildi': '{n} доставлено', '{n} kutilmoqda': '{n} ожидается',
+	'Topshirdim': 'Доставил', 'Naqd pul oldingizmi?': 'Получили наличные?', 'Ha, oldim': 'Да, получил', 'Olingan naqd': 'Получено наличными', 'Qo‘limdagi naqd (bugun)': 'Наличные у меня (сегодня)',
+	'Qaytdi {q}': 'Вернулось {q}', 'Qaytish sababi': 'Причина возврата', 'Yuk xati surati (ixtiyoriy)': 'Фото накладной (необязательно)', 'Topshirildi, naqd {q} yozildi': 'Доставлен, записано наличными {q}',
+	'Ortig‘i avans bo‘lib keyingi yetkazishga o‘tadi': 'Излишек перейдёт авансом на следующую доставку', 'Qo‘ng‘iroq': 'Позвонить',
+
+	// --- xaridor, qarz, to‘lov ---
+	'{n} xaridor': '{n} {1|покупатель|покупателя|покупателей}', 'Faqat sizning xaridorlaringiz': 'Только ваши покупатели', 'Nomi yoki mas’ul shaxs': 'Название или контактное лицо', 'Hamma menejerlar': 'Все менеджеры',
+	'Menejer': 'Менеджер', 'Oxirgi xarid': 'Последняя покупка', 'Oxirgi to‘lov': 'Последняя оплата', 'Oylik hajm': 'Объём за месяц', '{n} kundan beri olmagan': 'не покупал {n} {1|день|дня|дней}',
+	'{n} kundan ko‘p': 'более {n} {1|дня|дней|дней}', '{n} kundan ko‘p olmagan xaridor sariq bilan': 'Покупатель, не бравший товар более {n} {1|дня|дней|дней}, отмечен жёлтым', 'Hajm — oxirgi {q}': 'Объём — за последние {q}',
+	'Oxirgi {q}': 'Последние {q}', 'Qarz': 'Долг', 'Jami qarz': 'Общий долг', 'qarz {q}': 'долг {q}', 'jami qarz {q}': 'общий долг {q}', 'chegara {q}': 'лимит {q}', 'o‘tgan {q}': 'просрочено {q}',
+	'shundan muddati o‘tgan': 'из них просрочено', 'Muddati o‘tgan': 'Просрочено', 'muddati o‘tgan {q}': 'просрочено {q}', 'muddati o‘tgan {n}': 'просрочено {n}', 'Muddati o‘tgan qarz': 'Просроченный долг',
+	'muddati kelmagan': 'срок не наступил', 'Muddati kelmagan': 'Срок не наступил', 'muddati {d}': 'срок {d}', 'To‘lov muddati': 'Срок оплаты',
+	'Qarz akti': 'Акт сверки', 'Qarz akti (sverka)': 'Акт сверки', 'Qarz eslatmasi': 'Напоминание о долге', 'Eslatma': 'Напоминание', 'Eslatma yuborish': 'Отправить напоминание', 'Telegram orqali': 'Через Telegram',
+	'Debet': 'Дебет', 'Kredit': 'Кредит', 'Imzolar': 'Подписи', 'o‘rtasidagi o‘zaro hisob-kitob dalolatnomasi, {d} holatiga': '— акт сверки взаимных расчётов по состоянию на {d}',
+	'Assalomu alaykum, {*}!': 'Здравствуйте, {*}!', 'ALFIRDAVS TM dan yozyapmiz': 'Пишем из ALFIRDAVS TM', '{d} holatiga jami qarzingiz {q}, shundan {q} muddati o‘tgan ({q})': 'На {d} ваш общий долг — {q}, из них {q} просрочено ({q})',
+	'{d} holatiga jami qarzingiz {q}': 'На {d} ваш общий долг — {q}', 'To‘lov sanasini aytib yuborsangiz': 'Сообщите, пожалуйста, дату оплаты', 'Hurmat bilan, {*}, {*}.': 'С уважением, {*}, {*}.',
+	'To‘lov': 'Оплата', 'To‘lovlar': 'Оплаты', 'To‘lov kiritish': 'Внести оплату', 'To‘lov eng eski qarzdan boshlab yopiladi': 'Оплата закрывает долги, начиная с самого старого', 'To‘lov, o‘tkazma': 'Оплата, перечисление',
+	'Naqd': 'Наличные', 'O‘tkazma': 'Перечисление', 'o‘tkazma': 'перечисление', 'Naqd {q}': 'Наличные {q}', 'O‘tkazma {q}': 'Перечисление {q}', 'haydovchi oldi': 'получил водитель', 'kiritdi {*}': 'внёс {*}',
+	'Standart qarz chegarasi': 'Стандартный лимит долга', 'Standart to‘lov muddati': 'Стандартный срок оплаты', 'Qarz va soliq qoidalari': 'Правила долга и налогов', 'Qarz, qabul va soliq qoidalari': 'Правила долга, приёмки и налогов',
+
+	// --- hisobot, sozlamalar ---
+	'Savdo': 'Продажи', 'Bugungi savdo': 'Продажи за сегодня', 'Savdo summasi': 'Сумма продаж', 'Savdo — topshirilgan buyurtmalar': 'Продажи — доставленные заказы', 'Kunlar bo‘yicha savdo': 'Продажи по дням',
+	'Tushum': 'Выручка', 'tushum {q}': 'выручка {q}', 'Foyda': 'Прибыль', 'Yalpi foyda': 'Валовая прибыль', 'Marja': 'Маржа', 'Topshirilgan tovar summasi': 'Сумма доставленного товара',
+	'Yalpi foyda = sotuv − sotuv paytidagi partiya tannarxi': 'Валовая прибыль = продажа − себестоимость партии на момент продажи', 'Mahsulot kesimi': 'По товарам', 'Menejer kesimi': 'По менеджерам',
+	'Eng yirik {n} xaridor': '{n} крупнейших покупателей', 'Xodim': 'Сотрудник', 'Xodimlar': 'Сотрудники', 'Xodimlar va rollar': 'Сотрудники и роли', '{n} xodim': '{n} {1|сотрудник|сотрудника|сотрудников}',
+	'{n} faol': '{n} {1|активный|активных|активных}', 'Valyuta kursi': 'Курс валюты', 'yangi partiyalarga': 'для новых партий',
+	'Yangi partiyalarga ta’sir qiladi, ochilgan partiyalar kursi qotgan': 'Действует на новые партии, курс открытых партий зафиксирован', 'Yangi partiyalarga ta’sir qiladi, ochilganlar kursi qotgan': 'Действует на новые партии, курс открытых зафиксирован',
+
+	// --- hodisalar jurnali (Data.log matnlari) ---
+	'B-{n} bekor qilindi': 'B-{n} отменён', 'B-{n} topshirildi': 'B-{n} доставлен', 'B-{n} yig‘ildi': 'B-{n} собран', 'B-{n} yo‘lga chiqdi': 'B-{n} выехал', 'Yetkazildi B-{n}': 'Доставлен B-{n}',
+	'P-{n} bojxonadan chiqdi': 'P-{n} вышла с таможни', 'bugun omborga keladi': 'сегодня прибудет на склад', 'P-{n} chegaraga yetdi': 'P-{n} прибыла на границу', 'P-{n} laboratoriyada': 'P-{n} в лаборатории',
+	'P-{n} ochildi': 'P-{n} открыта', 'oldindan {n} % to‘landi': 'предоплата {n} %', 'P-{n} qabul qilindi': 'P-{n} принята', 'P-{n} uning «Qabul» ekranida turibdi': 'P-{n} у него на экране «Приёмка»',
+	'bojxonadan chiqdi': 'вышла с таможни', 'laboratoriya xulosasi olindi': 'получено заключение лаборатории', 'sotuvga ochildi': 'открыта для продажи',
+	'P-{n}: invoysdan {q} ({q}) kam — yetkazib beruvchi kamomadi': 'P-{n}: на {q} ({q}) меньше инвойса — недостача поставщика', 'P-{n}: invoysdan {q} ({n} %) kam — yetkazib beruvchi kamomadi': 'P-{n}: на {q} ({n} %) меньше инвойса — недостача поставщика'
+};
+/* ===== Til — ruscha tarjima qatlami (manba: til.js) =====
+	 Ilova hamisha o‘zbekcha chizadi va o‘zbekcha hisoblaydi. «Русский» tanlansa, shu qatlam ekranga chiqqan matnni
+	 (matn tugunlari va placeholder/title/aria-label/alt/data-l) RU lug‘ati (til_ru.js) bo‘yicha ruschaga o‘giradi.
+	 Ma’lumot (xaridor, xodim, yetkazuvchi nomlari, raqamlar, izohlar) o‘zgarmaydi — faqat ko‘rinish.
+	 Kalit: matndagi sana → {d}, o‘lchovli son → {q}, yalang son → {n}; topilmasa matn « · », «, », «: » kabi
+	 ajratgichlar bo‘yicha bo‘laklarga bo‘linib, har bo‘lak alohida qidiriladi. Topilmagani o‘zbekcha qoladi
+	 va Til.miss ga yoziladi (sinov shuni tekshiradi). */
+const Til = {
+	KEY: 'alfirdavs.til',
+	lang: 'uz',
+	miss: new Map(),
+	seen: new WeakMap(),
+	seenA: new WeakMap(),
+	ATTRS: ['placeholder', 'title', 'aria-label', 'alt', 'data-l'],
+	MON: {
+		yanvar: 'января', fevral: 'февраля', mart: 'марта', aprel: 'апреля', iyun: 'июня', iyul: 'июля', avgust: 'августа', sentabr: 'сентября', oktabr: 'октября', noyabr: 'ноября', dekabr: 'декабря',
+		yan: 'янв', fev: 'фев', mar: 'мар', apr: 'апр', may: 'мая', iyn: 'июн', iyl: 'июл', avg: 'авг', sen: 'сен', okt: 'окт', noy: 'ноя', dek: 'дек'
+	},
+	// o‘lchov birliklari: bitta shakl yoki [1, 2–4, 5+] shakllari
+	UNIT: {
+		'mln so‘m': 'млн сум', 'ming so‘m': 'тыс. сум', 'so‘m': 'сум', mln: 'млн', ming: 'тыс.', kg: 'кг', t: 'т', km: 'км',
+		quti: ['коробка', 'коробки', 'коробок'], kun: ['день', 'дня', 'дней'], soat: ['час', 'часа', 'часов'], daqiqa: ['минута', 'минуты', 'минут'],
+		hafta: ['неделя', 'недели', 'недель'], oy: ['месяц', 'месяца', 'месяцев'], yil: ['год', 'года', 'лет'], dona: 'шт.'
+	},
+	SEP: /( · | • | — | – | \| | → |: |; |, | \/ |\(|\))/,
+	SENT: /(?<=[.!?…]) (?=[A-Z«(\d])/,
+
+	// rus tilidagi son kelishigi: 1 партия, 2 партии, 5 партий; kasr son — ikkinchi shakl
+	plural(num, forms) {
+		if (/,/.test(num)) return forms[1];
+		const n = parseInt(num.replace(/\D/g, ''), 10) || 0, d = n % 10, h = n % 100;
+		return forms[d === 1 && h !== 11 ? 0 : d >= 2 && d <= 4 && (h < 12 || h > 14) ? 1 : 2];
+	},
+	// matn → kalit + qiymatlar
+	key(s) {
+		const vals = [];
+		const k = s.replace(Til.RX, (m, day, mon, qn, unit) => {
+			if (mon) { vals.push({ t: day + ' ' + Til.MON[mon], n: day }); return '{d}'; }
+			if (unit) { const u = Til.UNIT[unit]; vals.push({ t: qn + ' ' + (Array.isArray(u) ? Til.plural(qn, u) : u), n: qn }); return '{q}'; }
+			vals.push({ t: m, n: m }); return '{n}';
+		});
+		return [k, vals];
+	},
+	// ruscha qolip + qiymatlar: {n}/{q}/{d} — navbat bilan, {2} — tartib raqami bilan, {1|партия|партии|партий} — kelishik
+	fill(tpl, vals) {
+		let i = 0;
+		return tpl.replace(/\{(?:([ndq*])|(\d)(?:\|([^}]*))?)\}/g, (m, seq, idx, forms) => {
+			const v = seq ? vals[i++] : vals[idx - 1];
+			return !v ? m : forms ? Til.plural(v.n, forms.split('|')) : v.t;
+		});
+	},
+	// {*} li kalitlar — erkin matnli qoliplar («{*} uchun buyurtma»): bir marta regexga aylantiriladi
+	qoliplar() {
+		const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), rx = { '*': '.+?', n: `(?:${Til.NUM})`, q: `(?:${Til.NUM}) (?:${Til.UNITS})`, d: `\\d{1,2}-(?:${Til.MONS})` };
+		return Object.keys(RU).filter(k => k.includes('{*}')).map(k => {
+			const types = [];
+			const body = k.split(/(\{[*ndq]\})/).map(p => /^\{[*ndq]\}$/.test(p) ? (types.push(p[1]), `(${rx[p[1]]})`) : esc(p)).join('');
+			return [new RegExp('^' + body + '$'), types, RU[k]];
+		});
+	},
+	// bir xil so‘z ikki ma’noda kelsa («Chegara» — bosqich va qarz chegarasi), kalitga joy qo‘shiladi: 'Chegara@xaridorlar'
+	joy: el => el && el.closest ? (el.closest('#layer') && ui.drawer ? ui.drawer.type : el.closest('#modal') ? 'oyna' : ui.page) : '',
+	look(s) {
+		if (Til.ctx && typeof RU[s + '@' + Til.ctx] === 'string') return RU[s + '@' + Til.ctx];
+		if (typeof RU[s] === 'string') return RU[s];
+		const [k, vals] = Til.key(s);
+		if (typeof RU[k] === 'string') return Til.fill(RU[k], vals);
+		// faqat son/sana/o‘lchovdan iborat bo‘lak: «12-okt», «1 240 kg»
+		if (vals.length && !/[A-Za-z]/.test(k.replace(/\{[ndq]\}/g, ''))) return Til.fill(k, vals);
+		for (const [re, types, tpl] of Til.QOLIP) {
+			const m = re.exec(s);
+			if (m) return Til.fill(tpl, types.map((t, i) => t === '*' ? { t: Til.one(m[i + 1], true), n: m[i + 1] } : Til.key(m[i + 1])[1][0]));
+		}
+		const end = /[:.…?!]$/.exec(s);
+		if (end && s.length > 1) { const r = Til.look(s.slice(0, -1)); if (r != null) return r + end[0]; }
+		return null;
+	},
+	// bitta bo‘lak: topilmasa o‘zi qaytadi va (tarjima kerak bo‘lsa) bad ga yoziladi
+	leaf(p, bad) {
+		if (!/[A-Za-z]/.test(p)) return p;
+		const m = /^(\s*)(.*?)(\s*)$/.exec(p), hit = Til.look(m[2]);
+		if (hit != null) return m[1] + hit + m[3];
+		// tarjima kerak emas: saqlanadigan nomlar, raqamli belgi (P-2406), bosh harflar (FA), JS da kesilgan matn (…)
+		if (/[A-Za-z‘’ʻ]{2}/.test(m[2]) && !RU_SAQLA.has(m[2]) && !/^[A-Z]{1,3}-\d+$|^[A-Z]{2}$|…$/.test(m[2]) && !Til.ism(m[2])) bad.push(Til.key(m[2])[0]);
+		return p;
+	},
+	// atoqli nomlar tarjima qilinmaydi: xodim (to‘liq va qisqa), xaridor, uning vakili, yetkazib beruvchi
+	ism: s => db.users.some(u => u.ism === s || F.short(u.ism) === s) || db.clients.some(c => c.nom === s || c.kontakt === s) || db.sups.some(x => x.nom === s),
+	// matn: butun → boshidagi belgi/vaqt ajratiladi → gaplar → ajratgichlar bo‘yicha bo‘laklar
+	one(core, quiet) {
+		const hit = Til.look(core);
+		if (hit != null) return hit;
+		const pre = /^([·•—–.,;:×÷+→]\s*|\d{1,2}:\d{2} )(.+)$/.exec(core);
+		if (pre) return pre[1] + Til.one(pre[2], quiet);
+		const suf = /^(.+?)(\s*[·•—–→])$/.exec(core);
+		if (suf) return Til.one(suf[1], quiet) + suf[2];
+		const sents = core.split(Til.SENT);
+		if (sents.length > 1) return sents.map(s => Til.one(s, quiet)).join(' ');
+		const bad = [], out = core.split(Til.SEP).map((p, i) => i % 2 ? p : Til.leaf(p, bad)).join('');
+		if (bad.length && !quiet) { const k = Til.key(core)[0]; if (!Til.miss.has(k)) Til.miss.set(k, bad.length === 1 && bad[0] === k ? '' : bad.join(' | ')); }
+		return out;
+	},
+	tr(s) {
+		if (Til.lang !== 'ru' || !s || !/[A-Za-z]/.test(s)) return s;
+		const m = /^([ \t\r\n]*)([\s\S]*?)([ \t\r\n]*)$/.exec(s), core = m[2].replace(/[ \t\r\n]+/g, ' ');
+		const out = Til.one(core);
+		return out === core ? s : m[1] + out + m[3];
+	},
+
+	skip: el => !el || el.nodeName === 'SCRIPT' || el.nodeName === 'STYLE' || !!(el.closest && el.closest('[data-notr]')),
+	text(n) {
+		if (Til.skip(n.parentNode)) return;
+		const e = Til.seen.get(n), cur = n.data;
+		if (e && e.out === cur) return;
+		Til.ctx = Til.joy(n.parentNode);
+		const out = Til.tr(cur);
+		Til.seen.set(n, { src: cur, out });
+		if (out !== cur) n.data = out;
+	},
+	attr(el, a) {
+		const cur = el.getAttribute(a);
+		if (cur == null || Til.skip(el)) return;
+		const map = Til.seenA.get(el) || {}, e = map[a];
+		if (e && e.out === cur) return;
+		Til.ctx = Til.joy(el);
+		const out = Til.tr(cur);
+		map[a] = { src: cur, out }; Til.seenA.set(el, map);
+		if (out !== cur) el.setAttribute(a, out);
+	},
+	each(root, fText, fEl) {
+		if (root.nodeType === 3) return fText(root);
+		if (root.nodeType !== 1) return;
+		fEl(root);
+		const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+		for (let n = w.nextNode(); n; n = w.nextNode()) (n.nodeType === 3 ? fText : fEl)(n);
+	},
+	// o‘zbekcha → ruscha (lang = ru bo‘lganda)
+	apply(root) {
+		if (Til.lang !== 'ru') return;
+		Til.each(root, Til.text, el => Til.ATTRS.forEach(a => el.hasAttribute(a) && Til.attr(el, a)));
+	},
+	// ruscha → asl o‘zbekcha (til o‘zbekchaga qaytarilganda)
+	back(root) {
+		Til.each(root, n => { const e = Til.seen.get(n); if (e) { if (n.data === e.out) n.data = e.src; Til.seen.delete(n); } }, el => {
+			const map = Til.seenA.get(el);
+			if (map) { Object.keys(map).forEach(a => { if (el.getAttribute(a) === map[a].out) el.setAttribute(a, map[a].src); }); Til.seenA.delete(el); }
+		});
+	},
+	set(l) {
+		if (l !== 'ru' && l !== 'uz' || l === Til.lang) return;
+		Til.lang = l;
+		try { localStorage.setItem(Til.KEY, l); } catch (e) { /* saqlab bo‘lmasa — shu seans uchun */ }
+		document.documentElement.lang = l;
+		if (l === 'uz') Til.back(document.body);
+		Views.render();
+		Til.apply(document.body);
+	},
+	// til tugmasi: kirish oynasida va profil menyusida
+	tugma: () => `<div class="seg til" role="group" aria-label="Til / Язык" data-notr>${[['uz', 'O‘zbekcha'], ['ru', 'Русский']].map(([l, t]) =>
+		`<button type="button" data-til="${l}" aria-pressed="${Til.lang === l}" lang="${l}">${t}</button>`).join('')}</div>`,
+	start() {
+		const q = new URLSearchParams(location.search);
+		let saved = null;
+		try { saved = localStorage.getItem(Til.KEY); } catch (e) { /* yopiq saqlagich */ }
+		const l = q.get('til') || (q.has('sinov') ? 'uz' : saved);
+		Til.lang = l === 'ru' ? 'ru' : 'uz';
+		document.documentElement.lang = Til.lang;
+		Til.NUM = '\\d{1,3}(?: \\d{3})+(?:,\\d+)?|\\d+(?:,\\d+)?';
+		Til.MONS = Object.keys(Til.MON).join('|');
+		Til.UNITS = Object.keys(Til.UNIT).join('|') + ')(?![A-Za-z‘’ʻ]';
+		Til.RX = new RegExp(`\\b(\\d{1,2})-(${Til.MONS})\\b|(${Til.NUM}) (${Til.UNITS})|(?:${Til.NUM})`, 'g');
+		Til.QOLIP = Til.qoliplar();
+		new MutationObserver(list => {
+			if (Til.lang !== 'ru') return;
+			list.forEach(m => {
+				if (m.type === 'childList') m.addedNodes.forEach(Til.apply);
+				else if (m.type === 'characterData') Til.text(m.target);
+				else Til.attr(m.target, m.attributeName);
+			});
+		}).observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: Til.ATTRS });
+		document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-til]'); if (b) Til.set(b.dataset.til); });
+		Til.apply(document.body);
+	}
+};
+Til.start();
 
 /* ===== Steps — amallar ichida qayta ishlatiladigan qadamlar (manba: d.js) ===== */
 const Steps = {
@@ -2724,7 +3091,7 @@ const Actions = {
 	},
 	setReport(d) { ui.report = d.v; Data.savePrefs(); Views.render(); },
 	exportCsv() {
-		const R = Calc.report(ui.report), q = s => `"${String(s).replace(/"/g, '""')}"`;
+		const R = Calc.report(ui.report), q = s => `"${Til.tr(String(s)).replace(/"/g, '""')}"`;
 		const rows = [['Sana', 'Buyurtma', 'Xaridor', 'Mahsulot', 'Partiya', 'Kg', 'Narx', 'Summa', 'Tannarx', 'Foyda', 'Menejer'],
 			...R.os.map(o => [o.sana, F.oid(o), Data.client(o).nom, Data.prod(o.prod).nom, o.lot, Calc.oKg(o), o.narx, Calc.oSum(o), o.tan, Calc.oSum(o) - Math.round(Calc.oKg(o) * o.tan), Data.userById(o.mid).ism])];
 		const blob = new Blob(['\ufeff' + /* BOM: Excel UTF-8 ni taniydi */  rows.map(r => r.map(q).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
@@ -2967,7 +3334,7 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 
 /* ===== Sinov rejimi (build.mjs yozadi): manzilda ?sinov bo‘lsa, modullar window ga chiqariladi ===== */
 if (new URLSearchParams(location.search).has('sinov')) {
-	Object.assign(window, { DAY, HOUR, MIN, MON3, MONTHS, DEMO_START, DEMO_END, Time, ROLES, pageOk, STAGES, STAGE_HOLAT, DOCS, DOC_ST, XARAJAT, VAL, NARX_TUR, XTUR, KAMERA, QABUL_SABAB, DAVO, DAVO_NEXT, DAVO_BTN, STATUS, OPEN_ST, SOLD_ST, DONE_ST, NEED, USUL, EVENTS, GUEST_ACTIONS, BASE_ACTIONS, DESK_ACTIONS, SALES_WORK, IMPORT_WORK, CAN, SETTINGS_ROLES, can, ui, Data, Calc, $, NB, F, LOGO, UI, pos, Forms, PAGES, ATT_KIND, Views, LOT_FILTERS, ORDER_FILTERS, TERMS, termText, Steps, Actions, Fields, deny, Router });
+	Object.assign(window, { DAY, HOUR, MIN, MON3, MONTHS, DEMO_START, DEMO_END, Time, ROLES, pageOk, STAGES, STAGE_HOLAT, DOCS, DOC_ST, XARAJAT, VAL, NARX_TUR, XTUR, KAMERA, QABUL_SABAB, DAVO, DAVO_NEXT, DAVO_BTN, STATUS, OPEN_ST, SOLD_ST, DONE_ST, NEED, USUL, EVENTS, GUEST_ACTIONS, BASE_ACTIONS, DESK_ACTIONS, SALES_WORK, IMPORT_WORK, CAN, SETTINGS_ROLES, can, ui, Data, Calc, $, NB, F, LOGO, UI, pos, Forms, PAGES, ATT_KIND, Views, LOT_FILTERS, ORDER_FILTERS, TERMS, termText, RU_SAQLA, RU, Til, Steps, Actions, Fields, deny, Router });
 	Object.defineProperties(window, {
 		db: { get: () => db, set: v => { db = v; } },
 		session: { get: () => session, set: v => { session = v; } }
