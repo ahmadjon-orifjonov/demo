@@ -20,6 +20,10 @@
 @font-face{font-family:"IBM Plex Sans";font-weight:400;font-display:swap;src:url(fonts/plex-ext-400.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1EFF,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"IBM Plex Sans";font-weight:500;font-display:swap;src:url(fonts/plex-ext-500.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1EFF,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"IBM Plex Sans";font-weight:600;font-display:swap;src:url(fonts/plex-ext-600.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1EFF,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* Kirillcha (ruscha til uchun): @fontsource/ibm-plex-sans 5.3.0 dan, faqat kirill harfi uchraganda yuklanadi */
+@font-face{font-family:"IBM Plex Sans";font-weight:400;font-display:swap;src:url(fonts/plex-cyr-400.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"IBM Plex Sans";font-weight:500;font-display:swap;src:url(fonts/plex-cyr-500.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"IBM Plex Sans";font-weight:600;font-display:swap;src:url(fonts/plex-cyr-600.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 /* Tokenlar. Palitra — sovuq zanjir (DIZAYN 12). Shrift o‘lchamlari: 11 / 12 / 13 / 14 / 16 / 18 / 22 / 28. Oraliqlar 4 ga karrali. */
 :root{
 	--bg:#f4f6f8;--sf:#ffffff;--bg2:#f8fafb;--bg3:#e9edf1;
@@ -2624,7 +2628,8 @@ const Til = {
 		const vals = [];
 		const k = s.replace(Til.RX, (m, day, mon, qn, unit) => {
 			if (mon) { vals.push({ t: day + ' ' + Til.MON[mon], n: day }); return '{d}'; }
-			if (unit) { const u = Til.UNIT[unit]; vals.push({ t: qn + ' ' + (Array.isArray(u) ? Til.plural(qn, u) : u), n: qn }); return '{q}'; }
+			// son va o‘lchov orasida uzilmaydigan bo‘sh joy: «0 т» ikki qatorga bo‘linmaydi
+			if (unit) { const u = Til.UNIT[unit]; vals.push({ t: qn + ' ' + (Array.isArray(u) ? Til.plural(qn, u) : u), n: qn }); return '{q}'; }
 			vals.push({ t: m, n: m }); return '{n}';
 		});
 		return [k, vals];
