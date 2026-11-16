@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f2140">
+<meta name="description" content="Big Tour uchun boshqaruv tizimi namunasi: mijoz arizalari, turlar va bronlar, viza va hujjatlar, avans va qoldiq to‘lov holati, menejerlar ishi, oylik hisobot. Ma’lumotlar misol uchun.">
+<title>Big Tour — boshqaruv tizimi (namuna)</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/golos-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Shrift: Golos Text (SIL OFL 1.1), fonts\ papkasidan; kirill bo'laklari faqat kirill yozuvida yuklanadi. */
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/golos-text-cyrillic-ext-wght-normal.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+:root{
+	--blue:#1d5aa6;--blue2:#163f78;--bluet:#e5eefa;--sky:#7fb6f0;--acc:#e8762c;
+	--night:#0f2140;--night2:#17305a;--ink:#14213a;--tx2:#3e4c63;--muted:#5a6880;
+	--bg:#f3f6fa;--card:#fff;--line:#d7e0ec;--line2:#e7edf5;
+	--grn:#17764a;--grnt:#e2f3ea;--amb:#925600;--ambt:#fcf1dc;--red:#b3261e;--redt:#fbe9e7;--vio:#5b3ea6;--viot:#eee9fa;
+	--r:10px;--r2:14px;--sh:0 1px 2px rgba(15,33,64,.06),0 1px 1px rgba(15,33,64,.04);--elev:0 12px 32px rgba(15,33,64,.22);
+	--font:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+	--yon:236px;--tepa:52px;--past:62px;--nam:26px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.45 var(--font);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* Namuna tasmasi */
+.namuna{position:fixed;top:0;left:0;right:0;height:var(--nam);z-index:60;background:var(--ambt);color:var(--amb);font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:1px solid #f0dcb4;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Kirish */
+.kirish{min-height:100vh;padding:calc(var(--nam) + 28px) 16px 32px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,var(--night) 0,var(--night2) 300px,var(--bg) 300px)}
+.kirish .belgi{color:#fff;text-align:center;margin-bottom:22px}
+.belgi b{display:block;font-size:26px;font-weight:800;letter-spacing:.02em}
+.belgi span{display:block;color:#c3d6f2;font-size:14px;margin-top:2px}
+.kirish .quti{width:100%;max-width:460px;background:var(--card);border-radius:var(--r2);box-shadow:var(--elev);padding:22px 20px}
+.kirish h1{font-size:19px;font-weight:700;margin-bottom:4px}
+.kirish .izoh{color:var(--muted);font-size:14px;margin-bottom:16px}
+.rollar{display:grid;gap:10px}
+.rol{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;min-height:64px}
+.rol:hover{border-color:var(--blue);background:#f6f9fd}
+.rol .dum{width:42px;height:42px;border-radius:10px;background:var(--bluet);color:var(--blue);display:grid;place-items:center;flex:none}
+.rol .n{font-weight:650;display:block}
+.rol .d{color:var(--muted);font-size:13px;display:block}
+.rol .pin-t{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.pinq{display:grid;gap:12px}
+.pinq input{font-size:26px;letter-spacing:.5em;text-align:center;padding:10px 8px 10px calc(8px + .5em);height:56px}
+.xato{color:var(--red);font-size:13.5px;min-height:20px}
+.kirish .ost{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;max-width:460px}
+.til{display:inline-flex;border:1px solid rgba(255,255,255,.28);border-radius:999px;overflow:hidden;margin:0 auto 18px}
+.til button{background:transparent;border:0;color:#c8e9ea;padding:7px 14px;font-size:13.5px;font-weight:600;min-height:36px}
+.til button[aria-pressed=true]{background:#fff;color:var(--night)}
+
+/* Qobiq */
+.yon{position:fixed;top:var(--nam);left:0;bottom:0;width:var(--yon);background:var(--night);color:#c9dcde;display:flex;flex-direction:column;padding:16px 12px;z-index:40}
+.yon .belgi{text-align:left;padding:4px 8px 16px}
+.yon .belgi b{font-size:19px;color:#fff}
+.yon .belgi span{font-size:12.5px}
+.yon nav{display:grid;gap:2px}
+.yon nav a{display:flex;align-items:center;gap:11px;color:#c9dcde;padding:10px 10px;border-radius:8px;font-weight:550;font-size:14.5px}
+.yon nav a:hover{background:rgba(255,255,255,.07);text-decoration:none}
+.yon nav a[aria-current=page]{background:var(--blue);color:#fff}
+.yon nav a .son{margin-left:auto;background:#fff;color:var(--night);border-radius:999px;font-size:12px;font-weight:700;padding:1px 7px}
+.yon .oxir{margin-top:auto;display:grid;gap:10px;padding:8px}
+.yon .kim{font-size:13.5px;line-height:1.3}
+.yon .kim b{display:block;color:#fff;font-size:14.5px}
+.yon .til{margin:0;justify-self:start}
+.yon .chiq{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.2);color:#c9dcde;border-radius:8px;padding:8px 10px;font-size:14px}
+.tepa,.past{display:none}
+.sahifa{margin-left:var(--yon);padding:calc(var(--nam) + 22px) 28px 48px;max-width:1280px}
+.bosh{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.bosh h1{font-size:24px;font-weight:750;line-height:1.2}
+.bosh .ost{color:var(--muted);font-size:14px;margin-top:2px}
+.bosh .ong{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.orqa{display:inline-flex;align-items:center;gap:4px;font-size:14px;margin-bottom:10px;min-height:32px}
+
+/* Tugma */
+.t{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 14px;min-height:40px;font-weight:600;font-size:14.5px;color:var(--ink);white-space:nowrap}
+.t:hover{border-color:#b3cfd2;text-decoration:none}
+.t.a{background:var(--blue);border-color:var(--blue);color:#fff}
+.t.a:hover{background:var(--blue2)}
+.t.x{color:var(--red)}
+.t.k{min-height:34px;padding:5px 10px;font-size:13.5px}
+.t.keng{width:100%;min-height:48px;font-size:16px}
+.t[disabled]{opacity:.5;cursor:not-allowed}
+.hav{background:none;border:0;padding:0;color:var(--blue);font-weight:600}
+
+/* Karta */
+.k{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);box-shadow:var(--sh);padding:16px 18px;margin-bottom:16px}
+.k>h2,.k>.kb h2{font-size:16px;font-weight:700}
+.kb{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.kb .ong{margin-left:auto;display:flex;gap:8px;align-items:center}
+.kb .ost{color:var(--muted);font-size:13px;width:100%;margin-top:-6px}
+.qator2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.qator2>.k{margin-bottom:0}
+.qator2{margin-bottom:16px}
+
+/* KPI */
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.kp{background:var(--card);border:1px solid var(--line);border-radius:var(--r2);box-shadow:var(--sh);padding:14px 16px;display:block;color:inherit}
+a.kp:hover{border-color:var(--blue);text-decoration:none}
+.kp .y{color:var(--muted);font-size:13px;font-weight:550}
+.kp .q{font-size:25px;font-weight:750;line-height:1.2;margin-top:4px;white-space:nowrap}
+.kp .q small{font-size:14px;font-weight:600;color:var(--tx2)}
+.kp .p{font-size:13px;color:var(--tx2);margin-top:4px}
+.kp .p.yom{color:var(--red);font-weight:600}
+.kp .p.yax{color:var(--grn);font-weight:600}
+
+/* Belgi (badge) */
+.b{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 9px;font-size:12.5px;font-weight:650;background:var(--line2);color:var(--tx2);white-space:nowrap}
+.b.ko{background:var(--bluet);color:var(--blue)}
+.b.ya{background:var(--grnt);color:var(--grn)}
+.b.sa{background:var(--ambt);color:var(--amb)}
+.b.qi{background:var(--redt);color:var(--red)}
+.b.bi{background:var(--viot);color:var(--vio)}
+
+/* E'tibor ro'yxati */
+.et{display:grid}
+.et a{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-top:1px solid var(--line2);color:inherit}
+.et a:first-child{border-top:0}
+.et a:hover{text-decoration:none;background:#f6f9fd}
+.et .nuq{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none;background:var(--ambt);color:var(--amb)}
+.et .nuq.qi{background:var(--redt);color:var(--red)}
+.et .nuq.ko{background:var(--bluet);color:var(--blue)}
+.et .nuq svg{width:17px;height:17px}
+.et b{display:block;font-weight:650;font-size:14.5px}
+.et span{color:var(--tx2);font-size:13.5px}
+.et .uq{margin-left:auto;color:var(--muted);align-self:center}
+
+/* Jadval */
+.jw{overflow-x:auto;margin:0 -4px}
+table.j{width:100%;border-collapse:collapse;font-size:14px}
+.j th{font-size:12.5px;font-weight:650;color:var(--muted);text-align:left;padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.j td{padding:10px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.j tr:last-child td{border-bottom:0}
+.j .r{text-align:right;white-space:nowrap}
+.j .kich{color:var(--muted);font-size:13px;display:block}
+.j td b{font-weight:650}
+.j tr.bos{cursor:pointer}
+.j tr.bos:hover td{background:#f6f9fd}
+.j tfoot td{font-weight:700;border-top:1px solid var(--line);border-bottom:0}
+.bosh-yoq{color:var(--muted);padding:18px 4px;text-align:center;font-size:14px}
+
+/* Yorliqlar (tabs) */
+.yor{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:2px;scrollbar-width:none}
+.yor::-webkit-scrollbar{display:none}
+.yor a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;min-height:38px;font-weight:600;font-size:14px;color:var(--tx2);white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
+.yor a:hover{text-decoration:none;border-color:#b3cfd2}
+.yor a[aria-current=true]{background:var(--night);border-color:var(--night);color:#fff}
+.yor .son{background:var(--line2);color:var(--tx2);border-radius:999px;font-size:12px;padding:0 6px;font-weight:700}
+.yor a[aria-current=true] .son{background:rgba(255,255,255,.2);color:#fff}
+.yor .son.qi{background:var(--red);color:#fff}
+
+/* Ro'yxat kartalari */
+.ry{display:grid;gap:10px}
+.el{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;color:inherit;box-shadow:var(--sh)}
+a.el:hover{border-color:var(--blue);text-decoration:none}
+.el .ust{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:5px}
+.el .id{font-weight:700;font-size:13.5px;color:var(--muted)}
+.el .nom{font-weight:650;font-size:15.5px}
+.el .mat{color:var(--tx2);font-size:14px;margin-top:2px}
+.el .pas{display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:8px;font-size:13.5px;color:var(--tx2);align-items:center}
+.el .pas .ong{margin-left:auto;font-weight:700;color:var(--ink);font-size:15px}
+.el.shosh{border-left:4px solid var(--red)}
+.el .amal{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.izl{position:relative;margin-bottom:14px;max-width:420px}
+.izl input{width:100%;padding-left:38px}
+.izl svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+
+/* Maydon */
+.in,select.in,textarea.in{width:100%;border:1px solid #bed6d8;background:#fff;border-radius:9px;padding:9px 11px;min-height:42px;font-size:16px}
+textarea.in{min-height:84px;resize:vertical}
+.in:focus{border-color:var(--blue);outline:3px solid var(--bluet)}
+.may{display:grid;gap:5px;margin-bottom:12px}
+.may>span{font-size:13.5px;font-weight:600;color:var(--tx2)}
+.may2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.yord{font-size:13px;color:var(--muted)}
+.tan{display:flex;align-items:center;gap:8px;min-height:40px}
+.tan input{width:20px;height:20px}
+
+/* Bosqichlar */
+.qadam{display:flex;gap:4px;margin:4px 0 2px;overflow-x:auto}
+.qadam span{flex:1;min-width:86px;text-align:center;font-size:12.5px;font-weight:650;padding:7px 6px;background:var(--line2);color:var(--muted);border-radius:6px;white-space:nowrap}
+.qadam span.ot{background:var(--grnt);color:var(--grn)}
+.qadam span.hoz{background:var(--blue);color:#fff}
+
+/* Ta'rif ro'yxati */
+.tr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px}
+.tr div>span{display:block;color:var(--muted);font-size:12.5px;font-weight:600}
+.tr div>b{font-weight:600;font-size:15px}
+.jami{display:grid;gap:6px;max-width:340px;margin-left:auto;margin-top:12px;font-size:14.5px}
+.jami div{display:flex;justify-content:space-between;gap:16px}
+.jami .kat{font-weight:750;font-size:16px;border-top:1px solid var(--line);padding-top:6px}
+.eslat{background:var(--ambt);color:#6b4000;border-radius:var(--r);padding:10px 12px;font-size:14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
+.eslat.qi{background:var(--redt);color:#7d1a14}
+.eslat.ko{background:var(--bluet);color:var(--blue2)}
+.eslat svg{margin-top:1px}
+.tarix{display:grid;gap:8px;font-size:13.5px;color:var(--tx2)}
+.tarix div{display:flex;gap:10px}
+.tarix time{color:var(--muted);white-space:nowrap;min-width:78px}
+
+/* Chiziqlar */
+.grafik{display:flex;align-items:flex-end;gap:10px;height:190px;padding-top:8px}
+.grafik .oy{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;min-width:0}
+.grafik .juft{flex:1;display:flex;align-items:flex-end;gap:4px;width:100%;justify-content:center}
+.grafik .juft i{display:block;width:42%;max-width:26px;border-radius:5px 5px 0 0;background:var(--blue);min-height:2px}
+.grafik .juft i.x{background:#a3c4c7}
+.grafik .oy span{font-size:12px;color:var(--muted);white-space:nowrap}
+.grafik .oy.hoz span{color:var(--ink);font-weight:700}
+.afs{display:flex;gap:16px;font-size:13px;color:var(--tx2);margin-top:10px;flex-wrap:wrap}
+.afs i{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--blue);margin-right:6px}
+.afs i.x{background:#a3c4c7}
+.gor{display:grid;gap:10px}
+.gor .q{display:grid;grid-template-columns:minmax(110px,34%) 1fr auto;gap:10px;align-items:center;font-size:14px}
+.gor .yol{height:10px;background:var(--line2);border-radius:999px;overflow:hidden}
+.gor .yol i{display:block;height:100%;background:var(--blue);border-radius:999px}
+.gor .yol i.qi{background:var(--red)}.gor .yol i.sa{background:#d9951c}.gor .yol i.ya{background:var(--grn)}
+.gor .q b{white-space:nowrap;font-weight:650}
+.qold{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.qold .yol{width:56px;height:6px;background:var(--line2);border-radius:999px;overflow:hidden}
+.qold .yol i{display:block;height:100%;background:var(--grn)}
+.qold.kam .yol i{background:#d9951c}.qold.yoq .yol i{background:var(--red)}
+.qold.kam b,.qold.yoq b{color:var(--red)}
+
+/* Oyna */
+.parda{position:fixed;inset:0;background:rgba(15,33,64,.5);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}
+.oyna{background:#fff;border-radius:var(--r2);box-shadow:var(--elev);width:100%;max-width:520px;max-height:calc(100vh - 32px);display:flex;flex-direction:column}
+.oyna header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line2)}
+.oyna header h2{font-size:17px;font-weight:700}
+.oyna header button{margin-left:auto;background:none;border:0;width:40px;height:40px;display:grid;place-items:center;border-radius:8px;color:var(--muted)}
+.oyna .ich{padding:16px 18px;overflow-y:auto}
+.oyna footer{padding:12px 18px;border-top:1px solid var(--line2);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.xabar{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--night);color:#fff;padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:550;z-index:90;box-shadow:var(--elev);max-width:calc(100vw - 32px);text-align:center}
+.pastki{color:var(--muted);font-size:13px;margin-top:26px;display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center}
+
+/* Usta */
+.usta-sal{background:var(--night);color:#fff;border-radius:var(--r2);padding:16px 18px;margin-bottom:16px}
+.usta-sal b{font-size:19px;display:block}
+.usta-sal span{color:#c3d6f2;font-size:14px}
+.yuk{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.yuk div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.yuk b{display:block;font-weight:650}
+.yuk span{font-size:13px;color:var(--tx2)}
+
+@media (max-width:1100px){.kpi{grid-template-columns:repeat(2,1fr)}.qator2{grid-template-columns:1fr}}
+@media (max-width:899px){
+	.yon{display:none}
+	.tepa{display:flex;position:fixed;top:var(--nam);left:0;right:0;height:var(--tepa);background:var(--night);color:#fff;align-items:center;gap:10px;padding:0 8px 0 14px;z-index:40}
+	.tepa b{font-size:16px;font-weight:750;white-space:nowrap}
+	.tepa .rolb{font-size:12.5px;color:#c3d6f2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+	.tepa .ong{margin-left:auto;display:flex;align-items:center;gap:2px;flex:none}
+	.tepa .tilb{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;font-size:12.5px;font-weight:650;padding:0 10px;height:32px;white-space:nowrap}
+	.tepa .chiq{background:none;border:0;color:#fff;width:44px;height:44px;display:grid;place-items:center}
+	.past{display:flex;position:fixed;bottom:0;left:0;right:0;height:calc(var(--past) + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:#fff;border-top:1px solid var(--line);z-index:40}
+	.past a,.past button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:11px;font-weight:600;background:none;border:0;position:relative;padding:0 2px}
+	.past a span,.past button span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+	.past a:hover{text-decoration:none}
+	.past a[aria-current=page]{color:var(--blue)}
+	.past .son{position:absolute;top:7px;left:calc(50% + 6px);background:var(--red);color:#fff;border-radius:999px;font-size:10.5px;font-weight:700;padding:0 5px;min-width:16px;text-align:center}
+	.sahifa{margin-left:0;padding:calc(var(--nam) + var(--tepa) + 16px) 14px calc(var(--past) + 28px)}
+	.bosh h1{font-size:21px}
+	.kpi{gap:10px}
+	.kp{padding:12px}
+	.kp .q{font-size:20px}
+	.k{padding:14px}
+	.may2{grid-template-columns:1fr}
+	.parda{align-items:flex-end;padding:0}
+	.oyna{max-width:none;border-radius:16px 16px 0 0;max-height:calc(100vh - 60px)}
+	.oyna footer .t{flex:1}
+	.xabar{bottom:calc(var(--past) + 14px)}
+	/* Jadval -> kartalar */
+	table.j.tel thead{display:none}
+	table.j.tel,table.j.tel tbody,table.j.tel tr,table.j.tel td{display:block;width:100%}
+	table.j.tel tr{padding:10px 0;border-bottom:1px solid var(--line2)}
+	table.j.tel tr:last-child{border-bottom:0}
+	table.j.tel td{border:0;padding:2px 4px;text-align:left}
+	table.j.tel td.r{text-align:left}
+	table.j.tel td[data-y]{display:flex;justify-content:space-between;gap:12px}
+	table.j.tel td[data-y]::before{content:attr(data-y);color:var(--muted);font-size:13px;flex:none}
+	table.j.tel tfoot{display:block}
+	.gor .q{grid-template-columns:1fr auto}
+	.gor .q .yol{grid-column:1/-1;order:3}
+	.grafik{gap:5px}
+}
+@media (max-width:380px){.kp .q{font-size:18px}.kp .q small{font-size:12.5px}}
+@media (prefers-reduced-motion:no-preference){.oyna{animation:kir .16s ease-out}@keyframes kir{from{transform:translateY(12px);opacity:.6}}}
+@media print{.yon,.tepa,.past,.namuna{display:none}.sahifa{margin:0;padding:0}}
+/* Telefon: bosqichlar ikki qatorda, ta'rif ikki ustunda, kichik havolalar bosishga qulay */
+@media (max-width:899px){
+	.qadam{flex-wrap:wrap;overflow:visible}
+	.qadam span{min-width:calc(33.33% - 4px);flex:1 1 auto}
+	.tr{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 14px}
+}
+.pastki .hav,.kirish .ost .hav,.pinq+p .hav{min-height:32px;display:inline-flex;align-items:center}
+.el>a:hover{text-decoration:none}
+@media (max-width:899px){.grafik .oy span{font-size:10.5px;letter-spacing:-.01em}}
+
+/* ===== Wetrade: qo'shimcha bo'laklar ===== */
+/* Marshrut (yuk qayerda) */
+.marsh{display:flex;gap:0;overflow-x:auto;padding:6px 2px 2px;margin:0 -2px}
+.marsh .n{flex:1 1 0;min-width:92px;position:relative;text-align:center;font-size:12.5px;color:var(--muted);padding-top:22px}
+.marsh .n::before{content:"";position:absolute;top:8px;left:0;right:0;height:3px;background:var(--line)}
+.marsh .n:first-child::before{left:50%}.marsh .n:last-child::before{right:50%}
+.marsh .n::after{content:"";position:absolute;top:3px;left:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--line);box-sizing:border-box}
+.marsh .n.ot{color:var(--tx2)}.marsh .n.ot::before{background:var(--blue)}.marsh .n.ot::after{border-color:var(--blue);background:var(--blue)}
+.marsh .n.hoz{color:var(--ink);font-weight:700}.marsh .n.hoz::before{background:linear-gradient(90deg,var(--blue) 50%,var(--line) 50%)}.marsh .n.hoz::after{border-color:var(--blue);width:18px;height:18px;top:1px;left:calc(50% - 9px);box-shadow:0 0 0 4px var(--bluet)}
+.marsh .n:first-child.hoz::before{background:var(--line)}
+.marsh .n:last-child.hoz::before{background:var(--blue)}
+.marsh .n.qi::after{border-color:var(--red);background:var(--red);box-shadow:0 0 0 4px var(--redt)}
+.marsh-q{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);margin-top:8px}
+.marsh-q .yol{flex:1;height:6px;border-radius:9px;background:var(--line2);overflow:hidden}.marsh-q .yol i{display:block;height:100%;background:var(--blue);border-radius:9px}
+/* Demurraj hisoblagichi */
+.dem{display:flex;gap:12px;align-items:center;border-radius:var(--r);padding:10px 12px;background:var(--grnt);color:var(--grn);font-size:14px;margin-top:10px}
+.dem b{font-size:18px}.dem.sa{background:var(--ambt);color:var(--amb)}.dem.qi{background:var(--redt);color:var(--red)}
+.dem .soat{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#fff;flex:none;font-weight:800;font-size:16px}
+/* Hujjatlar */
+.hujj{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.hujj label,.hujj div,.hujj button{width:100%;text-align:left;font:inherit;color:inherit;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--r);padding:9px 12px;min-height:44px;font-size:14px;background:#fff}
+.hujj input{width:20px;height:20px;accent-color:var(--blue);flex:none}
+.hujj button{cursor:pointer}.hujj button:hover{border-color:var(--blue)}
+.hujj .yo{border-color:#f0c2bd;background:var(--redt)}
+.hujj svg.i{width:18px;height:18px}.hujj .bor svg{color:var(--grn)}.hujj .yo svg{color:var(--red)}
+/* Kalkulyator */
+.kalk{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+.kalk .natija{position:sticky;top:16px}
+.kalk fieldset{border:0;margin:0 0 14px;padding:0;min-width:0}
+.kalk legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
+.kalk .may2{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.hq{display:grid;gap:0;font-size:14.5px}
+.hq>div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.hq>div>span:first-child{color:var(--tx2);min-width:0;flex:1 1 auto}.hq>div>b,.hq>div>span:last-child{text-align:right;white-space:nowrap;flex:none}
+.qator2>*{min-width:0}
+.hq .ost{font-size:12.5px;color:var(--muted);display:block;white-space:normal}
+.hq .kat{font-weight:750;font-size:16px;border-bottom:0;border-top:2px solid var(--ink);margin-top:4px;padding-top:9px}
+.hq>.kat>span:first-child{color:var(--ink)}
+.foy{border-radius:var(--r2);padding:14px 16px;margin-top:12px;background:var(--grnt);color:var(--grn)}
+.foy.yom{background:var(--redt);color:var(--red)}
+.foy .q{font-size:24px;font-weight:800;line-height:1.15}.foy .p{font-size:13.5px;margin-top:2px}
+.sez{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+.sez div{border:1px solid var(--line);border-radius:8px;padding:6px 4px;text-align:center;font-size:12.5px;background:#fff}
+.sez div b{display:block;font-size:13px}.sez div.hoz{border-color:var(--blue);background:var(--bluet)}
+.sez .yom b{color:var(--red)}.sez .yax b{color:var(--grn)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:6px 0 10px}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue);flex:none}
+/* Valyuta kartalari */
+.val{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.val .kp .kod{display:inline-block;font-size:12px;font-weight:700;background:var(--bluet);color:var(--blue);border-radius:6px;padding:1px 7px;margin-bottom:6px}
+.kurs{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--tx2)}
+.kurs b{color:var(--ink)}
+/* Akt sverka */
+.akt-bosh{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;font-size:14px;margin-bottom:12px}
+.akt-bosh>div>span{display:block;color:var(--muted);font-size:12.5px}
+.saldo{font-weight:750}
+.kod{font-family:ui-monospace,Consolas,monospace;font-size:.92em;letter-spacing:.01em}
+@media (max-width:1100px){.val{grid-template-columns:repeat(2,1fr)}.kalk{grid-template-columns:1fr}.kalk .natija{position:static}}
+@media (max-width:899px){
+	.val{gap:10px}
+	.marsh{flex-direction:column;overflow:visible;padding:0}
+	.marsh .n{text-align:left;padding:0 0 14px 30px;min-width:0;flex:none}
+	.marsh .n::before{top:0;bottom:0;left:9px;right:auto;width:3px;height:auto}
+	.marsh .n:first-child::before{left:9px;top:8px}.marsh .n:last-child::before{right:auto;bottom:calc(100% - 8px)}
+	.marsh .n::after{top:1px;left:3px}.marsh .n.hoz::after{left:1px;top:-1px}
+	.marsh .n.hoz::before{background:linear-gradient(180deg,var(--blue) 50%,var(--line) 50%)}
+	.sez{grid-template-columns:repeat(5,minmax(0,1fr))}.sez div{font-size:11.5px;padding:6px 2px}
+}
+@media print{.bosh .ong,.pastki,.orqa,.yor,.xabar,#oyna{display:none!important}.k{box-shadow:none;border:0;padding:0}body{background:#fff}}
+
+/* Big Tour qo'shimchalari */
+.kich-s{font-size:13px;font-weight:650;color:var(--muted);margin:14px 0 4px}
+.turlar{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.turlar .marsh-q .yol i{background:var(--acc)}
+.el .nom small{font-weight:600;color:var(--muted);font-size:13px}
+.yon .belgi span,.tepa b{letter-spacing:.01em}
+@media (max-width:420px){.turlar{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div id="ilova"></div>
+<div id="oyna"></div>
+<div id="xabar" aria-live="polite"></div>
+<noscript><p style="padding:24px">Namuna ishlashi uchun brauzerda JavaScript yoqilgan bo'lishi kerak.</p></noscript>
+<script>
+(() => {
+'use strict';
+/* ===== yozuv.js ===== */
+/* Yozuv: lotin <-> kirill (o'zbekcha). Manba matnlar lotinda, oddiy ' bilan yoziladi.
+   Yozuv.kir(s)  — lotin -> kirill;  Yozuv.lot(s) — tipografik lotin (o‘, g‘, ’);
+   Yozuv.qid(s)  — qidiruv uchun bir xil ko'rinish (kirill ham lotinga keltiriladi);
+   Yozuv.dom(el, til) — tugun ichidagi matn va yorliqlarni tanlangan yozuvga o'tkazadi. */
+const Yozuv = (() => {
+	// O'zgarmaydigan nomlar (brend, fayl turi)
+	// O'zgarmaydigan nomlar (brend, fayl turi)
+	const SAQLA = new Set(['Big', 'Tour', 'BIG', 'TOUR', 'Excel', 'CSV', 'USD', 'PNR', 'ID', 'A']);
+	// Qisqartmalar va nomlar: harfma-harf o'girilmaydi
+	const AYNAN = { AQSh: 'АҚШ', BAA: 'БАА', PIN: 'ПИН', MChJ: 'МЧЖ', 'Nyu-York': 'Нью-Йорк' };
+	// Yumshatish belgili yoki boshqacha yoziladigan o'zlashma so'zlar: [lotin o'zak, kirill o'zak, so'z aynan shu bo'lsa qo'shiladigan oxiri]
+	const OZAK = [
+		['panel', 'панель', ''], ['rol', 'роль', ''], ['konvertatsiya', 'конвертация', ''], ['florensiya', 'флоренция', ''], ['venetsiya', 'венеция', ''],
+		['sentabr', 'сентябр', 'ь'], ['oktabr', 'октябр', 'ь'], ['noyabr', 'ноябр', 'ь'], ['dekabr', 'декабр', 'ь'], ['fevral', 'феврал', 'ь'], ['aprel', 'апрел', 'ь'],
+		['iyun', 'июн', 'ь'], ['iyul', 'июл', 'ь'], ['yanvar', 'январ', 'ь'],
+	];
+	const BIR = { a: 'а', b: 'б', d: 'д', f: 'ф', g: 'г', h: 'ҳ', i: 'и', j: 'ж', k: 'к', l: 'л', m: 'м', n: 'н', o: 'о', p: 'п', q: 'қ', r: 'р', s: 'с', t: 'т', u: 'у', v: 'в', x: 'х', y: 'й', z: 'з' };
+	const UNLI = 'aeiouAEIOU';
+	const TIRNOQ = "'‘’ʻʼ`";
+	const tq = c => c !== undefined && c !== '' && TIRNOQ.includes(c);
+	const katta = c => c !== c.toLowerCase();
+	const kat = (s, asl) => katta(asl) ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
+	function soz(w) {
+		const kich = w.toLowerCase().replace(/[‘’ʻʼ`]/g, "'");
+		for (const [l, k, oxir] of OZAK) {
+			if (kich.startsWith(l)) {
+				const qol = w.slice(l.length);
+				const bosh = kat(k, w[0]);
+				return qol ? bosh + harf(qol, true) : bosh + oxir;
+			}
+		}
+		return harf(w, false);
+	}
+	// ichkari=true: so'z o'rtasidan davom (boshidagi «e» qoidasi ishlamaydi)
+	function harf(w, ichkari) {
+		let out = '';
+		for (let i = 0; i < w.length; i++) {
+			const c = w[i], n = w[i + 1], n2 = w[i + 2], cl = c.toLowerCase(), nl = n ? n.toLowerCase() : '';
+			const oldin = i > 0 ? w[i - 1] : (ichkari ? 'x' : '');
+			if ((cl === 'o' || cl === 'g') && tq(n)) { out += kat(cl === 'o' ? 'ў' : 'ғ', c); i++; continue; }
+			if (cl === 's' && nl === 'h') { out += kat('ш', c); i++; continue; }
+			if (cl === 'c' && nl === 'h') { out += kat('ч', c); i++; continue; }
+			if (cl === 'y' && nl === 'o' && !tq(n2)) { out += kat('ё', c); i++; continue; }
+			if (cl === 'y' && nl === 'u') { out += kat('ю', c); i++; continue; }
+			if (cl === 'y' && nl === 'a') { out += kat('я', c); i++; continue; }
+			if (cl === 'y' && nl === 'e') { out += kat('е', c); i++; continue; }
+			if (cl === 'e') { out += kat(oldin === '' || UNLI.includes(oldin) ? 'э' : 'е', c); continue; }
+			if (tq(c)) { out += 'ъ'; continue; }
+			if (BIR[cl]) { out += kat(BIR[cl], c); continue; }
+			out += c;
+		}
+		return out;
+	}
+	const TOKEN = /[A-Za-z0-9'‘’ʻʼ`]+(?:-[A-Za-z0-9'‘’ʻʼ`]+)*/g;
+	// Kod va raqamlar (raqam + katta harf: BT-2114, FA3402051) o'zgarmaydi
+	const kodmi = t => /\d/.test(t) && /[A-Z]/.test(t);
+
+	function kir(s) {
+		if (!s || !/[A-Za-z]/.test(s)) return s;
+		return s.replace(TOKEN, t => {
+			if (SAQLA.has(t) || kodmi(t)) return t;
+			if (AYNAN[t]) return AYNAN[t];
+			return t.split('-').map(b => (SAQLA.has(b) ? b : AYNAN[b] || soz(b))).join('-');
+		});
+	}
+	function lot(s) {
+		if (!s || s.indexOf("'") < 0) return s;
+		return s.replace(/([oOgG])'/g, '$1‘').replace(/'/g, '’');
+	}
+	const QAYTA = { 'ў': "o'", 'ғ': "g'", 'ш': 'sh', 'ч': 'ch', 'ё': 'yo', 'ю': 'yu', 'я': 'ya', 'э': 'e', 'е': 'e', 'ҳ': 'h', 'қ': 'q', 'х': 'x', 'ж': 'j', 'й': 'y', 'ц': 'ts', 'ъ': '', 'ь': '', 'ы': 'i', 'щ': 'sh' };
+	const TESK = {}; for (const k in BIR) TESK[BIR[k]] = k;
+	function qid(s) {
+		return String(s || '').toLowerCase().replace(/[Ѐ-ӿ]/g, c => QAYTA[c] !== undefined ? QAYTA[c] : (TESK[c] || c)).replace(/['‘’ʻʼ`]/g, '');
+	}
+	const ATTR = ['placeholder', 'aria-label', 'title', 'data-y'];
+	function dom(el, til) {
+		if (!el || typeof document === 'undefined') return;
+		const f = til === 'kir' ? kir : lot;
+		const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+			acceptNode: n => (n.parentElement && n.parentElement.closest('[data-asl],script,style,textarea')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT,
+		});
+		const tugun = []; while (w.nextNode()) tugun.push(w.currentNode);
+		for (const n of tugun) { const y = f(n.nodeValue); if (y !== n.nodeValue) n.nodeValue = y; }
+		const sel = ATTR.map(a => '[' + a + ']').join(',');
+		const els = [...el.querySelectorAll(sel)]; if (el.matches && el.matches(sel)) els.push(el);
+		for (const e of els) { if (e.closest('[data-asl]')) continue; for (const a of ATTR) { const v = e.getAttribute(a); if (v) { const y = f(v); if (y !== v) e.setAttribute(a, y); } } }
+	}
+	return { kir, lot, qid, dom };
+})();
+
+
+/* ===== malumot.js ===== */
+/* Namuna ma'lumotlari. HAMMASI O'YLAB TOPILGAN: mijozlar, ismlar, telefonlar, pasportlar, narxlar, mehmonxonalar, reys raqamlari, kurs.
+   Haqiqiy — faqat kompaniya nomi (Big Tour). Sanalar bugungi kunga nisbatan — namuna har doim «yangi» ko'rinadi.
+   Pul — dollarda (1 kishi uchun narx va tannarx), to'lovlar kurs bilan so'mga ham yoziladi. */
+const Malumot = (() => {
+	const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+	// Turlar: narx va tannarx qismlari 1 kishi uchun, USD. qosh — qo'shimcha jo'nash sanalari (bugundan necha kun keyin)
+	const TURLAR = [
+		{ id: 't1', nom: 'BAA: Dubay — 7 kecha', qisqa: 'Dubay', yon: 'osiyo', kecha: 7, viza: 'evisa', narx: 1190, x: { avia: 420, meh: 390, tr: 60, sug: 15, viza: 95 }, avia: 'flydubai', reys: 'FZ 1802', meh: 'Al Noor Palace Hotel 4*', joy: 16, qosh: [11, 25, 39] },
+		{ id: 't2', nom: 'Turkiya: Istanbul va Kappadokiya — 6 kecha', qisqa: 'Istanbul', yon: 'osiyo', kecha: 6, viza: 'kerakmas', narx: 940, x: { avia: 360, meh: 330, tr: 70, sug: 12, viza: 0 }, avia: 'Turkish Airlines', reys: 'TK 371', meh: 'Bosphorus View Hotel 4*', joy: 20, qosh: [7, 35] },
+		{ id: 't3', nom: 'Tailand: Pxuket — 9 kecha', qisqa: 'Pxuket', yon: 'osiyo', kecha: 9, viza: 'evisa', narx: 1450, x: { avia: 640, meh: 420, tr: 70, sug: 20, viza: 45 }, avia: 'Uzbekistan Airways', reys: 'HY 537', meh: 'Andaman Pearl Resort 4*', joy: 18, qosh: [16, 44] },
+		{ id: 't4', nom: 'Malayziya: Kuala Lumpur va Langkavi — 8 kecha', qisqa: 'Malayziya', yon: 'osiyo', kecha: 8, viza: 'kerakmas', narx: 1350, x: { avia: 610, meh: 380, tr: 85, sug: 18, viza: 0 }, avia: 'Uzbekistan Airways', reys: 'HY 551', meh: 'Langkawi Coral Bay 4*', joy: 14, qosh: [42] },
+		{ id: 't5', nom: 'Italiya: Rim, Florensiya, Venetsiya — 7 kecha', qisqa: 'Italiya', yon: 'yevropa', kecha: 7, viza: 'shengen', narx: 1990, x: { avia: 520, meh: 690, tr: 240, sug: 25, viza: 110 }, avia: 'Uzbekistan Airways', reys: 'HY 255', meh: 'Hotel Via Roma 3*', joy: 15, qosh: [54] },
+		{ id: 't6', nom: 'Fransiya: Parij — 5 kecha', qisqa: 'Parij', yon: 'yevropa', kecha: 5, viza: 'shengen', narx: 1750, x: { avia: 560, meh: 560, tr: 150, sug: 22, viza: 110 }, avia: 'Uzbekistan Airways', reys: 'HY 251', meh: 'Hotel Lumiere Montmartre 3*', joy: 12, qosh: [48] },
+		{ id: 't7', nom: 'Ispaniya: Barselona — 6 kecha', qisqa: 'Barselona', yon: 'yevropa', kecha: 6, viza: 'shengen', narx: 1820, x: { avia: 590, meh: 580, tr: 160, sug: 22, viza: 110 }, avia: 'Turkish Airlines', reys: 'TK 1853', meh: 'Hotel Rambla Sol 3*', joy: 12, qosh: [61] },
+		{ id: 't8', nom: 'AQSh: Nyu-York va Vashington — 9 kecha', qisqa: 'Nyu-York', yon: 'amerika', kecha: 9, viza: 'aqsh', narx: 3690, x: { avia: 1350, meh: 1250, tr: 260, sug: 45, viza: 185 }, avia: 'Uzbekistan Airways', reys: 'HY 101', meh: 'Hudson Park Hotel 3*', joy: 10, qosh: [75] },
+		{ id: 't9', nom: 'AQSh: Mayami va Orlando — 8 kecha', qisqa: 'Mayami', yon: 'amerika', kecha: 8, viza: 'aqsh', narx: 3490, x: { avia: 1290, meh: 1150, tr: 230, sug: 45, viza: 185 }, avia: 'Turkish Airlines', reys: 'TK 77', meh: 'Ocean Breeze Miami 3*', joy: 10, qosh: [68] },
+	];
+	const VHUJ = {
+		kerakmas: ['pasport', 'sugurta'],
+		evisa: ['pasport', 'surat', 'mehbron', 'sugurta'],
+		shengen: ['pasport', 'surat', 'anketa', 'bank', 'ish', 'aviabron', 'mehbron', 'sugurta'],
+		aqsh: ['pasport', 'surat', 'ds160', 'bank', 'ish', 'yigim'],
+	};
+	const MIJOZ = ['Azizov Bobur', 'Karimova Nigora', 'Rahimov Javlon', 'Tursunova Madina', 'Xolmatov Sherzod', 'Yusupova Feruza', 'Ergashev Ulug\'bek', 'Nazarova Dildora', 'Qodirov Akmal', 'Saidova Zarina', 'Mirzayev Otabek', 'Hamidova Lola', 'Abdullayev Rustam', 'Sobirova Sevara', 'Ismoilov Doniyor', 'Rahimova Gulshan', 'Toshpo\'latov Aziz', 'Normatova Shahnoza', 'Jo\'rayev Farhod', 'Usmonova Kamila', 'Valiyev Sanjar', 'Olimova Nodira'];
+	const HAMROH = ['Azizova Shahlo', 'Karimov Islom', 'Rahimova Mohira', 'Tursunov Timur', 'Xolmatova Laylo', 'Yusupov Jasur', 'Ergasheva Sabina', 'Nazarov Bekzod', 'Qodirova Malika', 'Saidov Anvar', 'Mirzayeva Dilfuza', 'Hamidov Sardor'];
+	const MANBA = ['Instagram', 'Telegram', 'Tavsiya', 'Instagram', 'Ofisga keldi', 'Telegram'];
+	const MARKAZ = { shengen: ['VFS Global', 'TLScontact'], aqsh: ['AQSh elchixonasi'], evisa: ['Onlayn ariza'] };
+
+	function urug(bugun) {
+		const b0 = new Date(bugun.getFullYear(), bugun.getMonth(), bugun.getDate());
+		const k = n => { const d = new Date(b0); d.setDate(d.getDate() + n); return iso(d); };
+		const xodimlar = [
+			{ id: 'r1', rol: 'rahbar', ism: 'Rahbar', pin: '1111' },
+			{ id: 'm1', rol: 'menejer', ism: 'Dilnoza', pin: '2222' },
+			{ id: 'm2', rol: 'menejer', ism: 'Sardor', pin: '' },
+			{ id: 'm3', rol: 'menejer', ism: 'Kamola', pin: '' },
+			{ id: 'v1', rol: 'viza', ism: 'Malika', pin: '3333' },
+			{ id: 'b1', rol: 'buxgalter', ism: 'Gulnora', pin: '4444' },
+		];
+		const tel = n => '+998 9' + (n % 10) + ' 000 00 ' + String(n).padStart(2, '0');
+		const kursOn = off => Math.round((12050 + off * 1.6) / 10) * 10; // eski to'lovlarda kurs biroz past (misol)
+		const turT = id => TURLAR.find(t => t.id === id);
+		const pnr = n => ['K', 'R', 'M', 'T', 'Z', 'L'][n % 6] + String(n * 37 % 90 + 10) + ['XQ', 'TB', 'PL', 'WD', 'HN', 'GF', 'JS'][n % 7] + (n % 9);
+		// [id, tur, kishi, menejer, jo'nash (kun), bron sanasi (kun), bosqich, qo'shimcha]
+		const B = [
+			['BT-2088', 't2', 3, 'm3', -74, -100, 'qaytdi', {}],
+			['BT-2089', 't4', 2, 'm1', -66, -95, 'qaytdi', {}],
+			['BT-2090', 't7', 2, 'm2', -59, -101, 'qaytdi', {}],
+			['BT-2091', 't9', 2, 'm3', -51, -118, 'qaytdi', {}],
+			['BT-2092', 't1', 4, 'm2', -44, -70, 'qaytdi', {}],
+			['BT-2093', 't3', 2, 'm3', -37, -66, 'qaytdi', {}],
+			['BT-2094', 't5', 3, 'm2', -30, -78, 'qaytdi', {}],
+			['BT-2095', 't2', 4, 'm1', -23, -50, 'qaytdi', {}],
+			['BT-2096', 't8', 2, 'm3', -13, -84, 'qaytdi', {}],
+			['BT-2097', 't6', 2, 'm1', -12, -55, 'qaytdi', {}],
+			['BT-2098', 't4', 3, 'm3', -10, -40, 'qaytdi', {}],
+			['BT-2099', 't1', 2, 'm2', -8, -35, 'qaytdi', {}],
+			['BT-2100', 't2', 4, 'm3', 3, -28, 'tayyor', {}],
+			['BT-2101', 't2', 4, 'm1', -70, -98, 'qaytdi', {}],
+			['BT-2102', 't1', 2, 'm2', -62, -90, 'qaytdi', {}],
+			['BT-2103', 't5', 2, 'm3', -55, -104, 'qaytdi', {}],
+			['BT-2104', 't3', 2, 'm1', -48, -80, 'qaytdi', {}],
+			['BT-2105', 't8', 1, 'm2', -40, -112, 'qaytdi', {}],
+			['BT-2106', 't2', 3, 'm3', -33, -61, 'qaytdi', {}],
+			['BT-2107', 't4', 2, 'm1', -26, -55, 'qaytdi', {}],
+			['BT-2108', 't6', 2, 'm2', -19, -66, 'qaytdi', {}],
+			['BT-2109', 't1', 3, 'm1', -14, -40, 'qaytdi', {}],
+			['BT-2110', 't7', 2, 'm3', -4, -49, 'safarda', {}],
+			['BT-2111', 't1', 4, 'm1', -2, -31, 'safarda', { chegirma: 100 }],
+			['BT-2112', 't4', 2, 'm2', 5, -24, 'tayyor', {}],
+			['BT-2113', 't3', 2, 'm1', 9, -21, 'tayyor', {}],
+			['BT-2114', 't6', 2, 'm3', 12, -38, 'viza', { tolov: 'avans', viza: { holat: 'topshirildi', topsh: -8, markaz: 'TLScontact' }, avia: { holat: 'yozildi', yozildi: -5 } }],
+			['BT-2115', 't5', 3, 'm1', 26, -20, 'viza', { tolov: 'avans', viza: { holat: 'navbat', navbat: 2, markaz: 'VFS Global' }, avia: { holat: 'bron', muddat: 6 } }],
+			['BT-2116', 't8', 2, 'm2', 34, -15, 'viza', { tolov: 'avans', viza: { holat: 'yigilmoqda', yoq: ['bank', 'ds160'] }, avia: { holat: 'bron', muddat: 10 }, pasYomon: 1 }],
+			['BT-2117', 't7', 2, 'm3', 19, -30, 'viza', { tolov: 'avans', viza: { holat: 'rad', topsh: -14, javob: -2, markaz: 'VFS Global' }, avia: { holat: 'bron', muddat: 3 } }],
+			['BT-2118', 't1', 2, 'm1', 15, -10, 'viza', { tolov: 'avans', viza: { holat: 'topshirildi', topsh: -1, markaz: 'Onlayn ariza' }, avia: { holat: 'yozildi', yozildi: -3 } }],
+			['BT-2119', 't2', 5, 'm2', 21, -14, 'bron', { tolov: 'avans', chegirma: 120, avia: { holat: 'bron', muddat: 1 }, meh: 'kutilmoqda', viza: { holat: 'yigilmoqda', yoq: ['sugurta'] } }],
+			['BT-2120', 't9', 2, 'm3', 47, -12, 'bron', { tolov: 'avans', avia: { holat: 'bron', muddat: 12 }, meh: 'kutilmoqda', viza: { holat: 'yigilmoqda', yoq: ['ds160', 'bank', 'ish', 'yigim'] } }],
+			['BT-2121', 't3', 3, 'm1', 30, -3, 'tanlandi', { tolov: 'yoq' }],
+			['BT-2122', 't4', 2, 'm2', 28, 0, 'tanlandi', { tolov: 'yoq' }],
+		];
+		const bronlar = B.map(([id, tid, odam, men, jo, so, bosqich, o], i) => {
+			const t = turT(tid), n = +id.slice(3), jonash = k(jo), qayt = k(jo + t.kecha), sana = k(so);
+			const avansF = t.yon === 'osiyo' ? 30 : 50, chegirma = o.chegirma || 0, narx = t.narx * odam - chegirma;
+			const qMud = jo - (t.yon === 'osiyo' ? 14 : 21);
+			// Sayohatchilar: birinchisi — mijozning o'zi
+			const sayoh = Array.from({ length: odam }, (_, j) => ({
+				ism: j === 0 ? MIJOZ[i % MIJOZ.length] : HAMROH[(i * 3 + j) % HAMROH.length],
+				pasport: (j % 2 ? 'AD' : 'FA') + String(3400000 + n * 131 + j * 17).padStart(7, '0'),
+				muddat: o.pasYomon === j ? k(jo + t.kecha + 95) : k(jo + 420 + ((n * 97 + j * 211) % 1400)),
+			}));
+			// To'lovlar
+			const tol = [];
+			const tolTur = o.tolov || 'tolik', av = Math.round(narx * avansF / 100);
+			if (tolTur !== 'yoq') tol.push({ sana: k(so + 1), usd: av, kurs: kursOn(so + 1), usul: i % 3 ? 'Naqd so\'m' : 'Plastik karta' });
+			if (tolTur === 'tolik') { const d = Math.min(qMud - 1, -1); tol.push({ sana: k(Math.max(so + 2, d)), usd: narx - av, kurs: kursOn(Math.max(so + 2, d)), usul: i % 2 ? 'Bank o\'tkazmasi' : 'Naqd so\'m' }); }
+			for (const t2 of tol) t2.som = Math.round(t2.usd * t2.kurs);
+			// Aviachipta va mehmonxona
+			const oldin = ['tanlandi', 'bron'].includes(bosqich);
+			const yozOff = o.avia && o.avia.yozildi != null ? o.avia.yozildi : Math.max(so + 2, jo - 20);
+			const avia = {
+				kompaniya: t.avia, reys: t.reys, pnr: bosqich === 'tanlandi' ? '' : pnr(n),
+				holat: bosqich === 'tanlandi' ? 'yoq' : o.avia ? o.avia.holat : 'yozildi',
+				muddat: o.avia && o.avia.muddat != null ? k(o.avia.muddat) : null,
+				yozildi: (o.avia ? o.avia.holat === 'yozildi' : bosqich !== 'tanlandi') ? k(yozOff) : null,
+			};
+			const mehH = bosqich === 'tanlandi' ? 'yoq' : o.meh || 'tasdiqlandi';
+			const meh = { nom: t.meh, holat: mehH, tasdiq: mehH === 'tasdiqlandi' ? k(so + 3) : null, bekor: k(jo - 14) };
+			// Viza va hujjatlar
+			const vo = o.viza || {};
+			const vh = vo.holat || (oldin ? 'yigilmoqda' : 'berildi');
+			const hujjat = {}; for (const h of VHUJ[t.viza]) hujjat[h] = !(vo.yoq || []).includes(h) && !(bosqich === 'tanlandi');
+			if (o.pasYomon != null) hujjat.pasport = false;
+			const markaz = t.viza === 'kerakmas' ? '' : vo.markaz || MARKAZ[t.viza][n % MARKAZ[t.viza].length];
+			const topsh = vo.topsh != null ? k(vo.topsh) : vh === 'berildi' && t.viza !== 'kerakmas' ? k(Math.max(so + 4, jo - 30)) : null;
+			const viza = {
+				tur: t.viza, holat: vh, markaz,
+				navbat: vo.navbat != null ? k(vo.navbat) : topsh,
+				topsh, javob: vo.javob != null ? k(vo.javob) : vh === 'berildi' && topsh ? k(Math.min(Math.max(so + 4, jo - 30) + 9, jo - 3)) : null,
+				hujjat,
+			};
+			if (t.viza === 'kerakmas' && vh === 'berildi') viza.javob = k(Math.min(jo - 5, Math.max(so + 3, jo - 15)));
+			// Ta'minotchilarga to'lovlar (sana yoki null)
+			const xT = {}; for (const q in t.x) xT[q] = t.x[q] * odam;
+			const pul = (due, shart) => shart && due < 0 ? k(due) : null;
+			const ttol = {
+				avia: avia.holat === 'yozildi' ? avia.yozildi : null,
+				meh: pul(jo - 10, mehH === 'tasdiqlandi'),
+				tr: pul(jo - 3, !oldin),
+				sug: pul(jo - 20, !oldin),
+				viza: xT.viza ? (['navbat', 'topshirildi', 'berildi', 'rad'].includes(vh) && (viza.navbat || viza.topsh) ? viza.navbat || viza.topsh : null) : null,
+			};
+			if (ttol.viza && ttol.viza > k(0)) ttol.viza = k(0);
+			const voqea = [{ sana: sana, m: 'Tur tanlandi, bron ochildi' }];
+			if (tol[0]) voqea.unshift({ sana: tol[0].sana, m: `Avans olindi: ${av} $` });
+			if (avia.pnr) voqea.unshift({ sana: k(so + 2 > 0 ? 0 : so + 2), m: `Aviachipta bron qilindi, PNR ${avia.pnr}` });
+			if (meh.tasdiq) voqea.unshift({ sana: meh.tasdiq > k(0) ? k(0) : meh.tasdiq, m: 'Mehmonxona bronni tasdiqladi' });
+			if (viza.topsh) voqea.unshift({ sana: viza.topsh, m: t.viza === 'evisa' ? 'Elektron viza arizasi yuborildi' : 'Viza hujjatlari topshirildi' });
+			if (vh === 'rad') voqea.unshift({ sana: viza.javob, m: 'Viza rad etildi' });
+			if (vh === 'berildi' && viza.javob) voqea.unshift({ sana: viza.javob, m: t.viza === 'kerakmas' ? 'Hujjatlar tayyor' : 'Viza berildi' });
+			if (tol[1]) voqea.unshift({ sana: tol[1].sana, m: `Qoldiq to'landi: ${tol[1].usd} $` });
+			if (['safarda', 'qaytdi'].includes(bosqich)) voqea.unshift({ sana: jonash, m: 'Jo\'nab ketdi' });
+			if (bosqich === 'qaytdi') voqea.unshift({ sana: qayt, m: 'Safardan qaytdi' });
+			voqea.sort((a, b) => a.sana < b.sana ? 1 : a.sana > b.sana ? -1 : 0);
+			return {
+				id, tur: tid, odam, menejer: men, sana, jonash, bosqich, narxK: t.narx, chegirma, avansF, x: xT, ttol,
+				mijoz: sayoh[0].ism, tel: tel(n % 100), sayoh, tol, avia, meh, viza, ariza: null, voqea,
+			};
+		});
+		// Arizalar: har bron o'z arizasidan ochilgan + hali bronga aylanmaganlar
+		const ar = bronlar.map((b, i) => {
+			const t = turT(b.tur);
+			return { sana: kunQ(b.sana, -(1 + i % 3)), ism: b.mijoz, tel: b.tel, manba: MANBA[i % MANBA.length], yon: t.yon, qiziqish: `${t.qisqa}, ${b.odam} kishi`, odam: b.odam, menejer: b.menejer, holat: 'bron', bron: b.id, oxirgi: b.sana, sabab: '' };
+		});
+		function kunQ(isoS, n) { const p = isoS.split('-'); const d = new Date(+p[0], +p[1] - 1, +p[2] + n); return iso(d); }
+		const Q = (so, ism, n, manba, yon, qiz, odam, men, holat, oxirgi, sabab) => ({ sana: k(so), ism, tel: tel(n), manba, yon, qiziqish: qiz, odam, menejer: men, holat, bron: null, oxirgi: k(oxirgi), sabab: sabab || '' });
+		ar.push(
+			Q(-96, 'Fayzullayev Murod', 61, 'Instagram', 'yevropa', 'Shengen, Germaniya, ish safari', 1, 'm1', 'rad', -92, 'Sana to\'g\'ri kelmadi'),
+			Q(-75, 'Komilova Barno', 62, 'Telegram', 'osiyo', 'Bali, asal oyi', 2, 'm2', 'rad', -71, 'Narx qimmat'),
+			Q(-58, 'Rasulov Ilyos', 63, 'Instagram', 'amerika', 'AQSh, talaba', 1, 'm3', 'rad', -50, 'Viza qiyin'),
+			Q(-44, 'Bakirova Ozoda', 64, 'Tavsiya', 'osiyo', 'Dubay, oilaviy 2+2', 4, 'm1', 'rad', -40, 'Narx qimmat'),
+			Q(-27, 'Sultonov Behzod', 65, 'Telegram', 'yevropa', 'Italiya, 2 kishi', 2, 'm2', 'rad', -22, 'Boshqa agentlikni tanladi'),
+			Q(-9, 'Murodova Gulnoza', 66, 'Instagram', 'osiyo', 'Malayziya, oilaviy', 4, 'm3', 'rad', -6, 'Narx qimmat'),
+			Q(-6, 'Hakimov Shohruh', 67, 'Telegram', 'amerika', 'AQSh, Nyu-York, 2 kishi', 2, 'm3', 'taklif', -2),
+			Q(-5, 'Aliyeva Nilufar', 68, 'Instagram', 'osiyo', 'Tailand, oilaviy 2+2', 4, 'm1', 'taklif', -4),
+			Q(-3, 'Qosimov Bahodir', 69, 'Telegram', 'yevropa', 'Shengen: Italiya yoki Ispaniya, bahorda', 2, 'm1', 'aloqa', -2),
+			Q(-2, 'Ibragimova Sitora', 70, 'Ofisga keldi', 'osiyo', 'Malayziya, asal oyi', 2, 'm3', 'aloqa', -1),
+			Q(-1, 'Nurmatov Eldor', 71, 'Instagram', 'osiyo', 'Dubay, yangi yil, 4 kishi', 4, 'm2', 'yangi', -1),
+			Q(0, 'Shodmonova Dilnoza', 72, 'Tavsiya', 'osiyo', 'Turkiya, ota-onam uchun', 2, 'm1', 'yangi', 0),
+			Q(0, 'Tojiboyev Akbar', 73, 'Instagram', 'yevropa', 'Parij, 3 kishi, mart', 3, 'm2', 'yangi', 0),
+		);
+		ar.sort((a, b) => a.sana < b.sana ? -1 : a.sana > b.sana ? 1 : 0);
+		const arizalar = ar.map((a, i) => Object.assign({ id: 'A-' + (301 + i) }, a));
+		for (const a of arizalar) if (a.bron) bronlar.find(b => b.id === a.bron).ariza = a.id;
+		// Turlar katalogi: jo'nash sanalari (bronlardagi sanalar + qo'shimcha)
+		const turlar = TURLAR.map(t => {
+			const s = new Set(bronlar.filter(b => b.tur === t.id).map(b => b.jonash));
+			for (const q of t.qosh) s.add(k(q));
+			return { id: t.id, nom: t.nom, qisqa: t.qisqa, yon: t.yon, kecha: t.kecha, viza: t.viza, narx: t.narx, x: Object.assign({}, t.x), avia: t.avia, reys: t.reys, meh: t.meh, sanalar: [...s].sort().map(sana => ({ sana, joy: t.joy })) };
+		});
+		// Ofis xarajatlari (oyiga, USD ekvivalenti) — oxirgi 4 oy
+		const ofis = [];
+		for (let m = 3; m >= 0; m--) {
+			const d = new Date(b0.getFullYear(), b0.getMonth() - m, 1), s = iso(d);
+			ofis.push({ sana: s, nom: 'Ofis ijarasi', usd: 700 }, { sana: s, nom: 'Xodimlar maoshi', usd: 2400 }, { sana: s, nom: 'Instagram va Telegram reklama', usd: m === 1 ? 600 : 450 }, { sana: s, nom: 'Aloqa va internet', usd: 90 }, { sana: s, nom: 'Boshqa ofis xarajatlari', usd: 140 });
+		}
+		return {
+			v: 1, bugun: iso(b0), davrBosh: k(-120), kassaBosh: 15000, kurs: 12050, kursSana: iso(b0),
+			sanoq: { BT: 2122, A: 300 + arizalar.length },
+			xodimlar, turlar, bronlar, arizalar, ofis,
+		};
+	}
+	return { urug, iso, VHUJ, MARKAZ };
+})();
+
+
+/* ===== ilova1.js ===== */
+/* Big Tour — boshqaruv tizimi namunasi. 1-qism: holat, hisob-kitob, qobiq, kirish.
+   Fayllar qurish\qurish.mjs bilan bitta index.html ga yig'iladi (umumiy doira ichida). */
+const KALIT = 'bigtour_namuna_v1';
+let db = null;
+const ui = { rol: null, kim: null, til: 'lot', tanlov: null, pinXato: false, oxirgiYol: '' };
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const asl = s => `<span data-asl>${esc(s)}</span>`; // o'girilmaydigan nom/raqam
+
+/* ---------- Saqlash ---------- */
+function saqla() { try { localStorage.setItem(KALIT, JSON.stringify({ db, ui: { til: ui.til, rol: ui.rol, kim: ui.kim } })); } catch (e) { /* xotira yopiq bo'lsa ham ishlaydi */ } }
+function yukla() {
+	let s = null;
+	try { s = JSON.parse(localStorage.getItem(KALIT) || 'null'); } catch (e) { s = null; }
+	const bugun = Malumot.iso(new Date());
+	if (s && s.ui && (s.ui.til === 'kir' || s.ui.til === 'lot')) ui.til = s.ui.til;
+	if (s && s.db && s.db.v === 1 && s.db.bugun === bugun && (!s.ui.rol || ROL[s.ui.rol])) { db = s.db; ui.rol = s.ui.rol || null; ui.kim = s.ui.kim || null; }
+	else { db = Malumot.urug(new Date()); ui.rol = null; ui.kim = null; }
+}
+
+/* ---------- Sana va pul ---------- */
+const kunMs = iso => { const p = iso.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); };
+const kunFarq = iso => Math.round((kunMs(iso) - kunMs(db.bugun)) / 864e5);
+const kunOrasi = (a, b) => Math.round((kunMs(b) - kunMs(a)) / 864e5);
+const kunQosh = (iso, n) => { const d = new Date(kunMs(iso) + n * 864e5); return d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0') + '-' + String(d.getUTCDate()).padStart(2, '0'); };
+const sana = iso => { if (!iso) return '—'; const p = iso.split('-'); return p[2] + '.' + p[1] + '.' + p[0]; };
+const sanaQ = iso => { if (!iso) return '—'; const p = iso.split('-'); return +p[2] + '-' + OYLAR[+p[1] - 1].toLowerCase(); };
+function nisbiy(iso) {
+	if (!iso) return '—';
+	const f = kunFarq(iso);
+	if (f === 0) return 'bugun'; if (f === -1) return 'kecha'; if (f === 1) return 'ertaga';
+	return f < 0 ? `${-f} kun oldin` : `${f} kundan keyin`;
+}
+const guruhla = n => (n < 0 ? '−' : '') + String(Math.round(Math.abs(n))).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+const usd = n => guruhla(n) + ' $';
+const pul = n => guruhla(n) + ` so'm`;
+function mln(n) { // 12 500 000 -> «12,5 mln»
+	const a = Math.abs(n), z = n < 0 ? '−' : '';
+	if (a >= 1e9) return z + String(Math.round(a / 1e7) / 100).replace('.', ',') + ' mlrd';
+	if (a < 1e6) return guruhla(n);
+	return z + String(Math.round(a / 1e5) / 10).replace('.', ',') + ' mln';
+}
+const somda = n => mln(n * db.kurs) + ` so'm`; // dollar summaning joriy kursdagi so'm qiymati
+const foiz = n => String(Math.round(n * 10) / 10).replace('.', ',') + '%';
+const OYLAR = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+const oyKey = iso => iso.slice(0, 7);
+const oyNom = key => OYLAR[+key.slice(5, 7) - 1] + ' ' + key.slice(0, 4);
+function oylar() { const p = db.bugun.split('-'); const r = []; for (let i = 0; i < 3; i++) { const d = new Date(Date.UTC(+p[0], +p[1] - 1 - i, 1)); r.push(d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0')); } return r; }
+
+/* ---------- Topish ---------- */
+const topB = id => db.bronlar.find(x => x.id === id);
+const topA = id => db.arizalar.find(x => x.id === id);
+const topT = id => db.turlar.find(x => x.id === id);
+const topXo = id => db.xodimlar.find(x => x.id === id);
+const ism = id => { const x = topXo(id); return x ? x.ism : '—'; };
+const menejerlar = () => db.xodimlar.filter(x => x.rol === 'menejer');
+const yangiId = h => (h === 'BT' ? 'BT-' : 'A-') + (++db.sanoq[h]);
+const yig = (a, f) => a.reduce((s, x) => s + f(x), 0);
+
+/* ---------- Nomlar ---------- */
+const ROL = {
+	rahbar: { n: 'Rahbar', d: 'Hamma bo\'limlar: arizalar, bronlar, to\'lovlar, menejerlar, oylik foyda', i: 'panel' },
+	menejer: { n: 'Sotuv menejeri', d: 'Arizalar, tur tanlash, bronlar, mijoz to\'lov holati', i: 'ariza' },
+	viza: { n: 'Viza va hujjat mas\'uli', d: 'Hujjatlar ro\'yxati, pasport muddati, navbat va javob', i: 'viza' },
+	buxgalter: { n: 'Buxgalter', d: 'Avans va qoldiq, ta\'minotchilarga to\'lovlar, oylik hisobot', i: 'tolov' },
+};
+const YON = { osiyo: 'Osiyo', yevropa: 'Yevropa', amerika: 'Amerika' };
+const BOSQ = { tanlandi: 'Tur tanlandi', bron: 'Bron', viza: 'Viza va hujjatlar', tayyor: 'Jo\'nashga tayyor', safarda: 'Safarda', qaytdi: 'Qaytdi' };
+const BOSQ_T = ['tanlandi', 'bron', 'viza', 'tayyor', 'safarda', 'qaytdi'];
+const BOSQ_B = { tanlandi: 'sa', bron: 'bi', viza: 'bi', tayyor: 'ko', safarda: 'ko', qaytdi: 'ya' };
+const AHOL = { yangi: 'Yangi', aloqa: 'Bog\'lanildi', taklif: 'Taklif yuborildi', bron: 'Bronga aylandi', rad: 'Rad etildi' };
+const AHOL_T = ['yangi', 'aloqa', 'taklif', 'bron', 'rad'];
+const AHOL_B = { yangi: 'qi', aloqa: 'sa', taklif: 'ko', bron: 'ya', rad: '' };
+const VTUR = { kerakmas: 'Viza kerak emas', evisa: 'Elektron viza', shengen: 'Shengen vizasi', aqsh: 'AQSh vizasi' };
+const VHOL_T = ['yigilmoqda', 'navbat', 'topshirildi', 'berildi', 'rad'];
+const HUJ = {
+	pasport: 'Pasport (qaytgandan keyin 6 oy amal qiladi)', surat: 'Surat 3,5 × 4,5', anketa: 'Viza anketasi', ds160: 'DS-160 anketa',
+	bank: 'Bank ma\'lumotnomasi (hisob qoldig\'i)', ish: 'Ish joyidan ma\'lumotnoma', aviabron: 'Aviabron', mehbron: 'Mehmonxona broni', sugurta: 'Sug\'urta polisi', yigim: 'Konsullik yig\'imi cheki',
+};
+const JAVOB_KUN = { evisa: 4, shengen: 15, aqsh: 10 };
+const TAM = { avia: 'Aviachipta', meh: 'Mehmonxona', tr: 'Transfer va ekskursiya', sug: 'Sug\'urta', viza: 'Viza yig\'imi' };
+const USUL = ['Naqd so\'m', 'Plastik karta', 'Bank o\'tkazmasi', 'Naqd dollar'];
+const RAD_SABAB = ['Narx qimmat', 'Sana to\'g\'ri kelmadi', 'Viza qiyin', 'Boshqa agentlikni tanladi', 'Fikridan qaytdi'];
+
+/* ---------- Bron: narx, to'lov, tannarx ---------- */
+const turB = b => topT(b.tur);
+const yonB = b => turB(b).yon;
+const qaytish = b => kunQosh(b.jonash, turB(b).kecha);
+const narxB = b => b.narxK * b.odam - b.chegirma;
+const tanB = b => yig(Object.keys(TAM), k => b.x[k] || 0);
+const foydaB = b => narxB(b) - tanB(b);
+const tolS = b => yig(b.tol, t => t.usd);
+const qoldi = b => Math.max(0, narxB(b) - tolS(b));
+const avansS = b => Math.round(narxB(b) * b.avansF / 100);
+const qMuddat = b => kunQosh(b.jonash, yonB(b) === 'osiyo' ? -14 : -21);
+const faolB = b => b.bosqich !== 'qaytdi';
+const kelgusiB = b => !['safarda', 'qaytdi'].includes(b.bosqich);
+function grafik(b) {
+	const av = avansS(b);
+	const q = [{ n: `Avans ${b.avansF}%`, sana: kunQosh(b.sana, 2), summa: av }, { n: 'Qoldiq', sana: qMuddat(b), summa: narxB(b) - av }];
+	let p = tolS(b);
+	return q.map(g => { const t = Math.min(p, g.summa); p -= t; return Object.assign(g, { qol: g.summa - t, farq: kunFarq(g.sana) }); });
+}
+function tKech(b) { // muddati o'tgan to'lov
+	const r = { summa: 0, kun: 0, keyingi: null };
+	for (const g of grafik(b)) {
+		if (g.qol < 1) continue;
+		if (g.farq < 0) { r.summa += g.qol; r.kun = Math.max(r.kun, -g.farq); } else if (!r.keyingi) r.keyingi = g;
+	}
+	return r;
+}
+function tolovBelgi(b) {
+	if (qoldi(b) < 1) return `<span class="b ya">To'liq to'langan</span>`;
+	const q = tKech(b);
+	if (q.summa > 0) return `<span class="b qi">${b.tol.length ? 'Qoldiq' : 'Avans'} ${q.kun} kun kechikdi</span>`;
+	if (!b.tol.length) return `<span class="b sa">Avans kutilmoqda</span>`;
+	return `<span class="b">Qoldiq: ${sanaQ(qMuddat(b))}</span>`;
+}
+const pulKorar = () => ui.rol !== 'viza';
+const foydaKorar = () => ui.rol === 'rahbar' || ui.rol === 'buxgalter';
+const kutilmoqda = (bl) => yig((bl || db.bronlar).filter(faolB), qoldi);
+const kechJami = (bl) => yig((bl || db.bronlar), b => tKech(b).summa);
+
+/* ---------- Viza va hujjatlar ---------- */
+const vTur = b => b.viza.tur;
+const vHujjatlar = b => Malumot.VHUJ[vTur(b)];
+const vYoq = b => vHujjatlar(b).filter(h => !b.viza.hujjat[h]);
+const pasYomon = b => b.sayoh.filter(s => !s.muddat || kunOrasi(qaytish(b), s.muddat) < 182);
+const javobSana = b => b.viza.topsh && JAVOB_KUN[vTur(b)] ? kunQosh(b.viza.topsh, JAVOB_KUN[vTur(b)]) : null;
+function vHolNom(b, h) {
+	h = h || b.viza.holat; const t = vTur(b);
+	if (t === 'kerakmas') return h === 'berildi' ? 'Hujjatlar tayyor' : 'Hujjat yig\'ilmoqda';
+	return { yigilmoqda: 'Hujjat yig\'ilmoqda', navbat: t === 'aqsh' ? 'Suhbat belgilandi' : 'Navbat belgilandi', topshirildi: t === 'aqsh' ? 'Suhbatdan o\'tdi, javob kutilmoqda' : 'Topshirildi, javob kutilmoqda', berildi: 'Viza berildi', rad: 'Rad etildi' }[h];
+}
+const VHOL_B = { yigilmoqda: 'sa', navbat: 'ko', topshirildi: 'bi', berildi: 'ya', rad: 'qi' };
+const vBelgi = b => `<span class="b ${b.viza.holat === 'yigilmoqda' && !vYoq(b).length && !pasYomon(b).length && b.bosqich !== 'tanlandi' ? 'ko' : VHOL_B[b.viza.holat]}">${vHolNom(b)}</span>`;
+const vizaKechikdi = b => b.viza.holat === 'topshirildi' && javobSana(b) && kunFarq(javobSana(b)) < 0;
+const vizaFaol = b => kelgusiB(b) && b.viza.holat !== 'berildi';
+
+/* ---------- Ta'minotchilar (aviakompaniya, mehmonxona va boshqalar) ---------- */
+function tamMuddat(b, k) {
+	if (k === 'avia') return b.avia.muddat || kunQosh(b.jonash, -20);
+	if (k === 'meh') return kunQosh(b.jonash, -10);
+	if (k === 'tr') return kunQosh(b.jonash, -3);
+	if (k === 'sug') return kunQosh(b.jonash, -20);
+	return b.viza.navbat || b.viza.topsh || kunQosh(b.sana, 7);
+}
+function tamKim(b, k) {
+	if (k === 'avia') return b.avia.kompaniya;
+	if (k === 'meh') return b.meh.nom;
+	if (k === 'viza') return b.viza.markaz || 'Viza markazi';
+	return k === 'tr' ? 'Mahalliy hamkor' : 'Sug\'urta kompaniyasi';
+}
+const nomH = s => /^(VFS|TLS)/.test(s) ? asl(s) : esc(s); // xorijiy nom o'girilmaydi, o'zbekcha nom o'giriladi
+const tamKimH = (b, k) => k === 'avia' || k === 'meh' ? asl(tamKim(b, k)) : nomH(tamKim(b, k));
+function tamNavbat() { // to'lanmagan ta'minotchi to'lovlari
+	const r = [];
+	for (const b of db.bronlar) {
+		if (b.bosqich === 'tanlandi') continue;
+		for (const k of Object.keys(TAM)) if (b.x[k] > 0 && !b.ttol[k]) r.push({ b, k, summa: b.x[k], muddat: tamMuddat(b, k) });
+	}
+	return r.sort((a, c) => a.muddat < c.muddat ? -1 : a.muddat > c.muddat ? 1 : 0);
+}
+
+/* ---------- Pul harakati (kassa, dollar ekvivalentida) ---------- */
+function harakatlar() {
+	const r = [];
+	for (const b of db.bronlar) {
+		for (const t of b.tol) r.push({ sana: t.sana, kir: t.usd, som: t.som, m: `${b.id}: ${b.mijoz} — ${t.usul.toLowerCase()}`, b: b.id });
+		for (const k of Object.keys(TAM)) if (b.ttol[k] && b.x[k]) r.push({ sana: b.ttol[k], chiq: b.x[k], m: `${b.id}: ${TAM[k].toLowerCase()}`, kim: tamKim(b, k), kimH: tamKimH(b, k), b: b.id, k });
+	}
+	for (const o of db.ofis) if (o.sana <= db.bugun) r.push({ sana: o.sana, chiq: o.usd, m: o.nom, ofis: 1 });
+	return r.sort((a, b) => a.sana < b.sana ? 1 : a.sana > b.sana ? -1 : 0);
+}
+const kassa = () => db.kassaBosh + yig(harakatlar(), x => (x.kir || 0) - (x.chiq || 0));
+
+/* ---------- Oylik hisob ---------- */
+function oyHisob(m) {
+	const safar = db.bronlar.filter(b => oyKey(b.jonash) === m);
+	const ofis = db.ofis.filter(o => oyKey(o.sana) === m && o.sana <= db.bugun);
+	const har = harakatlar().filter(x => oyKey(x.sana) === m);
+	const yon = Object.keys(YON).map(k => { const bl = safar.filter(b => yonB(b) === k); return { k, bl, odam: yig(bl, b => b.odam), sotuv: yig(bl, narxB), tan: yig(bl, tanB), foyda: yig(bl, foydaB) }; });
+	const sotuv = yig(safar, narxB), tan = yig(safar, tanB), ofisS = yig(ofis, o => o.usd);
+	const tarkib = {}; for (const k of Object.keys(TAM)) tarkib[k] = yig(safar, b => b.x[k] || 0);
+	return { m, safar, ofis, har, yon, sotuv, tan, ofisS, xarajat: tan + ofisS, sof: sotuv - tan - ofisS, tarkib, kirim: yig(har, x => x.kir || 0), chiqim: yig(har, x => x.chiq || 0), odam: yig(safar, b => b.odam) };
+}
+function menStat(id, m) {
+	const ar = db.arizalar.filter(a => a.menejer === id && (!m || oyKey(a.sana) === m));
+	const br = db.bronlar.filter(b => b.menejer === id && (!m || oyKey(b.sana) === m));
+	const yopiq = ar.filter(a => a.holat === 'bron' || a.holat === 'rad');
+	const faol = db.bronlar.filter(b => b.menejer === id && faolB(b));
+	return { ar: ar.length, bron: ar.filter(a => a.holat === 'bron').length, rad: ar.filter(a => a.holat === 'rad').length, ochiq: ar.length - yopiq.length, konv: ar.length ? ar.filter(a => a.holat === 'bron').length / ar.length * 100 : 0, bronSon: br.length, odam: yig(br, b => b.odam), sotuv: yig(br, narxB), foyda: yig(br, foydaB), kut: kutilmoqda(faol), kech: kechJami(faol), javobsiz: db.arizalar.filter(a => a.menejer === id && a.holat === 'yangi' && kunFarq(a.sana) < 0).length };
+}
+
+/* ---------- Turlar: joylar ---------- */
+const band = (tid, s) => yig(db.bronlar.filter(b => b.tur === tid && b.jonash === s), b => b.odam);
+const kelgusiSanalar = t => t.sanalar.filter(s => kunFarq(s.sana) > 2);
+
+/* ---------- Belgilar (ikon) ---------- */
+const IK = {
+	panel: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+	ariza: '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/>',
+	bron: '<path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 11v2M13 17v2"/>',
+	tur: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+	viza: '<rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 17h6"/>',
+	tolov: '<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+	menejer: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+	hisobot: '<path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/>',
+	samolyot: '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+	mehmon: '<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
+	chiq: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
+	qosh: '<path d="M12 5v14M5 12h14"/>', ong: '<path d="m9 6 6 6-6 6"/>', chap: '<path d="m15 6-6 6 6 6"/>',
+	ogoh: '<path d="M10.3 3.9 2.4 17.5a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/>',
+	soat: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', ha: '<path d="m5 12 5 5L20 7"/>', yop: '<path d="M6 6l12 12M18 6 6 18"/>',
+	izla: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+	yana: '<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+	tush: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>',
+	pul: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>',
+};
+const ik = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IK[n] || ''}</svg>`;
+
+/* ---------- Yo'l (hash) ---------- */
+const BOLIM = {
+	panel: { n: 'Panel', i: 'panel', h: '#/panel' }, ishim: { n: 'Mening ishim', i: 'panel', h: '#/ishim' },
+	arizalar: { n: 'Arizalar', i: 'ariza', h: '#/arizalar' }, bronlar: { n: 'Bronlar', i: 'bron', h: '#/bronlar' },
+	turlar: { n: 'Turlar', i: 'tur', h: '#/turlar' }, viza: { n: 'Viza va hujjatlar', i: 'viza', h: '#/viza' },
+	tolovlar: { n: 'To\'lovlar', i: 'tolov', h: '#/tolovlar' }, menejerlar: { n: 'Menejerlar ishi', i: 'menejer', h: '#/menejerlar' },
+	hisobot: { n: 'Oylik hisobot', i: 'hisobot', h: '#/hisobot' },
+};
+const NAV = {
+	rahbar: ['panel', 'arizalar', 'bronlar', 'viza', 'tolovlar', 'turlar', 'menejerlar', 'hisobot'],
+	menejer: ['ishim', 'arizalar', 'bronlar', 'turlar', 'viza'],
+	viza: ['viza', 'bronlar'],
+	buxgalter: ['tolovlar', 'bronlar', 'hisobot'],
+};
+const RUXSAT = NAV;
+function yol() {
+	const h = (location.hash || '').replace(/^#\/?/, '');
+	const [yo, tab] = h.split('?'); const [bol, arg] = yo.split('/');
+	return { bol: bol || '', arg: arg ? decodeURIComponent(arg) : '', tab: tab || '' };
+}
+const boshSahifa = () => BOLIM[NAV[ui.rol][0]].h;
+const mening = bl => ui.rol === 'menejer' ? bl.filter(b => b.menejer === ui.kim) : bl;
+function navSon(k) {
+	if (k === 'arizalar') return mening(db.arizalar).filter(a => a.holat === 'yangi').length;
+	if (k === 'bronlar') return ui.rol === 'viza' ? 0 : mening(db.bronlar).filter(b => b.bosqich === 'tanlandi').length;
+	if (k === 'viza') return mening(db.bronlar).filter(b => vizaFaol(b) && (b.viza.holat === 'rad' || vizaKechikdi(b) || pasYomon(b).length)).length;
+	if (k === 'tolovlar') return db.bronlar.filter(b => tKech(b).summa > 0).length;
+	return 0;
+}
+
+/* ---------- Qobiq ---------- */
+const tilTugma = () => `<div class="til" role="group" aria-label="Yozuv"><button type="button" data-a="til" data-t="lot" aria-pressed="${ui.til === 'lot'}" data-asl>Lotin</button><button type="button" data-a="til" data-t="kir" aria-pressed="${ui.til === 'kir'}" data-asl>Кирилл</button></div>`;
+const NAMUNA = `<div class="namuna" role="note">Namuna — ma'lumotlar misol uchun</div>`;
+function qobiq(ich, y) {
+	const nav = NAV[ui.rol], r = ROL[ui.rol];
+	const havola = k => { const b = BOLIM[k], s = navSon(k); return `<a href="${b.h}" ${k === y.bol ? 'aria-current="page"' : ''}>${ik(b.i)}<span>${b.n}</span>${s ? `<span class="son">${s}</span>` : ''}</a>`; };
+	const pastN = nav.length > 5 ? nav.slice(0, 4) : nav;
+	return `${NAMUNA}
+<aside class="yon"><div class="belgi"><b data-asl>Big Tour</b><span>Osiyo · Yevropa · Amerika</span></div>
+<nav aria-label="Bo'limlar">${nav.map(havola).join('')}</nav>
+<div class="oxir"><div class="kim"><b>${esc(ism(ui.kim))}</b>${ism(ui.kim) !== r.n ? r.n : 'Hamma bo\'limlar'}</div>${tilTugma()}<button class="chiq" type="button" data-a="chiqish">${ik('chiq')}Rolni almashtirish</button></div></aside>
+<header class="tepa"><b data-asl>Big Tour</b><span class="rolb">${r.n}</span><div class="ong"><button class="tilb" type="button" data-a="til" data-t="${ui.til === 'kir' ? 'lot' : 'kir'}" data-asl aria-label="${ui.til === 'kir' ? 'Lotin yozuviga o‘tish' : 'Кирилл ёзувига ўтиш'}">${ui.til === 'kir' ? 'Lotin' : 'Кирилл'}</button><button class="chiq" type="button" data-a="chiqish" aria-label="Rolni almashtirish">${ik('chiq')}</button></div></header>
+<main class="sahifa" id="asosiy">${ich}<div class="pastki"><span>Namuna — ma'lumotlar misol uchun. Mijozlar, ismlar, pasportlar, narxlar, mehmonxonalar va kurs o'ylab topilgan.</span><button class="hav" type="button" data-a="qayta">Namunani boshidan boshlash</button></div></main>
+<nav class="past" aria-label="Bo'limlar">${pastN.map(havola).join('')}${nav.length > 5 ? `<button type="button" data-a="yana">${ik('yana')}<span>Yana</span></button>` : ''}</nav>`;
+}
+
+/* ---------- Kirish ---------- */
+const KIMLAR = { rahbar: 'r1', menejer: 'm1', viza: 'v1', buxgalter: 'b1' };
+function kirishHTML() {
+	let ich;
+	if (ui.tanlov) {
+		const r = ROL[ui.tanlov], x = topXo(KIMLAR[ui.tanlov]);
+		ich = `<h1>${r.n}${x.ism !== r.n ? ' — ' + esc(x.ism) : ''}</h1><p class="izoh">${r.d}</p>
+<form class="pinq" data-f="pin" autocomplete="off">
+<label class="may"><span>PIN kod</span><input class="in" id="pin" name="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-describedby="pinx" required></label>
+<div class="xato" id="pinx" role="alert">${ui.pinXato ? 'PIN noto\'g\'ri. Namuna uchun PIN pastda yozilgan.' : ''}</div>
+<button class="t a keng" type="submit">Kirish</button>
+<p class="yord" style="text-align:center">Namuna uchun PIN: <b data-asl>${x.pin}</b></p>
+</form><p style="text-align:center;margin-top:14px"><button class="hav" type="button" data-a="rolOrqa">Boshqa rolni tanlash</button></p>`;
+	} else {
+		ich = `<h1>Kim sifatida kirasiz?</h1><p class="izoh">Har bir xodim faqat o'z ishiga kerakli bo'limlarni ko'radi.</p>
+<div class="rollar">${Object.keys(ROL).map(k => { const r = ROL[k], x = topXo(KIMLAR[k]); return `<button class="rol" type="button" data-a="rolTanla" data-r="${k}"><span class="dum">${ik(r.i)}</span><span><span class="n">${r.n}${x.ism !== r.n ? ' — ' + esc(x.ism) : ''}</span><span class="d">${r.d}</span></span><span class="pin-t">PIN <b data-asl>${x.pin}</b></span></button>`; }).join('')}</div>`;
+	}
+	return `${NAMUNA}<div class="kirish"><div class="belgi"><b data-asl>Big Tour</b><span>Arizalar, turlar va bronlar, viza, to'lov holati va oylik foyda</span></div>${tilTugma()}
+<div class="quti">${ich}</div>
+<p class="ost">Namuna — ma'lumotlar misol uchun. Mijozlar, ismlar va raqamlar o'ylab topilgan. <button class="hav" type="button" data-a="qayta">Boshidan boshlash</button></p></div>`;
+}
+
+/* ---------- Umumiy bo'laklar ---------- */
+const boshq = (s, ost, ong) => `<div class="bosh"><div><h1>${s}</h1>${ost ? `<div class="ost">${ost}</div>` : ''}</div>${ong ? `<div class="ong">${ong}</div>` : ''}</div>`;
+const orqa = (h, n) => `<a class="orqa" href="${h}">${ik('chap')}${n}</a>`;
+function yorliq(asos, joriy, royxat) { // royxat: [kalit, nom, son, qizil?]
+	return `<div class="yor" role="tablist">${royxat.map(([k, n, s, q]) => `<a role="tab" href="${asos}${k ? '?' + k : ''}" aria-current="${joriy === k}">${n}${s != null ? `<span class="son${q && s ? ' qi' : ''}">${s}</span>` : ''}</a>`).join('')}</div>`;
+}
+const izlash = y => `<div class="izl">${ik('izla')}<input class="in" type="search" data-q placeholder="${y}" aria-label="${y}"></div>`;
+const bosh_yoq = m => `<div class="bosh-yoq">${m}</div>`;
+const qadam = (tart, nom, hoz) => { const i = tart.indexOf(hoz); return `<div class="qadam" aria-label="Bosqich">${tart.map((k, j) => `<span class="${j < i ? 'ot' : j === i ? 'hoz' : ''}">${nom[k]}</span>`).join('')}</div>`; };
+const kpi = (y, q, birlik, p, sinf, h) => `<${h ? `a href="${h}"` : 'div'} class="kp"><div class="y">${y}</div><div class="q">${q}${birlik ? ` <small>${birlik}</small>` : ''}</div>${p ? `<div class="p ${sinf || ''}">${p}</div>` : ''}</${h ? 'a' : 'div'}>`;
+const kpiUsd = (y, n, p, sinf, h) => kpi(y, guruhla(n), '$', p, sinf, h);
+function gor(qatorlar, shakl) { // [nom, qiymat, sinf?]
+	const eng = Math.max(1, ...qatorlar.map(q => Math.abs(q[1])));
+	return `<div class="gor">${qatorlar.map(q => `<div class="q"><span>${q[0]}</span><div class="yol"><i class="${q[2] || (q[1] < 0 ? 'qi' : '')}" style="width:${Math.max(q[1] !== 0 ? 2 : 0, Math.round(Math.abs(q[1]) / eng * 100))}%"></i></div><b>${shakl(q[1])}</b></div>`).join('')}</div>`;
+}
+const etHTML = r => r.length ? `<div class="et">${r.map(x => `<a href="${x.h}"><span class="nuq ${x.d}">${ik(x.i)}</span><span><b>${esc(x.s)}</b><span>${esc(x.m)}</span></span><span class="uq">${ik('ong')}</span></a>`).join('')}</div>` : bosh_yoq('Hozircha e\'tibor talab qiladigan ish yo\'q.');
+const csvT = (k, m) => `<div class="ong"><button class="t k" type="button" data-a="csv" data-h="${k}"${m ? ` data-m="${m}"` : ''}>${ik('tush')}<span data-asl>Excel (CSV)</span></button></div>`;
+
+/* ===== ilova2.js ===== */
+/* 2-qism: sahifalar (faqat HTML qaytaradi, holatni o'zgartirmaydi). */
+
+const sotuvchi = () => ui.rol === 'rahbar' || ui.rol === 'menejer';
+const vizachi = () => ui.rol === 'rahbar' || ui.rol === 'viza';
+const kassir = () => ui.rol === 'rahbar' || ui.rol === 'buxgalter';
+
+/* ---------- Diqqat ro'yxati ---------- */
+// o: { men: faqat shu menejer, viza: faqat viza va hujjat ishlari }
+function diqqat(o) {
+	o = o || {};
+	const r = [], R = ui.rol, pk = pulKorar() && !o.viza, sot = (R === 'rahbar' || R === 'menejer') && !o.viza, viz = R === 'rahbar' || R === 'viza' || R === 'menejer' || o.viza;
+	for (const b of db.bronlar.filter(x => !o.men || x.menejer === o.men)) {
+		const kel = kelgusiB(b), j = kunFarq(b.jonash), h = '#/bronlar/' + b.id, t = turB(b);
+		if (pk) {
+			const q = tKech(b);
+			if (q.summa > 0) r.push({ d: 'qi', i: 'pul', s: `${b.id}: ${b.tol.length ? 'qoldiq' : 'avans'} ${usd(q.summa)} — ${q.kun} kun kechikdi`, m: `${b.mijoz} · jo'nash ${sana(b.jonash)} · ${b.tel}`, h, o: 1 });
+			else if (q.keyingi && q.keyingi.farq <= 3 && b.tol.length) r.push({ d: 'ko', i: 'pul', s: `${b.id}: qoldiq ${usd(q.keyingi.qol)} — muddati ${nisbiy(q.keyingi.sana)}`, m: `${b.mijoz} · ${b.tel}`, h, o: 11 });
+		}
+		if (viz && kel && b.viza.holat === 'rad') r.push({ d: 'qi', i: 'viza', s: `${b.id}: viza rad etildi — ${b.mijoz}`, m: `${t.qisqa}, jo'nash ${sana(b.jonash)} · qayta topshirish yoki sanani surishni mijoz bilan kelishing`, h, o: 2 });
+		if (viz && kel && b.bosqich !== 'tanlandi' && pasYomon(b).length) r.push({ d: 'qi', i: 'viza', s: `${b.id}: pasport muddati yetmaydi — ${pasYomon(b).map(s => s.ism).join(', ')}`, m: `Qaytish ${sana(qaytish(b))} dan keyin 6 oydan kam amal qiladi · yangi pasport kerak`, h, o: 3 });
+		if (sot && kel && j >= 0 && j <= 3 && b.bosqich !== 'tayyor') r.push({ d: 'qi', i: 'samolyot', s: `${b.id}: jo'nashga ${j} kun qoldi, hali tayyor emas`, m: `${b.mijoz} · bosqich: ${BOSQ[b.bosqich]}`, h, o: 4 });
+		if (sot && kel && b.avia.holat === 'bron' && b.avia.muddat && kunFarq(b.avia.muddat) <= 2) r.push({ d: kunFarq(b.avia.muddat) <= 0 ? 'qi' : 'sa', i: 'samolyot', s: `${b.id}: aviachipta yozish muddati ${nisbiy(b.avia.muddat)}`, m: `PNR ${b.avia.pnr} · ${b.odam} kishi · yozilmasa bron o'chadi`, h, o: 5 });
+		if (viz && kel && vizaKechikdi(b)) r.push({ d: 'sa', i: 'soat', s: `${b.id}: viza javobi ${-kunFarq(javobSana(b))} kun kechikmoqda`, m: `Topshirildi ${sana(b.viza.topsh)} · jo'nash ${sana(b.jonash)} (${j} kun)`, h, o: 6 });
+		if (viz && kel && b.viza.holat === 'navbat' && b.viza.navbat && kunFarq(b.viza.navbat) >= 0 && kunFarq(b.viza.navbat) <= 3) r.push({ d: 'ko', i: 'viza', s: `${b.id}: ${t.viza === 'aqsh' ? 'elchixonada suhbat' : 'viza markazida navbat'} ${nisbiy(b.viza.navbat)}`, m: `${b.mijoz}, ${b.odam} kishi · ${vYoq(b).length ? 'yetishmaydi: ' + vYoq(b).map(x => HUJ[x]).join(', ') : 'hujjatlar to\'liq'}`, h, o: 7 });
+		if (viz && kel && b.bosqich !== 'tanlandi' && b.viza.holat === 'yigilmoqda' && vYoq(b).length && j <= 40) r.push({ d: 'sa', i: 'viza', s: `${b.id}: ${vYoq(b).length} ta hujjat yetishmaydi`, m: `${b.mijoz} · ${vYoq(b).map(x => HUJ[x]).join(', ')}`, h, o: 8 });
+		if (sot && kel && b.meh.holat === 'kutilmoqda' && j <= 30) r.push({ d: 'sa', i: 'mehmon', s: `${b.id}: mehmonxona bronni hali tasdiqlamagan`, m: `Jo'nash ${sana(b.jonash)} · ${b.odam} kishi`, h, o: 9 });
+		if (sot && b.bosqich === 'tanlandi' && !b.tol.length && !tKech(b).summa) r.push({ d: 'ko', i: 'pul', s: `${b.id}: avans olinmagan — aviachipta hali bron qilinmagan`, m: `${b.mijoz} · avans ${usd(avansS(b))} · ${b.tel}`, h, o: 10 });
+	}
+	if (kassir() && !o.viza && !o.men) for (const q of tamNavbat()) if (kunFarq(q.muddat) < 0) r.push({ d: 'sa', i: 'tolov', s: `${q.b.id}: ${TAM[q.k].toLowerCase()} to'lovi muddati o'tdi`, m: `${usd(q.summa)} · muddat ${sana(q.muddat)}`, h: '#/tolovlar?taminot', o: 12 });
+	if ((R === 'rahbar' || R === 'menejer') && !o.viza) for (const a of db.arizalar.filter(x => !o.men || x.menejer === o.men)) {
+		if (a.holat === 'yangi' && kunFarq(a.sana) < 0) r.push({ d: 'sa', i: 'ariza', s: `${a.id}: ${a.ism} — ${-kunFarq(a.sana)} kundan beri javobsiz`, m: `${a.qiziqish} · ${a.manba} · ${a.tel}`, h: '#/arizalar', o: 13 });
+		else if (a.holat === 'yangi') r.push({ d: 'ko', i: 'ariza', s: `${a.id}: yangi ariza — ${a.ism}`, m: `${a.qiziqish} · ${a.manba} · ${ism(a.menejer)}`, h: '#/arizalar', o: 14 });
+		if (a.holat === 'taklif' && kunFarq(a.oxirgi) <= -3) r.push({ d: 'ko', i: 'ariza', s: `${a.id}: taklifga ${-kunFarq(a.oxirgi)} kundan beri javob yo'q`, m: `${a.ism} · ${a.qiziqish} · qayta bog'lanish kerak`, h: '#/arizalar?taklif', o: 15 });
+	}
+	return r.sort((a, b) => (a.d === 'qi' ? 0 : a.d === 'sa' ? 1 : 2) - (b.d === 'qi' ? 0 : b.d === 'sa' ? 1 : 2) || a.o - b.o);
+}
+
+/* ---------- Kartochkalar ---------- */
+function bKarta(b) {
+	const t = turB(b);
+	let bel = `<span class="b ${BOSQ_B[b.bosqich]}">${BOSQ[b.bosqich]}</span>`;
+	if (pulKorar() && faolB(b)) bel += tolovBelgi(b);
+	if (kelgusiB(b) && b.bosqich !== 'tanlandi' && (b.viza.holat !== 'berildi' || ui.rol === 'viza')) bel += vBelgi(b);
+	if (kelgusiB(b) && b.bosqich !== 'tanlandi' && pasYomon(b).length) bel += `<span class="b qi">Pasport muddati</span>`;
+	const vaqt = b.bosqich === 'qaytdi' ? `Qaytdi ${sana(qaytish(b))}` : b.bosqich === 'safarda' ? `Qaytadi ${sana(qaytish(b))}` : `Jo'nash ${sana(b.jonash)} · ${nisbiy(b.jonash)}`;
+	return `<a class="el" href="#/bronlar/${b.id}" data-s="${esc(Yozuv.qid([b.id, b.mijoz, t.nom, YON[t.yon], ism(b.menejer), ...b.sayoh.map(s => s.ism)].join(' ')))}"><div class="ust"><span class="id">${b.id}</span>${bel}</div><div class="nom">${esc(b.mijoz)}</div><div class="mat">${esc(t.nom)} · ${b.odam} kishi</div><div class="pas"><span>${esc(ism(b.menejer))}</span><span>${vaqt}</span>${pulKorar() ? `<span class="ong">${usd(narxB(b))}</span>` : ''}</div></a>`;
+}
+function vKarta(b) {
+	const t = turB(b), v = b.viza;
+	let vaqt = '';
+	if (v.holat === 'navbat') vaqt = `${t.viza === 'aqsh' ? 'Suhbat' : 'Navbat'}: ${sana(v.navbat)} (${nisbiy(v.navbat)})`;
+	else if (v.holat === 'topshirildi') vaqt = `Javob: ${sana(javobSana(b))}${vizaKechikdi(b) ? ' — kechikmoqda' : ''}`;
+	else if (v.holat === 'yigilmoqda') vaqt = vYoq(b).length ? `Yetishmaydi: ${vYoq(b).length} ta hujjat` : 'Hujjatlar to\'liq';
+	else if (v.holat === 'rad') vaqt = `Rad etildi ${sana(v.javob)}`;
+	else vaqt = v.javob ? `Tayyor ${sana(v.javob)}` : 'Tayyor';
+	return `<a class="el${v.holat === 'rad' || pasYomon(b).length ? ' shosh' : ''}" href="#/bronlar/${b.id}" data-s="${esc(Yozuv.qid([b.id, b.mijoz, t.nom, ...b.sayoh.map(s => s.ism + ' ' + s.pasport)].join(' ')))}"><div class="ust"><span class="id">${b.id}</span><span class="b">${VTUR[t.viza]}</span>${vBelgi(b)}${pasYomon(b).length ? '<span class="b qi">Pasport muddati yetmaydi</span>' : ''}</div><div class="nom">${esc(b.mijoz)}${b.odam > 1 ? ` va yana ${b.odam - 1} kishi` : ''}</div><div class="mat">${esc(t.nom)}</div><div class="pas"><span>${vaqt}</span><span class="ong">Jo'nash ${sana(b.jonash)}</span></div></a>`;
+}
+function aKarta(a) {
+	const f = kunFarq(a.sana);
+	const bel = `<span class="b ${AHOL_B[a.holat]}">${AHOL[a.holat]}</span>${a.holat === 'yangi' && f < 0 ? `<span class="b qi">${-f} kundan beri javobsiz</span>` : ''}${a.holat === 'taklif' && kunFarq(a.oxirgi) <= -3 ? `<span class="b sa">${-kunFarq(a.oxirgi)} kun javob yo'q</span>` : ''}`;
+	return `<div class="el" data-s="${esc(Yozuv.qid([a.id, a.ism, a.qiziqish, a.manba, YON[a.yon], ism(a.menejer)].join(' ')))}"><div class="ust"><span class="id">${a.id}</span>${bel}</div><div class="nom">${esc(a.ism)}</div><div class="mat">${esc(a.qiziqish)} · ${YON[a.yon]}</div><div class="pas"><span>${esc(a.manba)}</span><span>${esc(ism(a.menejer))}</span><span>${sana(a.sana)}</span><span data-asl>${esc(a.tel)}</span>${a.bron ? `<a href="#/bronlar/${a.bron}">${a.bron}</a>` : ''}${a.sabab ? `<span>Sabab: ${esc(a.sabab)}</span>` : ''}</div>${aAmal(a)}</div>`;
+}
+function aAmal(a) {
+	if (!sotuvchi() || a.holat === 'bron' || a.holat === 'rad') return '';
+	const t = (amal, n, sinf) => `<button class="t ${sinf || ''}" type="button" data-a="${amal}" data-id="${a.id}">${n}</button>`;
+	const asos = a.holat === 'yangi' ? t('arizaKeyingi', 'Bog\'landim', 'a') : a.holat === 'aloqa' ? t('arizaKeyingi', 'Taklif yuborildi', 'a') : t('arizaBron', 'Tur tanlab bron ochish', 'a');
+	return `<div class="amal">${asos}${t('arizaRad', 'Rad etdi')}</div>`;
+}
+
+/* ---------- Rahbar paneli ---------- */
+function vPanel() {
+	const m = oylar()[0], h = oyHisob(m), faol = db.bronlar.filter(faolB);
+	const arOy = db.arizalar.filter(a => oyKey(a.sana) === m), arBron = arOy.filter(a => a.holat === 'bron').length;
+	const kut = kutilmoqda(), kech = kechJami();
+	const yaqin = db.bronlar.filter(b => kelgusiB(b) && kunFarq(b.jonash) >= 0 && kunFarq(b.jonash) <= 14).sort((a, b) => a.jonash < b.jonash ? -1 : 1);
+	return boshq('Panel', `Bugun ${sana(db.bugun)} · kurs (misol): 1 $ = ${guruhla(db.kurs)} so'm`) +
+		`<div class="kpi">${kpi(`Arizalar: ${oyNom(m)}`, arOy.length, 'ta', `Bronga aylandi: ${arBron} (${foiz(arOy.length ? arBron / arOy.length * 100 : 0)})`, '', '#/arizalar')}${kpi('Faol bronlar', faol.length, 'ta', `${yig(faol, b => b.odam)} sayohatchi · safarda: ${faol.filter(b => b.bosqich === 'safarda').length}`, '', '#/bronlar')}${kpiUsd('Mijozlardan kutilmoqda', kut, kech ? `Muddati o'tgan: ${usd(kech)}` : 'Hammasi muddatida', kech ? 'yom' : 'yax', '#/tolovlar')}${kpiUsd(`Sof foyda: ${oyNom(m)}`, h.sof, `Tushum ${usd(h.sotuv)} · ${h.safar.length} safar`, h.sof >= 0 ? 'yax' : 'yom', '#/hisobot')}</div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Bugun e'tibor talab qiladi</h2></div>${etHTML(diqqat())}</div>
+<div class="k"><div class="kb"><h2>Yaqin 14 kunda jo'nashlar</h2><div class="ong"><a href="#/bronlar">Hammasi</a></div></div><div class="ry">${yaqin.map(bKarta).join('') || bosh_yoq('14 kun ichida jo\'nash yo\'q.')}</div></div></div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Yo'nalishlar bo'yicha foyda: ${oyNom(m)}</h2><div class="ong"><a href="#/hisobot">Oylik hisobot</a></div></div>${gor(h.yon.map(g => [YON[g.k], g.foyda]), usd)}<p class="yord" style="margin-top:8px">Shu oyda jo'nagan va jo'naydigan safarlar: sotuv ${usd(h.sotuv)}, tannarx ${usd(h.tan)}.</p></div>
+<div class="k"><div class="kb"><h2>Menejerlar: ${oyNom(m)}</h2><div class="ong"><a href="#/menejerlar">Batafsil</a></div></div><div class="jw"><table class="j tel"><thead><tr><th>Menejer</th><th class="r">Ariza</th><th class="r">Bron</th><th class="r">Konversiya</th><th class="r">Sotuv</th></tr></thead><tbody>${menejerlar().map(x => { const s = menStat(x.id, m); return `<tr data-h="#/menejerlar" class="bos"><td><b>${esc(x.ism)}</b></td><td class="r" data-y="Ariza">${s.ar}</td><td class="r" data-y="Bron">${s.bron}</td><td class="r" data-y="Konversiya">${foiz(s.konv)}</td><td class="r" data-y="Sotuv">${usd(s.sotuv)}</td></tr>`; }).join('')}</tbody></table></div></div></div>
+<div class="k"><div class="kb"><h2>Bronlar bosqichlar bo'yicha</h2><div class="ong"><a href="#/bronlar">Bronlar</a></div></div><div class="jw"><table class="j tel"><thead><tr><th>Bosqich</th><th class="r">Bron</th><th class="r">Sayohatchi</th><th class="r">Sotuv</th><th class="r">Kutilmoqda</th></tr></thead><tbody>${BOSQ_T.map(s => { const bl = db.bronlar.filter(b => b.bosqich === s); return `<tr data-h="#/bronlar?${s}" class="bos"><td><b>${BOSQ[s]}</b></td><td class="r" data-y="Bron">${bl.length}</td><td class="r" data-y="Sayohatchi">${yig(bl, b => b.odam)}</td><td class="r" data-y="Sotuv">${usd(yig(bl, narxB))}</td><td class="r" data-y="Kutilmoqda">${usd(yig(bl, qoldi))}</td></tr>`; }).join('')}</tbody></table></div></div>`;
+}
+
+/* ---------- Sotuv menejeri: mening ishim ---------- */
+function vIshim() {
+	const m = oylar()[0], mb = db.bronlar.filter(b => b.menejer === ui.kim), faol = mb.filter(faolB), s = menStat(ui.kim, m);
+	const ochiq = db.arizalar.filter(a => a.menejer === ui.kim && ['yangi', 'aloqa', 'taklif'].includes(a.holat));
+	const yaqin = faol.filter(b => kelgusiB(b) && kunFarq(b.jonash) <= 21).sort((a, b) => a.jonash < b.jonash ? -1 : 1);
+	return boshq(`Salom, ${esc(ism(ui.kim))}`, `Bugun ${sana(db.bugun)}`, `<button class="t a" type="button" data-a="yangiAriza">${ik('qosh')}Yangi ariza</button>`) +
+		`<div class="kpi">${kpi('Ochiq arizalarim', ochiq.length, 'ta', `Yangi: ${ochiq.filter(a => a.holat === 'yangi').length}`, ochiq.some(a => a.holat === 'yangi' && kunFarq(a.sana) < 0) ? 'yom' : '', '#/arizalar')}${kpi('Faol bronlarim', faol.length, 'ta', `${yig(faol, b => b.odam)} sayohatchi`, '', '#/bronlar')}${kpiUsd(`Sotuvim: ${oyNom(m)}`, s.sotuv, `${s.bronSon} ta bron · konversiya ${foiz(s.konv)}`, '', '#/bronlar')}${kpiUsd('Mijozlardan kutilmoqda', s.kut, s.kech ? `Muddati o'tgan: ${usd(s.kech)}` : 'Hammasi muddatida', s.kech ? 'yom' : 'yax', '#/bronlar')}</div>
+<div class="k"><div class="kb"><h2>Bugun qilinadigan ishlar</h2></div>${etHTML(diqqat({ men: ui.kim }))}</div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Yaqin jo'nashlarim (21 kun)</h2><div class="ong"><a href="#/bronlar">Hammasi</a></div></div><div class="ry">${yaqin.map(bKarta).join('') || bosh_yoq('Yaqin jo\'nash yo\'q.')}</div></div>
+<div class="k"><div class="kb"><h2>Ochiq arizalarim</h2><div class="ong"><a href="#/arizalar">Hammasi</a></div></div><div class="ry">${ochiq.map(aKarta).join('') || bosh_yoq('Ochiq ariza yo\'q.')}</div></div></div>`;
+}
+
+/* ---------- Arizalar ---------- */
+function vArizalar(y) {
+	const hamma = mening(db.arizalar), tab = y.tab;
+	const ochiq = a => ['yangi', 'aloqa', 'taklif'].includes(a.holat);
+	const r = (tab ? hamma.filter(a => a.holat === tab) : hamma.filter(ochiq)).slice().sort((a, b) => AHOL_T.indexOf(a.holat) - AHOL_T.indexOf(b.holat) || (a.sana < b.sana ? 1 : -1));
+	const m = oylar()[0], oy = hamma.filter(a => oyKey(a.sana) === m), oyB = oy.filter(a => a.holat === 'bron').length;
+	const manba = {}; for (const a of oy) manba[a.manba] = (manba[a.manba] || 0) + 1;
+	return boshq('Arizalar', `Instagram, Telegram, tavsiya va ofisdan kelgan so'rovlar · ${oyNom(m)}: ${oy.length} ta, bronga aylandi ${oyB} (${foiz(oy.length ? oyB / oy.length * 100 : 0)})`, `<button class="t a" type="button" data-a="yangiAriza">${ik('qosh')}Yangi ariza</button>`) +
+		yorliq('#/arizalar', tab, [['', 'Ochiq', hamma.filter(ochiq).length], ...AHOL_T.map(h => [h, AHOL[h], hamma.filter(a => a.holat === h).length, h === 'yangi'])]) +
+		izlash('Ism, yo\'nalish, manba yoki ariza raqami') +
+		`<div class="ry" data-ry>${r.map(aKarta).join('') || bosh_yoq('Bu holatda ariza yo\'q.')}</div>` +
+		`<div class="k" style="margin-top:16px"><div class="kb"><h2>Arizalar qayerdan keladi: ${oyNom(m)}</h2></div>${Object.keys(manba).length ? gor(Object.keys(manba).sort((a, b) => manba[b] - manba[a]).map(k => [esc(k), manba[k]]), n => n + ' ta') : bosh_yoq('Shu oy ariza yo\'q.')}</div>`;
+}
+
+/* ---------- Bronlar ---------- */
+function vBronlar(y) {
+	const hamma = mening(db.bronlar), tab = y.tab;
+	const r = (tab ? hamma.filter(b => b.bosqich === tab) : hamma.filter(faolB)).slice().sort((a, b) => tab === 'qaytdi' ? (a.jonash < b.jonash ? 1 : -1) : (a.jonash < b.jonash ? -1 : 1));
+	return boshq('Bronlar', ui.rol === 'menejer' ? 'Mening mijozlarim: tur tanlashdan qaytgunicha' : 'Tur tanlashdan safardan qaytgunicha — 6 bosqich') +
+		yorliq('#/bronlar', tab, [['', 'Faol', hamma.filter(faolB).length], ...BOSQ_T.map(s => [s, BOSQ[s], hamma.filter(b => b.bosqich === s).length])]) +
+		izlash('Bron raqami, mijoz, sayohatchi yoki tur') +
+		`<div class="ry" data-ry>${r.map(bKarta).join('') || bosh_yoq('Bu bosqichda bron yo\'q.')}</div>`;
+}
+function tayyorTosiq(b) {
+	const r = [];
+	if (b.viza.holat !== 'berildi') r.push(turB(b).viza === 'kerakmas' ? 'hujjatlar tayyor emas' : 'viza hali berilmagan');
+	if (b.avia.holat !== 'yozildi') r.push('aviachipta yozilmagan');
+	if (pulKorar() && qoldi(b) >= 1) r.push(`qoldiq ${usd(qoldi(b))} to'lanmagan`);
+	else if (!pulKorar() && qoldi(b) >= 1) r.push('mijoz to\'lovi to\'liq emas');
+	return r;
+}
+function amalB(b) {
+	if (!sotuvchi()) return '';
+	const t = (a, n, ic, dis) => `<button class="t a" type="button" data-a="${a}" data-id="${b.id}" ${dis ? 'disabled' : ''}>${ic ? ik(ic) : ''}${n}</button>`;
+	if (b.bosqich === 'tanlandi') return t('bronQil', 'Avia va mehmonxonani bron qilish', 'samolyot', !b.tol.length);
+	if (b.bosqich === 'bron') return t('mehTasdiq', 'Mehmonxona tasdiqladi', 'mehmon');
+	if (b.bosqich === 'viza') return t('tayyor', 'Jo\'nashga tayyor', 'ha', tayyorTosiq(b).length);
+	if (b.bosqich === 'tayyor') return t('jonadi', 'Jo\'nab ketdi', 'samolyot', kunFarq(b.jonash) > 1);
+	if (b.bosqich === 'safarda') return t('qaytdi', 'Safardan qaytdi', 'ha', kunFarq(qaytish(b)) > 0);
+	return '';
+}
+function vAmal(b) {
+	if (!vizachi() || !kelgusiB(b) || b.bosqich === 'tanlandi') return '';
+	const v = b.viza, tur = vTur(b), ok = !vYoq(b).length && !pasYomon(b).length;
+	const t = (a, n, sinf, dis, q) => `<button class="t ${sinf || 'a'}" type="button" data-a="${a}" data-id="${b.id}" ${q || ''} ${dis ? 'disabled' : ''}>${n}</button>`;
+	if (v.holat === 'yigilmoqda') {
+		if (tur === 'kerakmas') return t('vizaQadam', 'Hujjatlar tayyor', 'a', !ok);
+		if (tur === 'evisa') return t('vizaQadam', 'Onlayn ariza yuborildi', 'a', !ok);
+		return t('navbat', tur === 'aqsh' ? 'Suhbatga yozish' : 'Navbatga yozish', 'a');
+	}
+	if (v.holat === 'navbat') return t('vizaQadam', tur === 'aqsh' ? 'Suhbatdan o\'tdi' : 'Hujjat topshirildi', 'a', !ok);
+	if (v.holat === 'topshirildi') return t('vizaQadam', 'Viza berildi', 'a') + t('vizaRad', 'Rad etildi', '');
+	if (v.holat === 'rad') return t('vizaQayta', 'Qayta hujjat yig\'ish', 'a');
+	return '';
+}
+function hujHTML(b, tahrir) {
+	return `<div class="hujj">${vHujjatlar(b).map(h => {
+		const bor = !!b.viza.hujjat[h], ich = `${ik(bor ? 'ha' : 'yop')}<span>${HUJ[h]}</span>`;
+		return tahrir ? `<button type="button" class="${bor ? 'bor' : 'yo'}" data-a="hujjat" data-id="${b.id}" data-h="${h}" aria-pressed="${bor}">${ich}</button>` : `<div class="${bor ? 'bor' : 'yo'}">${ich}</div>`;
+	}).join('')}</div>`;
+}
+function vBron(id) {
+	const b = topB(id);
+	if (!b) return orqa('#/bronlar', 'Bronlar') + bosh_yoq('Bunday bron yo\'q.');
+	const t = turB(b), v = b.viza, pk = pulKorar(), kel = kelgusiB(b);
+	let eslat = '';
+	if (kel && v.holat === 'rad') eslat += `<div class="eslat qi">${ik('ogoh')}<div><b>Viza rad etildi${v.javob ? ' (' + sana(v.javob) + ')' : ''}.</b> Mijoz bilan qayta topshirish yoki sanani surishni kelishing; aviachipta va mehmonxona shartlarini tekshiring.</div></div>`;
+	if (kel && b.bosqich !== 'tanlandi' && pasYomon(b).length) eslat += `<div class="eslat qi">${ik('ogoh')}<div><b>Pasport muddati yetmaydi:</b> ${pasYomon(b).map(s => esc(s.ism) + ' — ' + sana(s.muddat)).join(', ')}. Qaytish ${sana(qaytish(b))} dan keyin kamida 6 oy amal qilishi kerak — viza topshirib bo'lmaydi.</div></div>`;
+	if (pk && tKech(b).summa > 0) eslat += `<div class="eslat qi">${ik('pul')}<div><b>${b.tol.length ? 'Qoldiq' : 'Avans'} ${usd(tKech(b).summa)}</b> — ${tKech(b).kun} kun kechikdi. Mijoz: ${esc(b.mijoz)}, <span data-asl>${esc(b.tel)}</span></div></div>`;
+	if (kel && b.avia.holat === 'bron' && b.avia.muddat && kunFarq(b.avia.muddat) <= 2) eslat += `<div class="eslat">${ik('samolyot')}<div>Aviachipta yozish muddati <b>${nisbiy(b.avia.muddat)}</b> (${sana(b.avia.muddat)}). Yozilmasa bron o'chadi.</div></div>`;
+	if (b.bosqich === 'tanlandi' && !b.tol.length) eslat += `<div class="eslat ko">${ik('pul')}<div>Bron qilish uchun avval avans olinadi: ${pk ? `<b>${usd(avansS(b))}</b> (${b.avansF}%)` : `${b.avansF}%`}.</div></div>`;
+	if (b.bosqich === 'viza' && tayyorTosiq(b).length) eslat += `<div class="eslat ko">${ik('ha')}<div>Jo'nashga tayyor deyish uchun: ${tayyorTosiq(b).join(', ')}.</div></div>`;
+	const tr = `<div class="k"><div class="tr"><div><span>Mijoz</span><b>${esc(b.mijoz)}</b></div><div><span>Telefon</span><b>${asl(b.tel)}</b></div><div><span>Menejer</span><b>${esc(ism(b.menejer))}</b></div><div><span>Yo'nalish</span><b>${YON[t.yon]}</b></div><div><span>Jo'nash</span><b>${sana(b.jonash)}</b></div><div><span>Qaytish</span><b>${sana(qaytish(b))}</b></div><div><span>Kishi</span><b>${b.odam}</b></div><div><span>Bron sanasi</span><b>${sana(b.sana)}</b></div>${b.ariza && ui.rol !== 'viza' && ui.rol !== 'buxgalter' ? `<div><span>Ariza</span><b><a href="#/arizalar">${b.ariza}</a></b></div>` : ''}</div></div>`;
+	const say = `<div class="k"><div class="kb"><h2>Sayohatchilar</h2><span class="ost">${b.odam} kishi</span></div><div class="jw"><table class="j tel"><thead><tr><th>Ism</th><th>Pasport</th><th>Amal qiladi</th><th>Holat</th></tr></thead><tbody>${b.sayoh.map(s => { const yom = !s.muddat || kunOrasi(qaytish(b), s.muddat) < 182; return `<tr><td><b>${esc(s.ism)}</b></td><td data-y="Pasport">${asl(s.pasport)}</td><td data-y="Amal qiladi">${sana(s.muddat)}</td><td data-y="Holat">${yom ? '<span class="b qi">6 oydan kam</span>' : '<span class="b ya">Yetarli</span>'}</td></tr>`; }).join('')}</tbody></table></div></div>`;
+	const av = b.avia, me = b.meh, sot = sotuvchi() && kel;
+	const bronB = `<div class="k"><div class="kb"><h2>Aviachipta va mehmonxona</h2>${sot && av.holat === 'bron' ? `<div class="ong"><button class="t k a" type="button" data-a="chipta" data-id="${b.id}">Chipta yozildi</button></div>` : ''}</div>
+<div class="tr"><div><span>Aviakompaniya</span><b>${asl(av.kompaniya)}</b></div><div><span>Reys</span><b>${asl(t.reys)}</b></div><div><span>PNR</span><b>${av.pnr ? asl(av.pnr) : '—'}</b></div><div><span>Chipta</span><b>${av.holat === 'yozildi' ? `<span class="b ya">Yozildi ${sana(av.yozildi)}</span>` : av.holat === 'bron' ? `<span class="b ${kunFarq(av.muddat) <= 2 ? 'qi' : 'sa'}">Bron, yozish muddati ${sana(av.muddat)}</span>` : '<span class="b">Bron qilinmagan</span>'}</b></div>
+<div><span>Mehmonxona</span><b>${asl(me.nom)}</b></div><div><span>Tasdiq</span><b>${me.holat === 'tasdiqlandi' ? `<span class="b ya">Tasdiqlandi ${sana(me.tasdiq)}</span>` : me.holat === 'kutilmoqda' ? '<span class="b sa">Kutilmoqda</span>' : '<span class="b">So\'ralmagan</span>'}</b></div><div><span>Jarimasiz bekor qilish</span><b>${kel ? 'gacha ' + sana(me.bekor) : '—'}</b></div></div></div>`;
+	const vizaB = `<div class="k"><div class="kb"><h2>${VTUR[t.viza]}</h2>${vBelgi(b)}<div class="ong">${vAmal(b)}</div></div>
+${t.viza !== 'kerakmas' ? `<div class="tr" style="margin-bottom:12px"><div><span>${t.viza === 'evisa' ? 'Qayerga' : 'Viza markazi'}</span><b>${v.markaz ? nomH(v.markaz) : '—'}</b></div><div><span>${t.viza === 'aqsh' ? 'Suhbat' : 'Navbat'}</span><b>${t.viza === 'evisa' ? '—' : sana(v.navbat)}</b></div><div><span>Topshirildi</span><b>${sana(v.topsh)}</b></div><div><span>${v.holat === 'topshirildi' ? 'Javob kutilmoqda' : 'Javob'}</span><b>${v.holat === 'topshirildi' ? sana(javobSana(b)) + (vizaKechikdi(b) ? ' — kechikmoqda' : '') : sana(v.javob)}</b></div></div>` : ''}
+<p class="yord" style="margin-bottom:8px">Hujjatlar: ${vHujjatlar(b).length - vYoq(b).length} / ${vHujjatlar(b).length} tayyor${vizachi() && kel && v.holat !== 'berildi' ? ' · belgilash uchun bosing' : ''}</p>${hujHTML(b, vizachi() && kel && v.holat !== 'berildi')}</div>`;
+	let pulB = '';
+	if (pk) {
+		const g = grafik(b);
+		pulB = `<div class="k"><div class="kb"><h2>To'lov holati</h2>${tolovBelgi(b)}${kassir() && qoldi(b) >= 1 ? `<div class="ong"><button class="t k a" type="button" data-a="tolov" data-id="${b.id}">To'lov qabul qilish</button></div>` : ''}</div>
+<div class="jw"><table class="j tel"><thead><tr><th>To'lov</th><th>Muddat</th><th class="r">Summa</th><th>Holat</th></tr></thead><tbody>${g.map(q => `<tr><td><b>${q.n}</b></td><td data-y="Muddat">${sana(q.sana)}</td><td class="r" data-y="Summa">${usd(q.summa)}</td><td data-y="Holat">${q.qol < 1 ? '<span class="b ya">To\'landi</span>' : q.farq < 0 ? `<span class="b qi">${-q.farq} kun kechikdi</span>` : `<span class="b">${nisbiy(q.sana)}</span>`}</td></tr>`).join('')}</tbody></table></div>
+${b.tol.length ? `<h3 class="kich-s">Qabul qilingan to'lovlar</h3><div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th class="r">Summa</th><th class="r">Kurs</th><th class="r">So'mda</th><th>Usul</th></tr></thead><tbody>${b.tol.map(q => `<tr><td><b>${sana(q.sana)}</b></td><td class="r" data-y="Summa">${usd(q.usd)}</td><td class="r" data-y="Kurs">${guruhla(q.kurs)}</td><td class="r" data-y="So'mda">${pul(q.som)}</td><td data-y="Usul">${esc(q.usul)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+<div class="jami"><div><span>Narx: ${b.odam} × ${usd(b.narxK)}</span><b>${usd(b.narxK * b.odam)}</b></div>${b.chegirma ? `<div><span>Chegirma</span><b>−${usd(b.chegirma)}</b></div>` : ''}<div><span>To'langan</span><b>${usd(tolS(b))}</b></div><div class="kat"><span>Qoldiq</span><span>${usd(qoldi(b))}</span></div></div></div>`;
+	}
+	let tanB2 = '';
+	if (foydaKorar()) {
+		const q = (n, val, ost) => `<div><span>${n}${ost ? `<span class="ost">${ost}</span>` : ''}</span><span>${val}</span></div>`;
+		tanB2 = `<div class="k"><div class="kb"><h2>Tannarx va foyda</h2></div><div class="hq">${Object.keys(TAM).filter(k => b.x[k]).map(k => q(TAM[k], usd(b.x[k]), `${tamKimH(b, k)} · ${b.ttol[k] ? 'to\'langan ' + sana(b.ttol[k]) : 'to\'lanadi ' + sana(tamMuddat(b, k))}`)).join('')}
+${q('Tannarx', `<b>${usd(tanB(b))}</b>`)}${q('Sotuv narxi', usd(narxB(b)))}<div class="kat"><span>Foyda</span><span style="color:${foydaB(b) < 0 ? 'var(--red)' : 'inherit'}">${usd(foydaB(b))} · ${foiz(foydaB(b) / narxB(b) * 100)}</span></div></div></div>`;
+	}
+	const tarix = `<div class="k"><div class="kb"><h2>Tarix</h2></div><div class="tarix">${b.voqea.filter(q => pulKorar() || !/\$|so'm/.test(q.m)).map(q => `<div><time>${sana(q.sana)}</time><span>${esc(q.m)}</span></div>`).join('')}</div></div>`;
+	return orqa('#/bronlar', 'Bronlar') + boshq(`${b.id} · ${esc(b.mijoz)}`, `${esc(t.nom)} · ${b.odam} kishi · ${sana(b.jonash)} – ${sana(qaytish(b))}`, amalB(b)) +
+		`<div class="k">${qadam(BOSQ_T, BOSQ, b.bosqich)}</div>` + eslat + tr + `<div class="qator2"><div>${say}${bronB}</div><div>${vizaB}</div></div>` + (pulB || tanB2 ? `<div class="qator2"><div>${pulB || tanB2}</div><div>${pulB ? tanB2 : ''}</div></div>` : '') + tarix;
+}
+
+/* ---------- Viza va hujjatlar ---------- */
+function vViza(y) {
+	const hamma = mening(db.bronlar).filter(b => kelgusiB(b) && b.bosqich !== 'tanlandi'), tab = y.tab;
+	const faol = b => b.viza.holat !== 'berildi';
+	const r = (tab ? hamma.filter(b => b.viza.holat === tab) : hamma.filter(faol)).slice().sort((a, b) => (a.viza.holat === 'rad' ? -1 : 0) - (b.viza.holat === 'rad' ? -1 : 0) || (a.jonash < b.jonash ? -1 : 1));
+	const nav7 = hamma.filter(b => b.viza.holat === 'navbat' && kunFarq(b.viza.navbat) <= 7).length;
+	const yoq = hamma.filter(b => b.viza.holat === 'yigilmoqda' && (vYoq(b).length || pasYomon(b).length)).length;
+	const kut = hamma.filter(b => b.viza.holat === 'topshirildi');
+	return boshq('Viza va hujjatlar', 'Hujjatlar ro\'yxati, pasport muddati, navbat va javob — har bir bron bo\'yicha') +
+		`<div class="kpi">${kpi('Hujjat yetishmaydi', yoq, 'ta bron', 'Pasport muddati ham tekshiriladi', yoq ? 'yom' : 'yax', '#/viza?yigilmoqda')}${kpi('Navbat yoki suhbat', nav7, 'ta', '7 kun ichida', '', '#/viza?navbat')}${kpi('Javob kutilmoqda', kut.length, 'ta', kut.filter(vizaKechikdi).length ? `Kechikmoqda: ${kut.filter(vizaKechikdi).length}` : 'Muddatida', kut.filter(vizaKechikdi).length ? 'yom' : 'yax', '#/viza?topshirildi')}${kpi('Rad etildi', hamma.filter(b => b.viza.holat === 'rad').length, 'ta', 'Kelgusi safarlar', hamma.some(b => b.viza.holat === 'rad') ? 'yom' : 'yax', '#/viza?rad')}</div>
+<div class="k"><div class="kb"><h2>Bugun e'tibor talab qiladi</h2></div>${etHTML(diqqat({ viza: 1, men: ui.rol === 'menejer' ? ui.kim : null }))}</div>` +
+		yorliq('#/viza', tab, [['', 'Ishda', hamma.filter(faol).length], ...VHOL_T.map(h => [h, h === 'yigilmoqda' ? 'Hujjat yig\'ilmoqda' : h === 'navbat' ? 'Navbat' : h === 'topshirildi' ? 'Javob kutilmoqda' : h === 'berildi' ? 'Tayyor' : 'Rad etildi', hamma.filter(b => b.viza.holat === h).length, h === 'rad'])]) +
+		izlash('Bron, mijoz, sayohatchi yoki pasport raqami') +
+		`<div class="ry" data-ry>${r.map(vKarta).join('') || bosh_yoq('Bu holatda bron yo\'q.')}</div>`;
+}
+
+/* ---------- Turlar ---------- */
+function vTurlar(y) {
+	const tab = y.tab, r = db.turlar.filter(t => !tab || t.yon === tab), fk = foydaKorar();
+	return boshq('Turlar', 'Osiyo, Yevropa va Amerika yo\'nalishlari: narx, jo\'nash sanalari va guruhdagi bo\'sh joylar') +
+		yorliq('#/turlar', tab, [['', 'Hammasi', db.turlar.length], ...Object.keys(YON).map(k => [k, YON[k], db.turlar.filter(t => t.yon === k).length])]) +
+		`<div class="ry turlar">${r.map(t => {
+			const tan = yig(Object.keys(TAM), k => t.x[k]), f = t.narx - tan;
+			return `<div class="el"><div class="ust"><span class="b ko">${YON[t.yon]}</span><span class="b ${t.viza === 'kerakmas' ? 'ya' : t.viza === 'evisa' ? '' : 'sa'}">${VTUR[t.viza]}</span></div><div class="nom">${esc(t.nom)}</div><div class="mat">${asl(t.avia)} · ${asl(t.meh)}</div>
+<div class="pas"><span>${t.kecha} kecha · 1 kishi uchun</span><span class="ong">${usd(t.narx)}</span></div>${fk ? `<div class="pas"><span>Tannarx ${usd(tan)}</span><span>Foyda ${usd(f)} · ${foiz(f / t.narx * 100)}</span></div>` : ''}
+${kelgusiSanalar(t).map(s => { const bd = band(t.id, s.sana); return `<div class="marsh-q">${ik('samolyot')}<span>${sana(s.sana)}</span><span class="yol"><i style="width:${Math.min(100, Math.round(bd / s.joy * 100))}%"></i></span><span>${bd} / ${s.joy} joy</span></div>`; }).join('') || '<p class="yord" style="margin-top:8px">Yaqin jo\'nash sanasi yo\'q.</p>'}</div>`;
+		}).join('')}</div>`;
+}
+
+/* ---------- To'lovlar ---------- */
+function vTolovlar(y) {
+	const tab = y.tab, m = oylar()[0], nav = tamNavbat();
+	const qoldiqli = db.bronlar.filter(b => faolB(b) && qoldi(b) >= 1).sort((a, b) => (tKech(b).summa > 0) - (tKech(a).summa > 0) || (qMuddat(a) < qMuddat(b) ? -1 : 1));
+	const kech = db.bronlar.filter(b => tKech(b).summa > 0).length;
+	const kursB = kassir() ? `<button class="t" type="button" data-a="kursYangi">${ik('pul')}Kurs: 1 $ = ${guruhla(db.kurs)} so'm</button>` : '';
+	let ich = '';
+	if (tab === 'taminot') {
+		const yetti = nav.filter(q => kunFarq(q.muddat) <= 7), otgan = nav.filter(q => kunFarq(q.muddat) < 0);
+		ich = `<div class="kpi">${kpiUsd('To\'lanishi kerak', yig(nav, q => q.summa), `${nav.length} ta to'lov`, '', '')}${kpiUsd('7 kun ichida', yig(yetti, q => q.summa), `${yetti.length} ta`, yetti.length ? 'yom' : 'yax', '')}${kpiUsd('Muddati o\'tgan', yig(otgan, q => q.summa), otgan.length ? `${otgan.length} ta` : 'Yo\'q', otgan.length ? 'yom' : 'yax', '')}${kpiUsd('Kassa qoldig\'i', kassa(), 'Dollar ekvivalentida', '', '#/tolovlar?harakat')}</div>
+<div class="k"><div class="kb"><h2>Ta'minotchilarga to'lovlar navbati</h2>${csvT('taminot')}</div><div class="jw"><table class="j tel"><thead><tr><th>Bron</th><th>To'lov</th><th class="r">Summa</th><th>Muddat</th><th></th></tr></thead><tbody>${nav.map(q => `<tr><td><b><a href="#/bronlar/${q.b.id}">${q.b.id}</a></b><span class="kich">${esc(q.b.mijoz)} · jo'nash ${sana(q.b.jonash)}</span></td><td data-y="To'lov">${TAM[q.k]}<span class="kich">${tamKimH(q.b, q.k)}</span></td><td class="r" data-y="Summa"><b>${usd(q.summa)}</b></td><td data-y="Muddat">${kunFarq(q.muddat) < 0 ? `<span class="b qi">${sana(q.muddat)}, o'tdi</span>` : kunFarq(q.muddat) <= 3 ? `<span class="b sa">${sana(q.muddat)}</span>` : sana(q.muddat)}</td><td>${kassir() ? `<button class="t k" type="button" data-a="tamTol" data-id="${q.b.id}" data-k="${q.k}">To'landi</button>` : ''}</td></tr>`).join('') || '<tr><td colspan="5">Navbatda to\'lov yo\'q.</td></tr>'}</tbody></table></div><p class="yord" style="margin-top:8px">Aviachipta to'langanda chipta yozildi deb belgilanadi.</p></div>`;
+	} else if (tab === 'harakat') {
+		const har = harakatlar();
+		ich = `<div class="kpi">${kpiUsd('Kassa qoldig\'i', kassa(), 'Dollar ekvivalentida', '', '')}${kpiUsd(`Kirim: ${oyNom(m)}`, yig(har.filter(x => oyKey(x.sana) === m), x => x.kir || 0), 'Mijozlar to\'lovi', 'yax', '')}${kpiUsd(`Chiqim: ${oyNom(m)}`, yig(har.filter(x => oyKey(x.sana) === m), x => x.chiq || 0), 'Ta\'minotchilar va ofis', '', '')}${kpi('Kurs', guruhla(db.kurs), 'so\'m', `Yangilangan ${sana(db.kursSana)}`, '', '')}</div>
+<div class="k"><div class="kb"><h2>Pul harakati</h2>${csvT('harakat')}</div><div class="jw"><table class="j tel"><thead><tr><th>Sana</th><th>Mazmuni</th><th class="r">Kirim</th><th class="r">Chiqim</th></tr></thead><tbody>${har.slice(0, 80).map(x => `<tr><td><b>${sana(x.sana)}</b></td><td data-y="Mazmuni">${esc(x.m)}${x.kimH ? ' — ' + x.kimH : ''}${x.som ? `<span class="kich">${pul(x.som)}</span>` : ''}</td><td class="r" data-y="Kirim">${x.kir ? usd(x.kir) : ''}</td><td class="r" data-y="Chiqim">${x.chiq ? usd(x.chiq) : ''}</td></tr>`).join('')}</tbody></table></div><p class="yord" style="margin-top:8px">Oxirgi 80 ta yozuv. To'liq ro'yxat — Excel (CSV) da.</p></div>`;
+	} else {
+		const tushdi = yig(db.bronlar, b => yig(b.tol.filter(q => oyKey(q.sana) === m), q => q.usd));
+		ich = `<div class="kpi">${kpiUsd('Mijozlardan kutilmoqda', kutilmoqda(), `${qoldiqli.length} ta bron`, '', '')}${kpiUsd('Muddati o\'tgan', kechJami(), kech ? `${kech} ta bron` : 'Yo\'q', kech ? 'yom' : 'yax', '')}${kpiUsd(`Tushdi: ${oyNom(m)}`, tushdi, `≈ ${somda(tushdi)}`, 'yax', '#/tolovlar?harakat')}${kpiUsd('Kassa qoldig\'i', kassa(), 'Dollar ekvivalentida', '', '#/tolovlar?harakat')}</div>
+<div class="k"><div class="kb"><h2>Mijozlar: avans va qoldiq</h2>${csvT('tolov')}</div><div class="jw"><table class="j tel"><thead><tr><th>Bron</th><th>Jo'nash</th><th class="r">Narx</th><th class="r">To'langan</th><th class="r">Qoldiq</th><th>Holat</th><th></th></tr></thead><tbody>${qoldiqli.map(b => `<tr><td><b><a href="#/bronlar/${b.id}">${b.id}</a></b><span class="kich">${esc(b.mijoz)} · ${esc(turB(b).qisqa)}</span></td><td data-y="Jo'nash">${sana(b.jonash)}</td><td class="r" data-y="Narx">${usd(narxB(b))}</td><td class="r" data-y="To'langan">${usd(tolS(b))}</td><td class="r" data-y="Qoldiq"><b>${usd(qoldi(b))}</b></td><td data-y="Holat">${tolovBelgi(b)}</td><td>${kassir() ? `<button class="t k a" type="button" data-a="tolov" data-id="${b.id}">Qabul qilish</button>` : ''}</td></tr>`).join('') || '<tr><td colspan="7">Hamma bronlar to\'liq to\'langan.</td></tr>'}</tbody></table></div><p class="yord" style="margin-top:8px">Avans: Osiyo 30%, Yevropa va Amerika 50%. Qoldiq muddati — jo'nashdan 14 kun (Osiyo) yoki 21 kun oldin.</p></div>`;
+	}
+	return boshq('To\'lovlar', 'Mijozlardan avans va qoldiq, ta\'minotchilarga to\'lovlar, kassa', kursB) +
+		yorliq('#/tolovlar', tab, [['', 'Mijozlar', kech, true], ['taminot', 'Ta\'minotchilar', nav.filter(q => kunFarq(q.muddat) <= 7).length], ['harakat', 'Pul harakati', null]]) + ich;
+}
+
+/* ---------- Menejerlar ishi ---------- */
+const oyTab = (asos, tab) => yorliq(asos, tab, oylar().map((m, i) => [i ? m : '', oyNom(m), null]));
+function vMenejerlar(y) {
+	const m = y.tab || oylar()[0];
+	const st = menejerlar().map(x => Object.assign({ x }, menStat(x.id, m)));
+	const jami = k => yig(st, s => s[k]);
+	return boshq('Menejerlar ishi', `${oyNom(m)}: arizalar, bronga aylangani, sotuv va foyda`) + oyTab('#/menejerlar', y.tab) +
+		`<div class="k"><div class="kb"><h2>Menejerlar bo'yicha</h2>${csvT('menejer', m)}</div><div class="jw"><table class="j tel"><thead><tr><th>Menejer</th><th class="r">Ariza</th><th class="r">Bron</th><th class="r">Rad</th><th class="r">Konversiya</th><th class="r">Sayohatchi</th><th class="r">Sotuv</th><th class="r">Foyda</th><th class="r">Kutilmoqda</th><th class="r">Javobsiz</th></tr></thead><tbody>${st.map(s => `<tr><td><b>${esc(s.x.ism)}</b><span class="kich">Ochiq arizalar: ${s.ochiq}</span></td><td class="r" data-y="Ariza">${s.ar}</td><td class="r" data-y="Bron">${s.bron}</td><td class="r" data-y="Rad">${s.rad}</td><td class="r" data-y="Konversiya">${foiz(s.konv)}</td><td class="r" data-y="Sayohatchi">${s.odam}</td><td class="r" data-y="Sotuv">${usd(s.sotuv)}</td><td class="r" data-y="Foyda"><b>${usd(s.foyda)}</b></td><td class="r" data-y="Kutilmoqda">${usd(s.kut)}${s.kech ? `<span class="kich" style="color:var(--red)">o'tgan ${usd(s.kech)}</span>` : ''}</td><td class="r" data-y="Javobsiz">${s.javobsiz ? `<b style="color:var(--red)">${s.javobsiz}</b>` : '—'}</td></tr>`).join('')}</tbody><tfoot><tr><td><b>Jami</b></td><td class="r" data-y="Ariza">${jami('ar')}</td><td class="r" data-y="Bron">${jami('bron')}</td><td class="r" data-y="Rad">${jami('rad')}</td><td class="r" data-y="Konversiya">${foiz(jami('ar') ? jami('bron') / jami('ar') * 100 : 0)}</td><td class="r" data-y="Sayohatchi">${jami('odam')}</td><td class="r" data-y="Sotuv">${usd(jami('sotuv'))}</td><td class="r" data-y="Foyda">${usd(jami('foyda'))}</td><td class="r" data-y="Kutilmoqda">${usd(jami('kut'))}</td><td class="r" data-y="Javobsiz">${jami('javobsiz') || '—'}</td></tr></tfoot></table></div>
+<p class="yord" style="margin-top:8px">Ariza va bron — shu oyda kelgan arizalar va ochilgan bronlar. «Kutilmoqda» — hozirgi faol bronlar bo'yicha mijoz to'lovi.</p></div>
+<div class="qator2"><div class="k"><div class="kb"><h2>Foyda: ${oyNom(m)}</h2></div>${gor(st.map(s => [esc(s.x.ism), s.foyda]), usd)}</div><div class="k"><div class="kb"><h2>Konversiya: ${oyNom(m)}</h2></div>${gor(st.map(s => [esc(s.x.ism), Math.round(s.konv)]), n => n + '%')}</div></div>`;
+}
+
+/* ---------- Oylik hisobot ---------- */
+function vHisobot(y) {
+	const m = y.tab || oylar()[0], h = oyHisob(m), joriy = m === oylar()[0];
+	const turlar = db.turlar.map(t => { const bl = h.safar.filter(b => b.tur === t.id); return { t, bl, odam: yig(bl, b => b.odam), sotuv: yig(bl, narxB), foyda: yig(bl, foydaB) }; }).filter(q => q.bl.length);
+	const q = (n, v, ost, sinf) => `<div${sinf ? ` class="${sinf}"` : ''}><span>${n}${ost ? `<span class="ost">${ost}</span>` : ''}</span><span>${v}</span></div>`;
+	return boshq('Oylik hisobot', `${oyNom(m)}: tushum, xarajat, har bir yo'nalish foydasi`) + oyTab('#/hisobot', y.tab) +
+		`<div class="kpi">${kpiUsd('Tushum', h.sotuv, `${h.safar.length} safar · ${h.odam} sayohatchi`, '', '')}${kpiUsd('Xarajat', h.xarajat, `Tannarx ${usd(h.tan)} · ofis ${usd(h.ofisS)}`, '', '')}${kpiUsd('Sof foyda', h.sof, `≈ ${somda(h.sof)}`, h.sof >= 0 ? 'yax' : 'yom', '')}${kpiUsd('Kassaga tushdi', h.kirim, `Chiqdi ${usd(h.chiqim)}`, '', '#/tolovlar?harakat')}</div>
+${joriy ? `<div class="eslat ko">${ik('soat')}<div>Joriy oy: shu oyda jo'nagan va oy oxirigacha jo'naydigan safarlar kiritilgan; ofis xarajatlari — shu kungacha.</div></div>` : ''}
+<div class="qator2"><div class="k"><div class="kb"><h2>Yo'nalishlar bo'yicha foyda</h2>${csvT('yonalish', m)}</div>${gor(h.yon.map(g => [YON[g.k], g.foyda]), usd)}<div class="jw" style="margin-top:12px"><table class="j tel"><thead><tr><th>Yo'nalish</th><th class="r">Safar</th><th class="r">Sayohatchi</th><th class="r">Tushum</th><th class="r">Tannarx</th><th class="r">Foyda</th><th class="r">Marja</th></tr></thead><tbody>${h.yon.map(g => `<tr><td><b>${YON[g.k]}</b></td><td class="r" data-y="Safar">${g.bl.length}</td><td class="r" data-y="Sayohatchi">${g.odam}</td><td class="r" data-y="Tushum">${usd(g.sotuv)}</td><td class="r" data-y="Tannarx">${usd(g.tan)}</td><td class="r" data-y="Foyda"><b>${usd(g.foyda)}</b></td><td class="r" data-y="Marja">${foiz(g.sotuv ? g.foyda / g.sotuv * 100 : 0)}</td></tr>`).join('')}</tbody><tfoot><tr><td><b>Jami</b></td><td class="r" data-y="Safar">${h.safar.length}</td><td class="r" data-y="Sayohatchi">${h.odam}</td><td class="r" data-y="Tushum">${usd(h.sotuv)}</td><td class="r" data-y="Tannarx">${usd(h.tan)}</td><td class="r" data-y="Foyda">${usd(h.sotuv - h.tan)}</td><td class="r" data-y="Marja">${foiz(h.sotuv ? (h.sotuv - h.tan) / h.sotuv * 100 : 0)}</td></tr></tfoot></table></div></div>
+<div class="k"><div class="kb"><h2>Tushum va xarajat</h2>${csvT('oy', m)}</div><div class="hq">${q('Tushum (safarlar sotuvi)', `<b>${usd(h.sotuv)}</b>`)}${Object.keys(TAM).map(k => q(TAM[k], '−' + usd(h.tarkib[k]))).join('')}${q('Yalpi foyda', usd(h.sotuv - h.tan))}${h.ofis.map(o => q(esc(o.nom), '−' + usd(o.usd))).join('')}<div class="kat"><span>Sof foyda</span><span style="color:${h.sof < 0 ? 'var(--red)' : 'inherit'}">${usd(h.sof)}</span></div></div></div></div>
+<div class="k"><div class="kb"><h2>Turlar bo'yicha</h2>${csvT('tur', m)}</div><div class="jw"><table class="j tel"><thead><tr><th>Tur</th><th class="r">Safar</th><th class="r">Sayohatchi</th><th class="r">Tushum</th><th class="r">Foyda</th><th class="r">Marja</th></tr></thead><tbody>${turlar.map(g => `<tr><td><b>${esc(g.t.nom)}</b><span class="kich">${YON[g.t.yon]}</span></td><td class="r" data-y="Safar">${g.bl.length}</td><td class="r" data-y="Sayohatchi">${g.odam}</td><td class="r" data-y="Tushum">${usd(g.sotuv)}</td><td class="r" data-y="Foyda"><b>${usd(g.foyda)}</b></td><td class="r" data-y="Marja">${foiz(g.sotuv ? g.foyda / g.sotuv * 100 : 0)}</td></tr>`).join('') || '<tr><td colspan="6">Bu oyda safar yo\'q.</td></tr>'}</tbody></table></div></div>
+<div class="k"><div class="kb"><h2>Safarlar ro'yxati</h2>${csvT('safar', m)}</div><div class="jw"><table class="j tel"><thead><tr><th>Bron</th><th>Jo'nash</th><th class="r">Tushum</th><th class="r">Tannarx</th><th class="r">Foyda</th></tr></thead><tbody>${h.safar.slice().sort((a, b) => a.jonash < b.jonash ? -1 : 1).map(b => `<tr class="bos" data-h="#/bronlar/${b.id}"><td><b>${b.id}</b><span class="kich">${esc(b.mijoz)} · ${esc(turB(b).qisqa)}, ${b.odam} kishi · ${esc(ism(b.menejer))}</span></td><td data-y="Jo'nash">${sana(b.jonash)}</td><td class="r" data-y="Tushum">${usd(narxB(b))}</td><td class="r" data-y="Tannarx">${usd(tanB(b))}</td><td class="r" data-y="Foyda"><b>${usd(foydaB(b))}</b></td></tr>`).join('') || '<tr><td colspan="5">Bu oyda safar yo\'q.</td></tr>'}</tbody></table></div></div>`;
+}
+
+/* ---------- Excel (CSV) ---------- */
+function csvQatorlar(k, d) {
+	const m = (d && d.m) || oylar()[0];
+	if (k === 'oy') { const h = oyHisob(m); return [['Big Tour — oylik hisobot', oyNom(m)], ['Ko\'rsatkich', 'USD'], ['Tushum', h.sotuv], ...Object.keys(TAM).map(q => [TAM[q], h.tarkib[q]]), ['Yalpi foyda', h.sotuv - h.tan], ...h.ofis.map(o => [o.nom, o.usd]), ['Sof foyda', h.sof], ['Kassaga tushdi', h.kirim], ['Kassadan chiqdi', h.chiqim]]; }
+	if (k === 'yonalish') { const h = oyHisob(m); return [['Yo\'nalish', 'Safar', 'Sayohatchi', 'Tushum, USD', 'Tannarx, USD', 'Foyda, USD', 'Marja, %'], ...h.yon.map(g => [YON[g.k], g.bl.length, g.odam, g.sotuv, g.tan, g.foyda, g.sotuv ? Math.round(g.foyda / g.sotuv * 1000) / 10 : 0])]; }
+	if (k === 'tur') { const h = oyHisob(m); return [['Tur', 'Yo\'nalish', 'Safar', 'Sayohatchi', 'Tushum, USD', 'Foyda, USD'], ...db.turlar.map(t => { const bl = h.safar.filter(b => b.tur === t.id); return [t.nom, YON[t.yon], bl.length, yig(bl, b => b.odam), yig(bl, narxB), yig(bl, foydaB)]; })]; }
+	if (k === 'safar') return [['Bron', 'Mijoz', 'Tur', 'Kishi', 'Jo\'nash', 'Menejer', 'Tushum, USD', 'Tannarx, USD', 'Foyda, USD'], ...oyHisob(m).safar.map(b => [b.id, b.mijoz, turB(b).nom, b.odam, sana(b.jonash), ism(b.menejer), narxB(b), tanB(b), foydaB(b)])];
+	if (k === 'menejer') return [['Menejer', 'Ariza', 'Bron', 'Rad', 'Konversiya, %', 'Sayohatchi', 'Sotuv, USD', 'Foyda, USD', 'Kutilmoqda, USD'], ...menejerlar().map(x => { const s = menStat(x.id, m); return [x.ism, s.ar, s.bron, s.rad, Math.round(s.konv * 10) / 10, s.odam, s.sotuv, s.foyda, s.kut]; })];
+	if (k === 'tolov') return [['Bron', 'Mijoz', 'Telefon', 'Jo\'nash', 'Narx, USD', 'To\'langan, USD', 'Qoldiq, USD', 'Qoldiq muddati', 'Muddati o\'tgan, USD'], ...db.bronlar.filter(b => faolB(b) && qoldi(b) >= 1).map(b => [b.id, b.mijoz, b.tel, sana(b.jonash), narxB(b), tolS(b), qoldi(b), sana(qMuddat(b)), tKech(b).summa])];
+	if (k === 'taminot') return [['Bron', 'To\'lov', 'Kimga', 'Summa, USD', 'Muddat'], ...tamNavbat().map(q => [q.b.id, TAM[q.k], tamKim(q.b, q.k), q.summa, sana(q.muddat)])];
+	if (k === 'harakat') return [['Sana', 'Mazmuni', 'Kirim, USD', 'Chiqim, USD', 'So\'mda'], ...harakatlar().map(x => [sana(x.sana), x.m + (x.kim ? ' — ' + x.kim : ''), x.kir || 0, x.chiq || 0, x.som || ''])];
+	return [];
+}
+
+/* ===== ilova3.js ===== */
+/* 3-qism: oynalar, amallar (holatni o'zgartiradi), chizish va ishga tushirish. */
+
+function xabar(m) {
+	const el = $('#xabar'); el.innerHTML = `<div class="xabar" role="status">${esc(m)}</div>`; Yozuv.dom(el, ui.til);
+	clearTimeout(xabar.t); xabar.t = setTimeout(() => { el.innerHTML = ''; }, 3800);
+}
+function oyna(sarlavha, ich, o) {
+	o = o || {};
+	const el = $('#oyna');
+	el.innerHTML = `<div class="parda"><form class="oyna" role="dialog" aria-modal="true" aria-label="${esc(sarlavha)}" ${o.forma ? `data-f="${o.forma}"` : 'data-bosh'}><header><h2>${esc(sarlavha)}</h2><button type="button" data-a="yop" aria-label="Yopish">${ik('yop')}</button></header><div class="ich">${ich}</div>${o.forma ? `<footer><button type="button" class="t" data-a="yop">Bekor qilish</button><button class="t a" type="submit">${o.tugma || 'Saqlash'}</button></footer>` : ''}</form></div>`;
+	Yozuv.dom(el, ui.til);
+	const b = el.querySelector('.ich input:not([type=hidden]),.ich select,.ich textarea,.ich a'); if (b) b.focus();
+}
+const yop = () => { $('#oyna').innerHTML = ''; };
+function yangila(m) { saqla(); yop(); chiz(); if (m) xabar(m); }
+const borish = h => { if (location.hash === h) chiz(); else location.hash = h; };
+const son = v => { const n = parseFloat(String(v == null ? '' : v).replace(/[\s  $]/g, '').replace(',', '.')); return isNaN(n) ? 0 : n; };
+const may = (yorliq, ich, yord) => `<label class="may"><span>${yorliq}</span>${ich}${yord ? `<span class="yord">${yord}</span>` : ''}</label>`;
+const tanla = (nom, opt, joriy, qosh) => `<select class="in" name="${nom}" ${qosh || ''}>${opt.map(([v, n]) => `<option value="${esc(v)}" ${String(v) === String(joriy) ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>`;
+const raqamIn = (nom, qiymat, qosh) => `<input class="in" name="${nom}" inputmode="decimal" value="${esc(qiymat)}" ${qosh || 'required'}>`;
+const matnIn = (nom, qiymat, qosh) => `<input class="in" name="${nom}" value="${esc(qiymat || '')}" ${qosh || 'required'}>`;
+const voqea = (b, m) => b.voqea.unshift({ sana: db.bugun, m });
+const isoDan = s => { const p = String(s || '').trim().match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/); if (!p) return null; const d = new Date(Date.UTC(+p[3], +p[2] - 1, +p[1])); return d.getUTCDate() === +p[1] ? d.toISOString().slice(0, 10) : null; };
+function chiptaYoz(b) {
+	b.avia.holat = 'yozildi'; b.avia.yozildi = db.bugun; if (!b.ttol.avia) b.ttol.avia = db.bugun;
+	voqea(b, `Aviachipta yozildi (PNR ${b.avia.pnr})`);
+}
+const PNR_H = 'KRMTZLQWX';
+const yangiPnr = b => PNR_H[(+b.id.slice(3)) % 9] + String((+b.id.slice(3)) * 37 % 90 + 10) + 'VN' + ((+b.id.slice(3)) % 9);
+
+/* ---------- Tugma amallari ---------- */
+const AMAL = {
+	til(d) { ui.til = d.t; saqla(); yop(); chiz(); },
+	rolTanla(d) { ui.tanlov = d.r; ui.pinXato = false; chiz(); },
+	rolOrqa() { ui.tanlov = null; ui.pinXato = false; chiz(); },
+	chiqish() { ui.rol = null; ui.kim = null; ui.tanlov = null; ui.oxirgiYol = ''; saqla(); try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* fayldan ochilganda */ } yop(); chiz(); window.scrollTo(0, 0); },
+	qayta() { oyna('Namunani boshidan boshlash', `<p>Namunada kiritilgan o'zgarishlar o'chadi va hammasi dastlabki holatiga qaytadi.</p>`, { forma: 'qayta', tugma: 'Boshidan boshlash' }); },
+	yop() { yop(); },
+	yana() { oyna('Bo\'limlar', `<nav class="et">${NAV[ui.rol].slice(4).map(k => { const b = BOLIM[k]; return `<a href="${b.h}"><span class="nuq ko">${ik(b.i)}</span><span><b>${b.n}</b></span><span class="uq">${ik('ong')}</span></a>`; }).join('')}</nav>`); },
+
+	/* Arizalar */
+	yangiAriza() {
+		const menOpt = ui.rol === 'menejer' ? `<input type="hidden" name="menejer" value="${ui.kim}">` : may('Menejer', tanla('menejer', menejerlar().map(x => [x.id, x.ism]), 'm1'));
+		oyna('Yangi ariza', `${may('Mijoz ismi', matnIn('ism', '', 'required placeholder="Masalan: Karimov Anvar"'))}<div class="may2">${may('Telefon', matnIn('tel', '+998 ', 'required inputmode="tel"'))}${may('Qayerdan keldi', tanla('manba', ['Instagram', 'Telegram', 'Tavsiya', 'Ofisga keldi', 'Sayt'].map(x => [x, x]), 'Instagram'))}${may('Yo\'nalish', tanla('yon', Object.keys(YON).map(k => [k, YON[k]]), 'osiyo'))}${may('Necha kishi', raqamIn('odam', '2'))}</div>${may('Nima so\'radi', matnIn('qiziqish', '', 'required placeholder="Masalan: Dubay, yangi yil, oilaviy"'))}${menOpt}`, { forma: 'ariza', tugma: 'Saqlash' });
+	},
+	arizaKeyingi(d) {
+		const a = topA(d.id); if (!a) return;
+		a.holat = a.holat === 'yangi' ? 'aloqa' : 'taklif'; a.oxirgi = db.bugun;
+		yangila(`${a.id}: ${AHOL[a.holat].toLowerCase()}.`);
+	},
+	arizaRad(d) {
+		const a = topA(d.id);
+		oyna(`Rad etdi: ${a.id}`, `<input type="hidden" name="id" value="${a.id}"><p class="yord" style="margin-bottom:10px">${esc(a.ism)} · ${esc(a.qiziqish)}</p>${may('Sabab', tanla('sabab', RAD_SABAB.map(x => [x, x]), RAD_SABAB[0]))}<p class="yord">Sabablar oylik tahlilda ko'rinadi: qaysi yo'nalishda narx qimmat deyishyapti va hokazo.</p>`, { forma: 'rad', tugma: 'Saqlash' });
+	},
+	arizaBron(d) {
+		const a = topA(d.id), opt = [];
+		const tl = db.turlar.slice().sort((x, y) => (x.yon === a.yon ? 0 : 1) - (y.yon === a.yon ? 0 : 1));
+		for (const t of tl) for (const s of kelgusiSanalar(t)) { const bosh = s.joy - band(t.id, s.sana); if (bosh > 0) opt.push([t.id + '|' + s.sana, `${t.nom} — ${sana(s.sana)} · ${usd(t.narx)} · bo'sh ${bosh} joy`]); }
+		const misol = Array.from({ length: a.odam }, (_, i) => `${i ? 'Sayohatchi ' + (i + 1) : a.ism}; ${i % 2 ? 'AD' : 'FA'}${3600000 + (+a.id.slice(2)) * 41 + i * 7}; ${sana(kunQosh(db.bugun, 1300 + i * 200))}`).join('\n');
+		oyna(`Tur tanlash va bron: ${a.id}`, `<input type="hidden" name="id" value="${a.id}"><div class="eslat ko">${ik('ariza')}<div>${esc(a.ism)} · ${esc(a.qiziqish)} · ${YON[a.yon]}</div></div>
+${may('Tur va jo\'nash sanasi', tanla('tur', opt, opt[0] && opt[0][0]))}
+<div class="may2">${may('Necha kishi', raqamIn('odam', String(a.odam)))}${may('Chegirma, $', raqamIn('chegirma', '0'))}</div>
+${may('Sayohatchilar', `<textarea class="in" name="sayoh" rows="${Math.min(6, a.odam + 1)}" required>${esc(misol)}</textarea>`, 'Har qatorda: ism; pasport raqami; pasport amal qilish muddati (kk.oo.yyyy). Namuna uchun to\'ldirilgan.')}
+<p class="yord">Bron «Tur tanlandi» bosqichida ochiladi. Avans olingach aviachipta va mehmonxona bron qilinadi.</p>`, { forma: 'bronOch', tugma: 'Bron ochish' });
+	},
+
+	/* Bron bosqichlari */
+	bronQil(d) {
+		const b = topB(d.id); if (!b || b.bosqich !== 'tanlandi') return;
+		if (!b.tol.length) { xabar('Avval avans olinadi.'); return; }
+		const t = turB(b);
+		b.avia = { kompaniya: t.avia, reys: t.reys, pnr: yangiPnr(b), holat: 'bron', muddat: kunQosh(db.bugun, Math.min(5, Math.max(1, kunFarq(b.jonash) - 3))), yozildi: null };
+		b.meh = { nom: t.meh, holat: 'kutilmoqda', tasdiq: null, bekor: kunQosh(b.jonash, -14) };
+		b.bosqich = 'bron'; voqea(b, `Aviachipta bron qilindi, PNR ${b.avia.pnr}; mehmonxonaga so'rov yuborildi`);
+		yangila(`${b.id}: aviachipta bron qilindi (PNR ${b.avia.pnr}), yozish muddati ${sana(b.avia.muddat)}.`);
+	},
+	mehTasdiq(d) {
+		const b = topB(d.id); if (!b) return;
+		b.meh.holat = 'tasdiqlandi'; b.meh.tasdiq = db.bugun; voqea(b, 'Mehmonxona bronni tasdiqladi');
+		if (b.bosqich === 'bron') b.bosqich = 'viza';
+		yangila(`${b.id}: mehmonxona tasdiqladi. Bosqich: ${BOSQ[b.bosqich].toLowerCase()}.`);
+	},
+	chipta(d) { const b = topB(d.id); if (!b || b.avia.holat !== 'bron') return; chiptaYoz(b); yangila(`${b.id}: aviachipta yozildi.`); },
+	tayyor(d) {
+		const b = topB(d.id); if (!b) return;
+		const t = tayyorTosiq(b); if (t.length) { xabar('Hali tayyor emas: ' + t.join(', ') + '.'); return; }
+		b.bosqich = 'tayyor'; voqea(b, 'Jo\'nashga tayyor: vaucher, chipta va sug\'urta mijozga berildi');
+		yangila(`${b.id}: jo'nashga tayyor.`);
+	},
+	jonadi(d) {
+		const b = topB(d.id); if (!b || kunFarq(b.jonash) > 1) return;
+		b.bosqich = 'safarda'; voqea(b, 'Jo\'nab ketdi'); yangila(`${b.id}: safarda. Qaytish ${sana(qaytish(b))}.`);
+	},
+	qaytdi(d) {
+		const b = topB(d.id); if (!b || kunFarq(qaytish(b)) > 0) return;
+		b.bosqich = 'qaytdi'; voqea(b, 'Safardan qaytdi'); yangila(`${b.id}: safar yakunlandi.`);
+	},
+
+	/* Viza va hujjatlar */
+	hujjat(d) {
+		const b = topB(d.id); b.viza.hujjat[d.h] = !b.viza.hujjat[d.h];
+		voqea(b, `${HUJ[d.h]}: ${b.viza.hujjat[d.h] ? 'tayyor' : 'olib tashlandi'}`);
+		yangila(`${HUJ[d.h]} — ${b.viza.hujjat[d.h] ? 'tayyor deb belgilandi' : 'belgi olib tashlandi'}.`);
+	},
+	navbat(d) {
+		const b = topB(d.id), t = vTur(b);
+		oyna(t === 'aqsh' ? `Suhbatga yozish: ${b.id}` : `Navbatga yozish: ${b.id}`, `<input type="hidden" name="id" value="${b.id}"><div class="may2">${may(t === 'aqsh' ? 'Qayerda' : 'Viza markazi', `<select class="in" name="markaz">${(Malumot.MARKAZ[t] || ['Viza markazi']).map(x => `<option value="${esc(x)}" ${/^(VFS|TLS)/.test(x) ? 'data-asl' : ''} ${x === b.viza.markaz ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>`)}${may(t === 'aqsh' ? 'Suhbat sanasi' : 'Navbat sanasi', `<input class="in" type="date" name="sana" value="${kunQosh(db.bugun, 5)}" required>`)}</div>
+${vYoq(b).length ? `<p class="yord">Topshirishgacha tayyorlash kerak: ${vYoq(b).map(h => HUJ[h]).join(', ')}.</p>` : ''}`, { forma: 'navbat', tugma: 'Saqlash' });
+	},
+	vizaQadam(d) {
+		const b = topB(d.id), v = b.viza, t = vTur(b), ok = !vYoq(b).length && !pasYomon(b).length;
+		if (v.holat === 'yigilmoqda' || v.holat === 'navbat') {
+			if (!ok) { xabar(pasYomon(b).length ? 'Pasport muddati yetmaydi — avval yangi pasport.' : `Yetishmaydi: ${vYoq(b).map(h => HUJ[h]).join(', ')}.`); return; }
+			if (t === 'kerakmas') { v.holat = 'berildi'; v.javob = db.bugun; voqea(b, 'Hujjatlar tayyor'); yangila(`${b.id}: hujjatlar tayyor.`); return; }
+			v.holat = 'topshirildi'; v.topsh = db.bugun; if (t === 'evisa') v.markaz = 'Onlayn ariza';
+			voqea(b, t === 'evisa' ? 'Elektron viza arizasi yuborildi' : t === 'aqsh' ? 'Elchixonada suhbatdan o\'tdi' : 'Viza hujjatlari topshirildi');
+			yangila(`${b.id}: topshirildi. Javob taxminan ${sana(javobSana(b))}.`); return;
+		}
+		if (v.holat === 'topshirildi') { v.holat = 'berildi'; v.javob = db.bugun; voqea(b, 'Viza berildi'); yangila(`${b.id}: viza berildi.`); }
+	},
+	vizaRad(d) { const b = topB(d.id); b.viza.holat = 'rad'; b.viza.javob = db.bugun; voqea(b, 'Viza rad etildi'); yangila(`${b.id}: viza rad etildi.`); },
+	vizaQayta(d) { const b = topB(d.id); Object.assign(b.viza, { holat: 'yigilmoqda', navbat: null, topsh: null, javob: null }); voqea(b, 'Viza uchun hujjatlar qayta yig\'ilmoqda'); yangila(`${b.id}: hujjatlar qayta yig'ilmoqda.`); },
+
+	/* Pul */
+	tolov(d) {
+		const b = topB(d.id); if (!b) return;
+		const q = tKech(b), g = grafik(b).find(x => x.qol >= 1), taklif = q.summa || (g ? g.qol : qoldi(b));
+		oyna('To\'lov qabul qilish', `<input type="hidden" name="id" value="${b.id}"><div class="eslat ko">${ik('pul')}<div>${esc(b.mijoz)} · ${b.id} · qoldiq <b>${usd(qoldi(b))}</b></div></div>
+<div class="may2">${may('Summa, $', raqamIn('summa', guruhla(taklif)))}${may('Kurs, so\'m', raqamIn('kurs', guruhla(db.kurs)))}</div>${may('Usul', tanla('usul', USUL.map(x => [x, x]), USUL[0]))}
+<p class="yord">So'mdagi qiymati kurs bo'yicha saqlanadi.</p>`, { forma: 'tolov', tugma: 'Saqlash' });
+	},
+	tamTol(d) {
+		const b = topB(d.id), k = d.k; if (!b || b.ttol[k]) return;
+		if (k === 'avia') { if (b.avia.holat === 'bron') chiptaYoz(b); else b.ttol.avia = db.bugun; }
+		else { b.ttol[k] = db.bugun; voqea(b, `${TAM[k]}: ${tamKim(b, k)}ga ${usd(b.x[k])} to'landi`); }
+		yangila(`${b.id}: ${TAM[k].toLowerCase()} — ${usd(b.x[k])} to'landi.`);
+	},
+	kursYangi() {
+		oyna('Kursni yangilash', `<p class="yord" style="margin-bottom:10px">Namunada kurs qo'lda kiritiladi. Tizimda Markaziy bank kursini har kuni o'zi olish mumkin.</p>${may('1 $, so\'m', raqamIn('kurs', guruhla(db.kurs)))}`, { forma: 'kurs', tugma: 'Saqlash' });
+	},
+	csv(d) {
+		const f = ui.til === 'kir' ? Yozuv.kir : Yozuv.lot;
+		const q = csvQatorlar(d.h, d).map(r => r.map(c => { const s = typeof c === 'number' ? String(c).replace('.', ',') : f(String(c)); return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(';')).join('\r\n');
+		try {
+			const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + q], { type: 'text/csv;charset=utf-8' })); a.download = 'bigtour-' + d.h + (d.m ? '-' + d.m : '') + '.csv';
+			document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+			xabar('Jadval Excel uchun yuklab olindi.');
+		} catch (e) { xabar('Bu brauzerda yuklab olish ishlamadi.'); }
+	},
+};
+
+/* ---------- Forma saqlash ---------- */
+const FORMA = {
+	pin(d) {
+		const x = topXo(KIMLAR[ui.tanlov]);
+		if (d.pin !== x.pin) { ui.pinXato = true; chiz(); return; }
+		ui.rol = ui.tanlov; ui.kim = x.id; ui.tanlov = null; ui.pinXato = false; ui.oxirgiYol = ''; saqla(); borish(boshSahifa());
+	},
+	qayta() { db = Malumot.urug(new Date()); saqla(); yop(); if (ui.rol) borish(boshSahifa()); else chiz(); xabar('Namuna dastlabki holatiga qaytdi.'); },
+	ariza(d) {
+		const a = { id: yangiId('A'), sana: db.bugun, ism: String(d.ism || '').trim(), tel: String(d.tel || '').trim(), manba: d.manba, yon: d.yon, qiziqish: String(d.qiziqish || '').trim(), odam: Math.max(1, Math.round(son(d.odam))), menejer: d.menejer || ui.kim, holat: 'yangi', bron: null, oxirgi: db.bugun, sabab: '' };
+		if (!a.ism || a.tel.replace(/\D/g, '').length < 9 || !a.qiziqish) { db.sanoq.A--; xabar('Ism, telefon va so\'rovni kiriting.'); return; }
+		db.arizalar.push(a); yangila(`Ariza saqlandi: ${a.id}.`);
+	},
+	rad(d) { const a = topA(d.id); a.holat = 'rad'; a.sabab = d.sabab; a.oxirgi = db.bugun; yangila(`${a.id}: rad etildi (${d.sabab.toLowerCase()}).`); },
+	bronOch(d) {
+		const a = topA(d.id), [tid, jonash] = String(d.tur || '').split('|'), t = topT(tid);
+		if (!t || !jonash) { xabar('Tur va sanani tanlang.'); return; }
+		const odam = Math.max(1, Math.round(son(d.odam))), chegirma = Math.max(0, Math.round(son(d.chegirma)));
+		const s = t.sanalar.find(x => x.sana === jonash);
+		if (band(tid, jonash) + odam > s.joy) { xabar(`Bu sanada bo'sh joy: ${s.joy - band(tid, jonash)}.`); return; }
+		const qator = String(d.sayoh || '').split(/\n+/).map(x => x.trim()).filter(Boolean).map(x => x.split(';').map(y => y.trim()));
+		if (qator.length !== odam) { xabar(`Sayohatchilar soni ${odam} ta bo'lishi kerak (har biri alohida qatorda).`); return; }
+		const sayoh = qator.map(([ism2, pas, mud]) => ({ ism: ism2 || 'Sayohatchi', pasport: String(pas || '').toUpperCase().replace(/\s/g, ''), muddat: isoDan(mud) }));
+		if (sayoh.some(x => !x.muddat || !/^[A-Z]{2}\d{7}$/.test(x.pasport))) { xabar('Pasport raqami (masalan FA1234567) va muddatini (kk.oo.yyyy) to\'g\'ri kiriting.'); return; }
+		if (chegirma >= t.narx * odam) { xabar('Chegirma narxdan katta.'); return; }
+		const x = {}; for (const k of Object.keys(TAM)) x[k] = t.x[k] * odam;
+		const hujjat = {}; for (const h of Malumot.VHUJ[t.viza]) hujjat[h] = false;
+		const b = {
+			id: yangiId('BT'), tur: tid, odam, menejer: a.menejer, sana: db.bugun, jonash, bosqich: 'tanlandi', narxK: t.narx, chegirma, avansF: t.yon === 'osiyo' ? 30 : 50, x,
+			ttol: { avia: null, meh: null, tr: null, sug: null, viza: null }, mijoz: sayoh[0].ism, tel: a.tel, sayoh, tol: [],
+			avia: { kompaniya: t.avia, reys: t.reys, pnr: '', holat: 'yoq', muddat: null, yozildi: null }, meh: { nom: t.meh, holat: 'yoq', tasdiq: null, bekor: kunQosh(jonash, -14) },
+			viza: { tur: t.viza, holat: 'yigilmoqda', markaz: '', navbat: null, topsh: null, javob: null, hujjat }, ariza: a.id, voqea: [{ sana: db.bugun, m: 'Tur tanlandi, bron ochildi' }],
+		};
+		db.bronlar.push(b); a.holat = 'bron'; a.bron = b.id; a.oxirgi = db.bugun;
+		saqla(); yop(); xabar(`Bron ochildi: ${b.id}. Avans: ${usd(avansS(b))}.`); borish('#/bronlar/' + b.id);
+	},
+	navbat(d) {
+		const b = topB(d.id); if (!d.sana) { xabar('Sanani tanlang.'); return; }
+		Object.assign(b.viza, { holat: 'navbat', navbat: d.sana, markaz: d.markaz });
+		voqea(b, `${vTur(b) === 'aqsh' ? 'Suhbat' : 'Navbat'} belgilandi: ${sana(d.sana)}`);
+		yangila(`${b.id}: ${vTur(b) === 'aqsh' ? 'suhbat' : 'navbat'} ${sana(d.sana)}.`);
+	},
+	tolov(d) {
+		const b = topB(d.id), s = Math.round(son(d.summa)), kr = Math.round(son(d.kurs));
+		if (s <= 0 || kr <= 0) { xabar('Summa va kursni kiriting.'); return; }
+		if (s > qoldi(b) + 0.5) { xabar(`Summa qoldiqdan katta: ${usd(qoldi(b))}.`); return; }
+		const birinchi = !b.tol.length;
+		b.tol.push({ sana: db.bugun, usd: s, kurs: kr, som: s * kr, usul: d.usul || USUL[0] });
+		voqea(b, `${birinchi ? 'Avans' : 'To\'lov'} olindi: ${usd(s)} (${pul(s * kr)})`);
+		yangila(`To'lov qabul qilindi: ${usd(s)}. Qoldiq: ${usd(qoldi(b))}.${birinchi && b.bosqich === 'tanlandi' ? ' Endi bron qilish mumkin.' : ''}`);
+	},
+	kurs(d) { const n = Math.round(son(d.kurs)); if (n <= 0) { xabar('Kurs musbat bo\'lishi kerak.'); return; } db.kurs = n; db.kursSana = db.bugun; yangila('Kurs yangilandi.'); },
+};
+
+/* ---------- Chizish ---------- */
+function chiz() {
+	const root = $('#ilova');
+	document.documentElement.lang = ui.til === 'kir' ? 'uz-Cyrl' : 'uz';
+	const nomla = s => { document.title = 'Big Tour — ' + (ui.til === 'kir' ? Yozuv.kir : Yozuv.lot)(s); };
+	if (!ui.rol || !ROL[ui.rol]) { ui.rol = null; root.innerHTML = kirishHTML(); Yozuv.dom(root, ui.til); nomla('boshqaruv tizimi (namuna)'); const p = $('#pin'); if (p) p.focus(); return; }
+	const y = yol();
+	if (!RUXSAT[ui.rol].includes(y.bol)) { if (location.hash !== boshSahifa()) { location.replace(boshSahifa()); return; } }
+	let ich = '';
+	switch (y.bol) {
+		case 'panel': ich = vPanel(); break;
+		case 'ishim': ich = vIshim(); break;
+		case 'arizalar': ich = vArizalar(y); break;
+		case 'bronlar': ich = y.arg ? vBron(y.arg) : vBronlar(y); break;
+		case 'turlar': ich = vTurlar(y); break;
+		case 'viza': ich = vViza(y); break;
+		case 'tolovlar': ich = vTolovlar(y); break;
+		case 'menejerlar': ich = vMenejerlar(y); break;
+		case 'hisobot': ich = vHisobot(y); break;
+		default: ich = bosh_yoq('Bunday sahifa yo\'q.');
+	}
+	root.innerHTML = qobiq(ich, y); Yozuv.dom(root, ui.til);
+	nomla((BOLIM[y.bol] ? BOLIM[y.bol].n : 'namuna') + ' (namuna)');
+	if (location.hash !== ui.oxirgiYol) { window.scrollTo(0, 0); ui.oxirgiYol = location.hash; }
+}
+
+/* ---------- Hodisalar ---------- */
+document.addEventListener('click', e => {
+	const t = e.target.closest('[data-a]');
+	if (t) { if (t.disabled) return; const f = AMAL[t.dataset.a]; if (f) { e.preventDefault(); f(t.dataset, t); } return; }
+	if (e.target.classList && e.target.classList.contains('parda')) { yop(); return; }
+	const tr = e.target.closest('tr[data-h]');
+	if (tr && !e.target.closest('a,button,input,select')) location.hash = tr.dataset.h;
+});
+document.addEventListener('submit', e => {
+	const f = e.target.closest('form');
+	if (!f) return; e.preventDefault();
+	if (!f.dataset.f) return;
+	const d = {}; new FormData(f).forEach((v, k) => { d[k] = v; });
+	const fn = FORMA[f.dataset.f]; if (fn) fn(d, f);
+});
+document.addEventListener('input', e => {
+	const t = e.target;
+	if (t.id === 'pin' && /^\d{4}$/.test(t.value) && t.form) { if (t.form.requestSubmit) t.form.requestSubmit(); return; }
+	if (!t.matches || !t.matches('[data-q]')) return;
+	const q = Yozuv.qid(t.value.trim()), ry = document.querySelector('[data-ry]'); if (!ry) return;
+	let bor = 0;
+	ry.querySelectorAll('[data-s]').forEach(el => { const k = !q || el.dataset.s.includes(q); el.hidden = !k; if (k) bor++; });
+	let yoq = ry.parentElement.querySelector('[data-yoq]');
+	if (!bor && !yoq) { yoq = document.createElement('div'); yoq.className = 'bosh-yoq'; yoq.dataset.yoq = '1'; yoq.textContent = 'Hech narsa chiqmadi.'; ry.parentElement.appendChild(yoq); Yozuv.dom(yoq, ui.til); }
+	if (yoq) yoq.hidden = bor > 0;
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#oyna').firstChild) yop(); });
+window.addEventListener('hashchange', () => { yop(); chiz(); });
+yukla();
+chiz();
+
+})();
+</script>
+</body>
+</html>

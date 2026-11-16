@@ -1,0 +1,15 @@
+{
+  "id": "./index.html",
+  "name": "Big Tour — boshqaruv tizimi (namuna)",
+  "short_name": "Big Tour",
+  "description": "Arizalar, turlar va bronlar, viza va hujjatlar, to'lov holati, menejerlar ishi va oylik hisobot. Namuna — ma'lumotlar misol uchun.",
+  "lang": "uz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fa",
+  "theme_color": "#0f2140",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
