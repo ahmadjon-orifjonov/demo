@@ -28,10 +28,10 @@
 :root{
 	--bg:#f4f6f8;--sf:#ffffff;--bg2:#f8fafb;--bg3:#e9edf1;
 	--line:#dde3e8;--line2:#ebeff2;
-	--tx:#17212b;--tx2:#4f5b67;--tx3:#5e6a75;--tx4:#a3adb6;
+	--tx:#17212b;--tx2:#4f5b67;--tx3:#5e6a75;--tx4:#646f7a;
 	--asos:#243447;--nv:#1b2838;--nv2:#243447;--nv3:#9aa8b6;
 	--br:#176b87;--br2:#125670;--br3:#7fb3c4;--brt:#e3f0f4;
-	--grn:#2e7d5b;--grnt:#e5f2eb;--amb:#b7791f;--ambt:#faf1e0;--org:#cf6a35;--red:#c2453f;--redt:#fbeae8;
+	--grn:#276e50;--grnt:#e5f2eb;--amb:#8f5a12;--ambt:#faf1e0;--org:#cf6a35;--red:#b23c36;--redt:#fbeae8;
 	/* hujjat guruhlari belgisi (МойСклад): savdo — ko‘k, xarid — marjon, pul — yashil */
 	--dsot:#2f8fd6;--dxar:#e26a5e;--dpul:#38a169;
 	--sh:0 1px 2px rgba(23,33,43,.06);
@@ -184,7 +184,7 @@ svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .bal.nol{color:var(--tx3)}
 .bal.big{font-size:26px;font-weight:600}
 .kst{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;background:var(--c);color:var(--sf);font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;flex:none}
-.kst.yangi{--c:var(--org)}
+.kst.yangi{--c:#b5521c}
 .kst.over{--c:var(--red)}
 /* qizil faqat «Muddati o‘tgan»; yetkazib beruvchi — kulrang chiziq, investor — och brend */
 .kst.yetk{background:none;border:1px solid var(--line);color:var(--tx3)}
@@ -329,7 +329,7 @@ select.in{appearance:none;-webkit-appearance:none;padding-right:28px;background:
 .kk .v{display:block;font-size:30px;font-weight:600;line-height:1.2;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .kk .s{display:block;font-size:13px;line-height:1.4;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums}
 .kk-ch{display:block;width:100%;height:auto}
-.kk-ch text{font-size:11px;fill:rgba(255,255,255,.8);font-family:var(--font);font-variant-numeric:tabular-nums}
+.kk-ch text{font-size:11px;fill:rgba(255,255,255,.88);font-family:var(--font);font-variant-numeric:tabular-nums}
 .kk-ch .g{stroke:rgba(255,255,255,.2)}
 .kk-ch .ar{fill:rgba(255,255,255,.12)}
 .kk-ch .ln{fill:none;stroke:#fff;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
@@ -341,8 +341,8 @@ select.in{appearance:none;-webkit-appearance:none;padding-right:28px;background:
 .kk-c{display:block;font-size:13px;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums;white-space:nowrap}
 .kk-c b{font-weight:600}
 .kk-c b.up{color:#9df5c0}
-.kk-c b.dn,.kk-red{color:#ffc4bd}
-.kk-n{margin-top:-8px;font-size:12px;color:rgba(255,255,255,.7);text-align:center}
+.kk-c b.dn,.kk-red{color:#ffe1dc}
+.kk-n{margin-top:-8px;font-size:12px;color:rgba(255,255,255,.88);text-align:center}
 .kk-row{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:52px;padding:0 16px;border:1px solid rgba(255,255,255,.4);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;font-size:16px;text-align:left}
 .kk-row:hover{background:rgba(255,255,255,.14)}
 .kk-row:focus-visible,.kk-track:focus-visible,.kk-dots button:focus-visible{outline:2px solid #fff;outline-offset:2px}
@@ -350,7 +350,7 @@ select.in{appearance:none;-webkit-appearance:none;padding-right:28px;background:
 .kk-d.up{background:#9df5c0}
 .kk-d.dn{background:#ffc4bd}
 .kk-bars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:end;height:112px;margin-top:6px}
-.kk-bars>div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;font-size:11px;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
+.kk-bars>div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;font-size:11px;color:rgba(255,255,255,.88);font-variant-numeric:tabular-nums}
 .kk-bars i{display:block;width:100%;max-width:30px;border-radius:4px 4px 0 0;background:rgba(255,255,255,.55)}
 .kk-bars i.neg{background:#ffc4bd}
 .kk-bars .cur i{background:#fff}
@@ -1154,7 +1154,7 @@ const F = {
 	},
 	som: n => F.num(Calc.r1000(n)) + NB + 'so‘m',
 	// qisqa: 5,2 mln — kartalarda; to‘liq summa jadvalda
-	mln: n => Math.abs(n) >= 1e6 ? F.num(n / 1e6, Math.abs(n) >= 1e8 ? 0 : 1) + NB + 'mln' : F.num(Math.round(n / 1000)) + NB + 'ming',
+	mln: n => Math.abs(n) >= 1e6 ? F.num(n / 1e6, Math.abs(n) >= 1e8 ? 0 : 1) + NB + 'mln' : Math.abs(n) >= 1000 ? F.num(Math.round(n / 1000)) + NB + 'ming' : F.num(Math.round(n)) + NB + 'so‘m',
 	pct: (n, digits = 0) => F.num(n * 100, digits) + NB + '%',
 	kg: n => F.num(Math.round(n)) + NB + 'kg',
 	date(s) { const d = Time.date(typeof s === 'number' ? Time.dayOf(s) : s); return d.getDate() + '-' + MON3[d.getMonth()]; },
@@ -1167,6 +1167,8 @@ const F = {
 	telDigits(v) { const d = String(v || '').replace(/\D/g, ''); return d.length === 9 ? '998' + d : d; },
 	telHref: v => 'tel:+' + F.telDigits(v),
 	// O‘zbek raqami namunadagidek: +998 90 123 45 67 (bo‘sh bo‘lsa — '')
+	// Qidiruv va nom taqqoslash: telefonda yoziladigan ' va ‘ ’ ʻ bir xil; katta-kichik harf va ortiqcha bo‘sh joy farq qilmaydi
+	q: s => String(s || '').toLowerCase().replace(/[‘’ʻʼ`´]/g, "'").replace(/\s+/g, ' ').trim(),
 	telUz(v) { const d = F.telDigits(v); return d.length === 12 ? `+${d.slice(0, 3)} ${d.slice(3, 5)} ${d.slice(5, 8)} ${d.slice(8, 10)} ${d.slice(10)}` : d ? '+' + d : ''; },
 	oid: o => 'B-' + o.id,
 	val: (n, v) => F.num(n, v === 'RUB' ? 0 : 0) + NB + VAL[v]
@@ -1210,7 +1212,7 @@ const UI = {
 	num(key, attrs = '') { const [form, k] = key.split('.'), v = String(ui.f[form][k] ?? ''); return UI.input(key, `type="text" inputmode="decimal" autocomplete="off" data-num ${attrs}`).replace(/ value="[^"]*"/, () => ` value="${/^\d+(\.\d+)?$/.test(v) ? F.num(+v, 2) : UI.esc(v)}"`); },
 	options: (list, current) => list.map(([v, t]) => `<option value="${UI.esc(v)}"${String(v) === String(current) ? ' selected' : ''}>${UI.esc(t)}</option>`).join(''),
 	select: (key, list, attrs = '') => { const [form, k] = key.split('.'); return `<select class="in" data-f="${key}" ${attrs}>${UI.options(list, ui.f[form][k])}</select>`; },
-	seg: (act, current, list, cls = '') => `<div class="seg ${cls}">${list.map(([v, t]) => `<button type="button" data-act="${act}" data-v="${v}" aria-pressed="${String(v) === String(current)}">${t}</button>`).join('')}</div>`,
+	seg: (act, current, list, cls = '') => `<div class="seg ${cls}">${list.map(([v, t]) => `<button type="button" data-act="${act}" data-v="${UI.esc(v)}" aria-pressed="${String(v) === String(current)}">${UI.esc(t)}</button>`).join('')}</div>`,
 	filter(act, current, list, chips) {
 		if (chips && UI.mobile()) return `<div class="chips wrap">${list.map(([v, t, n]) => `<button type="button" class="chip" aria-pressed="${v === current}" data-act="${act}" data-v="${v}">${t}<b>${n}</b></button>`).join('')}</div>`;
 		if (UI.mobile()) return `<select class="in" data-filter="${act}" aria-label="Filtr">${UI.options(list.map(([v, t, n]) => [v, `${t} · ${n}`]), current)}</select>`;
@@ -1255,6 +1257,10 @@ const UI = {
 /* ===== Forms — maydon qoidalari (manba: b.js) =====
 	 Har formaning tekshiruvi bitta joyda: maydon → [shart, xabar]. */
 const pos = v => +v > 0 && isFinite(+v);
+// Musbat son va yuqori chegara (xato yozilgan ortiqcha nollardan himoya): [shart, xabar]
+const KATTA = 'Juda katta son — tekshiring';
+const upto = (max, empty) => [v => pos(v) && +v <= max, v => !pos(v) ? empty : KATTA];
+const MAX = { pul: 1e12, kg: 1e6, narx: 1e7 };
 const Forms = {
 	rules: {
 		no: {
@@ -1262,39 +1268,39 @@ const Forms = {
 			lot: [v => !!v, 'Omborda bu tovar yo‘q'],
 			// Partiyalar FEFO bo‘yicha o‘zi bo‘linadi; chegara — shu tovarning omborda sotish mumkin bo‘lgan jami kg i
 			kg: [(v, f) => !f.lot || (pos(v) && +v <= Views.noCap(f)), (v, f) => !pos(v) ? 'Kg ni kiriting' : `Omborda ${F.kg(Views.noCap(f))} bor — ko‘prog‘ini sotib bo‘lmaydi`],
-			narx: [v => pos(v), 'Narxni kiriting']
+			narx: upto(MAX.narx, 'Narxni kiriting')
 		},
-		pay: { cid: [v => !!v, 'Xaridorni tanlang'], sum: [v => pos(v), 'Summani kiriting'] },
+		pay: { cid: [v => !!v, 'Xaridorni tanlang'], sum: upto(MAX.pul, 'Summani kiriting') },
 		// Chiqim: yetkazib beruvchiga — qoldiqdan ko‘p emas; Boshqa xarajat — izoh bilan
 		ch: {
 			lot: [(v, f) => f.tur !== 'yetk' || !!v, 'Partiyani tanlang'],
 			inv: [(v, f) => f.tur !== 'inv' || !!v, 'Investorni tanlang'],
-			sum: [(v, f) => pos(v) && (f.tur !== 'yetk' || !f.lot || +v <= Calc.supDebt(Data.lot(f.lot)) + 0.005), v => !pos(v) ? 'Summani kiriting' : 'Qoldiqdan ko‘p'],
+			sum: [(v, f) => pos(v) && +v <= MAX.pul && (f.tur !== 'yetk' || !f.lot || +v <= Calc.supDebt(Data.lot(f.lot)) + 0.005), v => !pos(v) ? 'Summani kiriting' : +v > MAX.pul ? KATTA : 'Qoldiqdan ko‘p'],
 			izoh: [(v, f) => f.tur !== 'xarajat' || f.kat !== 'boshqa' || v.trim().length >= 3, 'Nima uchun to‘langanini yozing']
 		},
-		cost: { sum: [v => pos(v), 'Summani kiriting'] },
+		cost: { sum: upto(MAX.pul, 'Summani kiriting') },
 		// Investor: ism ≥ 3 harf va kontragentlarda takrorlanmaydi; kiritgan va oylik to‘lov — musbat
 		iv: {
-			nom: [(v, f) => v.trim().length >= 3 && !Calc.kontr().some(x => !(x.tur === 'inv' && x.id === f.id) && x.nom.toLowerCase() === v.trim().toLowerCase()), v => v.trim().length < 3 ? 'Ismini kiriting' : 'Bu nom bor'],
-			kap: [v => pos(v), 'Summani kiriting'],
-			oyiga: [v => pos(v), 'Summani kiriting']
+			nom: [(v, f) => v.trim().length >= 3 && !Calc.kontr().some(x => !(x.tur === 'inv' && x.id === f.id) && F.q(x.nom) === F.q(v)), v => v.trim().length < 3 ? 'Ismini kiriting' : 'Bu nom bor'],
+			kap: upto(MAX.pul, 'Summani kiriting'),
+			oyiga: upto(MAX.pul, 'Summani kiriting')
 		},
 		lot: {
-			kg: [v => pos(v), 'Kg ni kiriting'],
-			narx: [v => pos(v), 'Narxni kiriting'],
-			kurs: [v => pos(v), 'Kursni kiriting'],
-			yol: [v => !v || (isFinite(+v) && +v >= 0), 'Summani to‘g‘ri kiriting'],
-			yaroq: [v => !v || v > Time.today, 'Muddat bugundan keyin bo‘lsin']
+			kg: upto(MAX.kg, 'Kg ni kiriting'),
+			narx: upto(1e5, 'Narxni kiriting'),
+			kurs: upto(1e6, 'Kursni kiriting'),
+			yol: [v => !v || (isFinite(+v) && +v >= 0 && +v <= MAX.pul), v => +v > MAX.pul ? KATTA : 'Summani to‘g‘ri kiriting'],
+			yaroq: [v => !v || (/^\d{4}-\d{2}-\d{2}$/.test(v) && v > Time.today), 'Muddat bugundan keyin bo‘lsin']
 		},
 		// Tarozi kg: faqat musbat son (invoys kg oynada ko‘rinib turadi)
-		qab: { kg: [v => pos(v), 'Tarozi kg ni kiriting'] },
+		qab: { kg: [(v, f) => pos(v) && +v <= Data.lot(f.id).kgInv * 1.2, v => !pos(v) ? 'Tarozi kg ni kiriting' : 'Invoysdan juda ko‘p — tekshiring'] },
 		// Yangi tovar (narx o‘zgartirishda f.k — o‘zi) va kontragent: nom ≥ 3 harf va takrorlanmaydi; telefon bo‘sh yoki to‘liq (xaridor — 998 bilan 12 raqam)
 		tv: {
-			nom: [(v, f) => v.trim().length >= 3 && !db.prods.some(p => p.k !== f.k && p.nom.toLowerCase() === v.trim().toLowerCase()), v => v.trim().length < 3 ? 'Nomini kiriting' : 'Bu nom bor'],
-			narx: [v => pos(v), 'Narxni kiriting']
+			nom: [(v, f) => v.trim().length >= 3 && !db.prods.some(p => p.k !== f.k && F.q(p.nom) === F.q(v)), v => v.trim().length < 3 ? 'Nomini kiriting' : 'Bu nom bor'],
+			narx: upto(MAX.narx, 'Narxni kiriting')
 		},
 		kt: {
-			nom: [v => v.trim().length >= 3 && !Calc.kontr().some(x => x.nom.toLowerCase() === v.trim().toLowerCase()), v => v.trim().length < 3 ? 'Nomini kiriting' : 'Bu nom bor'],
+			nom: [v => v.trim().length >= 3 && !Calc.kontr().some(x => F.q(x.nom) === F.q(v)), v => v.trim().length < 3 ? 'Nomini kiriting' : 'Bu nom bor'],
 			tel: [(v, f) => { const d = F.telDigits(v); return !d || (f.tur === 'xaridor' ? d.length === 12 : d.length >= 10 && d.length <= 15); }, 'Telefon raqamini to‘liq kiriting']
 		}
 	},
@@ -1519,8 +1525,8 @@ Object.assign(Views, {
 			<section class="card" id="llist">${Views.lotsList()}</section>`;
 	},
 	lotsList() {
-		const cur = LOT_FILTERS.find(f => f[0] === ui.lotFilter) || LOT_FILTERS[0], q = (ui.lotQ || '').trim().toLowerCase();
-		const hit = p => !q || [p.id, Data.sup(p.sup).nom, Data.prod(p.prod).nom].some(s => s.toLowerCase().includes(q));
+		const cur = LOT_FILTERS.find(f => f[0] === ui.lotFilter) || LOT_FILTERS[0], q = F.q(ui.lotQ);
+		const hit = p => !q || [p.id, Data.sup(p.sup).nom, Data.prod(p.prod).nom].some(s => F.q(s).includes(q));
 		const rows = db.lots.filter(p => cur[2](p) && hit(p)).sort((a, b) => Calc.closed(a) - Calc.closed(b) || (b.id < a.id ? -1 : 1));
 		const tan = p => { const c = Calc.cost(p); return `${c.est ? '<span class="muted">~</span>' : ''}${F.num(c.perKg)}`; };
 		const debt = p => { const d = Calc.supDebt(p); return d > 0 ? F.val(d, p.val) : '<span class="muted">to‘langan</span>'; };
@@ -1583,8 +1589,8 @@ Object.assign(Views, {
 			<div id="tvlist">${Views.tovarList()}</div>`;
 	},
 	tovarList() {
-		const q = ui.tovarQ.trim().toLowerCase();
-		const rows = db.prods.map(Calc.tovar).filter(t => (!ui.tovarF || t.qoldiq > 0) && (!q || t.pr.nom.toLowerCase().includes(q) || t.kod.includes(q)));
+		const q = F.q(ui.tovarQ);
+		const rows = db.prods.map(Calc.tovar).filter(t => (!ui.tovarF || t.qoldiq > 0) && (!q || F.q(t.pr.nom).includes(q) || t.kod.includes(q)));
 		if (!rows.length) return UI.empty('Tovar topilmadi', 'boxes');
 		return `<div class="mlist">${rows.map(t => `<button class="mrow" data-act="openProd" data-id="${t.pr.k}">${Views.ring(t.pr.nom)}
 			<span class="x"><b class="t">${t.kod} · ${UI.esc(t.pr.nom)}</b><span class="qty${t.qoldiq > 0 ? '' : ' nol'}"><span class="sot" title="Sotish mumkin">${UI.icon('cart')}${F.kg(t.bosh)}</span><span title="Qoldiq">${UI.icon('box')}${F.kg(t.qoldiq)}</span></span></span></button>`).join('')}</div>`;
@@ -1641,8 +1647,8 @@ Object.assign(Views, {
 		return x.over > 0 ? UI.chip(`${x.over} kun o‘tdi`, 'red') : UI.flag(`muddati ${F.date(Calc.due(o))}`, 'mute');
 	},
 	ordersList() {
-		const f = ui.orderFilter, fn = (ORDER_FILTERS.find(x => x[0] === f.st) || ORDER_FILTERS[0])[2], q = f.q.trim().toLowerCase();
-		const rows = db.orders.filter(o => fn(o) && (!q || String(o.id).includes(q) || Data.client(o).nom.toLowerCase().includes(q))).sort((a, b) => b.id - a.id);
+		const f = ui.orderFilter, fn = (ORDER_FILTERS.find(x => x[0] === f.st) || ORDER_FILTERS[0])[2], q = F.q(f.q);
+		const rows = db.orders.filter(o => fn(o) && (!q || String(o.id).includes(q) || F.q(Data.client(o).nom).includes(q))).sort((a, b) => b.id - a.id);
 		const shown = rows.slice(0, ui.orderLimit);
 		const cols = [
 			['Xaridor', 'c-main', o => `${UI.esc(Data.client(o).nom)}<span class="sub">${F.oid(o)}</span>`],
@@ -1720,7 +1726,7 @@ Object.assign(Views, {
 		return `<div class="search wide">${UI.icon('search')}<input class="in" data-f="no.q" value="${UI.esc(f.q)}" placeholder="Nomi yoki mas’ul shaxs" autofocus></div><div id="no-picks">${Views.noPicks()}</div>`;
 	},
 	noPicks() {
-		const q = ui.f.no.q.trim().toLowerCase(), list = db.clients.filter(x => !q || x.nom.toLowerCase().includes(q)).slice(0, q ? 6 : 4);
+		const q = F.q(ui.f.no.q), list = db.clients.filter(x => !q || F.q(x.nom).includes(q)).slice(0, q ? 6 : 4);
 		return `<div class="picks">${list.map(x => `<button type="button" class="pick" data-act="pickClient" data-id="${x.id}"><span class="t">${UI.esc(x.nom)}</span><span class="m">${Calc.debt(x) ? `qarz ${F.mln(Calc.debt(x))}` : 'qarz yo‘q'} · chegara ${F.mln(x.limit)}</span></button>`).join('') || '<p class="muted sm">Topilmadi</p>'}</div>`;
 	},
 	noBar() {
@@ -1741,9 +1747,9 @@ Object.assign(Views, {
 	},
 	// Saralash: avval muddati o‘tganlar, keyin qoldiq (moduli) kamayishi bo‘yicha
 	kontrList() {
-		const q = ui.kontrQ.trim().toLowerCase(), qd = q.replace(/\D/g, '');
+		const q = F.q(ui.kontrQ), qd = q.replace(/\D/g, '');
 		const rows = Calc.kontr().filter(x => (ui.kFilter === 'hammasi' || x.tur === ui.kFilter)
-			&& (!q || x.nom.toLowerCase().includes(q) || (qd.length >= 3 && String(x.tel || '').replace(/\D/g, '').includes(qd))))
+			&& (!q || F.q(x.nom).includes(q) || (qd.length >= 3 && String(x.tel || '').replace(/\D/g, '').includes(qd))))
 			.sort((a, b) => (b.over > 0) - (a.over > 0) || Math.abs(b.bal) - Math.abs(a.bal));
 		if (!rows.length) return UI.empty('Kontragent topilmadi', 'users');
 		// 1280 da — bir qatorli jadval: nom | qoldiq | holat
@@ -1900,8 +1906,8 @@ Object.assign(Views, {
 			<section class="card" id="tlist">${Views.tolovList()}</section>`;
 	},
 	tolovList() {
-		const fn = (TOL_FILTERS.find(x => x[0] === ui.tolF) || TOL_FILTERS[0])[2], q = ui.tolQ.trim().toLowerCase();
-		const rows = Calc.kassa().filter(r => fn(r) && (!q || [r.nom, r.izoh, KTUR[r.tur]].some(s => (s || '').toLowerCase().includes(q)))).reverse();
+		const fn = (TOL_FILTERS.find(x => x[0] === ui.tolF) || TOL_FILTERS[0])[2], q = F.q(ui.tolQ);
+		const rows = Calc.kassa().filter(r => fn(r) && (!q || [r.nom, r.izoh, KTUR[r.tur]].some(s => F.q(s).includes(q)))).reverse();
 		const shown = rows.slice(0, ui.tolLimit);
 		const sum = r => r.kirim ? `<span class="grn-t">+${F.num(r.kirim)}</span>` : `<span class="red-t">−${F.num(r.chiqim)}</span>`;
 		const cols = [
@@ -2060,7 +2066,7 @@ const RU = {
 	'Yangi tovar': 'Новый товар', 'Yangi kontragent': 'Новый контрагент',
 	// --- Ko‘rsatkichlar (Показатели, B7): Savdo · Pul · Qarzlar · Ombor, Bugun · Hafta · Oy ---
 	'Qarzlar': 'Долги', 'Hafta': 'Неделя', 'Oy': 'Месяц', 'Soni': 'Количество', 'Savdo grafigi': 'График продаж',
-	'Kecha shu soatgacha bilan taqqoslangan': 'Сравнение со вчера до этого часа', 'Oldingi 7 kun bilan taqqoslangan': 'Сравнение с предыдущими 7 днями',
+	'Kecha shu soatgacha bilan taqqoslangan': 'Сравнение со вчерашним днём на этот час', 'Oldingi 7 kun bilan taqqoslangan': 'Сравнение с предыдущими 7 днями',
 	'O‘tgan oyning shu kunlari bilan taqqoslangan': 'Сравнение с теми же днями прошлого месяца',
 	'Sotilgan tovarlar': 'Проданные товары', 'O‘rtacha narx': 'Средняя цена', 'Bu davrda sotuv yo‘q': 'За этот период продаж нет',
 	'Menga qoldi, mln so‘m': 'Мне осталось, млн сум', 'Menga qarzlar': 'Мне должны', 'Men qarzman': 'Я должен',
@@ -2096,7 +2102,7 @@ const RU = {
 	'Xarid': 'Закупка', 'Xarid summasi': 'Сумма закупки', 'Xarid, {q} (t)': 'Закупки за {q} (т)',
 	'Yo‘l (fura)': 'Дорога (фура)', 'Boj': 'Пошлина', 'Boj {n} %': 'Пошлина {n} %', 'boj {n} %': 'пошлина {n} %', 'Bojxona brokeri': 'Таможенный брокер',
 	'Saqlash (terminal)': 'Хранение (терминал)',
-	'Xarajat': 'Затраты', 'xarajat': 'расход', 'Jami xarajat': 'Всего расходов', 'boshqa {q}': 'прочее {q}', 'Xarajatlar va {q} tannarx': 'Расходы и себестоимость {q}',
+	'Xarajat': 'Расход', 'shundan avans {q}': 'из них аванс {q}', 'xarajat': 'расход', 'Jami xarajat': 'Всего расходов', 'boshqa {q}': 'прочее {q}', 'Xarajatlar va {q} tannarx': 'Расходы и себестоимость {q}',
 	'1 kg tannarx': 'Себестоимость 1 кг', '{q} tannarx': 'себестоимость {q}', '{q} tannarx {n}': 'себестоимость {q}: {n}', 'taxminiy': 'оценочно',
 
 	'xarid + yo‘l': 'закупка + дорога', 'invoys kg': 'кг по инвойсу', 'Qabul qilingan': 'Принято',
@@ -2178,7 +2184,7 @@ const RU = {
 	'Qoldiqdan ko‘p': 'Больше остатка', 'Summani to‘g‘ri kiriting': 'Введите сумму правильно', 'Nima uchun to‘langanini yozing': 'Напишите, за что оплачено',
 	'Yo‘l xarajati': 'Расходы на доставку', 'Boj {n} % tannarxga o‘zi qo‘shiladi': 'Пошлина {n} % сама добавляется в себестоимость',
 	'Partiya bugungi sana bilan yoziladi, kursi qotadi': 'Партия записывается сегодняшней датой, курс фиксируется',
-	'Boshqa xarajatlar — partiya kartasida «Xarajat»': 'Прочие расходы — в карточке партии, кнопка «Затраты»',
+	'Boshqa xarajatlar — partiya kartasida «Xarajat»': 'Прочие расходы — в карточке партии, кнопка «Расход»',
 	'Omborga qabul qilish': 'Принять на склад', 'Yetkazib beruvchiga qarz': 'Долг поставщику', 'to‘langan': 'оплачено', 'to‘langan {q}': 'оплачено {q}', 'To‘lash': 'Оплатить',
 	'partiya kursi {n}': 'курс партии {n}', 'qoldi': 'осталось', 'Kim': 'Контрагент', 'Kim yoki izoh': 'Контрагент или комментарий', 'Turi': 'Тип',
 	'To‘lov topilmadi': 'Платёж не найден', 'Kirim — xaridordan to‘lov': 'Приход — оплата от покупателя', 'Kimga': 'Кому', 'Toifa': 'Категория',
@@ -2189,7 +2195,7 @@ const RU = {
 	'Sotuv@hujjatlar': 'Продажи', 'Yangi to‘lov': 'Новый платёж',
 	'Chiqim — yetkazib beruvchi, xarajat, investor': 'Расход — поставщику, затраты, инвестору',
 	'partiya ochilgan kuni qotgan': 'зафиксирован в день открытия партии', 'Ochilgan': 'Открыта', 'Omborga kelgan': 'Пришла на склад',
-	'Tannarx': 'Себестоимость', 'marja': 'маржа', 'qarz yo‘q': 'долга нет', 'Omborda {q} bor — ko‘prog‘ini sotib bo‘lmaydi': 'На складе {q} — больше продать нельзя', 'Yo‘l va boj shu hisobdan': 'Дорога и пошлина — с этого счёта', 'Boj {q} — {*} hisobidan chiqadi': 'Пошлина {q} списывается со счёта «{*}»', 'Minusda': 'В минусе', 'FEFO bo‘yicha {n} partiyadan': 'по FEFO из {n} {1|партии|партий|партий}', 'o‘rtacha': 'средняя',
+	'Tannarx': 'Себестоимость', 'marja': 'маржа', 'qarz yo‘q': 'долга нет', 'Juda katta son — tekshiring': 'Слишком большое число — проверьте', 'Invoysdan juda ko‘p — tekshiring': 'Намного больше инвойса — проверьте', 'Omborda {q} bor — ko‘prog‘ini sotib bo‘lmaydi': 'На складе {q} — больше продать нельзя', 'Yo‘l va boj shu hisobdan': 'Дорога и пошлина — с этого счёта', 'Boj {q} — {*} hisobidan chiqadi': 'Пошлина {q} списывается со счёта «{*}»', 'Minusda': 'В минусе', 'FEFO bo‘yicha {n} partiyadan': 'по FEFO из {n} {1|партии|партий|партий}', 'o‘rtacha': 'средняя',
 	'{*} partiyada {q} bor — qolganini keyingi sotuvda {*} dan soting': 'В партии {*} {q} — остаток продайте следующей отгрузкой из {*}',
 	// --- B5: Tovarlar, Kontragentlar (Товары, Контрагенты) ---
 	'Valyutada (partiya kursida)': 'В валюте (по курсу партии)', 'Faqat qoldig‘i borlar': 'Только с остатком', 'Tovar topilmadi': 'Товар не найден', 'Partiya yo‘q': 'Партий нет', 'Narx, 1 kg': 'Цена, 1 кг',
@@ -2534,7 +2540,7 @@ const Actions = {
 	setKtTur(d) { ui.f.kt.tur = d.v; UI.refresh('mbody'); },
 	saveKontr() {
 		if (!Forms.valid('kt') || !Steps.guard()) return;
-		const f = ui.f.kt, nom = f.nom.trim(), xar = f.tur === 'xaridor', tel = xar ? F.telUz(f.tel) : f.tel.trim();
+		const f = ui.f.kt, nom = f.nom.trim(), xar = f.tur === 'xaridor', tel = xar ? F.telUz(f.tel) : F.telDigits(f.tel) ? f.tel.trim() : '';
 		const list = xar ? db.clients : db.sups, pre = xar ? 'c' : 's', n = Math.max(0, ...list.map(x => +x.id.slice(1) || 0)) + 1;
 		// Xaridor: qarz chegarasi va to‘lov muddati — standart (Sozlamalar); yetkazib beruvchi: valyuta $ (partiyada o‘zgartirsa bo‘ladi)
 		const x = xar ? { id: pre + n, nom, limit: db.set.limit, kun: db.set.kun, tel }
@@ -2867,7 +2873,7 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 
 /* ===== Sinov rejimi (build.mjs yozadi): manzilda ?sinov bo‘lsa, modullar window ga chiqariladi ===== */
 if (new URLSearchParams(location.search).has('sinov')) {
-	Object.assign(window, { DAY, HOUR, MIN, MON3, MONTHS, DEMO_START, DEMO_END, Time, can, NAV, pageOk, STAGES, LAST, XARAJAT, VAL, KONTR_TUR, STATUS, USUL, XKAT, KTUR, ui, Data, Calc, $, NB, F, LOGO, UI, pos, Forms, PAGES, DOC_TUR, PUL_TUR, DOC_GRP, PUL_ICON, KSAHIFA, KDAVR, KTAQQOS, Views, LOT_FILTERS, ORDER_FILTERS, termText, KONTR_F, KONTR_ACT, TOL_FILTERS, CH_TUR, RU_SAQLA, RU, Til, Steps, Actions, Fields, Router });
+	Object.assign(window, { DAY, HOUR, MIN, MON3, MONTHS, DEMO_START, DEMO_END, Time, can, NAV, pageOk, STAGES, LAST, XARAJAT, VAL, KONTR_TUR, STATUS, USUL, XKAT, KTUR, ui, Data, Calc, $, NB, F, LOGO, UI, pos, KATTA, upto, MAX, Forms, PAGES, DOC_TUR, PUL_TUR, DOC_GRP, PUL_ICON, KSAHIFA, KDAVR, KTAQQOS, Views, LOT_FILTERS, ORDER_FILTERS, termText, KONTR_F, KONTR_ACT, TOL_FILTERS, CH_TUR, RU_SAQLA, RU, Til, Steps, Actions, Fields, Router });
 	Object.defineProperties(window, {
 		db: { get: () => db, set: v => { db = v; } },
 		session: { get: () => session, set: v => { session = v; } }
